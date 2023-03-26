@@ -27,7 +27,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/web/src/favicon.ico",
-              "projects/web/src/assets"
+              "projects/web/src/assets",
+              "projects/web/src/robots.txt",
+              "projects/web/src/sitemap.xml"
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
@@ -97,6 +99,16 @@
               "projects/web/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "web:build:production",
+            "firebaseProject": "online-store-7de9d",
+            "firebaseHostingSite": "online-store-7de9d"
           }
         }
       }

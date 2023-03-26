@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "online-store-7de9d"
+  },
+  "targets": {
+    "online-store-7de9d": {
+      "hosting": {
+        "web": [
+          "online-store-7de9d"
+        ]
+      }
+    }
+  }
+}
