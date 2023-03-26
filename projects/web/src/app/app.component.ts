@@ -1,3 +1,11 @@
+/* 
+
+  2.4. Desarrollo: ng serve --project=web --open
+  
+*/ 
+
+
+
 import { Component } from '@angular/core';
 
 @Component({
