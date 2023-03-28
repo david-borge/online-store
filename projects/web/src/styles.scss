@@ -12,33 +12,41 @@
 
 
 
-// Contenedor solo móvil
-#contenedor-solo-movil {
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
-    max-width: 450px;
-    max-height: 930px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-}
-
-
-
-/* Sticky Footer */
-html {
-    min-height: 100%;
-}
-
+// Sticky Footer
+// TODO: aplicar esta corrección a gulp-amp-template
+html,
 body,
 app-root {
+    height: 100%;
+}
+
+body {
     margin: 0;
-    min-height: 100vh;
+}
+
+app-root {
     display: flex;
     flex-direction: column;
 }
 
 main {
     flex: 1;
+}
+
+
+
+// Contenedor solo móvil
+#contenedor-solo-movil {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    max-height: 930px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+
+    display: flex;
+    flex-direction: column;
 }
 
 
