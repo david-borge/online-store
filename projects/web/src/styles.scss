@@ -11,7 +11,7 @@
 /***** SCSS de toda la aplicación *****/
 
 
-
+  
 // Sticky Footer
 // TODO: aplicar esta corrección a gulp-amp-template
 html,
@@ -32,6 +32,21 @@ app-root {
 main {
     flex: 1;
 }
+
+
+
+// FIXME: Bloquear la orientación horizontal
+/* @media screen and (orientation: landscape) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+} */
 
 
 
@@ -58,9 +73,31 @@ main {
     max-width: 79px;
 }
 
+@keyframes animacion-spinner-delay {
+
+    0% {
+        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
+        opacity: 0;
+    }
+
+    100% {
+        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
+        opacity: 1;
+    }
+
+}
+
+.spinner-delay {
+    animation-name: animacion-spinner-delay;
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+    animation-fill-mode: backwards;
+    animation-delay: 2100ms;
+}
 
 
-// Pantalla inicial de carga
+
+// Pantalla inicial de carga - Imágenes
 .contenedor-imagenes-productos {
     flex: 1;
     position: relative;
@@ -82,4 +119,62 @@ main {
 .imagen-con-blur {
     opacity: 0.5;
     filter: blur(37.5px);
+}
+
+
+
+// Pantalla inicial de carga - Imágenes - Animaciones
+@keyframes animacion-slide-in-from-top {
+
+    0% {
+        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    100% {
+        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.slide-in-from-top {
+    animation-name: animacion-slide-in-from-top;
+    animation-duration: 1600ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+    animation-fill-mode: backwards;
+}
+
+@keyframes animacion-slide-in-from-bottom {
+
+    0% {
+        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    100% {
+        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.slide-in-from-bottom {
+    // opacity: 0;
+    animation-name: animacion-slide-in-from-bottom;
+    animation-duration: 1600ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+    animation-fill-mode: backwards;
+}
+
+.delay-1 {
+    animation-delay: 500ms;
+}
+
+.delay-2 {
+    animation-delay: 700ms;
 }
