@@ -11,6 +11,19 @@
 /***** SCSS de toda la aplicación *****/
 
 
+
+// Contenedor solo móvil
+#contenedor-solo-movil {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 450px;
+    max-height: 930px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+
+
 /* Sticky Footer */
 html {
     min-height: 100%;
@@ -40,6 +53,12 @@ main {
 
 
 // Pantalla inicial de carga
+.contenedor-imagenes-productos {
+    flex: 1;
+    position: relative;
+    width: 100%;
+}
+
 .imagen-con-blur-contenedor {
     position: absolute;
 }
