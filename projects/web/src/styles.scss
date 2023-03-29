@@ -370,7 +370,7 @@ $body-color: var(--N800);
 
 
 // Typography - Body - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
-@mixin paragraph-1-regular {
+@mixin body-16px-regular {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -378,12 +378,12 @@ $body-color: var(--N800);
     line-height: 150%;
 }
 
-.paragraph-1-regular {
-    @include paragraph-1-regular;
+.body-16px-regular {
+    @include body-16px-regular;
 }
 
 
-@mixin paragraph-1-medium {
+@mixin body-16px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -391,12 +391,12 @@ $body-color: var(--N800);
     line-height: 150%;
 }
 
-.paragraph-1-medium {
-    @include paragraph-1-medium;
+.body-16px-medium {
+    @include body-16px-medium;
 }
 
 
-@mixin paragraph-2-regular {
+@mixin body-14px-regular {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -404,12 +404,12 @@ $body-color: var(--N800);
     line-height: 150%;
 }
 
-.paragraph-2-regular {
-    @include paragraph-2-regular;
+.body-14px-regular {
+    @include body-14px-regular;
 }
 
 
-@mixin paragraph-2-medium {
+@mixin body-14px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -417,12 +417,12 @@ $body-color: var(--N800);
     line-height: 150%;
 }
 
-.paragraph-2-medium {
-    @include paragraph-2-medium;
+.body-14px-medium {
+    @include body-14px-medium;
 }
 
 
-@mixin paragraph-3-regular {
+@mixin body-12px-regular {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -430,12 +430,12 @@ $body-color: var(--N800);
     line-height: 150%;
 }
 
-.paragraph-3-regular {
-    @include paragraph-3-regular;
+.body-12px-regular {
+    @include body-12px-regular;
 }
 
 
-@mixin paragraph-3-medium {
+@mixin body-12px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -443,14 +443,14 @@ $body-color: var(--N800);
     line-height: 150%;
 }
 
-.paragraph-3-medium {
-    @include paragraph-3-medium;
+.body-12px-medium {
+    @include body-12px-medium;
 }
 
 
 
 // Typography - Labels - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
-@mixin label-1-regular {
+@mixin label-20px-regular {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -458,12 +458,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-1-regular {
-    @include label-1-regular;
+.label-20px-regular {
+    @include label-20px-regular;
 }
 
 
-@mixin label-1-medium {
+@mixin label-20px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -471,12 +471,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-1-medium {
-    @include label-1-medium;
+.label-20px-medium {
+    @include label-20px-medium;
 }
 
 
-@mixin label-2-regular {
+@mixin label-16px-regular {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -484,12 +484,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-2-regular {
-    @include label-2-regular;
+.label-16px-regular {
+    @include label-16px-regular;
 }
 
 
-@mixin label-2-medium {
+@mixin label-16px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -497,12 +497,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-2-medium {
-    @include label-2-medium;
+.label-16px-medium {
+    @include label-16px-medium;
 }
 
 
-@mixin label-3-regular {
+@mixin label-14px-regular {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -510,12 +510,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-3-regular {
-    @include label-3-regular;
+.label-14px-regular {
+    @include label-14px-regular;
 }
 
 
-@mixin label-3-medium {
+@mixin label-14px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -523,12 +523,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-3-medium {
-    @include label-3-medium;
+.label-14px-medium {
+    @include label-14px-medium;
 }
 
 
-@mixin label-4-regular {
+@mixin label-12px-regular {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -536,12 +536,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-4-regular {
-    @include label-4-regular;
+.label-12px-regular {
+    @include label-12px-regular;
 }
 
 
-@mixin label-4-medium {
+@mixin label-12px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -549,8 +549,8 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.label-4-medium {
-    @include label-4-medium;
+.label-12px-medium {
+    @include label-12px-medium;
 }
 
 
@@ -772,7 +772,7 @@ header {
 
 // Section Header - Right Side - Link
 .section-header-link-container a {
-    @include paragraph-2-medium;
+    @include body-14px-medium;
 
     color: var(--N600);
     text-decoration: none;
@@ -897,7 +897,7 @@ header {
 }
 
 .product-card-manufacturer {
-    @include paragraph-3-regular;   
+    @include body-12px-regular;   
 }
 
 .product-card-review {
@@ -917,6 +917,16 @@ header {
     flex-direction: column;
     justify-content: center;
     font-size: 12px;
+}
+
+.product-card-review-number-of-reviews {
+    @include label-12px-regular;
+
+    color: var(--N400);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .product-card-price {
@@ -977,6 +987,11 @@ header {
 }
 
 // Product Page - Overlay Header - Quitar borde inferior
+body.product-page .overlay-header {
+    // TODO:
+    background-color: var(--B300);
+}
+
 body.product-page .overlay-header::after {
     height: 0;
 }
@@ -1006,9 +1021,99 @@ body.product-page .overlay-header::after {
 
 // Product Page - Manufacturer
 .product-manufacturer {
-    font-size: 14px;
+    margin-bottom: 8px;
+
+    @include body-14px-regular;
+    
     color: var(--N600);
 }
+
+// Product Page - Description
+.product-description-title {
+    margin-bottom: 12px;
+
+    @include heading-4;
+}
+
+.product-description-content {
+    color: var(--N600);
+}
+
+.product-description-content .read-more {
+    @include body-16px-medium;
+
+    color: var(--N800);
+}
+
+// Product Page - Reviews
+.product-reviews-title {
+    margin-bottom: 24px;
+
+    @include heading-4;
+}
+
+.product-reviews-list {
+
+}
+
+// Product Page - Reviews - Review Item
+.product-reviews-item--title-stars-container {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: stretch;
+}
+
+.product-reviews-item--title {
+    flex: 1;
+
+    margin-bottom: 8px;
+
+    @include label-16px-medium;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.product-reviews-item--title * {
+    margin-bottom: 0;
+
+    @include label-16px-medium;
+}
+
+.product-reviews-item--stars {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-reviews-item--date {
+    margin-bottom: 8px;
+
+    @include body-12px-regular;
+
+    color: var(--N400);
+}
+
+.product-reviews-item--content {
+    margin-bottom: 8px;
+
+    @include body-14px-regular;
+    
+    color: var(--N600);
+}
+
+.product-reviews-item--content p:last-child {
+    margin-bottom: 0;
+}
+
+.product-reviews-item--profile-name {
+    @include body-12px-medium;
+    
+    color: var(--N600);
+}
+
 
 
 // Footer
