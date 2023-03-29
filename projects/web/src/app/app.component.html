@@ -25,7 +25,11 @@
   <!-- Main -->
   <main role="main" style="padding-top: 116px; padding-bottom: 63px;">
 
-    <!-- <div style="background-color: red; height: 1000px;"></div> -->
+    <!-- Featured Products -->
+    <div>
+      
+    </div>
+
 
 
     <!-- Pantalla inicial de carga -->
@@ -132,6 +136,7 @@
         </div>
 
         <!-- Spinner -->
+        <!-- TODO: ¿cambiar por código? -->
         <img src="assets/img/iconos/spinner.svg" width="79px" height="79px" alt="spinner" class="spinner spinner-delay">
 
       </div>
@@ -144,16 +149,29 @@
   <footer>
 
     <!-- Curve -->
+    <!-- TODO: sombra -->
     <div class="navigation-curve"></div>
 
     <!-- Navigation CTAs & Copy -->
-    <div class="navigation-ctas-and-copy-container">
+    <div class="navigation-ctas-and-copy-container d-none">
 
       <div class="navigation-ctas-and-copy container">
 
         <!-- Navigation Button Left -->
-        <div class="navigation-button-left-container">
-          <button type="button" class="btn btn-outline-secondary btn-lg">Cancel</button>
+        <div class="navigation-button-left-container d-none">
+          <button type="button" class="btn btn-outline-secondary btn-lg">
+            <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+
+            </span> -->
+            <span class="navigation-button-left--text">Cancel</span>
+            <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon">
+              <!-- Icon: plus -->
+              <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>                
+            </span>
+          </button>
         </div>
 
         <!-- Navigation Copy -->
@@ -164,7 +182,18 @@
 
         <!-- Navigation Button Right -->
         <div class="navigation-button-right-container">
-          <button type="button" class="btn btn-primary btn-lg">Add to cart</button>
+          <button type="button" class="btn btn-primary btn-lg">
+            <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+
+            </span> -->
+            <span class="navigation-button-left--text">Add to cart</span>
+            <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon d-none">
+              <!-- Icon: check -->
+              <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.1666 5L7.99998 14.1667L3.83331 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
         </div>
         
       </div>
