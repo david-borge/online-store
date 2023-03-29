@@ -1,10 +1,11 @@
 <div id="contenedor-solo-movil">
 
   <!-- Header -->
-  <header style="position: fixed; top: 0; right: 0; left: 0; background-color: white;">
+  <header style="position: fixed; top: 0; right: 0; left: 0;">
+  <!-- <header style="position: fixed; top: 0; right: 0; left: 0; background-color: white;"> -->
 
     <!-- Home - Hero -->
-    <div class="d-flex flex-column" style="min-height: 116px;">
+    <div class="d-flex flex-column d-none" style="min-height: 116px;">
 
       <!-- Logo -->
       <div class="flex-fill d-flex flex-column align-items-center justify-content-end" style="margin-bottom: 6px;">
@@ -20,15 +21,88 @@
 
     </div>
 
+    <!-- Overlay Header -->
+    <div class="overlay-header overlay-header-main-page d-none">
+      <div class="container">
+
+        <!-- Overlay Header - Left Icon -->
+        <div class="overlay-header-left-icon-container">
+          <!-- Icon: chevron-left -->
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15L7.5 10L12.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Overlay Header - Title -->
+        <div class="overlay-header-title">
+          <h2>Featured</h2>
+        </div>
+
+        <!-- Overlay Header - Close Icon -->
+        <div class="overlay-header-close-icon d-none">
+          <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.5L5 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5L15 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Overlay Header - Subpage -->
+    <div class="overlay-header overlay-header-subpage">
+      <div class="container">
+
+        <!-- Overlay Header - Left Icon -->
+        <div class="overlay-header-left-icon-container">
+          <!-- Icon: chevron-left -->
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15L7.5 10L12.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Overlay Header - Title -->
+        <div class="overlay-header-title">
+          <h2>Featured</h2>
+        </div>
+
+        <!-- Overlay Header - Close Icon -->
+        <div class="overlay-header-close-icon d-none">
+          <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.5L5 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5L15 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+      </div>
+    </div>
+
   </header>
   
   <!-- Main -->
-  <main role="main" style="padding-top: 116px; padding-bottom: calc(73px + 32px);">
+  <main role="main" style="padding-top: 0; padding-bottom: calc(73px + 32px);"> <!-- Product Page -->
+  <!-- <main role="main" style="padding-top: 116px; padding-bottom: calc(73px + 32px);"> -->
+
+
 
     <!-- Product Page -->
     <div>
 
+      <!-- Product Image & 360º Indicator -->
+      <div class="product-image-and-three-sixty-indicator-container">
+
+        <!-- Product Image -->
+        <div class="product-image-container">
+          <picture>
+            <source srcset="assets/img/products/dualsense-wireless-controller.webp" type="image/webp">
+            <img src="assets/img/products/dualsense-wireless-controller.png" width="254px" height="238px" alt="DualSense Wireless Controller">
+          </picture>
+        </div>
+
+        <!-- 360º Indicator -->
+        <div class="three-sixty-indicator-container">
+          <!-- Image: 360-indicator.svg -->
+          <svg width="322" height="118" viewBox="0 0 322 118" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M321.5 52.5C321.5 59.5251 317.134 66.3013 309.043 72.5394C300.958 78.7721 289.228 84.4067 274.689 89.1477C245.616 98.628 205.421 104.5 161 104.5C116.579 104.5 76.3837 98.628 47.3108 89.1477C32.7716 84.4067 21.0419 78.7721 12.9575 72.5394C4.86608 66.3013 0.5 59.5251 0.5 52.5C0.5 45.4749 4.86608 38.6987 12.9575 32.4606C21.0419 26.2279 32.7716 20.5933 47.3108 15.8523C76.3837 6.37197 116.579 0.5 161 0.5C205.421 0.5 245.616 6.37197 274.689 15.8523C289.228 20.5933 300.958 26.2279 309.043 32.4606C317.134 38.6987 321.5 45.4749 321.5 52.5Z" stroke="url(#paint0_linear_47389_7002)"/><circle cx="161" cy="105" r="13" fill="#013B47"/><path d="M153.312 104.792L157.756 101.829C158.288 101.475 159 101.856 159 102.495V107.505C159 108.144 158.288 108.525 157.756 108.171L153.312 105.208C153.164 105.109 153.164 104.891 153.312 104.792Z" fill="white"/><path d="M168.688 104.792L164.244 101.829C163.712 101.475 163 101.856 163 102.495V107.505C163 108.144 163.712 108.525 164.244 108.171L168.688 105.208C168.836 105.109 168.836 104.891 168.688 104.792Z" fill="white"/><defs><linearGradient id="paint0_linear_47389_7002" x1="167" y1="146.5" x2="167" y2="9.5" gradientUnits="userSpaceOnUse"><stop stop-color="#013B47"/><stop offset="1" stop-color="#013B47" stop-opacity="0"/></linearGradient></defs></svg>
+        </div>
+
+      </div>
+
+      <!-- Product Manufacturer -->
+      <div class="product-manufacturer">Sony</div>
+
     </div>
+
+
 
     <!-- Featured Products -->
     <div class="section d-none">
@@ -106,7 +180,7 @@
             </div>
 
             <div class="product-card-name">
-              <h3 class="heading-h4">Chuck 70 Hi Sneakers</h3>
+              <h3>Chuck 70 Hi Sneakers</h3>
             </div>
 
             <div class="product-card-manufacturer">Converse</div>
@@ -128,7 +202,7 @@
             </div>
 
             <div class="product-card-name">
-              <h3 class="heading-h4">Chuck 70 Hi Sneakers</h3>
+              <h3>Chuck 70 Hi Sneakers</h3>
             </div>
 
             <div class="product-card-manufacturer">Converse</div>
@@ -150,7 +224,7 @@
             </div>
 
             <div class="product-card-name">
-              <h3 class="heading-h4">Chuck 70 Hi Sneakers</h3>
+              <h3>Chuck 70 Hi Sneakers</h3>
             </div>
 
             <div class="product-card-manufacturer">Converse</div>
@@ -244,7 +318,7 @@
               </div>
 
               <div class="product-card-name">
-                <h3 class="heading-h5">Chuck 70 Hi Sneakers</h3>
+                <h3>Chuck 70 Hi Sneakers</h3>
               </div>
 
               <div class="product-card-manufacturer">Converse</div>
@@ -284,7 +358,7 @@
               </div>
 
               <div class="product-card-name">
-                <h3 class="heading-h5">Chuck 70 Hi Sneakers</h3>
+                <h3>Chuck 70 Hi Sneakers</h3>
               </div>
 
               <div class="product-card-manufacturer">Converse</div>

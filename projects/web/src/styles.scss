@@ -303,7 +303,7 @@ $body-color: var(--N800);
 
 
 // Encabezados - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
-.heading-h3 {
+@mixin heading-h3 {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 600;
@@ -311,7 +311,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.heading-h4 {
+.heading-h3 {
+    @include heading-h3;
+}
+
+
+@mixin heading-h4 {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 600;
@@ -319,12 +324,21 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.heading-h5 {
+.heading-h4 {
+    @include heading-h4;
+}
+
+
+@mixin heading-h5 {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 125%;
+}
+
+.heading-h5 {
+    @include heading-h5;
 }
 
 
@@ -383,7 +397,7 @@ main {
     max-width: 450px;
     // height: 100%;
     // max-height: 930px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 
     display: flex;
     flex-direction: column;
@@ -506,6 +520,13 @@ main {
 
 
 
+// Header Tag
+header {
+    background-color: white;
+}
+
+
+
 // Section Header
 .section-header {
     margin-bottom: 16px;
@@ -518,9 +539,10 @@ main {
 // Section Header - Title
 .section-header-title {
     flex: 1;
+
 }
 
-.section-header-title > * {
+.section-header-title * {
     margin-bottom: 0;
 }
 
@@ -548,6 +570,84 @@ main {
     text-decoration: none;
 }
 
+
+
+// Overlay Header
+.overlay-header {
+    padding-top: 48px;
+    padding-bottom: 12px;
+}
+
+.overlay-header > .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.overlay-header-title {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overlay-header-title * {
+    margin-bottom: 0;
+}
+
+.overlay-header-close-icon {
+    position: absolute;
+    top: calc( var(--bs-gutter-x) / 2);
+    right: calc( var(--bs-gutter-x) / 2);
+}
+
+// Overlay Header - Main Page
+.overlay-header-main-page {
+    position: relative;
+}
+
+.overlay-header-main-page::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    height: 1px;
+    background-color: var(--N300);
+}
+
+.overlay-header-main-page .overlay-header-left-icon-container {
+    display: none;
+}
+
+.overlay-header-main-page .overlay-header-title * {
+    @include heading-h3;
+}
+
+
+// Overlay Header - Subpage
+.overlay-header-subpage {
+    position: relative;
+}
+
+.overlay-header-subpage::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: var(--N300);
+}
+
+.overlay-header-subpage .overlay-header-title {
+    padding-right: 20px;  /* Para compensar el icono izquierdo */
+}
+
+.overlay-header-subpage .overlay-header-title * {
+    @include heading-h4;
+}
 
 
 // Product Carousel
@@ -586,10 +686,6 @@ main {
 .product-card-image-container img {
     width: 100%;
     height: auto;
-}
-
-.product-card-name {
-
 }
 
 .product-card-manufacturer {
@@ -635,6 +731,10 @@ main {
     height: 197px;
 }
 
+.product-card-featured .product-card-name * {
+    @include heading-h4;
+}
+
 .product-card-featured .product-card-review {
     display: none;
 }
@@ -652,6 +752,10 @@ main {
     height: 131px;
 }
 
+.product-card-small .product-card-name * {
+    @include heading-h5;
+}
+
 .product-card-small .product-card-manufacturer {
     display: none;
 }
@@ -662,6 +766,45 @@ main {
 }
 
 
+
+// Product Page - Header Tag
+header {
+    background-color: transparent;
+}
+
+// Product Page - Overlay Header - Quitar borde inferior
+body.product-page .overlay-header::after {
+    height: 0;
+}
+
+// Product Page - Image
+.product-image-and-three-sixty-indicator-container {
+    height: 419px;
+    padding-bottom: 19px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    // TODO:
+    background-color: var(--B300);
+}
+
+.product-image-container {
+    padding-bottom: 45px;
+}
+
+// Product Page - 360º Indicator
+.three-sixty-indicator-container {
+    position: absolute;
+}
+
+// Product Page - Manufacturer
+.product-manufacturer {
+    font-size: 14px;
+    color: var(--N600);
+}
 
 
 // Footer
