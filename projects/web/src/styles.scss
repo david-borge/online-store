@@ -260,6 +260,19 @@ $body-color: var(--N800);
 
 
 
+// Espaciado - Espaciado vertical
+:root {
+    --espacio-vertical: 32px;
+}
+
+
+// Secciones
+.section {
+    padding-top: var(--espacio-vertical); 
+}
+
+
+
 // Botones
 .btn-primary {
     --bs-btn-bg: var(--N800);
@@ -289,6 +302,22 @@ $body-color: var(--N800);
 
 
 
+// Encabezados - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
+.heading-h3 {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 125%;
+}
+
+.heading-h4 {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 125%;
+}
 
 
 
@@ -470,23 +499,43 @@ main {
 
 
 // Section Header
-.section-header {
+.section-header > .container {
     display: flex;
 }
 
+// Section Header - Title
 .section-header-title {
     flex: 1;
 }
 
+.section-header-title > * {
+    margin-bottom: 0;
+}
+
+// Section Header - Right Side
 .section-header-right-side-container {
     display: flex;
     align-items: center;
 }
 
+// Section Header - Right Side - Carousel Icons
 .section-header-carousel-icons {
     display: flex;
     align-items: center;
+    gap: 4px;
 }
+
+// Section Header - Right Side - Link
+.section-header-link-container a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 125%;
+    color: var(--N600);
+    text-decoration: none;
+}
+
 
 
 
