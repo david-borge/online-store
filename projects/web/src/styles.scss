@@ -469,6 +469,27 @@ main {
 
 
 
+// Section Header
+.section-header {
+    display: flex;
+}
+
+.section-header-title {
+    flex: 1;
+}
+
+.section-header-right-side-container {
+    display: flex;
+    align-items: center;
+}
+
+.section-header-carousel-icons {
+    display: flex;
+    align-items: center;
+}
+
+
+
 // Footer
 footer {
     position: fixed;
