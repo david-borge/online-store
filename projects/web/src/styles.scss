@@ -302,8 +302,34 @@ $body-color: var(--N800);
 
 
 
-// Encabezados - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
-@mixin heading-h3 {
+// Typography - Headings - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
+@mixin heading-1 {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 125%;
+}
+
+.heading-1 {
+    @include heading-1;
+}
+
+
+@mixin heading-2 {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 125%;
+}
+
+.heading-2 {
+    @include heading-2;
+}
+
+
+@mixin heading-3 {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 600;
@@ -311,12 +337,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.heading-h3 {
-    @include heading-h3;
+.heading-3 {
+    @include heading-3;
 }
 
 
-@mixin heading-h4 {
+@mixin heading-4 {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 600;
@@ -324,12 +350,12 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.heading-h4 {
-    @include heading-h4;
+.heading-4 {
+    @include heading-4;
 }
 
 
-@mixin heading-h5 {
+@mixin heading-5 {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 600;
@@ -337,10 +363,195 @@ $body-color: var(--N800);
     line-height: 125%;
 }
 
-.heading-h5 {
-    @include heading-h5;
+.heading-5 {
+    @include heading-5;
 }
 
+
+
+// Typography - Body - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
+@mixin paragraph-1-regular {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.paragraph-1-regular {
+    @include paragraph-1-regular;
+}
+
+
+@mixin paragraph-1-medium {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.paragraph-1-medium {
+    @include paragraph-1-medium;
+}
+
+
+@mixin paragraph-2-regular {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.paragraph-2-regular {
+    @include paragraph-2-regular;
+}
+
+
+@mixin paragraph-2-medium {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.paragraph-2-medium {
+    @include paragraph-2-medium;
+}
+
+
+@mixin paragraph-3-regular {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+.paragraph-3-regular {
+    @include paragraph-3-regular;
+}
+
+
+@mixin paragraph-3-medium {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+.paragraph-3-medium {
+    @include paragraph-3-medium;
+}
+
+
+
+// Typography - Labels - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
+@mixin label-1-regular {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+}
+
+.label-1-regular {
+    @include label-1-regular;
+}
+
+
+@mixin label-1-medium {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 125%;
+}
+
+.label-1-medium {
+    @include label-1-medium;
+}
+
+
+@mixin label-2-regular {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.label-2-regular {
+    @include label-2-regular;
+}
+
+
+@mixin label-2-medium {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.label-2-medium {
+    @include label-2-medium;
+}
+
+
+@mixin label-3-regular {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 125%;
+}
+
+.label-3-regular {
+    @include label-3-regular;
+}
+
+
+@mixin label-3-medium {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 125%;
+}
+
+.label-3-medium {
+    @include label-3-medium;
+}
+
+
+@mixin label-4-regular {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 125%;
+}
+
+.label-4-regular {
+    @include label-4-regular;
+}
+
+
+@mixin label-4-medium {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 125%;
+}
+
+.label-4-medium {
+    @include label-4-medium;
+}
 
 
 
@@ -561,11 +772,8 @@ header {
 
 // Section Header - Right Side - Link
 .section-header-link-container a {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 125%;
+    @include paragraph-2-medium;
+
     color: var(--N600);
     text-decoration: none;
 }
@@ -622,7 +830,7 @@ header {
 }
 
 .overlay-header-main-page .overlay-header-title * {
-    @include heading-h3;
+    @include heading-3;
 }
 
 
@@ -646,7 +854,7 @@ header {
 }
 
 .overlay-header-subpage .overlay-header-title * {
-    @include heading-h4;
+    @include heading-4;
 }
 
 
@@ -689,11 +897,7 @@ header {
 }
 
 .product-card-manufacturer {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 150%;
+    @include paragraph-3-regular;   
 }
 
 .product-card-review {
@@ -732,7 +936,7 @@ header {
 }
 
 .product-card-featured .product-card-name * {
-    @include heading-h4;
+    @include heading-4;
 }
 
 .product-card-featured .product-card-review {
@@ -753,7 +957,7 @@ header {
 }
 
 .product-card-small .product-card-name * {
-    @include heading-h5;
+    @include heading-5;
 }
 
 .product-card-small .product-card-manufacturer {
