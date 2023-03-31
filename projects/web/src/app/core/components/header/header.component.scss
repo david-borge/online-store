@@ -1,0 +1,129 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+// Header Tag
+header {
+    background-color: white;
+}
+
+
+
+// Section Header
+.section-header {
+    margin-bottom: 16px;
+}
+
+.section-header > .container {
+    display: flex;
+}
+
+// Section Header - Title
+.section-header-title {
+    flex: 1;
+
+}
+
+.section-header-title * {
+    margin-bottom: 0;
+}
+
+// Section Header - Right Side
+.section-header-right-side-container {
+    display: flex;
+    align-items: center;
+}
+
+// Section Header - Right Side - Carousel Icons
+.section-header-carousel-icons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+// Section Header - Right Side - Link
+.section-header-link-container a {
+    @include body-14px-medium;
+
+    color: var(--N600);
+    text-decoration: none;
+}
+
+
+
+// Overlay Header
+.overlay-header {
+    padding-top: 48px;
+    padding-bottom: 12px;
+}
+
+.overlay-header > .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.overlay-header-title {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overlay-header-title * {
+    margin-bottom: 0;
+}
+
+.overlay-header-close-icon {
+    position: absolute;
+    top: calc( var(--bs-gutter-x) / 2);
+    right: calc( var(--bs-gutter-x) / 2);
+}
+
+// Overlay Header - Main Page
+.overlay-header-main-page {
+    position: relative;
+}
+
+.overlay-header-main-page::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    height: 1px;
+    background-color: var(--N300);
+}
+
+.overlay-header-main-page .overlay-header-left-icon-container {
+    display: none;
+}
+
+.overlay-header-main-page .overlay-header-title * {
+    @include heading-3;
+}
+
+
+// Overlay Header - Subpage
+.overlay-header-subpage {
+    position: relative;
+}
+
+.overlay-header-subpage::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: var(--N300);
+}
+
+.overlay-header-subpage .overlay-header-title {
+    padding-right: 20px;  /* Para compensar el icono izquierdo */
+}
+
+.overlay-header-subpage .overlay-header-title * {
+    @include heading-4;
+}

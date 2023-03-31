@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/components/header/header.component';
 
 // Mis módulos personalizados
 // import { EcommerceModule } from './features/ecommerce/ecommerce.module';
@@ -21,7 +20,6 @@ import { HeaderComponent } from './core/components/header/header.component';
   // MUY IMPORTANTE: esto es porque solo se pueden añadir los Components, Directives y Custom Pipes a declarations una vez en toda la aplicación.
   declarations: [
     AppComponent,
-    HeaderComponent,
     
     // Mis componentes personalizados
     // ...
