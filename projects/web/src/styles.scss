@@ -197,131 +197,6 @@
 
 
 
-// Colores - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
-:root {
-
-    // Colores - Figma - Primary
-    --Y500: #F9D262;
-    --Y300: #FFE8B2;
-    --Y100: #FFF8EF;
-
-    // Colores - Figma - Neutral
-    --N900: #1F2223;
-    --N800: #363939;
-    --N700: #57595A;
-    --N600: #797A7B;
-    --N500: #8E9090;
-    --N400: #B1B2B2;
-    --N300: #D2D3D3;
-    --N200: #EAEAEA;
-    --N100: #F6F6F6;
-
-    // Colores - Figma - Green
-    --G500: #B4D479;
-    --G300: #D8E4C2;
-    --G100: #EEF2E5;
-    
-    // Colores - Figma - Red
-    --R500: #EA8389;
-    --R300: #E2BDBF;
-    --R100: #F3E6E7;
-    
-    
-    // Colores - Figma - Blue
-    --B500: #81B5E9;
-    --B300: #C1D3E5;
-    --B100: #E6EEF5;
-    
-    
-    // Colores - Figma - Purple
-    --P500: #DEAAEF;
-    --P300: #E7D1EE;
-    --P100: #F6EFF8;
-
-}
-
-
-
-// Colores - Body
-$body-color-rgb: 54 57 57;
-$body-color: var(--N800);
-:root {
-    --bs-body-color-rgb: $body-color-rgb;
-    --bs-body-color: $body-color;
-    color: $body-color;
-}
-
-
-
-// Espaciado - Espaciado lateral
-.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
-    --bs-gutter-x: 40px;
-}
-
-
-
-// Espaciado - Espaciado vertical
-:root {
-    --espacio-vertical: 32px;
-}
-
-
-// Secciones
-.section {
-    padding-top: var(--espacio-vertical); 
-}
-
-// Secciones - Separador inferior
-.section-with-bottom-separator {
-    position: relative;
-    
-    padding-bottom: 40px; 
-}
-
-.section-with-bottom-separator::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-
-    width: calc(100% - 40px);
-    transform: translateX(-50%);
-
-    height: 1px;
-    background-color: var(--N400);
-}
-
-
-
-// Botones
-.btn-primary {
-    --bs-btn-bg: var(--N800);
-    --bs-btn-border-color: var(--N800);
-    --bs-btn-hover-bg: var(--N800);
-    --bs-btn-hover-border-color: var(--N800);
-    --bs-btn-active-bg: var(--N800);
-    --bs-btn-active-border-color: var(--N800);
-    --bs-btn-disabled-bg: var(--N800);
-    --bs-btn-disabled-border-color: var(--N800);
-}
-
-.btn-outline-secondary {
-    --bs-btn-color: var(--N800);
-    --bs-btn-border-color: var(--N800);
-}
-
-.btn-lg, .btn-group-lg > .btn {
-    --bs-btn-font-size: 1rem;
-}
-
-.btn:hover {
-    background-color: var(--N800);
-    border-color: var(--N800);
-    opacity: 0.9;
-}
-
-
-
 // Typography - Headings - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 @mixin heading-1 {
     font-family: 'Lora';
@@ -575,6 +450,159 @@ $body-color: var(--N800);
 
 
 
+// Colores - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
+:root {
+
+    // Colores - Figma - Primary
+    --Y500: #F9D262;
+    --Y300: #FFE8B2;
+    --Y100: #FFF8EF;
+
+    // Colores - Figma - Neutral
+    --N900: #1F2223;
+    --N800: #363939;
+    --N700: #57595A;
+    --N600: #797A7B;
+    --N500: #8E9090;
+    --N400: #B1B2B2;
+    --N300: #D2D3D3;
+    --N200: #EAEAEA;
+    --N100: #F6F6F6;
+
+    // Colores - Figma - Green
+    --G500: #B4D479;
+    --G300: #D8E4C2;
+    --G100: #EEF2E5;
+    
+    // Colores - Figma - Red
+    --R500: #EA8389;
+    --R300: #E2BDBF;
+    --R100: #F3E6E7;
+    
+    
+    // Colores - Figma - Blue
+    --B500: #81B5E9;
+    --B300: #C1D3E5;
+    --B100: #E6EEF5;
+    
+    
+    // Colores - Figma - Purple
+    --P500: #DEAAEF;
+    --P300: #E7D1EE;
+    --P100: #F6EFF8;
+
+}
+
+
+
+// Colores - Body
+$body-color-rgb: 54 57 57;
+$body-color: var(--N800);
+:root {
+    --bs-body-color-rgb: $body-color-rgb;
+    --bs-body-color: $body-color;
+    color: $body-color;
+}
+
+
+
+// Espaciado - Espaciado lateral
+.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    --bs-gutter-x: 40px;
+}
+
+
+
+// Espaciado - Espaciado vertical
+:root {
+    --espacio-vertical: 32px;
+}
+
+
+// Secciones
+.section {
+    padding-top: var(--espacio-vertical); 
+}
+
+// Secciones - Separador inferior
+.section-with-bottom-separator {
+    position: relative;
+    
+    padding-bottom: 40px; 
+}
+
+.section-with-bottom-separator::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    width: calc(100% - 40px);
+    transform: translateX(-50%);
+
+    height: 1px;
+    background-color: var(--N400);
+}
+
+
+
+// Botones
+.btn:hover {
+    opacity: 0.9;
+}
+
+// Botones - Primary
+.btn-primary {
+    --bs-btn-bg: var(--N800);
+    --bs-btn-border-color: var(--N800);
+    --bs-btn-hover-bg: var(--N800);
+    --bs-btn-hover-border-color: var(--N800);
+    --bs-btn-active-bg: var(--N800);
+    --bs-btn-active-border-color: var(--N800);
+    --bs-btn-disabled-bg: var(--N800);
+    --bs-btn-disabled-border-color: var(--N800);
+}
+
+.btn-primary:hover {
+    background-color: var(--N800);
+    border-color: var(--N800);
+    opacity: 0.9;
+}
+
+// Botones - Outline Secondary
+.btn-outline-secondary {
+    --bs-btn-color: var(--N800);
+    --bs-btn-border-color: var(--N800);
+}
+
+// Botones - Tertiary
+.btn-tertiary {
+    background-color: var(--Y300);
+
+    @include body-16px-medium;
+
+    color: var(--N800);
+}
+
+.btn-tertiary:hover,
+.btn-tertiary:active,
+.btn-tertiary:focus-visible {
+    background-color: var(--Y300) !important;
+    border-color: var(--Y300) !important;
+    color: var(--N800) !important;
+}
+
+
+
+// Botones - Large
+.btn-lg,
+.btn-group-lg > .btn {
+    --bs-btn-font-size: 1rem;
+}
+
+
+
+
 
 
 
@@ -601,741 +629,12 @@ app-root {
 
 main {
     flex: 1;
+    padding-bottom: 32px
 }
 
 
 
-// FIXME: Bloquear la orientación horizontal
-/* @media screen and (orientation: landscape) {
-    html {
-        transform: rotate(-90deg);
-        transform-origin: left top;
-        width: 100vh;
-        overflow-x: hidden;
-        position: absolute;
-        top: 100%;
-        left: 0;
-    }
-} */
-
-
-
-// Contenedor solo móvil
-#contenedor-solo-movil {
+// App Loading Screen Tag - Clases for <router-outlet>
+.app-loading-screen-classes-for-router-outlet {
     flex: 1;
-
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
-    max-width: 450px;
-    
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
-
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-// Spinner
-.spinner {
-    position: absolute;
-    bottom: 0;
-    max-width: 79px;
-}
-
-@keyframes animacion-spinner-delay {
-
-    0% {
-        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
-        opacity: 0;
-    }
-
-    100% {
-        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
-        opacity: 1;
-    }
-
-}
-
-.spinner-delay {
-    animation-name: animacion-spinner-delay;
-    animation-duration: 500ms;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
-    animation-fill-mode: backwards;
-    animation-delay: 2100ms;
-}
-
-
-
-// Pantalla inicial de carga - Imágenes
-.contenedor-imagenes-productos {
-    flex: 1;
-    position: relative;
-    width: 100%;
-}
-
-.imagen-con-blur-contenedor {
-    position: absolute;
-}
-
-.imagen-con-blur-contenedor-interno {
-    position: relative;
-}
-
-.imagen-con-blur-contenedor img {
-    position: absolute;
-}
-
-.imagen-con-blur {
-    opacity: 0.5;
-    filter: blur(37.5px);
-}
-
-
-
-// Pantalla inicial de carga - Imágenes - Animaciones
-@keyframes animacion-slide-in-from-top {
-
-    0% {
-        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
-        opacity: 0;
-        transform: translateY(-100px);
-    }
-
-    100% {
-        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-.slide-in-from-top {
-    animation-name: animacion-slide-in-from-top;
-    animation-duration: 1600ms;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
-    animation-fill-mode: backwards;
-}
-
-@keyframes animacion-slide-in-from-bottom {
-
-    0% {
-        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
-        opacity: 0;
-        transform: translateY(100px);
-    }
-
-    100% {
-        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-.slide-in-from-bottom {
-    // opacity: 0;
-    animation-name: animacion-slide-in-from-bottom;
-    animation-duration: 1600ms;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
-    animation-fill-mode: backwards;
-}
-
-.delay-1 {
-    animation-delay: 500ms;
-}
-
-.delay-2 {
-    animation-delay: 700ms;
-}
-
-
-
-// Header Tag
-header {
-    background-color: white;
-}
-
-
-
-// Section Header
-.section-header {
-    margin-bottom: 16px;
-}
-
-.section-header > .container {
-    display: flex;
-}
-
-// Section Header - Title
-.section-header-title {
-    flex: 1;
-
-}
-
-.section-header-title * {
-    margin-bottom: 0;
-}
-
-// Section Header - Right Side
-.section-header-right-side-container {
-    display: flex;
-    align-items: center;
-}
-
-// Section Header - Right Side - Carousel Icons
-.section-header-carousel-icons {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-// Section Header - Right Side - Link
-.section-header-link-container a {
-    @include body-14px-medium;
-
-    color: var(--N600);
-    text-decoration: none;
-}
-
-
-
-// Overlay Header
-.overlay-header {
-    padding-top: 48px;
-    padding-bottom: 12px;
-}
-
-.overlay-header > .container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.overlay-header-title {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.overlay-header-title * {
-    margin-bottom: 0;
-}
-
-.overlay-header-close-icon {
-    position: absolute;
-    top: calc( var(--bs-gutter-x) / 2);
-    right: calc( var(--bs-gutter-x) / 2);
-}
-
-// Overlay Header - Main Page
-.overlay-header-main-page {
-    position: relative;
-}
-
-.overlay-header-main-page::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    height: 1px;
-    background-color: var(--N300);
-}
-
-.overlay-header-main-page .overlay-header-left-icon-container {
-    display: none;
-}
-
-.overlay-header-main-page .overlay-header-title * {
-    @include heading-3;
-}
-
-
-// Overlay Header - Subpage
-.overlay-header-subpage {
-    position: relative;
-}
-
-.overlay-header-subpage::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    background-color: var(--N300);
-}
-
-.overlay-header-subpage .overlay-header-title {
-    padding-right: 20px;  /* Para compensar el icono izquierdo */
-}
-
-.overlay-header-subpage .overlay-header-title * {
-    @include heading-4;
-}
-
-
-// Product Carousel
-.featured-products-carrousel {
-
-}
-
-.featured-products-carrousel > .container {
-    display: flex;
-    gap: 24px;
-
-    overflow-x: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.featured-products-carrousel > .container::-webkit-scrollbar {
-    display: none;
-}
-
-// Product Card
-.product-card {
-    border-radius: 10px;
-    padding: 16px;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.product-card-image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-card-image-container img {
-    width: 100%;
-    height: auto;
-}
-
-.product-card-manufacturer {
-    @include body-12px-regular;   
-}
-
-.product-card-review {
-    display: flex;
-    align-items: stretch;
-    gap: 4px;
-}
-
-.product-card-review-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-card-review-number {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 12px;
-}
-
-.product-card-review-number-of-reviews {
-    @include label-12px-regular;
-
-    color: var(--N400);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-card-price {
-    color: var(--N700);
-}
-
-// Product Card - Featured
-.product-card-featured {
-    min-width: 206px;
-    width: 206px;
-
-    // FIXME:
-    background-color: var(--B300);
-}
-
-.product-card-featured .product-card-image-container {
-    height: 197px;
-}
-
-.product-card-featured .product-card-name * {
-    @include heading-4;
-}
-
-.product-card-featured .product-card-review {
-    display: none;
-}
-
-.product-card-featured .product-card-price {
-    margin-top: 16px;
-}
-
-// Product Card - Small
-.product-card-small {
-    background-color: var(--N100);
-}
-
-.product-card-small .product-card-image-container {
-    height: 131px;
-}
-
-.product-card-small .product-card-name * {
-    @include heading-5;
-}
-
-.product-card-small .product-card-manufacturer {
-    display: none;
-}
-
-.product-card-small .product-card-price {
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-
-
-// Product Page - Header Tag
-header {
-    background-color: transparent;
-}
-
-// Product Page - Overlay Header - Quitar borde inferior
-body.product-page .overlay-header {
-    // TODO:
-    background-color: var(--B300);
-}
-
-body.product-page .overlay-header::after {
-    height: 0;
-}
-
-// Product Page - Image
-.product-image-and-three-sixty-indicator-container {
-    height: 419px;
-    padding-bottom: 19px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-
-    // TODO:
-    background-color: var(--B300);
-}
-
-.product-image-container {
-    padding-bottom: 45px;
-}
-
-// Product Page - 360º Indicator
-.three-sixty-indicator-container {
-    position: absolute;
-}
-
-// Product Page - Manufacturer
-.product-manufacturer {
-    margin-bottom: 8px;
-
-    @include body-14px-regular;
-    
-    color: var(--N600);
-}
-
-// Product Page - Description
-.product-description-title {
-    margin-bottom: 12px;
-
-    @include heading-4;
-}
-
-.product-description-content {
-    color: var(--N600);
-}
-
-.product-description-content .read-more {
-    @include body-16px-medium;
-
-    color: var(--N800);
-}
-
-// Product Page - Reviews
-.product-reviews-title {
-    margin-bottom: 24px;
-
-    @include heading-4;
-}
-
-.product-reviews-list {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-}
-
-// Product Page - Reviews - Review Item
-.product-reviews-item {
-    position: relative;
-}
-
-.product-reviews-list .product-reviews-item:not(:last-child):after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: -24px;
-    left: 0;
-
-    height: 1px;
-    background-color: var(--N300);
-}
-
-.product-reviews-item--title-ratings-container {
-    margin-bottom: 8px;
-    display: flex;
-    align-items: stretch;
-}
-
-// Product Page - Reviews - Review Item - Title
-.product-reviews-item--title {
-    flex: 1;
-
-    @include label-16px-medium;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-}
-
-.product-reviews-item--title * {
-    margin-bottom: 0;
-
-    @include label-16px-medium;
-}
-
-// Product Page - Reviews - Review Item - Rating
-.product-reviews-item--rating-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-reviews-item--rating {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: middle;
-    color: white;
-}
-
-.full-stars {
-    position: absolute;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    overflow: hidden;
-
-    color: var(--Y500);
-}
-
-.empty-stars:before,
-.full-stars:before {
-    content: "\2605\2605\2605\2605\2605";
-    font-size: 14pt;
-    letter-spacing: 3px; /* Espacio entre las estrellas */
-}
-
-.empty-stars:before {
-    -webkit-text-stroke: 1px var(--Y500);
-}
-
-.full-stars:before {
-    -webkit-text-stroke: 1px var(--Y500);
-}
-
-/* Webkit-text-stroke is not supported on firefox or IE */
-/* Firefox */
-@-moz-document url-prefix() {
-    .full-stars{
-        color: #ECBE24;
-    }
-}
-
-// Product Page - Reviews - Review Item - Date
-.product-reviews-item--date {
-    margin-bottom: 8px;
-
-    @include body-12px-regular;
-
-    color: var(--N400);
-}
-
-// Product Page - Reviews - Review Item - Content
-.product-reviews-item--content {
-    margin-bottom: 8px;
-
-    @include body-14px-regular;
-    
-    color: var(--N600);
-}
-
-.product-reviews-item--content p:last-child {
-    margin-bottom: 0;
-}
-
-// Product Page - Reviews - Review Item - Profile
-.product-reviews-item--profile-container {
-    display: flex;
-    gap: 8px;
-}
-
-// Product Page - Reviews - Review Item - Profile Name
-.product-reviews-item--profile-name {
-    @include body-12px-medium;
-    
-    color: var(--N600);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-// Product Page - Reviews - Review Item - Profile Picture
-.product-reviews-item--profile-picture {
-
-}
-
-
-
-
-
-// Footer
-footer {
-    position: sticky;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.14));
-}
-
-// Footer - Navigation - Curve
-.navigation-curve {
-    height: 14px;
-    // SVG Original: https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26585%3A3440&t=iNieEoyWN85WV0Jm-1
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 390 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M390 14C348.958 8.70732 291.146 2.04878 187.673 0C90.7093 1.41152 23.4854 10.7469 4.03296 13.4483C2.30944 13.6877 0.960944 13.8749 0 14H390Z' fill='%23F9D262'/%3E%3C/svg%3E");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-// Footer - Navigation - Navigation Separator
-.navigation-separator {
-    position: relative;
-    width: calc(100% - 24px);
-    height: 1px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.navigation-separator::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 1px;
-    background-color: var(--Y300);
-    opacity: 0.5;
-}
-
-// Footer - Navigation - Navigation CTAs & Copy
-.navigation-ctas-and-copy-container {
-    background-color: var(--Y500);
-}
-
-.navigation-ctas-and-copy {
-    padding-top: 6px;
-    padding-bottom: 12px;
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-}
-
-.navigation-button-right-container {
-    flex: 1;
-}
-
-.navigation-ctas-and-copy-container button {
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.navigation-ctas-and-copy-container button .navigation-button-icon {
-    margin-left: 8px;
-    display: flex;
-    flex-direction: column;
-}
-
-.navigation-ctas-and-copy-container button .navigation-button-icon-left {
-    margin-right: 8px;
-}
-
-.navigation-ctas-and-copy-container button .navigation-button-icon-right {
-    margin-left: 8px;
-}
-
-.navigation-copy-label {
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-.navigation-copy-text {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-// Footer - Navigation - Navigation Items
-.navigation-items {
-    padding: 12px 10px;
-    background-color: var(--Y500);
-    display: flex;
-    justify-content: space-between;
-}
-
-.navigation-item {
-    flex: 1;
-}
-
-.navigation-item a {
-    width: 100%;
-    color: var(--N900);
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.navigation-icon-container {
-    margin-bottom: 4px;
-}
-
-.navigation-text {
-    font-size: 14px;
-}
-
-.navigation-item:not(.navigation-item--active) {
-    opacity: 50%;
 }
