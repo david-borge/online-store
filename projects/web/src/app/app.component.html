@@ -1,7 +1,7 @@
 <div id="contenedor-solo-movil">
 
   <!-- Header -->
-  <header style="position: fixed; top: 0; right: 0; left: 0;">
+  <header style="position: sticky; top: 0; right: 0; left: 0; z-index: 1;">
   <!-- <header style="position: fixed; top: 0; right: 0; left: 0; background-color: white;"> -->
 
     <!-- Home - Hero -->
@@ -70,7 +70,7 @@
   </header>
   
   <!-- Main -->
-  <main role="main" style="padding-top: 0; padding-bottom: calc(154px + 32px);"> <!-- Product Page -->
+  <main role="main" style="padding-top: 0; padding-bottom: 32px;"> <!-- Product Page -->
   <!-- <main role="main" style="padding-top: 116px; padding-bottom: calc(73px + 32px);"> -->
 
 
@@ -146,7 +146,7 @@
       </div>
 
       <!-- Reviews -->
-      <div class="section">
+      <div class="section section-with-bottom-separator">
         <div class="container">
 
           <div class="product-reviews-container">
@@ -160,12 +160,15 @@
               <!-- Review Item -->
               <div class="product-reviews-item">
 
-                <div class="product-reviews-item--title-stars-container">
+                <div class="product-reviews-item--title-ratings-container">
                   <div class="product-reviews-item--title">
                     <h4>Consectetur tellus volutpat.</h4>
                   </div>
-                  <div class="product-reviews-item--stars">
-
+                  <div class="product-reviews-item--rating-container">
+                    <div class="product-reviews-item--rating">
+                      <div class="empty-stars"></div>
+                      <div class="full-stars" style="width: 60%;"></div>
+                    </div>
                   </div>
                 </div>
 
@@ -175,11 +178,80 @@
                   <p>Massa morbi id lorem ultricies. Aliquet eu dolor cras ipsum hendrerit id ut habitant nisi. Lectus ipsum faucibus sed fringilla at tempor.</p>
                 </div>
 
-                <div class="product-reviews-item--profile">
-                  <div class="product-reviews-item--profile-image">
-                    
+                <div class="product-reviews-item--profile-container">
+                  <div class="product-reviews-item--profile-picture">
+                    <picture>
+                      <source srcset="assets/img/avatars/brooklyn-simmons.webp" type="image/webp">
+                      <img src="assets/img/avatars/brooklyn-simmons.png" width="24px" height="24px" alt="Brooklyn Simmons">
+                    </picture>
                   </div>
                   <div class="product-reviews-item--profile-name">Brooklyn Simmons</div>
+                </div>
+
+              </div>
+
+              <!-- Review Item -->
+              <div class="product-reviews-item">
+
+                <div class="product-reviews-item--title-ratings-container">
+                  <div class="product-reviews-item--title">
+                    <h4>Erat maecenas id tellus in.</h4>
+                  </div>
+                  <div class="product-reviews-item--rating-container">
+                    <div class="product-reviews-item--rating">
+                      <div class="empty-stars"></div>
+                      <div class="full-stars" style="width: 80%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-reviews-item--date">August 2, 2023</div>
+
+                <div class="product-reviews-item--content">
+                  <p>Ullamcorper fermentum non cursus sit. Mollis elementum ac ullamcorper amet cum. Consectetur suspendisse massa velit, sit risus.</p>
+                </div>
+
+                <div class="product-reviews-item--profile-container">
+                  <div class="product-reviews-item--profile-picture">
+                    <picture>
+                      <source srcset="assets/img/avatars/jerome-bell.webp" type="image/webp">
+                      <img src="assets/img/avatars/jerome-bell.png" width="24px" height="24px" alt="Jerome Bell">
+                    </picture>
+                  </div>
+                  <div class="product-reviews-item--profile-name">Jerome Bell</div>
+                </div>
+
+              </div>
+
+              <!-- Review Item -->
+              <div class="product-reviews-item">
+
+                <div class="product-reviews-item--title-ratings-container">
+                  <div class="product-reviews-item--title">
+                    <h4>Aliquet amet quam!</h4>
+                  </div>
+                  <div class="product-reviews-item--rating-container">
+                    <div class="product-reviews-item--rating">
+                      <div class="empty-stars"></div>
+                      <div class="full-stars" style="width: 100%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-reviews-item--date">December 1, 2023</div>
+
+                <div class="product-reviews-item--content">
+                  <p>Aenean integer ipsum, eget ligula pretium egestas. Viverra maecenas ut diam suspendisse proin ac, volutpat mi nunc. Varius ac lacus tristique posuere sed nunc.</p>
+                </div>
+
+                <div class="product-reviews-item--profile-container">
+                  <div class="product-reviews-item--profile-picture">
+                    <picture>
+                      <source srcset="assets/img/avatars/cameron-williamson.webp" type="image/webp">
+                      <img src="assets/img/avatars/cameron-williamson.png" width="24px" height="24px" alt="Cameron Williamson">
+                    </picture>
+                  </div>
+                  <div class="product-reviews-item--profile-name">Cameron Williamson</div>
                 </div>
 
               </div>
@@ -189,6 +261,144 @@
           </div>
 
         </div>
+      </div>
+
+      <!-- Featured Products -->
+      <!-- TODO: código repetido de la Home Page -->
+      <div class="section">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="container">
+
+            <!-- Section Header - Title -->
+            <div class="section-header-title">
+              <h2 class="heading-3">Featured</h2>
+            </div>
+            
+            <!-- Section Header - Right Side -->
+            <div class="section-header-right-side-container">
+              
+              <!-- Section Header - Carousel Icons -->
+              <div class="section-header-carousel-icons">
+
+                <div class="section-header-carousel-chevron-left-icon">
+                  <!-- Icon: chevron-left -->
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#D2D3D3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>                
+                </div>
+
+                <div class="section-header-carousel-chevron-right-icon">
+                  <!-- Icon: chevron-right -->
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>                
+                </div>
+
+              </div>
+
+              <!-- Section Header - Link -->
+              <div class="section-header-link-container d-none">
+                <a href="#">View all</a>
+              </div>
+
+              <!-- Section Header - Button -->
+              <div class="section-header-button-container d-none">
+                <button type="button" class="btn btn-outline-secondary btn-sm">
+                  <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+      
+                  </span> -->
+                  <span class="navigation-button-left--text">Edit</span>
+                  <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
+                    <!-- Icon: plus -->
+                    <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                
+                  </span> -->
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        
+        <!-- Featured Products Carrousel -->
+        <div class="featured-products-carrousel">
+          <div class="container">
+
+            <!-- Product Card -->
+            <div class="product-card product-card-featured">
+
+              <div class="product-card-image-container">
+                <picture>
+                  <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
+                  <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
+                </picture>
+              </div>
+
+              <div class="product-card-name">
+                <h3>Chuck 70 Hi Sneakers</h3>
+              </div>
+
+              <div class="product-card-manufacturer">Converse</div>
+
+              <div class="product-card-review"></div>
+
+              <div class="product-card-price">$70.99</div>
+
+            </div>
+
+            <!-- Product Card -->
+            <div class="product-card product-card-featured">
+
+              <div class="product-card-image-container">
+                <picture>
+                  <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
+                  <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
+                </picture>
+              </div>
+
+              <div class="product-card-name">
+                <h3>Chuck 70 Hi Sneakers</h3>
+              </div>
+
+              <div class="product-card-manufacturer">Converse</div>
+
+              <div class="product-card-review"></div>
+
+              <div class="product-card-price">$70.99</div>
+
+            </div>
+
+            <!-- Product Card -->
+            <div class="product-card product-card-featured">
+
+              <div class="product-card-image-container">
+                <picture>
+                  <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
+                  <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
+                </picture>
+              </div>
+
+              <div class="product-card-name">
+                <h3>Chuck 70 Hi Sneakers</h3>
+              </div>
+
+              <div class="product-card-manufacturer">Converse</div>
+
+              <div class="product-card-review"></div>
+
+              <div class="product-card-price">$70.99</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
     </div>
@@ -591,7 +801,7 @@
         <!-- Spinner -->
         <!-- Icono: spinner en https://loading.io/ -->
         <svg class="spinner spinner-delay" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"> <g transform="rotate(0 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(30 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(60 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(90 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(120 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(150 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(180 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(210 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(240 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(270 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(300 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(330 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#eecf6e"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate> </rect> </g></svg>
-        <!-- <img src="assets/img/iconos/spinner.svg" width="79px" height="79px" alt="spinner" class="spinner spinner-delay"> -->
+        <!-- Old: <img src="assets/img/iconos/spinner.svg" width="79px" height="79px" alt="spinner" class="spinner spinner-delay"> -->
 
       </div>
     </div>

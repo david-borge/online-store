@@ -271,6 +271,26 @@ $body-color: var(--N800);
     padding-top: var(--espacio-vertical); 
 }
 
+// Secciones - Separador inferior
+.section-with-bottom-separator {
+    position: relative;
+    
+    padding-bottom: 40px; 
+}
+
+.section-with-bottom-separator::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    width: calc(100% - 40px);
+    transform: translateX(-50%);
+
+    height: 1px;
+    background-color: var(--N400);
+}
+
 
 
 // Botones
@@ -602,13 +622,14 @@ main {
 
 // Contenedor solo móvil
 #contenedor-solo-movil {
+    flex: 1;
+
     margin-right: auto;
     margin-left: auto;
     width: 100%;
     max-width: 450px;
-    // height: 100%;
-    // max-height: 930px;
-    // box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
 
     display: flex;
     flex-direction: column;
@@ -936,6 +957,7 @@ header {
 // Product Card - Featured
 .product-card-featured {
     min-width: 206px;
+    width: 206px;
 
     // FIXME:
     background-color: var(--B300);
@@ -1053,20 +1075,36 @@ body.product-page .overlay-header::after {
 }
 
 .product-reviews-list {
-
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
 }
 
 // Product Page - Reviews - Review Item
-.product-reviews-item--title-stars-container {
+.product-reviews-item {
+    position: relative;
+}
+
+.product-reviews-list .product-reviews-item:not(:last-child):after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -24px;
+    left: 0;
+
+    height: 1px;
+    background-color: var(--N300);
+}
+
+.product-reviews-item--title-ratings-container {
     margin-bottom: 8px;
     display: flex;
     align-items: stretch;
 }
 
+// Product Page - Reviews - Review Item - Title
 .product-reviews-item--title {
     flex: 1;
-
-    margin-bottom: 8px;
 
     @include label-16px-medium;
 
@@ -1082,12 +1120,55 @@ body.product-page .overlay-header::after {
     @include label-16px-medium;
 }
 
-.product-reviews-item--stars {
+// Product Page - Reviews - Review Item - Rating
+.product-reviews-item--rating-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.product-reviews-item--rating {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    color: white;
+}
+
+.full-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
+    color: var(--Y500);
+}
+
+.empty-stars:before,
+.full-stars:before {
+    content: "\2605\2605\2605\2605\2605";
+    font-size: 14pt;
+    letter-spacing: 3px; /* Espacio entre las estrellas */
+}
+
+.empty-stars:before {
+    -webkit-text-stroke: 1px var(--Y500);
+}
+
+.full-stars:before {
+    -webkit-text-stroke: 1px var(--Y500);
+}
+
+/* Webkit-text-stroke is not supported on firefox or IE */
+/* Firefox */
+@-moz-document url-prefix() {
+    .full-stars{
+        color: #ECBE24;
+    }
+}
+
+// Product Page - Reviews - Review Item - Date
 .product-reviews-item--date {
     margin-bottom: 8px;
 
@@ -1096,6 +1177,7 @@ body.product-page .overlay-header::after {
     color: var(--N400);
 }
 
+// Product Page - Reviews - Review Item - Content
 .product-reviews-item--content {
     margin-bottom: 8px;
 
@@ -1108,17 +1190,35 @@ body.product-page .overlay-header::after {
     margin-bottom: 0;
 }
 
+// Product Page - Reviews - Review Item - Profile
+.product-reviews-item--profile-container {
+    display: flex;
+    gap: 8px;
+}
+
+// Product Page - Reviews - Review Item - Profile Name
 .product-reviews-item--profile-name {
     @include body-12px-medium;
     
     color: var(--N600);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+// Product Page - Reviews - Review Item - Profile Picture
+.product-reviews-item--profile-picture {
+
+}
+
+
 
 
 
 // Footer
 footer {
-    position: fixed;
+    position: sticky;
     right: 0;
     bottom: 0;
     left: 0;
