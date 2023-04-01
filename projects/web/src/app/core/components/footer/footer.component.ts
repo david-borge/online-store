@@ -9,5 +9,12 @@ export class FooterComponent {
 
   // Propiedades - Footer - Navigation CTAs & Copy
   @Input() navigationCtasAndCopy :boolean = false;
+  
+  // Propiedades - Footer - Navigation CTAs & Copy - Navigation Copy
+  @Input() navigationCopyLabel :string = '';
+  @Input() navigationCopyPrice :string = '';
+  
+  // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
+  @Input() navigationButtonRightText :string = '';
 
 }

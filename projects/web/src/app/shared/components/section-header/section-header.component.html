@@ -4,8 +4,8 @@
 
     <!-- Section Header - Title -->
     <div class="section-header-title" [innerHTML]="sectionHeaderTitleInnerHTML">
-        <!-- Ejemplo del HTML insertado dinámicamente: <h2 class="heading-3">Featured</h2> -->
-        <!-- Ejemplo del HTML insertado dinámicamente: <h2 class="heading-4">Deals</h2> -->
+        <!-- Ejemplo: <h2 class="heading-3">Featured</h2> -->
+        <!-- Ejemplo: <h2 class="heading-4">Deals</h2> -->
     </div>
     
     <!-- Section Header - Right Side -->
@@ -29,7 +29,7 @@
         <!-- Section Header - Link -->
         <div class="section-header-link-container" *ngIf="sectionHeaderLink">
             <!-- <a [routerLink]="['/slug']">{{sectionHeaderLinkText}}</a> -->
-            <a (click)="router.navigate([sectionHeaderLinkURL]);">{{sectionHeaderLinkText}}</a>
+            <a (click)="router.navigate([sectionHeaderLinkURL]);">{{sectionHeaderLinkText}}</a> <!-- Ejemplo: View All -->
         </div>
 
         <!-- Section Header - Button -->
@@ -40,7 +40,7 @@
 
                 </span> -->
 
-                <span class="navigation-button-left--text">{{sectionHeaderButtonText}}</span>
+                <span class="navigation-button-left--text">{{sectionHeaderButtonText}}</span> <!-- Ejemplo: Edit -->
 
                 <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
                     <!-- Icon: plus -->

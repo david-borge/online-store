@@ -79,12 +79,18 @@ footer {
     margin-left: 8px;
 }
 
+.navigation-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .navigation-copy-label {
     font-size: 12px;
     white-space: nowrap;
 }
 
-.navigation-copy-text {
+.navigation-copy-price {
     font-size: 20px;
     font-weight: bold;
 }
