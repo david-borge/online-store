@@ -10,133 +10,29 @@
     <div class="section">
 
         <!-- Section Header -->
-        <div class="section-header">
-            <div class="container">
-
-            <!-- Section Header - Title -->
-            <div class="section-header-title">
-                <h2 class="heading-3">Featured</h2>
-            </div>
-            
-            <!-- Section Header - Right Side -->
-            <div class="section-header-right-side-container">
-                
-                <!-- Section Header - Carousel Icons -->
-                <div class="section-header-carousel-icons">
-
-                <div class="section-header-carousel-chevron-left-icon">
-                    <!-- Icon: chevron-left -->
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#D2D3D3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                
-                </div>
-
-                <div class="section-header-carousel-chevron-right-icon">
-                    <!-- Icon: chevron-right -->
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                
-                </div>
-
-                </div>
-
-                <!-- Section Header - Link -->
-                <div class="section-header-link-container d-none">
-                <a href="#">View all</a>
-                </div>
-
-                <!-- Section Header - Button -->
-                <div class="section-header-button-container d-none">
-                <button type="button" class="btn btn-outline-secondary btn-sm">
-                    <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
-        
-                    </span> -->
-                    <span class="navigation-button-left--text">Edit</span>
-                    <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
-                    <!-- Icon: plus -->
-                    <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                
-                    </span> -->
-                </button>
-                </div>
-
-            </div>
-
-            </div>
-        </div>
+        <app-section-header
+            [sectionHeaderTitleTag]      = "'h2'"
+            [sectionHeaderTitleClass]    = "'heading-3'"
+            [sectionHeaderTitleText]     = "'Featured'"
+            [sectionHeaderCarouselIcons] = "true"
+            [sectionHeaderLink]          = "false"
+            [sectionHeaderLinkURL]       = "''"
+            [sectionHeaderLinkText]      = "''"
+            [sectionHeaderButton]        = "false"
+            [sectionHeaderButtonURL]     = "''"
+            [sectionHeaderButtonText]    = "''"
+        ></app-section-header>
         
         <!-- Featured Products Carrousel -->
         <div class="featured-products-carrousel">
             <div class="container">
 
-            <!-- Product Card -->
-            <div class="product-card product-card-featured">
-
-                <div class="product-card-image-container">
-                <picture>
-                    <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
-                    <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
-                </picture>
-                </div>
-
-                <div class="product-card-name">
-                <h3>Chuck 70 Hi Sneakers</h3>
-                </div>
-
-                <div class="product-card-manufacturer">Converse</div>
-
-                <div class="product-card-review"></div>
-
-                <div class="product-card-price">$70.99</div>
-
-            </div>
-
-            <!-- Product Card -->
-            <div class="product-card product-card-featured">
-
-                <div class="product-card-image-container">
-                <picture>
-                    <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
-                    <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
-                </picture>
-                </div>
-
-                <div class="product-card-name">
-                <h3>Chuck 70 Hi Sneakers</h3>
-                </div>
-
-                <div class="product-card-manufacturer">Converse</div>
-
-                <div class="product-card-review"></div>
-
-                <div class="product-card-price">$70.99</div>
-
-            </div>
-
-            <!-- Product Card -->
-            <div class="product-card product-card-featured">
-
-                <div class="product-card-image-container">
-                <picture>
-                    <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
-                    <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
-                </picture>
-                </div>
-
-                <div class="product-card-name">
-                <h3>Chuck 70 Hi Sneakers</h3>
-                </div>
-
-                <div class="product-card-manufacturer">Converse</div>
-
-                <div class="product-card-review"></div>
-
-                <div class="product-card-price">$70.99</div>
-
-            </div>
-
+                <!-- Product Card -->
+                <app-product-card
+                    *ngFor="let nombre_individual of featured_products_list"
+                    [productCardTypeClass] = "'product-card-featured'"
+                ></app-product-card>
+                
             </div>
 
         </div>
@@ -145,64 +41,20 @@
 
     <!-- Deals Products -->
     <div class="section">
-
-        <!-- Section Header -->
-        <div class="section-header">
-            <div class="container">
-
-            <!-- Section Header - Title -->
-            <div class="section-header-title">
-                <h2 class="heading-4">Deals</h2>
-            </div>
-            
-            <!-- Section Header - Right Side -->
-            <div class="section-header-right-side-container">
-                
-                <!-- Section Header - Carousel Icons -->
-                <div class="section-header-carousel-icons d-none">
-
-                <div class="section-header-carousel-chevron-left-icon">
-                    <!-- Icon: chevron-left -->
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#D2D3D3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                
-                </div>
-
-                <div class="section-header-carousel-chevron-right-icon">
-                    <!-- Icon: chevron-right -->
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                
-                </div>
-
-                </div>
-
-                <!-- Section Header - Link -->
-                <div class="section-header-link-container d-none">
-                <a href="#">View all</a>
-                </div>
-
-                <!-- Section Header - Button -->
-                <div class="section-header-button-container d-none">
-                <button type="button" class="btn btn-outline-secondary btn-sm">
-                    <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
         
-                    </span> -->
-                    <span class="navigation-button-left--text">Edit</span>
-                    <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
-                    <!-- Icon: plus -->
-                    <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                
-                    </span> -->
-                </button>
-                </div>
-
-            </div>
-
-            </div>
-        </div>
+        <!-- Section Header -->
+        <app-section-header
+            [sectionHeaderTitleTag]      = "'h2'"
+            [sectionHeaderTitleClass]    = "'heading-4'"
+            [sectionHeaderTitleText]     = "'Deals'"
+            [sectionHeaderCarouselIcons] = "false"
+            [sectionHeaderLink]          = "false"
+            [sectionHeaderLinkURL]       = "''"
+            [sectionHeaderLinkText]      = "''"
+            [sectionHeaderButton]        = "false"
+            [sectionHeaderButtonURL]     = "'/'"
+            [sectionHeaderButtonText]    = "'Loading Screen'"
+        ></app-section-header>
 
         <!-- Deals Products -->
         <div class="container">
@@ -210,83 +62,17 @@
             <div class="col-6">
 
                 <!-- Product Card -->
-                <div class="product-card product-card-small">
-
-                <div class="product-card-image-container">
-                    <picture>
-                    <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
-                    <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
-                    </picture>
-                </div>
-
-                <div class="product-card-name">
-                    <h3>Chuck 70 Hi Sneakers</h3>
-                </div>
-
-                <div class="product-card-manufacturer">Converse</div>
-
-                <div class="product-card-review">
-                    <div class="product-card-review-icon">
-                    <!-- Icon: star -->
-                    <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_47517_8134)">
-                        <path d="M6.28754 3.94183L5.00004 1.3335L3.71254 3.94183L0.833374 4.36266L2.91671 6.39183L2.42504 9.2585L5.00004 7.90433L7.57504 9.2585L7.08337 6.39183L9.16671 4.36266L6.28754 3.94183Z" fill="#363939" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0_47517_8134">
-                            <rect width="10" height="10" fill="white" transform="translate(0 0.5)"/>
-                        </clipPath>
-                        </defs>
-                    </svg>                    
-                    </div>
-                    <div class="product-card-review-number">4.25</div>
-                    <div class="product-card-review-number-of-reviews d-none">12 Reviews</div>
-                </div>
-
-                <div class="product-card-price">$70.99</div>
-
-                </div>
+                <app-product-card
+                    [productCardTypeClass] = "'product-card-small'"
+                ></app-product-card>
 
             </div>
             <div class="col-6">
 
                 <!-- Product Card -->
-                <div class="product-card product-card-small">
-
-                <div class="product-card-image-container">
-                    <picture>
-                    <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
-                    <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
-                    </picture>
-                </div>
-
-                <div class="product-card-name">
-                    <h3>Chuck 70 Hi Sneakers</h3>
-                </div>
-
-                <div class="product-card-manufacturer">Converse</div>
-
-                <div class="product-card-review">
-                    <div class="product-card-review-icon">
-                    <!-- Icon: star -->
-                    <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_47517_8134)">
-                        <path d="M6.28754 3.94183L5.00004 1.3335L3.71254 3.94183L0.833374 4.36266L2.91671 6.39183L2.42504 9.2585L5.00004 7.90433L7.57504 9.2585L7.08337 6.39183L9.16671 4.36266L6.28754 3.94183Z" fill="#363939" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0_47517_8134">
-                            <rect width="10" height="10" fill="white" transform="translate(0 0.5)"/>
-                        </clipPath>
-                        </defs>
-                    </svg>                    
-                    </div>
-                    <div class="product-card-review-number">4.25</div>
-                    <div class="product-card-review-number-of-reviews d-none">12 Reviews</div>
-                </div>
-
-                <div class="product-card-price">$70.99</div>
-
-                </div>
+                <app-product-card
+                    [productCardTypeClass] = "'product-card-small'"
+                ></app-product-card>
 
             </div>
             </div>
@@ -627,4 +413,6 @@
 </main>
   
 <!-- Footer Tag -->
-<app-footer></app-footer>
+<app-footer
+    [navigationCtasAndCopy] = "false"
+></app-footer>

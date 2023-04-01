@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+// import { SectionHeaderComponent } from './shared/components/section-header/section-header.component';
 
 // Mis módulos personalizados
 // import { EcommerceModule } from './features/ecommerce/ecommerce.module';
@@ -20,6 +22,7 @@ import { AppComponent } from './app.component';
   // MUY IMPORTANTE: esto es porque solo se pueden añadir los Components, Directives y Custom Pipes a declarations una vez en toda la aplicación.
   declarations: [
     AppComponent,
+    // SectionHeaderComponent,
     
     // Mis componentes personalizados
     // ...
@@ -38,6 +41,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
 
     // EcommerceModule,
+    SharedModule,
   ],
   
   // Providers: incluye los Services (SOLO en Angular 5 o menor).

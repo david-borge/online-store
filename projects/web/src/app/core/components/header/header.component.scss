@@ -9,48 +9,6 @@ header {
 
 
 
-// Section Header
-.section-header {
-    margin-bottom: 16px;
-}
-
-.section-header > .container {
-    display: flex;
-}
-
-// Section Header - Title
-.section-header-title {
-    flex: 1;
-
-}
-
-.section-header-title * {
-    margin-bottom: 0;
-}
-
-// Section Header - Right Side
-.section-header-right-side-container {
-    display: flex;
-    align-items: center;
-}
-
-// Section Header - Right Side - Carousel Icons
-.section-header-carousel-icons {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-// Section Header - Right Side - Link
-.section-header-link-container a {
-    @include body-14px-medium;
-
-    color: var(--N600);
-    text-decoration: none;
-}
-
-
-
 // Overlay Header
 .overlay-header {
     padding-top: 48px;

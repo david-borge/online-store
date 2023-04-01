@@ -1,0 +1,56 @@
+<!-- Section Header -->
+<div class="section-header">
+    <div class="container">
+
+    <!-- Section Header - Title -->
+    <div class="section-header-title" [innerHTML]="sectionHeaderTitleInnerHTML">
+        <!-- Ejemplo del HTML insertado dinámicamente: <h2 class="heading-3">Featured</h2> -->
+        <!-- Ejemplo del HTML insertado dinámicamente: <h2 class="heading-4">Deals</h2> -->
+    </div>
+    
+    <!-- Section Header - Right Side -->
+    <div class="section-header-right-side-container">
+        
+        <!-- Section Header - Carousel Icons -->
+        <div class="section-header-carousel-icons" *ngIf="sectionHeaderCarouselIcons">
+
+            <div class="section-header-carousel-chevron-left-icon">
+                <!-- Icon: chevron-left -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15L7.5 10L12.5 5" stroke="#D2D3D3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+
+            <div class="section-header-carousel-chevron-right-icon">
+                <!-- Icon: chevron-right -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+
+        </div>
+
+        <!-- Section Header - Link -->
+        <div class="section-header-link-container" *ngIf="sectionHeaderLink">
+            <!-- <a [routerLink]="['/slug']">{{sectionHeaderLinkText}}</a> -->
+            <a (click)="router.navigate([sectionHeaderLinkURL]);">{{sectionHeaderLinkText}}</a>
+        </div>
+
+        <!-- Section Header - Button -->
+        <div class="section-header-button-container" *ngIf="sectionHeaderButton">
+            <button type="button" class="btn btn-outline-secondary btn-sm" (click)="router.navigate([sectionHeaderButtonURL]);">
+
+                <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+
+                </span> -->
+
+                <span class="navigation-button-left--text">{{sectionHeaderButtonText}}</span>
+
+                <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
+                    <!-- Icon: plus -->
+                    <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span> -->
+                
+            </button>
+        </div>
+
+    </div>
+
+    </div>
+</div>
