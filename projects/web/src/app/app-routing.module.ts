@@ -26,6 +26,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/ecommerce/ecommerce.module').then( (modulo) => modulo.EcommerceModule )  // Lazy Load: cargar NombreRutaModule SÓLO cuando se entre a la ruta nombreRuta
   },
 
+  // Product Page
+  {
+    path: 'product',
+    loadChildren: () => import('./features/ecommerce/product/product.module').then( (modulo) => modulo.ProductModule )  // Lazy Load: cargar NombreRutaModule SÓLO cuando se entre a la ruta nombreRuta
+  },
+
 ];
 
 @NgModule({
