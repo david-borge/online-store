@@ -43,6 +43,12 @@ const routes: Routes = [
     path: 'category',
     loadChildren: () => import('./features/ecommerce/category/category.module').then( (modulo) => modulo.CategoryModule )
   },
+  
+  // Cart Page
+  {
+    path: 'cart',
+    loadChildren: () => import('./features/ecommerce/cart/cart.module').then( (modulo) => modulo.CartModule )
+  },
 
 ];
 

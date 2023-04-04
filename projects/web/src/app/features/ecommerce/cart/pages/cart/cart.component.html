@@ -1,0 +1,42 @@
+<!-- Cart Page -->
+
+<!-- Header Tag -->
+<app-header
+    [headerTagType] = "'overlay-header-main-page'"
+    [overlayHeaderPageTitle] = "'Cart'"
+></app-header>
+    
+<!-- Main -->
+<main role="main" style="padding-bottom: calc(148px + var(--espacio-vertical));">
+
+    <div class="illustration-and-content-container">
+
+        <div class="illustration-container">
+            [Illustration]
+        </div>
+
+        <div class="content-container">
+
+            <div class="cart-checkout-product-card-container">
+                
+                <!-- Cart and Checkout Product Card -->
+                <app-cart-checkout-product-card></app-cart-checkout-product-card>
+                
+                <!-- Cart and Checkout Product Card -->
+                <app-cart-checkout-product-card></app-cart-checkout-product-card>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+</main>
+  
+<!-- Footer Tag -->
+<app-footer
+    [navigationShowCtasAndCopy] = "true"
+    [navigationCopyLabel]   = "'Cart total'"
+    [navigationCopyPrice]   = "'85,98 €'"
+    [navigationButtonRightText] = "'Checkout'"
+></app-footer>

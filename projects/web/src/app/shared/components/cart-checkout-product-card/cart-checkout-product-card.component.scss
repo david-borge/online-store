@@ -1,0 +1,114 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Cart and Checkout Product Card
+.cart-and-checkout-product-card {
+    padding: 0 16px 0;
+
+    max-height: 96px;
+
+    display: flex;
+    gap: 16px;
+}
+
+// Cart and Checkout Product Card - Image
+.cart-and-checkout-product-card--image-container {
+    max-width: 80px;
+}
+
+.cart-and-checkout-product-card--image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+// Cart and Checkout Product Card - Information
+.cart-and-checkout-product-card--information-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+// Cart and Checkout Product Card - Information - Product Name
+.cart-and-checkout-product-card--product-name-container * {
+    @include heading-5;
+}
+
+// Cart and Checkout Product Card - Information - Price
+.cart-and-checkout-product-card--price {
+    @include label-14px-regular;
+}
+
+// Cart and Checkout Product Card - Item Count
+.cart-and-checkout-product-card--item-count-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-and-checkout-product-card--item-count {
+    border: 1px solid var(--N200);
+    border-radius: 6px;
+
+    height: 36px;
+
+    display: flex;
+}
+
+.cart-and-checkout-product-card--item-count--minus-and-delete,
+.cart-and-checkout-product-card--item-count--minus-and-delete button,
+.cart-and-checkout-product-card--item-count--quantity-container,
+.cart-and-checkout-product-card--item-count--plus,
+.cart-and-checkout-product-card--item-count--plus button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-and-checkout-product-card--item-count--minus-and-delete button,
+.cart-and-checkout-product-card--item-count--plus button {
+    padding-right: 12px;
+    padding-left: 12px;
+
+    width: 46px;
+    height: 100%;
+}
+
+.cart-and-checkout-product-card--item-count--quantity-container,
+.cart-and-checkout-product-card--item-count--quantity,
+.cart-and-checkout-product-card--item-count--minus,
+.cart-and-checkout-product-card--item-count--plus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-and-checkout-product-card--item-count--quantity-container {
+    border-right: 1px solid var(--N200);
+    border-left: 1px solid var(--N200);
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.cart-and-checkout-product-card--item-count--quantity {
+    min-width: 20px;
+
+    text-align: center;
+}
+
+.cart-and-checkout-product-card--item-count--minus {
+
+}
+
+.cart-and-checkout-product-card--item-count--plus {
+    
+}
+
+.cart-and-checkout-product-card--item-count--minus-and-delete button,
+.cart-and-checkout-product-card--item-count--plus button {
+
+}
