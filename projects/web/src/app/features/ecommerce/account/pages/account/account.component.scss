@@ -1,0 +1,51 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+
+// Profile Information Container
+.profile-information-container {
+    display: flex;
+    gap: 16px;
+}
+
+// Profile Information Container - Name and Email
+.profile-information-container--name-and-email-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+// Profile Information Container - Name
+.profile-information-container--name-container * {
+    margin-bottom: 0;
+
+    @include heading-4;
+}
+
+// Profile Information Container - Email
+.profile-information-container--email-container * {
+    @include body-14px-regular;
+}
+
+// Profile Information Container - Button
+.profile-information-container--button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+// Account Card List
+.account-card-list {
+    display: flex;
+    gap: var(--space-between-cards);
+}
+
+.account-card-list > app-account-card {
+    flex: 1;
+}

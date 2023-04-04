@@ -1,0 +1,42 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Account Card
+.account-card {
+    border-radius: var(--card-border-radius);
+    background-color: var(--N100);
+    
+    height: 100%;
+}
+
+// Account Card - Link
+.account-card a {
+    border-radius: var(--card-border-radius);
+    padding: 16px 14px;
+
+    height: 100%;
+
+    color: var(--N800);
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+// Account Card - Icon
+.account-card--icon-container {
+
+}
+
+// Account Card - Label
+.account-card--label-container * {
+    margin-bottom: 0;
+
+    @include label-14px-medium;
+    text-align: center;
+}

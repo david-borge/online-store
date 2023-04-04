@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+  import { RouterModule } from '@angular/router';
 
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';

@@ -1,0 +1,111 @@
+<!-- Account Page -->
+
+
+
+<!-- Header Tag -->
+<app-header
+    [headerTagType] = "'overlay-header-main-page'"
+    [overlayHeaderPageTitle] = "'My Account'"
+></app-header>
+    
+<!-- Main -->
+<main role="main" style="padding-bottom: calc(83px + var(--espacio-vertical));">
+
+    <!-- Profile Information Container -->
+    <div class="section section-with-bottom-separator">
+        <div class="profile-information-container container">
+            
+            <!-- Profile Information Container - Name and Email -->
+            <div class="profile-information-container--name-and-email-container">
+                
+                <!-- Profile Information Container - Name -->
+                <div class="profile-information-container--name-container">
+                    <h2>Leslie Flores</h2>
+                </div>
+                
+                <!-- Profile Information Container - Email -->
+                <div class="profile-information-container--email-container">
+                    <div class="profile-information-container--email">leslieflores@gmail.com</div>
+                </div>
+                
+            </div>
+            
+            <!-- Profile Information Container - Button -->
+            <div class="profile-information-container--button-container">
+                <button type="button" class="btn btn-outline-secondary btn-lg">
+
+                    <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+
+                    </span> -->
+
+                    <span class="navigation-button-left--text">Log out</span>
+
+                    <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
+                        <!-- Icon: plus -->
+                        <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span> -->
+
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Account -->
+    <div class="section section-with-bottom-separator">
+
+        <!-- Section Header -->
+        <app-section-header
+            [sectionHeaderTitleTag]      = "'h2'"
+            [sectionHeaderTitleClass]    = "'heading-4'"
+            [sectionHeaderTitleText]     = "'Account'"
+        ></app-section-header>
+
+        <!-- Account Card List -->
+        <div class="account-card-list container">
+
+            <!-- Account Card -->
+            <app-account-card
+                [accountCardTitle] = "'Orders'"
+            ></app-account-card>
+
+            <!-- Account Card -->
+            <app-account-card
+                [accountCardTitle] = "'Addresses'"
+            ></app-account-card>
+
+            <!-- Account Card -->
+            <app-account-card
+                [accountCardTitle] = "'Payment Methods'"
+            ></app-account-card>
+
+        </div>
+
+    </div>
+
+    <!-- Orders -->
+    <div class="section">
+
+        <!-- Section Header -->
+        <app-section-header
+            [sectionHeaderTitleTag]      = "'h2'"
+            [sectionHeaderTitleClass]    = "'heading-4'"
+            [sectionHeaderTitleText]     = "'Orders'"
+            [sectionHeaderLink]          = "true"
+            [sectionHeaderLinkURL]       = "'orders'"
+            [sectionHeaderLinkText]      = "'View all'"
+        ></app-section-header>
+
+        <!-- Orders List -->
+        <div class="orders-list">
+
+            
+
+        </div>
+
+    </div>
+
+</main>
+  
+<!-- Footer Tag -->
+<app-footer></app-footer>
