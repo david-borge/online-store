@@ -6,21 +6,3 @@
 @import 'projects/web/src/styles.scss';
 
 
-
-// Product Carousel
-.featured-products-carrousel {
-
-}
-
-.featured-products-carrousel > .container {
-    display: flex;
-    gap: 24px;
-
-    overflow-x: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.featured-products-carrousel > .container::-webkit-scrollbar {
-    display: none;
-}

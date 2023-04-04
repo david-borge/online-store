@@ -33,39 +33,6 @@
     @include body-12px-regular;   
 }
 
-.product-card-review {
-    display: flex;
-    align-items: stretch;
-    gap: 4px;
-}
-
-.product-card-review-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-card-review-number {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 12px;
-}
-
-.product-card-review-number-of-reviews {
-    @include label-12px-regular;
-
-    color: var(--N400);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-card-price {
-    color: var(--N700);
-}
-
 
 
 // Product Card - Featured
@@ -85,7 +52,7 @@
     @include heading-4;
 }
 
-.product-card-featured .product-card-review {
+.product-card-featured .product-rating {
     display: none;
 }
 

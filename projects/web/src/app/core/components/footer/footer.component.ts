@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class FooterComponent {
 
   // Propiedades - Footer - Navigation CTAs & Copy
-  @Input() navigationCtasAndCopy :boolean = false;
+  @Input() navigationShowCtasAndCopy :boolean = false;
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Copy
   @Input() navigationCopyLabel :string = '';

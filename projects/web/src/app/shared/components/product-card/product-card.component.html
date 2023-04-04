@@ -16,7 +16,10 @@
 
         <div class="product-card-manufacturer">Converse</div>
 
-        <div class="product-card-review"></div>
+        <!-- Product Rating -->
+        <app-product-rating
+            *ngIf="(productCardTypeClass == 'product-card-small')"
+        ></app-product-rating>
 
         <div class="product-card-price">$70.99</div>
 

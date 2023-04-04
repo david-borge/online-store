@@ -507,6 +507,7 @@ $body-color: var(--N800);
 
 
 // Espaciado - Espaciado lateral
+:root,
 .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
     --bs-gutter-x: 40px;
 }

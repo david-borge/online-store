@@ -1,0 +1,122 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Product Reviews Item
+.product-reviews-item--title-ratings-container {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: stretch;
+}
+
+// Product Reviews Item - Review Item - Title
+.product-reviews-item--title {
+    flex: 1;
+
+    @include label-16px-medium;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.product-reviews-item--title * {
+    margin-bottom: 0;
+
+    @include label-16px-medium;
+}
+
+// Product Reviews Item - Review Item - Rating
+.product-reviews-item--rating-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-reviews-item--rating {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    color: white;
+}
+
+.full-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
+    color: var(--Y500);
+}
+
+.empty-stars:before,
+.full-stars:before {
+    content: "\2605\2605\2605\2605\2605";
+    font-size: 14pt;
+    letter-spacing: 3px; /* Espacio entre las estrellas */
+    line-height: 14pt;
+}
+
+.empty-stars:before {
+    -webkit-text-stroke: 1px var(--Y500);
+}
+
+.full-stars:before {
+    -webkit-text-stroke: 1px var(--Y500);
+}
+
+/* Webkit-text-stroke is not supported on firefox or IE */
+/* Firefox */
+@-moz-document url-prefix() {
+    .full-stars{
+        color: #ECBE24;
+    }
+}
+
+// Product Reviews Item - Review Item - Date
+.product-reviews-item--date {
+    margin-bottom: 8px;
+
+    @include body-12px-regular;
+
+    color: var(--N400);
+}
+
+// Product Reviews Item - Review Item - Content
+.product-reviews-item--content {
+    margin-bottom: 8px;
+
+    @include body-14px-regular;
+    
+    color: var(--N600);
+}
+
+.product-reviews-item--content p:last-child {
+    margin-bottom: 0;
+}
+
+// Product Reviews Item - Review Item - Profile
+.product-reviews-item--profile-container {
+    display: flex;
+    gap: 8px;
+}
+
+// Product Reviews Item - Review Item - Profile Name
+.product-reviews-item--profile-name {
+    @include body-12px-medium;
+    
+    color: var(--N600);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+// Product Reviews Item - Review Item - Profile Picture
+.product-reviews-item--profile-picture {
+
+}

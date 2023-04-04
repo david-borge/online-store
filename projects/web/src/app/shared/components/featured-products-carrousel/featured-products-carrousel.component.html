@@ -1,0 +1,13 @@
+<!-- Featured Products Carrousel -->
+<div class="featured-products-carrousel">
+    <div class="container">
+
+        <!-- Product Card -->
+        <app-product-card
+            *ngFor="let nombre_individual of featured_products_list"
+            [productCardTypeClass] = "'product-card-featured'"
+        ></app-product-card>
+        
+    </div>
+
+</div>

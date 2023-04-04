@@ -3,62 +3,53 @@
     <!-- <header style="position: sticky; top: 0; right: 0; left: 0; z-index: 1;"> --> <!-- Product Page -->
 
     <!-- Home - Hero -->
-    <div class="d-flex flex-column" style="min-height: 116px;">
+    <div class="d-flex flex-column" style="min-height: 116px;" *ngIf="(headerTagType === 'home-hero' )">
 
-    <!-- Logo -->
-    <div class="flex-fill d-flex flex-column align-items-center justify-content-end" style="margin-bottom: 6px;">
-        <img src="assets/img/logo/online-store-logo.svg" width="286px" height="54px" alt="Online Store Logo" style="width: 100%; max-width: 284px; height: auto;">
+        <!-- Logo -->
+        <div class="flex-fill d-flex flex-column align-items-center justify-content-end" style="margin-bottom: 6px;">
+            <img src="assets/img/logo/online-store-logo.svg" width="286px" height="54px" alt="Online Store Logo" style="width: 100%; max-width: 284px; height: auto;">
+        </div>
+
+        <!-- Free Shipping · One Day Delivery -->
+        <div class="container d-flex justify-content-center" style="padding-top: 6px; padding-bottom: 6px; background-color: var(--N800);">
+            <div class="text-white">Free Shipping</div>
+            <div class="text-white" style="margin: 0 15px;">·</div>
+            <div class="text-white">One Day Delivery</div>
+        </div>
+
     </div>
 
-    <!-- Free Shipping · One Day Delivery -->
-    <div class="container d-flex justify-content-center" style="padding-top: 6px; padding-bottom: 6px; background-color: var(--N800);">
-        <div class="text-white">Free Shipping</div>
-        <div class="text-white" style="margin: 0 15px;">·</div>
-        <div class="text-white">One Day Delivery</div>
-    </div>
-
-    </div>
-
-    <!-- Overlay Header -->
-    <div class="overlay-header overlay-header-main-page d-none">
+    <!-- Overlay Header - Main Page -->
+    <div class="overlay-header overlay-header-main-page" *ngIf="(headerTagType === 'overlay-header-main-page' )">
         <div class="container">
-
-            <!-- Overlay Header - Left Icon -->
-            <div class="overlay-header-left-icon-container">
-                <!-- Icon: chevron-left -->
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15L7.5 10L12.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
 
             <!-- Overlay Header - Title -->
             <div class="overlay-header-title">
                 <h2>Featured</h2>
             </div>
 
-            <!-- Overlay Header - Close Icon -->
-            <div class="overlay-header-close-icon d-none">
-                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.5L5 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5L15 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-
         </div>
     </div>
 
     <!-- Overlay Header - Subpage -->
-    <div class="overlay-header overlay-header-subpage d-none">
-        <div class="container">
+    <div class="overlay-header overlay-header-subpage" *ngIf="(headerTagType === 'overlay-header-subpage' )" [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }">
+        <div>
 
             <!-- Overlay Header - Left Icon -->
-            <div class="overlay-header-left-icon-container">
-                <!-- Icon: chevron-left -->
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15L7.5 10L12.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="overlay-header-left-icon-container" *ngIf="overlayHeaderSubpageShowLeftIcon">
+                <a (click)="router.navigate(['/home']);">
+                    <!-- Icon: chevron-left -->
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15L7.5 10L12.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
             </div>
 
             <!-- Overlay Header - Title -->
             <div class="overlay-header-title">
-                <h2>DualSense Wireless Controller</h2>
+                <h2>{{overlayHeaderSubpageTitle}}</h2>
             </div>
 
             <!-- Overlay Header - Close Icon -->
-            <div class="overlay-header-close-icon d-none">
+            <div class="overlay-header-close-icon" *ngIf="overlayHeaderSubpageShowCloseIcon">
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.5L5 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5L15 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
 

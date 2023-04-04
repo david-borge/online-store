@@ -10,19 +10,26 @@ header {
 
 
 // Overlay Header
-.overlay-header {
-    padding-top: 48px;
-    padding-bottom: 12px;
-}
+.overlay-header > div {
+    padding-right: calc(var(--bs-gutter-x) / 2);
 
-.overlay-header > .container {
     display: flex;
     justify-content: space-between;
 }
 
+// Overlay Header - Espaciado vertical
+.overlay-header-left-icon-container a,
+.overlay-header-title {
+    padding-top: 48px;
+    padding-bottom: 12px;
+}
+
+// Overlay Header - Title
 .overlay-header-title {
     flex: 1;
+
     text-align: center;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,10 +61,6 @@ header {
     background-color: var(--N300);
 }
 
-.overlay-header-main-page .overlay-header-left-icon-container {
-    display: none;
-}
-
 .overlay-header-main-page .overlay-header-title * {
     @include heading-3;
 }
@@ -78,8 +81,17 @@ header {
     background-color: var(--N300);
 }
 
+.overlay-header-left-icon-container a {
+    padding-right: calc(var(--bs-gutter-x) / 2);
+    padding-left: calc(var(--bs-gutter-x) / 2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .overlay-header-subpage .overlay-header-title {
-    padding-right: 20px;  /* Para compensar el icono izquierdo */
+    padding-right: var(--bs-gutter-x);  /* Para compensar el icono izquierdo */
 }
 
 .overlay-header-subpage .overlay-header-title * {

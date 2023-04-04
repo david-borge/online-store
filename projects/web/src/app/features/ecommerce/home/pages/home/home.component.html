@@ -1,10 +1,10 @@
 <!-- Header Tag -->
-<app-header></app-header>
+<app-header
+    [headerTagType] = "'home-hero'"
+></app-header>
     
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(83px + 32px);">
-    <!-- <main class="d-none" role="main" style="padding-top: 0; padding-bottom: 32px;"> --> <!-- Product Page -->
-    <!-- <main role="main" style="padding-top: 116px; padding-bottom: calc(73px + 32px);"> --> <!-- Home Page old -->
 
     <!-- Home - Featured Products -->
     <div class="section">
@@ -24,18 +24,7 @@
         ></app-section-header>
         
         <!-- Featured Products Carrousel -->
-        <div class="featured-products-carrousel">
-            <div class="container">
-
-                <!-- Product Card -->
-                <app-product-card
-                    *ngFor="let nombre_individual of featured_products_list"
-                    [productCardTypeClass] = "'product-card-featured'"
-                ></app-product-card>
-                
-            </div>
-
-        </div>
+        <app-featured-products-carrousel></app-featured-products-carrousel>
 
     </div>
 
@@ -59,22 +48,22 @@
         <!-- Deals Products -->
         <div class="container">
             <div class="row">
-            <div class="col-6">
+                <div class="col-6">
 
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-small'"
-                ></app-product-card>
+                    <!-- Product Card -->
+                    <app-product-card
+                        [productCardTypeClass] = "'product-card-small'"
+                    ></app-product-card>
 
-            </div>
-            <div class="col-6">
+                </div>
+                <div class="col-6">
 
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-small'"
-                ></app-product-card>
+                    <!-- Product Card -->
+                    <app-product-card
+                        [productCardTypeClass] = "'product-card-small'"
+                    ></app-product-card>
 
-            </div>
+                </div>
             </div>
         </div>
 
@@ -84,7 +73,7 @@
   
 <!-- Footer Tag -->
 <app-footer
-    [navigationCtasAndCopy] = "false"
+    [navigationShowCtasAndCopy] = "false"
     [navigationCopyLabel]   = "''"
     [navigationCopyPrice]   = "''"
     [navigationButtonRightText] = "''"

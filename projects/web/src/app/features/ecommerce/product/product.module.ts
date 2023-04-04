@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProductComponent } from './pages/product/product.component';
 import { ProductRoutingModule } from './product-routing.module';
+import { CoreModule } from '../../../core/core.module';
+
+import { ProductComponent } from './pages/product/product.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 
@@ -13,7 +16,10 @@ import { ProductRoutingModule } from './product-routing.module';
   imports: [
     CommonModule,
 
-    ProductRoutingModule
+    ProductRoutingModule,
+
+    CoreModule,
+    SharedModule,
   ]
 })
 export class ProductModule { }

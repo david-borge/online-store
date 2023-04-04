@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  featured_products_list: string[] = ['1', '2', '3'];
-
 }

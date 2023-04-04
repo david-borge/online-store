@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ProductComponent {
 
+  // TODO:
+  productReviewsList :string[] = ['1', '2', '3'];
+
 }

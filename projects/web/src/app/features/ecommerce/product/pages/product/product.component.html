@@ -1,12 +1,16 @@
 <!-- Product Page -->
 
 <!-- Header Tag -->
-<!-- <app-header></app-header> -->
+<app-header
+    [headerTagType] = "'overlay-header-subpage'"
+    [overlayHeaderSubpageTitle] = "'DualSense Wireless Controller'"
+    [overlayHeaderSubpageBackgroundColor] = "'var(--B300)'"
+></app-header>
     
 <!-- Main -->
-<main role="main" style="padding-bottom: calc(83px + 32px);">
+<main role="main" style="padding-bottom: calc(148px + var(--espacio-vertical));">
 
-    <!-- Product Image & 360º Indicator -->
+    <!-- Product - Image & 360º Indicator -->
     <div class="product-image-and-three-sixty-indicator-container">
 
         <!-- Product Image -->
@@ -25,27 +29,22 @@
 
     </div>
 
-    <!-- Manufacturer & Review -->
+    <!-- Product - Manufacturer & Review -->
     <div class="section">
         <div class="container">
 
             <!-- Product Manufacturer -->
             <div class="product-manufacturer">Sony</div>
 
-            <!-- Product Review -->
-            <div class="product-card-review">
-                <div class="product-card-review-icon">
-                    <!-- Icon: star -->
-                    <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_47517_8134)"><path d="M6.28754 3.94183L5.00004 1.3335L3.71254 3.94183L0.833374 4.36266L2.91671 6.39183L2.42504 9.2585L5.00004 7.90433L7.57504 9.2585L7.08337 6.39183L9.16671 4.36266L6.28754 3.94183Z" fill="#363939" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_47517_8134"><rect width="10" height="10" fill="white" transform="translate(0 0.5)"/></clipPath></defs></svg>
-                </div>
-                <div class="product-card-review-number">4.25</div>
-                <div class="product-card-review-number-of-reviews">12 Reviews</div>
-            </div>
+            <!-- Product Rating -->
+            <app-product-rating
+                [productCardRatingShowNumberOfReviews] = 'true'
+            ></app-product-rating>
 
         </div>
     </div>
 
-    <!-- Description -->
+    <!-- Product - Description -->
     <div class="section">
         <div class="container">
 
@@ -64,7 +63,7 @@
         </div>
     </div>
 
-    <!-- Reviews -->
+    <!-- Product - Reviews -->
     <div class="section section-with-bottom-separator">
         <div class="container">
 
@@ -76,105 +75,10 @@
 
                 <div class="product-reviews-list">
 
-                    <!-- Review Item -->
-                    <div class="product-reviews-item">
-
-                        <div class="product-reviews-item--title-ratings-container">
-                            <div class="product-reviews-item--title">
-                                <h4>Consectetur tellus volutpat.</h4>
-                            </div>
-                            <div class="product-reviews-item--rating-container">
-                                <div class="product-reviews-item--rating">
-                                    <div class="empty-stars"></div>
-                                    <div class="full-stars" style="width: 60%;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-reviews-item--date">January 1, 2023</div>
-
-                        <div class="product-reviews-item--content">
-                            <p>Massa morbi id lorem ultricies. Aliquet eu dolor cras ipsum hendrerit id ut habitant nisi. Lectus ipsum faucibus sed fringilla at tempor.</p>
-                        </div>
-
-                        <div class="product-reviews-item--profile-container">
-                            <div class="product-reviews-item--profile-picture">
-                                <picture>
-                                    <source srcset="assets/img/avatars/brooklyn-simmons.webp" type="image/webp">
-                                    <img src="assets/img/avatars/brooklyn-simmons.png" width="24px" height="24px" alt="Brooklyn Simmons">
-                                </picture>
-                            </div>
-                            <div class="product-reviews-item--profile-name">Brooklyn Simmons</div>
-                        </div>
-
-                    </div>
-
-                    <!-- Review Item -->
-                    <div class="product-reviews-item">
-
-                        <div class="product-reviews-item--title-ratings-container">
-                        <div class="product-reviews-item--title">
-                            <h4>Erat maecenas id tellus in.</h4>
-                        </div>
-                        <div class="product-reviews-item--rating-container">
-                            <div class="product-reviews-item--rating">
-                            <div class="empty-stars"></div>
-                            <div class="full-stars" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        </div>
-
-                        <div class="product-reviews-item--date">August 2, 2023</div>
-
-                        <div class="product-reviews-item--content">
-                        <p>Ullamcorper fermentum non cursus sit. Mollis elementum ac ullamcorper amet cum. Consectetur suspendisse massa velit, sit risus.</p>
-                        </div>
-
-                        <div class="product-reviews-item--profile-container">
-                        <div class="product-reviews-item--profile-picture">
-                            <picture>
-                            <source srcset="assets/img/avatars/jerome-bell.webp" type="image/webp">
-                            <img src="assets/img/avatars/jerome-bell.png" width="24px" height="24px" alt="Jerome Bell">
-                            </picture>
-                        </div>
-                        <div class="product-reviews-item--profile-name">Jerome Bell</div>
-                        </div>
-
-                    </div>
-
-                    <!-- Review Item -->
-                    <div class="product-reviews-item">
-
-                        <div class="product-reviews-item--title-ratings-container">
-                        <div class="product-reviews-item--title">
-                            <h4>Aliquet amet quam!</h4>
-                        </div>
-                        <div class="product-reviews-item--rating-container">
-                            <div class="product-reviews-item--rating">
-                            <div class="empty-stars"></div>
-                            <div class="full-stars" style="width: 100%;"></div>
-                            </div>
-                        </div>
-                        </div>
-
-                        <div class="product-reviews-item--date">December 1, 2023</div>
-
-                        <div class="product-reviews-item--content">
-                        <p>Aenean integer ipsum, eget ligula pretium egestas. Viverra maecenas ut diam suspendisse proin ac, volutpat mi nunc. Varius ac lacus tristique posuere sed nunc.</p>
-                        </div>
-
-                        <div class="product-reviews-item--profile-container">
-                        <div class="product-reviews-item--profile-picture">
-                            <picture>
-                            <source srcset="assets/img/avatars/cameron-williamson.webp" type="image/webp">
-                            <img src="assets/img/avatars/cameron-williamson.png" width="24px" height="24px" alt="Cameron Williamson">
-                            </picture>
-                        </div>
-                        <div class="product-reviews-item--profile-name">Cameron Williamson</div>
-                        </div>
-
-                    </div>
-
+                    <app-product-reviews-item
+                        *ngFor="let nombre_individual of productReviewsList"
+                    ></app-product-reviews-item>
+                    
                 </div>
 
             </div>
@@ -182,11 +86,11 @@
         </div>
     </div>
 
-    <!-- Home - Featured Products -->
+    <!-- Featured Products -->
     <div class="section">
 
         <!-- Section Header -->
-        <!-- <app-section-header
+        <app-section-header
             [sectionHeaderTitleTag]      = "'h2'"
             [sectionHeaderTitleClass]    = "'heading-3'"
             [sectionHeaderTitleText]     = "'Featured'"
@@ -197,30 +101,19 @@
             [sectionHeaderButton]        = "false"
             [sectionHeaderButtonURL]     = "''"
             [sectionHeaderButtonText]    = "''"
-        ></app-section-header> -->
+        ></app-section-header>
         
         <!-- Featured Products Carrousel -->
-        <div class="featured-products-carrousel">
-            <div class="container">
-
-                <!-- Product Card -->
-                <!-- <app-product-card
-                    *ngFor="let nombre_individual of featured_products_list"
-                    [productCardTypeClass] = "'product-card-featured'"
-                ></app-product-card> -->
-                
-            </div>
-
-        </div>
+        <app-featured-products-carrousel></app-featured-products-carrousel>
 
     </div>
 
 </main>
   
 <!-- Footer Tag -->
-<!-- <app-footer
-    [navigationCtasAndCopy] = "true"
+<app-footer
+    [navigationShowCtasAndCopy] = "true"
     [navigationCopyLabel]   = "''"
     [navigationCopyPrice]   = "'79,99 €'"
     [navigationButtonRightText] = "'Add to cart'"
-></app-footer> -->
+></app-footer>

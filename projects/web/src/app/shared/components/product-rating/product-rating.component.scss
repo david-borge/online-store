@@ -1,0 +1,38 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Product Rating
+.product-rating {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.product-rating-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-rating-number {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.product-rating-number-of-reviews {
+    @include label-12px-regular;
+
+    color: var(--N400);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-card-price {
+    color: var(--N700);
+}
