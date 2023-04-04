@@ -20,7 +20,7 @@ body.product-page .overlay-header::after {
 
 // Product Page - Image
 .product-image-and-three-sixty-indicator-container {
-    height: 419px;
+    height: calc(419px - 82.5px); // Restar la altura de <header>
     padding-bottom: 19px;
 
     display: flex;

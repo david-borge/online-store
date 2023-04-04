@@ -23,13 +23,19 @@ const routes: Routes = [
   // Home Page
   {
     path: 'home',
-    loadChildren: () => import('./features/ecommerce/ecommerce.module').then( (modulo) => modulo.EcommerceModule )  // Lazy Load: cargar NombreRutaModule SÓLO cuando se entre a la ruta nombreRuta
+    loadChildren: () => import('./features/ecommerce/ecommerce.module').then( (modulo) => modulo.EcommerceModule )
   },
 
   // Product Page
   {
     path: 'product',
-    loadChildren: () => import('./features/ecommerce/product/product.module').then( (modulo) => modulo.ProductModule )  // Lazy Load: cargar NombreRutaModule SÓLO cuando se entre a la ruta nombreRuta
+    loadChildren: () => import('./features/ecommerce/product/product.module').then( (modulo) => modulo.ProductModule )
+  },
+
+  // Categories Page
+  {
+    path: 'categories',
+    loadChildren: () => import('./features/ecommerce/categories/categories.module').then( (modulo) => modulo.CategoriesModule )
   },
 
 ];

@@ -1,0 +1,104 @@
+<!-- Categories Page -->
+
+<!-- Header Tag -->
+<app-header
+    [headerTagType] = "'overlay-header-main-page'"
+    [overlayHeaderPageTitle] = "'Categories'"
+></app-header>
+
+<!-- Main -->
+<main role="main" style="padding-top: var(--espacio-vertical); padding-bottom: calc(87px + var(--espacio-vertical));">
+
+    <!-- Categories List -->
+    <div class="container h-100">
+
+        <div id="categories-lists" class="h-100">
+
+            <!-- Categories List -->
+            <div class="categories-list">
+
+                <!-- Category Card -->
+                <div id="category-card--tech" class="category-card category-card--small">
+                    <a (click)="router.navigate(['/categories/tech']);">
+
+                        <div class="category-card--title-container">
+                            <h3>Tech</h3>
+                        </div>
+
+                        <div class="category-card--image-container">
+                            <picture>
+                                <source srcset="assets/img/categories/tech.webp" type="image/webp">
+                                <img src="assets/img/categories/tech.png" width="218px" height="127px" alt="Tech">
+                            </picture>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Category Card -->
+                <div id="category-card--music" class="category-card category-card--large">
+                    <a (click)="router.navigate(['/categories/tech']);">
+
+                        <div class="category-card--title-container">
+                            <h3>Music</h3>
+                        </div>
+
+                        <div class="category-card--image-container">
+                            <picture>
+                                <source srcset="assets/img/categories/music.webp" type="image/webp">
+                                <img src="assets/img/categories/music.png" width="125px" height="387px" alt="Music">
+                            </picture>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Categories List -->
+            <div class="categories-list">
+
+                <!-- Category Card -->
+                <div id="category-card--reading" class="category-card category-card--large">
+                    <a (click)="router.navigate(['/categories/reading']);">
+
+                        <div class="category-card--title-container">
+                            <h3>Reading</h3>
+                        </div>
+
+                        <div class="category-card--image-container">
+                            <picture>
+                                <source srcset="assets/img/categories/reading.webp" type="image/webp">
+                                <img src="assets/img/categories/reading.png" width="250px" height="387px" alt="Reading">
+                            </picture>
+                        </div>
+
+                    </a>
+                </div>
+
+                <!-- Category Card -->
+                <div id="category-card--fashion" class="category-card category-card--small">
+                    <a (click)="router.navigate(['/categories/fashion']);">
+
+                        <div class="category-card--title-container">
+                            <h3>Fashion</h3>
+                        </div>
+
+                        <div class="category-card--image-container">
+                            <picture>
+                                <source srcset="assets/img/categories/fashion.webp" type="image/webp">
+                                <img src="assets/img/categories/fashion.png" width="203px" height="64px" alt="Fashion">
+                            </picture>
+                        </div>
+
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+  
+<!-- Footer Tag -->
+<app-footer></app-footer>

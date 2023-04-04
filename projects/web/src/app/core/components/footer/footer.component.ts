@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -16,5 +17,11 @@ export class FooterComponent {
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
   @Input() navigationButtonRightText :string = '';
+
+
+
+  constructor(
+    public router: Router,
+  ) {}
 
 }

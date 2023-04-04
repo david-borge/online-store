@@ -11,11 +11,13 @@ export class HeaderComponent {
   // Propiedades - Header Tag - Tipo
   @Input() headerTagType :string = 'overlay-header-main-page';
   
+  // Propiedades - Header Tag - Título
+  @Input() overlayHeaderPageTitle           :string  = 'Subpage Title';
+  
   // Propiedades - Header Tag - Tipo: overlay-header-main-page
 
 
   // Propiedades - Header Tag - Tipo: overlay-header-subpage
-  @Input() overlayHeaderSubpageTitle           :string  = 'Subpage Title';
   @Input() overlayHeaderSubpageShowCloseIcon   :boolean = false;
   @Input() overlayHeaderSubpageBackgroundColor :string = 'inherit';
   @Input() overlayHeaderSubpageShowLeftIcon    :boolean = true;
