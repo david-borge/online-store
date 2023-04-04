@@ -32,10 +32,16 @@ const routes: Routes = [
     loadChildren: () => import('./features/ecommerce/product/product.module').then( (modulo) => modulo.ProductModule )
   },
 
-  // Categories Page
+  // Categories Page (/categories)
   {
     path: 'categories',
     loadChildren: () => import('./features/ecommerce/categories/categories.module').then( (modulo) => modulo.CategoriesModule )
+  },
+
+  // Category Page (/category/tech)
+  {
+    path: 'category',
+    loadChildren: () => import('./features/ecommerce/category/category.module').then( (modulo) => modulo.CategoryModule )
   },
 
 ];

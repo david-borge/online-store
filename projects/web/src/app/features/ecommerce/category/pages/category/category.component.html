@@ -1,0 +1,16 @@
+<!-- Header Tag -->
+<app-header
+    [headerTagType] = "'overlay-header-subpage'"
+    [overlayHeaderPageTitle] = "'Tech'"
+></app-header>
+
+<!-- Main -->
+<main role="main" style="padding-top: var(--espacio-vertical); padding-bottom: calc(87px + var(--espacio-vertical)); display: flex; flex-direction: column;">
+
+    <!-- CategoryDetailComponent -->
+    <router-outlet></router-outlet>
+
+</main>
+  
+<!-- Footer Tag -->
+<app-footer></app-footer>

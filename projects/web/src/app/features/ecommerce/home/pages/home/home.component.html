@@ -4,7 +4,7 @@
 ></app-header>
     
 <!-- Main -->
-<main role="main" style="padding-bottom: calc(83px + 32px);">
+<main role="main" style="padding-bottom: calc(83px + var(--espacio-vertical));">
 
     <!-- Home - Featured Products -->
     <div class="section">
@@ -45,26 +45,9 @@
             [sectionHeaderButtonText]    = "''"
         ></app-section-header>
 
-        <!-- Deals Products -->
+        <!-- Deals Products (Products Grid) -->
         <div class="container">
-            <div class="row">
-                <div class="col-6">
-
-                    <!-- Product Card -->
-                    <app-product-card
-                        [productCardTypeClass] = "'product-card-small'"
-                    ></app-product-card>
-
-                </div>
-                <div class="col-6">
-
-                    <!-- Product Card -->
-                    <app-product-card
-                        [productCardTypeClass] = "'product-card-small'"
-                    ></app-product-card>
-
-                </div>
-            </div>
+            <app-products-grid></app-products-grid>
         </div>
 
     </div>

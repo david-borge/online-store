@@ -1,0 +1,6 @@
+// Products Grid
+.products-grid {
+    display: grid;
+    grid-gap: var(--space-between-cards);
+    grid-template-columns: 1fr 1fr;
+}

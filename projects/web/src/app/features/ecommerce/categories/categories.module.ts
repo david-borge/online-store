@@ -13,7 +13,7 @@ import { CategoryCardComponent } from './components/category-card/category-card.
 @NgModule({
   declarations: [
     CategoriesComponent,
-    CategoryCardComponent
+    CategoryCardComponent,
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { FeaturedProductsCarrouselComponent } from './components/featured-products-carrousel/featured-products-carrousel.component';
 import { ProductRatingComponent } from './components/product-rating/product-rating.component';
 import { ProductReviewsItemComponent } from './components/product-reviews-item/product-reviews-item.component';
+import { ProductsGridComponent } from './components/products-grid/products-grid.component';
 
 
 
@@ -17,6 +18,7 @@ import { ProductReviewsItemComponent } from './components/product-reviews-item/p
     FeaturedProductsCarrouselComponent,
     ProductRatingComponent,
     ProductReviewsItemComponent,
+    ProductsGridComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { ProductReviewsItemComponent } from './components/product-reviews-item/p
     FeaturedProductsCarrouselComponent,
     ProductRatingComponent,
     ProductReviewsItemComponent,
+    ProductsGridComponent,
   ],
 
 })

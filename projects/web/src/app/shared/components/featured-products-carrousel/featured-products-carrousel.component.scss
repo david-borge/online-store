@@ -1,7 +1,7 @@
 // Featured Product Carousel
 .featured-products-carrousel > .container {
     display: flex;
-    gap: 24px;
+    gap: var(--space-between-cards);
 
     overflow-x: auto;
     -ms-overflow-style: none;  /* IE and Edge */
