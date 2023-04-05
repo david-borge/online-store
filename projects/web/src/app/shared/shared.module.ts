@@ -9,6 +9,7 @@ import { ProductRatingComponent } from './components/product-rating/product-rati
 import { ProductReviewsItemComponent } from './components/product-reviews-item/product-reviews-item.component';
 import { ProductsGridComponent } from './components/products-grid/products-grid.component';
 import { CartCheckoutProductCardComponent } from './components/cart-checkout-product-card/cart-checkout-product-card.component';
+import { InformativeCardComponent } from './components/informative-card/informative-card.component';
 
 
 
@@ -21,6 +22,7 @@ import { CartCheckoutProductCardComponent } from './components/cart-checkout-pro
     ProductReviewsItemComponent,
     ProductsGridComponent,
     CartCheckoutProductCardComponent,
+    InformativeCardComponent,
   ],
   imports: [
     CommonModule,

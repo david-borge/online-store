@@ -28,14 +28,14 @@
             </div> -->
 
             <!-- Navigation Copy -->
-            <div class="navigation-copy">
+            <div class="navigation-copy" *ngIf="(numberOfProductsInCart > 0)">
                 <div class="navigation-copy-label">{{navigationCopyLabel}}</div>
                 <div class="navigation-copy-price">{{navigationCopyPrice}}</div>
             </div>
 
             <!-- Navigation Button Right -->
             <div class="navigation-button-right-container">
-                <button type="button" class="btn btn-primary btn-lg">
+                <button type="button" class="btn btn-primary btn-lg" (click)="router.navigate([navigationButtonRightURL]);">
 
                     <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-right--left-icon">
 

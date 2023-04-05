@@ -725,7 +725,6 @@ app-footer {
 
     padding-top: var(--espacio-vertical);
     padding-right: calc(var(--bs-gutter-x) / 2);
-    padding-bottom: var(--espacio-vertical);
     padding-left: calc(var(--bs-gutter-x) / 2);
 
     display: flex;
@@ -734,5 +733,5 @@ app-footer {
 }
 
 .content-container {
-
+    padding-top: var(--espacio-vertical);
 }

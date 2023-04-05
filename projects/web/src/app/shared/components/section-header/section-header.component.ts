@@ -28,6 +28,9 @@ export class SectionHeaderComponent {
   @Input() sectionHeaderButtonURL  :string  = '';
   @Input() sectionHeaderButtonText :string  = '';
 
+  // TODO:
+  numberOfOrders :number = 2;
+
 
   constructor(
     public router: Router,

@@ -17,11 +17,23 @@ export class FooterComponent {
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
   @Input() navigationButtonRightText :string = '';
+  @Input() navigationButtonRightURL  :string = '/checkout';
 
-
+  // TODO:
+  numberOfProductsInCart :number = 2;
 
   constructor(
     public router: Router,
   ) {}
+
+  ngOnInit(): void {
+
+    // Si el carrito está vacío, mostrar el botón "Explore the Store", que lleva a la Home Page
+    if( this.numberOfProductsInCart == 0 ) {
+      this.navigationButtonRightText = "Explore the Store";
+      this.navigationButtonRightURL  = "/home";
+    }
+
+  }
 
 }

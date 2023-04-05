@@ -99,7 +99,7 @@
         <div class="container">
                 
             <!-- Orders List -->
-            <div class="orders-list">
+            <div class="orders-list" *ngIf="(numberOfOrders > 0)">
 
                 <!-- Product Card -->
                 <app-product-card
@@ -112,6 +112,9 @@
                 ></app-product-card>
 
             </div>
+
+            <!-- No Orders Informative Card -->
+            
 
         </div>
 
