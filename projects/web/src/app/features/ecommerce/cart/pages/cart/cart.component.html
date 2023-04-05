@@ -17,6 +17,7 @@
 
         <div class="content-container">
 
+            <!-- Product List -->
             <div class="cart-checkout-product-card-container" *ngIf="(numberOfProductsInCart > 0)">
                 
                 <!-- Cart and Checkout Product Card -->
@@ -24,9 +25,7 @@
                 
             </div>
 
-            <div class="your-cart-is-empty container" *ngIf="(numberOfProductsInCart == 0)">
-                Your cart is empty.
-            </div>
+            <div class="empty-text container" *ngIf="(numberOfProductsInCart == 0)">Your cart is empty.</div>
             
         </div>
 

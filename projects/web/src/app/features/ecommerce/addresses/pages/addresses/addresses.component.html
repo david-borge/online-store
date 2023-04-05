@@ -11,48 +11,67 @@
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(87px + var(--espacio-vertical));">
 
-    <div class="section">
-        <div class="container">
+    <div class="illustration-and-content-container">
 
-            <!-- Address Card List -->
-            <div class="address-card-list">
+        <div class="illustration-container">
+            [Illustration]
+        </div>
 
-                <!-- Address Card -->
-                <app-address-card
-                    [addressCardSelected]   = "false"
-                    [addressCardPersonName] = "'Leslie Flores'"
-                    [addressCardAddress]    = "'2972 Westheimer Rd. '"
-                    [addressCardPostalCode] = "'85486'"
-                    [addressCardCity]       = "'Santa Ana, Illinois '"
-                    [addressCardCountry]    = "'United States of America'"
-                    [addressCardShowButton] = "true"
-                ></app-address-card>
+        <div class="content-container">
 
-                <!-- Address Card -->
-                <app-address-card
-                    [addressCardSelected]   = "true"
-                    [addressCardPersonName] = "'Leslie Flores'"
-                    [addressCardAddress]    = "'2972 Westheimer Rd. '"
-                    [addressCardPostalCode] = "'85486'"
-                    [addressCardCity]       = "'Santa Ana, Illinois '"
-                    [addressCardCountry]    = "'United States of America'"
-                    [addressCardShowButton] = "true"
-                ></app-address-card>
-
-                <!-- Address Card -->
-                <app-address-card
-                    [addressCardSelected]   = "false"
-                    [addressCardPersonName] = "'Leslie Flores'"
-                    [addressCardAddress]    = "'2972 Westheimer Rd. '"
-                    [addressCardPostalCode] = "'85486'"
-                    [addressCardCity]       = "'Santa Ana, Illinois '"
-                    [addressCardCountry]    = "'United States of America'"
-                    [addressCardShowButton] = "true"
-                ></app-address-card>
-
+            <!-- Addresses List -->
+            <div class="cart-checkout-product-card-container" *ngIf="(numberOfAddresses > 0)">
+                
+                <div class="section">
+                    <div class="container">
+            
+                        <!-- Address Card List -->
+                        <div class="address-card-list">
+            
+                            <!-- Address Card -->
+                            <app-address-card
+                                [addressCardSelected]   = "false"
+                                [addressCardPersonName] = "'Leslie Flores'"
+                                [addressCardAddress]    = "'2972 Westheimer Rd. '"
+                                [addressCardPostalCode] = "'85486'"
+                                [addressCardCity]       = "'Santa Ana, Illinois '"
+                                [addressCardCountry]    = "'United States of America'"
+                                [addressCardShowButton] = "true"
+                            ></app-address-card>
+            
+                            <!-- Address Card -->
+                            <app-address-card
+                                [addressCardSelected]   = "true"
+                                [addressCardPersonName] = "'Leslie Flores'"
+                                [addressCardAddress]    = "'2972 Westheimer Rd. '"
+                                [addressCardPostalCode] = "'85486'"
+                                [addressCardCity]       = "'Santa Ana, Illinois '"
+                                [addressCardCountry]    = "'United States of America'"
+                                [addressCardShowButton] = "true"
+                            ></app-address-card>
+            
+                            <!-- Address Card -->
+                            <app-address-card
+                                [addressCardSelected]   = "false"
+                                [addressCardPersonName] = "'Leslie Flores'"
+                                [addressCardAddress]    = "'2972 Westheimer Rd. '"
+                                [addressCardPostalCode] = "'85486'"
+                                [addressCardCity]       = "'Santa Ana, Illinois '"
+                                [addressCardCountry]    = "'United States of America'"
+                                [addressCardShowButton] = "true"
+                            ></app-address-card>
+            
+                        </div>
+            
+                    </div>
+                </div>
+                
             </div>
 
+            <div class="empty-text container" *ngIf="(numberOfAddresses == 0)">There is no delivery address yet.</div>
+            
         </div>
+
     </div>
 
 </main>

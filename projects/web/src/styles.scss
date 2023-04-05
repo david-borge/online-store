@@ -711,6 +711,10 @@ app-footer {
     padding-top: var(--espacio-vertical);
 }
 
+.empty-text {
+    text-align: center;
+}
+
 
 
 // TODO: ¿mover a su propio componente en SharedModule?

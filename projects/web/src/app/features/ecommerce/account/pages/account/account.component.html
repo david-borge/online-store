@@ -86,14 +86,14 @@
 
     </div>
 
-    <!-- Orders -->
+    <!-- Active Orders -->
     <div class="section">
 
         <!-- Section Header -->
         <app-section-header
             [sectionHeaderTitleTag]      = "'h2'"
             [sectionHeaderTitleClass]    = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Orders'"
+            [sectionHeaderTitleText]     = "'Active Orders'"
             [sectionHeaderLink]          = "true"
             [sectionHeaderLinkURL]       = "'orders'"
             [sectionHeaderLinkText]      = "'View all'"
@@ -101,7 +101,7 @@
 
         <div class="container">
                 
-            <!-- Orders List -->
+            <!-- Active Orders List -->
             <div class="orders-list" *ngIf="(numberOfOrders > 0)">
 
                 <!-- Product Card -->

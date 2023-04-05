@@ -10,4 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AddressesComponent {
 
+  // TODO:
+  numberOfAddresses :number = 3;
+
 }
