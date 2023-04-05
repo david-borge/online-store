@@ -56,7 +56,7 @@
     display: none;
 }
 
-.product-card-featured .product-card-price {
+.product-card-featured .product-or-order-card-price {
     margin-top: 16px;
 }
 
@@ -79,7 +79,84 @@
     display: none;
 }
 
-.product-card-small .product-card-price {
+.product-card-small .product-or-order-card-price {
     margin-top: 8px;
     font-size: 14px;
+}
+
+
+
+// Product Card - Order
+.product-card-order {
+    border: 1px solid var(--N200);
+    border-radius: var(--card-border-radius);
+}
+
+.product-card-order a {
+    border-radius: var(--card-border-radius);
+    padding: 8px 16px;
+
+    display: flex;
+    gap: 16px;
+}
+
+// Product Card - Order - Image Container
+.product-card-order .product-card-image-container {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+}
+
+// Product Card - Order - Product or Order Copy Container
+.product-or-order-card-copy-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+// Product Card - Order - Order total
+.order-total {
+    margin-bottom: 4px;
+
+    @include label-12px-regular;
+    color: var(--N400);
+}
+
+// Product Card - Order - Price
+.product-card-order .product-or-order-card-price {
+    margin-bottom: 12px;
+
+    @include label-14px-regular;
+}
+
+
+// Product Card - Order - Order Arrival Date
+.order-arrival-date {
+    margin-bottom: 4px;
+
+    @include label-12px-medium;
+    color: var(--O500);
+}
+
+// Product Card - Order - Order Button
+.order-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+// Product Card - Order - Order Button - Icon
+.order-button--icon-container {
+    border: 1px solid var(--N800);
+    border-radius: 50%;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

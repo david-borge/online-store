@@ -490,6 +490,9 @@
     --P500: #DEAAEF;
     --P300: #E7D1EE;
     --P100: #F6EFF8;
+    
+    // Colores - Figma - Orange
+    --O500: #D68F26;
 
 }
 
@@ -639,6 +642,15 @@ app-root {
 main {
     flex: 1;
     padding-bottom: var(--espacio-vertical);
+}
+
+
+
+// Disable Text Selection
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 

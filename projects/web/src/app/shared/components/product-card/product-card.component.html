@@ -3,6 +3,7 @@
 
     <a routerLink="/product">
 
+        <!-- Product Image -->
         <div class="product-card-image-container">
             <picture>
                 <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
@@ -10,18 +11,40 @@
             </picture>
         </div>
 
-        <div class="product-card-name">
-            <h3>Chuck 70 Hi Sneakers</h3>
+        <!-- Product or Order Copy Container -->
+        <div class="product-or-order-card-copy-container">
+
+            <!-- Product Name -->
+            <div class="product-card-name" *ngIf="(productCardTypeClass != 'product-card-order')">
+                <h3>Chuck 70 Hi Sneakers</h3>
+            </div>
+
+            <!-- Product Manufacturer -->
+            <div class="product-card-manufacturer" *ngIf="(productCardTypeClass != 'product-card-order')">Converse</div>
+
+            <!-- Product Rating -->
+            <app-product-rating
+                *ngIf="(productCardTypeClass == 'product-card-small')"
+            ></app-product-rating>
+
+            <!-- Order Total -->
+            <div class="order-total" *ngIf="(productCardTypeClass == 'product-card-order')">Order total</div>
+
+            <!-- Product or Order Price -->
+            <div class="product-or-order-card-price">$70.99</div>
+
+            <!-- Order Arrival Date -->
+            <div class="order-arrival-date" *ngIf="(productCardTypeClass == 'product-card-order')">Arriving tomorrow</div>
+
         </div>
 
-        <div class="product-card-manufacturer">Converse</div>
-
-        <!-- Product Rating -->
-        <app-product-rating
-            *ngIf="(productCardTypeClass == 'product-card-small')"
-        ></app-product-rating>
-
-        <div class="product-card-price">$70.99</div>
+        <!-- Order Button -->
+        <div class="order-button" *ngIf="(productCardTypeClass == 'product-card-order')">
+            <div class="order-button--icon-container">
+                <!-- Icon: chevron-right -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
 
     </a>
 
