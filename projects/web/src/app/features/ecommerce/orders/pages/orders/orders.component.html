@@ -11,63 +11,83 @@
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(87px + var(--espacio-vertical));">
 
-    <div class="section section-with-bottom-separator">
+    <div class="illustration-and-content-container">
 
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClass]    = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Active orders'"
-        ></app-section-header>
+        <div class="illustration-container">
 
-        <div class="container">
-                
-            <!-- Active Orders List -->
-            <div class="orders-list">
-
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-order'"
-                    [productCardURL]       = "'/order/1'"
-                ></app-product-card>
-
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-order'"
-                    [productCardURL]       = "'/order/1'"
-                ></app-product-card>
-
-            </div>
+            <!-- No Orders Informative Card -->
+            <app-informative-card *ngIf="(numberOfOrders == 0)"></app-informative-card>
 
         </div>
 
-    </div>
+        <div class="content-container" *ngIf="(numberOfOrders > 0)">
 
-    <div class="section">
+            <!-- Active & Previous Orders -->
+            <div>
+                    
+                <div class="section section-with-bottom-separator">
 
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClass]    = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Previous orders'"
-        ></app-section-header>
+                    <!-- Section Header -->
+                    <app-section-header
+                        [sectionHeaderTitleTag]      = "'h2'"
+                        [sectionHeaderTitleClass]    = "'heading-4'"
+                        [sectionHeaderTitleText]     = "'Active orders'"
+                    ></app-section-header>
 
-        <div class="container">
-                
-            <!-- Previous Orders List -->
-            <div class="orders-list">
+                    <div class="container">
+                            
+                        <!-- Active Orders List -->
+                        <div class="orders-list">
 
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-order'"
-                    [productCardURL]       = "'/order/1'"
-                ></app-product-card>
+                            <!-- Product Card -->
+                            <app-product-card
+                                [productCardTypeClass] = "'product-card-order'"
+                                [productCardURL]       = "'/order/1'"
+                            ></app-product-card>
 
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-order'"
-                    [productCardURL]       = "'/order/1'"
-                ></app-product-card>
+                            <!-- Product Card -->
+                            <app-product-card
+                                [productCardTypeClass] = "'product-card-order'"
+                                [productCardURL]       = "'/order/1'"
+                            ></app-product-card>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="section">
+
+                    <!-- Section Header -->
+                    <app-section-header
+                        [sectionHeaderTitleTag]      = "'h2'"
+                        [sectionHeaderTitleClass]    = "'heading-4'"
+                        [sectionHeaderTitleText]     = "'Previous orders'"
+                    ></app-section-header>
+
+                    <div class="container">
+                            
+                        <!-- Previous Orders List -->
+                        <div class="orders-list">
+
+                            <!-- Product Card -->
+                            <app-product-card
+                                [productCardTypeClass] = "'product-card-order'"
+                                [productCardURL]       = "'/order/1'"
+                            ></app-product-card>
+
+                            <!-- Product Card -->
+                            <app-product-card
+                                [productCardTypeClass] = "'product-card-order'"
+                                [productCardURL]       = "'/order/1'"
+                            ></app-product-card>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
