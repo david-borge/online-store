@@ -55,6 +55,12 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./features/ecommerce/account/account.module').then( (modulo) => modulo.AccountModule )
   },
+  
+  // Orders Page
+  {
+    path: 'orders',
+    loadChildren: () => import('./features/ecommerce/orders/orders.module').then( (modulo) => modulo.OrdersModule )
+  },
 
 ];
 

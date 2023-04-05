@@ -9,7 +9,7 @@
 ></app-header>
     
 <!-- Main -->
-<main role="main" style="padding-bottom: calc(83px + var(--espacio-vertical));">
+<main role="main" style="padding-bottom: calc(87px + var(--espacio-vertical));">
 
     <!-- Profile Information Container -->
     <div class="section section-with-bottom-separator">
@@ -67,16 +67,19 @@
             <!-- Account Card -->
             <app-account-card
                 [accountCardTitle] = "'Orders'"
+                [accountCardURL]   = "'/orders'"
             ></app-account-card>
 
             <!-- Account Card -->
             <app-account-card
                 [accountCardTitle] = "'Addresses'"
+                [accountCardURL]   = "'/addresses'"
             ></app-account-card>
 
             <!-- Account Card -->
             <app-account-card
                 [accountCardTitle] = "'Payment Methods'"
+                [accountCardURL]   = "'/payment-methods'"
             ></app-account-card>
 
         </div>
@@ -104,11 +107,13 @@
                 <!-- Product Card -->
                 <app-product-card
                     [productCardTypeClass] = "'product-card-order'"
+                    [productCardURL]       = "'/order/0'"
                 ></app-product-card>
 
                 <!-- Product Card -->
                 <app-product-card
                     [productCardTypeClass] = "'product-card-order'"
+                    [productCardURL]       = "'/order/0'"
                 ></app-product-card>
 
             </div>

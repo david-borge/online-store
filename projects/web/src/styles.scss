@@ -545,7 +545,7 @@ $body-color: var(--N800);
     transform: translateX(-50%);
 
     height: 1px;
-    background-color: var(--N400);
+    background-color: var(--N300);
 }
 
 
@@ -662,38 +662,12 @@ body {
 
 
 
-// App Categories Tag - Clases for <router-outlet>
-.app-categories-classes-for-router-outlet {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-// App Category Tag - Clases for <router-outlet>
-.app-category-classes-for-router-outlet {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-// App Category Detail Tag - Clases for <router-outlet>
-.app-category-detail-classes-for-router-outlet {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-// App Cart Tag - Clases for <router-outlet>
-.app-cart-classes-for-router-outlet {
+// Varias Pages - Clases for <router-outlet>
+.app-categories-classes-for-router-outlet,
+.app-category-classes-for-router-outlet,
+.app-category-detail-classes-for-router-outlet,
+.app-cart-classes-for-router-outlet,
+.app-orders-classes-for-router-outlet {
     flex: 1;
 
     display: flex;
@@ -734,4 +708,14 @@ app-footer {
 
 .content-container {
     padding-top: var(--espacio-vertical);
+}
+
+
+
+// TODO: ¿mover a su propio componente en SharedModule?
+// Orders List
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-between-cards);
 }

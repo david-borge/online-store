@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductCardComponent {
 
+  // Propiedades - Product Card
+  @Input() productCardURL: string = '';
+
   // Propiedades - Product Card - Featured
   @Input() productCardTypeClass: string = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
 

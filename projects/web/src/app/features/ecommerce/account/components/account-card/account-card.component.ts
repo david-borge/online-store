@@ -10,5 +10,6 @@ export class AccountCardComponent {
   // Propiedades - Account Card
   // @Input() accountCardIcon  :string = '';
   @Input() accountCardTitle :string = '';
+  @Input() accountCardURL   :string = '';
 
 }
