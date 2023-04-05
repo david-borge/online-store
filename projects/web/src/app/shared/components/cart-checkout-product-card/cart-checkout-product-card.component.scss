@@ -11,6 +11,8 @@
 
     display: flex;
     gap: 16px;
+
+    --cart-and-checkout-product-card-border-radius: 6px;
 }
 
 // Cart and Checkout Product Card - Image
@@ -41,6 +43,7 @@
 // Cart and Checkout Product Card - Information - Price
 .cart-and-checkout-product-card--price {
     @include label-14px-regular;
+    white-space: nowrap;
 }
 
 // Cart and Checkout Product Card - Item Count
@@ -52,7 +55,7 @@
 
 .cart-and-checkout-product-card--item-count {
     border: 1px solid var(--N200);
-    border-radius: 6px;
+    border-radius: var(--cart-and-checkout-product-card-border-radius);
 
     height: 36px;
 
@@ -76,6 +79,13 @@
 
     width: 46px;
     height: 100%;
+
+    border-radius: 0;
+}
+
+.cart-and-checkout-product-card--item-count--minus-and-delete button:active,
+.cart-and-checkout-product-card--item-count--plus button:active {
+    background-color: var(--N100);
 }
 
 .cart-and-checkout-product-card--item-count--quantity-container,
@@ -97,7 +107,10 @@
 .cart-and-checkout-product-card--item-count--quantity {
     min-width: 20px;
 
+    @include label-14px-medium;
     text-align: center;
+    max-width: 60px;
+    // TODO: change font-size based on number of characters to prevent overflow.
 }
 
 .cart-and-checkout-product-card--item-count--minus {
@@ -108,7 +121,31 @@
     
 }
 
-.cart-and-checkout-product-card--item-count--minus-and-delete button,
-.cart-and-checkout-product-card--item-count--plus button {
+.cart-and-checkout-product-card--item-count--minus-and-delete button {
+    border-bottom-left-radius: var(--cart-and-checkout-product-card-border-radius);
+    border-top-left-radius: var(--cart-and-checkout-product-card-border-radius);
+}
 
+.cart-and-checkout-product-card--item-count--minus-and-delete button.delete-button {
+    border-color: var(--R500);
+    background-color: var(--R500);
+}
+
+.cart-and-checkout-product-card--item-count--minus-and-delete button.delete-button:active {
+    opacity: 0.9;
+}
+
+.cart-and-checkout-product-card--item-count--delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-and-checkout-product-card--item-count--delete svg {
+    width: 18px;
+}
+
+.cart-and-checkout-product-card--item-count--plus button {
+    border-bottom-right-radius: var(--cart-and-checkout-product-card-border-radius);
+    border-top-right-radius: var(--cart-and-checkout-product-card-border-radius);
 }

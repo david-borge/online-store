@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class CartCheckoutProductCardComponent {
 
+  // TODO:
+  theHobbitItemCount :number = 1;
+
+  onClickMinusOrDeleteButton() {
+    if( this.theHobbitItemCount > 1 ) {
+      this.theHobbitItemCount--;
+    } else {
+      // TODO: borrar producto del array
+    }
+  }
+
+  onClickPlusButton() {
+    this.theHobbitItemCount++;
+  }
+
 }
