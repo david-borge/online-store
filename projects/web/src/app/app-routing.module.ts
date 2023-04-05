@@ -74,6 +74,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/ecommerce/addresses/addresses.module').then( (modulo) => modulo.AddressesModule )
   },
 
+  // Payment Methods Page
+  {
+    path: 'payment-methods',
+    loadChildren: () => import('./features/ecommerce/payment-methods/payment-methods.module').then( (modulo) => modulo.PaymentMethodsModule )
+  },
+
 ];
 
 @NgModule({

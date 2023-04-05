@@ -1,0 +1,61 @@
+<!-- Payment Methods Page -->
+
+
+
+<!-- Header Tag -->
+<app-header
+    [headerTagType] = "'overlay-header-subpage'"
+    [overlayHeaderPageTitle] = "'Payment Methods'"
+></app-header>
+    
+<!-- Main -->
+<main role="main" style="padding-bottom: calc(87px + var(--espacio-vertical));">
+
+    <div class="section">
+        <div class="container">
+
+            <!-- Payment Method Card List -->
+            <div class="payment-method-card-list">
+
+                <!-- Payment Method -->
+                <app-credit-card
+                    [creditCardSelected]        = "true"
+                    [creditCardType]            = "'mastercard'"
+                    [creditCardBankName]        = "'Bank of America'"
+                    [creditCardPersonName]      = "'Leslie Flores'"
+                    [creditCardLastFourNumbers] = "'0817'"
+                    [creditCardExpirationDate]  = "'12/25'"
+                    [creditCardShowButton]      = "true"
+                ></app-credit-card>
+
+                <!-- Payment Method -->
+                <app-credit-card
+                    [creditCardSelected]        = "false"
+                    [creditCardType]            = "'visa'"
+                    [creditCardBankName]        = "'Goldman Sachs'"
+                    [creditCardPersonName]      = "'Joseph Simon'"
+                    [creditCardLastFourNumbers] = "'8406'"
+                    [creditCardExpirationDate]  = "'06/28'"
+                    [creditCardShowButton]      = "true"
+                ></app-credit-card>
+
+                <!-- Payment Method -->
+                <app-credit-card
+                    [creditCardSelected]        = "false"
+                    [creditCardType]            = "'mastercard'"
+                    [creditCardBankName]        = "'Bank of America'"
+                    [creditCardPersonName]      = "'Leslie Flores'"
+                    [creditCardLastFourNumbers] = "'0817'"
+                    [creditCardExpirationDate]  = "'12/25'"
+                    [creditCardShowButton]      = "true"
+                ></app-credit-card>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+  
+<!-- Footer Tag -->
+<app-footer></app-footer>
