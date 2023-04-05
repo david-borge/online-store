@@ -1,0 +1,35 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Order Dates
+.date-with-title-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+
+// Order Total - Title
+.order-total-title * {
+    margin-bottom: 0;
+
+    @include label-14px-medium;
+    color: var(--N600);
+}
+
+// Order Total - Price
+.order-total-price * {
+    @include label-20px-semi-bold;
+}
+
+
+
+// Order Products List
+.order-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

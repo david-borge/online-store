@@ -121,7 +121,7 @@
 .order-total {
     margin-bottom: 4px;
 
-    @include label-12px-regular;
+    @include label-12px-medium;
     color: var(--N400);
 }
 
@@ -129,7 +129,7 @@
 .product-card-order .product-or-order-card-price {
     margin-bottom: 12px;
 
-    @include label-14px-regular;
+    @include label-14px-medium;
 }
 
 
@@ -137,7 +137,7 @@
 .order-arrival-date {
     margin-bottom: 4px;
 
-    @include label-12px-medium;
+    @include label-12px-semi-bold;
     color: var(--O500);
 }
 

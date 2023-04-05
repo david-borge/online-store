@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cart-checkout-product-card',
@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart-checkout-product-card.component.scss']
 })
 export class CartCheckoutProductCardComponent {
+
+  // Propiedades - Cart and Checkout Product Card - Navigation CTAs & Copy
+  @Input() cartCheckoutProductCardShowButtons :boolean = true;
 
   // TODO:
   theHobbitItemCount :number = 1;

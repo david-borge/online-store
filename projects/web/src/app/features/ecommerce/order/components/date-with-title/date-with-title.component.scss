@@ -1,0 +1,35 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Date with Title
+.date-with-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+// Date with Title - Title
+.date-with-title--title-container {
+    display: flex;
+    align-items: center;
+}
+
+.date-with-title--title-container * {
+    margin-bottom: 0;
+
+    @include heading-4;
+}
+
+// Date with Title - Date
+.date-with-title--date-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.date-with-title--date-container * {
+    @include label-14px-medium;
+    color: var(--N600);
+}

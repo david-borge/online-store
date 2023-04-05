@@ -14,7 +14,7 @@
 .product-reviews-item--title {
     flex: 1;
 
-    @include label-16px-medium;
+    @include label-16px-semi-bold;
 
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
 .product-reviews-item--title * {
     margin-bottom: 0;
 
-    @include label-16px-medium;
+    @include label-16px-semi-bold;
 }
 
 // Product Reviews Item - Review Item - Rating

@@ -1,0 +1,134 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Credit Card
+.credit-card {
+    border-radius: var(--card-border-radius);
+}
+
+.credit-card:not(.credit-card-selected) {
+    background-color: var(--N100);
+}
+
+
+
+// Credit Card - Button
+.credit-card > button {
+    position: relative;
+    overflow: hidden;
+
+    border: 0;
+    border-radius: var(--card-border-radius);
+    padding: 16px 0 16px 16px;
+    background-color: unset;
+
+    width: 100%;
+    height: 192px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+// Credit Card - Top Info
+.credit-card--top-info {
+}
+
+// Credit Card - Bank Name
+.credit-card--bank-name {
+    @include heading-4;
+    color: var(--N900);
+}
+
+// Credit Card - Person Name
+.credit-card--person-name {
+    @include label-14px-medium;
+    color: var(--N900);
+    text-align: left;
+}
+
+
+
+// Credit Card - Bottom Info
+.credit-card--bottom-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+// Credit Card - Last Four Numbers
+.credit-card--last-four-numbers--numbers,
+.credit-card--last-four-numbers--asterics {
+    @include label-14px-medium;
+    color: var(--N900);
+}
+
+// Credit Card - Expiration Date
+.credit-card--expiration-date-container {
+    display: flex;
+    gap: 12px;
+}
+
+.credit-card--expiration-date--title {
+    @include label-12px-medium;
+    color: var(--N900);
+}
+
+.credit-card--expiration-date--date {
+    @include label-12px-medium;
+    color: var(--N900);
+}
+
+
+
+// Credit Card - Icon Type (Master Card, Visa)
+.credit-card--icon-type-container {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    display: flex;
+}
+
+
+
+// Credit Card - Interior Button
+.credit-card--interior-button-container {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+
+    display: flex;
+}
+
+
+
+// Credit Card - Background Image
+.credit-card--background-image {
+    position: absolute;
+    top: 44px;
+    right: -49px;
+}
+
+
+
+// Credit Card - Selected
+.credit-card-selected {
+    background-color: var(--N800);
+}
+
+.credit-card-selected .credit-card--bank-name,
+.credit-card-selected .credit-card--expiration-date--date {
+    color: white;
+}
+
+.credit-card-selected .credit-card--person-name,
+.credit-card-selected .credit-card--last-four-numbers--numbers,
+.credit-card-selected .credit-card--last-four-numbers--asterics,
+.credit-card-selected .credit-card--expiration-date--title {
+    color: var(--N100);
+}

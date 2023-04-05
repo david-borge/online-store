@@ -62,6 +62,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/ecommerce/orders/orders.module').then( (modulo) => modulo.OrdersModule )
   },
 
+  // Order Page (/order/1234)
+  {
+    path: 'order',
+    loadChildren: () => import('./features/ecommerce/order/order.module').then( (modulo) => modulo.OrderModule )
+  },
+
 ];
 
 @NgModule({

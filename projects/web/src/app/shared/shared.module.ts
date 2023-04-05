@@ -10,6 +10,8 @@ import { ProductReviewsItemComponent } from './components/product-reviews-item/p
 import { ProductsGridComponent } from './components/products-grid/products-grid.component';
 import { CartCheckoutProductCardComponent } from './components/cart-checkout-product-card/cart-checkout-product-card.component';
 import { InformativeCardComponent } from './components/informative-card/informative-card.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { AddressCardComponent } from './components/address-card/address-card.component';
 
 
 
@@ -23,6 +25,8 @@ import { InformativeCardComponent } from './components/informative-card/informat
     ProductsGridComponent,
     CartCheckoutProductCardComponent,
     InformativeCardComponent,
+    CreditCardComponent,
+    AddressCardComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,8 @@ import { InformativeCardComponent } from './components/informative-card/informat
     ProductsGridComponent,
     CartCheckoutProductCardComponent,
     InformativeCardComponent,
+    CreditCardComponent,
+    AddressCardComponent,
   ],
 
 })

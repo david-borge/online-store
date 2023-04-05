@@ -358,7 +358,7 @@
 }
 
 
-@mixin label-20px-medium {
+@mixin label-20px-semi-bold {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -366,28 +366,15 @@
     line-height: 125%;
 }
 
-.label-20px-medium {
-    @include label-20px-medium;
-}
-
-
-@mixin label-16px-regular {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 125%;
-}
-
-.label-16px-regular {
-    @include label-16px-regular;
+.label-20px-semi-bold {
+    @include label-20px-semi-bold;
 }
 
 
 @mixin label-16px-medium {
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     line-height: 125%;
 }
@@ -397,23 +384,23 @@
 }
 
 
-@mixin label-14px-regular {
+@mixin label-16px-semi-bold {
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 16px;
     line-height: 125%;
 }
 
-.label-14px-regular {
-    @include label-14px-regular;
+.label-16px-semi-bold {
+    @include label-16px-semi-bold;
 }
 
 
 @mixin label-14px-medium {
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     line-height: 125%;
 }
@@ -423,7 +410,20 @@
 }
 
 
-@mixin label-12px-regular {
+@mixin label-14px-semi-bold {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 125%;
+}
+
+.label-14px-semi-bold {
+    @include label-14px-semi-bold;
+}
+
+
+@mixin label-12px-medium {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -431,12 +431,12 @@
     line-height: 125%;
 }
 
-.label-12px-regular {
-    @include label-12px-regular;
+.label-12px-medium {
+    @include label-12px-medium;
 }
 
 
-@mixin label-12px-medium {
+@mixin label-12px-semi-bold {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -444,8 +444,8 @@
     line-height: 125%;
 }
 
-.label-12px-medium {
-    @include label-12px-medium;
+.label-12px-semi-bold {
+    @include label-12px-semi-bold;
 }
 
 
@@ -532,7 +532,7 @@ $body-color: var(--N800);
 .section-with-bottom-separator {
     position: relative;
     
-    padding-bottom: 40px; 
+    padding-bottom: var(--espacio-vertical); 
 }
 
 .section-with-bottom-separator::after {

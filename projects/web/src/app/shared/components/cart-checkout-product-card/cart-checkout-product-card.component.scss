@@ -42,7 +42,7 @@
 
 // Cart and Checkout Product Card - Information - Price
 .cart-and-checkout-product-card--price {
-    @include label-14px-regular;
+    @include label-14px-medium;
     white-space: nowrap;
 }
 
@@ -89,7 +89,6 @@
 }
 
 .cart-and-checkout-product-card--item-count--quantity-container,
-.cart-and-checkout-product-card--item-count--quantity,
 .cart-and-checkout-product-card--item-count--minus,
 .cart-and-checkout-product-card--item-count--plus {
     display: flex;
@@ -98,19 +97,36 @@
 }
 
 .cart-and-checkout-product-card--item-count--quantity-container {
-    border-right: 1px solid var(--N200);
-    border-left: 1px solid var(--N200);
     padding-right: 12px;
     padding-left: 12px;
+}
+
+.cart-and-checkout-product-card--item-count--quantity-container:not(.no-buttons) {
+    border-right: 1px solid var(--N200);
+    border-left: 1px solid var(--N200);
+}
+
+.cart-and-checkout-product-card--item-count--quantity-container.no-buttons {
+    border-radius: var(--cart-and-checkout-product-card-border-radius);
+}
+
+.cart-and-checkout-product-card--item-count--quantity-container.no-buttons .cart-and-checkout-product-card--item-count--quantity::before {
+    content: "x";
+    margin-right: 3px;
 }
 
 .cart-and-checkout-product-card--item-count--quantity {
     min-width: 20px;
 
-    @include label-14px-medium;
+    @include label-14px-semi-bold;
     text-align: center;
     max-width: 60px;
     // TODO: change font-size based on number of characters to prevent overflow.
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .cart-and-checkout-product-card--item-count--minus {

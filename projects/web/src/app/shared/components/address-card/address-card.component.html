@@ -1,0 +1,17 @@
+<!-- Address Card -->
+<div class="address-card" [ngClass]="{ 'address-card-selected': addressCardSelected }">
+
+    <div class="address-card--copy-container">
+
+        <div class="address-card--person-name">{{addressCardPersonName}}</div>
+        <div class="address-card--address">{{addressCardAddress}}</div>
+        <div class="address-card--postal-code-and-city">{{addressCardPostalCode}}, {{addressCardCity}}</div>
+        <div class="address-card--country">{{addressCardCountry}}</div>
+
+    </div>
+
+    <div class="address-card--button-container" *ngIf="addressCardShowButton">
+
+    </div>
+
+</div>

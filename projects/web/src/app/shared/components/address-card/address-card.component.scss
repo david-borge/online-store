@@ -1,0 +1,47 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Address Card
+.address-card {
+    border-radius: var(--card-border-radius);
+    padding: 16px;
+}
+
+.address-card:not(.address-card-selected) {
+    background-color: var(--N100);
+}
+
+
+
+// Address Card - Copy
+.address-card--person-name {
+    margin-bottom: 8px;
+
+    @include label-16px-medium;
+}
+
+.address-card--address,
+.address-card--postal-code-and-city,
+.address-card--country {
+    @include body-14px-regular;
+    color: var(--N600);
+}
+
+
+
+// Address Card - Selected
+.address-card.address-card-selected {
+    background-color: var(--N800);
+}
+
+.address-card-selected .address-card--person-name {
+    color: white;
+}
+
+.address-card-selected .address-card--address,
+.address-card-selected .address-card--postal-code-and-city,
+.address-card-selected .address-card--country {
+    color: var(--N100);
+}
