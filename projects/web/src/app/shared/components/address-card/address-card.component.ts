@@ -13,7 +13,7 @@ export class AddressCardComponent {
   @Input() addressCardAddress    :string  = "";
   @Input() addressCardPostalCode :string  = "";
   @Input() addressCardCity       :string  = "";
-  @Input() addressCardCountry     :string  = "";
+  @Input() addressCardCountry    :string  = "";
   @Input() addressCardShowButton :boolean = false;
 
 }

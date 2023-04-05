@@ -6,7 +6,6 @@
 // Address Card
 .address-card {
     border-radius: var(--card-border-radius);
-    padding: 16px;
 }
 
 .address-card:not(.address-card-selected) {
@@ -15,11 +14,37 @@
 
 
 
+// Address Card - Button
+.address-card > button {
+    position: relative;
+    overflow: hidden;
+
+    border: 0;
+    border-radius: var(--card-border-radius);
+    padding: 16px;
+    background-color: unset;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 16px;
+}
+
+
+
 // Address Card - Copy
+.card--copy-container {
+    flex: 1;
+}
+
 .address-card--person-name {
     margin-bottom: 8px;
 
     @include label-16px-medium;
+    text-align: left;
 }
 
 .address-card--address,
@@ -27,6 +52,16 @@
 .address-card--country {
     @include body-14px-regular;
     color: var(--N600);
+    text-align: left;
+}
+
+
+
+// Address Card - Interior Button
+.address-card--interior-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 

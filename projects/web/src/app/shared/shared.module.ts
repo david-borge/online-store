@@ -12,6 +12,7 @@ import { CartCheckoutProductCardComponent } from './components/cart-checkout-pro
 import { InformativeCardComponent } from './components/informative-card/informative-card.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { AddressCardComponent } from './components/address-card/address-card.component';
+import { SelectButtonComponent } from './components/select-button/select-button.component';
 
 
 
@@ -27,6 +28,7 @@ import { AddressCardComponent } from './components/address-card/address-card.com
     InformativeCardComponent,
     CreditCardComponent,
     AddressCardComponent,
+    SelectButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { AddressCardComponent } from './components/address-card/address-card.com
     InformativeCardComponent,
     CreditCardComponent,
     AddressCardComponent,
+    SelectButtonComponent,
   ],
 
 })

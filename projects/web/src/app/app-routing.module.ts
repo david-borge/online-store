@@ -68,6 +68,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/ecommerce/order/order.module').then( (modulo) => modulo.OrderModule )
   },
 
+  // Addresses Page
+  {
+    path: 'addresses',
+    loadChildren: () => import('./features/ecommerce/addresses/addresses.module').then( (modulo) => modulo.AddressesModule )
+  },
+
 ];
 
 @NgModule({

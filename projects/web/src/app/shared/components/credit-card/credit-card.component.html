@@ -50,7 +50,12 @@
 
         <!-- Credit Card - Button -->
         <div class="credit-card--interior-button-container" *ngIf="creditCardShowButton">
-            <button class="btn">Select</button>
+            
+            <!-- Select Button -->
+            <app-select-button
+                [selectButtonSelected] = "creditCardSelected"
+            ></app-select-button>
+            
         </div>
 
         <!-- Credit Card - Background Image -->

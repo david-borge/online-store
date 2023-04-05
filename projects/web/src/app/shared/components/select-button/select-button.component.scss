@@ -1,0 +1,34 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Select Button
+.select-button {
+    padding: 9px 8px;
+}
+
+.select-button--label {
+    @include label-14px-medium;
+}
+
+.select-button--icon {
+
+}
+
+
+
+// Select Button - Selected
+.select-button--selected {
+    border-color: var(--Y300);
+    background-color: var(--Y300);
+
+    width: 36px;
+    height: 36px;
+}
+
+.select-button--selected .select-button--icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
