@@ -1,0 +1,65 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Informative Card
+.informative-card {
+    border-radius: var(--card-border-radius);
+    padding: 32px;
+    background-color: var(--G300);
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+// Informative Card - Image Container
+.informative-card--image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+// Informative Card - Copy Container
+.informative-card--copy-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+// Informative Card - Headline Container
+.informative-card--headline-container {
+    display: flex;
+    justify-content: center;
+}
+
+.informative-card--headline-container * {
+    @include heading-3;
+    text-align: center;
+}
+
+// Informative Card - Content Container
+.informative-card--content-container * {
+    @include body-14px-medium;
+    color: var(--N600);
+    text-align: center;
+}
+
+// Informative Card - Button Container
+.informative-card--button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.informative-card--button-container * {
+    min-height: 48px;
+    width: 100%;
+
+    color: var(--N800);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

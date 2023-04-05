@@ -38,6 +38,7 @@ import { InformativeCardComponent } from './components/informative-card/informat
     ProductReviewsItemComponent,
     ProductsGridComponent,
     CartCheckoutProductCardComponent,
+    InformativeCardComponent,
   ],
 
 })
