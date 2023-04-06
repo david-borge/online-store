@@ -10,7 +10,10 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+
 import { ProductInterface } from '../../models/product.interface';
+import { CategoryInterface } from '../../models/category.interface';
+
 import { environment } from 'projects/web/src/environments/environment.development';
 
 // (Antiguo) Firestore Database
@@ -27,10 +30,18 @@ export class DataStorageService {
     private httpClient: HttpClient
   ) {}
 
-  // Get all products
+  // Get all Products
   getAllProducts() {
     return this.httpClient
       .get<ProductInterface[]>(environment.baseUrl + '/getAllProducts.php', {})
+      // .pipe()
+      ;
+  }
+
+  // Get all Categories
+  getAllCategories() {
+    return this.httpClient
+      .get<CategoryInterface[]>(environment.baseUrl + '/getAllCategories.php', {})
       // .pipe()
       ;
   }

@@ -8,12 +8,11 @@ export interface ProductInterface {
     category                     : string;
     imageThumbnail               : string;
     imageFull                    : string;
-    reviews                      : string;
+    imageWidth                   : string;
+    imageHeight                  : string;
+    ratingNumber                 : number;
     cardAndHeaderBackgroundColor : string;
     deal                         : boolean;
     featured                     : boolean;
-
-    // nombreMetodo: (param1, param2) => tipoDeDatoQueDevuelveElMétodo;
-    // greet: () => void;
 
 }

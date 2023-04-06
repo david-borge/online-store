@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 @Component({
   selector: 'app-category-card',
@@ -7,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./category-card.component.scss']
 })
 export class CategoryCardComponent {
+
+  @Input() category = {} as CategoryInterface;
 
   constructor(
     public router: Router,

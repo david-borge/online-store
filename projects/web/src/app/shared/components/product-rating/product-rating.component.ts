@@ -9,6 +9,7 @@ export class ProductRatingComponent {
 
   // Propiedades - Product Rading - Number of Reviews
   @Input() productCardRatingShowNumberOfReviews :boolean = false;
+  @Input() productCardRatingNumber              :number  = 0;
 
 
 }
