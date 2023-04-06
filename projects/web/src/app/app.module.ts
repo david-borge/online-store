@@ -4,20 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { environment } from '../environments/environment.development';
+// (Antiguo) Firestore Database
+// import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+// import { environment } from '../environments/environment.development';
 
-// Mis módulos personalizados
-// import { EcommerceModule } from './features/ecommerce/ecommerce.module';
-
-// Mis componentes personalizados
-// Nota: hay que poner el import para que TypeScript los encuentre. No hace falta poner el .ts, eso ya lo hace webpack automáticamente al hacer el bundle
-// ...
-
-// Mis directivas personalizadas
-// ...
 
 @NgModule({
 
@@ -44,9 +37,12 @@ import { environment } from '../environments/environment.development';
 
     // EcommerceModule,
     SharedModule,
+    
+    HttpClientModule,
 
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideFirestore(() => getFirestore()),
+    // (Antiguo) Firestore Database
+    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    // provideFirestore(() => getFirestore()),
   ],
   
   // Providers: incluye los Services (SOLO en Angular 5 o menor).

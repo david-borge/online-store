@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
 
@@ -8,6 +9,8 @@ import { DataStorageService } from 'projects/web/src/app/core/services/data-stor
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+  allProducts : ProductInterface[] = [];
 
   constructor(
     private dataStorageService: DataStorageService,  // Inyectar una instancia del servicio en el componente
@@ -23,6 +26,8 @@ export class HomeComponent {
         console.log('responseData get:');
         console.log(responseData);
 
+        this.allProducts = responseData;
+
       },
 
       // El segundo parámetro es para recoger los errores del servidor
@@ -35,7 +40,7 @@ export class HomeComponent {
       }
       
     );
-    
+
   }
 
 }

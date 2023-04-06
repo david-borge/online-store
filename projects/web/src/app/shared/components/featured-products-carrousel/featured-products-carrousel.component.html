@@ -4,9 +4,9 @@
 
         <!-- Product Card -->
         <app-product-card
-            *ngFor="let nombre_individual of featured_products_list"
+            *ngFor="let featuredProduct of featuredProductsList"
             [productCardTypeClass] = "'product-card-featured'"
-            [productCardURL]       = "'/product'"
+            [product] = "featuredProduct"
         ></app-product-card>
         
     </div>

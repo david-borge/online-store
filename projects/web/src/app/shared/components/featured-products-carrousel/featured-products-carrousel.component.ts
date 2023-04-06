@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { ProductInterface } from '../../../core/models/product.interface';
 
 @Component({
   selector: 'app-featured-products-carrousel',
@@ -8,6 +10,6 @@ import { Component } from '@angular/core';
 export class FeaturedProductsCarrouselComponent {
 
   // TODO: 
-  featured_products_list: string[] = ['1', '2', '3'];
+  @Input() featuredProductsList: ProductInterface[] = [];
 
 }

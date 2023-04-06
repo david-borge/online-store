@@ -1,29 +1,42 @@
 /*
 
-  *** Back-end en Google Firebase (usando Firestore Database) ***
-  Web: https://firebase.google.com/
-  Consola: https://console.firebase.google.com/
-  Documentación: https://firebase.google.com/docs?hl=en
-  
+  *** Back-end con base de datos relacional (MySQL en Ionos) ***
+  Entrar en: https://login.ionos.es/
   Correo: david.borge.olmedo@gmail.com
-  Proyecto en Firebase: https://console.firebase.google.com/u/0/project/online-store-7de9d/
-  Google Analytics: "Online Store"
+  Datos de conexión de la base de datos: https://docs.google.com/document/d/1QQ8aXD48xA9Iu7Uhvps1r2fUzNcRCpd5X_n41F0AiPU/edit?usp=sharing
 
 */
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
-import { Firestore, collectionData, docData } from '@angular/fire/firestore';
-import { CollectionReference, DocumentData, addDoc, collection, deleteDoc, doc, updateDoc } from '@firebase/firestore';
+import { HttpClient } from '@angular/common/http';
+import { ProductInterface } from '../../models/product.interface';
 
-import { ProductoInterface } from '../../models/producto.interface';
+// (Antiguo) Firestore Database
+// import { Firestore, collectionData, docData } from '@angular/fire/firestore';
+// import { CollectionReference, DocumentData, addDoc, collection, deleteDoc, doc, updateDoc } from '@firebase/firestore';
+
 
 @Injectable({
   providedIn: 'root'  // Injectable permite inyectar un servicio en un servicio. providedIn pone el servicio a disposición de toda la app (solo para Angular 6 o mayor; para Angular 5 o menor, añadir el servicio al providers de AppModule)
 })
 export class DataStorageService {
 
+  constructor(
+    private httpClient: HttpClient
+  ) {}
+
+  // Get all products
+  getAllProducts() {
+    return this.httpClient
+      .get<ProductInterface[]>('https://davidborge.com/pruebas/online-store-backend/getAllProducts.php', {})
+      // .pipe()
+      ;
+  }
+
+
+  
+  /* // (Antiguo) Firestore Database
   // Colecciones (https://console.firebase.google.com/u/0/project/online-store-7de9d/firestore/data/)
   private productosCollection: CollectionReference<DocumentData>;
 
@@ -37,7 +50,7 @@ export class DataStorageService {
   getAllProducts() {
     return collectionData(this.productosCollection, {
       // idField: 'id',
-    }) as Observable<ProductoInterface[]>;
-  }
+    }) as Observable<ProductInterface[]>;
+  } */
 
 }

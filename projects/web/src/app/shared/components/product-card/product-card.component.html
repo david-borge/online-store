@@ -1,13 +1,13 @@
 <!-- Product Card -->
 <div class="product-card {{productCardTypeClass}}">
 
-    <a routerLink="{{productCardURL}}">
+    <a routerLink="{{product.slug}}">
 
         <!-- Product Image -->
         <div class="product-card-image-container">
             <picture>
                 <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
-                <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="The Metamorphosis">
+                <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="{{product.name}}">
             </picture>
         </div>
 
@@ -16,11 +16,11 @@
 
             <!-- Product Name -->
             <div class="product-card-name" *ngIf="(productCardTypeClass != 'product-card-order')">
-                <h3>Chuck 70 Hi Sneakers</h3>
+                <h3>{{product.name}}</h3>
             </div>
 
             <!-- Product Manufacturer -->
-            <div class="product-card-manufacturer" *ngIf="(productCardTypeClass != 'product-card-order')">Converse</div>
+            <div class="product-card-manufacturer" *ngIf="(productCardTypeClass != 'product-card-order')">{{product.manufacturer}}</div>
 
             <!-- Product Rating -->
             <app-product-rating
@@ -31,7 +31,7 @@
             <div class="order-total" *ngIf="(productCardTypeClass == 'product-card-order')">Order total</div>
 
             <!-- Product or Order Price -->
-            <div class="product-or-order-card-price">$70.99</div>
+            <div class="product-or-order-card-price">{{product.price}}</div>
 
             <!-- Order Arrival Date -->
             <div class="order-arrival-date" *ngIf="(productCardTypeClass == 'product-card-order')">Arriving tomorrow</div>

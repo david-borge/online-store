@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ProductInterface } from '../../../core/models/product.interface';
 
 @Component({
   selector: 'app-product-card',
@@ -8,9 +9,7 @@ import { Component, Input } from '@angular/core';
 export class ProductCardComponent {
 
   // Propiedades - Product Card
-  @Input() productCardURL: string = '';
-
-  // Propiedades - Product Card - Featured
+  @Input() product = {} as ProductInterface;
   @Input() productCardTypeClass: string = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
 
 }
