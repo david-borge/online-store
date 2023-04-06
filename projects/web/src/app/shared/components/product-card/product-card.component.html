@@ -14,19 +14,23 @@
         <!-- Product or Order Copy Container -->
         <div class="product-or-order-card-copy-container">
 
-            <!-- Product Name -->
-            <div class="product-card-name" *ngIf="(productCardTypeClass != 'product-card-order')">
-                <h3>{{product.name}}</h3>
+            <div class="product-or-order-card-copy-name-manufacturer-rating-container">
+
+                <!-- Product Name -->
+                <div class="product-card-name" *ngIf="(productCardTypeClass != 'product-card-order')">
+                    <h3>{{product.name}}</h3>
+                </div>
+
+                <!-- Product Manufacturer -->
+                <div class="product-card-manufacturer" *ngIf="(productCardTypeClass != 'product-card-order')">{{product.manufacturer}}</div>
+
+                <!-- Product Rating -->
+                <app-product-rating
+                    *ngIf="(productCardTypeClass == 'product-card-small')"
+                    [productCardRatingNumber] = "product.ratingNumber"
+                ></app-product-rating>
+
             </div>
-
-            <!-- Product Manufacturer -->
-            <div class="product-card-manufacturer" *ngIf="(productCardTypeClass != 'product-card-order')">{{product.manufacturer}}</div>
-
-            <!-- Product Rating -->
-            <app-product-rating
-                *ngIf="(productCardTypeClass == 'product-card-small')"
-                [productCardRatingNumber] = "product.ratingNumber"
-            ></app-product-rating>
 
             <!-- Order Total -->
             <div class="order-total" *ngIf="(productCardTypeClass == 'product-card-order')">Order total</div>

@@ -7,6 +7,8 @@
 .product-card {
     border-radius: var(--card-border-radius);
 
+    height: 100%;
+
     display: flex;
     flex-direction: column;
 }
@@ -15,8 +17,14 @@
     border-radius: var(--card-border-radius);
     padding: 16px;
 
+    height: 100%;
+
     color: unset;
     text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .product-card-image-container {
@@ -108,10 +116,14 @@
 // Product Card - Order - Product or Order Copy Container
 .product-or-order-card-copy-container {
     flex: 1;
-
+    
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+.product-or-order-card-copy-name-manufacturer-rating-container {
+    flex: 1;
 }
 
 // Product Card - Order - Order total

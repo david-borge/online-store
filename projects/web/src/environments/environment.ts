@@ -10,7 +10,7 @@ export const environment = {
     // Configuración de producción
     
     // API URL
-    baseUrl: 'https://davidborge.com/pruebas/online-store-backend/',
+    baseUrl: 'https://davidborge.com/pruebas/online-store-backend',
     
     // (Antiguo) Firestore Database
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
