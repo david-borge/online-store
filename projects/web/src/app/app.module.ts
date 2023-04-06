@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment.development';
+
 // Mis módulos personalizados
 // import { EcommerceModule } from './features/ecommerce/ecommerce.module';
 
@@ -40,6 +44,9 @@ import { SharedModule } from './shared/shared.module';
 
     // EcommerceModule,
     SharedModule,
+
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   
   // Providers: incluye los Services (SOLO en Angular 5 o menor).
