@@ -3,7 +3,7 @@
   *** Back-end con base de datos relacional (MySQL en Ionos) ***
   Entrar en: https://login.ionos.es/
   Correo: david.borge.olmedo@gmail.com
-  Datos de conexión de la base de datos: https://docs.google.com/document/d/1QQ8aXD48xA9Iu7Uhvps1r2fUzNcRCpd5X_n41F0AiPU/edit?usp=sharing
+  Datos de la API: https://docs.google.com/document/d/1QQ8aXD48xA9Iu7Uhvps1r2fUzNcRCpd5X_n41F0AiPU/edit?usp=sharing
 
 */
 
@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { ProductInterface } from '../../models/product.interface';
+import { environment } from 'projects/web/src/environments/environment.development';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -29,13 +30,13 @@ export class DataStorageService {
   // Get all products
   getAllProducts() {
     return this.httpClient
-      .get<ProductInterface[]>('https://davidborge.com/pruebas/online-store-backend/getAllProducts.php', {})
+      .get<ProductInterface[]>(environment.baseUrl + '/getAllProducts.php', {})
       // .pipe()
       ;
   }
 
 
-  
+
   /* // (Antiguo) Firestore Database
   // Colecciones (https://console.firebase.google.com/u/0/project/online-store-7de9d/firestore/data/)
   private productosCollection: CollectionReference<DocumentData>;
