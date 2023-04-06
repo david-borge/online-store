@@ -1,24 +1,11 @@
 <!-- Products Grid -->
 <div class="products-grid">
 
+    <!-- Product Card -->
     <app-product-card
+        *ngFor="let productItem of productsList"
         [productCardTypeClass] = "'product-card-small'"
-        ></app-product-card>
-        <!-- [productCardURL]       = "'/product'" -->
-
-    <app-product-card
-        [productCardTypeClass] = "'product-card-small'"
-        ></app-product-card>
-        <!-- [productCardURL]       = "'/product'" -->
-
-    <app-product-card
-        [productCardTypeClass] = "'product-card-small'"
-        ></app-product-card>
-        <!-- [productCardURL]       = "'/product'" -->
-
-    <app-product-card
-        [productCardTypeClass] = "'product-card-small'"
-        ></app-product-card>
-        <!-- [productCardURL]       = "'/product'" -->
+        [product] = "productItem"
+    ></app-product-card>
 
 </div>

@@ -1,13 +1,13 @@
 <!-- Product Card -->
-<div class="product-card {{productCardTypeClass}}">
+<div class="product-card {{productCardTypeClass}}" [ngStyle]="{ 'background-color': product.cardAndHeaderBackgroundColor }">
 
-    <a routerLink="{{product.slug}}">
+    <a routerLink="/product/{{product.slug}}">
 
         <!-- Product Image -->
         <div class="product-card-image-container">
             <picture>
-                <source srcset="assets/img/products/chuck-70-hi-sneakers-thumbnail.webp" type="image/webp">
-                <img src="assets/img/products/chuck-70-hi-sneakers-thumbnail.png" width="326px" height="206px" alt="{{product.name}}">
+                <source srcset="{{product.imageThumbnail}}.webp" type="image/webp">
+                <img src="{{product.imageThumbnail}}.png" width="326px" height="206px" alt="{{product.name}}">
             </picture>
         </div>
 

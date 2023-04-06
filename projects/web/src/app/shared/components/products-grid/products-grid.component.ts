@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProductInterface } from '../../../core/models/product.interface';
 
 @Component({
   selector: 'app-products-grid',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./products-grid.component.scss']
 })
 export class ProductsGridComponent {
+
+  @Input() productsList = {} as ProductInterface[];
 
 }
