@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +51,12 @@ import { HttpClientModule } from '@angular/common/http';
   // Providers: incluye los Services (SOLO en Angular 5 o menor).
   // Alternativa a incluir un Service en providers: en el Service, poner: @Injectable({providedIn: 'root'})  // Injectable permite inyectar un servicio en un servicio. providedIn pone el servicio a disposición de toda la app (solo para Angular 6 o mayor; para Angular 5 o menor, añadir el servicio al providers de AppModule)
   // MUCHO CUIDADO: si pongo un Services en AppModule, están disponibles en todos los demás módulos (a diferencia de los Modules, Directives y Pipes, que solo están disponibles en los módulos en los que los importemos).
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-ES'
+    },
+  ],
 
   // Lista de componentes que Angular debe conocer en el momento de analizar el index.html al arrancar la web. AppComponent corresponde con src\app\app.component.ts
   // Como todos los componentes nuevos van dentro de AppComponent, no hay que declararlos en bootstrap
