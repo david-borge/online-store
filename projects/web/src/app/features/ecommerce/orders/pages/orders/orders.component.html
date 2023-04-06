@@ -13,14 +13,14 @@
 
     <div class="illustration-and-content-container">
 
-        <div class="illustration-container">
+        <div class="illustration-container" *ngIf="(numberOfOrders == 0)">
 
             <!-- No Orders Informative Card -->
-            <app-informative-card *ngIf="(numberOfOrders == 0)"></app-informative-card>
+            <app-informative-card></app-informative-card>
 
         </div>
 
-        <div class="content-container" *ngIf="(numberOfOrders > 0)">
+        <div *ngIf="(numberOfOrders > 0)" [ngClass]="{ 'content-container': (numberOfOrders == 0) }">
 
             <!-- Active & Previous Orders -->
             <div>
