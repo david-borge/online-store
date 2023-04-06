@@ -12,12 +12,16 @@ export class FooterComponent {
   @Input() navigationShowCtasAndCopy :boolean = false;
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Copy
-  @Input() navigationCopyLabel :string = '';
-  @Input() navigationCopyPrice :string = '';
+  @Input() navigationShowCopy  :boolean = true;
+  @Input() navigationCopyLabel :string  = '';
+  @Input() navigationCopyPrice :string  = '';
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
-  @Input() navigationButtonRightText :string = '';
-  @Input() navigationButtonRightURL  :string = '/checkout';
+  @Input() navigationButtonRightText              :string  = '';
+  @Input() navigationButtonRightURL               :string  = '/checkout';
+  @Input() navigationButtonRightClasses           :string  = 'btn-primary btn-lg';
+  @Input() navigationShowButtonRightRightIcon     :boolean = false;
+  @Input() navigationShowButtonRightRightIconType :string = 'check';
 
   // TODO:
   numberOfProductsInCart :number = 2;

@@ -13,6 +13,7 @@ import { InformativeCardComponent } from './components/informative-card/informat
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { AddressCardComponent } from './components/address-card/address-card.component';
 import { SelectButtonComponent } from './components/select-button/select-button.component';
+import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overlay.component';
 
 
 
@@ -29,6 +30,7 @@ import { SelectButtonComponent } from './components/select-button/select-button.
     CreditCardComponent,
     AddressCardComponent,
     SelectButtonComponent,
+    BottomOverlayComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { SelectButtonComponent } from './components/select-button/select-button.
     CreditCardComponent,
     AddressCardComponent,
     SelectButtonComponent,
+    BottomOverlayComponent,
   ],
 
 })

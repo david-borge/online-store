@@ -1,4 +1,4 @@
-<!-- Orders Page -->
+<!-- Addresses Page -->
 
 
 
@@ -9,7 +9,12 @@
 ></app-header>
     
 <!-- Main -->
-<main role="main" style="padding-bottom: calc(87px + var(--espacio-vertical));">
+<main role="main" style="padding-bottom: calc(var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical));">
+
+    <!-- TODO: borrar -->
+    <div class="my-3">
+        <button type="button" class="btn-outline-secondary btn-sm" (click)="showBottomOverlay = true;">Abrir Bottom Overlay</button>
+    </div>
 
     <div class="illustration-and-content-container">
 
@@ -77,4 +82,23 @@
 </main>
   
 <!-- Footer Tag -->
-<app-footer></app-footer>
+<app-footer
+    [navigationShowCtasAndCopy]              = "true"
+    [navigationShowCopy]                     = "false"
+    [navigationCopyLabel]                    = "''"
+    [navigationCopyPrice]                    = "'79,99 €'"
+    [navigationButtonRightText]              = "'Add new address'"
+    [navigationButtonRightClasses]           = "'btn-outline-secondary btn-sm'"
+    [navigationShowButtonRightRightIcon]     = "true"
+    [navigationShowButtonRightRightIconType] = "'plus'"
+></app-footer>
+
+
+
+<!-- Bottom Overlay -->
+<app-bottom-overlay
+    *ngIf="showBottomOverlay"
+    (clickOnCerrarBottomOverlayBtnEventEmitter)="showBottomOverlay = false;"
+    [bottomOverlayTitle]         = "'Add new delivery address'"
+    [bottomOverlayAddButtonText] = "'Add address'"
+></app-bottom-overlay>

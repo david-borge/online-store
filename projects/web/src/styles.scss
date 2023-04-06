@@ -614,6 +614,15 @@ $body-color: var(--N800);
 
 
 
+// Footer
+:root {
+    --footer-altura-sin-navigation-ctas-and-copy: 87px;
+    --footer-altura-con-navigation-ctas-and-copy-btn-lg: 149px;
+    --footer-altura-con-navigation-ctas-and-copy-btn-sm: 137px;
+}
+
+
+
 
 
 
@@ -651,6 +660,13 @@ body {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+}
+
+
+
+// Prevent scroll
+.prevent-scroll {
+    overflow: hidden;
 }
 
 

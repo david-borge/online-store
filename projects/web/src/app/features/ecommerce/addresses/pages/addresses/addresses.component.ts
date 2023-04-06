@@ -12,5 +12,6 @@ export class AddressesComponent {
 
   // TODO:
   numberOfAddresses :number = 3;
+  showBottomOverlay: boolean = false;
 
 }

@@ -1,0 +1,39 @@
+<!-- Bottom Overlay -->
+<div class="bottom-overlay">
+
+    <div class="bottom-overlay--overlay" (click)="clickOnCerrarBottomOverlayBtnEventEmitter.emit();"></div>
+
+    <div class="bottom-overlay--dialog">
+        
+        <div class="bottom-overlay--content">
+
+            <div class="bottom-overlay--header">
+                
+                <div class="bottom-overlay---title">
+                    <h2>{{bottomOverlayTitle}}</h2>
+                </div>
+
+                <button type="button" class="btn-close" aria-label="Close" (click)="clickOnCerrarBottomOverlayBtnEventEmitter.emit();"></button>
+
+            </div>
+            <div class="bottom-overlay--body">
+
+                <div class="text-center">[body]</div>
+
+            </div>
+            <div class="bottom-overlay--footer">
+
+                <div class="cancel-btn-container">
+                    <button type="button" class="btn btn-light btn-lg">Cancel</button>
+                </div>
+                <div class="add-btn-container">
+                    <button type="button" class="btn btn-primary btn-lg">{{bottomOverlayAddButtonText}}</button>
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
