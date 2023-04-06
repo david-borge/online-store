@@ -681,9 +681,14 @@ body {
 // FooterComponent
 app-footer {
     position: fixed;
-    right: 0;
+    
+    left: 50%;
+    transform: translateX(-50%);
+
     bottom: 0;
-    left: 0;
+    
+    width: 100%;
+    max-width: var(--ancho-contenedor-solo-movil);
 }
 
 
