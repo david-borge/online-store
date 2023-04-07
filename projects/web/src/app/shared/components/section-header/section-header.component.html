@@ -27,7 +27,7 @@
             <!-- Section Header - Link -->
             <div class="section-header-link-container" *ngIf="sectionHeaderLink && (numberOfOrders > 0)">
                 <!-- <a [routerLink]="['/slug']">{{sectionHeaderLinkText}}</a> -->
-                <a (click)="router.navigate([sectionHeaderLinkURL]);">{{sectionHeaderLinkText}}</a> <!-- Ejemplo: View All -->
+                <a routerLink="{{sectionHeaderLinkURL}}">{{sectionHeaderLinkText}}</a> <!-- Ejemplo: View All -->
             </div>
 
             <!-- Section Header - Button -->

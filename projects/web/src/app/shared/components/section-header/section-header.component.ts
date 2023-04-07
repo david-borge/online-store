@@ -35,6 +35,7 @@ export class SectionHeaderComponent {
   constructor(
     public router: Router,
   ) {}
+  
   ngOnInit(): void {
     this.sectionHeaderTitleInnerHTML = '<' + this.sectionHeaderTitleTag + ' class="' + this.sectionHeaderTitleClass + '">' + this.sectionHeaderTitleText + '</' + this.sectionHeaderTitleTag + '>';
   }

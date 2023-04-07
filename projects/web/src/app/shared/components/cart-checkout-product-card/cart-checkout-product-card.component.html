@@ -12,7 +12,7 @@
     <!-- Cart and Checkout Product Card - Information -->
     <div class="cart-and-checkout-product-card--information-container">
         <div class="cart-and-checkout-product-card--product-name-container">
-            <h3>The Hobbit</h3>
+            <h2>The Hobbit</h2>
         </div>
         <div class="cart-and-checkout-product-card--price">14,99 €</div>
     </div>
@@ -22,7 +22,7 @@
         <div class="cart-and-checkout-product-card--item-count">
 
             <div class="cart-and-checkout-product-card--item-count--minus-and-delete" *ngIf="cartCheckoutProductCardShowButtons">
-                <button class="btn btn-link py-0" [ngClass]="{'delete-button': (theHobbitItemCount == 1)}" (click)="onClickMinusOrDeleteButton();">
+                <button class="btn btn-link py-0" [ngClass]="{'delete-button': (theHobbitItemCount == 1)}" (click)="onClickMinusOrDeleteButton();" [attr.aria-label]="(theHobbitItemCount > 1) ? 'Remove one of this product from the cart' : 'Remove this product from the cart'">
                     <div class="cart-and-checkout-product-card--item-count--minus" *ngIf="(theHobbitItemCount > 1)">
                         <svg-icon name="minus"></svg-icon>
                     </div>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="cart-and-checkout-product-card--item-count--plus" *ngIf="cartCheckoutProductCardShowButtons" (click)="onClickPlusButton();">
-                <button class="btn btn-link py-0">
+                <button class="btn btn-link py-0" aria-label="Add one more of this product from the cart">
                     <svg-icon name="plus"></svg-icon>
                 </button>
             </div>

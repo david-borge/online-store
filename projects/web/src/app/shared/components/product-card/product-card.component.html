@@ -17,8 +17,8 @@
             <div class="product-or-order-card-copy-name-manufacturer-rating-container" *ngIf="(productCardTypeClass != 'product-card-order')">
 
                 <!-- Product Name -->
-                <div class="product-card-name">
-                    <h3>{{product.name}}</h3>
+                <div class="product-card-name" [innerHTML]="productCardTitleHeadingTagInnerHTML">
+                    <!-- Ejemplo: <h2>Chuck 70 Hi Sneakers</h2> -->
                 </div>
 
                 <!-- Product Manufacturer -->

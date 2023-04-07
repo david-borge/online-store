@@ -1,4 +1,4 @@
-<button class="btn btn-outline-secondary select-button" [ngClass]="{ 'select-button--selected': selectButtonSelected }">
+<button class="btn btn-outline-secondary select-button" [ngClass]="{ 'select-button--selected': selectButtonSelected }" [attr.aria-label]="(!selectButtonSelected) ? 'Select this item' : 'Remove the selection from this item'">
 
     <div class="select-button--label" *ngIf="!selectButtonSelected">Select</div>
 

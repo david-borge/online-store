@@ -9,5 +9,6 @@ import { ProductInterface } from '../../../core/models/product.interface';
 export class ProductsGridComponent {
 
   @Input() productsList = {} as ProductInterface[];
+  @Input() productCardProductNameTitleHeadingTag: string = '';
 
 }

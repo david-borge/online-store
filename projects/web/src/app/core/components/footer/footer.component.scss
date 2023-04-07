@@ -123,6 +123,10 @@ footer {
     font-size: 14px;
 }
 
-.navigation-item:not(.navigation-item--active) {
+.navigation-item:not(.navigation-item--active) .navigation-icon-container {
     opacity: 50%;
+}
+
+.navigation-item:not(.navigation-item--active) .navigation-text {
+    opacity: 70%;
 }

@@ -38,7 +38,7 @@
 
             <!-- Overlay Header - Left Icon -->
             <div class="overlay-header-left-icon-container" *ngIf="overlayHeaderSubpageShowLeftIcon">
-                <a (click)="router.navigate(['/home']);">
+                <a routerLink="/home" aria-label="Go back to the previous page">
                     <svg-icon name="chevron-left"></svg-icon>
                 </a>
             </div>
