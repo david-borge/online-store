@@ -1,13 +1,18 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
 
 // (Antiguo) Firestore Database
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
@@ -42,6 +47,11 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     
     HttpClientModule,
+
+    AngularSvgIconModule.forRoot(),
+    AngularSvgIconPreloaderModule.forRoot({
+      configUrl: './assets/icons/icons.json',
+    }),
 
     // (Antiguo) Firestore Database
     // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

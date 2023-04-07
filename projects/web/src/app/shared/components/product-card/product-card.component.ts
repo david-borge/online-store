@@ -12,4 +12,14 @@ export class ProductCardComponent {
   @Input() product = {} as ProductInterface;
   @Input() productCardTypeClass: string = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
 
+  ngOnInit(): void {
+
+    // TODO: si es una Order
+    if( this.productCardTypeClass == 'product-card-order' ) {
+      this.product.imageThumbnail = 'assets/img/products/dualsense-wireless-controller';
+      this.product.price          = 82.19;
+    }
+
+  }
+
 }

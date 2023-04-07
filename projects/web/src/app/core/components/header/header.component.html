@@ -1,13 +1,14 @@
 <!-- Header Tag -->
 <header style="position: sticky; top: 0; right: 0; left: 0; z-index: 2; background-color: white;"> <!-- Home Page -->
-    <!-- <header style="position: sticky; top: 0; right: 0; left: 0; z-index: 2;"> --> <!-- Product Page -->
 
     <!-- Home - Hero -->
     <div class="d-flex flex-column" style="min-height: 116px;" *ngIf="(headerTagType === 'home-hero' )">
 
         <!-- Logo -->
         <div class="flex-fill d-flex flex-column align-items-center justify-content-end" style="margin-bottom: 6px;">
-            <img src="assets/img/logo/online-store-logo.svg" width="286px" height="54px" alt="Online Store Logo" style="width: 100%; max-width: 284px; height: auto;">
+            <!-- FIXME: SVG -->
+            <svg-icon name="online-store-logo"></svg-icon>
+            <!-- <img src="assets/img/logo/online-store-logo.svg" width="286px" height="54px" alt="Online Store Logo" style="width: 100%; max-width: 284px; height: auto;"> -->
         </div>
 
         <!-- Free Shipping · One Day Delivery -->
