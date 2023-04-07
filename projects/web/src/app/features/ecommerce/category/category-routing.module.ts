@@ -24,7 +24,7 @@ const categoryRoutes: Routes = [
                 pathMatch: 'full'
             },
             {
-                path: ':category-name',  // Route parameter
+                path: ':category-slug',  // Route parameter
                 component: CategoryDetailComponent,
             }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
@@ -18,8 +19,6 @@ export class HomeComponent {
   ) {}
 
   ngOnInit(): void {
-
-    // this.dataStorageService.getAllProducts().subscribe();
 
     // All Products - Separar en Fearured y Deal Products
     this.dataStorageService.getAllProducts().subscribe(

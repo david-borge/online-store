@@ -1,6 +1,8 @@
 <div class="container h-100 d-flex align-items-center">
 
-    <!-- Products Grid -->
-    <app-products-grid></app-products-grid>
+    <!-- Products Grid (of the current Category) -->
+    <app-products-grid
+        [productsList] = "productsOfCurrentCategory"
+    ></app-products-grid>
 
 </div>
