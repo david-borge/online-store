@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
 
+import { environment } from '../environments/environment.development';
+
 // (Antiguo) Firestore Database
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 // import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -50,7 +52,7 @@ import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
 
     AngularSvgIconModule.forRoot(),
     AngularSvgIconPreloaderModule.forRoot({
-      configUrl: './assets/icons/icons.json',
+      configUrl: environment.svgIconsConfigFile,
     }),
 
     // (Antiguo) Firestore Database

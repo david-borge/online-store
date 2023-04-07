@@ -8,6 +8,10 @@ import { SharedModule } from '../../../shared/shared.module';
 import { AccountComponent } from './pages/account/account.component';
 import { AccountCardComponent } from './components/account-card/account-card.component';
 
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
+
+import { environment } from 'projects/web/src/environments/environment.development';
 
 
 @NgModule({
@@ -22,6 +26,11 @@ import { AccountCardComponent } from './components/account-card/account-card.com
 
     CoreModule,
     SharedModule,
+
+    AngularSvgIconModule.forRoot(),
+    AngularSvgIconPreloaderModule.forRoot({
+      configUrl: environment.svgIconsConfigFile,
+    }),
   ]
 })
 export class AccountModule { }

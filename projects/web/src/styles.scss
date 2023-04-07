@@ -720,6 +720,16 @@ app-footer {
 
 
 
+// SVG Icons
+svg-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 // Illustrations
 .illustration-and-content-container {
     height: 100%;

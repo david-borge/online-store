@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.component';
 
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
+
+import { environment } from 'projects/web/src/environments/environment.development';
 
 
 @NgModule({
@@ -10,7 +14,12 @@ import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.co
     LoadingScreenComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    
+    AngularSvgIconModule.forRoot(),
+    AngularSvgIconPreloaderModule.forRoot({
+      configUrl: environment.svgIconsConfigFile,
+    }),
   ],
 
   // Exports: permite incluir un módulo dentro de otro. Exports se pone en el módulo que quiero insertar, no en el que lo voy a insertar.

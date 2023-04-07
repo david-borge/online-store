@@ -7,6 +7,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
 
+import { environment } from '../../environments/environment.development';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
 
     AngularSvgIconModule.forRoot(),
     AngularSvgIconPreloaderModule.forRoot({
-      configUrl: './assets/icons/icons.json',
+      configUrl: environment.svgIconsConfigFile,
     }),
   ],
   

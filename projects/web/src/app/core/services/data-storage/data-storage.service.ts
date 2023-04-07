@@ -33,7 +33,7 @@ export class DataStorageService {
   // Get all Products
   getAllProducts() {
     return this.httpClient
-      .get<ProductInterface[]>(environment.baseUrl + '/getAllProducts.php', {})
+      .get<ProductInterface[]>(environment.apiBaseUrl + '/getAllProducts.php', {})
       // .pipe()
       ;
   }
@@ -99,7 +99,7 @@ export class DataStorageService {
   // Get all Categories
   getAllCategories() {
     return this.httpClient
-      .get<CategoryInterface[]>(environment.baseUrl + '/getAllCategories.php', {})
+      .get<CategoryInterface[]>(environment.apiBaseUrl + '/getAllCategories.php', {})
       // .pipe()
       ;
   }
