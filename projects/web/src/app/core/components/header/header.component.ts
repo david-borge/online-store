@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -25,6 +26,12 @@ export class HeaderComponent {
 
   constructor(
     public router: Router,
+    private _location: Location
   ) {}
+
+  // Go Back (with browser history)
+  onClickGoBack(): void {
+    this._location.back();
+  }
 
 }

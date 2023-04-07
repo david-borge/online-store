@@ -90,6 +90,10 @@ header {
     align-items: center;
 }
 
+.overlay-header-left-icon-container a:hover {
+    cursor: pointer;
+}
+
 .overlay-header-subpage .overlay-header-title {
     padding-right: var(--bs-gutter-x);  /* Para compensar el icono izquierdo */
 }
