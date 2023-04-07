@@ -38,6 +38,64 @@ export class DataStorageService {
       ;
   }
 
+  // (No usado) Get Featured Products
+  /* getFeaturedProducts() {
+    return this.getAllProducts()
+    .pipe(
+
+        map(
+          // Todos los productos
+          ( allProducts: ProductInterface[] ) => {
+
+            // Filtro todos los productos
+            return allProducts.filter(
+
+              // Cada producto
+              ( product: ProductInterface ) => {
+
+                // Criterio para mostrar o no cada producto
+                return (product.featured == 1);
+
+              }
+
+            );
+
+          }
+
+        )
+        
+    );
+  } */
+
+  // (No usado) Get Deal Products
+  /* getDealProducts() {
+    return this.getAllProducts()
+    .pipe(
+
+        map(
+          // Todos los productos
+          ( allProducts: ProductInterface[] ) => {
+
+            // Filtro todos los productos
+            return allProducts.filter(
+
+              // Cada producto
+              ( product: ProductInterface ) => {
+
+                // Criterio para mostrar o no cada producto
+                return (product.deal == 1);
+
+              }
+
+            );
+
+          }
+
+        )
+        
+    );
+  } */
+
   // Get all Categories
   getAllCategories() {
     return this.httpClient

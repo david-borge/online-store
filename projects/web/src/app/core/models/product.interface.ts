@@ -12,7 +12,7 @@ export interface ProductInterface {
     imageHeight                  : string;
     ratingNumber                 : number;
     cardAndHeaderBackgroundColor : string;
-    deal                         : boolean;
-    featured                     : boolean;
+    featured                     : number;  // En MySQL no hay tipo Boolean, sino TINIINT, con valores 1 y 0
+    deal                         : number;  // En MySQL no hay tipo Boolean, sino TINIINT, con valores 1 y 0
 
 }

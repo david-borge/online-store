@@ -10,7 +10,8 @@ import { DataStorageService } from 'projects/web/src/app/core/services/data-stor
 })
 export class HomeComponent {
 
-  allProducts : ProductInterface[] = [];
+  featuredProducts : ProductInterface[] = [];
+  dealProducts     : ProductInterface[] = [];
 
   constructor(
     private dataStorageService: DataStorageService,  // Inyectar una instancia del servicio en el componente
@@ -18,19 +19,46 @@ export class HomeComponent {
 
   ngOnInit(): void {
 
+    // this.dataStorageService.getAllProducts().subscribe();
+
+    // All Products - Separar en Fearured y Deal Products
     this.dataStorageService.getAllProducts().subscribe(
 
-      // El primer parámetro es para recoger los datos que devuelve la llamada
-      (responseData)  => {
+      // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
+      (allProductsResponseData)  => {
 
-        console.log('responseData get:');
-        console.log(responseData);
+        // console.log('allProductsResponseData get:');
+        // console.log(allProductsResponseData);
 
-        this.allProducts = responseData;
+        // Filtro los productos - Featured Products
+        this.featuredProducts = allProductsResponseData.filter(
+
+          // Cada producto
+          ( product: ProductInterface ) => {
+
+            // Criterio para mostrar o no cada producto
+            return (product.featured == 1);
+
+          }
+
+        );
+        
+        // Filtro los productos - Deal Products
+        this.dealProducts = allProductsResponseData.filter(
+
+          // Cada producto
+          ( product: ProductInterface ) => {
+
+            // Criterio para mostrar o no cada producto
+            return (product.deal == 1);
+
+          }
+
+        );
 
       },
 
-      // El segundo parámetro es para recoger los errores del servidor
+      // El segundo parámetro de susbscribe() es para recoger los errores del servidor
       (errorResponse) => {
         
         // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
