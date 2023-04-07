@@ -1,22 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
 
-@Component({
-  selector: 'app-category-detail',
-  templateUrl: './category-detail.component.html',
-  styleUrls: ['./category-detail.component.scss'],
-  host: {
-    class:'app-category-detail-classes-for-router-outlet'
-  },
-})
-export class CategoryDetailComponent {
 
-  currentCategory: string = '';
-  productsOfCurrentCategory : ProductInterface[] = [];
+@Component({
+  selector: 'app-product-detail',
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.scss'],
+  encapsulation: ViewEncapsulation.None,  // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-description-content *)
+})
+export class ProductDetailComponent {
+
+  currentProductSlug: string = '';
+  currentProduct = {} as ProductInterface;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +24,8 @@ export class CategoryDetailComponent {
 
   ngOnInit(): void {
 
-    // Get current Category (from Route Paramenter :category-slug en projects\web\src\app\features\ecommerce\category\category-routing.module.ts)
-    this.currentCategory = this.route.snapshot.params['category-slug'];
-
-    // TODO: Mandar la categoría actual a CategoryComponent para mostrarlo en la header
+    // Get current Product (from Route Paramenter :product-slug en projects\web\src\app\features\ecommerce\product\product-routing.module.ts)
+    this.currentProductSlug = this.route.snapshot.params['product-slug'];
 
     // TODO: mover a su sitio apropiado: All Products - Filtrar para mostrar los de la categoría actual
     this.dataStorageService.getAllProducts().subscribe(
@@ -40,17 +37,20 @@ export class CategoryDetailComponent {
         // console.log(allProductsResponseData);
 
         // Filtro los productos - Products de la Category actual
-        this.productsOfCurrentCategory = allProductsResponseData.filter(
+        this.currentProduct = allProductsResponseData.filter(
 
           // Cada producto
           ( product: ProductInterface ) => {
 
             // Criterio para mostrar o no cada producto
-            return (product.category == this.currentCategory);
+            return (product.slug == this.currentProductSlug);
 
           }
 
-        );
+        )[0];  // Primer y único elemento del array, que es el producto actual
+
+        // console.log('currentProduct:');
+        // console.log(this.currentProduct);
 
       },
 

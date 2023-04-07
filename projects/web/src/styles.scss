@@ -496,6 +496,10 @@
 
 }
 
+.color-N700 {
+    color: var(--N700);
+}
+
 
 
 // Colores - Body
@@ -631,6 +635,13 @@ $body-color: var(--N800);
 
 
   
+// Font Weight (que no están en Bootstrap)
+.font-weight-500 {
+    font-weight: 500;
+}
+
+
+
 // Sticky Footer
 // TODO: aplicar esta corrección a gulp-amp-template
 html,

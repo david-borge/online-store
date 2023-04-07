@@ -1,0 +1,96 @@
+@import 'projects/web/src/styles.scss';
+
+
+
+
+// Product Page - Image
+.product-image-and-three-sixty-indicator-container {
+    padding: 20px 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.product-image-container {
+    display: inline-block;
+    z-index: 1;
+    padding-bottom: 45px;
+    height: calc(419px - 82.5px - 45px); // Restar la altura de <header> y del padding-bottom
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+// Product Page - 360º Indicator
+.three-sixty-indicator-container {
+    position: absolute;
+}
+
+// Product Page - Manufacturer
+.product-manufacturer {
+    margin-bottom: 8px;
+
+    @include body-14px-regular;
+    
+    color: var(--N600);
+}
+
+// Product Page - Description
+.product-description-title {
+    margin-bottom: 12px;
+
+    @include heading-4;
+}
+
+.product-description-content {
+    color: var(--N600);
+}
+
+.product-description-content .read-more {
+    @include body-16px-medium;
+
+    color: var(--N800);
+}
+
+.product-description-content ul {
+    padding-left: 18px;
+}
+.product-description-content li {
+    margin-bottom: 10px;
+}
+
+// Product Page - Reviews
+.product-reviews-title {
+    margin-bottom: 24px;
+
+    @include heading-4;
+}
+
+.product-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+
+
+// Product Page - Reviews - Product Reviews Item
+app-product-reviews-item {
+    position: relative;
+}
+
+.product-reviews-list app-product-reviews-item:not(:last-child):after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -26px;  // Pongo -26px en lugar de -24px para compensar el espacio vertical entre el texto de product-reviews-item--title y su contenedor.
+    left: 0;
+
+    height: 1px;
+    background-color: var(--N200);
+}

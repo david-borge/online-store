@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   selector: 'app-section-header',
   templateUrl: './section-header.component.html',
   styleUrls: ['./section-header.component.scss'],
-  encapsulation: ViewEncapsulation.None,  // Para que el CSS se aplique correctamente a sectionHeaderTitleInnerHTML
+  encapsulation: ViewEncapsulation.None,  // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (sectionHeaderTitleInnerHTML)
 })
 export class SectionHeaderComponent {
 

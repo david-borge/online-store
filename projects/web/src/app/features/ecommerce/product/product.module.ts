@@ -6,12 +6,14 @@ import { CoreModule } from '../../../core/core.module';
 
 import { ProductComponent } from './pages/product/product.component';
 import { SharedModule } from '../../../shared/shared.module';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductComponent
+    ProductComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,
