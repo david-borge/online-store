@@ -14,15 +14,15 @@
         <!-- Product or Order Copy Container -->
         <div class="product-or-order-card-copy-container">
 
-            <div class="product-or-order-card-copy-name-manufacturer-rating-container">
+            <div class="product-or-order-card-copy-name-manufacturer-rating-container" *ngIf="(productCardTypeClass != 'product-card-order')">
 
                 <!-- Product Name -->
-                <div class="product-card-name" *ngIf="(productCardTypeClass != 'product-card-order')">
+                <div class="product-card-name">
                     <h3>{{product.name}}</h3>
                 </div>
 
                 <!-- Product Manufacturer -->
-                <div class="product-card-manufacturer" *ngIf="(productCardTypeClass != 'product-card-order')">{{product.manufacturer}}</div>
+                <div class="product-card-manufacturer">{{product.manufacturer}}</div>
 
                 <!-- Product Rating -->
                 <app-product-rating
