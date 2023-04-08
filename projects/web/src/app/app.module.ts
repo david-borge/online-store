@@ -42,7 +42,7 @@ import { environment } from '../environments/environment.development';
   // MUCHO CUIDADO: BrowserModule: nos permite usar *ngIf, *ngFor y *ngClass y permite arrancar a la aplicación, por lo tanto SOLO debe ir en AppModule.
     // En los módulos que no sean AppModule donde quiera usar *ngIf y *ngFor, no hay que añadir BrowserModule a los imports, sino CommonModule.
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
 
     // EcommerceModule,

@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/web",
+            "outputPath": "dist/web/browser",
             "index": "projects/web/src/index.html",
             "main": "projects/web/src/main.ts",
             "polyfills": [
@@ -110,6 +110,60 @@
             "firebaseProject": "online-store-7de9d",
             "firebaseHostingSite": "online-store-7de9d"
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/web/server",
+            "main": "projects/web/server.ts",
+            "tsConfig": "projects/web/tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "web:build:development",
+              "serverTarget": "web:server:development"
+            },
+            "production": {
+              "browserTarget": "web:build:production",
+              "serverTarget": "web:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web:build:production",
+              "serverTarget": "web:server:production"
+            },
+            "development": {
+              "browserTarget": "web:build:development",
+              "serverTarget": "web:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

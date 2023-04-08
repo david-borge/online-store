@@ -85,10 +85,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      // Configuración de las rutas
-      // useHash: true  // FIXME: (en Ionos parece que sí ocurre) (SOLO si es imprescindible) Para solucionar el caso de que el servidor no devuelva el index.html de la App Angular en caso de error 404 (https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656364)
-      preloadingStrategy: PreloadAllModules  // Precargar todos los módulos que se carguen con Lazy Loading
-    })
+    // Configuración de las rutas
+    // useHash: true  // FIXME: (en Ionos parece que sí ocurre) (SOLO si es imprescindible) Para solucionar el caso de que el servidor no devuelva el index.html de la App Angular en caso de error 404 (https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656364)
+    preloadingStrategy: PreloadAllModules // Precargar todos los módulos que se carguen con Lazy Loading
+    ,
+    initialNavigation: 'enabledBlocking'
+})
   ],
   exports: [RouterModule]
 })
