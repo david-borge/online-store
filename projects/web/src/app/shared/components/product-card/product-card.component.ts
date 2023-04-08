@@ -12,12 +12,14 @@ export class ProductCardComponent {
   // Propiedades - Product Card
   @Input() product = {} as ProductInterface;
   @Input() productCardTypeClass: string = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
-  @Input() productCardProductNameTitleHeadingTag: string = 'h2';
+  @Input() productCardProductNameTitleHeadingTag: string = '';
   productCardTitleHeadingTagInnerHTML: string = '';
 
   ngOnInit(): void {
 
     // Product Card Name HTML
+    if( this.productCardProductNameTitleHeadingTag == '' )
+      this.productCardProductNameTitleHeadingTag = 'h2'; // Valor por defecto en caso de que no se proporcione
     this.productCardTitleHeadingTagInnerHTML = '<' + this.productCardProductNameTitleHeadingTag + '>' + this.product.name + '</' + this.productCardProductNameTitleHeadingTag + '>';
 
 
