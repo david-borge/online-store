@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node dist/web/server/main.js",
+    "build": "ng build && ng run web:server",
+    "old--start": "ng serve",
+    "old--build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run web:serve-ssr",
