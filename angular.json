@@ -104,11 +104,13 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "prerender": false,
+            "prerender": true,
             "ssr": false,
             "browserTarget": "web:build:production",
             "firebaseProject": "online-store-7de9d",
-            "firebaseHostingSite": "online-store-7de9d"
+            "firebaseHostingSite": "online-store-7de9d",
+            "serverTarget": "web:server:production",
+            "prerenderTarget": "web:prerender:production"
           }
         },
         "server": {
