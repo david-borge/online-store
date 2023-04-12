@@ -12,7 +12,7 @@
     "dev:ssr": "ng run web:serve-ssr",
     "serve:ssr": "node dist/web/server/main.js",
     "build:ssr": "ng build && ng run web:server",
-    "prerender": "ng run web:prerender"
+    "prerender": "ng run web:prerender --routes-file routes.txt"
   },
   "private": true,
   "dependencies": {
