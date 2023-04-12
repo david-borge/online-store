@@ -26,11 +26,6 @@ import { environment } from 'projects/web/src/environments/environment.developme
 
     CoreModule,
     SharedModule,
-    
-    AngularSvgIconModule.forRoot(),
-    AngularSvgIconPreloaderModule.forRoot({
-      configUrl: environment.svgIconsConfigFile,
-    }),
   ]
 })
 export class ProductModule { }

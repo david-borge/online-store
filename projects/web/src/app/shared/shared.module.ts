@@ -39,11 +39,6 @@ import { environment } from '../../environments/environment.development';
   imports: [
     CommonModule,
     RouterModule,
-
-    AngularSvgIconModule.forRoot(),
-    AngularSvgIconPreloaderModule.forRoot({
-      configUrl: environment.svgIconsConfigFile,
-    }),
   ],
 
   // Añadir a exports todo lo que haya puesto en declarations e imports, para que esté disponible en los otros módulos que van a usar las cosas de SharedModule.

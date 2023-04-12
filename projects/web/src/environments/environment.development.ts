@@ -16,9 +16,6 @@ export const environment = {
     // API Base URL
     apiBaseUrl: 'https://davidborge.com/pruebas/online-store-backend',
 
-    // SVG Icons config file
-    svgIconsConfigFile: './assets/icons/svg-icons.json',
-    
     // (Antiguo) Firestore Database
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     /* firebaseConfig: {

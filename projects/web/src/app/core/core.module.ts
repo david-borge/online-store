@@ -19,11 +19,6 @@ import { environment } from '../../environments/environment.development';
   imports: [
     CommonModule,
     RouterModule,
-
-    AngularSvgIconModule.forRoot(),
-    AngularSvgIconPreloaderModule.forRoot({
-      configUrl: environment.svgIconsConfigFile,
-    }),
   ],
   
   // Exports: permite incluir un módulo dentro de otro. Exports se pone en el módulo que quiero insertar, no en el que lo voy a insertar.
