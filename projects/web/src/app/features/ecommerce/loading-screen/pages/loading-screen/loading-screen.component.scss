@@ -83,27 +83,34 @@
 
 
 // Loading Screen - "Let's begin" button
-@keyframes animacion-lets-begin-button-delay {
-
-    0% {
-        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
-        opacity: 0;
-    }
-
-    100% {
-        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
-        opacity: 1;
-    }
-
+.lets-begin-button:disabled {
+    background-color: var(--Y300);
+    border-color: transparent;
+    opacity: unset;
 }
 
-.lets-begin-button-delay {
-    animation-name: animacion-lets-begin-button-delay;
-    animation-duration: 500ms;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
-    animation-fill-mode: backwards;
-    animation-delay: 2100ms;
-}
+// Loading Screen - "Let's begin" button - Animation
+// @keyframes animacion-lets-begin-button {
+
+//     0% {
+//         /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
+//         opacity: 0;
+//     }
+
+//     100% {
+//         /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
+//         opacity: 1;
+//     }
+
+// }
+
+// .lets-begin-button {
+//     animation-name: animacion-lets-begin-button;
+//     animation-duration: 500ms;
+//     animation-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+//     animation-fill-mode: backwards;
+//     animation-delay: 2100ms;
+// }
 
 
 

@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // (Antiguo) Firestore Database
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 // import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -48,6 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     // (Antiguo) Firestore Database
     // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     // provideFirestore(() => getFirestore()),
+
+    BrowserAnimationsModule,
   ],
   
   // Providers: incluye los Services (SOLO en Angular 5 o menor).

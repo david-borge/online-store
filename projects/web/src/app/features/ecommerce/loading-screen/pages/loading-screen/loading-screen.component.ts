@@ -1,6 +1,8 @@
-import { Component, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { AnimationEvent, trigger, style, transition, animate } from '@angular/animations';
 
 
 @Component({
@@ -10,31 +12,51 @@ import { Router, ActivatedRoute } from '@angular/router';
   host: {
     class:'app-loading-screen-classes-for-router-outlet'
   },
-})
-export class LoadingScreenComponent implements AfterContentInit {
+  animations: [
 
-  // Loading Screen - "Let's begin" button
-  @ViewChild('letsBeginBtnLocalReference', {static: true}) letsBeginBtnLocalReferenceViewChild: ElementRef = {} as ElementRef;
-  letsBeginBtnHTMLInputElement = {} as HTMLInputElement;
+    // Loading Screen - "Let's begin" button
+    trigger('animacionLetsBeginButton', [
+      
+      transition('* => *', [
+        style({ opacity: '0' }),
+        animate('300ms 2100ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
+      ]),
+
+    ]),
+    
+  ],
+})
+export class LoadingScreenComponent {
+
+  // Loading Screen - "Let's begin" button - Animation
+  letsBeginButtonIsDisabled: boolean = true;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,  // Ruta actual para la configuración de router.navigate(). Documentación: https://angular.io/api/router/ActivatedRoute
   ) { }
 
-  ngAfterContentInit(): void {
-
+  // Loading Screen - "Let's begin" button - Animation Start
+  animacionLetsBeginButtonStarted(event: AnimationEvent) {
     // Comprobacion
-    console.log(this.letsBeginBtnHTMLInputElement);
+    // console.log('animacionLetsBeginButtonStarted - event:');
+    // console.log(event);
   }
 
-  onClickLetsBeginButton() {
-    this.letsBeginBtnHTMLInputElement = this.letsBeginBtnLocalReferenceViewChild.nativeElement;  // Uso .nativeElement para pasar del ElementRef al elemento tipo HTML (HTMLInputElement), que es el que me interesa
+  // Loading Screen - "Let's begin" button - Animation End - Activar el botón cuando la animación termina (para que no se pueda hacer click mientras es invisible)
+  animacionLetsBeginButtonEnded(event: AnimationEvent) {
+    this.letsBeginButtonIsDisabled = false;
 
-    console.log(this.letsBeginBtnHTMLInputElement);
+    // Comprobacion
+    // console.log('animacionLetsBeginButtonEnded - event');
+    // console.log(event);
+  }
+
+  // Loading Screen - "Let's begin" button - onClick - Navigate to Home Page
+  onClickLetsBeginButton() {
     
     // Ir a la Home Page
-    // this.router.navigate(['/home']); // Ruta absoluta
+    this.router.navigate(['/home']); // Ruta absoluta
 
   }
 

@@ -105,7 +105,15 @@
         </div>
 
         <!-- Button "Let's begin" -->
-        <button class="btn btn-tertiary btn-lg w-100 lets-begin-button-delay" style="margin-bottom: var(--espacio-vertical);" (click)="onClickLetsBeginButton();" #letsBeginBtnLocalReference>Let's begin</button>
+        <!-- <button class="btn btn-tertiary btn-lg w-100 lets-begin-button" style="margin-bottom: var(--espacio-vertical);" (click)="onClickLetsBeginButton();">Let's begin</button> -->
+        <!-- <button class="btn btn-tertiary btn-lg w-100 lets-begin-button" style="margin-bottom: var(--espacio-vertical);" (click)="onClickLetsBeginButton();" [@animacionLetsBeginButton]="animacionLetsBeginButtonState">Let's begin</button> -->
+        <button class="btn btn-tertiary btn-lg w-100 lets-begin-button" style="margin-bottom: var(--espacio-vertical);"
+            (click)="onClickLetsBeginButton();"
+            [@animacionLetsBeginButton]=""
+            (@animacionLetsBeginButton.start)="animacionLetsBeginButtonStarted($event);"
+            (@animacionLetsBeginButton.done)="animacionLetsBeginButtonEnded($event);"
+            [disabled]="letsBeginButtonIsDisabled"
+        >Let's begin</button>
 
         <!-- Spinner -->
         <!-- Icon: spinner en https://loading.io/ -->
