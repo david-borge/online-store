@@ -29,6 +29,7 @@ import { AnimationEvent, trigger, style, transition, animate } from '@angular/an
 export class LoadingScreenComponent {
 
   // Loading Screen - "Let's begin" button - Animation
+  // Hago la animación como una Angular Animation en lugar de como una CSS Animation para poder desactivar el botón hasta que esté visible.
   letsBeginButtonIsDisabled: boolean = true;
 
   constructor(
