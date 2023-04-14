@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { AnimationEvent, trigger, style, transition, animate } from '@angular/animations';
 
@@ -34,23 +34,12 @@ export class LoadingScreenComponent {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,  // Ruta actual para la configuración de router.navigate(). Documentación: https://angular.io/api/router/ActivatedRoute
   ) { }
 
-  // Loading Screen - "Let's begin" button - Animation Start
-  animacionLetsBeginButtonStarted(event: AnimationEvent) {
-    // Comprobacion
-    // console.log('animacionLetsBeginButtonStarted - event:');
-    // console.log(event);
-  }
-
   // Loading Screen - "Let's begin" button - Animation End - Activar el botón cuando la animación termina (para que no se pueda hacer click mientras es invisible)
-  animacionLetsBeginButtonEnded(event: AnimationEvent) {
+  // No me hace falta recibir el evento
+  animacionLetsBeginButtonEnded() {
     this.letsBeginButtonIsDisabled = false;
-
-    // Comprobacion
-    // console.log('animacionLetsBeginButtonEnded - event');
-    // console.log(event);
   }
 
   // Loading Screen - "Let's begin" button - onClick - Navigate to Home Page

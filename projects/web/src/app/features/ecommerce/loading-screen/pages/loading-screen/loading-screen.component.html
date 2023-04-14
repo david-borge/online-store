@@ -110,8 +110,7 @@
         <button class="btn btn-tertiary btn-lg w-100 lets-begin-button" style="margin-bottom: var(--espacio-vertical);"
             (click)="onClickLetsBeginButton();"
             [@animacionLetsBeginButton]=""
-            (@animacionLetsBeginButton.start)="animacionLetsBeginButtonStarted($event);"
-            (@animacionLetsBeginButton.done)="animacionLetsBeginButtonEnded($event);"
+            (@animacionLetsBeginButton.done)="animacionLetsBeginButtonEnded();"
             [disabled]="letsBeginButtonIsDisabled"
         >Let's begin</button>
 
