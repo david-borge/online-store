@@ -49,3 +49,13 @@ export const GetAllProductsEndFailure = createAction(
   }>()
 
 );
+
+
+
+/** Dummy Action Action **/
+export const DummyAction = createAction(
+
+  // Tipo de la Action
+  '[Home] Dummy Action',
+
+);

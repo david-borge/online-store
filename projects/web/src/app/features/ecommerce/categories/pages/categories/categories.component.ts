@@ -46,8 +46,8 @@ export class CategoriesComponent implements OnInit {
           this.allCategories = allCategoriesResponseData.allCategories;
 
           // Comprobacion
-          console.log('allCategories:');
-          console.log(this.allCategories);
+          // console.log('allCategories:');
+          // console.log(this.allCategories);
 
         },
 

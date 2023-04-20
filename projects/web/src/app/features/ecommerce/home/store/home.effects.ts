@@ -4,11 +4,13 @@
 
 import { Injectable } from '@angular/core';
 
+import { Store } from "@ngrx/store";
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 
-import { catchError, switchMap } from 'rxjs/operators'
+import { catchError, switchMap, withLatestFrom } from 'rxjs/operators'
 import { of } from 'rxjs';
 
+import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as HomeActions from './home.actions';
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
 
@@ -24,16 +26,19 @@ export class HomeEffects {
         // Notación: se le puede añadir un $ al final del nombre indica que es un Observable, pero no es obligatorio. Yo prefiero poner la palabra Observable.
         private actionsObservable: Actions,
         private dataStorageService: DataStorageService,
+        private store: Store<fromApp.AppState>,
     ) { }
 
 
 
-    // Side Effect de la Nombre Action Action de Home
+    // Side Effect de la Get All Products Start Action de Home
     getAllProductsSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
         ofType(HomeActions.GetAllProductsStart),
+
+        withLatestFrom( this.store.select('homeReducerObservable') ), // MUCHO CUIDADO: SÓLO hacer la llamada HTTP si aún no hay ningún producto en la Store, así nos evitamos hacer una llamada HTTP cada ver que se vuelva a la Home desde otra ruta
 
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
         switchMap( (getAllProductsStartActionData) => {
@@ -43,51 +48,60 @@ export class HomeEffects {
             // Comprobacion
             // console.log('getAllProductsStartActionData:');
             // console.log(getAllProductsStartActionData);
-            
-            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getAllProductsHttpRequest()
-                .pipe(
+            // console.log('getAllProductsStartActionData[1].allProducts.length: ' + getAllProductsStartActionData[1].allProducts.length);
 
-                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
-                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
-                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+            // MUCHO CUIDADO: SÓLO hacer la llamada HTTP si aún no hay ningún producto en la Store, así nos evitamos hacer una llamada HTTP cada ver que se vuelva a la Home desde otra ruta
+            if ( getAllProductsStartActionData[1].allProducts.length === 0 ) {
+                
+                // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+                return this.dataStorageService.getAllProductsHttpRequest()
+                    .pipe(
 
-                    switchMap(resData => {
+                        /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                        debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                        Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                        // Comprobacion
-                        // console.log('getAllProductsSideEffect - resData:');
-                        // console.log(resData);
+                        switchMap(resData => {
 
-                        // Procesamiento de datos si es necesario...
+                            // Comprobacion
+                            // console.log('getAllProductsSideEffect - resData:');
+                            // console.log(resData);
 
-                        return of(
+                            // Procesamiento de datos si es necesario...
 
-                            // Procesar datos si es necesario...
+                            return of(
 
-                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                            HomeActions.GetAllProductsEndSuccess({
-                                allProductsPayload: resData,
-                            }),
+                                // Procesar datos si es necesario...
 
-                        );
-                    }),
-                    catchError(errorResponse => {
+                                // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                                HomeActions.GetAllProductsEndSuccess({
+                                    allProductsPayload: resData,
+                                }),
 
-                        // Error handling code...
+                            );
+                        }),
+                        catchError(errorResponse => {
 
-                        // Mostrar el error en la consola
-                        console.log('deleteAllCarsSideEffect - errorResponse:');
-                        console.log(errorResponse);
+                            // Error handling code...
 
-                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
-                        return of(
-                            HomeActions.GetAllProductsEndFailure({
-                                getAllProductsErrorMessagePayload: 'There was an error when loading the products.',
-                            }),
-                        );
+                            // Mostrar el error en la consola
+                            console.log('deleteAllCarsSideEffect - errorResponse:');
+                            console.log(errorResponse);
 
-                    }),
-                );
+                            // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                            return of(
+                                HomeActions.GetAllProductsEndFailure({
+                                    getAllProductsErrorMessagePayload: 'There was an error when loading the products.',
+                                }),
+                            );
+
+                        }),
+                    );
+
+            }
+
+            // Como siempre hay que devolver una Action, devuelvo una DummyAction si los productos ya están cargados en la Store
+            return of( HomeActions.DummyAction() );
                 
         }),
 

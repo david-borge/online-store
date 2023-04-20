@@ -12,16 +12,16 @@ import { ProductInterface } from "projects/web/src/app/core/models/product.inter
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface HomeReducerStateInterface {
-    allProducts: ProductInterface[];
-    // loading: boolean;
+  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  allProducts: ProductInterface[];
 }
 
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
 const initialState: HomeReducerStateInterface = {
-    // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-    allProducts: [],
-    // loading: false,
+  // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
+  // loadStatus: 'NOT_LOADED',
+  allProducts: [],
 }
 
 
