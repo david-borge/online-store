@@ -32,6 +32,8 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    // FIXME: se puede hacer esto ahead of time? Es decir, hacer la llamada HTTP lo antes posible, no al llegar a la ruta.
+
     // Cargar categorias a la Store (recuperándolos de la Base de datos via HTTP Request)
     this.store.dispatch( CategoriesActions.GetAllCategoriesStart() );
 
