@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store } from "@ngrx/store";
+
+import { Subscription } from 'rxjs';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
@@ -14,14 +16,17 @@ import * as HomeActions from '../../store/home.actions';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   featuredProducts : ProductInterface[] = [];
   dealProducts     : ProductInterface[] = [];
 
+  homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+
   constructor(
     private store: Store<fromApp.AppState>,
   ) {}
+  
 
   ngOnInit(): void {
 
@@ -30,7 +35,7 @@ export class HomeComponent implements OnInit {
 
     // Leer datos desde la Store y mostrarlos
     // All Products - Separar en Fearured y Deal Products
-    this.store.select('homeReducerObservable')
+    this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
       .subscribe(
 
         // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
@@ -85,6 +90,10 @@ export class HomeComponent implements OnInit {
         
       );
 
+  }
+
+  ngOnDestroy() {
+    this.homeReducerObservableSubscription.unsubscribe();
   }
 
 }
