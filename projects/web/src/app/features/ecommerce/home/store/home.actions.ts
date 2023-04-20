@@ -14,7 +14,7 @@ import { ProductInterface } from "projects/web/src/app/core/models/product.inter
 
 
 /** Get All Products Start Action **/
-// Side Effects asociados: getAllProductsSideEffect (toma todos los productos desde la base de datos mediante un HTTP Request)
+// Side Effects asociados: getAllProductsSideEffect (toma todos los Products desde la base de datos mediante un HTTP Request)
 export const GetAllProductsStart = createAction(
 
   // Tipo de la Action

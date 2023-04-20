@@ -30,6 +30,8 @@ export class DataStorageService {
     private httpClient: HttpClient
   ) {}
 
+
+
   // Get all Products
   getAllProductsHttpRequest() {
     return this.httpClient
@@ -37,6 +39,18 @@ export class DataStorageService {
       // .pipe()
       ;
   }
+
+
+
+  // Get all Categories
+  getAllCategoriesHttpRequest() {
+    return this.httpClient
+      .get<CategoryInterface[]>(environment.apiBaseUrl + '/getAllCategories.php', {})
+      // .pipe()
+      ;
+  }
+
+
 
   // (No usado) Get Featured Products
   /* getFeaturedProducts() {
@@ -96,16 +110,8 @@ export class DataStorageService {
     );
   } */
 
-  // Get all Categories
-  getAllCategories() {
-    return this.httpClient
-      .get<CategoryInterface[]>(environment.apiBaseUrl + '/getAllCategories.php', {})
-      // .pipe()
-      ;
-  }
 
-
-
+  
   /* // (Antiguo) Firestore Database
   // Colecciones (https://console.firebase.google.com/u/0/project/online-store-7de9d/firestore/data/)
   private productosCollection: CollectionReference<DocumentData>;

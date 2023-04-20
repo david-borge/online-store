@@ -1,0 +1,83 @@
+// /*** categoriesReducer ***/
+
+
+
+import { createReducer, on } from "@ngrx/store";
+
+import * as CategoriesActions from "./categories.actions";  // Importar todo y guardarlo en el alias CategoriesActions
+
+import { CategoryInterface } from "projects/web/src/app/core/models/category.interface";
+
+
+
+// Reducer State (inicial) - Tipos (definidos en una interfaz)
+export interface CategoriesReducerStateInterface {
+    allCategories: CategoryInterface[];
+    // loading: boolean;
+}
+
+// Reducer State (inicial) - Valores iniciales
+// Normalmente es un objeto JS
+const initialState: CategoriesReducerStateInterface = {
+    // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
+    allCategories: [],
+    // loading: false,
+}
+
+
+
+export const categoriesReducer = createReducer(
+    initialState,
+
+    // Alteramos el App State (inicial) usando la Action que sea.
+    // MUCHO CUIDADO: nunca editar el state original. Siempre hacer una copia y devolver la copia.
+
+
+
+    /** Get All Categories Start Action **/
+    // Side Effects asociados: getAllCategoriesSideEffect (toma todos las Categories desde la base de datos mediante un HTTP Request)
+    on(CategoriesActions.GetAllCategoriesStart,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+    /** |-> Get All Categories End Success Action **/
+    on(CategoriesActions.GetAllCategoriesEndSuccess,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        // Cargar todos los datos desde la base de datos
+        allCategories: [
+            // Cuidado: NO hay que copiar las Categories en este caso porque los estoy cargando todos desde la base de datos
+
+
+            // Añadir un valor a un array - Si lo que devuelve esta Action SÍ es un array
+            ...action.allCategoriesPayload,
+        ],
+          
+      })),
+
+    /** |-> Get All Categories End Failure Action **/
+    on(CategoriesActions.GetAllCategoriesEndFailure,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+
+
+);

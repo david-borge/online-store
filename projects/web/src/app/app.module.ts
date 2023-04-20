@@ -19,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import * as fromApp from './core/store/app.reducer';
-import { HomeEffects } from './features/ecommerce/home/pages/home/store/home.effects';
+import { HomeEffects } from './features/ecommerce/home/store/home.effects';
+import { CategoriesEffects } from './features/ecommerce/categories/store/categories.effects';
 
 import { environment } from '../environments/environment';
 
@@ -52,7 +53,7 @@ import { environment } from '../environments/environment';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
 
     StoreModule.forRoot(fromApp.appReducer),  // Action Reducer Map: un objeto JS con la lista de Reducers de la app ({identificadorQueQuiera: MiReducerAsociadoAlIdentificador})
-    EffectsModule.forRoot([ HomeEffects, ]), // Array de Side Effects
+    EffectsModule.forRoot([ HomeEffects, CategoriesEffects, ]), // Array de Side Effects
     StoreDevtoolsModule.instrument({ logOnly: environment.production }), // Instrument recibe un objeto con la configuración de Store Devtools. Con logOnly: environment.production, hacemos que solo se generen los log messages en producción.
     StoreRouterConnectingModule.forRoot(), // The Router Store
     

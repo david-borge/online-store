@@ -35,7 +35,7 @@ export const homeReducer = createReducer(
 
 
     /** Get All Products Start Action **/
-    // Side Effects asociados: getAllProductsSideEffect (toma todos los productos desde la base de datos mediante un HTTP Request)
+    // Side Effects asociados: getAllProductsSideEffect (toma todos los Products desde la base de datos mediante un HTTP Request)
     on(HomeActions.GetAllProductsStart,
       (state, action) => ({
 

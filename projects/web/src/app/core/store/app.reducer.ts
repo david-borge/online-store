@@ -9,7 +9,8 @@
 
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromHome from '../../features/ecommerce/home/pages/home/store/home.reducer';
+import * as fromHome from '../../features/ecommerce/home/store/home.reducer';
+import * as fromCategories from '../../features/ecommerce/categories/store/categories.reducer';
 
 
 
@@ -17,6 +18,7 @@ import * as fromHome from '../../features/ecommerce/home/pages/home/store/home.r
 // Cojo los tipos de las interfaces de los demás Reducers
 export interface AppState {
     homeReducerObservable: fromHome.HomeReducerStateInterface;
+    categoriesReducerObservable: fromCategories.CategoriesReducerStateInterface;
 }
 
 
@@ -24,4 +26,5 @@ export interface AppState {
 // Un objeto JS con la lista de Reducers de la app ({identificadorQueQuiera: MiReducerAsociadoAlIdentificador})
 export const appReducer: ActionReducerMap<AppState> = {
     homeReducerObservable: fromHome.homeReducer,
+    categoriesReducerObservable: fromCategories.categoriesReducer,
 };
