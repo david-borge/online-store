@@ -28,12 +28,10 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
 
     // Cargar categorias a la Store (recuperándolos de la Base de datos via HTTP Request)
-    // FIXME: hacer esto SOLO si aún no hay ninguna categoría cargada en la store, porque si no, se harían llamadas HTTP innecesarias al pasar de una ruta a otra.
     this.store.dispatch( CategoriesActions.GetAllCategoriesStart() );
 
     // Leer datos desde la Store y mostrarlos
     // All Categories - Separar en Fearured y Deal Categories
-    // FIXME: se pueden tomar los datos de la store sin una suscripción? Porque aquí solo necesito leerlos una vez.
     this.store.select('categoriesReducerObservable')
       .subscribe(
 

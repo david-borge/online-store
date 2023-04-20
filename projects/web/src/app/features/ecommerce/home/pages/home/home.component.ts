@@ -26,12 +26,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     // Cargar productos a la Store (recuperándolos de la Base de datos via HTTP Request)
-    // FIXME: hacer esto SOLO si aún no hay ninguna categoría cargada en la store, porque si no, se harían llamadas HTTP innecesarias al pasar de una ruta a otra.
     this.store.dispatch( HomeActions.GetAllProductsStart() );
 
     // Leer datos desde la Store y mostrarlos
     // All Products - Separar en Fearured y Deal Products
-    // FIXME: se pueden tomar los datos de la store sin una suscripción? Porque aquí solo necesito leerlos una vez.
     this.store.select('homeReducerObservable')
       .subscribe(
 
