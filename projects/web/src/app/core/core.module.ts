@@ -5,10 +5,6 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { AngularSvgIconModule } from 'angular-svg-icon';
-import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
-
-import { environment } from '../../environments/environment.development';
 
 
 @NgModule({

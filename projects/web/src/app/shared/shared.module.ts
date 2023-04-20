@@ -15,10 +15,6 @@ import { AddressCardComponent } from './components/address-card/address-card.com
 import { SelectButtonComponent } from './components/select-button/select-button.component';
 import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overlay.component';
 
-import { AngularSvgIconModule } from 'angular-svg-icon';
-import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
-
-import { environment } from '../../environments/environment.development';
 
 
 @NgModule({

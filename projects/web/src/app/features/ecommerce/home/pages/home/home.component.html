@@ -7,7 +7,7 @@
 <main role="main" style="padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
 
     <!-- Home - Featured Products -->
-    <div class="section">
+    <div class="section" *ngIf="featuredProducts.length != 0">
 
         <!-- Section Header -->
         <app-section-header
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Home - Deals Products -->
-    <div class="section">
+    <div class="section" *ngIf="dealProducts.length != 0">
         
         <!-- Section Header -->
         <app-section-header

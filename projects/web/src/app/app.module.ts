@@ -5,6 +5,11 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -12,6 +17,11 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import * as fromApp from './core/store/app.reducer';
+import { HomeEffects } from './features/ecommerce/home/pages/home/store/home.effects';
+
+import { environment } from '../environments/environment';
 
 // (Antiguo) Firestore Database
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
@@ -40,6 +50,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // En los módulos que no sean AppModule donde quiera usar *ngIf y *ngFor, no hay que añadir BrowserModule a los imports, sino CommonModule.
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+
+    StoreModule.forRoot(fromApp.appReducer),  // Action Reducer Map: un objeto JS con la lista de Reducers de la app ({identificadorQueQuiera: MiReducerAsociadoAlIdentificador})
+    EffectsModule.forRoot([ HomeEffects, ]), // Array de Side Effects
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }), // Instrument recibe un objeto con la configuración de Store Devtools. Con logOnly: environment.production, hacemos que solo se generen los log messages en producción.
+    StoreRouterConnectingModule.forRoot(), // The Router Store
+    
     AppRoutingModule,
 
     // EcommerceModule,

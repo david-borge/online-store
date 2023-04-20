@@ -3,10 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.component';
 
-import { AngularSvgIconModule } from 'angular-svg-icon';
-import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
-
-import { environment } from 'projects/web/src/environments/environment.development';
 
 
 @NgModule({

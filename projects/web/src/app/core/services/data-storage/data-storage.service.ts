@@ -31,7 +31,7 @@ export class DataStorageService {
   ) {}
 
   // Get all Products
-  getAllProducts() {
+  getAllProductsHttpRequest() {
     return this.httpClient
       .get<ProductInterface[]>(environment.apiBaseUrl + '/getAllProducts.php', {})
       // .pipe()
@@ -40,7 +40,7 @@ export class DataStorageService {
 
   // (No usado) Get Featured Products
   /* getFeaturedProducts() {
-    return this.getAllProducts()
+    return this.getAllProductsHttpRequest()
     .pipe(
 
         map(
@@ -69,7 +69,7 @@ export class DataStorageService {
 
   // (No usado) Get Deal Products
   /* getDealProducts() {
-    return this.getAllProducts()
+    return this.getAllProductsHttpRequest()
     .pipe(
 
         map(
@@ -117,7 +117,7 @@ export class DataStorageService {
   }
 
   // GET
-  getAllProducts() {
+  getAllProductsHttpRequest() {
     return collectionData(this.productosCollection, {
       // idField: 'id',
     }) as Observable<ProductInterface[]>;

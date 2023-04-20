@@ -31,7 +31,7 @@ export class CategoryDetailComponent {
     // TODO: Mandar la categoría actual a CategoryComponent para mostrarlo en la header
 
     // TODO: mover a su sitio apropiado: All Products - Filtrar para mostrar los de la categoría actual
-    this.dataStorageService.getAllProducts().subscribe(
+    this.dataStorageService.getAllProductsHttpRequest().subscribe(
 
       // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
       (allProductsResponseData)  => {

@@ -28,7 +28,7 @@ export class ProductDetailComponent {
     this.currentProductSlug = this.route.snapshot.params['product-slug'];
 
     // TODO: mover a su sitio apropiado: All Products - Filtrar para mostrar los de la categoría actual
-    this.dataStorageService.getAllProducts().subscribe(
+    this.dataStorageService.getAllProductsHttpRequest().subscribe(
 
       // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
       (allProductsResponseData)  => {
