@@ -49,3 +49,13 @@ export const GetAllCategoriesEndFailure = createAction(
   }>()
 
 );
+
+
+
+/** Dummy Action **/
+export const DummyAction = createAction(
+
+  // Tipo de la Action
+  '[Categories] Dummy Action',
+
+);
