@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
+
+import { Subscription } from 'rxjs';
 
 import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
@@ -17,13 +19,16 @@ import * as CategoriesActions from '../../store/categories.actions';
     class:'app-categories-classes-for-router-outlet'
   },
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
 
   allCategories : CategoryInterface[] = [];
+
+  categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   constructor(
     private store: Store<fromApp.AppState>,
   ) {}
+
 
   ngOnInit(): void {
 
@@ -32,7 +37,7 @@ export class CategoriesComponent implements OnInit {
 
     // Leer datos desde la Store y mostrarlos
     // All Categories - Separar en Fearured y Deal Categories
-    this.store.select('categoriesReducerObservable')
+    this.categoriesReducerObservableSubscription = this.store.select('categoriesReducerObservable')
       .subscribe(
 
         // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
@@ -60,6 +65,10 @@ export class CategoriesComponent implements OnInit {
         
       );
 
+  }
+
+  ngOnDestroy() {
+    this.categoriesReducerObservableSubscription.unsubscribe();
   }
 
 }
