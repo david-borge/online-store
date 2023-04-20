@@ -38,7 +38,7 @@ export class CategoriesEffects {
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
         ofType(CategoriesActions.GetAllCategoriesStart),
 
-        withLatestFrom( this.store.select('homeReducerObservable') ), // MUCHO CUIDADO: SÓLO hacer la llamada HTTP si aún no hay ningún producto en la Store, así nos evitamos hacer una llamada HTTP cada ver que se vuelva a la Home desde otra ruta
+        withLatestFrom( this.store.select('categoriesReducerObservable') ), // MUCHO CUIDADO: SÓLO hacer la llamada HTTP si aún no hay ningún producto en la Store, así nos evitamos hacer una llamada HTTP cada ver que se vuelva a la Home desde otra ruta
 
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
         switchMap( (getAllCategoriesStartActionData) => {
@@ -50,7 +50,7 @@ export class CategoriesEffects {
             // console.log(getAllCategoriesStartActionData);
             
             // MUCHO CUIDADO: SÓLO hacer la llamada HTTP si aún no hay ningún producto en la Store, así nos evitamos hacer una llamada HTTP cada ver que se vuelva a la Home desde otra ruta
-            if ( getAllCategoriesStartActionData[1].allProducts.length === 0 ) {
+            if ( getAllCategoriesStartActionData[1].allCategories.length === 0 ) {
                 
                 // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
                 return this.dataStorageService.getAllCategoriesHttpRequest()
