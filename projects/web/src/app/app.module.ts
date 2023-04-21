@@ -24,6 +24,8 @@ import { CategoriesEffects } from './features/ecommerce/categories/store/categor
 
 import { environment } from '../environments/environment';
 
+// import { PrefetchDirective } from './shared/directives/prefetch.directive';
+
 // (Antiguo) Firestore Database
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 // import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -41,7 +43,7 @@ import { environment } from '../environments/environment';
     // ...
     
     // Mis directivas personalizadas
-    // ...
+    // PrefetchDirective,
     
   ],
 

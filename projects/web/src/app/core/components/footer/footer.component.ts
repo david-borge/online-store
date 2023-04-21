@@ -1,6 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -27,6 +32,7 @@ export class FooterComponent {
   numberOfProductsInCart :number = 2;
 
   constructor(
+    private store: Store<fromApp.AppState>,
     public router: Router,
   ) {}
 
@@ -38,6 +44,11 @@ export class FooterComponent {
       this.navigationButtonRightURL  = "/home";
     }
 
+  }
+
+  prefetch() {
+    this.store.dispatch( CategoriesActions.GetAllCategoriesStart() );
+    // this.store.dispatch(heroDetailLoaded({ id }))
   }
 
 }

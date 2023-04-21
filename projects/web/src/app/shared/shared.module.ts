@@ -15,6 +15,8 @@ import { AddressCardComponent } from './components/address-card/address-card.com
 import { SelectButtonComponent } from './components/select-button/select-button.component';
 import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overlay.component';
 
+import { PrefetchDirective } from './directives/prefetch.directive';
+
 
 
 @NgModule({
@@ -31,6 +33,9 @@ import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overl
     AddressCardComponent,
     SelectButtonComponent,
     BottomOverlayComponent,
+
+    // Mis directivas personalizadas
+    PrefetchDirective,
   ],
   imports: [
     CommonModule,
@@ -51,6 +56,7 @@ import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overl
     AddressCardComponent,
     SelectButtonComponent,
     BottomOverlayComponent,
+    PrefetchDirective,
   ],
 
 })

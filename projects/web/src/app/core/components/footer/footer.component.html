@@ -81,7 +81,10 @@
         
         <!-- Navigation Item -->
         <div class="navigation-item">
-            <a routerLink="/categories">
+            <a routerLink="/categories"
+                (prefetch)="prefetch()"
+                [prefetchMode]="['VISIBLE']"
+                >
                 <div class="navigation-icon-container">
                     
                     <!-- Icon: grid -->

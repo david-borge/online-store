@@ -30,6 +30,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    // Comprobacion
+    console.log(navigator);
+
     // FIXME: se puede hacer esto ahead of time? Es decir, hacer la llamada HTTP lo antes posible, no al llegar a la ruta.
     
     // Cargar productos a la Store (recuperándolos de la Base de datos via HTTP Request)
