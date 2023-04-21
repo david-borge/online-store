@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+
+import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
 
 @Component({
@@ -45,10 +47,26 @@ export class FooterComponent {
     }
 
   }
+  
+  prefetch(elementoAprefetch: string) {
 
-  prefetch() {
-    this.store.dispatch( CategoriesActions.GetAllCategoriesStart() );
-    // this.store.dispatch(heroDetailLoaded({ id }))
+    // Hago el pre-fetch de lo que necesite en cada caso
+    switch ( elementoAprefetch ) {
+
+      case 'home':
+        // Cargar productos a la Store (recuperándolos de la Base de datos via HTTP Request)
+        this.store.dispatch( HomeActions.GetAllProductsStart() );
+        break;
+
+      case 'categories':
+        // Cargar categorias a la Store (recuperándolos de la Base de datos via HTTP Request)
+        this.store.dispatch( CategoriesActions.GetAllCategoriesStart() );
+        break;
+      
+      default:
+        break;
+    }
+
   }
 
 }

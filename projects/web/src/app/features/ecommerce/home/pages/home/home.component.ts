@@ -30,14 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // Comprobacion
-    console.log(navigator);
-
-    // FIXME: se puede hacer esto ahead of time? Es decir, hacer la llamada HTTP lo antes posible, no al llegar a la ruta.
+    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts y projects\web\src\app\core\components\footer\footer.component.html
     
-    // Cargar productos a la Store (recuperándolos de la Base de datos via HTTP Request)
-    this.store.dispatch( HomeActions.GetAllProductsStart() );
-
     // Leer datos desde la Store y mostrarlos
     // All Products - Separar en Fearured y Deal Products
     this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')

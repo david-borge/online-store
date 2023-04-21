@@ -67,7 +67,10 @@
 
         <!-- Navigation Item -->
         <div class="navigation-item navigation-item--active">
-            <a routerLink="/home">
+            <a routerLink="/home"
+                (prefetch)="prefetch('home')"
+                [prefetchMode]="['VISIBLE']"
+                >
                 <div class="navigation-icon-container">
 
                     <!-- Icon: home -->
@@ -82,7 +85,7 @@
         <!-- Navigation Item -->
         <div class="navigation-item">
             <a routerLink="/categories"
-                (prefetch)="prefetch()"
+                (prefetch)="prefetch('categories')"
                 [prefetchMode]="['VISIBLE']"
                 >
                 <div class="navigation-icon-container">

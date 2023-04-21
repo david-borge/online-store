@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
 import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
-import * as CategoriesActions from '../../store/categories.actions';
 
 
 
@@ -32,13 +31,10 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // FIXME: se puede hacer esto ahead of time? Es decir, hacer la llamada HTTP lo antes posible, no al llegar a la ruta.
-
-    // Cargar categorias a la Store (recuperándolos de la Base de datos via HTTP Request)
-    this.store.dispatch( CategoriesActions.GetAllCategoriesStart() );
+    // IMPORTANTE: al llegar aquí, las categorias ya están cargadas en la Store porque las he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlas solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts y projects\web\src\app\core\components\footer\footer.component.html
 
     // Leer datos desde la Store y mostrarlos
-    // All Categories - Separar en Fearured y Deal Categories
+    // All Categories
     this.categoriesReducerObservableSubscription = this.store.select('categoriesReducerObservable')
       .subscribe(
 
