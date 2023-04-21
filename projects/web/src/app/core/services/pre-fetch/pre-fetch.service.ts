@@ -17,6 +17,16 @@ export class PreFetchService {
     private store: Store<fromApp.AppState>,
   ) { }
 
+  prefetchList(elementosAprefetch: string[]): void {
+
+    elementosAprefetch.forEach(elementosprefetch => {
+      
+      this.prefetch( elementosprefetch );
+
+    });
+
+  }
+
   prefetch(elementoAprefetch: string): void {
 
     // Hago el pre-fetch de lo que necesite en cada caso

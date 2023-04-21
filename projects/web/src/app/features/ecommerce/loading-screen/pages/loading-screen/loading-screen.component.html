@@ -106,12 +106,14 @@
 
         <!-- Button "Let's begin" -->
         <!-- FIXME: flashazo al cargar relacionado con el Pre-render. -->
-        <button class="btn btn-tertiary btn-lg w-100 lets-begin-button" style="margin-bottom: var(--espacio-vertical);"
-            (click)="onClickLetsBeginButton();"
+        <button (click)="onClickLetsBeginButton();"
+            class="btn btn-tertiary btn-lg w-100 lets-begin-button" style="margin-bottom: var(--espacio-vertical);"
             [@animacionLetsBeginButton]=""
             (@animacionLetsBeginButton.done)="animacionLetsBeginButtonEnded();"
             [disabled]="letsBeginButtonIsDisabled"
-        >Let's begin</button>
+            (prefetch)="prefetch([ 'home', 'categories' ])"
+            [prefetchMode]="['VISIBLE']"
+            >Let's begin</button>
 
         <!-- Spinner -->
         <!-- Icon: spinner en https://loading.io/ -->

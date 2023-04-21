@@ -45,9 +45,9 @@ export class FooterComponent {
 
   }
   
-  prefetch(elementoAprefetch: string): void {
+  prefetch(elementosAprefetch: string[]): void {
 
-    this.preFetchService.prefetch(elementoAprefetch);
+    this.preFetchService.prefetchList( elementosAprefetch );
 
   }
 

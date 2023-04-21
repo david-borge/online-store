@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.component';
+import { RouterModule } from '@angular/router';
 
+import { SharedModule } from '../../../shared/shared.module';
+
+import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.component';
 
 
 @NgModule({
@@ -11,6 +14,9 @@ import { LoadingScreenComponent } from './pages/loading-screen/loading-screen.co
   ],
   imports: [
     CommonModule,
+    RouterModule,
+
+    SharedModule,
   ],
 
   // Exports: permite incluir un módulo dentro de otro. Exports se pone en el módulo que quiero insertar, no en el que lo voy a insertar.

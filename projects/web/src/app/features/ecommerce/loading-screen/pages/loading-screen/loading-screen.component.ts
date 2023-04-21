@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { AnimationEvent, trigger, style, transition, animate } from '@angular/animations';
+import { trigger, style, transition, animate } from '@angular/animations';
+
+import { PreFetchService } from '../../../../../core/services/pre-fetch/pre-fetch.service';
 
 
 @Component({
@@ -34,6 +36,7 @@ export class LoadingScreenComponent {
 
   constructor(
     private router: Router,
+    private preFetchService: PreFetchService,
   ) { }
 
   // Loading Screen - "Let's begin" button - Animation End - Activar el botón cuando la animación termina (para que no se pueda hacer click mientras es invisible)
@@ -47,6 +50,12 @@ export class LoadingScreenComponent {
     
     // Ir a la Home Page
     this.router.navigate(['/home']); // Ruta absoluta
+
+  }
+
+  prefetch(elementosAprefetch: string[]): void {
+
+    this.preFetchService.prefetchList( elementosAprefetch );
 
   }
 
