@@ -2,7 +2,10 @@
 
 
 
-import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, InjectionToken, Input, OnDestroy, OnInit, Output } from "@angular/core";
+
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 
 
@@ -19,6 +22,7 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
 
     constructor(
         private elemRef: ElementRef,
+        @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
     ) {}
 
     ngOnInit() {
@@ -31,27 +35,37 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
 
-        this.observer = new IntersectionObserver((entries) => {
+        // Comprobar si estoy en el navegador (el código de dentro del if NO se ejecuta en el servidor para evitar errores en SSR o pre-render)
+        if (isPlatformBrowser(this.platformId)) {
 
-            entries.forEach((entry) => {
+            this.observer = new IntersectionObserver((entries) => {
 
-                if (entry.isIntersecting) {
-                    this.prefetchData();
-                    this.observer.disconnect();
-                }
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+                        this.prefetchData();
+                        this.observer.disconnect();
+                    }
+
+                });
 
             });
 
-        })
-
-        this.observer.observe(this.elemRef.nativeElement);
+            this.observer.observe(this.elemRef.nativeElement);
+            
+        }
 
     }
 
     ngOnDestroy() {
+        
+        // Comprobar si estoy en el navegador (el código de dentro del if NO se ejecuta en el servidor para evitar errores en SSR o pre-render)
+        if (isPlatformBrowser(this.platformId)) {
 
-        if (this.observer) {
-            this.observer.disconnect();
+            if (this.observer) {
+                this.observer.disconnect();
+            }
+
         }
 
     }
@@ -68,13 +82,17 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
 
     prefetchData() {
 
-        // FIXME: Property 'connection' does not exist on type 'Navigator'. Aunque el pre-fetch funciona igual.
-        /* if (navigator.connection.saveData) {
-            return undefined;
-        } */
+        // Comprobar si estoy en el navegador (el código de dentro del if NO se ejecuta en el servidor para evitar errores en SSR o pre-render)
+        if (isPlatformBrowser(this.platformId)) {
 
-        this.prefetch.next();
+            // FIXME: Property 'connection' does not exist on type 'Navigator'. Aunque el pre-fetch funciona igual.
+            // if (navigator.connection.saveData) {
+            //     return undefined;
+            // }
 
+            this.prefetch.next();
+        }
+        
     }
 
 }
