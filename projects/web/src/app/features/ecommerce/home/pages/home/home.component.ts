@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store } from "@ngrx/store";
 
@@ -15,12 +15,16 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   featuredProducts : ProductInterface[] = [];
   dealProducts     : ProductInterface[] = [];
 
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+
+  // Load images
+  imagesToLoad = [ "assets/img/categories/reading.webp", "assets/img/categories/tech.webp" ];
+  numberOfImagesLoaded = 0;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -92,6 +96,31 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.homeReducerObservableSubscription.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    
+    // Load images
+    this.loadImages();
+
+  }
+
+  loadImages(){
+    for(let i = 0; i < this.imagesToLoad.length; i++){
+      let img = new Image();
+      img.onload = () => {
+        this.loaded();
+      }
+      img.src = this.imagesToLoad[i];
+    }
+  }
+  
+  loaded(){
+    this.numberOfImagesLoaded++;
+    if(this.imagesToLoad.length == this.numberOfImagesLoaded){
+      // Comprobacion
+      console.log('All images loaded.');
+    }
   }
 
 }

@@ -15,7 +15,7 @@ import { AddressCardComponent } from './components/address-card/address-card.com
 import { SelectButtonComponent } from './components/select-button/select-button.component';
 import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overlay.component';
 
-import { PrefetchDirective } from './directives/prefetch.directive';
+import { PrefetchDirective } from './directives/prefetch/prefetch.directive';
 
 
 
