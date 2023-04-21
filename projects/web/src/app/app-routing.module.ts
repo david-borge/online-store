@@ -23,61 +23,61 @@ const routes: Routes = [
   // Home Page
   {
     path: 'home',
-    loadChildren: () => import('./features/ecommerce/ecommerce.module').then( (modulo) => modulo.EcommerceModule )
+    loadChildren: () => import('./features/ecommerce/ecommerce.module').then( (modulo) => modulo.EcommerceModule ),
   },
 
   // Product Page
   {
     path: 'product',
-    loadChildren: () => import('./features/ecommerce/product/product.module').then( (modulo) => modulo.ProductModule )
+    loadChildren: () => import('./features/ecommerce/product/product.module').then( (modulo) => modulo.ProductModule ),
   },
 
   // Categories Page (/categories)
   {
     path: 'categories',
-    loadChildren: () => import('./features/ecommerce/categories/categories.module').then( (modulo) => modulo.CategoriesModule )
+    loadChildren: () => import('./features/ecommerce/categories/categories.module').then( (modulo) => modulo.CategoriesModule ),
   },
 
   // Category Page (/category/tech)
   {
     path: 'category',
-    loadChildren: () => import('./features/ecommerce/category/category.module').then( (modulo) => modulo.CategoryModule )
+    loadChildren: () => import('./features/ecommerce/category/category.module').then( (modulo) => modulo.CategoryModule ),
   },
   
   // Cart Page
   {
     path: 'cart',
-    loadChildren: () => import('./features/ecommerce/cart/cart.module').then( (modulo) => modulo.CartModule )
+    loadChildren: () => import('./features/ecommerce/cart/cart.module').then( (modulo) => modulo.CartModule ),
   },
   
   // Account Page
   {
     path: 'account',
-    loadChildren: () => import('./features/ecommerce/account/account.module').then( (modulo) => modulo.AccountModule )
+    loadChildren: () => import('./features/ecommerce/account/account.module').then( (modulo) => modulo.AccountModule ),
   },
   
   // Orders Page
   {
     path: 'orders',
-    loadChildren: () => import('./features/ecommerce/orders/orders.module').then( (modulo) => modulo.OrdersModule )
+    loadChildren: () => import('./features/ecommerce/orders/orders.module').then( (modulo) => modulo.OrdersModule ),
   },
 
   // Order Page (/order/1234)
   {
     path: 'order',
-    loadChildren: () => import('./features/ecommerce/order/order.module').then( (modulo) => modulo.OrderModule )
+    loadChildren: () => import('./features/ecommerce/order/order.module').then( (modulo) => modulo.OrderModule ),
   },
 
   // Addresses Page
   {
     path: 'addresses',
-    loadChildren: () => import('./features/ecommerce/addresses/addresses.module').then( (modulo) => modulo.AddressesModule )
+    loadChildren: () => import('./features/ecommerce/addresses/addresses.module').then( (modulo) => modulo.AddressesModule ),
   },
 
   // Payment Methods Page
   {
     path: 'payment-methods',
-    loadChildren: () => import('./features/ecommerce/payment-methods/payment-methods.module').then( (modulo) => modulo.PaymentMethodsModule )
+    loadChildren: () => import('./features/ecommerce/payment-methods/payment-methods.module').then( (modulo) => modulo.PaymentMethodsModule ),
   },
 
 ];

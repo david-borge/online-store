@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
@@ -16,6 +16,7 @@ import { SelectButtonComponent } from './components/select-button/select-button.
 import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overlay.component';
 
 import { PrefetchDirective } from './directives/prefetch.directive';
+
 
 
 
@@ -40,10 +41,13 @@ import { PrefetchDirective } from './directives/prefetch.directive';
   imports: [
     CommonModule,
     RouterModule,
+
+    NgOptimizedImage,
   ],
 
   // Añadir a exports todo lo que haya puesto en declarations e imports, para que esté disponible en los otros módulos que van a usar las cosas de SharedModule.
   exports: [
+    NgOptimizedImage,
     SectionHeaderComponent,
     ProductCardComponent,
     FeaturedProductsCarrouselComponent,
