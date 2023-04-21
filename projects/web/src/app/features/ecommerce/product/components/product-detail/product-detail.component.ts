@@ -1,9 +1,13 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { Store } from "@ngrx/store";
+
+import { Subscription } from 'rxjs';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
-import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
+import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
 
 @Component({
@@ -12,59 +16,68 @@ import { DataStorageService } from 'projects/web/src/app/core/services/data-stor
   styleUrls: ['./product-detail.component.scss'],
   encapsulation: ViewEncapsulation.None,  // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-description-content *)
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit, OnDestroy {
 
-  currentProductSlug: string = '';
-  currentProduct = {} as ProductInterface;
+  productSlug: string = '';
+  product = {} as ProductInterface;
+
+  homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   constructor(
+    private store: Store<fromApp.AppState>,
     private route: ActivatedRoute,
-    private dataStorageService: DataStorageService,  // Inyectar una instancia del servicio en el componente
   ) {}
 
   ngOnInit(): void {
 
     // Get current Product (from Route Paramenter :product-slug en projects\web\src\app\features\ecommerce\product\product-routing.module.ts)
-    this.currentProductSlug = this.route.snapshot.params['product-slug'];
+    this.productSlug = this.route.snapshot.params['product-slug'];
 
-    // TODO: mover a su sitio apropiado: All Products - Filtrar para mostrar los de la categoría actual
-    this.dataStorageService.getAllProductsHttpRequest().subscribe(
+    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\pre-fetch.service.ts
 
-      // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
-      (allProductsResponseData)  => {
+    // TODO: mover a NgRx
+    this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
+      .subscribe(
 
-        // console.log('allProductsResponseData get:');
-        // console.log(allProductsResponseData);
+        // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
+        (allProductsResponseData)  => {
 
-        // Filtro los productos - Products de la Category actual
-        this.currentProduct = allProductsResponseData.filter(
+          // console.log('allProductsResponseData get:');
+          // console.log(allProductsResponseData);
 
-          // Cada producto
-          ( product: ProductInterface ) => {
+          // Filtro los productos - Producto con el slug apropiado
+          this.product = allProductsResponseData.allProducts.filter(
 
-            // Criterio para mostrar o no cada producto
-            return (product.slug == this.currentProductSlug);
+            // Cada producto
+            ( product: ProductInterface ) => {
 
-          }
+              // Criterio para mostrar o no cada producto
+              return (product.slug == this.productSlug);
 
-        )[0];  // Primer y único elemento del array, que es el producto actual
+            }
 
-        // console.log('currentProduct:');
-        // console.log(this.currentProduct);
+          )[0];  // Primer y único elemento del array, que es el producto actual
 
-      },
+          // console.log('product:');
+          // console.log(this.product);
 
-      // El segundo parámetro de susbscribe() es para recoger los errores del servidor
-      (errorResponse) => {
+        },
+
+        // El segundo parámetro de susbscribe() es para recoger los errores del servidor
+        (errorResponse) => {
+          
+          // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
+          console.log('errorResponse get:');
+          console.log(errorResponse);
+
+        }
         
-        // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
-        console.log('errorResponse get:');
-        console.log(errorResponse);
+      );
 
-      }
-      
-    );
+  }
 
+  ngOnDestroy(): void {
+    this.homeReducerObservableSubscription.unsubscribe();
   }
 
 }

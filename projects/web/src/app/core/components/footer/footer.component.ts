@@ -1,12 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Store } from '@ngrx/store';
+import { PreFetchService } from '../../services/pre-fetch/pre-fetch.service';
 
-import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
-import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
-import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
 
 @Component({
   selector: 'app-footer',
@@ -34,8 +31,8 @@ export class FooterComponent {
   numberOfProductsInCart :number = 2;
 
   constructor(
-    private store: Store<fromApp.AppState>,
     public router: Router,
+    private preFetchService: PreFetchService,
   ) {}
 
   ngOnInit(): void {
@@ -48,24 +45,9 @@ export class FooterComponent {
 
   }
   
-  prefetch(elementoAprefetch: string) {
+  prefetch(elementoAprefetch: string): void {
 
-    // Hago el pre-fetch de lo que necesite en cada caso
-    switch ( elementoAprefetch ) {
-
-      case 'home':
-        // Cargar productos a la Store (recuperándolos de la Base de datos via HTTP Request)
-        this.store.dispatch( HomeActions.GetAllProductsStart() );
-        break;
-
-      case 'categories':
-        // Cargar categorias a la Store (recuperándolos de la Base de datos via HTTP Request)
-        this.store.dispatch( CategoriesActions.GetAllCategoriesStart() );
-        break;
-      
-      default:
-        break;
-    }
+    this.preFetchService.prefetch(elementoAprefetch);
 
   }
 

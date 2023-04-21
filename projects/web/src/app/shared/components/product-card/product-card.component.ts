@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+
 import { ProductInterface } from '../../../core/models/product.interface';
 
 @Component({
@@ -14,6 +15,7 @@ export class ProductCardComponent {
   @Input() productCardTypeClass: string = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
   @Input() productCardProductNameTitleHeadingTag: string = '';
   productCardTitleHeadingTagInnerHTML: string = '';
+
 
   ngOnInit(): void {
 
