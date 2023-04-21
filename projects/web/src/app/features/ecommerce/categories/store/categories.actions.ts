@@ -32,7 +32,7 @@ export const GetAllCategoriesEndSuccess = createAction(
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
       allCategoriesPayload: CategoryInterface[],
-  }>()
+  }>(),
 
 );
 
@@ -46,7 +46,7 @@ export const GetAllCategoriesEndFailure = createAction(
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
       getAllCategoriesErrorMessagePayload: string,
-  }>()
+  }>(),
 
 );
 

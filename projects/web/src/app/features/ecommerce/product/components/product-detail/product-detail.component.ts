@@ -1,13 +1,15 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Store } from "@ngrx/store";
 
 import { Subscription } from 'rxjs';
 
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+import { ActivatedRoute } from '@angular/router';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as HomeActions from '../../../home/store/home.actions';
+import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+
 
 
 @Component({
@@ -16,10 +18,11 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
   styleUrls: ['./product-detail.component.scss'],
   encapsulation: ViewEncapsulation.None,  // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-description-content *)
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
+export class ProductDetailComponent implements OnInit {
 
+  // productSlug: string = '';
   productSlug: string = '';
-  product = {} as ProductInterface;
+  @Input() product = {} as ProductInterface;
 
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -33,9 +36,16 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     // Get current Product (from Route Paramenter :product-slug en projects\web\src\app\features\ecommerce\product\product-routing.module.ts)
     this.productSlug = this.route.snapshot.params['product-slug'];
 
-    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\pre-fetch.service.ts
+    // Comprobacion
+    // console.log('ProductDetailComponent > productSlug: ' + this.productSlug);
 
-    // TODO: mover a NgRx
+    // Guardar el productSlug del producto actual en la Store para poder leerlo en ProductComponent y mostrar el título y el color de fondo apropiados en el header
+    this.store.dispatch( HomeActions.SaveCurrentProductSlug({ currentProductSlugPayload: this.productSlug }) );
+
+
+    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\pre-fetch.service.ts
+    // Leer datos desde la Store y mostrarlos
+    // All Products - Filtrando para mostrar solo el producto con el slug correspondiente
     this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
       .subscribe(
 
@@ -45,21 +55,26 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           // console.log('allProductsResponseData get:');
           // console.log(allProductsResponseData);
 
-          // Filtro los productos - Producto con el slug apropiado
-          this.product = allProductsResponseData.allProducts.filter(
+          // Compruebo si hay algún producto antes de filtrar
+          if ( allProductsResponseData.allProducts.length > 0 ) {
+            
+            // Filtro los productos - Producto con el slug apropiado
+            this.product = allProductsResponseData.allProducts.filter(
 
-            // Cada producto
-            ( product: ProductInterface ) => {
+              // Cada producto
+              ( product: ProductInterface ) => {
 
-              // Criterio para mostrar o no cada producto
-              return (product.slug == this.productSlug);
+                // Criterio para mostrar o no cada producto
+                return (product.slug == this.productSlug);
 
-            }
+              }
 
-          )[0];  // Primer y único elemento del array, que es el producto actual
+            )[0];  // Primer y único elemento del array, que es el producto actual
 
-          // console.log('product:');
-          // console.log(this.product);
+            // console.log('product:');
+            // console.log(this.product);
+
+          }
 
         },
 

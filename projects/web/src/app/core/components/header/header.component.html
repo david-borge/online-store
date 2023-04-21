@@ -32,7 +32,7 @@
     </div>
 
     <!-- Overlay Header - Subpage -->
-    <div class="overlay-header overlay-header-subpage" *ngIf="(headerTagType === 'overlay-header-subpage' )" [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }">
+    <div class="overlay-header overlay-header-subpage" *ngIf="(headerTagType === 'overlay-header-subpage' )" [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }" [ngClass]="{ 'con-color-de-fondo': (overlayHeaderSubpageBackgroundColor != 'inherit') }">
         <div>
 
             <!-- Overlay Header - Left Icon -->

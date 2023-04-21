@@ -14,6 +14,7 @@ import { ProductInterface } from "projects/web/src/app/core/models/product.inter
 export interface HomeReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   allProducts: ProductInterface[];
+  currentProductSlug: string;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -22,6 +23,7 @@ const initialState: HomeReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
   // loadStatus: 'NOT_LOADED',
   allProducts: [],
+  currentProductSlug: '',
 }
 
 
@@ -78,6 +80,21 @@ export const homeReducer = createReducer(
           
       })),
 
+
+
+    /** Save Current Product Slug Action **/
+    on(HomeActions.SaveCurrentProductSlug,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        currentProductSlug: action.currentProductSlugPayload,
+          
+      })),
 
 
 );

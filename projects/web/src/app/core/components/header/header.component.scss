@@ -78,6 +78,9 @@ header {
     bottom: 0;
     left: 0;
     height: 1px;
+}
+
+.overlay-header-subpage:not(.con-color-de-fondo):after {
     background-color: var(--N300);
 }
 

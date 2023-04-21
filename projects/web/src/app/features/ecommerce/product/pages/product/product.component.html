@@ -1,10 +1,12 @@
 <!-- Product Page -->
 
 <!-- Header Tag -->
+<!-- Mostrar solo si el objeto currentProduct no está vacío -->
 <app-header
+    *ngIf="currentProduct"
     [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'DualSense Wireless Controller'"
-    [overlayHeaderSubpageBackgroundColor] = "'var(--B300)'"
+    [overlayHeaderPageTitle] = "currentProduct.name"
+    [overlayHeaderSubpageBackgroundColor] = "currentProduct.cardAndHeaderBackgroundColor"
 ></app-header>
     
 <!-- Main -->

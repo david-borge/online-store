@@ -32,7 +32,7 @@ export const GetAllProductsEndSuccess = createAction(
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
       allProductsPayload: ProductInterface[],
-  }>()
+  }>(),
 
 );
 
@@ -46,7 +46,23 @@ export const GetAllProductsEndFailure = createAction(
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
       getAllProductsErrorMessagePayload: string,
-  }>()
+  }>(),
+
+);
+
+
+
+/** Save Current Product Slug Action **/
+export const SaveCurrentProductSlug = createAction(
+
+  // Tipo de la Action
+  '[Home] Save Current Product Slug',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    currentProductSlugPayload: string,
+  }>(),
 
 );
 

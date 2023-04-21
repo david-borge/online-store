@@ -1,5 +1,5 @@
 <!-- Solo mostrar el producto cuando se haya cargado, para evitar flashazos de información incompleta. -->
-<div *ngIf="product">
+<div *ngIf="(product | json) != '{}'"> <!-- Comprobar si un objeto está vacío -->
 
     <!-- Product - Image & 360º Indicator -->
     <div class="product-image-and-three-sixty-indicator-container" [ngStyle]="{'background-color': product.cardAndHeaderBackgroundColor}">
