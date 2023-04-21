@@ -52,6 +52,22 @@ export const GetAllCategoriesEndFailure = createAction(
 
 
 
+/** Save Current Category Slug Action **/
+export const SaveCurrentCategorySlug = createAction(
+
+  // Tipo de la Action
+  '[Home] Save Current Category Slug',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    currentCategorySlugPayload: string,
+  }>(),
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

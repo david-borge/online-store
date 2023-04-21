@@ -6,6 +6,7 @@ import { Store } from "@ngrx/store";
 import { Subscription } from 'rxjs';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as CategoriesActions from '../../../categories/store/categories.actions';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
@@ -20,7 +21,7 @@ import { ProductInterface } from 'projects/web/src/app/core/models/product.inter
 })
 export class CategoryDetailComponent implements OnInit, OnDestroy {
 
-  currentCategory: string = '';
+  categorySlug: string = '';
   productsOfCurrentCategory : ProductInterface[] = [];
 
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -33,7 +34,13 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     // Get current Category (from Route Paramenter :category-slug en projects\web\src\app\features\ecommerce\category\category-routing.module.ts)
-    this.currentCategory = this.route.snapshot.params['category-slug'];
+    this.categorySlug = this.route.snapshot.params['category-slug'];
+
+    // Comprobacion
+    // console.log('ProductDetailComponent > productSlug: ' + this.productSlug);
+
+    // Guardar el categorySlug de la categoría actual en la Store para poder leerlo en CategoryComponent y mostrar el título y el color de fondo apropiados en el header
+    this.store.dispatch( CategoriesActions.SaveCurrentCategorySlug({ currentCategorySlugPayload: this.categorySlug }) );
 
     // TODO: Mandar la categoría actual a CategoryComponent para mostrarlo en la header
 
@@ -54,7 +61,7 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
             ( product: ProductInterface ) => {
 
               // Criterio para mostrar o no cada producto
-              return (product.category == this.currentCategory);
+              return (product.category == this.categorySlug);
 
             }
 

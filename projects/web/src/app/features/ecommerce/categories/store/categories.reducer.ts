@@ -12,16 +12,18 @@ import { CategoryInterface } from "projects/web/src/app/core/models/category.int
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CategoriesReducerStateInterface {
-    allCategories: CategoryInterface[];
-    // loading: boolean;
+  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  allCategories: CategoryInterface[];
+  currentCategorySlug: string;
 }
 
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
 const initialState: CategoriesReducerStateInterface = {
-    // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-    allCategories: [],
-    // loading: false,
+  // loadStatus: 'NOT_LOADED',
+  // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
+  allCategories: [],
+  currentCategorySlug: '',
 }
 
 
@@ -78,6 +80,21 @@ export const categoriesReducer = createReducer(
           
       })),
 
+
+
+    /** Save Current Category Slug Action **/
+    on(CategoriesActions.SaveCurrentCategorySlug,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        currentCategorySlug: action.currentCategorySlugPayload,
+          
+      })),
 
 
 );

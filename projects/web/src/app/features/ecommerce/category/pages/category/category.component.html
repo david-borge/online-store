@@ -1,7 +1,8 @@
 <!-- Header Tag -->
 <app-header
+    *ngIf="currentCategory"
     [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'Tech'"
+    [overlayHeaderPageTitle] = "currentCategory.name"
 ></app-header>
 <!-- TODO: recoger el nombre de la categoría actual -->
 

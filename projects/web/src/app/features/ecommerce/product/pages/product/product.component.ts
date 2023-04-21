@@ -52,16 +52,16 @@ export class ProductComponent implements OnInit, OnDestroy {
 
             }
 
-          )[0]  // Primer y único elemento del array, que es el producto actual
+          )[0];  // Primer y único elemento del array, que es el producto actual
 
           // Comprobacion
           // console.log('currentProduct:');
           // console.log(this.currentProduct);
 
           // Comprobacion
-          // console.log('ProductComponent > currentProductSlug: ' + this.currentProductSlug);
-          // console.log('ProductComponent > currentProductName: ' + this.currentProductName);
-          // console.log('ProductComponent > currentProductcardAndHeaderBackgroundColor: ' + this.currentProductcardAndHeaderBackgroundColor);
+          // console.log('ProductComponent > currentProductSlug: ' + this.currentProduct.slug);
+          // console.log('ProductComponent > currentProductName: ' + this.currentProduct.name);
+          // console.log('ProductComponent > currentProductcardAndHeaderBackgroundColor: ' + this.currentProduct.cardAndHeaderBackgroundColor);
 
         },
 
