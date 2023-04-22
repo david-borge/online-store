@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { trigger, style, transition, animate } from '@angular/animations';
 
-import { PreFetchService } from '../../../../../core/services/pre-fetch/pre-fetch.service';
+import { PreFetchService } from '../../../../../core/services/pre-fetch/prefetch.service';
 
 
 @Component({

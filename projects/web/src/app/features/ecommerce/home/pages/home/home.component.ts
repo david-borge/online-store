@@ -22,9 +22,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
-  // Load images
-  imagesToLoad = [ "assets/img/categories/reading.webp", "assets/img/categories/tech.webp" ];
-  numberOfImagesLoaded = 0;
+  // Pre-load images of other pages
+  imagesOfOtherPagesToPreload = [ "assets/img/categories/reading.webp", "assets/img/categories/tech.webp" ];
+  numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded = 0;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
 
-    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\pre-fetch.service.ts
+    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\prefetch.service.ts
     
     // Leer datos desde la Store y mostrarlos
     // All Products - Separar en Fearured y Deal Products
@@ -101,25 +101,25 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     
     // Load images
-    this.loadImages();
+    this.preloadImagesOfOtherPages();
 
   }
 
-  loadImages(){
-    for(let i = 0; i < this.imagesToLoad.length; i++){
+  preloadImagesOfOtherPages(){
+    for(let i = 0; i < this.imagesOfOtherPagesToPreload.length; i++){
       let img = new Image();
       img.onload = () => {
-        this.loaded();
+        this.imagesOfOtherPagesLoaded();
       }
-      img.src = this.imagesToLoad[i];
+      img.src = this.imagesOfOtherPagesToPreload[i];
     }
   }
   
-  loaded(){
-    this.numberOfImagesLoaded++;
-    if(this.imagesToLoad.length == this.numberOfImagesLoaded){
+  imagesOfOtherPagesLoaded(){
+    this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded++;
+    if(this.imagesOfOtherPagesToPreload.length == this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded){
       // Comprobacion
-      console.log('All images loaded.');
+      console.log('All images of other pages loaded.');
     }
   }
 

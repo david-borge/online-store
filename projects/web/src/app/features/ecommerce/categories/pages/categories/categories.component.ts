@@ -31,7 +31,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // IMPORTANTE: al llegar aquí, las categorias ya están cargadas en la Store porque las he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlas solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\pre-fetch.service.ts
+    // IMPORTANTE: al llegar aquí, las categorias ya están cargadas en la Store porque las he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlas solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\prefetch.service.ts
 
     // Leer datos desde la Store y mostrarlos
     // All Categories

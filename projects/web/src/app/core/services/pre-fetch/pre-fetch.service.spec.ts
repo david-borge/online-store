@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PreFetchService } from './pre-fetch.service';
+import { PreFetchService } from './prefetch.service';
 
 describe('PreFetchService', () => {
   let service: PreFetchService;
