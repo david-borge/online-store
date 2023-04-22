@@ -15,6 +15,8 @@ export interface HomeReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   allProducts: ProductInterface[];
   currentProductSlug: string;
+  numberOfImagesInThisPage: number;
+  numberOfImagesInThisPageLoaded: number;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -24,6 +26,8 @@ const initialState: HomeReducerStateInterface = {
   // loadStatus: 'NOT_LOADED',
   allProducts: [],
   currentProductSlug: '',
+  numberOfImagesInThisPage: 0,
+  numberOfImagesInThisPageLoaded: 0,
 }
 
 
@@ -96,5 +100,36 @@ export const homeReducer = createReducer(
           
       })),
 
+
+
+    /** Count Images In This Page Action **/
+    on(HomeActions.CountImagesInThisPage,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        numberOfImagesInThisPage: state.numberOfImagesInThisPage + 1,
+          
+      })),
+
+
+
+    /** Count Images Loaded In This Page Action **/
+    on(HomeActions.CountImagesInThisPageLoaded,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        numberOfImagesInThisPageLoaded: state.numberOfImagesInThisPageLoaded + 1,
+          
+      })),
 
 );

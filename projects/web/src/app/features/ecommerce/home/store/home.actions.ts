@@ -68,6 +68,26 @@ export const SaveCurrentProductSlug = createAction(
 
 
 
+/** Count Images In This Page Action **/
+export const CountImagesInThisPage = createAction(
+
+  // Tipo de la Action
+  '[Home] Count Images In This Page',
+
+);
+
+
+
+/** Count Images In This Page Loaded Action **/
+export const CountImagesInThisPageLoaded = createAction(
+
+  // Tipo de la Action
+  '[Home] Count Images In This Page Loaded',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

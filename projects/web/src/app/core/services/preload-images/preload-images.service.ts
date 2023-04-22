@@ -5,30 +5,38 @@ import { Injectable } from '@angular/core';
 })
 export class PreloadImagesService {
 
-  preloadImagesOfOtherPages(imagesOfOtherPagesToPreload: string[], numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded: number): void {
+  numberOfimagesOfOtherPagesToPreloadLoaded: number = 0;
 
-    // Recorrer el listado de imágenes
-    for(let i = 0; i < imagesOfOtherPagesToPreload.length; i++) {
+  preloadImagesOfOtherPages( numberOfImagesInThisPage: number, numberOfImagesInThisPageLoaded: number, imagesOfOtherPagesToPreload: string[] ): void {
 
-      // Crear un elemento de imagen
-      let img = new Image();
+    // Si se han cargado todas las imágenes de esta página, comenzar a cargar las imágenes de otras páginas
+    if ( (numberOfImagesInThisPage == numberOfImagesInThisPageLoaded) && (numberOfImagesInThisPage != 0) && (numberOfImagesInThisPageLoaded != 0) ) {
 
-      img.onload = () => {
-        
-        // Cuando la imagen haya sido cargada
-        numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded++;
+      // Comprobacion
+      console.log('Comenzar a cargar las imágenes de otras páginas.');
 
-        // Si toda las imágenes han sido cargadas
-        if( imagesOfOtherPagesToPreload.length == numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded ) {
+      // Recorrer el listado de imágenes
+      for(let i = 0; i < imagesOfOtherPagesToPreload.length; i++) {
 
-          // Comprobacion
-          console.log('All the images of other pages have been loaded (' + numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded + ' ' + ((numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded == 1) ? 'image' : 'images') + ').');
+        // Crear un elemento de imagen
+        let img = new Image();
 
+        // Cargar la imagen
+        img.onload = () => {
+          
+          // Cuando la imagen haya sido cargada
+          this.numberOfimagesOfOtherPagesToPreloadLoaded++;
+
+          // Comprobacion: si toda las imágenes han sido cargadas
+          if( imagesOfOtherPagesToPreload.length == this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
+            console.log('All the images of other pages have been loaded (' + this.numberOfimagesOfOtherPagesToPreloadLoaded + ' ' + ((this.numberOfimagesOfOtherPagesToPreloadLoaded == 1) ? 'image' : 'images') + ').');
+          }
+          
         }
-        
-      }
 
-      img.src = imagesOfOtherPagesToPreload[i];
+        img.src = imagesOfOtherPagesToPreload[i];
+
+      }
 
     }
 

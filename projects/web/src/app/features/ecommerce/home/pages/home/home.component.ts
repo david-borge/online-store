@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store } from "@ngrx/store";
 
@@ -17,7 +17,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   featuredProducts : ProductInterface[] = [];
   dealProducts     : ProductInterface[] = [];
@@ -25,9 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Pre-load images of other pages
-  numberOfImagesOfThisPage: number = 0;
   imagesOfOtherPagesToPreload: string[] = [ "assets/img/categories/reading.webp", "assets/img/categories/tech.webp" ];
-  numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded: number = 0;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -50,7 +48,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
           // console.log('allProductsResponseData get:');
           // console.log(allProductsResponseData);
 
-          // Filtro los productos - Featured Products
+
+
+          // - Filtro los productos - Featured Products
           this.featuredProducts = allProductsResponseData.allProducts.filter(
 
             // Cada producto
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
           );
           
-          // Filtro los productos - Deal Products
+          // - Filtro los productos - Deal Products
           this.dealProducts = allProductsResponseData.allProducts.filter(
 
             // Cada producto
@@ -83,6 +83,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
           // console.log('dealProducts:');
           // console.log(this.dealProducts);
 
+
+
+          // - Si se han cargado todas las imágenes de esta página, comenzar a cargar las imágenes de otras páginas
+          this.preloadImagesService.preloadImagesOfOtherPages( allProductsResponseData.numberOfImagesInThisPage, allProductsResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
+
         },
 
         // El segundo parámetro de susbscribe() es para recoger los errores del servidor
@@ -100,16 +105,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.homeReducerObservableSubscription.unsubscribe();
-  }
-
-  ngAfterViewInit(): void {
-
-    // Comprobacion
-    console.log('numberOfImagesOfThisPage: ' + this.numberOfImagesOfThisPage);
-    
-    // Preload images of other components
-    this.preloadImagesService.preloadImagesOfOtherPages( this.imagesOfOtherPagesToPreload, this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded );
-
   }
 
 }

@@ -4,26 +4,38 @@
 
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+
+import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
+
 @Directive({
   selector: '[imageLoadedDirective]'
 })
 export class ImageLoadedDirective {
 
   constructor(
+    private store: Store<fromApp.AppState>,
     private elementRef: ElementRef, // (Opcional)
   ) {
+    
     // Comprobación
     // console.log('ImageLoadedDirective activada.');
+
+    // Aumentar el número de imágenes de la página, que está guardado en la Store
+    this.store.dispatch( HomeActions.CountImagesInThisPage() );
+    
   }
 
   // Cuando una imagen se haya cargado
   @HostListener('load') onLoad(): void {
     
-    // this.numberOfImagesOfThisPage++;
-    
     // Comprobacion
-    console.log('Imagen cargada.');
-    // console.log('Imagen cargada. + numberOfImagesOfThisPage: '/*  + this.numberOfImagesOfThisPage */);
+    // console.log('Imagen cargada.');
+    
+    // Aumentar el número de imágenes de la página que han sido cargadas, que está guardado en la Store
+    this.store.dispatch( HomeActions.CountImagesInThisPageLoaded() );
     
   }
 
