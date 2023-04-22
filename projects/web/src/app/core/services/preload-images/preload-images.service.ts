@@ -46,5 +46,22 @@ export class PreloadImagesService {
     }
 
   }
+
+  // Comprobar si el navegador soporta imágenes en webp
+  support_format_webp(): boolean {
+    
+    var elem = document.createElement('canvas');
+
+    if ( !!(elem.getContext && elem.getContext('2d')) ) {
+      // was able or not to get WebP representation
+      return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
+    }
+
+    else {
+      // very old browser like IE 8, canvas not supported
+      return false;
+    }
+
+  }
   
 }

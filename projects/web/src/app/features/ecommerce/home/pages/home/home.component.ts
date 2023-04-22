@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Pre-load images of other pages
   imagesOfOtherPagesToPreload: string[] = [];
 
-  
+
   constructor(
     private store: Store<fromApp.AppState>,
     private preloadImagesService: PreloadImagesService,
@@ -128,7 +128,10 @@ export class HomeComponent implements OnInit, OnDestroy {
             // Comprobacion
             // console.log('· Miniaturas de las categorías');
 
-            this.imagesOfOtherPagesToPreload = categoriesResponseData.allCategories.map(category => category.imageThumbnail+'.webp'); // Con map extraigo un array con los valores de todos los imageThumbnail
+            this.imagesOfOtherPagesToPreload = categoriesResponseData.allCategories.map( category => {
+              // Con map extraigo un array con los valores de todos los imageThumbnail (y le añado la extensión, comprobando si el navegador soporta webp o no)
+              return category.imageThumbnail + ( this.preloadImagesService.support_format_webp() ? '.webp' : '.png' );
+            } ); 
 
           }
             
