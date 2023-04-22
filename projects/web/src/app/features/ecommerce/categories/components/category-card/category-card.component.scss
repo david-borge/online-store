@@ -11,8 +11,10 @@
 
 // Category Card - Link
 .category-card a {
+    --category-card-padding-top-and-side: 16px;
+    --category-card-padding-bottom: 22px;
     border-radius: var(--card-border-radius);
-    padding: 16px 16px 22px;
+    padding: var(--category-card-padding-top-and-side) var(--category-card-padding-top-and-side) var(--category-card-padding-bottom);
     height: 100%;
 
     color: var(--N800);
@@ -34,26 +36,39 @@
 
 // Category Card - Image
 .category-card--image-container {
-    height: calc(100% - 16px - 16px);  // Compensar el padding superior e inferior de .category-card
+    height: calc(100% - 22px - var(--espaciado-categories-cards) );  // Compensar la altura de .category-card--title-container > * y el espacio entre ello y el contenedor de la imagen
 
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .category-card--image-container img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100% - 22px - var(--espaciado-categories-cards) );  // Compensar la altura de .category-card--title-container > * y el espacio entre ello y el contenedor de la imagen
 }
 
 
 // Category Card - Small
 .category-card--small {
-    height: 189px;
+    --category-card--small-height: 189px;
+    height: var(--category-card--small-height);
+}
+
+.category-card--small img {
+    max-height: calc(var(--category-card--small-height) - var(--category-card-padding-top-and-side) - var(--category-card-padding-top-and-side) - 22px - var(--espaciado-categories-cards));
 }
 
 
 // Category Card - Large
 .category-card--large {
-    height: 273px;
+    --category-card--large-height: 273px;
+    height: var(--category-card--large-height);
+}
+
+.category-card--large img {
+    max-height: calc(var(--category-card--large-height) - var(--category-card-padding-top-and-side) - var(--category-card-padding-top-and-side) - 22.5px - var(--espaciado-categories-cards));
 }
