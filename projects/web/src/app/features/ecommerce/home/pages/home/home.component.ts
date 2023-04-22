@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
 
-    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\pre-fetch\prefetch.service.ts
+    // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
     
     // Leer datos desde la Store y mostrarlos
     // All Products - Separar en Fearured y Deal Products
@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  preloadImagesOfOtherPages(){
+  preloadImagesOfOtherPages(): void {
     for(let i = 0; i < this.imagesOfOtherPagesToPreload.length; i++){
       let img = new Image();
       img.onload = () => {
@@ -115,7 +115,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
   
-  imagesOfOtherPagesLoaded(){
+  imagesOfOtherPagesLoaded(): void {
     this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded++;
     if(this.imagesOfOtherPagesToPreload.length == this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded){
       // Comprobacion

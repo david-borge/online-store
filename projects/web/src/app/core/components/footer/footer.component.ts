@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { PreFetchService } from '../../services/pre-fetch/prefetch.service';
+import { PreFetchService } from '../../services/prefetch/prefetch.service';
 
 
 
