@@ -2,6 +2,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 import { ProductInterface } from '../../../core/models/product.interface';
 
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',

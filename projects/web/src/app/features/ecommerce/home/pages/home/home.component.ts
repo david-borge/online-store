@@ -8,6 +8,8 @@ import { ProductInterface } from 'projects/web/src/app/core/models/product.inter
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
+import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
+
 
 
 @Component({
@@ -23,11 +25,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Pre-load images of other pages
-  imagesOfOtherPagesToPreload = [ "assets/img/categories/reading.webp", "assets/img/categories/tech.webp" ];
-  numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded = 0;
+  numberOfImagesOfThisPage: number = 0;
+  imagesOfOtherPagesToPreload: string[] = [ "assets/img/categories/reading.webp", "assets/img/categories/tech.webp" ];
+  numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded: number = 0;
 
   constructor(
     private store: Store<fromApp.AppState>,
+    private preloadImagesService: PreloadImagesService,
   ) {}
 
 
@@ -99,28 +103,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
+    // Comprobacion
+    console.log('numberOfImagesOfThisPage: ' + this.numberOfImagesOfThisPage);
     
-    // Load images
-    this.preloadImagesOfOtherPages();
+    // Preload images of other components
+    this.preloadImagesService.preloadImagesOfOtherPages( this.imagesOfOtherPagesToPreload, this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded );
 
-  }
-
-  preloadImagesOfOtherPages(): void {
-    for(let i = 0; i < this.imagesOfOtherPagesToPreload.length; i++){
-      let img = new Image();
-      img.onload = () => {
-        this.imagesOfOtherPagesLoaded();
-      }
-      img.src = this.imagesOfOtherPagesToPreload[i];
-    }
-  }
-  
-  imagesOfOtherPagesLoaded(): void {
-    this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded++;
-    if(this.imagesOfOtherPagesToPreload.length == this.numberOfImagesOfOtherPagesimagesOfOtherPagesLoaded){
-      // Comprobacion
-      console.log('All images of other pages loaded.');
-    }
   }
 
 }
