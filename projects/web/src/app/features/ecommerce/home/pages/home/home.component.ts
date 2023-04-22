@@ -9,6 +9,7 @@ import { ProductInterface } from 'projects/web/src/app/core/models/product.inter
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
+import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 
 
@@ -23,9 +24,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   dealProducts     : ProductInterface[] = [];
 
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Pre-load images of other pages
-  imagesOfOtherPagesToPreload: string[] = [ "assets/img/categories/reading.webp", "assets/img/categories/tech.webp" ];
+  imagesOfOtherPagesToPreload: string[] = [];
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -37,15 +39,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
     
+
+
+    // - All Products - Separar en Fearured y Deal Products
     // Leer datos desde la Store y mostrarlos
-    // All Products - Separar en Fearured y Deal Products
     this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
       .subscribe(
 
         // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
         (allProductsResponseData)  => {
 
-          // console.log('allProductsResponseData get:');
+          // console.log('allProductsResponseData:');
           // console.log(allProductsResponseData);
 
 
@@ -94,7 +98,44 @@ export class HomeComponent implements OnInit, OnDestroy {
         (errorResponse) => {
           
           // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
-          console.log('errorResponse get:');
+          console.log('errorResponse:');
+          console.log(errorResponse);
+
+        }
+        
+      );
+
+
+
+    /* - Sacar la lista de imágenes de otras páginas to pre-load:
+          · Miniaturas de las categorías
+    */
+    this.categoriesReducerObservableSubscription = this.store.select('categoriesReducerObservable')
+      .subscribe(
+
+        // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
+        (categoriesResponseData)  => {
+
+          // console.log('categoriesResponseData:');
+          // console.log(categoriesResponseData);
+
+          // · Miniaturas de las categorías
+          if ( categoriesResponseData.allCategories.length != 0 ) {
+
+            // Comprobacion
+            // console.log('· Miniaturas de las categorías');
+
+            this.imagesOfOtherPagesToPreload = categoriesResponseData.allCategories.map(category => category.imageThumbnail+'.webp'); // Con map extraigo un array con los valores de todos los imageThumbnail
+
+          }
+            
+        },
+
+        // El segundo parámetro de susbscribe() es para recoger los errores del servidor
+        (errorResponse) => {
+          
+          // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
+          console.log('errorResponse:');
           console.log(errorResponse);
 
         }
@@ -105,6 +146,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.homeReducerObservableSubscription.unsubscribe();
+    this.categoriesReducerObservableSubscription.unsubscribe();
   }
 
 }
