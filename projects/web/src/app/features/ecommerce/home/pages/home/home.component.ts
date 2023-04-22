@@ -20,15 +20,18 @@ import { CategoryInterface } from 'projects/web/src/app/core/models/category.int
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  featuredProducts : ProductInterface[] = [];
-  dealProducts     : ProductInterface[] = [];
-
+  // Suscripciones a la Store
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
   categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
+
+  // Variables para la Template
+  featuredProducts : ProductInterface[] = [];
+  dealProducts     : ProductInterface[] = [];
 
   // Pre-load images of other pages
   imagesOfOtherPagesToPreload: string[] = [];
 
+  
   constructor(
     private store: Store<fromApp.AppState>,
     private preloadImagesService: PreloadImagesService,
