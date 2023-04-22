@@ -88,6 +88,16 @@ export const CountImagesInThisPageLoaded = createAction(
 
 
 
+/** Set Home Page Has Been Previously Visited Action **/
+export const SetHomePageHasBeenPrevouslyVisited = createAction(
+
+  // Tipo de la Action
+  '[Home] Set Home Page Has Been Previously Visited',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

@@ -6,57 +6,61 @@
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
 
-    <!-- Home - Featured Products -->
-    <!-- Solo mostrar las categorias cuando se hayan cargado, para evitar flashazos de información incompleta. -->
-    <div class="section" *ngIf="featuredProducts.length != 0">
+    <div class="ocultar" [ngClass]="{ 'mostrar-con-animacion': imagesInThisPageLoaded && !homePagePreviouslyVisited, 'mostrar-sin-animacion': imagesInThisPageLoaded && homePagePreviouslyVisited }">
 
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClass]    = "'heading-3'"
-            [sectionHeaderTitleText]     = "'Featured'"
-            [sectionHeaderCarouselIcons] = "true"
-            [sectionHeaderLink]          = "false"
-            [sectionHeaderLinkURL]       = "''"
-            [sectionHeaderLinkText]      = "''"
-            [sectionHeaderButton]        = "false"
-            [sectionHeaderButtonURL]     = "''"
-            [sectionHeaderButtonText]    = "''"
-        ></app-section-header>
-        
-        <!-- Featured Products Carrousel -->
-        <app-featured-products-carrousel
-            [featuredProductsList] = "featuredProducts"
-        ></app-featured-products-carrousel>
+        <!-- Home - Featured Products -->
+        <!-- Solo mostrar las categorias cuando se hayan cargado desde la base de datos y se hayan cargado las imágenes, para evitar flashazos de información incompleta. -->
+        <div *ngIf="featuredProducts.length != 0" class="section">
 
-    </div>
+            <!-- Section Header -->
+            <app-section-header
+                [sectionHeaderTitleTag]      = "'h2'"
+                [sectionHeaderTitleClass]    = "'heading-3'"
+                [sectionHeaderTitleText]     = "'Featured'"
+                [sectionHeaderCarouselIcons] = "true"
+                [sectionHeaderLink]          = "false"
+                [sectionHeaderLinkURL]       = "''"
+                [sectionHeaderLinkText]      = "''"
+                [sectionHeaderButton]        = "false"
+                [sectionHeaderButtonURL]     = "''"
+                [sectionHeaderButtonText]    = "''"
+            ></app-section-header>
+            
+            <!-- Featured Products Carrousel -->
+            <app-featured-products-carrousel
+                [featuredProductsList] = "featuredProducts"
+            ></app-featured-products-carrousel>
 
-    <!-- Home - Deals Products -->
-    <!-- Solo mostrar las categorias cuando se hayan cargado, para evitar flashazos de información incompleta. -->
-    <div class="section" *ngIf="dealProducts.length != 0">
-        
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClass]    = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Deals'"
-            [sectionHeaderCarouselIcons] = "false"
-            [sectionHeaderLink]          = "false"
-            [sectionHeaderLinkURL]       = "''"
-            [sectionHeaderLinkText]      = "''"
-            [sectionHeaderButton]        = "false"
-            [sectionHeaderButtonURL]     = "''"
-            [sectionHeaderButtonText]    = "''"
-        ></app-section-header>
-
-        <!-- Deals Products (Products Grid) -->
-        <div class="container">
-            <app-products-grid
-                [productsList] = "dealProducts"
-                [productCardProductNameTitleHeadingTag] = "'h3'"
-            ></app-products-grid>
         </div>
 
+        <!-- Home - Deals Products -->
+        <!-- Solo mostrar las categorias ccuando se hayan cargado desde la base de datos y se hayan cargado las imágenes, para evitar flashazos de información incompleta. -->
+        <div *ngIf="dealProducts.length != 0" class="section">
+            
+            <!-- Section Header -->
+            <app-section-header
+                [sectionHeaderTitleTag]      = "'h2'"
+                [sectionHeaderTitleClass]    = "'heading-4'"
+                [sectionHeaderTitleText]     = "'Deals'"
+                [sectionHeaderCarouselIcons] = "false"
+                [sectionHeaderLink]          = "false"
+                [sectionHeaderLinkURL]       = "''"
+                [sectionHeaderLinkText]      = "''"
+                [sectionHeaderButton]        = "false"
+                [sectionHeaderButtonURL]     = "''"
+                [sectionHeaderButtonText]    = "''"
+            ></app-section-header>
+
+            <!-- Deals Products (Products Grid) -->
+            <div class="container">
+                <app-products-grid
+                    [productsList] = "dealProducts"
+                    [productCardProductNameTitleHeadingTag] = "'h3'"
+                ></app-products-grid>
+            </div>
+
+        </div>
+    
     </div>
 
 </main>

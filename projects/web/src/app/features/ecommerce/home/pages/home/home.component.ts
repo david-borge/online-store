@@ -1,15 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { NavigationEnd, Router } from '@angular/router';
+
 import { Store } from "@ngrx/store";
 
-import { Subscription } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as HomeActions from '../../store/home.actions';
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
-import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 
 
@@ -29,12 +31,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   dealProducts     : ProductInterface[] = [];
 
   // Pre-load images of other pages
+  imagesInThisPageLoaded: boolean = false;
+  // imagesInThisPageLoaded: boolean = true;
   imagesOfOtherPagesToPreload: string[] = [];
 
+  // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
+  homePagePreviouslyVisited: boolean = false;
+  
+  // TODO: hacer que la animación de carga se ejecute solo si acabo de recargar la página
+  
 
   constructor(
     private store: Store<fromApp.AppState>,
     private preloadImagesService: PreloadImagesService,
+    private router: Router,
   ) {}
 
 
@@ -44,7 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     
 
 
-    // - All Products - Separar en Fearured y Deal Products
+    // - Home Reducer
     // Leer datos desde la Store y mostrarlos
     this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
       .subscribe(
@@ -92,8 +102,19 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
 
-          // - Si se han cargado todas las imágenes de esta página, comenzar a cargar las imágenes de otras páginas
-          this.preloadImagesService.preloadImagesOfOtherPages( allProductsResponseData.numberOfImagesInThisPage, allProductsResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
+          // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
+          if ( (allProductsResponseData.numberOfImagesInThisPage == allProductsResponseData.numberOfImagesInThisPageLoaded) && (allProductsResponseData.numberOfImagesInThisPage != 0) && (allProductsResponseData.numberOfImagesInThisPageLoaded != 0) ) {
+            this.imagesInThisPageLoaded = true;
+            this.preloadImagesService.preloadImagesOfOtherPages( allProductsResponseData.numberOfImagesInThisPage, allProductsResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
+          }
+
+
+
+          // - Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
+          this.homePagePreviouslyVisited = allProductsResponseData.homePagePreviouslyVisited;
+
+          // Comprobacion
+          // console.log('homePagePreviouslyVisited: ' + this.homePagePreviouslyVisited);
 
         },
 
@@ -148,11 +169,33 @@ export class HomeComponent implements OnInit, OnDestroy {
         
       );
 
+
+      this.router.events
+        .subscribe( (routerEventsData) => {
+          
+          // Comprobacion
+          console.log('routerEventsData:');
+          console.log(routerEventsData);
+
+        });
+
+        /* .pipe( filter(event => event instanceof NavigationEnd) )
+        .subscribe((event: NavigationEnd) => {
+          console.log('prev:', event.url);
+          this.previousUrl = event.url;
+        }); */
+
   }
 
   ngOnDestroy() {
+
+    // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();
     this.categoriesReducerObservableSubscription.unsubscribe();
+
+    // Guardar en la Store que ya he visitado esta página, así solo ejecuto la animación de carga una vez
+    this.store.dispatch( HomeActions.SetHomePageHasBeenPrevouslyVisited() );
+
   }
 
 }

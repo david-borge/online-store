@@ -683,6 +683,42 @@ body {
 
 
 
+// Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
+// Nota: no puedo usar ngIf para esto porque necesito leer los elementos img del DOM para averiguar cuando se ha terminado de cargar las imágenes, y con ngif en false, esos elementos img no están en el DOM.
+.ocultar {
+    opacity: 0;
+}
+
+.mostrar-con-animacion {
+    animation-name: load-animation;
+    animation-duration: 200ms;
+    animation-fill-mode: both;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+}
+
+@keyframes load-animation {
+
+    from {
+        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.mostrar-sin-animacion {
+    opacity: 1;
+}
+
+
+
+
 // App Loading Screen Tag - Clases for <router-outlet>
 .app-loading-screen-classes-for-router-outlet {
     flex: 1;
