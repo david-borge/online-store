@@ -13,7 +13,7 @@ export class PreloadImagesService {
     if( imagesOfOtherPagesToPreload.length != this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
 
       // Comprobacion
-      console.log('Imágenes de esta página cargadas. Comenzar a cargar las imágenes de otras páginas.');
+      // console.log('Imágenes de esta página cargadas. Comenzar a cargar las imágenes de otras páginas.');
 
       // Recorrer el listado de imágenes
       for(let i = 0; i < imagesOfOtherPagesToPreload.length; i++) {
@@ -28,9 +28,9 @@ export class PreloadImagesService {
           this.numberOfimagesOfOtherPagesToPreloadLoaded++;
 
           // Comprobacion: si toda las imágenes han sido cargadas
-          if( imagesOfOtherPagesToPreload.length == this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
+          /* if( imagesOfOtherPagesToPreload.length == this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
             console.log('All the images of other pages have been loaded (' + this.numberOfimagesOfOtherPagesToPreloadLoaded + ' ' + ((this.numberOfimagesOfOtherPagesToPreloadLoaded == 1) ? 'image' : 'images') + ').');
-          }
+          } */
           
         }
 

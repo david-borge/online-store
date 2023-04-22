@@ -6,7 +6,11 @@
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
 
-    <div class="ocultar" [ngClass]="{ 'mostrar-con-animacion': imagesInThisPageLoaded && !homePagePreviouslyVisited, 'mostrar-sin-animacion': imagesInThisPageLoaded && homePagePreviouslyVisited }">
+    <div class="ocultar"
+        [ngClass]="{
+            'mostrar-con-animacion': (imagesInThisPageLoaded && !homePagePreviouslyVisited && currentlyInThePageIEnteredFrom),
+            'mostrar-sin-animacion': (imagesInThisPageLoaded && homePagePreviouslyVisited) || (imagesInThisPageLoaded && !homePagePreviouslyVisited && !currentlyInThePageIEnteredFrom),
+        }">
 
         <!-- Home - Featured Products -->
         <!-- Solo mostrar las categorias cuando se hayan cargado desde la base de datos y se hayan cargado las imágenes, para evitar flashazos de información incompleta. -->

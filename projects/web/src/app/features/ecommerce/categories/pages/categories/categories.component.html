@@ -9,47 +9,55 @@
 <!-- Main -->
 <main role="main" style="padding-top: var(--espacio-vertical); padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
 
-    <!-- Categories List -->
-    <div class="container h-100">
+    <!-- <div class="ocultar"
+    [ngClass]="{
+        'mostrar-con-animacion': (imagesInThisPageLoaded && !homePagePreviouslyVisited && currentlyInThePageIEnteredFrom),
+        'mostrar-sin-animacion': (imagesInThisPageLoaded && homePagePreviouslyVisited) || (imagesInThisPageLoaded && !homePagePreviouslyVisited && !currentlyInThePageIEnteredFrom),
+    }"> -->
 
-        <!-- Solo mostrar las categorias cuando se hayan cargado, para evitar flashazos de información incompleta. -->
-        <div id="categories-lists" class="h-100" *ngIf="allCategories.length != 0">
+        <!-- Categories List -->
+        <div class="container h-100">
 
-            <!-- Categories List -->
-            <div class="categories-list">
+            <!-- Solo mostrar las categorias cuando se hayan cargado, para evitar flashazos de información incompleta. -->
+            <div id="categories-lists" class="h-100" *ngIf="allCategories.length != 0">
 
-                <!-- Nota: el array empieza en cero mientras que los ids en la BBDD empiezan en 1, por eso resto 1 al índice -->
-                
-                <!-- Category Card - Tech-->
-                <app-category-card
-                    [category] = "allCategories[1-1]"
-                ></app-category-card>
-                
-                <!-- Category Card - Music -->
-                <app-category-card
-                    [category] = "allCategories[3-1]"
-                ></app-category-card>
+                <!-- Categories List -->
+                <div class="categories-list">
 
-            </div>
+                    <!-- Nota: el array empieza en cero mientras que los ids en la BBDD empiezan en 1, por eso resto 1 al índice -->
+                    
+                    <!-- Category Card - Tech-->
+                    <app-category-card
+                        [category] = "allCategories[1-1]"
+                    ></app-category-card>
+                    
+                    <!-- Category Card - Music -->
+                    <app-category-card
+                        [category] = "allCategories[3-1]"
+                    ></app-category-card>
 
-            <!-- Categories List -->
-            <div class="categories-list">
+                </div>
 
-                <!-- Category Card - Reading -->
-                <app-category-card
-                    [category] = "allCategories[2-1]"
-                ></app-category-card>
-                
-                <!-- Category Card - Fashion -->
-                <app-category-card
-                    [category] = "allCategories[4-1]"
-                ></app-category-card>
-                
+                <!-- Categories List -->
+                <div class="categories-list">
+
+                    <!-- Category Card - Reading -->
+                    <app-category-card
+                        [category] = "allCategories[2-1]"
+                    ></app-category-card>
+                    
+                    <!-- Category Card - Fashion -->
+                    <app-category-card
+                        [category] = "allCategories[4-1]"
+                    ></app-category-card>
+                    
+                </div>
+
             </div>
 
         </div>
 
-    </div>
+    <!-- </div> -->
 
 </main>
   

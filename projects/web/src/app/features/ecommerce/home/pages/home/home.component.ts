@@ -1,17 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
+
+import { Subscription, take } from 'rxjs';
 
 import { Store } from "@ngrx/store";
-
-import { Subscription, filter } from 'rxjs';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '../../../../../core/store/global.actions';
 import * as HomeActions from '../../store/home.actions';
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
+import { RoutingService } from 'projects/web/src/app/core/services/routing/routing.service';
 
 
 
@@ -38,14 +40,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
   homePagePreviouslyVisited: boolean = false;
   
-  // TODO: hacer que la animación de carga se ejecute solo si acabo de recargar la página
-  
+  // TODO: Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+  currentlyInThePageIEnteredFrom: boolean = false;
+
 
   constructor(
     private store: Store<fromApp.AppState>,
-    private preloadImagesService: PreloadImagesService,
     private router: Router,
-  ) {}
+    private preloadImagesService: PreloadImagesService,
+    private routingService: RoutingService,
+  ) {
+
+    // Al cambiar de ruta, indicarlo en la Store Global
+    this.routingService.setHaveNavigatedToTrue();
+
+  }
 
 
   ngOnInit(): void {
@@ -170,20 +179,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       );
 
 
-      this.router.events
-        .subscribe( (routerEventsData) => {
-          
-          // Comprobacion
-          console.log('routerEventsData:');
-          console.log(routerEventsData);
 
-        });
+    // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+    this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => {
+      
+      this.currentlyInThePageIEnteredFrom = ( globalReducerData.firstVisitedPage == this.router.url );
+      
+      // Comprobación
+      console.log('Slug de la página de entrada: ' + globalReducerData.firstVisitedPage);
+      console.log('Slug actual: ' + this.router.url);
+      console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
 
-        /* .pipe( filter(event => event instanceof NavigationEnd) )
-        .subscribe((event: NavigationEnd) => {
-          console.log('prev:', event.url);
-          this.previousUrl = event.url;
-        }); */
+    });
 
   }
 

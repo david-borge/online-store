@@ -1,12 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Store } from '@ngrx/store';
 
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 
 import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '../../../../../core/store/global.actions';
+
+import { RoutingService } from 'projects/web/src/app/core/services/routing/routing.service';
 
 
 
@@ -24,9 +29,20 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
+  // TODO: Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+  currentlyInThePageIEnteredFrom: boolean = false;
+
+
   constructor(
     private store: Store<fromApp.AppState>,
-  ) {}
+    private router: Router,
+    private routingService: RoutingService,
+  ) {
+    
+    // Al cambiar de ruta, indicarlo en la Store Global
+    this.routingService.setHaveNavigatedToTrue();
+
+  }
 
 
   ngOnInit(): void {
@@ -62,6 +78,16 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         
       );
+
+
+      
+    // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+    this.currentlyInThePageIEnteredFrom = ( (document.referrer.substring(document.referrer.lastIndexOf('/'))) == this.router.url );
+
+    // Comprobación
+    console.log('Slug de la página de entrada: ' + document.referrer.substring(document.referrer.lastIndexOf('/')));
+    console.log('Slug actual: ' + this.router.url);
+    console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
 
   }
 
