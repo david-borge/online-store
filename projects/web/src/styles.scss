@@ -714,6 +714,26 @@ body {
 
 .mostrar-sin-animacion {
     opacity: 1;
+
+    // FIXME: esta animación no debería ser necesaria con el pre-fetch y pre-load
+    animation-name: mostrar-sin-animacion-animation;
+    animation-duration: 200ms;
+    animation-fill-mode: both;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+}
+
+@keyframes mostrar-sin-animacion-animation {
+
+    from {
+        /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
+        opacity: 0;
+    }
+
+    to {
+        /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
+        opacity: 1;
+    }
+
 }
 
 

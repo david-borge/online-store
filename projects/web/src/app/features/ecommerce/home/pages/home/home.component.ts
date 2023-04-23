@@ -186,9 +186,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.currentlyInThePageIEnteredFrom = ( globalReducerData.firstVisitedPage == this.router.url );
       
       // Comprobación
-      console.log('Slug de la página de entrada: ' + globalReducerData.firstVisitedPage);
-      console.log('Slug actual: ' + this.router.url);
-      console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
+      // console.log('Slug de la página de entrada: ' + globalReducerData.firstVisitedPage);
+      // console.log('Slug actual: ' + this.router.url);
+      // console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
 
     });
 

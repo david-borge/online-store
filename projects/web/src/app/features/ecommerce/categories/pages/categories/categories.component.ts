@@ -85,9 +85,9 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     this.currentlyInThePageIEnteredFrom = ( (document.referrer.substring(document.referrer.lastIndexOf('/'))) == this.router.url );
 
     // Comprobación
-    console.log('Slug de la página de entrada: ' + document.referrer.substring(document.referrer.lastIndexOf('/')));
-    console.log('Slug actual: ' + this.router.url);
-    console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
+    // console.log('Slug de la página de entrada: ' + document.referrer.substring(document.referrer.lastIndexOf('/')));
+    // console.log('Slug actual: ' + this.router.url);
+    // console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
 
   }
 
