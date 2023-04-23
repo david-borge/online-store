@@ -60,11 +60,14 @@ export class FooterComponent implements OnInit {
 
     // - Guardar en la Store la última página principal visitada
     
+    // Comprobacion
+    // console.log('lastActiveMainPage: ' + this.lastActiveMainPage);
+
     // Si aterrizo en una de las páginas principales
     if( (this.router.url == '/home') || (this.router.url == '/categories') || (this.router.url == '/cart') || (this.router.url == '/account')) {
 
       // Comprobacion
-      // console.log('Slug actual: ' + this.router.url);
+      console.log('En una página principal: ' + this.router.url);
 
       this.store.dispatch( GlobalActions.SetLastActiveMainPage({ lastActiveMainPagePayload: this.router.url, }) );
   
@@ -74,33 +77,43 @@ export class FooterComponent implements OnInit {
     else if ( this.router.url.includes('/category/') ) {
 
       // Comprobacion
-      // console.log('En una página de categoría');
+      console.log('En una página de categoría');
 
       this.store.dispatch( GlobalActions.SetLastActiveMainPage({ lastActiveMainPagePayload: '/categories', }) );
 
     }
 
     // Si aterrizo en una página de producto, activo /home
-    else if ( this.router.url.includes('/product/') ) {
+    // else if ( this.router.url.includes('/product/') && this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => { return (globalReducerData.lastActiveMainPage == '/home') })) {
       
-      // Comprobacion
-      // console.log('En una página de producto');
+    //   // Comprobacion
+    //   console.log('En una página de producto si la última página principal ha sido /home.');
 
-      this.store.dispatch( GlobalActions.SetLastActiveMainPage({ lastActiveMainPagePayload: '/home', }) );
+    //   this.store.dispatch( GlobalActions.SetLastActiveMainPage({ lastActiveMainPagePayload: '/home', }) );
 
-    }
+    // }
+
+    // Si aterrizo en una página de producto, activo /home
+    // else if ( this.router.url.includes('/product/') && this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => { return (globalReducerData.lastActiveMainPage == '/categories') })) {
+      
+    //   // Comprobacion
+    //   console.log('En una página de producto si la última página principal ha sido /categories.');
+
+    //   this.store.dispatch( GlobalActions.SetLastActiveMainPage({ lastActiveMainPagePayload: '/categories', }) );
+
+    // }
 
 
 
     // - Leer de la Store la última página principal visitada
     this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => {
+      
+      // Comprobacion
+      // console.log('Leer de la Store la última página principal visitada.');
 
       this.lastActiveMainPage = globalReducerData.lastActiveMainPage;
 
     } );
-
-    // Comprobacion
-    console.log('lastActiveMainPage: ' + this.lastActiveMainPage);
 
   }
 
