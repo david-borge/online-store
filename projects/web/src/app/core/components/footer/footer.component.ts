@@ -80,7 +80,7 @@ export class FooterComponent implements OnInit {
     // - Guardar en la Store el Navigation Item activo
     
     // Comprobacion
-    console.log('activeNavigationItem: ' + this.activeNavigationItem + ' - lastActiveMainPage: ' + this.lastActiveMainPage);
+    // console.log('activeNavigationItem: ' + this.activeNavigationItem + ' - lastActiveMainPage: ' + this.lastActiveMainPage);
 
     // · Si aterrizo en una de las páginas principales
     if( (this.router.url == '/home') || (this.router.url == '/categories') || (this.router.url == '/cart') || (this.router.url == '/account')) {
@@ -114,7 +114,7 @@ export class FooterComponent implements OnInit {
     else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '') ) {
 
       // Comprobacion
-      console.log('Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.');
+      // console.log('Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.');
       
       this.store.dispatch( GlobalActions.GetLocalStorageValueStart({
         localStorageKeyPayload: 'lastActiveMainPage',
@@ -123,7 +123,7 @@ export class FooterComponent implements OnInit {
       this.store.select('globalReducerObservable').pipe(take(1))
         .subscribe( (data) => {
           // Comprobacion
-          console.log('data.lastActiveMainPage: ' + data.lastActiveMainPage);
+          // console.log('data.lastActiveMainPage: ' + data.lastActiveMainPage);
           
           if ( data.lastActiveMainPage != null ) {
             this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: data.lastActiveMainPage, }) );
@@ -168,8 +168,6 @@ export class FooterComponent implements OnInit {
 
 
 
-
-
     // - Leer de la Store la última página principal visitada
     this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => {
 
@@ -179,12 +177,6 @@ export class FooterComponent implements OnInit {
       // console.log('activeNavigationItem: ' + this.activeNavigationItem);
 
     } );
-
-
-
-    // Borrar
-    // Comprobacion
-    // console.log(this.lastActiveMainPage);
 
   }
 
