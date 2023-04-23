@@ -12,8 +12,8 @@ import * as GlobalActions from "./global.actions";  // Importar todo y guardarlo
 export interface GlobalReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   firstVisitedPage: string;
-  activeNavigationItem: string;
-  lastActiveMainPage: string;
+  activeNavigationItem: string | null;
+  lastActiveMainPage: string | null;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -68,8 +68,8 @@ export const globalReducer = createReducer(
 
 
 
-    /** Set Last Active Main Page Action **/
-    on(GlobalActions.SetLastActiveMainPage,
+    /** Set Local Storage Key Value Action **/
+    on(GlobalActions.SetLocalStorageKeyValue,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -78,7 +78,39 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        lastActiveMainPage: action.lastActiveMainPagePayload,
+        lastActiveMainPage: action.localStorageValuePayload,
+          
+      })),
+
+
+
+    /** Get Local Storage Value Start Action **/
+    on(GlobalActions.GetLocalStorageValueStart,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        lastActiveMainPage: action.localStorageKeyPayload,
+          
+      })),
+
+
+
+    /** Get Local Storage Value Start Action **/
+    on(GlobalActions.GetLocalStorageValueEnd,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        lastActiveMainPage: action.localStorageValuePayload,
           
       })),
 

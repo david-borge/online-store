@@ -36,8 +36,8 @@ export class FooterComponent implements OnInit {
   @Input() navigationShowButtonRightRightIconType :string = 'check';
 
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Item
-  activeNavigationItem: string = '';
-  lastActiveMainPage: string = '';
+  activeNavigationItem: string | null = '';
+  lastActiveMainPage: string | null = '';
 
   // TODO:
   numberOfProductsInCart :number = 2;
@@ -65,10 +65,15 @@ export class FooterComponent implements OnInit {
 
 
 
-    // - Leer de la Store la última página principal visitada
+    // - Leer de la Store la última página principal visitada (lastActiveMainPage)
     this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => {
       this.lastActiveMainPage = globalReducerData.lastActiveMainPage;
     } );
+
+    // Leer de Local Storage la última página principal visitada (lastActiveMainPage) y guardarlo en la Store
+    // this.store.dispatch( GlobalActions.GetLocalStorageValueStart({ localStorageKeyPayload: 'lastActiveMainPage', }));
+
+    
 
 
 
@@ -77,56 +82,84 @@ export class FooterComponent implements OnInit {
     // Comprobacion
     // console.log('activeNavigationItem: ' + this.activeNavigationItem);
 
-    // Si aterrizo en una de las páginas principales
+    // · Si aterrizo en una de las páginas principales
     if( (this.router.url == '/home') || (this.router.url == '/categories') || (this.router.url == '/cart') || (this.router.url == '/account')) {
 
       // Comprobacion
-      console.log('En una página principal: ' + this.router.url);
+      // console.log('En una página principal: ' + this.router.url);
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: this.router.url, }) );
-      this.store.dispatch( GlobalActions.SetLastActiveMainPage({ lastActiveMainPagePayload: this.router.url, }) );
+      this.store.dispatch( GlobalActions.SetLocalStorageKeyValue({
+        localStorageKeyPayload: 'lastActiveMainPage',
+        localStorageValuePayload: this.router.url,
+      }) );
+      
+      this.store.dispatch( GlobalActions.GetLocalStorageValueStart({
+        localStorageKeyPayload: 'lastActiveMainPage',
+      }) );
   
     }
 
-    // Si aterrizo en una página de categoría, activo /categories
+    // · Si aterrizo en una página de categoría, activo /categories
     else if ( this.router.url.includes('/category/') ) {
 
       // Comprobacion
-      console.log('En una página de categoría');
+      // console.log('En una página de categoría');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/categories', }) );
 
     }
 
-    // Si aterrizo en una página de producto, activo /home
-    else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '') && this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => { return (globalReducerData.activeNavigationItem == 'categories') }) ) {
+    // FIXME: · Si aterrizo en una página de producto, activo /home
+    // else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/categories') ) {
       
-      // Comprobacion
-      console.log(' -> Si aterrizo en una página de producto, activo /home');
+    //   // Comprobacion
+    //   // console.log('Si aterrizo en una página de producto, activo /home');
 
-      this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
+    //   this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
+
+    // }
+
+    // · Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.
+    else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '') ) {
+
+      // Comprobacion
+      console.log('-> Último caso.');
+      
+      this.store.dispatch( GlobalActions.GetLocalStorageValueStart({
+        localStorageKeyPayload: 'lastActiveMainPage',
+      }) );
+
+      this.store.select('globalReducerObservable').pipe(take(1))
+        .subscribe( (data) => {
+          // Comprobacion
+          console.log('data.lastActiveMainPage: ' + data.lastActiveMainPage);
+          // this.activeNavigationItem = ;
+          this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: data.lastActiveMainPage, }) );
+        } );
 
     }
 
-    // Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la home, activo /home
+    // · Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la home, activo /home
     else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/home') ) {
       
       // Comprobacion
-      console.log('En una página de producto si la última página principal ha sido /home.');
+      // console.log('En una página de producto si la última página principal ha sido /home.');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
 
     }
 
-    // Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la categories, activo /categories
+    // · Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la categories, activo /categories
     else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/categories') ) {
       
       // Comprobacion
-      console.log('En una página de producto si la última página principal ha sido /categories.');
+      // console.log('En una página de producto si la última página principal ha sido /categories.');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/categories', }) );
 
     }
+
 
 
 
@@ -137,9 +170,15 @@ export class FooterComponent implements OnInit {
       this.activeNavigationItem = globalReducerData.activeNavigationItem;
 
       // Comprobacion
-      console.log('activeNavigationItem: ' + this.activeNavigationItem);
+      // console.log('activeNavigationItem: ' + this.activeNavigationItem);
 
     } );
+
+
+
+    // Borrar
+    // Comprobacion
+    // console.log(this.lastActiveMainPage);
 
   }
 

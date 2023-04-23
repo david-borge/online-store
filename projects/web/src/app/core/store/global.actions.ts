@@ -37,23 +37,70 @@ export const SetActiveNavigationItem = createAction(
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    activeNavigationItemPayload: string,
+    activeNavigationItemPayload: string | null,
   }>(),
 
 );
 
 
 
-/** Set Last Active Main Page Action **/
-export const SetLastActiveMainPage = createAction(
+/** Set Local Storage Key Value Action **/
+// Side Effects asociados: setLocalStorageKeyValueSideEffect (guardar lastActiveMainPage en Local Storage)
+export const SetLocalStorageKeyValue = createAction(
 
   // Tipo de la Action
-  '[Global] Set Last Active Main Page',
+  '[Global] Set Local Storage Key Value',
   
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    lastActiveMainPagePayload: string,
+    localStorageKeyPayload: string,
+    localStorageValuePayload: string,
   }>(),
+
+);
+
+
+
+/** Get Local Storage Value Start Action **/
+// Side Effects asociados: getLocalStorageValueSideEffect (guardar lastActiveMainPage en Local Storage)
+export const GetLocalStorageValueStart = createAction(
+
+  // Tipo de la Action
+  '[Global] Get Local Storage Value Start',
+  
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    localStorageKeyPayload: string,
+  }>(),
+
+);
+
+
+
+/** Get Local Storage Value End Action **/
+// Side Effects asociados: getLocalStorageValueSideEffect (guardar lastActiveMainPage en Local Storage)
+export const GetLocalStorageValueEnd = createAction(
+
+  // Tipo de la Action
+  '[Global] Get Local Storage Value End',
+  
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    localStorageKeyPayload: string,
+    localStorageValuePayload: string | null,
+  }>(),
+
+);
+
+
+
+/** Dummy Action **/
+export const DummyAction = createAction(
+
+  // Tipo de la Action
+  '[Home] Dummy Action',
 
 );
