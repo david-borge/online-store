@@ -69,7 +69,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
-            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/home') }"
+            [ngClass]="{'navigation-item--active': (activeNavigationItem == '/home') }"
         >
             <a routerLink="/home"
                 (prefetch)="prefetch(['home'])"
@@ -90,7 +90,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
-            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/categories') }"
+            [ngClass]="{'navigation-item--active': (activeNavigationItem == '/categories') }"
         >
             <a routerLink="/categories"
                 (prefetch)="prefetch(['categories'])"
@@ -111,7 +111,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
-            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/cart') }"
+            [ngClass]="{'navigation-item--active': (activeNavigationItem == '/cart') }"
         >
             <a routerLink="/cart">
                 <div class="navigation-icon-container">
@@ -129,7 +129,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
-            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/account') }"
+            [ngClass]="{'navigation-item--active': (activeNavigationItem == '/account') }"
         >
             <a routerLink="/account">
                 <div class="navigation-icon-container">

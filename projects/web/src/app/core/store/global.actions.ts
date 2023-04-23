@@ -28,8 +28,23 @@ export const SetFirstVisitedPage = createAction(
 
 
 
+/** Set Active Navigation Item Action **/
+export const SetActiveNavigationItem = createAction(
+
+  // Tipo de la Action
+  '[Global] Set Active Navigation Item',
+  
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    activeNavigationItemPayload: string,
+  }>(),
+
+);
+
+
+
 /** Set Last Active Main Page Action **/
-// Side Effects asociados: getAllProductsSideEffect (toma todos los Products desde la base de datos mediante un HTTP Request)
 export const SetLastActiveMainPage = createAction(
 
   // Tipo de la Action

@@ -12,6 +12,7 @@ import * as GlobalActions from "./global.actions";  // Importar todo y guardarlo
 export interface GlobalReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   firstVisitedPage: string;
+  activeNavigationItem: string;
   lastActiveMainPage: string;
 }
 
@@ -21,6 +22,7 @@ const initialState: GlobalReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
   // loadStatus: 'NOT_LOADED',
   firstVisitedPage: '',
+  activeNavigationItem: '',
   lastActiveMainPage: '',
 }
 
@@ -45,6 +47,22 @@ export const globalReducer = createReducer(
         ...state,
 
         firstVisitedPage: action.visitedPageURLPayload,
+          
+      })),
+
+
+
+    /** Set Active Navigation Item Action **/
+    on(GlobalActions.SetActiveNavigationItem,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        activeNavigationItem: action.activeNavigationItemPayload,
           
       })),
 

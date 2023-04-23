@@ -12,7 +12,6 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
 import * as HomeActions from '../../store/home.actions';
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
-import { RoutingService } from 'projects/web/src/app/core/services/routing/routing.service';
 
 
 
@@ -46,13 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private store: Store<fromApp.AppState>,
     private router: Router,
     private preloadImagesService: PreloadImagesService,
-    private routingService: RoutingService,
-  ) {
-
-    // Al cambiar de ruta, indicarlo en la Store Global
-    this.routingService.setHaveNavigatedToTrue();
-
-  }
+  ) {}
 
 
   ngOnInit(): void {

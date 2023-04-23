@@ -21,7 +21,7 @@ export class RoutingService {
   ) { }
 
   // Al cambiar de ruta, indicarlo en la Store Global
-  setHaveNavigatedToTrue() {
+  SetFirstVisitedPage() {
     
     this.router.events.pipe(take(1)).subscribe((val) => {
 
