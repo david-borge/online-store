@@ -80,7 +80,7 @@ export class FooterComponent implements OnInit {
     // - Guardar en la Store el Navigation Item activo
     
     // Comprobacion
-    // console.log('activeNavigationItem: ' + this.activeNavigationItem);
+    console.log('activeNavigationItem: ' + this.activeNavigationItem + ' - lastActiveMainPage: ' + this.lastActiveMainPage);
 
     // · Si aterrizo en una de las páginas principales
     if( (this.router.url == '/home') || (this.router.url == '/categories') || (this.router.url == '/cart') || (this.router.url == '/account')) {
@@ -110,21 +110,11 @@ export class FooterComponent implements OnInit {
 
     }
 
-    // FIXME: · Si aterrizo en una página de producto, activo /home
-    // else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/categories') ) {
-      
-    //   // Comprobacion
-    //   // console.log('Si aterrizo en una página de producto, activo /home');
-
-    //   this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
-
-    // }
-
     // · Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.
     else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '') ) {
 
       // Comprobacion
-      console.log('-> Último caso.');
+      console.log('Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.');
       
       this.store.dispatch( GlobalActions.GetLocalStorageValueStart({
         localStorageKeyPayload: 'lastActiveMainPage',
@@ -134,8 +124,14 @@ export class FooterComponent implements OnInit {
         .subscribe( (data) => {
           // Comprobacion
           console.log('data.lastActiveMainPage: ' + data.lastActiveMainPage);
-          // this.activeNavigationItem = ;
-          this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: data.lastActiveMainPage, }) );
+          
+          if ( data.lastActiveMainPage != null ) {
+            this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: data.lastActiveMainPage, }) );
+          } else {
+            // Por defecto (cuando llego a la página por primera vez desde el Modo Incógnito), muestro la home
+            this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
+          }
+
         } );
 
     }
@@ -157,6 +153,16 @@ export class FooterComponent implements OnInit {
       // console.log('En una página de producto si la última página principal ha sido /categories.');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/categories', }) );
+
+    }
+
+    // Por defecto (cuando llego a la página por primera vez desde el Modo Incógnito), muestro la home
+    else {
+      
+      // Comprobacion
+      // console.log('Por defecto');
+
+      this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
 
     }
 
