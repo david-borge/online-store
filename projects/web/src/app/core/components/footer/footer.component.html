@@ -34,7 +34,7 @@
 
             <!-- Navigation Button Right -->
             <div class="navigation-button-right-container">
-                <button type="button" class="btn {{navigationButtonRightClasses}}" (click)="router.navigate([navigationButtonRightURL]);">
+                <button type="button" class="btn {{navigationButtonRightClasses}}" (click)="onCLickNavigationButtonRight();">
 
                     <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-right--left-icon">
 
@@ -69,6 +69,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
+            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/home') }"
         >
             <a routerLink="/home"
                 (prefetch)="prefetch(['home'])"
@@ -89,6 +90,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
+            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/categories') }"
         >
             <a routerLink="/categories"
                 (prefetch)="prefetch(['categories'])"
@@ -109,6 +111,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
+            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/cart') }"
         >
             <a routerLink="/cart">
                 <div class="navigation-icon-container">
@@ -126,6 +129,7 @@
         <div class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{exact: true}"
+            [ngClass]="{'navigation-item--active': (lastActiveMainPage == '/account') }"
         >
             <a routerLink="/account">
                 <div class="navigation-icon-container">

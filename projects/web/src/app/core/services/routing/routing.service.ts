@@ -33,7 +33,7 @@ export class RoutingService {
 
         if ( globalReducerData.firstVisitedPage == '' ) {
 
-          this.store.dispatch( GlobalActions.SetFirstVisitedPage({ visitedPageURL: this.router.url, }) );
+          this.store.dispatch( GlobalActions.SetFirstVisitedPage({ visitedPageURLPayload: this.router.url, }) );
 
         }
 

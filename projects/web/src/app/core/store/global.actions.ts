@@ -21,7 +21,24 @@ export const SetFirstVisitedPage = createAction(
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    visitedPageURL: string,
+    visitedPageURLPayload: string,
+  }>(),
+
+);
+
+
+
+/** Set Last Active Main Page Action **/
+// Side Effects asociados: getAllProductsSideEffect (toma todos los Products desde la base de datos mediante un HTTP Request)
+export const SetLastActiveMainPage = createAction(
+
+  // Tipo de la Action
+  '[Global] Set Last Active Main Page',
+  
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    lastActiveMainPagePayload: string,
   }>(),
 
 );
