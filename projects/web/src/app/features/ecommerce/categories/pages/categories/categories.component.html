@@ -1,5 +1,6 @@
 <!-- Categories Page -->
 
+
 <!-- Header Tag -->
 <app-header
     [headerTagType] = "'overlay-header-main-page'"
@@ -9,11 +10,11 @@
 <!-- Main -->
 <main role="main" style="padding-top: var(--espacio-vertical); padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
 
-    <!-- <div class="ocultar"
-    [ngClass]="{
-        'mostrar-con-animacion': (imagesInThisPageLoaded && !homePagePreviouslyVisited && currentlyInThePageIEnteredFrom),
-        'mostrar-sin-animacion': (imagesInThisPageLoaded && homePagePreviouslyVisited) || (imagesInThisPageLoaded && !homePagePreviouslyVisited && !currentlyInThePageIEnteredFrom),
-    }"> -->
+    <div class="ocultar h-100"
+        [ngClass]="{
+            'mostrar-con-animacion': (imagesInThisPageLoaded && !categoriesPagePreviouslyVisited && currentlyInThePageIEnteredFrom),
+            'mostrar-sin-animacion': (imagesInThisPageLoaded && categoriesPagePreviouslyVisited) || (imagesInThisPageLoaded && !categoriesPagePreviouslyVisited && !currentlyInThePageIEnteredFrom),
+        }">
 
         <!-- Categories List -->
         <div class="container h-100">
@@ -57,7 +58,7 @@
 
         </div>
 
-    <!-- </div> -->
+    </div>
 
 </main>
   

@@ -15,6 +15,9 @@ export interface CategoriesReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   allCategories: CategoryInterface[];
   currentCategorySlug: string;
+  numberOfImagesInThisPage: number;
+  numberOfImagesInThisPageLoaded: number;
+  categoriesPagePreviouslyVisited: boolean;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -24,6 +27,9 @@ const initialState: CategoriesReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
   allCategories: [],
   currentCategorySlug: '',
+  numberOfImagesInThisPage: 0,
+  numberOfImagesInThisPageLoaded: 0,
+  categoriesPagePreviouslyVisited: false,
 }
 
 
@@ -96,5 +102,52 @@ export const categoriesReducer = createReducer(
           
       })),
 
+
+
+    /** Count Images In This Page Action **/
+    on(CategoriesActions.CountImagesInThisPage,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        numberOfImagesInThisPage: state.numberOfImagesInThisPage + 1,
+          
+      })),
+
+
+
+    /** Count Images Loaded In This Page Action **/
+    on(CategoriesActions.CountImagesInThisPageLoaded,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        numberOfImagesInThisPageLoaded: state.numberOfImagesInThisPageLoaded + 1,
+          
+      })),
+
+
+
+    /** Set Categories Page Has Been Previously Visited Action **/
+    on(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisited,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        categoriesPagePreviouslyVisited: true,
+          
+      })),
 
 );

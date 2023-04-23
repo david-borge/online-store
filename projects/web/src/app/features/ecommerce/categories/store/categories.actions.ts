@@ -68,6 +68,36 @@ export const SaveCurrentCategorySlug = createAction(
 
 
 
+/** Count Images In This Page Action **/
+export const CountImagesInThisPage = createAction(
+
+  // Tipo de la Action
+  '[Home] Count Images In This Page',
+
+);
+
+
+
+/** Count Images In This Page Loaded Action **/
+export const CountImagesInThisPageLoaded = createAction(
+
+  // Tipo de la Action
+  '[Home] Count Images In This Page Loaded',
+
+);
+
+
+
+/** Set Categories Page Has Been Previously Visited Action **/
+export const SetCategoriesPageHasBeenPrevouslyVisited = createAction(
+
+  // Tipo de la Action
+  '[Categories] Set Categories Page Has Been Previously Visited',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

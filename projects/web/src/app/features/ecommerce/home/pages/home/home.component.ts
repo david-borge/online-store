@@ -2,14 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { Subscription, take } from 'rxjs';
+import { Store } from '@ngrx/store';
 
-import { Store } from "@ngrx/store";
+import { Subscription, take } from 'rxjs';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../../../../core/store/global.actions';
 import * as HomeActions from '../../store/home.actions';
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
@@ -34,7 +33,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Pre-load images of other pages
   imagesInThisPageLoaded: boolean = false;
-  // imagesInThisPageLoaded: boolean = true;
   imagesOfOtherPagesToPreload: string[] = [];
 
   // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
