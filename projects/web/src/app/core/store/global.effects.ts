@@ -2,7 +2,9 @@
 
 
 
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { switchMap } from 'rxjs/operators'
@@ -22,6 +24,7 @@ export class GlobalEffects {
         // actionsObservable o actions$ es un Observable grande que contiene todas las dispatched Actions para que podamos reaccionar a ellas.
         // Notación: se le puede añadir un $ al final del nombre indica que es un Observable, pero no es obligatorio. Yo prefiero poner la palabra Observable.
         private actionsObservable: Actions,
+        @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
     ) { }
 
 
@@ -43,7 +46,9 @@ export class GlobalEffects {
             // console.log(setLocalStorageKeyValueActionData);
 
             // Guardar lastActiveMainPage en LocalStorage
-            window.localStorage.setItem(setLocalStorageKeyValueActionData.localStorageKeyPayload, setLocalStorageKeyValueActionData.localStorageValuePayload);
+            if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
+                window.localStorage.setItem(setLocalStorageKeyValueActionData.localStorageKeyPayload, setLocalStorageKeyValueActionData.localStorageValuePayload);
+            }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction si los productos ya están cargados en la Store
             return of( GlobalActions.DummyAction() );
@@ -64,20 +69,23 @@ export class GlobalEffects {
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
         switchMap( (getLocalStorageValueActionData) => {
 
-            // Aquí puedo usar los datos del payload de la Action: getLocalStorageValueActionData.nombrePayloadPayload.propiedad1
+            if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
 
-            // Comprobacion
-            // console.log('getLocalStorageValueActionData:');
-            // console.log(getLocalStorageValueActionData);
+                // Aquí puedo usar los datos del payload de la Action: getLocalStorageValueActionData.nombrePayloadPayload.propiedad1
 
-            // Guardar lastActiveMainPage en LocalStorage
-            
+                // Comprobacion
+                // console.log('getLocalStorageValueActionData:');
+                // console.log(getLocalStorageValueActionData);
 
-            // Como siempre hay que devolver una Action, devuelvo una DummyAction si los productos ya están cargados en la Store
-            return of( GlobalActions.GetLocalStorageValueEnd({
-                localStorageKeyPayload: getLocalStorageValueActionData.localStorageKeyPayload,
-                localStorageValuePayload: window.localStorage.getItem(getLocalStorageValueActionData.localStorageKeyPayload),
-            }) );
+                // Guardar lastActiveMainPage en LocalStorage
+                return of( GlobalActions.GetLocalStorageValueEnd({
+                    localStorageKeyPayload: getLocalStorageValueActionData.localStorageKeyPayload,
+                    localStorageValuePayload: window.localStorage.getItem(getLocalStorageValueActionData.localStorageKeyPayload),
+                }) );
+
+            }
+
+            return of(); // Esto es solo para que no de errores al poner: if (isPlatformBrowser(this.platformId))
                 
         }),
 
