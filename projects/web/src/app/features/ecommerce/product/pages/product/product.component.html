@@ -12,7 +12,19 @@
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(148px + var(--espacio-vertical));">
 
-    <router-outlet></router-outlet>
+    <!-- Loading Spinner -->
+    <app-loading-spinner
+        [imagesInThisPageLoaded]="imagesInThisPageLoaded"
+        [thisPagePreviouslyVisited]="productPagePreviouslyVisited"
+        [currentlyInThePageIEnteredFrom]="currentlyInThePageIEnteredFrom"
+    >
+
+        <!-- Page content -->
+
+        <!-- ProductDetailComponent -->
+        <router-outlet></router-outlet>
+
+    </app-loading-spinner>
 
 </main>
   
@@ -20,6 +32,6 @@
 <app-footer
     [navigationShowCtasAndCopy] = "true"
     [navigationCopyLabel]   = "''"
-    [navigationCopyPrice]   = "'79,99 €'"
+    [navigationCopyPrice]   = "( currentProduct ? currentProduct.price : 0 )"
     [navigationButtonRightText] = "'Add to cart'"
 ></app-footer>

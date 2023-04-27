@@ -29,7 +29,7 @@
             <!-- Navigation Copy -->
             <div class="navigation-copy" *ngIf="navigationShowCopy && (numberOfProductsInCart > 0)">
                 <div class="navigation-copy-label">{{navigationCopyLabel}}</div>
-                <div class="navigation-copy-price">{{navigationCopyPrice}}</div>
+                <div class="navigation-copy-price">{{navigationCopyPrice | currency:'EUR':'symbol':'1.2-2'}}</div>
             </div>
 
             <!-- Navigation Button Right -->

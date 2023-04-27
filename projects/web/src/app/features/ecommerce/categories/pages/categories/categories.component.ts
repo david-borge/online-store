@@ -20,7 +20,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
   host: {
-    class:'app-categories-classes-for-router-outlet'
+    class:'app-categories-class-for-router-outlet',
   },
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
@@ -39,7 +39,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
   categoriesPagePreviouslyVisited: boolean = false;
 
-  // TODO: Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+  // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
   currentlyInThePageIEnteredFrom: boolean = false;
 
 

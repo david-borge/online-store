@@ -17,6 +17,7 @@ export interface CategoriesReducerStateInterface {
   currentCategorySlug: string;
   numberOfImagesInThisPage: number;
   numberOfImagesInThisPageLoaded: number;
+  categoriesPageImagesLoaded: boolean;
   categoriesPagePreviouslyVisited: boolean;
 }
 
@@ -29,6 +30,7 @@ const initialState: CategoriesReducerStateInterface = {
   currentCategorySlug: '',
   numberOfImagesInThisPage: 0,
   numberOfImagesInThisPageLoaded: 0,
+  categoriesPageImagesLoaded: false,
   categoriesPagePreviouslyVisited: false,
 }
 
@@ -147,6 +149,22 @@ export const categoriesReducer = createReducer(
         ...state,
 
         categoriesPagePreviouslyVisited: true,
+          
+      })),
+
+
+
+    /** Set Categories Page Images Loaded To True Action **/
+    on(CategoriesActions.SetCategoriesPageImagesLoadedToTrue,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        categoriesPageImagesLoaded: true,
           
       })),
 

@@ -17,6 +17,7 @@ export interface HomeReducerStateInterface {
   currentProductSlug: string;
   numberOfImagesInThisPage: number;
   numberOfImagesInThisPageLoaded: number;
+  homePageImagesLoaded: boolean;
   homePagePreviouslyVisited: boolean;
 }
 
@@ -29,6 +30,7 @@ const initialState: HomeReducerStateInterface = {
   currentProductSlug: '',
   numberOfImagesInThisPage: 0,
   numberOfImagesInThisPageLoaded: 0,
+  homePageImagesLoaded: false,
   homePagePreviouslyVisited: false,
 }
 
@@ -147,6 +149,22 @@ export const homeReducer = createReducer(
         ...state,
 
         homePagePreviouslyVisited: true,
+          
+      })),
+
+
+
+    /** Set Home Page Images Loaded To True Action **/
+    on(HomeActions.SetHomePageImagesLoadedToTrue,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        homePageImagesLoaded: true,
           
       })),
 

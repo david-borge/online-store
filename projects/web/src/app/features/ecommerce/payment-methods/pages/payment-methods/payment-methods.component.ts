@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './payment-methods.component.html',
   styleUrls: ['./payment-methods.component.scss'],
   host: {
-    class:'app-payment-methods-classes-for-router-outlet'
+    class:'app-payment-methods-class-for-router-outlet',
   },
 })
 export class PaymentMethodsComponent {

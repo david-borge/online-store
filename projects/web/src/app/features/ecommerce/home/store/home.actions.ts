@@ -98,6 +98,16 @@ export const SetHomePageHasBeenPrevouslyVisited = createAction(
 
 
 
+/** Set Home Page Images Loaded To True Action **/
+export const SetHomePageImagesLoadedToTrue = createAction(
+
+  // Tipo de la Action
+  '[Home] Set Home Page Images Loaded To True',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

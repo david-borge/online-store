@@ -20,7 +20,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   host: {
-    class:'app-home-classes-for-router-outlet'
+    class:'app-home-class-for-router-outlet',
   },
 })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
   homePagePreviouslyVisited: boolean = false;
   
-  // TODO: Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+  // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
   currentlyInThePageIEnteredFrom: boolean = false;
 
 

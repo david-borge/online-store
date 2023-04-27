@@ -10,7 +10,6 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
-import * as LoadingScreenActions from '../../store/loading-screen.actions';
 
 import { PreFetchService } from '../../../../../core/services/prefetch/prefetch.service';
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
@@ -21,7 +20,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   templateUrl: './loading-screen.component.html',
   styleUrls: ['./loading-screen.component.scss'],
   host: {
-    class:'app-loading-screen-classes-for-router-outlet'
+    class:'app-loading-screen-class-for-router-outlet',
   },
   animations: [
 
@@ -44,7 +43,6 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
 export class LoadingScreenComponent implements OnInit, OnDestroy {
 
   // Suscripciones a la Store
-  loadingScreenReducerObservableSubscription: Subscription = Subscription.EMPTY;
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
   categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -203,7 +201,6 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
 
     // Cancelar suscripciones
-    this.loadingScreenReducerObservableSubscription.unsubscribe();
     this.homeReducerObservableSubscription.unsubscribe();
     this.categoriesReducerObservableSubscription.unsubscribe();
 

@@ -8,21 +8,39 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
+import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
+
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  host: {
+    class:'app-product-class-for-router-outlet',
+  },
 })
 export class ProductComponent implements OnInit, OnDestroy {
   
+  // Suscripciones a la Store
+  homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+
+  // Variables para la Template
   currentProductSlug: string = '';
   currentProduct = {} as ProductInterface;
 
-  homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  // Pre-load images of other pages
+  imagesInThisPageLoaded: boolean = false;
+  imagesOfOtherPagesToPreload: string[] = [];
+
+  // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
+  productPagePreviouslyVisited: boolean = false;
+  
+  // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+  currentlyInThePageIEnteredFrom: boolean = false;
 
   constructor(
     private store: Store<fromApp.AppState>,
+    private preloadImagesService: PreloadImagesService,
   ) {}
 
   ngOnInit(): void {
@@ -62,6 +80,12 @@ export class ProductComponent implements OnInit, OnDestroy {
           // console.log('ProductComponent > currentProductSlug: ' + this.currentProduct.slug);
           // console.log('ProductComponent > currentProductName: ' + this.currentProduct.name);
           // console.log('ProductComponent > currentProductcardAndHeaderBackgroundColor: ' + this.currentProduct.cardAndHeaderBackgroundColor);
+
+          // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
+          if ( (homeReducerResponseData.numberOfImagesInThisPage == homeReducerResponseData.numberOfImagesInThisPageLoaded) && (homeReducerResponseData.numberOfImagesInThisPage != 0) && (homeReducerResponseData.numberOfImagesInThisPageLoaded != 0) ) {
+            this.imagesInThisPageLoaded = true;
+            this.preloadImagesService.preloadImagesOfOtherPages( homeReducerResponseData.numberOfImagesInThisPage, homeReducerResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
+          }
 
         },
 

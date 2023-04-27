@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+
+import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
+import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PreloadImagesService {
 
   numberOfimagesOfOtherPagesToPreloadLoaded: number = 0;
+  lastActiveMainPage: string | null = '';
+
+  constructor(
+    private store: Store<fromApp.AppState>,
+  ) {}
 
   preloadImagesOfOtherPages( numberOfImagesInThisPage: number, numberOfImagesInThisPageLoaded: number, imagesOfOtherPagesToPreload: string[] ): void {
 
@@ -28,9 +40,32 @@ export class PreloadImagesService {
           this.numberOfimagesOfOtherPagesToPreloadLoaded++;
 
           // Comprobacion: si toda las imágenes han sido cargadas
-          /* if( imagesOfOtherPagesToPreload.length == this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
-            console.log('All the images of other pages have been loaded (' + this.numberOfimagesOfOtherPagesToPreloadLoaded + ' ' + ((this.numberOfimagesOfOtherPagesToPreloadLoaded == 1) ? 'image' : 'images') + ').');
-          } */
+          if( imagesOfOtherPagesToPreload.length == this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
+
+            // Comprobacion
+            // console.log('All the images of other pages have been loaded (' + this.numberOfimagesOfOtherPagesToPreloadLoaded + ' ' + ((this.numberOfimagesOfOtherPagesToPreloadLoaded == 1) ? 'image' : 'images') + ').');
+
+            // Leer de la Store en qué página estoy
+            this.store.select('globalReducerObservable').subscribe( globalReducerData => { this.lastActiveMainPage = globalReducerData.lastActiveMainPage; } );
+    
+            // Guardarlo en la store correspondiente (xxxPageImagesLoaded)
+            switch (this.lastActiveMainPage) {
+
+              case '/home':
+                this.store.dispatch( HomeActions.SetHomePageImagesLoadedToTrue() );
+                this.store.dispatch( CategoriesActions.SetCategoriesPageImagesLoadedToTrue() );
+                break;
+                
+              case '/categories':
+                this.store.dispatch( HomeActions.SetHomePageImagesLoadedToTrue() );
+                this.store.dispatch( CategoriesActions.SetCategoriesPageImagesLoadedToTrue() );
+                break;
+
+              default:
+                break;
+
+            }
+          }
           
         }
 

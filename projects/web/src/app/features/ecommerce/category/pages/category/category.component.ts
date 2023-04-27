@@ -14,7 +14,7 @@ import { CategoryInterface } from 'projects/web/src/app/core/models/category.int
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
   host: {
-    class:'app-category-classes-for-router-outlet'
+    class:'app-category-class-for-router-outlet',
   },
 })
 export class CategoryComponent {

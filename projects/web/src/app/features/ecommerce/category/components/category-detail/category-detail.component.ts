@@ -16,7 +16,7 @@ import { ProductInterface } from 'projects/web/src/app/core/models/product.inter
   templateUrl: './category-detail.component.html',
   styleUrls: ['./category-detail.component.scss'],
   host: {
-    class:'app-category-detail-classes-for-router-outlet'
+    class:'app-category-detail-class-for-router-outlet',
   },
 })
 export class CategoryDetailComponent implements OnInit, OnDestroy {

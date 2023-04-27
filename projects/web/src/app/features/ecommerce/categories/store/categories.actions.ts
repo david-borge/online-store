@@ -98,6 +98,16 @@ export const SetCategoriesPageHasBeenPrevouslyVisited = createAction(
 
 
 
+/** Set Categories Page Images Loaded To True Action **/
+export const SetCategoriesPageImagesLoadedToTrue = createAction(
+
+  // Tipo de la Action
+  '[Categories] Set Categories Page Images Loaded To True',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

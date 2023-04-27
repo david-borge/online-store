@@ -26,7 +26,7 @@ export class FooterComponent implements OnInit {
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Copy
   @Input() navigationShowCopy  :boolean = true;
   @Input() navigationCopyLabel :string  = '';
-  @Input() navigationCopyPrice :string  = '';
+  @Input() navigationCopyPrice :number  = 0;
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
   @Input() navigationButtonRightText              :string  = '';
