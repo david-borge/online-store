@@ -82,7 +82,10 @@ export class CategoryComponent {
   }
 
   ngOnDestroy(): void {
+
+    // Cancelar suscripciones
     this.categoriesReducerObservableSubscription.unsubscribe();
+    
   }
 
 }

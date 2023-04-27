@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
 import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
+import * as ProductActions from '../../../features/ecommerce/product/store/product.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +16,10 @@ import * as CategoriesActions from '../../../features/ecommerce/categories/store
 export class PreloadImagesService {
 
   numberOfimagesOfOtherPagesToPreloadLoaded: number = 0;
-  lastActiveMainPage: string | null = '';
+  currentURL: string = '';
 
   constructor(
+    private router: Router,
     private store: Store<fromApp.AppState>,
   ) {}
 
@@ -45,11 +49,18 @@ export class PreloadImagesService {
             // Comprobacion
             // console.log('All the images of other pages have been loaded (' + this.numberOfimagesOfOtherPagesToPreloadLoaded + ' ' + ((this.numberOfimagesOfOtherPagesToPreloadLoaded == 1) ? 'image' : 'images') + ').');
 
-            // Leer de la Store en qué página estoy
-            this.store.select('globalReducerObservable').subscribe( globalReducerData => { this.lastActiveMainPage = globalReducerData.lastActiveMainPage; } );
-    
+            // - Leer en qué página estoy
+            this.currentURL = this.router.url;
+            
+            // Comprobación
+            console.log('currentURL: ' + this.currentURL);
+
             // Guardarlo en la store correspondiente (xxxPageImagesLoaded)
-            switch (this.lastActiveMainPage) {
+            if( this.currentURL.includes('/product/') ) {
+              this.currentURL = '/product';
+            }
+
+            switch (this.currentURL) {
 
               case '/home':
                 this.store.dispatch( HomeActions.SetHomePageImagesLoadedToTrue() );
@@ -59,6 +70,12 @@ export class PreloadImagesService {
               case '/categories':
                 this.store.dispatch( HomeActions.SetHomePageImagesLoadedToTrue() );
                 this.store.dispatch( CategoriesActions.SetCategoriesPageImagesLoadedToTrue() );
+                break;
+                
+              case '/product':
+                // Comprobacion
+                console.log('aquí');
+                this.store.dispatch( ProductActions.SetProductPageImagesLoadedToTrue() );
                 break;
 
               default:

@@ -92,7 +92,10 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+
+    // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();
+    
   }
 
 }

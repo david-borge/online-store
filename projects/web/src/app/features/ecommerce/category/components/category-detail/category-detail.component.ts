@@ -83,7 +83,10 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+
+    // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();
+    
   }
 
 }

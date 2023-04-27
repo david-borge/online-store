@@ -4,38 +4,50 @@
 
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
 import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
+import * as ProductActions from '../../../features/ecommerce/product/store/product.actions';
 
 @Directive({
   selector: '[imageLoadedDirective]'
 })
 export class ImageLoadedDirective {
 
-  lastActiveMainPage: string | null = '';
+  currentURL: string = '';
   homePageImagesLoaded: boolean = false;
   categoriesPageImagesLoaded: boolean = false;
+  productPageImagesLoaded: boolean = false;
 
   constructor(
+    private router: Router,
     private store: Store<fromApp.AppState>,
     private elementRef: ElementRef, // (Opcional)
   ) {
+
+    // Cuando lea una imagen con el atributo imageLoadedDirective
+    
     
     // Comprobación
     // console.log('ImageLoadedDirective activada.');
 
-    // - Leer de la Store en qué página estoy
-    this.store.select('globalReducerObservable').subscribe( globalReducerData => { this.lastActiveMainPage = globalReducerData.lastActiveMainPage; } );
+    // - Leer en qué página estoy
+    this.currentURL = this.router.url;
     
     // Comprobación
-    console.log('lastActiveMainPage: ' + this.lastActiveMainPage);
+    // console.log('currentURL: ' + this.currentURL);
 
     // - Efectuo una acción u otra dependiendo de en qué página esté
-    switch (this.lastActiveMainPage) {
+    if( this.currentURL.includes('/product/') ) {
+      this.currentURL = '/product';
+    }
+
+    switch (this.currentURL) {
 
       case '/home':
 
@@ -75,6 +87,26 @@ export class ImageLoadedDirective {
         }
 
         break;
+
+      case '/product':
+
+        // Comprobacion
+        // console.log('En página de producto.');
+        
+        // Leo de la Store si ya se han cargado las imágenes de la Product page
+        this.store.select('productReducerObservable').subscribe( productReducerData => {
+          this.productPageImagesLoaded = productReducerData.productPageImagesLoaded;
+        } );
+        
+        // Comprobación
+        // console.log('productPageImagesLoaded: ' + this.productPageImagesLoaded);
+
+        // Aumentar el número de imágenes de la Product page, que está guardado en la Store (si las imágenes de la Product page todavía no se han cargado)
+        if ( !this.productPageImagesLoaded ) {
+          this.store.dispatch( ProductActions.CountImagesInThisPage() );
+        }
+
+        break;
     
       default:
         break;
@@ -91,12 +123,17 @@ export class ImageLoadedDirective {
     
     
     // - Efectuo una acción u otra dependiendo de en qué página esté
-    switch (this.lastActiveMainPage) {
+
+    if( this.currentURL.includes('/product/') ) {
+      this.currentURL = '/product';
+    }
+
+    switch (this.currentURL) {
       
       case '/home':
 
         // Comprobacion
-        console.log('homePageImagesLoaded: ' + this.homePageImagesLoaded);
+        // console.log('homePageImagesLoaded: ' + this.homePageImagesLoaded);
 
         // Aumentar el número de imágenes de la página que han sido cargadas, que está guardado en la Store (si las imágenes todavía no se han cargado)
         if ( !this.homePageImagesLoaded ) {
@@ -110,6 +147,15 @@ export class ImageLoadedDirective {
         // Aumentar el número de imágenes de la página que han sido cargadas, que está guardado en la Store (si las imágenes todavía no se han cargado)
         if ( !this.categoriesPageImagesLoaded ) {
           this.store.dispatch( CategoriesActions.CountImagesInThisPageLoaded() );
+        }
+
+        break;
+      
+      case '/product':
+
+        // Aumentar el número de imágenes de la página que han sido cargadas, que está guardado en la Store (si las imágenes todavía no se han cargado)
+        if ( !this.productPageImagesLoaded ) {
+          this.store.dispatch( ProductActions.CountImagesInThisPageLoaded() );
         }
 
         break;

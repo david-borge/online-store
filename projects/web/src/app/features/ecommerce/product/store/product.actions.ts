@@ -41,6 +41,16 @@ export const SetProductPageHasBeenPrevouslyVisited = createAction(
 
 
 
+/** Set Product Page Images Loaded To True Action **/
+export const SetProductPageImagesLoadedToTrue = createAction(
+
+  // Tipo de la Action
+  '[Product] Set Product Page Images Loaded To True',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

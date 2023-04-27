@@ -13,6 +13,7 @@ export interface ProductReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   numberOfImagesInThisPage: number;
   numberOfImagesInThisPageLoaded: number;
+  productPageImagesLoaded: boolean;
   productPagePreviouslyVisited: boolean;
 }
 
@@ -23,6 +24,7 @@ const initialState: ProductReducerStateInterface = {
   // loadStatus: 'NOT_LOADED',
   numberOfImagesInThisPage: 0,
   numberOfImagesInThisPageLoaded: 0,
+  productPageImagesLoaded: false,
   productPagePreviouslyVisited: false,
 }
 
@@ -82,4 +84,19 @@ export const productReducer = createReducer(
           
       })),
 
+
+
+    /** Set Product Page Images Loaded To True Action **/
+    on(ProductActions.SetProductPageImagesLoadedToTrue,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        productPageImagesLoaded: true,
+          
+      })),
 );

@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   
   // Suscripciones a la Store
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  productReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Variables para la Template
   currentProductSlug: string = '';
@@ -81,12 +82,6 @@ export class ProductComponent implements OnInit, OnDestroy {
           // console.log('ProductComponent > currentProductName: ' + this.currentProduct.name);
           // console.log('ProductComponent > currentProductcardAndHeaderBackgroundColor: ' + this.currentProduct.cardAndHeaderBackgroundColor);
 
-          // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
-          if ( (homeReducerResponseData.numberOfImagesInThisPage == homeReducerResponseData.numberOfImagesInThisPageLoaded) && (homeReducerResponseData.numberOfImagesInThisPage != 0) && (homeReducerResponseData.numberOfImagesInThisPageLoaded != 0) ) {
-            this.imagesInThisPageLoaded = true;
-            this.preloadImagesService.preloadImagesOfOtherPages( homeReducerResponseData.numberOfImagesInThisPage, homeReducerResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
-          }
-
         },
 
         // El segundo parámetro de susbscribe() es para recoger los errores del servidor
@@ -100,10 +95,44 @@ export class ProductComponent implements OnInit, OnDestroy {
         
       );
 
+
+    
+    // Product Store
+    this.productReducerObservableSubscription = this.store.select('productReducerObservable').subscribe(
+      
+        // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
+        (productReducerResponseData)  => {
+
+          // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
+          if ( (productReducerResponseData.numberOfImagesInThisPage == productReducerResponseData.numberOfImagesInThisPageLoaded) && (productReducerResponseData.numberOfImagesInThisPage != 0) && (productReducerResponseData.numberOfImagesInThisPageLoaded != 0) ) {
+            this.imagesInThisPageLoaded = true;
+            this.preloadImagesService.preloadImagesOfOtherPages( productReducerResponseData.numberOfImagesInThisPage, productReducerResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
+          }
+
+          // console.log('productReducerResponseData get:');
+          // console.log(productReducerResponseData);
+
+        },
+
+        // El segundo parámetro de susbscribe() es para recoger los errores del servidor
+        (errorResponse) => {
+          
+          // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
+          console.log('errorResponse get:');
+          console.log(errorResponse);
+
+        }
+        
+    );
+
   }
 
   ngOnDestroy(): void {
+
+    // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();
+    this.productReducerObservableSubscription.unsubscribe();
+
   }
 
 }
