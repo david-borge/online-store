@@ -8,12 +8,12 @@
     
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
-
-    <div class="ocultar h-100"
-        [ngClass]="{
-            'mostrar-con-animacion': (imagesInThisPageLoaded && !homePagePreviouslyVisited && currentlyInThePageIEnteredFrom),
-            'mostrar-sin-animacion': (imagesInThisPageLoaded && homePagePreviouslyVisited) || (imagesInThisPageLoaded && !homePagePreviouslyVisited && !currentlyInThePageIEnteredFrom),
-        }">
+    
+    <app-loading-spinner
+        [imagesInThisPageLoaded]="imagesInThisPageLoaded"
+        [thisPagePreviouslyVisited]="homePagePreviouslyVisited"
+        [currentlyInThePageIEnteredFrom]="currentlyInThePageIEnteredFrom"
+    >
 
         <!-- Home - Featured Products -->
         <!-- Solo mostrar las categorias cuando se hayan cargado desde la base de datos y se hayan cargado las imágenes, para evitar flashazos de información incompleta. -->
@@ -68,7 +68,7 @@
 
         </div>
     
-    </div>
+    </app-loading-spinner>
 
 </main>
   

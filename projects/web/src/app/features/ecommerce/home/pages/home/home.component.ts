@@ -18,7 +18,10 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  host: {
+    class:'app-home-classes-for-router-outlet'
+  },
 })
 export class HomeComponent implements OnInit, OnDestroy {
 

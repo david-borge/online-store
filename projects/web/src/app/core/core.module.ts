@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 
 
@@ -13,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     HeaderComponent,
     FooterComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
     HeaderComponent,
     FooterComponent,
+    LoadingSpinnerComponent,
   ],
 
 })
