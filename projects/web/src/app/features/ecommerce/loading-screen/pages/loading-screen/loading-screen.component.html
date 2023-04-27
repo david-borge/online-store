@@ -105,17 +105,21 @@
         </div>
 
         <!-- Button "Let's begin" -->
-        <!-- FIXME: flashazo al cargar relacionado con el Pre-render. -->
-        <div class="w-100" style="background-color: white; z-index: 1;"> <!-- Para que bose-headphones.webp no aparezca por debajo del botón. -->
+        <div class="w-100" style="min-height: 74px; background-color: white; z-index: 1;">
+            <!-- Nota: el min-height es para evitar que se mueva el contenido mientras no esté mostrado el botón. Y el z-index es para que bose-headphones.webp no aparezca por debajo del botón. -->
 
+            <!-- class="btn btn-tertiary btn-lg w-100 lets-begin-button-animation" style="margin-bottom: var(--espacio-vertical);" -->
             <button (click)="onClickLetsBeginButton();"
-                class="btn btn-tertiary btn-lg w-100 lets-begin-button" style="margin-bottom: var(--espacio-vertical);"
+                class="btn btn-tertiary btn-lg w-100" style="margin-bottom: var(--espacio-vertical); opacity: 0;"
+                [@animacionLetsBeginButton]="letsBeginButtonAnimation"
+                (@animacionLetsBeginButton.done)="animacionLetsBeginButtonEnded();"
                 (prefetch)="prefetch([ 'home', 'categories' ])"
                 [prefetchMode]="['VISIBLE']"
                 >Let's begin</button>
-                <!-- [@animacionLetsBeginButton]=""
-                (@animacionLetsBeginButton.done)="animacionLetsBeginButtonEnded();"
-                [disabled]="letsBeginButtonIsDisabled" -->
+                <!-- [disabled]="letsBeginButtonIsDisabled" -->
+                
+
+                <!-- <button (click)="animar()">Animar</button> -->
                 
             <!-- Spinner -->
             <!-- Icon: spinner en https://loading.io/ -->

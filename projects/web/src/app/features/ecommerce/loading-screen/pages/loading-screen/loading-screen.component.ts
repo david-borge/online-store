@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, InjectionToken, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { Router } from '@angular/router';
 
-import { trigger, style, transition, animate } from '@angular/animations';
+import { trigger, style, transition, animate, state } from '@angular/animations';
 
 import { Store } from '@ngrx/store';
 
@@ -22,20 +23,23 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   host: {
     class:'app-loading-screen-classes-for-router-outlet'
   },
-  // animations: [
+  animations: [
 
-  //   // Loading Screen - "Let's begin" button
-  //   trigger('animacionLetsBeginButton', [
-      
-  //     transition('* => *', [
-  //       style({ opacity: '0' }),
-  //       animate('500ms 0ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
-  //       // animate('300ms 2100ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
-  //     ]),
+    // Loading Screen - "Let's begin" button
+    trigger('animacionLetsBeginButton', [
 
-  //   ]),
+      state('hide', style({ opacity: 0 })),
+      state('show', style({ opacity: 1 })),
+
+      transition('hide => show', [
+        // style({ opacity: '0' }),
+        animate('500ms 0ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
+        // animate('300ms 2100ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
+      ]),
+
+    ]),
     
-  // ],
+  ],
 })
 export class LoadingScreenComponent implements OnInit, OnDestroy {
 
@@ -49,6 +53,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
   // Loading Screen - "Let's begin" button - Animation
   // Hago la animación como una Angular Animation en lugar de como una CSS Animation para poder desactivar el botón hasta que esté visible.
   letsBeginButtonIsDisabled: boolean = true;
+  letsBeginButtonAnimation: string = 'hide';
 
   // Pre-load images of other pages
   imagesInThisPageLoaded: boolean = false;
@@ -60,9 +65,12 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
     private router: Router,
     private preFetchService: PreFetchService,
     private preloadImagesService: PreloadImagesService,
+    @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
   ) { }
 
   ngOnInit(): void {
+
+    
     
     /* - Sacar la lista de imágenes de otras páginas to pre-load:
         · Miniaturas de los productos
@@ -163,6 +171,15 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
 
   }
 
+  ngAfterViewInit() {
+
+    // Comprobar si estoy en el navegador (el código de dentro del if NO se ejecuta en el servidor para evitar errores en SSR o pre-render)
+    if (isPlatformBrowser(this.platformId)) {
+      this.letsBeginButtonAnimation = 'show';
+    }
+    
+  }
+
   // Loading Screen - "Let's begin" button - Animation End - Activar el botón cuando la animación termina (para que no se pueda hacer click mientras es invisible)
   // No me hace falta recibir el evento
   animacionLetsBeginButtonEnded() {
@@ -192,4 +209,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
 
   }
 
+  animar() {
+    this.letsBeginButtonAnimation = 'show';
+  }
 }
