@@ -185,7 +185,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
+  ngOnDestroy():void {
 
     // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();

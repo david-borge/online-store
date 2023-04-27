@@ -25,7 +25,7 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
         @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
     ) {}
 
-    ngOnInit() {
+    ngOnInit():void {
 
         if ( this.prefetchMode.includes('LOAD') ) {
             this.prefetchData();
@@ -57,7 +57,7 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
 
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         
         // Comprobar si estoy en el navegador (el código de dentro del if NO se ejecuta en el servidor para evitar errores en SSR o pre-render)
         if (isPlatformBrowser(this.platformId)) {
