@@ -22,20 +22,20 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   host: {
     class:'app-loading-screen-classes-for-router-outlet'
   },
-  animations: [
+  // animations: [
 
-    // Loading Screen - "Let's begin" button
-    trigger('animacionLetsBeginButton', [
+  //   // Loading Screen - "Let's begin" button
+  //   trigger('animacionLetsBeginButton', [
       
-      transition('* => *', [
-        style({ opacity: '0' }),
-        animate('500ms 0ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
-        // animate('300ms 2100ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
-      ]),
+  //     transition('* => *', [
+  //       style({ opacity: '0' }),
+  //       animate('500ms 0ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
+  //       // animate('300ms 2100ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
+  //     ]),
 
-    ]),
+  //   ]),
     
-  ],
+  // ],
 })
 export class LoadingScreenComponent implements OnInit, OnDestroy {
 
