@@ -21,7 +21,8 @@ import { PreFetchService } from '../../../../../core/services/prefetch/prefetch.
       
       transition('* => *', [
         style({ opacity: '0' }),
-        animate('300ms 2100ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
+        animate('500ms 0ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
+        // animate('300ms 2100ms cubic-bezier(0.4, 0, 0.4, 1)'),  // animation-duration animation-delay animation-timing-function
       ]),
 
     ]),
