@@ -103,7 +103,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
           // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de la Categories page
           if ( (allProductsResponseData.numberOfImagesInThisPage == allProductsResponseData.numberOfImagesInThisPageLoaded) && (allProductsResponseData.numberOfImagesInThisPage != 0) && (allProductsResponseData.numberOfImagesInThisPageLoaded != 0) ) {
             this.imagesInThisPageLoaded = true;
-            this.preloadImagesService.preloadImagesOfOtherPages( allProductsResponseData.numberOfImagesInThisPage, allProductsResponseData.numberOfImagesInThisPageLoaded, this.imagesOfHomePageToPreload );
+            this.preloadImagesService.preloadImagesOfOtherPages( this.imagesOfHomePageToPreload );
           }
 
         }
@@ -149,7 +149,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
           // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de la Categories page
           if ( (allCategoriesResponseData.numberOfImagesInThisPage == allCategoriesResponseData.numberOfImagesInThisPageLoaded) && (allCategoriesResponseData.numberOfImagesInThisPage != 0) && (allCategoriesResponseData.numberOfImagesInThisPageLoaded != 0) ) {
             this.imagesInThisPageLoaded = true;
-            this.preloadImagesService.preloadImagesOfOtherPages( allCategoriesResponseData.numberOfImagesInThisPage, allCategoriesResponseData.numberOfImagesInThisPageLoaded, this.imagesOfCategoriesPageToPreload );
+            this.preloadImagesService.preloadImagesOfOtherPages( this.imagesOfCategoriesPageToPreload );
           }
 
         }

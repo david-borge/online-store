@@ -106,8 +106,8 @@ export const categoriesReducer = createReducer(
 
 
 
-    /** Count Images In This Page Action **/
-    on(CategoriesActions.CountImagesInThisPage,
+    /** Increment In One The Number Of Images In This Page Action **/
+    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPage,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -122,8 +122,8 @@ export const categoriesReducer = createReducer(
 
 
 
-    /** Count Images Loaded In This Page Action **/
-    on(CategoriesActions.CountImagesInThisPageLoaded,
+    /** Increment In One The Number Of Images In This Page Loaded Action **/
+    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPageLoaded,
       (state, action) => ({
 
         /* Añadir un valor */

@@ -11,8 +11,8 @@ import { createAction } from "@ngrx/store";
 
 
 
-/** Count Images In This Page Action **/
-export const CountImagesInThisPage = createAction(
+/** Increment In One The Number Of Images In This Page Action **/
+export const IncrementInOneTheNumberOfImagesInThisPage = createAction(
 
   // Tipo de la Action
   '[Product] Count Images In This Page',
@@ -22,7 +22,7 @@ export const CountImagesInThisPage = createAction(
 
 
 /** Count Images In This Page Loaded Action **/
-export const CountImagesInThisPageLoaded = createAction(
+export const IncrementInOneTheNumberOfImagesInThisPageLoaded = createAction(
 
   // Tipo de la Action
   '[Product] Count Images In This Page Loaded',

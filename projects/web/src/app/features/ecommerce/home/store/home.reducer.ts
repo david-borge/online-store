@@ -106,8 +106,8 @@ export const homeReducer = createReducer(
 
 
 
-    /** Count Images In This Page Action **/
-    on(HomeActions.CountImagesInThisPage,
+    /** Increment In One The Number Of Images In This Page Action **/
+    on(HomeActions.IncrementInOneTheNumberOfImagesInThisPage,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -122,8 +122,8 @@ export const homeReducer = createReducer(
 
 
 
-    /** Count Images Loaded In This Page Action **/
-    on(HomeActions.CountImagesInThisPageLoaded,
+    /** Increment In One The Number Of Images In This Page Loaded Action **/
+    on(HomeActions.IncrementInOneTheNumberOfImagesInThisPageLoaded,
       (state, action) => ({
 
         /* Añadir un valor */

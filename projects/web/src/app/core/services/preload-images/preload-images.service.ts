@@ -23,7 +23,8 @@ export class PreloadImagesService {
     private store: Store<fromApp.AppState>,
   ) {}
 
-  preloadImagesOfOtherPages( numberOfImagesInThisPage: number, numberOfImagesInThisPageLoaded: number, imagesOfOtherPagesToPreload: string[] ): void {
+  // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
+  preloadImagesOfOtherPages( imagesOfOtherPagesToPreload: string[] ): void {
 
     // Si las imágenes de otras páginas no se han cargado todavía, comienzo a cargarlas
     if( imagesOfOtherPagesToPreload.length != this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
@@ -31,6 +32,7 @@ export class PreloadImagesService {
       // Comprobacion
       // console.log('Imágenes de esta página cargadas. Comenzar a cargar las imágenes de otras páginas.');
 
+      // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
       // Recorrer el listado de imágenes
       for(let i = 0; i < imagesOfOtherPagesToPreload.length; i++) {
 
@@ -55,26 +57,27 @@ export class PreloadImagesService {
             // Comprobación
             // console.log('currentURL: ' + this.currentURL);
 
-            // Guardarlo en la store correspondiente (xxxPageImagesLoaded)
+            // Proceso de carga de una página: Paso 5.3. Cuando hayan cargado las imágenes de alguna de las otras páginas (usando el PreloadImagesService), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded de la Store correspondiente).
             if( this.currentURL.includes('/product/') ) {
               this.currentURL = '/product';
             }
 
             switch (this.currentURL) {
 
+              // Si estoy en la home, pre-cargo las imágenes de Categories
               case '/home':
-                this.store.dispatch( HomeActions.SetHomePageImagesLoadedToTrue() );
                 this.store.dispatch( CategoriesActions.SetCategoriesPageImagesLoadedToTrue() );
                 break;
                 
+              // Si estoy en categories, pre-cargo las imágenes de Home
               case '/categories':
                 this.store.dispatch( HomeActions.SetHomePageImagesLoadedToTrue() );
-                this.store.dispatch( CategoriesActions.SetCategoriesPageImagesLoadedToTrue() );
                 break;
                 
+              // TODO:
               case '/product':
                 // Comprobacion
-                console.log('aquí');
+                // console.log('aquí');
                 this.store.dispatch( ProductActions.SetProductPageImagesLoadedToTrue() );
                 break;
 

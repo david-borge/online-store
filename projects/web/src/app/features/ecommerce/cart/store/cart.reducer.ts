@@ -38,8 +38,8 @@ export const cartReducer = createReducer(
 
 
 
-    /** Count Images In This Page Action **/
-    on(CartActions.CountImagesInThisPage,
+    /** Increment In One The Number Of Images In This Page Action **/
+    on(CartActions.IncrementInOneTheNumberOfImagesInThisPage,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -54,8 +54,8 @@ export const cartReducer = createReducer(
 
 
 
-    /** Count Images Loaded In This Page Action **/
-    on(CartActions.CountImagesInThisPageLoaded,
+    /** Increment In One The Number Of Images In This Page Loaded Action **/
+    on(CartActions.IncrementInOneTheNumberOfImagesInThisPageLoaded,
       (state, action) => ({
 
         /* Añadir un valor */

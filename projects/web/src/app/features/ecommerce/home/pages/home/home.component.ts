@@ -24,6 +24,33 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   },
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  
+  /*
+  
+    Proceso de carga de una página:
+
+    Paso 1. Mostrar el Loading Spinner mientras cargo los datos desde la Base de Datos y las imágenes.
+
+    Paso 2. Cargar los datos (productos, categorías o lo que sea) desde la Base de Datos:
+      Paso 2.1. Con pre-fetch, hacer una HTTP Request a la API de Backend para descargar datos desde la Base de Datos. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
+      Paso 2.2. Cuando termine la HTTP Request, guardar los datos en la Store correspondiente.
+
+    Paso 3. Una vez los datos estén en la Store, cargar las imágenes de la página actual (pre-load):
+      Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+      Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
+      Paso 3.3. Cuando se vayan cargando las imágenes de la página actual (ellas solas con <img>), ir apuntándolo en la Store (propiedad numberOfImagesInThisPageLoaded) (usando el ImageLoadDirective > @HostListener('load')).
+      Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
+    CUIDADO: si en Chrome DevTools > Network tengo marcado "Disable cache", las imágenes se cargarán cada vez que vaya a una ruta, porque no cogerá de caché las que haya cargado antes.
+    
+    Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
+
+    Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load):
+      Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
+      Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
+      Paso 5.3. Cuando hayan cargado las imágenes de alguna de las otras páginas (usando el PreloadImagesService), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded de la Store correspondiente).
+
+  */
+
 
   // Suscripciones a la Store
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -33,15 +60,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   featuredProducts : ProductInterface[] = [];
   dealProducts     : ProductInterface[] = [];
 
-  // Pre-load images of other pages
-  imagesInThisPageLoaded: boolean = false;
-  imagesOfOtherPagesToPreload: string[] = [];
+  // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
+  imagesInThisPageLoaded      : boolean = false;
+  imagesOfOtherPagesToPreload : string[] = []; // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
+  categoriesPageImagesLoaded  : boolean = false; // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
 
-  // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
-  homePagePreviouslyVisited: boolean = false;
-  
+  // Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
   // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
-  currentlyInThePageIEnteredFrom: boolean = false;
+  homePagePreviouslyVisited      : boolean = false;
+  currentlyInThePageIEnteredFrom : boolean = false;
 
 
   constructor(
@@ -63,15 +90,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe(
 
         // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
-        (allProductsResponseData)  => {
+        (homeReducerData)  => {
 
-          // console.log('allProductsResponseData:');
-          // console.log(allProductsResponseData);
+          // console.log('homeReducerData:');
+          // console.log(homeReducerData);
 
 
 
           // - Filtro los productos - Featured Products
-          this.featuredProducts = allProductsResponseData.allProducts.filter(
+          this.featuredProducts = homeReducerData.allProducts.filter(
 
             // Cada producto
             ( product: ProductInterface ) => {
@@ -84,7 +111,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           );
           
           // - Filtro los productos - Deal Products
-          this.dealProducts = allProductsResponseData.allProducts.filter(
+          this.dealProducts = homeReducerData.allProducts.filter(
 
             // Cada producto
             ( product: ProductInterface ) => {
@@ -106,15 +133,29 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
           // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
-          if ( (allProductsResponseData.numberOfImagesInThisPage == allProductsResponseData.numberOfImagesInThisPageLoaded) && (allProductsResponseData.numberOfImagesInThisPage != 0) && (allProductsResponseData.numberOfImagesInThisPageLoaded != 0) ) {
-            this.imagesInThisPageLoaded = true;
-            this.preloadImagesService.preloadImagesOfOtherPages( allProductsResponseData.numberOfImagesInThisPage, allProductsResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
+          if ( homeReducerData.homePageImagesLoaded ) {
+
+            // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
+            this.imagesInThisPageLoaded = homeReducerData.homePageImagesLoaded;
+
+            // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
+            // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
+            if ( !this.categoriesPageImagesLoaded ) {
+
+              // Comprobacion
+              // console.log('home: imagesOfOtherPagesToPreload:');
+              // console.log(this.imagesOfOtherPagesToPreload);
+
+              this.preloadImagesService.preloadImagesOfOtherPages( this.imagesOfOtherPagesToPreload );
+            }
+
           }
 
 
 
-          // - Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
-          this.homePagePreviouslyVisited = allProductsResponseData.homePagePreviouslyVisited;
+          // Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
+          // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+          this.homePagePreviouslyVisited = homeReducerData.homePagePreviouslyVisited;
 
           // Comprobacion
           // console.log('homePagePreviouslyVisited: ' + this.homePagePreviouslyVisited);
@@ -134,7 +175,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
 
-    /* - Sacar la lista de imágenes de otras páginas to pre-load:
+    /* - Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
           · Miniaturas de las categorías
     */
     this.categoriesReducerObservableSubscription = this.store.select('categoriesReducerObservable')
@@ -146,19 +187,25 @@ export class HomeComponent implements OnInit, OnDestroy {
           // console.log('categoriesResponseData:');
           // console.log(categoriesResponseData);
 
-          // · Miniaturas de las categorías
-          if ( categoriesResponseData.allCategories.length != 0 ) {
+          // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
+          this.categoriesPageImagesLoaded = categoriesResponseData.categoriesPageImagesLoaded;
+          if ( !this.categoriesPageImagesLoaded ) {
+            
+            // · Miniaturas de las categorías
+            if ( categoriesResponseData.allCategories.length != 0 ) {
 
-            // Comprobacion
-            // console.log('· Miniaturas de las categorías');
+              // Comprobacion
+              // console.log('· Miniaturas de las categorías');
 
-            this.imagesOfOtherPagesToPreload = categoriesResponseData.allCategories.map( category => {
-              // Con map extraigo un array con los valores de todos los imageThumbnail (y le añado la extensión, comprobando si el navegador soporta webp o no)
-              return category.imageThumbnail + ( this.preloadImagesService.support_format_webp() ? '.webp' : '.png' );
-            } ); 
+              this.imagesOfOtherPagesToPreload = categoriesResponseData.allCategories.map( category => {
+                // Con map extraigo un array con los valores de todos los imageThumbnail (y le añado la extensión, comprobando si el navegador soporta webp o no)
+                return category.imageThumbnail + ( this.preloadImagesService.support_format_webp() ? '.webp' : '.png' );
+              } ); 
+
+            }
 
           }
-            
+
         },
 
         // El segundo parámetro de susbscribe() es para recoger los errores del servidor

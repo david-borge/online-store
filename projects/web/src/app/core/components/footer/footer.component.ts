@@ -184,6 +184,7 @@ export class FooterComponent implements OnInit {
     this.router.navigate([ this.navigationButtonRightURL ]);
   }
   
+  // Proceso de carga de una página: Paso 2.1. Con pre-fetch, hacer una HTTP Request a la API de Backend para descargar datos desde la Base de Datos. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
   prefetch(elementosAprefetch: string[]): void {
 
     this.preFetchService.prefetchList( elementosAprefetch );

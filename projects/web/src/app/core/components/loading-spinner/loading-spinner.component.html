@@ -1,4 +1,6 @@
 <!-- Loading Spinner -->
+<!-- Proceso de carga de una página: Paso 1. Mostrar el Loading Spinner mientras cargo los datos desde la Base de Datos y las imágenes. -->
+<!-- Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página. -->
 <div class="h-100 loading-spinner-container" *ngIf="!imagesInThisPageLoaded">
 
     <!-- Spinner (SVG with animation included) -->
@@ -15,7 +17,7 @@
 
 
 <!-- Page content (once loading is donde) -->
-<!-- <div *ngIf="false" -->
+<!-- Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página. -->
 <div *ngIf="imagesInThisPageLoaded"
     class="h-100 ocultar"
     [ngClass]="{

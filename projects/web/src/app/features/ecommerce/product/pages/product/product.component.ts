@@ -106,7 +106,7 @@ export class ProductComponent implements OnInit, OnDestroy {
           // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
           if ( (productReducerResponseData.numberOfImagesInThisPage == productReducerResponseData.numberOfImagesInThisPageLoaded) && (productReducerResponseData.numberOfImagesInThisPage != 0) && (productReducerResponseData.numberOfImagesInThisPageLoaded != 0) ) {
             this.imagesInThisPageLoaded = true;
-            this.preloadImagesService.preloadImagesOfOtherPages( productReducerResponseData.numberOfImagesInThisPage, productReducerResponseData.numberOfImagesInThisPageLoaded, this.imagesOfOtherPagesToPreload );
+            this.preloadImagesService.preloadImagesOfOtherPages( this.imagesOfOtherPagesToPreload );
           }
 
           // console.log('productReducerResponseData get:');

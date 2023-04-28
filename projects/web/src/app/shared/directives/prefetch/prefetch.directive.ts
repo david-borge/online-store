@@ -1,4 +1,5 @@
 // Apartado 20.9. Pre-fetch: hacer las llamadas HTTP lo antes posible, no justo cuando vaya a necesitar los datos: https://timdeschryver.dev/blog/making-your-application-feel-faster-by-prefetching-data-with-ngrx
+// Proceso de carga de una página: Paso 2.1. Con pre-fetch, hacer una HTTP Request a la API de Backend para descargar datos desde la Base de Datos. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
 
 
 

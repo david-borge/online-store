@@ -16,7 +16,7 @@ import { SelectButtonComponent } from './components/select-button/select-button.
 import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overlay.component';
 
 import { PrefetchDirective } from './directives/prefetch/prefetch.directive';
-import { ImageLoadedDirective } from './directives/image-loaded/image-loaded.directive';
+import { ImageLoadDirective } from './directives/image-load/image-load.directive';
 
 
 
@@ -38,7 +38,7 @@ import { ImageLoadedDirective } from './directives/image-loaded/image-loaded.dir
 
     // Mis directivas personalizadas
     PrefetchDirective,
-    ImageLoadedDirective,
+    ImageLoadDirective,
   ],
   imports: [
     CommonModule,
@@ -63,7 +63,7 @@ import { ImageLoadedDirective } from './directives/image-loaded/image-loaded.dir
     SelectButtonComponent,
     BottomOverlayComponent,
     PrefetchDirective,
-    ImageLoadedDirective,
+    ImageLoadDirective,
   ],
 
 })
