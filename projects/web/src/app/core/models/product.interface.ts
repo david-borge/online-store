@@ -1,5 +1,6 @@
 export interface ProductInterface {
 
+    id                           : number;
     slug                         : string;
     name                         : string;
     manufacturer                 : string;

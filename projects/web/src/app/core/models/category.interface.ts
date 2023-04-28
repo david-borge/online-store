@@ -1,5 +1,6 @@
 export interface CategoryInterface {
 
+    id                  : number;
     slug                : string;
     name                : string;
     imageThumbnail      : string;
