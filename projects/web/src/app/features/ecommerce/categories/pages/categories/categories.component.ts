@@ -164,7 +164,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     this.categoriesReducerObservableSubscription.unsubscribe();
 
     // Guardar en la Store que ya he visitado esta página, así solo ejecuto la animación de carga una vez
-    this.store.dispatch( CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisited() );
+    this.store.dispatch( CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue() );
 
   }
 

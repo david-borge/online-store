@@ -195,7 +195,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.categoriesReducerObservableSubscription.unsubscribe();
 
     // Guardar en la Store que ya he visitado esta página, así solo ejecuto la animación de carga una vez
-    this.store.dispatch( HomeActions.SetHomePageHasBeenPrevouslyVisited() );
+    this.store.dispatch( HomeActions.SetHomePageHasBeenPrevouslyVisitedToTrue() );
 
   }
 

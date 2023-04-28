@@ -88,11 +88,11 @@ export const CountImagesInThisPageLoaded = createAction(
 
 
 
-/** Set Categories Page Has Been Previously Visited Action **/
-export const SetCategoriesPageHasBeenPrevouslyVisited = createAction(
+/** Set Categories Page Has Been Previously Visited To True Action **/
+export const SetCategoriesPageHasBeenPrevouslyVisitedToTrue = createAction(
 
   // Tipo de la Action
-  '[Categories] Set Categories Page Has Been Previously Visited',
+  '[Categories] Set Categories Page Has Been Previously Visited To True',
 
 );
 

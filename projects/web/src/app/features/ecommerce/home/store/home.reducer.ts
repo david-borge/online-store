@@ -138,8 +138,8 @@ export const homeReducer = createReducer(
 
 
 
-    /** Set Home Page Has Been Previously Visited Action **/
-    on(HomeActions.SetHomePageHasBeenPrevouslyVisited,
+    /** Set Home Page Has Been Previously Visited To True Action **/
+    on(HomeActions.SetHomePageHasBeenPrevouslyVisitedToTrue,
       (state, action) => ({
 
         /* Añadir un valor */

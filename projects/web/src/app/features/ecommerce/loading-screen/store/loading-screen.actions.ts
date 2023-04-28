@@ -12,11 +12,11 @@ import { createAction, props } from "@ngrx/store";
 
 
 
-// /** Set Home Page Has Been Previously Visited Action **/
-// export const SetHomePageHasBeenPrevouslyVisited = createAction(
+// /** Set Home Page Has Been Previously Visited To True Action **/
+// export const SetHomePageHasBeenPrevouslyVisitedToTrue = createAction(
 
 //   // Tipo de la Action
-//   '[Home] Set Home Page Has Been Previously Visited',
+//   '[Home] Set Home Page Has Been Previously Visited To True',
 
 // );
 

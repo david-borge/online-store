@@ -138,8 +138,8 @@ export const categoriesReducer = createReducer(
 
 
 
-    /** Set Categories Page Has Been Previously Visited Action **/
-    on(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisited,
+    /** Set Categories Page Has Been Previously Visited To True Action **/
+    on(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue,
       (state, action) => ({
 
         /* Añadir un valor */

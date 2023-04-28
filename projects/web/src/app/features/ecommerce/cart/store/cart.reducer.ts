@@ -1,36 +1,36 @@
-// /*** productReducer ***/
+// /*** cartReducer ***/
 
 
 
 import { createReducer, on } from "@ngrx/store";
 
-import * as ProductActions from "./product.actions";  // Importar todo y guardarlo en el alias ProductActions
+import * as CartActions from "./cart.actions";  // Importar todo y guardarlo en el alias CartActions
 
 
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
-export interface ProductReducerStateInterface {
+export interface CartReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   numberOfImagesInThisPage: number;
   numberOfImagesInThisPageLoaded: number;
-  productPageImagesLoaded: boolean;
-  productPagePreviouslyVisited: boolean;
+  cartPageImagesLoaded: boolean;
+  cartPagePreviouslyVisited: boolean;
 }
 
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
-const initialState: ProductReducerStateInterface = {
+const initialState: CartReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
   // loadStatus: 'NOT_LOADED',
   numberOfImagesInThisPage: 0,
   numberOfImagesInThisPageLoaded: 0,
-  productPageImagesLoaded: false,
-  productPagePreviouslyVisited: false,
+  cartPageImagesLoaded: false,
+  cartPagePreviouslyVisited: false,
 }
 
 
 
-export const productReducer = createReducer(
+export const cartReducer = createReducer(
     initialState,
 
     // Alteramos el App State (inicial) usando la Action que sea.
@@ -39,7 +39,7 @@ export const productReducer = createReducer(
 
 
     /** Count Images In This Page Action **/
-    on(ProductActions.CountImagesInThisPage,
+    on(CartActions.CountImagesInThisPage,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -55,7 +55,7 @@ export const productReducer = createReducer(
 
 
     /** Count Images Loaded In This Page Action **/
-    on(ProductActions.CountImagesInThisPageLoaded,
+    on(CartActions.CountImagesInThisPageLoaded,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -70,8 +70,8 @@ export const productReducer = createReducer(
 
 
 
-    /** Set Product Page Has Been Previously Visited To True Action **/
-    on(ProductActions.SetProductPageHasBeenPrevouslyVisitedToTrue,
+    /** Set Cart Page Has Been Previously Visited To True Action **/
+    on(CartActions.SetCartPageHasBeenPrevouslyVisitedToTrue,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -80,14 +80,14 @@ export const productReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        productPagePreviouslyVisited: true,
+        cartPagePreviouslyVisited: true,
           
       })),
 
 
 
-    /** Set Product Page Images Loaded To True Action **/
-    on(ProductActions.SetProductPageImagesLoadedToTrue,
+    /** Set Cart Page Images Loaded To True Action **/
+    on(CartActions.SetCartPageImagesLoadedToTrue,
       (state, action) => ({
 
         /* Añadir un valor */
@@ -96,7 +96,7 @@ export const productReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        productPageImagesLoaded: true,
+        cartPageImagesLoaded: true,
           
       })),
 );

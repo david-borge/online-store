@@ -34,8 +34,8 @@ export const loadingScreenReducer = createReducer(
 
 
 
-    // /** Set Home Page Has Been Previously Visited Action **/
-    // on(LoadingScreenActions.SetHomePageHasBeenPrevouslyVisited,
+    // /** Set Home Page Has Been Previously Visited To True Action **/
+    // on(LoadingScreenActions.SetHomePageHasBeenPrevouslyVisitedToTrue,
     //   (state, action) => ({
 
     //     /* Añadir un valor */

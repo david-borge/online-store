@@ -53,7 +53,7 @@ export class PreloadImagesService {
             this.currentURL = this.router.url;
             
             // Comprobación
-            console.log('currentURL: ' + this.currentURL);
+            // console.log('currentURL: ' + this.currentURL);
 
             // Guardarlo en la store correspondiente (xxxPageImagesLoaded)
             if( this.currentURL.includes('/product/') ) {

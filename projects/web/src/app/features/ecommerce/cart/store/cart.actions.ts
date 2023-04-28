@@ -1,4 +1,4 @@
-// /*** ProductActions ***/
+// /*** CartActions ***/
 /* Un Action es un objecto JS con:
 · Un identificador de tipo (action.type), que indica el tipo de Action que queremos ejecutar (aka Side Effects). Por ejemplo: HTTP Requests (añadir una receta, borrar una receta...), usar LocalStorage o hacer redirects.
     Soy yo el que establezco qué tipo de Actions tiene mi aplicación.
@@ -15,7 +15,7 @@ import { createAction } from "@ngrx/store";
 export const CountImagesInThisPage = createAction(
 
   // Tipo de la Action
-  '[Product] Count Images In This Page',
+  '[Cart] Count Images In This Page',
 
 );
 
@@ -25,27 +25,27 @@ export const CountImagesInThisPage = createAction(
 export const CountImagesInThisPageLoaded = createAction(
 
   // Tipo de la Action
-  '[Product] Count Images In This Page Loaded',
+  '[Cart] Count Images In This Page Loaded',
 
 );
 
 
 
-/** Set Product Page Has Been Previously Visited To True Action **/
-export const SetProductPageHasBeenPrevouslyVisitedToTrue = createAction(
+/** Set Cart Page Has Been Previously Visited To True Action **/
+export const SetCartPageHasBeenPrevouslyVisitedToTrue = createAction(
 
   // Tipo de la Action
-  '[Product] Set Product Page Has Been Previously Visited To True',
+  '[Cart] Set Cart Page Has Been Previously Visited To True',
 
 );
 
 
 
-/** Set Product Page Images Loaded To True Action **/
-export const SetProductPageImagesLoadedToTrue = createAction(
+/** Set Cart Page Images Loaded To True Action **/
+export const SetCartPageImagesLoadedToTrue = createAction(
 
   // Tipo de la Action
-  '[Product] Set Product Page Images Loaded To True',
+  '[Cart] Set Cart Page Images Loaded To True',
 
 );
 
@@ -55,6 +55,6 @@ export const SetProductPageImagesLoadedToTrue = createAction(
 export const DummyAction = createAction(
 
   // Tipo de la Action
-  '[Product] Dummy Action',
+  '[Cart] Dummy Action',
 
 );
