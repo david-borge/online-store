@@ -206,7 +206,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy():void {
+  ngOnDestroy(): void {
 
     // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();

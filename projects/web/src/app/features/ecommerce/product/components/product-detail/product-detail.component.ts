@@ -82,7 +82,7 @@ export class ProductDetailComponent implements OnInit {
         (errorResponse) => {
           
           // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
-          console.log('errorResponse get:');
+          console.log('errorResponse:');
           console.log(errorResponse);
 
         }

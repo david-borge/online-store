@@ -243,6 +243,7 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 125%;
+    min-height: 22.5px; // Para evitar saltos de los elementos mientras currentCategory no tenga valor en category.component.html
 }
 
 .heading-4 {
@@ -760,6 +761,10 @@ body {
 
     display: flex;
     flex-direction: column;
+}
+
+.app-category-detail-class-for-router-outlet {
+    height: 100%;
 }
 
 

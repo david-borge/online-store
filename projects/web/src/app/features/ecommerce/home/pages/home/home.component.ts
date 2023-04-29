@@ -78,6 +78,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
 
+  
+  
   ngOnInit(): void {
 
     // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
@@ -235,7 +237,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy():void {
+  ngOnDestroy(): void {
 
     // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();
