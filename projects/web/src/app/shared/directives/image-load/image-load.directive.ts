@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import { Subscription } from 'rxjs';
-
 import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
 import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
@@ -49,6 +47,36 @@ export class ImageLoadDirective {
     // Comprobación
     // console.log('currentURL: ' + this.currentURL);
 
+    // Home Store
+    this.store.select('homeReducerObservable').subscribe( homeReducerData => {
+
+      // Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+      this.homePageImagesLoaded = homeReducerData.homePageImagesLoaded;
+
+      // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
+      this.numberOfImagesInThisPage = homeReducerData.numberOfImagesInThisPage;
+      this.numberOfImagesInThisPageLoaded = homeReducerData.numberOfImagesInThisPageLoaded;
+
+    } );
+
+    // Categories Store
+    this.store.select('categoriesReducerObservable').subscribe( categoriesReducerData => {
+
+      // Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+      this.categoriesPageImagesLoaded = categoriesReducerData.categoriesPageImagesLoaded;
+
+      // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
+      this.numberOfImagesInThisPage = categoriesReducerData.numberOfImagesInThisPage;
+      this.numberOfImagesInThisPageLoaded = categoriesReducerData.numberOfImagesInThisPageLoaded;
+
+    } );
+
+    // - Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+    // Leo de la Store si ya se han cargado las imágenes de la Product page
+    this.store.select('productReducerObservable').subscribe( productReducerData => {
+      this.productPageImagesLoaded = productReducerData.productPageImagesLoaded;
+    } );
+    
     // - Proceso de carga de una página: Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
     // Efectuo una acción u otra dependiendo de en qué página esté
     if( this.currentURL.includes('/product/') ) {
@@ -60,19 +88,8 @@ export class ImageLoadDirective {
 
       case '/home':
 
-        // - Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
-        // Leo de la Store si ya se han cargado las imágenes de la Home page
-        this.store.select('homeReducerObservable').subscribe( homeReducerData => {
-          this.homePageImagesLoaded = homeReducerData.homePageImagesLoaded;
-        } );
-
-        // TODO: ¿Sobra?: Leo de la Store si ya se han cargado las imágenes de la Categories page
-        /* this.store.select('categoriesReducerObservable').subscribe( categoriesReducerData => {
-          this.categoriesPageImagesLoaded = categoriesReducerData.categoriesPageImagesLoaded;
-        } ); */
-        
         // Comprobación
-        // console.log('homePageImagesLoaded: ' + this.homePageImagesLoaded);
+        console.log('ImageLoadDirective > homePageImagesLoaded: ' + this.homePageImagesLoaded);
 
         // - Proceso de carga de una página: Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
         // Aumentar el número de imágenes de la Home page, que está guardado en la Store (si las imágenes de la Home page todavía no se han cargado)
@@ -85,14 +102,8 @@ export class ImageLoadDirective {
 
       case '/categories':
         
-        // - Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
-        // Leo de la Store si ya se han cargado las imágenes de la Categories page
-        this.store.select('categoriesReducerObservable').subscribe( categoriesReducerData => {
-          this.categoriesPageImagesLoaded = categoriesReducerData.categoriesPageImagesLoaded;
-        } );
-        
         // Comprobación
-        // console.log('categoriesPageImagesLoaded: ' + this.categoriesPageImagesLoaded);
+        // console.log('ImageLoadDirective > categoriesPageImagesLoaded: ' + this.categoriesPageImagesLoaded);
 
         // - Proceso de carga de una página: Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
         // Aumentar el número de imágenes de la Categories page, que está guardado en la Store (si las imágenes de la Categories page todavía no se han cargado)
@@ -108,14 +119,8 @@ export class ImageLoadDirective {
         // Comprobacion
         // console.log('En página de producto.');
         
-        // - Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
-        // Leo de la Store si ya se han cargado las imágenes de la Product page
-        this.store.select('productReducerObservable').subscribe( productReducerData => {
-          this.productPageImagesLoaded = productReducerData.productPageImagesLoaded;
-        } );
-        
         // Comprobación
-        // console.log('productPageImagesLoaded: ' + this.productPageImagesLoaded);
+        // console.log('ImageLoadDirective > productPageImagesLoaded: ' + this.productPageImagesLoaded);
 
         // - Proceso de carga de una página: Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
         // Aumentar el número de imágenes de la Product page, que está guardado en la Store (si las imágenes de la Product page todavía no se han cargado)
@@ -162,10 +167,6 @@ export class ImageLoadDirective {
         }
 
         // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
-        this.store.select('homeReducerObservable').subscribe( homeReducerData => {
-          this.numberOfImagesInThisPage = homeReducerData.numberOfImagesInThisPage;
-          this.numberOfImagesInThisPageLoaded = homeReducerData.numberOfImagesInThisPageLoaded;
-        } );
         if ( (this.numberOfImagesInThisPage == this.numberOfImagesInThisPageLoaded) && (this.numberOfImagesInThisPage != 0) && (this.numberOfImagesInThisPageLoaded != 0) ) {
           this.store.dispatch( HomeActions.SetHomePageImagesLoadedToTrue() );
         }
@@ -183,11 +184,6 @@ export class ImageLoadDirective {
           this.store.dispatch( CategoriesActions.IncrementInOneTheNumberOfImagesInThisPageLoaded() );
         }
 
-        // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
-        this.store.select('categoriesReducerObservable').subscribe( categoriesReducerData => {
-          this.numberOfImagesInThisPage = categoriesReducerData.numberOfImagesInThisPage;
-          this.numberOfImagesInThisPageLoaded = categoriesReducerData.numberOfImagesInThisPageLoaded;
-        } );
         if ( (this.numberOfImagesInThisPage == this.numberOfImagesInThisPageLoaded) && (this.numberOfImagesInThisPage != 0) && (this.numberOfImagesInThisPageLoaded != 0) ) {
           this.store.dispatch( CategoriesActions.SetCategoriesPageImagesLoadedToTrue() );
         }
