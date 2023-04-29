@@ -89,7 +89,7 @@ export class ImageLoadDirective {
       case '/home':
 
         // Comprobación
-        console.log('ImageLoadDirective > homePageImagesLoaded: ' + this.homePageImagesLoaded);
+        // console.log('ImageLoadDirective > homePageImagesLoaded: ' + this.homePageImagesLoaded);
 
         // - Proceso de carga de una página: Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
         // Aumentar el número de imágenes de la Home page, que está guardado en la Store (si las imágenes de la Home page todavía no se han cargado)
