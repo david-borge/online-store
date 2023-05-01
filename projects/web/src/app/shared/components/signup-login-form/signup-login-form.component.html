@@ -1,0 +1,49 @@
+<form id="signUpForm" [formGroup]="signUpForm" (ngSubmit)="onSubmit();">
+
+    <div class="row" *ngIf="showFirstAndLastNameFields">
+        <div class="col-6">
+
+            <div class="form-floating mb-4">
+                <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First name" formControlName="firstName">
+                <label for="firstName">First name</label>
+            </div>
+
+        </div>
+        <div class="col-6">
+
+            <div class="form-floating mb-4">
+                <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last name" formControlName="lastName">
+                <label for="lastName">Last name</label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="input-group mb-4">
+        <span class="input-group-text input-group-text-floating">
+            <!-- Icon: mail.svg -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" stroke="#57595A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6L12 13L2 6" stroke="#57595A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="form-floating">
+            <input id="email" name="email" type="email" class="form-control" placeholder="Email" formControlName="email">
+            <label for="email">Email</label>
+        </div>
+    </div>
+
+    <div class="input-group mb-4">
+        <span class="input-group-text input-group-text-floating">
+            <!-- Icon: lock.svg -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="#57595A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="#57595A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="form-floating">
+            <input id="password" name="password" type="password" class="form-control" placeholder="Password" formControlName="password">
+            <label for="password">Password</label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">{{( (authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' )}}</button>
+
+    <!-- "I want to Sign Up / Log In" button -->
+    <button type="button" class="d-block mx-auto btn" style="margin-top: 35px;" (click)="onClickGoToLogInOrSignUp();">I want to {{( (authMode == 'SIGNUP') ? 'Log In' : 'Sign Up' )}}</button>
+
+</form>

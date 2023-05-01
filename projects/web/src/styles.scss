@@ -631,12 +631,45 @@ $body-color: var(--N800);
 
 
 
-
-
 /***** SCSS de toda la aplicación *****/
 
 
-  
+
+// Inputs - Floating Labels
+// Fuente: https://getbootstrap.com/docs/5.2/forms/floating-labels/
+.form-floating > .form-control,
+.form-floating > label {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    height: 48px;
+}
+
+.form-floating > .form-control {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+}
+
+.input-group-text-floating {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.input-group-text-floating svg {
+    height: 16px;
+}
+
+.form-control:focus {
+    border-color: var(--N800);
+    box-shadow: none;
+}
+
+
+
 // Font Weight (que no están en Bootstrap)
 .font-weight-500 {
     font-weight: 500;

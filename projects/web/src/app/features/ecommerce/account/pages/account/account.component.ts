@@ -22,6 +22,8 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   // Variables para la Template
   loggedIn: boolean = true;
+  authMode: 'SIGNUP' | 'LOGIN' = 'SIGNUP';
+  sectionHeaderTitleText: string = 'Sign Up';
   numberOfOrders :number = 2; // TODO:
 
 
@@ -31,8 +33,17 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // Authentication - Carga de una página - Comprobar si estoy logueado en una página: leer Global Store > loggedIn
-    this.globalReducerObservableSubscription = this.store.select("globalReducerObservable").subscribe( globalReducerData => { this.loggedIn = globalReducerData.loggedIn });
+    // Leer la Global Store
+    this.globalReducerObservableSubscription = this.store.select("globalReducerObservable").subscribe( globalReducerData => {
+
+      // Authentication - Carga de una página - Comprobar si estoy logueado en una página: leer Global Store > loggedIn
+      this.loggedIn = globalReducerData.loggedIn
+
+      // Authentication - Comprobar en qué modo de autentificación estoy ('SIGNUP' | 'LOGIN')
+      this.authMode = globalReducerData.authMode;
+      this.sectionHeaderTitleText = ( (this.authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' );
+
+    });
 
   }
 

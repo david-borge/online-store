@@ -38,7 +38,7 @@ export class AuthService {
 
         // Comprobacion
         // console.log('Fecha actual: ' + new Date());
-        console.log('authCookieValue: ' + globalReducerData.authCookieValue);
+        // console.log('authCookieValue: ' + globalReducerData.authCookieValue);
 
         // Si authCookieValue no es ""
         if ( globalReducerData.authCookieValue != null && globalReducerData.authCookieValue != '' ) {
@@ -64,6 +64,11 @@ export class AuthService {
       this.store.dispatch( GlobalActions.SetLoggedInToTrue() );
     }
 
+  }
+
+  // Authentication - Sign Up (Registro)
+  signUp() {
+    
   }
   
 }

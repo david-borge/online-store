@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -17,6 +18,7 @@ import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overl
 
 import { PrefetchDirective } from './directives/prefetch/prefetch.directive';
 import { ImageLoadDirective } from './directives/image-load/image-load.directive';
+import { SignupLoginFormComponent } from './components/signup-login-form/signup-login-form.component';
 
 
 
@@ -35,6 +37,7 @@ import { ImageLoadDirective } from './directives/image-load/image-load.directive
     AddressCardComponent,
     SelectButtonComponent,
     BottomOverlayComponent,
+    SignupLoginFormComponent,
 
     // Mis directivas personalizadas
     PrefetchDirective,
@@ -43,6 +46,8 @@ import { ImageLoadDirective } from './directives/image-load/image-load.directive
   imports: [
     CommonModule,
     RouterModule,
+    
+    ReactiveFormsModule,
 
     NgOptimizedImage,
   ],
@@ -62,6 +67,7 @@ import { ImageLoadDirective } from './directives/image-load/image-load.directive
     AddressCardComponent,
     SelectButtonComponent,
     BottomOverlayComponent,
+    SignupLoginFormComponent,
     PrefetchDirective,
     ImageLoadDirective,
   ],

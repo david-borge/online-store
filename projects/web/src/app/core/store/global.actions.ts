@@ -153,6 +153,16 @@ export const SetLoggedInToTrue = createAction(
 
 
 
+/** Change Auth Mode Action **/
+export const ChangeAuthMode = createAction(
+
+  // Tipo de la Action
+  '[Home] Change Auth Mode',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

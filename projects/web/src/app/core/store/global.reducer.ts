@@ -16,6 +16,7 @@ export interface GlobalReducerStateInterface {
   lastActiveMainPage: string | null;
   loggedIn: boolean;
   authCookieValue: string | null;
+  authMode: 'SIGNUP' | 'LOGIN';
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -28,6 +29,7 @@ const initialState: GlobalReducerStateInterface = {
   lastActiveMainPage: '',
   loggedIn: false,
   authCookieValue: '',
+  authMode: 'SIGNUP',
 }
 
 
@@ -168,6 +170,22 @@ export const globalReducer = createReducer(
         ...state,
 
         loggedIn: true,
+          
+      })),
+
+
+
+    /** Change Auth Mode Action **/
+    on(GlobalActions.ChangeAuthMode,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        authMode: ( (state.authMode == 'SIGNUP') ? 'LOGIN' : 'SIGNUP' ),
           
       })),
 
