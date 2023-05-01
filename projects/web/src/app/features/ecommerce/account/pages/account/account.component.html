@@ -11,118 +11,132 @@
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
 
-    <!-- Profile Information Container -->
-    <div class="section section-with-bottom-separator">
-        <div class="profile-information-container container">
-            
-            <!-- Profile Information Container - Name and Email -->
-            <div class="profile-information-container--name-and-email-container">
+    <!-- Logged In -->
+    <div *ngIf="loggedIn">
+
+        <!-- Profile Information Container -->
+        <div class="section section-with-bottom-separator">
+            <div class="profile-information-container container">
                 
-                <!-- Profile Information Container - Name -->
-                <div class="profile-information-container--name-container">
-                    <h2>Leslie Flores</h2>
+                <!-- Profile Information Container - Name and Email -->
+                <div class="profile-information-container--name-and-email-container">
+                    
+                    <!-- Profile Information Container - Name -->
+                    <div class="profile-information-container--name-container">
+                        <h2>Leslie Flores</h2>
+                    </div>
+                    
+                    <!-- Profile Information Container - Email -->
+                    <div class="profile-information-container--email-container">
+                        <div class="profile-information-container--email">leslieflores@gmail.com</div>
+                    </div>
+                    
                 </div>
                 
-                <!-- Profile Information Container - Email -->
-                <div class="profile-information-container--email-container">
-                    <div class="profile-information-container--email">leslieflores@gmail.com</div>
+                <!-- Profile Information Container - Button -->
+                <div class="profile-information-container--button-container">
+                    <button type="button" class="btn btn-outline-secondary btn-lg">
+
+                        <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+
+                        </span> -->
+
+                        <span class="navigation-button-left--text">Log out</span>
+
+                        <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
+                            <!-- Icon: plus -->
+                            <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span> -->
+
+                    </button>
                 </div>
-                
+
             </div>
-            
-            <!-- Profile Information Container - Button -->
-            <div class="profile-information-container--button-container">
-                <button type="button" class="btn btn-outline-secondary btn-lg">
+        </div>
 
-                    <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+        <!-- Account -->
+        <div class="section section-with-bottom-separator">
 
-                    </span> -->
+            <!-- Section Header -->
+            <app-section-header
+                [sectionHeaderTitleTag]      = "'h2'"
+                [sectionHeaderTitleClass]    = "'heading-4'"
+                [sectionHeaderTitleText]     = "'Account'"
+            ></app-section-header>
 
-                    <span class="navigation-button-left--text">Log out</span>
+            <!-- Account Card List -->
+            <div class="account-card-list container">
 
-                    <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
-                        <!-- Icon: plus -->
-                        <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span> -->
+                <!-- Account Card -->
+                <app-account-card
+                    [accountCardTitle] = "'Orders'"
+                    [accountCardURL]   = "'/orders'"
+                ></app-account-card>
 
-                </button>
+                <!-- Account Card -->
+                <app-account-card
+                    [accountCardTitle] = "'Addresses'"
+                    [accountCardURL]   = "'/addresses'"
+                ></app-account-card>
+
+                <!-- Account Card -->
+                <app-account-card
+                    [accountCardTitle] = "'Payment Methods'"
+                    [accountCardURL]   = "'/payment-methods'"
+                ></app-account-card>
+
             </div>
 
         </div>
-    </div>
 
-    <!-- Account -->
-    <div class="section section-with-bottom-separator">
+        <!-- Active Orders -->
+        <div class="section">
 
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClass]    = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Account'"
-        ></app-section-header>
+            <!-- Section Header -->
+            <app-section-header
+                [sectionHeaderTitleTag]      = "'h2'"
+                [sectionHeaderTitleClass]    = "'heading-4'"
+                [sectionHeaderTitleText]     = "'Active Orders'"
+                [sectionHeaderLink]          = "true"
+                [sectionHeaderLinkURL]       = "'/orders'"
+                [sectionHeaderLinkText]      = "'View all'"
+            ></app-section-header>
 
-        <!-- Account Card List -->
-        <div class="account-card-list container">
+            <div class="container">
+                    
+                <!-- Active Orders List -->
+                <div class="orders-list" *ngIf="(numberOfOrders > 0)">
 
-            <!-- Account Card -->
-            <app-account-card
-                [accountCardTitle] = "'Orders'"
-                [accountCardURL]   = "'/orders'"
-            ></app-account-card>
+                    <!-- Product Card -->
+                    <app-product-card
+                        [productCardTypeClass] = "'product-card-order'"
+                    ></app-product-card>
+                    <!-- [productCardURL]       = "'/order/1'" -->
 
-            <!-- Account Card -->
-            <app-account-card
-                [accountCardTitle] = "'Addresses'"
-                [accountCardURL]   = "'/addresses'"
-            ></app-account-card>
+                    <!-- Product Card -->
+                    <app-product-card
+                        [productCardTypeClass] = "'product-card-order'"
+                    ></app-product-card>
+                    <!-- [productCardURL]       = "'/order/1'" -->
 
-            <!-- Account Card -->
-            <app-account-card
-                [accountCardTitle] = "'Payment Methods'"
-                [accountCardURL]   = "'/payment-methods'"
-            ></app-account-card>
+                </div>
+
+                <!-- No Orders Informative Card -->
+                <app-informative-card *ngIf="(numberOfOrders == 0)"></app-informative-card>
+
+            </div>
 
         </div>
 
     </div>
 
-    <!-- Active Orders -->
-    <div class="section">
-
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClass]    = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Active Orders'"
-            [sectionHeaderLink]          = "true"
-            [sectionHeaderLinkURL]       = "'/orders'"
-            [sectionHeaderLinkText]      = "'View all'"
-        ></app-section-header>
-
+    <!-- Authentication (Sign Up / Log In) -->
+    <div *ngIf="!loggedIn" class="section h-100">
         <div class="container">
-                
-            <!-- Active Orders List -->
-            <div class="orders-list" *ngIf="(numberOfOrders > 0)">
 
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-order'"
-                ></app-product-card>
-                <!-- [productCardURL]       = "'/order/1'" -->
-
-                <!-- Product Card -->
-                <app-product-card
-                    [productCardTypeClass] = "'product-card-order'"
-                ></app-product-card>
-                <!-- [productCardURL]       = "'/order/1'" -->
-
-            </div>
-
-            <!-- No Orders Informative Card -->
-            <app-informative-card *ngIf="(numberOfOrders == 0)"></app-informative-card>
-
+            Authentication (Sign Up / Log In)
+            
         </div>
-
     </div>
 
 </main>

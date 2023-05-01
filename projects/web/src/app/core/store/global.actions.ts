@@ -45,7 +45,7 @@ export const SetActiveNavigationItem = createAction(
 
 
 /** Set Local Storage Key Value Action **/
-// Side Effects asociados: setLocalStorageKeyValueSideEffect (guardar lastActiveMainPage en Local Storage)
+// Side Effects asociados: setLocalStorageKeyValueSideEffect
 export const SetLocalStorageKeyValue = createAction(
 
   // Tipo de la Action
@@ -63,7 +63,7 @@ export const SetLocalStorageKeyValue = createAction(
 
 
 /** Get Local Storage Value Start Action **/
-// Side Effects asociados: getLocalStorageValueSideEffect (guardar lastActiveMainPage en Local Storage)
+// Side Effects asociados: getLocalStorageValueSideEffect
 export const GetLocalStorageValueStart = createAction(
 
   // Tipo de la Action
@@ -80,7 +80,7 @@ export const GetLocalStorageValueStart = createAction(
 
 
 /** Get Local Storage Value End Action **/
-// Side Effects asociados: getLocalStorageValueSideEffect (guardar lastActiveMainPage en Local Storage)
+// Side Effects asociados: getLocalStorageValueSideEffect
 export const GetLocalStorageValueEnd = createAction(
 
   // Tipo de la Action
@@ -92,6 +92,62 @@ export const GetLocalStorageValueEnd = createAction(
     localStorageKeyPayload: string,
     localStorageValuePayload: string | null,
   }>(),
+
+);
+
+
+
+/** Set Cookie Key Value Action **/
+// Side Effects asociados: setCookieKeyValueSideEffect
+export const SetCookieKeyValue = createAction(
+
+  // Tipo de la Action
+  '[Global] Set Cookie Key Value',
+  
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    cookieKeyPayload: string,
+    cookieValuePayload: string,
+  }>(),
+
+);
+
+
+
+/** Get Auth Cookie Value Start Action **/
+// Side Effects asociados: getAuthCookieValueSideEffect
+export const GetAuthCookieValueStart = createAction(
+
+  // Tipo de la Action
+  '[Global] Get Auth Cookie Value Start',
+  
+);
+
+
+
+/** Get Auth Cookie Value End Action **/
+// Side Effects asociados: getAuthCookieValueSideEffect
+export const GetAuthCookieValueEnd = createAction(
+
+  // Tipo de la Action
+  '[Global] Get Auth Cookie Value End',
+  
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    authCookieValuePayload: string | null,
+  }>(),
+
+);
+
+
+
+/** Set Logged In To True Action **/
+export const SetLoggedInToTrue = createAction(
+
+  // Tipo de la Action
+  '[Home] Set Logged In To True',
 
 );
 

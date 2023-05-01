@@ -20,7 +20,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   templateUrl: './loading-screen.component.html',
   styleUrls: ['./loading-screen.component.scss'],
   host: {
-    class:'app-loading-screen-class-for-router-outlet',
+    class:'app-loading-screen--class-for-router-outlet',
   },
   animations: [
 

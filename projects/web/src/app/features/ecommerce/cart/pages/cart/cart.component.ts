@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
   host: {
-    class:'app-cart-class-for-router-outlet',
+    class:'app-cart--class-for-router-outlet',
   },
 })
 export class CartComponent {

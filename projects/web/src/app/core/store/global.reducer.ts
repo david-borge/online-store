@@ -14,6 +14,8 @@ export interface GlobalReducerStateInterface {
   firstVisitedPage: string;
   activeNavigationItem: string | null;
   lastActiveMainPage: string | null;
+  loggedIn: boolean;
+  authCookieValue: string | null;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -24,6 +26,8 @@ const initialState: GlobalReducerStateInterface = {
   firstVisitedPage: '',
   activeNavigationItem: '',
   lastActiveMainPage: '',
+  loggedIn: false,
+  authCookieValue: '',
 }
 
 
@@ -37,6 +41,7 @@ export const globalReducer = createReducer(
 
 
     /** Set First Visited Page Action **/
+    // Side Effects asociados: getAllProductsSideEffect (toma todos los Products desde la base de datos mediante un HTTP Request)
     on(GlobalActions.SetFirstVisitedPage,
       (state, action) => ({
 
@@ -69,6 +74,7 @@ export const globalReducer = createReducer(
 
 
     /** Set Local Storage Key Value Action **/
+    // Side Effects asociados: setLocalStorageKeyValueSideEffect
     on(GlobalActions.SetLocalStorageKeyValue,
       (state, action) => ({
 
@@ -85,6 +91,7 @@ export const globalReducer = createReducer(
 
 
     /** Get Local Storage Value Start Action **/
+    // Side Effects asociados: getLocalStorageValueSideEffect
     on(GlobalActions.GetLocalStorageValueStart,
       (state, action) => ({
 
@@ -113,5 +120,56 @@ export const globalReducer = createReducer(
         lastActiveMainPage: action.localStorageValuePayload,
           
       })),
+
+
+
+    /** Set Cookie Key Value Action **/
+    // Side Effects asociados: setCookieKeyValueSideEffect
+    on(GlobalActions.SetCookieKeyValue,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        lastActiveMainPage: action.cookieValuePayload,
+          
+      })),
+
+
+
+    /** Get Auth Cookie Value Start Action **/
+    // Side Effects asociados: getAuthCookieValueSideEffect
+    on(GlobalActions.GetAuthCookieValueEnd,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        authCookieValue: action.authCookieValuePayload,
+          
+      })),
+
+
+
+    /** Set Logged In To True Action **/
+    on(GlobalActions.SetLoggedInToTrue,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        loggedIn: true,
+          
+      })),
+
 
 );

@@ -19,7 +19,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
   host: {
-    class:'app-category-class-for-router-outlet',
+    class:'app-category--class-for-router-outlet',
   },
 })
 export class CategoryComponent implements OnInit, OnDestroy {

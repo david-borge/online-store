@@ -5,7 +5,7 @@ export interface UserInterface {
     lastName          : string;
     email             : string;
     password          : string;
-    signInFullDate    : string;
+    signUpFullDate    : string;
     lastLoginFullDate : string;
 
 }

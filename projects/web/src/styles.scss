@@ -741,29 +741,30 @@ body {
 
 
 // App Loading Screen Tag - Clases for <router-outlet>
-.app-loading-screen-class-for-router-outlet {
+.app-loading-screen--class-for-router-outlet {
     flex: 1;
 }
 
 
 
 // Varias Pages - Clases for <router-outlet>
-.app-home-class-for-router-outlet,
-.app-categories-class-for-router-outlet,
-.app-category-class-for-router-outlet,
-.app-category-detail-class-for-router-outlet,
-.app-product-class-for-router-outlet,
-.app-cart-class-for-router-outlet,
-.app-orders-class-for-router-outlet,
-.app-addresses-class-for-router-outlet,
-.app-payment-methods-class-for-router-outlet {
+.app-home--class-for-router-outlet,
+.app-categories--class-for-router-outlet,
+.app-category--class-for-router-outlet,
+.app-category-detail--class-for-router-outlet,
+.app-product--class-for-router-outlet,
+.app-cart--class-for-router-outlet,
+.app-account--class-for-router-outlet,
+.app-orders--class-for-router-outlet,
+.app-addresses--class-for-router-outlet,
+.app-payment-methods--class-for-router-outlet {
     flex: 1;
 
     display: flex;
     flex-direction: column;
 }
 
-.app-category-detail-class-for-router-outlet {
+.app-category-detail--class-for-router-outlet {
     height: 100%;
 }
 

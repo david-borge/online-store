@@ -16,7 +16,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
   host: {
-    class:'app-product-class-for-router-outlet',
+    class:'app-product--class-for-router-outlet',
   },
 })
 export class ProductComponent implements OnInit, OnDestroy {

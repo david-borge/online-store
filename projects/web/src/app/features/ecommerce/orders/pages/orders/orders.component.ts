@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
   host: {
-    class:'app-orders-class-for-router-outlet',
+    class:'app-orders--class-for-router-outlet',
   },
 })
 export class OrdersComponent {
