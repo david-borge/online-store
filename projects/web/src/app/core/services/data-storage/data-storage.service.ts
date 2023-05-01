@@ -52,6 +52,26 @@ export class DataStorageService {
 
 
 
+  // Sign Up
+  signUp() {
+    return this.httpClient
+      .get<string>(environment.apiBaseUrl + '/signup.php', {}) // TODO: continuar aquí...
+      // .pipe()
+      ;
+  }
+
+
+
+  // Log In
+  logIn() {
+    return this.httpClient
+      .get<string>(environment.apiBaseUrl + '/login.php', {}) // TODO: continuar aquí...
+      // .pipe()
+      ;
+  }
+
+
+
   // (No usado) Get Featured Products
   /* getFeaturedProducts() {
     return this.getAllProductsHttpRequest()

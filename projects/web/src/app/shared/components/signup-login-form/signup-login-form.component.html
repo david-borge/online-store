@@ -46,4 +46,11 @@
     <!-- "I want to Sign Up / Log In" button -->
     <button type="button" class="d-block mx-auto btn" style="margin-top: 35px;" (click)="onClickGoToLogInOrSignUp();">I want to {{( (authMode == 'SIGNUP') ? 'Log In' : 'Sign Up' )}}</button>
 
+    <div class="card text-bg-danger mt-5 mb-3" *ngIf="(signUpResult != '')">
+        <div class="card-body">
+            <h5 class="card-title">Error</h5>
+            <p class="card-text">{{signUpResult}}</p>
+        </div>
+    </div>
+
 </form>

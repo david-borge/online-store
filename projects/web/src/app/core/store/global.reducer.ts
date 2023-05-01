@@ -17,6 +17,7 @@ export interface GlobalReducerStateInterface {
   loggedIn: boolean;
   authCookieValue: string | null;
   authMode: 'SIGNUP' | 'LOGIN';
+  signUpResult: string;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -30,6 +31,7 @@ const initialState: GlobalReducerStateInterface = {
   loggedIn: false,
   authCookieValue: '',
   authMode: 'SIGNUP',
+  signUpResult: '',
 }
 
 
@@ -186,6 +188,52 @@ export const globalReducer = createReducer(
         ...state,
 
         authMode: ( (state.authMode == 'SIGNUP') ? 'LOGIN' : 'SIGNUP' ),
+          
+      })),
+
+
+
+    /** Sign Up Action Start Action **/
+    on(GlobalActions.SignUpStart,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+      })),
+
+
+
+    /** Sign Up Action End Success Action **/
+    on(GlobalActions.SignUpEndSuccess,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        loggedIn: true,
+          
+      })),
+
+
+
+    /** Sign Up Action End Failure Action **/
+    on(GlobalActions.SignUpEndFailure,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        signUpResult: action.signUpResultPayload,
           
       })),
 

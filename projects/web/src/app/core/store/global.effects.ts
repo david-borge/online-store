@@ -7,12 +7,13 @@ import { isPlatformBrowser } from '@angular/common';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { switchMap } from 'rxjs/operators'
+import { catchError, switchMap, withLatestFrom } from 'rxjs/operators'
 import { of } from 'rxjs';
 
 import * as GlobalActions from './global.actions';
 
 import { CookiesService } from '../services/cookies/cookies.service';
+import { DataStorageService } from '../services/data-storage/data-storage.service';
 
 
 
@@ -28,6 +29,7 @@ export class GlobalEffects {
         private actionsObservable: Actions,
         @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
         private cookiesService: CookiesService,
+        private dataStorageService: DataStorageService,
     ) { }
 
 
@@ -53,7 +55,7 @@ export class GlobalEffects {
                 window.localStorage.setItem(setLocalStorageKeyValueActionData.localStorageKeyPayload, setLocalStorageKeyValueActionData.localStorageValuePayload);
             }
 
-            // Como siempre hay que devolver una Action, devuelvo una DummyAction si los productos ya están cargados en la Store
+            // Como siempre hay que devolver una Action, devuelvo una DummyAction
             return of( GlobalActions.DummyAction() );
                 
         }),
@@ -117,7 +119,7 @@ export class GlobalEffects {
                 // TODO: window.localStorage.setItem(setCookieKeyValueActionData.localStorageKeyPayload, setCookieKeyValueActionData.localStorageValuePayload);
             }
 
-            // Como siempre hay que devolver una Action, devuelvo una DummyAction si los productos ya están cargados en la Store
+            // Como siempre hay que devolver una Action, devuelvo una DummyAction
             return of( GlobalActions.DummyAction() );
                 
         }),
@@ -160,4 +162,75 @@ export class GlobalEffects {
 
     ));
 
+
+
+    // Side Effect de la Sign Up Action Start Action de Global
+    signUpSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(GlobalActions.SignUpStart),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (signUpStartActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: signUpStartActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobacion
+            // console.log('signUpStartActionData:');
+            // console.log(signUpStartActionData);
+
+            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+            return this.dataStorageService.signUp()
+                .pipe(
+
+                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+
+                    switchMap(signUpHttpRequestResponseData => {
+
+                        // Comprobacion
+                        console.log('signUpSideEffect - signUpHttpRequestResponseData:');
+                        console.log(signUpHttpRequestResponseData);
+
+                        // Procesamiento de datos si es necesario...
+
+                        // TODO: continuar aquí...
+
+                        return of(
+
+                            // Procesar datos si es necesario...
+
+                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                            GlobalActions.SignUpEndSuccess({
+                                signUpResultPayload: '', // TODO: true, false o LOGIN_ERROR_EMAIL_ALREADY_EXISTS
+                            }),
+
+                        );
+                    }),
+                    catchError(errorResponse => {
+
+                        // Error handling code...
+
+                        // Mostrar el error en la consola
+                        console.log('signUpSideEffect - errorResponse:');
+                        console.log(errorResponse);
+
+                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                        return of(
+                            GlobalActions.SignUpEndFailure({
+                                signUpResultPayload: 'LOGIN_ERROR_HTTP_REQUEST_FAILED',
+                            }),
+                        );
+
+                    }),
+                );
+
+        }),
+
+    ));
+
+
+    
 }

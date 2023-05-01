@@ -67,8 +67,42 @@ export class AuthService {
   }
 
   // Authentication - Sign Up (Registro)
-  signUp() {
+  signUp(firstName: string, lastName: string, email: string, password: string) {
     
+    // Comprobacion
+    // console.log('Sign Up');
+
+    this.store.dispatch( GlobalActions.SignUpStart({
+      firstNamePayload: firstName,
+      lastNamePayload: lastName,
+      emailPayload: email,
+      passwordPayload: password,
+    }) );
+
+  }
+
+  // Authentication - Log In (Iniciar sesión)
+  logIn(email: string, password: string) {
+
+    // Comprobacion
+    // console.log('Log In');
+
+    // this.store.dispatch( GlobalActions.LogIn() );
+
+  }
+
+  authMessages(messageCode: string): string {
+
+    switch (messageCode) {
+
+      case 'LOGIN_ERROR_HTTP_REQUEST_FAILED':
+        return 'There was a problem loggin in. Please try again.';
+    
+      default:
+        return '';
+
+    }
+
   }
   
 }

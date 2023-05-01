@@ -147,7 +147,7 @@ export const GetAuthCookieValueEnd = createAction(
 export const SetLoggedInToTrue = createAction(
 
   // Tipo de la Action
-  '[Home] Set Logged In To True',
+  '[Global] Set Logged In To True',
 
 );
 
@@ -157,7 +157,59 @@ export const SetLoggedInToTrue = createAction(
 export const ChangeAuthMode = createAction(
 
   // Tipo de la Action
-  '[Home] Change Auth Mode',
+  '[Global] Change Auth Mode',
+
+);
+
+
+
+/** Sign Up Action Start **/
+// Side Effects asociados: signUpSideEffect
+export const SignUpStart = createAction(
+
+  // Tipo de la Action
+  '[Global] Sign Up Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    firstNamePayload: string,
+    lastNamePayload: string,
+    emailPayload: string,
+    passwordPayload: string,
+  }>(),
+
+);
+
+
+
+/** Sign Up Action End Success **/
+export const SignUpEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Global] Sign Up End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    signUpResultPayload: string,
+  }>(),
+
+);
+
+
+
+/** Sign Up Action End Failure **/
+export const SignUpEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Global] Sign Up End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    signUpResultPayload: string,
+  }>(),
 
 );
 
@@ -167,6 +219,6 @@ export const ChangeAuthMode = createAction(
 export const DummyAction = createAction(
 
   // Tipo de la Action
-  '[Home] Dummy Action',
+  '[Global] Dummy Action',
 
 );

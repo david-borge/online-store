@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
@@ -8,6 +8,8 @@ import { Subscription } from 'rxjs';
 
 import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../../core/store/global.actions';
+
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-signup-login-form',
@@ -25,14 +27,16 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   // Variables del formulario
   signUpForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
   showFirstAndLastNameFields: boolean = ( (this.authMode == 'SIGNUP') );
+  signUpResult: string = '';
   
   constructor(
     private store: Store<fromApp.AppState>,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
 
-    // Leer la Global Store
+    // - Leer la Global Store
     this.globalReducerObservableSubscription = this.store.select("globalReducerObservable").subscribe( globalReducerData => {
 
       // Authentication - Comprobar en qué modo de autentificación estoy ('SIGNUP' | 'LOGIN')
@@ -40,10 +44,12 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
 
       this.showFirstAndLastNameFields = ( (this.authMode == 'SIGNUP') );
 
+      this.signUpResult = this.authService.authMessages(globalReducerData.signUpResult);
+
     });
 
 
-    // Sign Up Form
+    // - Sign Up Form
     this.signUpForm = new FormGroup({
       // Controles: 'name_del_control': new FormControl(valor_inicial, validadores_normales, validadores_asincronos)
       // Validadores de Angular (Reactive approach): usar estos métodos en el TS: https://angular.io/api/forms/Validators
@@ -62,11 +68,33 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   onSubmit() {
     
     // Comprobación
-    console.log('Form submitted!');
+    console.log('Form submitted! - authMode: ' + this.authMode);
 
     // Comprobación
-    console.log('signUpForm:');
-    console.log(this.signUpForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+    // console.log('signUpForm:');
+    // console.log(this.signUpForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+
+    // Sign Up
+    if ( this.authMode == 'SIGNUP' ) {
+      
+      this.authService.signUp(
+        this.signUpForm.get('firstName')?.value, // ? por si es NULL
+        this.signUpForm.get('lastName')?.value, // ? por si es NULL
+        this.signUpForm.get('email')?.value, // ? por si es NULL
+        this.signUpForm.get('password')?.value, // ? por si es NULL
+      );
+
+    }
+    
+    // Log In
+    else {
+      
+      this.authService.logIn(
+        this.signUpForm.get('email')?.value, // ? por si es NULL
+        this.signUpForm.get('password')?.value, // ? por si es NULL
+      );
+
+    }
 
     // Reestablecer el form
     // CUIDADO: esta línea hace que los valores no salgan bien la comprobación anterior
