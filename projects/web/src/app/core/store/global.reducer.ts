@@ -185,21 +185,8 @@ export const globalReducer = createReducer(
 
 
     /** Sign Up Action Start Action **/
-    // Side Effects asociados: signUpSideEffect
+    // Side Effects asociados: signUpStartSideEffect
     on(GlobalActions.SignUpStart,
-      (state, action) => ({
-
-        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
-
-        // Copiamos el App State (inicial) (en todas las propiedades de state)
-        ...state,
-
-      })),
-
-
-
-    /** Sign Up Action End Success Action **/
-    on(GlobalActions.SignUpEndSuccess,
       (state, action) => ({
 
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
@@ -240,9 +227,9 @@ export const globalReducer = createReducer(
 
 
 
-    /** Log In Action End Success Action **/
-    // Side Effects asociados: logInEndSuccessSideEffect
-    on(GlobalActions.LogInEndSuccess,
+    /** Sign Up Sign Up Log In Action End Success Action **/
+    // Side Effects asociados: signUpLogInEndSuccessSideEffect
+    on(GlobalActions.SignUpLogInEndSuccess,
       (state, action) => ({
 
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).

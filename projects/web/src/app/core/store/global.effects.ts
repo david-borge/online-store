@@ -165,7 +165,7 @@ export class GlobalEffects {
 
 
     // Side Effect de la Sign Up Action Start Action de Global
-    signUpSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+    signUpStartSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
@@ -198,7 +198,7 @@ export class GlobalEffects {
                     switchMap(signUpHttpRequestResponseData => {
 
                         // Comprobacion
-                        // console.log('signUpSideEffect - signUpHttpRequestResponseData:');
+                        // console.log('signUpStartSideEffect - signUpHttpRequestResponseData:');
                         // console.log(signUpHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
@@ -217,22 +217,27 @@ export class GlobalEffects {
 
                         if( signUpHttpRequestResponseData.resultado == true ) {
 
-                            // console.log("signUpSideEffect: OK!");
+                            // console.log("signUpStartSideEffect: OK!");
 
                             return of(
 
                                 // Procesar datos si es necesario...
     
                                 // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                                // TODO: cambiar a LoginStart. Si el Sign Up ha ido bien, hago Log In automáticamente
-                                GlobalActions.SignUpEndSuccess(),
+
+                                // Iniciar sesión automáticamente al hacer Sign Up
+                                GlobalActions.LogInStart({
+                                    emailPayload: signUpStartActionData.emailPayload,
+                                    passwordPayload: signUpStartActionData.passwordPayload,
+                                    lastLoginFullDatePayload: signUpStartActionData.lastLoginFullDatePayload,
+                                }),
     
                             );
 
                         } else {
 
                             // Comprobacion
-                            console.log("signUpSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
+                            console.log("signUpStartSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
                             console.log(signUpHttpRequestResponseData.resultado);
 
                             // Mensajes de error de MySQL o mis mensajes de error desde la API
@@ -240,7 +245,7 @@ export class GlobalEffects {
                             let errorCode = ( signUpHttpRequestResponseData.resultado.includes(':') ? (signUpHttpRequestResponseData.resultado.substring(0, signUpHttpRequestResponseData.resultado.indexOf(":"))) : signUpHttpRequestResponseData.resultado );
 
                             // Comprobacion
-                            // console.log('signUpSideEffect > errorCode: ' + errorCode);
+                            // console.log('signUpStartSideEffect > errorCode: ' + errorCode);
 
                             // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
                             return of(
@@ -257,7 +262,7 @@ export class GlobalEffects {
                         // Error handling code...
 
                         // Mostrar el error en la consola
-                        console.log('signUpSideEffect - errorResponse:');
+                        console.log('signUpStartSideEffect - errorResponse:');
                         console.log(errorResponse);
 
                         // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
@@ -335,7 +340,7 @@ export class GlobalEffects {
                                 // Procesar datos si es necesario...
     
                                 // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                                GlobalActions.LogInEndSuccess(),
+                                GlobalActions.SignUpLogInEndSuccess(), // loggedIn a true y crear cookie "auth"
     
                             );
 
@@ -390,13 +395,13 @@ export class GlobalEffects {
 
 
 
-    // Side Effect de la Log In Action End Success Action de Global
+    // Side Effect de la Sign Up Log In Action End Success Action de Global
     // Crear la cookie auth
-    logInEndSuccessSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+    signUpLogInEndSuccessSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
-        ofType(GlobalActions.LogInEndSuccess),
+        ofType(GlobalActions.SignUpLogInEndSuccess),
 
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
         switchMap( (LogInEndSuccessActionData) => {
@@ -418,7 +423,6 @@ export class GlobalEffects {
         }),
 
     ));
-
 
     addDays(date: Date, days: number) {
         var result = new Date(date);

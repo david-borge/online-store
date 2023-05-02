@@ -164,7 +164,7 @@ export const ChangeAuthMode = createAction(
 
 
 /** Sign Up Action Start **/
-// Side Effects asociados: signUpSideEffect
+// Side Effects asociados: signUpStartSideEffect
 export const SignUpStart = createAction(
 
   // Tipo de la Action
@@ -180,16 +180,6 @@ export const SignUpStart = createAction(
     signUpFullDatePayload: string,
     lastLoginFullDatePayload: string,
   }>(),
-
-);
-
-
-
-/** Sign Up Action End Success **/
-export const SignUpEndSuccess = createAction(
-
-  // Tipo de la Action
-  '[Global] Sign Up End Success',
 
 );
 
@@ -230,8 +220,8 @@ export const LogInStart = createAction(
 
 
 
-/** Log In Action End Success **/
-export const LogInEndSuccess = createAction(
+/** Sign Up Log In Action End Success **/
+export const SignUpLogInEndSuccess = createAction(
 
   // Tipo de la Action
   '[Global] Log In End Success',

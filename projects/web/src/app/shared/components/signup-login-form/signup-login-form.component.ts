@@ -83,7 +83,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
         this.signUpForm.get('email')?.value, // ? por si es NULL (aunque no lo será)
         this.signUpForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
         new Date().toString(), // signUpFullDate (ahora)
-        '', // lastLoginFullDate (lo dejo vacío porque si el Sign Up es exitoso, hago Log In automáticamente)
+        new Date().toString(), // lastLoginFullDate (ahora)
       );
 
     }
