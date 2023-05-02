@@ -277,7 +277,7 @@ export class GlobalEffects {
 
 
     // Side Effect de la Log In Action Start Action de Global
-    logInSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+    logInStartSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
@@ -307,34 +307,34 @@ export class GlobalEffects {
                     switchMap(logInHttpRequestResponseData => {
 
                         // TODO: Comprobacion
-                        // console.log('logInSideEffect - logInHttpRequestResponseData:');
+                        // console.log('logInStartSideEffect - logInHttpRequestResponseData:');
                         // console.log(logInHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
 
                         /* Si la API devuelve un mensaje de error.
                            No un Error 500, ya que eso aparece abajo en errorResponse;
-                           si no, por ejemplo, si el email ya existe en la tabla.
+                           si no, por ejemplo, si el email no existe en la tabla.
                            Estos errores vienen de https://github.com/david-borge/online-store-backend > login.php > catch (Exception $e)
                            Ejemplo: "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'"
                            Ejemplo del objeto completo: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'"}
+                           Otro ejemplo: LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE
                         */
 
                         // Comprobacion
-                        console.log('logInHttpRequestResponseData.resultado: ');
-                        console.log(logInHttpRequestResponseData.resultado);
+                        // console.log('logInHttpRequestResponseData.resultado: ');
+                        // console.log(logInHttpRequestResponseData.resultado);
 
                         // Si el login ha sido exitoso (el email introducido en el formulario existe, la contraseña introducida en el form coincide la contraseña correspondiente en la de la Base de Datos y he guardado el lastLoginFullDate)
                         if( logInHttpRequestResponseData.resultado == true ) {
 
-                            // console.log("logInSideEffect: OK!");
+                            // console.log("logInStartSideEffect: OK!");
 
                             return of(
 
                                 // Procesar datos si es necesario...
     
                                 // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                                // TODO: cambiar a LoginStart. Si el Log In ha ido bien, hago Log In automáticamente
                                 GlobalActions.LogInEndSuccess(),
     
                             );
@@ -346,7 +346,7 @@ export class GlobalEffects {
                         else {
 
                             // Comprobacion
-                            console.log("logInSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
+                            console.log("logInStartSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
                             console.log(logInHttpRequestResponseData.resultado);
 
                             // Mensajes de error de MySQL o mis mensajes de error desde la API
@@ -354,7 +354,7 @@ export class GlobalEffects {
                             let errorCode = ( logInHttpRequestResponseData.resultado.includes(':') ? (logInHttpRequestResponseData.resultado.substring(0, logInHttpRequestResponseData.resultado.indexOf(":"))) : logInHttpRequestResponseData.resultado );
 
                             // Comprobacion
-                            console.log('logInSideEffect > errorCode: ' + errorCode);
+                            console.log('logInStartSideEffect > errorCode: ' + errorCode);
 
                             // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
                             return of(
@@ -371,7 +371,7 @@ export class GlobalEffects {
                         // Error handling code...
 
                         // Mostrar el error en la consola
-                        console.log('logInSideEffect - errorResponse:');
+                        console.log('logInStartSideEffect - errorResponse:');
                         console.log(errorResponse);
 
                         // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
@@ -388,6 +388,43 @@ export class GlobalEffects {
 
     ));
 
+
+
+    // Side Effect de la Log In Action End Success Action de Global
+    // Crear la cookie auth
+    logInEndSuccessSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(GlobalActions.LogInEndSuccess),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (LogInEndSuccessActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: LogInEndSuccessActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobacion
+            // console.log('LogInEndSuccessActionData:');
+            // console.log(LogInEndSuccessActionData);
+
+            // Guardar cookie "auth" con el valor de la fecha actual más 7 días y duración de 7 días
+            if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
+                this.cookiesService.ponerCookie("auth", (this.addDays(new Date(), 7)).toString(), 7);
+            }
+
+            // Como siempre hay que devolver una Action, devuelvo una DummyAction
+            return of( GlobalActions.DummyAction() );
+                
+        }),
+
+    ));
+
+
+    addDays(date: Date, days: number) {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
 
 
 }

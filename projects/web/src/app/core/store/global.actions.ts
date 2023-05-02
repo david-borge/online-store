@@ -212,7 +212,7 @@ export const SignUpEndFailure = createAction(
 
 
 /** Log In Action Start **/
-// Side Effects asociados: logInSideEffect
+// Side Effects asociados: logInStartSideEffect
 export const LogInStart = createAction(
 
   // Tipo de la Action

@@ -132,7 +132,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        lastActiveMainPage: action.cookieValuePayload,
+        // lastActiveMainPage: action.cookieValuePayload,
           
       })),
 
@@ -207,8 +207,6 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        // loggedIn: true,
-          
       })),
 
 
@@ -229,7 +227,7 @@ export const globalReducer = createReducer(
 
 
     /** Log In Action Start Action **/
-    // Side Effects asociados: logInSideEffect
+    // Side Effects asociados: logInStartSideEffect
     on(GlobalActions.LogInStart,
       (state, action) => ({
 
@@ -243,6 +241,7 @@ export const globalReducer = createReducer(
 
 
     /** Log In Action End Success Action **/
+    // Side Effects asociados: logInEndSuccessSideEffect
     on(GlobalActions.LogInEndSuccess,
       (state, action) => ({
 
