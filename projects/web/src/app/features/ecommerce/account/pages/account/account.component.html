@@ -3,7 +3,9 @@
 
 
 <!-- Header Tag -->
+<!-- Pongo el ngIf porque el main sale antes que app-header y esto provocaba CLS. -->
 <app-header
+    *ngIf="loggedIn || !loggedIn"
     [headerTagType] = "'overlay-header-main-page'"
     [overlayHeaderPageTitle] = "'My Account'"
 ></app-header>

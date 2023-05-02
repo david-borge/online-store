@@ -37,7 +37,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.globalReducerObservableSubscription = this.store.select("globalReducerObservable").subscribe( globalReducerData => {
 
       // Authentication - Carga de una página - Comprobar si estoy logueado en una página: leer Global Store > loggedIn
-      this.loggedIn = globalReducerData.loggedIn
+      this.loggedIn = globalReducerData.loggedIn;
 
       // Authentication - Comprobar en qué modo de autentificación estoy ('SIGNUP' | 'LOGIN')
       this.authMode = globalReducerData.authMode;
