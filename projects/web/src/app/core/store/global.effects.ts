@@ -181,7 +181,14 @@ export class GlobalEffects {
             // console.log(signUpStartActionData);
 
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.signUp()
+            return this.dataStorageService.signUp(
+                    signUpStartActionData.firstNamePayload,
+                    signUpStartActionData.lastNamePayload,
+                    signUpStartActionData.emailPayload,
+                    signUpStartActionData.passwordPayload,
+                    signUpStartActionData.signUpFullDatePayload,
+                    signUpStartActionData.lastLoginFullDatePayload,
+                )
                 .pipe(
 
                     /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
@@ -191,23 +198,59 @@ export class GlobalEffects {
                     switchMap(signUpHttpRequestResponseData => {
 
                         // Comprobacion
-                        console.log('signUpSideEffect - signUpHttpRequestResponseData:');
-                        console.log(signUpHttpRequestResponseData);
+                        // console.log('signUpSideEffect - signUpHttpRequestResponseData:');
+                        // console.log(signUpHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
 
-                        // TODO: continuar aquí...
+                        /* Si la API devuelve un mensaje de error.
+                           No un Error 500, ya que eso aparece abajo en errorResponse;
+                           si no, por ejemplo, si el email ya existe en la tabla.
+                           Estos errores vienen de https://github.com/david-borge/online-store-backend > signup.php > catch (Exception $e)
+                           Ejemplo: "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'"
+                           Ejemplo del objeto completo: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'"}
+                        */
 
-                        return of(
+                        // Comprobacion
+                        // console.log('signUpHttpRequestResponseData.resultado: ');
+                        // console.log(signUpHttpRequestResponseData.resultado);
 
-                            // Procesar datos si es necesario...
+                        if( signUpHttpRequestResponseData.resultado == true ) {
 
-                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                            GlobalActions.SignUpEndSuccess({
-                                signUpResultPayload: '', // TODO: true, false o LOGIN_ERROR_EMAIL_ALREADY_EXISTS
-                            }),
+                            // console.log("signUpSideEffect: OK!");
 
-                        );
+                            return of(
+
+                                // Procesar datos si es necesario...
+    
+                                // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                                // TODO: cambiar a LoginStart. Si el Sign Up ha ido bien, hago Log In automáticamente
+                                GlobalActions.SignUpEndSuccess(),
+    
+                            );
+
+                        } else {
+
+                            // Comprobacion
+                            console.log("signUpSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
+                            console.log(signUpHttpRequestResponseData.resultado);
+
+                            // Mensajes de error de MySQL
+                            // Parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
+                            let errorCode = signUpHttpRequestResponseData.resultado.substring(0, signUpHttpRequestResponseData.resultado.indexOf(":"));
+
+                            // Comprobacion
+                            // console.log('signUpSideEffect > errorCode: ' + errorCode);
+
+                            // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                            return of(
+                                GlobalActions.SignUpEndFailure({
+                                    signUpResultFailurePayload: errorCode, // Ejemplo: SQLSTATE[23000]
+                                }),
+                            );
+
+                        }
+
                     }),
                     catchError(errorResponse => {
 
@@ -220,7 +263,7 @@ export class GlobalEffects {
                         // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
                         return of(
                             GlobalActions.SignUpEndFailure({
-                                signUpResultPayload: 'LOGIN_ERROR_HTTP_REQUEST_FAILED',
+                                signUpResultFailurePayload: 'SIGNUP_ERROR_HTTP_REQUEST_FAILED',
                             }),
                         );
 

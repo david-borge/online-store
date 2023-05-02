@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   // Authentication - Sign Up (Registro)
-  signUp(firstName: string, lastName: string, email: string, password: string) {
+  signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string) {
     
     // Comprobacion
     // console.log('Sign Up');
@@ -77,6 +77,8 @@ export class AuthService {
       lastNamePayload: lastName,
       emailPayload: email,
       passwordPayload: password,
+      signUpFullDatePayload: signUpFullDate,
+      lastLoginFullDatePayload: lastLoginFullDate,
     }) );
 
   }
@@ -95,8 +97,14 @@ export class AuthService {
 
     switch (messageCode) {
 
-      case 'LOGIN_ERROR_HTTP_REQUEST_FAILED':
-        return 'There was a problem loggin in. Please try again.';
+      case 'SIGNUP_ERROR_HTTP_REQUEST_FAILED':
+        return 'There was a problem signing up. Please try again.';
+
+      case 'SIGNUP_ERROR_API_DIDNT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > signup.php > exit("SIGNUP_ERROR_API_DIDNT_RECIEVE_ITS_PAYLOAD");
+        return 'The API didn\'t recieve its payload.';
+
+      case 'SQLSTATE[23000]': // Ver https://github.com/david-borge/online-store-backend > signup.php > catch (Exception $e)
+        return 'Este email ya existe.';
     
       default:
         return '';

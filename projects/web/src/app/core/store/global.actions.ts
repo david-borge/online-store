@@ -177,6 +177,8 @@ export const SignUpStart = createAction(
     lastNamePayload: string,
     emailPayload: string,
     passwordPayload: string,
+    signUpFullDatePayload: string,
+    lastLoginFullDatePayload: string,
   }>(),
 
 );
@@ -188,12 +190,6 @@ export const SignUpEndSuccess = createAction(
 
   // Tipo de la Action
   '[Global] Sign Up End Success',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    signUpResultPayload: string,
-  }>(),
 
 );
 
@@ -208,7 +204,7 @@ export const SignUpEndFailure = createAction(
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    signUpResultPayload: string,
+    signUpResultFailurePayload: string,
   }>(),
 
 );

@@ -233,7 +233,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        signUpResult: action.signUpResultPayload,
+        signUpResult: action.signUpResultFailurePayload,
           
       })),
 

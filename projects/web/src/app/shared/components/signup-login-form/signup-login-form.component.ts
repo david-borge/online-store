@@ -68,7 +68,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   onSubmit() {
     
     // Comprobación
-    console.log('Form submitted! - authMode: ' + this.authMode);
+    // console.log('Form submitted! - authMode: ' + this.authMode);
 
     // Comprobación
     // console.log('signUpForm:');
@@ -78,10 +78,12 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     if ( this.authMode == 'SIGNUP' ) {
       
       this.authService.signUp(
-        this.signUpForm.get('firstName')?.value, // ? por si es NULL
-        this.signUpForm.get('lastName')?.value, // ? por si es NULL
-        this.signUpForm.get('email')?.value, // ? por si es NULL
-        this.signUpForm.get('password')?.value, // ? por si es NULL
+        this.signUpForm.get('firstName')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpForm.get('lastName')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpForm.get('email')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
+        new Date().toString(), // signUpFullDate (ahora)
+        '', // lastLoginFullDate (lo dejo vacío porque si el Sign Up es exitoso, hago Log In automáticamente)
       );
 
     }

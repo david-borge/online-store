@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { ProductInterface } from '../../models/product.interface';
 import { CategoryInterface } from '../../models/category.interface';
+import { UserInterface } from '../../models/user.interface';
 
 import { environment } from 'projects/web/src/environments/environment.development';
 
@@ -52,20 +53,32 @@ export class DataStorageService {
 
 
 
-  // Sign Up
-  signUp() {
+  signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string) {
+
+    // Comprobacion
+    // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
+
     return this.httpClient
-      .get<string>(environment.apiBaseUrl + '/signup.php', {}) // TODO: continuar aquí...
+      .post<UserInterface | any>(environment.apiBaseUrl + '/signup.php', // El any es para cubrirme las espaldas por si la API devuelve un mensaje de error como: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1…ry 'hewemim@mailinator.com' for key 'users.email'"}
+      {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        signUpFullDate: signUpFullDate,
+        lastLoginFullDate: lastLoginFullDate,
+      },
+      {})
       // .pipe()
       ;
   }
 
 
 
-  // Log In
+  // Log In // TODO: continuar aquí...
   logIn() {
     return this.httpClient
-      .get<string>(environment.apiBaseUrl + '/login.php', {}) // TODO: continuar aquí...
+      .post<UserInterface | any>(environment.apiBaseUrl + '/login.php', {})
       // .pipe()
       ;
   }
