@@ -45,7 +45,7 @@ export class HomeEffects {
 
             // Aquí puedo usar los datos del payload de la Action: getAllProductsStartActionData.nombrePayloadPayload.propiedad1
 
-            // Comprobacion
+            // Comprobación
             // console.log('getAllProductsStartActionData:');
             // console.log(getAllProductsStartActionData);
             // console.log('getAllProductsStartActionData[1].allProducts.length: ' + getAllProductsStartActionData[1].allProducts.length);
@@ -63,7 +63,7 @@ export class HomeEffects {
 
                         switchMap(resData => {
 
-                            // Comprobacion
+                            // Comprobación
                             // console.log('getAllProductsSideEffect - resData:');
                             // console.log(resData);
 

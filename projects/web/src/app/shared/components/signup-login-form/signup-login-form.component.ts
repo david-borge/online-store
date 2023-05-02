@@ -115,7 +115,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     // Si estoy en Sign Up, añadir los campos firstName y lastName del objeto JS signUpForm
     if ( this.authMode == 'SIGNUP' ) {
 
-      // Comprobacion
+      // Comprobación
       // console.log('Añadir los campos firstName y lastName del objeto JS signUpForm');
 
       this.signUpForm.addControl('firstName', new FormControl(null, Validators.required));
@@ -126,7 +126,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     // Si estoy en Log In, quitar los campos firstName y lastName del objeto JS signUpForm
     else {
 
-      // Comprobacion
+      // Comprobación
       // console.log('Quitar los campos firstName y lastName del objeto JS signUpForm');
 
       this.signUpForm.removeControl('firstName');

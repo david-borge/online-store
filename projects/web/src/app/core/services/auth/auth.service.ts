@@ -36,7 +36,7 @@ export class AuthService {
     this.store.select("globalReducerObservable").pipe(take(1)).subscribe(
       (globalReducerData) => {
 
-        // Comprobacion
+        // Comprobación
         // console.log('Fecha actual: ' + new Date());
         // console.log('authCookieValue: ' + globalReducerData.authCookieValue);
 
@@ -46,7 +46,7 @@ export class AuthService {
           // Si la fecha no está caducada (ahora es menor que la fecha de la cookie)
           if ( new Date() < new Date(globalReducerData.authCookieValue) ) {
             
-            // Comprobacion
+            // Comprobación
             // console.log('La fecha de la cookie "auth" no está caducada (ahora es menor que la fecha de la cookie).');
 
             // Comprobar si la fecha está caducada
@@ -69,7 +69,7 @@ export class AuthService {
   // Authentication - Sign Up (Registro)
   signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string) {
     
-    // Comprobacion
+    // Comprobación
     // console.log('AuthService > Sign Up');
 
     this.store.dispatch( GlobalActions.SignUpStart({
@@ -86,7 +86,7 @@ export class AuthService {
   // Authentication - Log In (Iniciar sesión)
   logIn(email: string, password: string, lastLoginFullDate: string) {
 
-    // Comprobacion
+    // Comprobación
     // console.log('AuthService > Log In');
 
     this.store.dispatch( GlobalActions.LogInStart({

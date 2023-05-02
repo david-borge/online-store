@@ -109,11 +109,11 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
           )[0];  // Primer y único elemento del array, que es la categoría actual
 
-          // Comprobacion
+          // Comprobación
           // console.log('currentCategory:');
           // console.log(this.currentCategory);
 
-          // Comprobacion
+          // Comprobación
           // console.log('CategoryComponent > currentCategorySlug: ' + this.currentCategory.slug);
           // console.log('CategoryComponent > currentCategoryName: ' + this.currentCategory.name);
           // console.log('CategoryComponent > currentCategorycardAndHeaderBackgroundColor: ' + this.currentCategory.cardBackgroundColor);
@@ -129,7 +129,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
             // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
             if ( !this.categoriesPageImagesLoaded ) {
 
-              // Comprobacion
+              // Comprobación
               // console.log('categories: imagesOfOtherPagesToPreload:');
               // console.log(this.imagesOfOtherPagesToPreload);
 
@@ -144,7 +144,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
           // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
           // this.categoriesPagePreviouslyVisited = categoriesReducerData.categoriesPagePreviouslyVisited;
 
-          // Comprobacion
+          // Comprobación
           // console.log('categoryPagePreviouslyVisited: ' + this.categoryPagePreviouslyVisited);
 
 

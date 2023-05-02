@@ -79,13 +79,13 @@ export class FooterComponent implements OnInit {
 
     // - Guardar en la Store el Navigation Item activo
     
-    // Comprobacion
+    // Comprobación
     // console.log('activeNavigationItem: ' + this.activeNavigationItem + ' - lastActiveMainPage: ' + this.lastActiveMainPage);
 
     // · Si aterrizo en una de las páginas principales
     if( (this.router.url == '/home') || (this.router.url == '/categories') || (this.router.url == '/cart') || (this.router.url == '/account')) {
 
-      // Comprobacion
+      // Comprobación
       // console.log('En una página principal: ' + this.router.url);
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: this.router.url, }) );
@@ -103,7 +103,7 @@ export class FooterComponent implements OnInit {
     // · Si aterrizo en una página de categoría, activo /categories
     else if ( this.router.url.includes('/category/') ) {
 
-      // Comprobacion
+      // Comprobación
       // console.log('En una página de categoría');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/categories', }) );
@@ -113,7 +113,7 @@ export class FooterComponent implements OnInit {
     // · Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.
     else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '') ) {
 
-      // Comprobacion
+      // Comprobación
       // console.log('Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.');
       
       this.store.dispatch( GlobalActions.GetLocalStorageValueStart({
@@ -122,7 +122,7 @@ export class FooterComponent implements OnInit {
 
       this.store.select('globalReducerObservable').pipe(take(1))
         .subscribe( (data) => {
-          // Comprobacion
+          // Comprobación
           // console.log('data.lastActiveMainPage: ' + data.lastActiveMainPage);
           
           if ( data.lastActiveMainPage != null ) {
@@ -139,7 +139,7 @@ export class FooterComponent implements OnInit {
     // · Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la home, activo /home
     else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/home') ) {
       
-      // Comprobacion
+      // Comprobación
       // console.log('En una página de producto si la última página principal ha sido /home.');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
@@ -149,7 +149,7 @@ export class FooterComponent implements OnInit {
     // · Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la categories, activo /categories
     else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/categories') ) {
       
-      // Comprobacion
+      // Comprobación
       // console.log('En una página de producto si la última página principal ha sido /categories.');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/categories', }) );
@@ -159,7 +159,7 @@ export class FooterComponent implements OnInit {
     // Por defecto (cuando llego a la página por primera vez desde el Modo Incógnito), muestro la home
     else {
       
-      // Comprobacion
+      // Comprobación
       // console.log('Por defecto');
 
       this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/home', }) );
@@ -173,7 +173,7 @@ export class FooterComponent implements OnInit {
 
       this.activeNavigationItem = globalReducerData.activeNavigationItem;
 
-      // Comprobacion
+      // Comprobación
       // console.log('activeNavigationItem: ' + this.activeNavigationItem);
 
     } );

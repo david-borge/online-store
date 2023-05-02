@@ -73,11 +73,11 @@ export class ProductComponent implements OnInit, OnDestroy {
 
           )[0];  // Primer y único elemento del array, que es el producto actual
 
-          // Comprobacion
+          // Comprobación
           // console.log('currentProduct:');
           // console.log(this.currentProduct);
 
-          // Comprobacion
+          // Comprobación
           // console.log('ProductComponent > currentProductSlug: ' + this.currentProduct.slug);
           // console.log('ProductComponent > currentProductName: ' + this.currentProduct.name);
           // console.log('ProductComponent > currentProductcardAndHeaderBackgroundColor: ' + this.currentProduct.cardAndHeaderBackgroundColor);

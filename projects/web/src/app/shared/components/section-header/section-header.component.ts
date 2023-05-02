@@ -42,7 +42,7 @@ export class SectionHeaderComponent implements OnChanges {
     // IMPORTANTE: esto tiene que estar en ngOnChanges(), no en ngOnInit() para que se detecten los cambios a sectionHeaderTitleText
     this.sectionHeaderTitleInnerHTML = '<' + this.sectionHeaderTitleTag + ' class="' + this.sectionHeaderTitleClasses + '">' + this.sectionHeaderTitleText + '</' + this.sectionHeaderTitleTag + '>';
 
-    // Comprobacion
+    // Comprobación
     // console.log('sectionHeaderTitleText: ' + this.sectionHeaderTitleText);
 
   }

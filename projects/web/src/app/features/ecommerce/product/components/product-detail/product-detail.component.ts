@@ -36,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
     // Get current Product (from Route Paramenter :product-slug en projects\web\src\app\features\ecommerce\product\product-routing.module.ts)
     this.productSlug = this.route.snapshot.params['product-slug'];
 
-    // Comprobacion
+    // Comprobación
     // console.log('ProductDetailComponent > productSlug: ' + this.productSlug);
 
     // Guardar el productSlug del producto actual en la Store para poder leerlo en ProductComponent y mostrar el título y el color de fondo apropiados en el header

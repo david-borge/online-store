@@ -55,7 +55,7 @@ export class DataStorageService {
 
   signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string) {
 
-    // Comprobacion
+    // Comprobación
     // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
 
     return this.httpClient
@@ -79,7 +79,7 @@ export class DataStorageService {
   // Log In // TODO: continuar aquí...
   logIn(email: string, password: string, lastLoginFullDate: string) {
     
-    // Comprobacion
+    // Comprobación
     // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
 
     return this.httpClient

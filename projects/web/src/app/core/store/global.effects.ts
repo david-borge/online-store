@@ -46,7 +46,7 @@ export class GlobalEffects {
 
             // Aquí puedo usar los datos del payload de la Action: setLocalStorageKeyValueActionData.nombrePayloadPayload.propiedad1
 
-            // Comprobacion
+            // Comprobación
             // console.log('setLocalStorageKeyValueActionData:');
             // console.log(setLocalStorageKeyValueActionData);
 
@@ -78,7 +78,7 @@ export class GlobalEffects {
 
                 // Aquí puedo usar los datos del payload de la Action: getLocalStorageValueActionData.nombrePayloadPayload.propiedad1
 
-                // Comprobacion
+                // Comprobación
                 // console.log('getLocalStorageValueActionData:');
                 // console.log(getLocalStorageValueActionData);
 
@@ -110,7 +110,7 @@ export class GlobalEffects {
 
             // Aquí puedo usar los datos del payload de la Action: setCookieKeyValueActionData.nombrePayloadPayload.propiedad1
 
-            // Comprobacion
+            // Comprobación
             // console.log('setCookieKeyValueActionData:');
             // console.log(setCookieKeyValueActionData);
 
@@ -142,11 +142,11 @@ export class GlobalEffects {
 
                 // Aquí puedo usar los datos del payload de la Action: getAuthCookieValueActionData.nombrePayloadPayload.propiedad1
 
-                // Comprobacion
+                // Comprobación
                 // console.log('getAuthCookieValueActionData:');
                 // console.log(getAuthCookieValueActionData);
 
-                // Comprobacion
+                // Comprobación
                 // console.log('Value of cookie "auth": ' + this.cookiesService.leerUnaCookie( "auth" ));
 
                 // Leer valor de cookie
@@ -176,7 +176,7 @@ export class GlobalEffects {
 
             // Aquí puedo usar los datos del payload de la Action: signUpStartActionData.nombrePayloadPayload.propiedad1
 
-            // Comprobacion
+            // Comprobación
             // console.log('signUpStartActionData:');
             // console.log(signUpStartActionData);
 
@@ -197,7 +197,7 @@ export class GlobalEffects {
 
                     switchMap(signUpHttpRequestResponseData => {
 
-                        // Comprobacion
+                        // Comprobación
                         // console.log('signUpStartSideEffect - signUpHttpRequestResponseData:');
                         // console.log(signUpHttpRequestResponseData);
 
@@ -211,7 +211,7 @@ export class GlobalEffects {
                            Ejemplo del objeto completo: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'"}
                         */
 
-                        // Comprobacion
+                        // Comprobación
                         // console.log('signUpHttpRequestResponseData.resultado: ');
                         // console.log(signUpHttpRequestResponseData.resultado);
 
@@ -236,7 +236,7 @@ export class GlobalEffects {
 
                         } else {
 
-                            // Comprobacion
+                            // Comprobación
                             console.log("signUpStartSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
                             console.log(signUpHttpRequestResponseData.resultado);
 
@@ -244,7 +244,7 @@ export class GlobalEffects {
                             // Si el un mensaje de error de MySQL: parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
                             let errorCode = ( signUpHttpRequestResponseData.resultado.includes(':') ? (signUpHttpRequestResponseData.resultado.substring(0, signUpHttpRequestResponseData.resultado.indexOf(":"))) : signUpHttpRequestResponseData.resultado );
 
-                            // Comprobacion
+                            // Comprobación
                             // console.log('signUpStartSideEffect > errorCode: ' + errorCode);
 
                             // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
@@ -293,7 +293,7 @@ export class GlobalEffects {
 
             // Aquí puedo usar los datos del payload de la Action: logInStartActionData.nombrePayloadPayload.propiedad1
 
-            // Comprobacion
+            // Comprobación
             // console.log('logInStartActionData:');
             // console.log(logInStartActionData);
 
@@ -311,7 +311,7 @@ export class GlobalEffects {
 
                     switchMap(logInHttpRequestResponseData => {
 
-                        // TODO: Comprobacion
+                        // TODO: Comprobación
                         // console.log('logInStartSideEffect - logInHttpRequestResponseData:');
                         // console.log(logInHttpRequestResponseData);
 
@@ -326,7 +326,7 @@ export class GlobalEffects {
                            Otro ejemplo: LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE
                         */
 
-                        // Comprobacion
+                        // Comprobación
                         // console.log('logInHttpRequestResponseData.resultado: ');
                         // console.log(logInHttpRequestResponseData.resultado);
 
@@ -350,7 +350,7 @@ export class GlobalEffects {
                         // Ejemplo: LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE
                         else {
 
-                            // Comprobacion
+                            // Comprobación
                             console.log("logInStartSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
                             console.log(logInHttpRequestResponseData.resultado);
 
@@ -358,7 +358,7 @@ export class GlobalEffects {
                             // Si el un mensaje de error de MySQL: Parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
                             let errorCode = ( logInHttpRequestResponseData.resultado.includes(':') ? (logInHttpRequestResponseData.resultado.substring(0, logInHttpRequestResponseData.resultado.indexOf(":"))) : logInHttpRequestResponseData.resultado );
 
-                            // Comprobacion
+                            // Comprobación
                             console.log('logInStartSideEffect > errorCode: ' + errorCode);
 
                             // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
@@ -408,7 +408,7 @@ export class GlobalEffects {
 
             // Aquí puedo usar los datos del payload de la Action: LogInEndSuccessActionData.nombrePayloadPayload.propiedad1
 
-            // Comprobacion
+            // Comprobación
             // console.log('LogInEndSuccessActionData:');
             // console.log(LogInEndSuccessActionData);
 

@@ -116,7 +116,7 @@ export class ImageLoadDirective {
 
       case '/product':
 
-        // Comprobacion
+        // Comprobación
         // console.log('En página de producto.');
         
         // Comprobación
@@ -143,7 +143,7 @@ export class ImageLoadDirective {
   // Cuando una imagen se haya cargado
   @HostListener('load') onLoad(): void {
     
-    // Comprobacion
+    // Comprobación
     // console.log('ImageLoadDirective > Imagen cargada.');
     
     
@@ -157,7 +157,7 @@ export class ImageLoadDirective {
       
       case '/home':
 
-        // Comprobacion
+        // Comprobación
         // console.log('homePageImagesLoaded: ' + this.homePageImagesLoaded);
 
         // Proceso de carga de una página: Paso 3.3. Cuando se vayan cargando las imágenes de la página actual (ellas solas con <img>), ir apuntándolo en la Store (propiedad numberOfImagesInThisPageLoaded) (usando el ImageLoadDirective > @HostListener('load')).
@@ -175,7 +175,7 @@ export class ImageLoadDirective {
       
       case '/categories':
 
-        // Comprobacion
+        // Comprobación
         // console.log('categoriesPageImagesLoaded: ' + this.categoriesPageImagesLoaded);
 
         // Proceso de carga de una página: Paso 3.3. Cuando se vayan cargando las imágenes de la página actual (ellas solas con <img>), ir apuntándolo en la Store (propiedad numberOfImagesInThisPageLoaded) (usando el ImageLoadDirective > @HostListener('load')).

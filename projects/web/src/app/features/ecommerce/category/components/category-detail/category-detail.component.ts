@@ -36,7 +36,7 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
     // Get current Category (from Route Paramenter :category-slug en projects\web\src\app\features\ecommerce\category\category-routing.module.ts)
     this.categorySlug = this.route.snapshot.params['category-slug'];
 
-    // Comprobacion
+    // Comprobación
     // console.log('ProductDetailComponent > productSlug: ' + this.productSlug);
 
     // Guardar el categorySlug de la categoría actual en la Store para poder leerlo en CategoryComponent y mostrar el título y el color de fondo apropiados en el header

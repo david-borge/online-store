@@ -45,7 +45,7 @@ export class CategoriesEffects {
 
             // Aquí puedo usar los datos del payload de la Action: getAllCategoriesStartActionData.nombrePayloadPayload.propiedad1
 
-            // Comprobacion
+            // Comprobación
             // console.log('getAllCategoriesStartActionData:');
             // console.log(getAllCategoriesStartActionData);
             
@@ -62,7 +62,7 @@ export class CategoriesEffects {
 
                         switchMap(resData => {
 
-                            // Comprobacion
+                            // Comprobación
                             // console.log('getAllCategoriesSideEffect - resData:');
                             // console.log(resData);
 

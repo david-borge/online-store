@@ -97,7 +97,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
           // - All Categories
           this.allCategories = categoriesReducerData.allCategories;
 
-          // Comprobacion
+          // Comprobación
           // console.log('allCategories:');
           // console.log(this.allCategories);
 
@@ -113,7 +113,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
             // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
             if ( !this.homePageImagesLoaded ) {
               
-              // Comprobacion
+              // Comprobación
               // console.log('categories: imagesOfOtherPagesToPreload:');
               // console.log(this.imagesOfOtherPagesToPreload);
               
@@ -128,7 +128,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
           // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
           this.categoriesPagePreviouslyVisited = categoriesReducerData.categoriesPagePreviouslyVisited;
 
-          // Comprobacion
+          // Comprobación
           // console.log('categoriesPagePreviouslyVisited: ' + this.homePagePreviouslyVisited);
 
         },
@@ -165,7 +165,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
             // · Miniaturas de los productos de la home
             if ( homeResponseData.allProducts.length != 0 ) {
 
-              // Comprobacion
+              // Comprobación
               // console.log('· Miniaturas de las categorías');
 
               this.imagesOfOtherPagesToPreload = homeResponseData.allProducts.map( category => {

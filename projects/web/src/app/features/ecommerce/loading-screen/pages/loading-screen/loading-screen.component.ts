@@ -88,7 +88,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
         // · Miniaturas de los productos
         if ( allProductsResponseData.allProducts.length != 0 ) {
 
-          // Comprobacion
+          // Comprobación
           // console.log('· Miniaturas de los productos');
 
           this.imagesOfHomePageToPreload = allProductsResponseData.allProducts.map( product => {
@@ -96,7 +96,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
             return product.imageThumbnail + ( this.preloadImagesService.support_format_webp() ? '.webp' : '.png' );
           } ); 
 
-          // Comprobacion
+          // Comprobación
           // console.log('homeReducerObservable > imagesOfHomePageToPreload:');
           // console.log(this.imagesOfHomePageToPreload);
 
@@ -134,7 +134,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
         // · Miniaturas de las categorías
         if ( allCategoriesResponseData.allCategories.length != 0 ) {
 
-          // Comprobacion
+          // Comprobación
           // console.log('· Miniaturas de las categorías');
 
           this.imagesOfCategoriesPageToPreload = allCategoriesResponseData.allCategories.map( category => {
@@ -142,7 +142,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
             return category.imageThumbnail + ( this.preloadImagesService.support_format_webp() ? '.webp' : '.png' );
           } ); 
 
-          // Comprobacion
+          // Comprobación
           // console.log('categoriesReducerObservable > imagesOfCategoriesPageToPreload:');
           // console.log(this.imagesOfCategoriesPageToPreload);
 

@@ -25,7 +25,7 @@ export class RoutingService {
     
     this.router.events.pipe(take(1)).subscribe((val) => {
 
-      // Comprobacion
+      // Comprobación
       // console.log('URL actual: ' + this.router.url);
 
       // Indicarlo en la Store Global (si el valor de globalReducerData.firstVisitedPage no se ha establecido antes, es decir, es '')

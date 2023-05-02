@@ -29,7 +29,7 @@ export class PreloadImagesService {
     // Si las imágenes de otras páginas no se han cargado todavía, comienzo a cargarlas
     if( imagesOfOtherPagesToPreload.length != this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
 
-      // Comprobacion
+      // Comprobación
       // console.log('Imágenes de esta página cargadas. Comenzar a cargar las imágenes de otras páginas.');
 
       // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
@@ -45,10 +45,10 @@ export class PreloadImagesService {
           // Cuando la imagen haya sido cargada
           this.numberOfimagesOfOtherPagesToPreloadLoaded++;
 
-          // Comprobacion: si toda las imágenes han sido cargadas
+          // Comprobación: si toda las imágenes han sido cargadas
           if( imagesOfOtherPagesToPreload.length == this.numberOfimagesOfOtherPagesToPreloadLoaded ) {
 
-            // Comprobacion
+            // Comprobación
             // console.log('All the images of other pages have been loaded (' + this.numberOfimagesOfOtherPagesToPreloadLoaded + ' ' + ((this.numberOfimagesOfOtherPagesToPreloadLoaded == 1) ? 'image' : 'images') + ').');
 
             // - Leer en qué página estoy
@@ -76,7 +76,7 @@ export class PreloadImagesService {
                 
               // TODO:
               case '/product':
-                // Comprobacion
+                // Comprobación
                 // console.log('aquí');
                 this.store.dispatch( ProductActions.SetProductPageImagesLoadedToTrue() );
                 break;
