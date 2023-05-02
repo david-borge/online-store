@@ -256,6 +256,18 @@ export const EmptySignUpLogInResult = createAction(
 
 
 
+/** Log Out Action **/
+// Log Out: borrar cookie "auth" y Global Store > loggedIn = false
+// Side Effects asociados: logOutSideEffect
+export const LogOut = createAction(
+
+  // Tipo de la Action
+  '[Global] Log Out',
+  
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

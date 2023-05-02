@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
+import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-account',
@@ -29,6 +31,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<fromApp.AppState>,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +48,10 @@ export class AccountComponent implements OnInit, OnDestroy {
 
     });
 
+  }
+
+  onClickLogOutButton() {
+    this.authService.logOut();
   }
 
   ngOnDestroy(): void {

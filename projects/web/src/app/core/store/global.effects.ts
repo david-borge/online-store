@@ -404,13 +404,13 @@ export class GlobalEffects {
         ofType(GlobalActions.SignUpLogInEndSuccess),
 
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-        switchMap( (LogInEndSuccessActionData) => {
+        switchMap( (logInEndSuccessActionData) => {
 
-            // Aquí puedo usar los datos del payload de la Action: LogInEndSuccessActionData.nombrePayloadPayload.propiedad1
+            // Aquí puedo usar los datos del payload de la Action: logInEndSuccessActionData.nombrePayloadPayload.propiedad1
 
             // Comprobación
-            // console.log('LogInEndSuccessActionData:');
-            // console.log(LogInEndSuccessActionData);
+            // console.log('logInEndSuccessActionData:');
+            // console.log(logInEndSuccessActionData);
 
             // Guardar cookie "auth" con el valor de la fecha actual más 7 días y duración de 7 días
             if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
@@ -429,6 +429,38 @@ export class GlobalEffects {
         result.setDate(result.getDate() + days);
         return result;
     }
+
+
+
+    // Side Effect de la Log Out Action de Global
+    // Crear la cookie auth
+    logOutSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(GlobalActions.LogOut),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (logOutActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: logOutActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobación
+            // console.log('logOutActionData:');
+            // console.log(logOutActionData);
+
+            // Borrar cookie "auth"
+            if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
+                this.cookiesService.eliminarUnaCookie("auth");
+            }
+
+            // Como siempre hay que devolver una Action, devuelvo una DummyAction
+            return of( GlobalActions.DummyAction() );
+                
+        }),
+
+    ));
+
 
 
 }

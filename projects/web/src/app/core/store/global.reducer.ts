@@ -132,8 +132,6 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        // lastActiveMainPage: action.cookieValuePayload,
-          
       })),
 
 
@@ -152,6 +150,22 @@ export const globalReducer = createReducer(
           
       })),
 
+
+
+    /** Log Out Action **/
+    // Log Out: borrar cookie "auth" y Global Store > loggedIn = false
+    // Side Effects asociados: deleteCookieSideEffect
+    on(GlobalActions.LogOut,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        loggedIn: false,
+          
+      })),
 
 
     /** Set Logged In To True Action **/

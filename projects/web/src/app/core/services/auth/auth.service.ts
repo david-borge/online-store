@@ -126,5 +126,12 @@ export class AuthService {
     }
 
   }
+
+  logOut() {
+
+    // Log Out: borrar cookie "auth" y Global Store > loggedIn = false
+    this.store.dispatch( GlobalActions.LogOut() );
+
+  }
   
 }

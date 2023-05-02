@@ -68,8 +68,12 @@ export class CookiesService {
   }
 
 
-  // Modificar Cookie
 
+  // Borrar Cookie
+  eliminarUnaCookie(nombre: string)
+  {
+    document.cookie = nombre + "=; max-age=0";
+  }
 
 
 
