@@ -324,7 +324,7 @@ export class GlobalEffects {
                         console.log('logInHttpRequestResponseData.resultado: ');
                         console.log(logInHttpRequestResponseData.resultado);
 
-                        // Si el login ha sido exitoso (el email introducido en el formulario existe, la contraseña introducida en el form coincide la contraseña correspondiente en la de la Base de Datos)
+                        // Si el login ha sido exitoso (el email introducido en el formulario existe, la contraseña introducida en el form coincide la contraseña correspondiente en la de la Base de Datos y he guardado el lastLoginFullDate)
                         if( logInHttpRequestResponseData.resultado == true ) {
 
                             // console.log("logInSideEffect: OK!");
@@ -341,7 +341,7 @@ export class GlobalEffects {
 
                         }
                         
-                        // Si el log in ha fallado
+                        // Si el log in ha fallado (el email no existe o ha fallado la actualización de lastLoginFullDate)
                         // Ejemplo: LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE
                         else {
 
