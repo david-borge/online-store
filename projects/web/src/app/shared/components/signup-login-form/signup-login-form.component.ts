@@ -27,7 +27,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   // Variables del formulario
   signUpForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
   showFirstAndLastNameFields: boolean = ( (this.authMode == 'SIGNUP') );
-  signUpResult: string = '';
+  signUpLogInResult: string = '';
   
   constructor(
     private store: Store<fromApp.AppState>,
@@ -44,7 +44,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
 
       this.showFirstAndLastNameFields = ( (this.authMode == 'SIGNUP') );
 
-      this.signUpResult = this.authService.authMessages(globalReducerData.signUpResult);
+      this.signUpLogInResult = this.authService.authMessages(globalReducerData.signUpLogInResult);
 
     });
 
@@ -92,8 +92,9 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     else {
       
       this.authService.logIn(
-        this.signUpForm.get('email')?.value, // ? por si es NULL
-        this.signUpForm.get('password')?.value, // ? por si es NULL
+        this.signUpForm.get('email')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
+        new Date().toString(), // lastLoginFullDate (ahora)
       );
 
     }
@@ -136,6 +137,9 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     // Comprobación
     // console.log('signUpForm:');
     // console.log(this.signUpForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+
+    // - Borrar el mensaje de error
+    this.store.dispatch( GlobalActions.EmptySignUpLogInResult() );
 
   }
 

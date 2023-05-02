@@ -211,6 +211,61 @@ export const SignUpEndFailure = createAction(
 
 
 
+/** Log In Action Start **/
+// Side Effects asociados: logInSideEffect
+export const LogInStart = createAction(
+
+  // Tipo de la Action
+  '[Global] Log In Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    emailPayload: string,
+    passwordPayload: string,
+    lastLoginFullDatePayload: string,
+  }>(),
+
+);
+
+
+
+/** Log In Action End Success **/
+export const LogInEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Global] Log In End Success',
+
+);
+
+
+
+/** Log In Action End Failure **/
+export const LogInEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Global] Log In End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    logInResultFailurePayload: string,
+  }>(),
+
+);
+
+
+
+/** Empty Sign Up Log In Result Action **/
+export const EmptySignUpLogInResult = createAction(
+
+  // Tipo de la Action
+  '[Global] Empty Sign Up Log In Result',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

@@ -70,7 +70,7 @@ export class AuthService {
   signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string) {
     
     // Comprobacion
-    // console.log('Sign Up');
+    // console.log('AuthService > Sign Up');
 
     this.store.dispatch( GlobalActions.SignUpStart({
       firstNamePayload: firstName,
@@ -84,12 +84,16 @@ export class AuthService {
   }
 
   // Authentication - Log In (Iniciar sesión)
-  logIn(email: string, password: string) {
+  logIn(email: string, password: string, lastLoginFullDate: string) {
 
     // Comprobacion
-    // console.log('Log In');
+    // console.log('AuthService > Log In');
 
-    // this.store.dispatch( GlobalActions.LogIn() );
+    this.store.dispatch( GlobalActions.LogInStart({
+      emailPayload: email,
+      passwordPayload: password,
+      lastLoginFullDatePayload: lastLoginFullDate,
+    }) );
 
   }
 
@@ -100,12 +104,22 @@ export class AuthService {
       case 'SIGNUP_ERROR_HTTP_REQUEST_FAILED':
         return 'There was a problem signing up. Please try again.';
 
-      case 'SIGNUP_ERROR_API_DIDNT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > signup.php > exit("SIGNUP_ERROR_API_DIDNT_RECIEVE_ITS_PAYLOAD");
-        return 'The API didn\'t recieve its payload.';
+      case 'LOGIN_ERROR_HTTP_REQUEST_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > catch (Exception $e)
+        return 'There was a problem loggin in. Please try again.';
+    
+      case 'SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > signup.php > exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
+        return 'The Sign Up API didn\'t recieve its payload.';
+    
+      case 'LOGIN_ERROR_API_DIDNT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > login.php > exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
+        return 'The Log In API didn\'t recieve its payload.';
+    
+      case 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE',
+      case 'LOGIN_ERROR_PASSWORD_IS_NOT_CORRECT': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => true,
+        return 'El email o la contraseña no es correcto.'; // Por temas de privacidad y seguridad, no digo al usuario que si el problema es que el email no existe o si es que la contraseña no es correcta
 
       case 'SQLSTATE[23000]': // Ver https://github.com/david-borge/online-store-backend > signup.php > catch (Exception $e)
         return 'Este email ya existe.';
-    
+
       default:
         return '';
 

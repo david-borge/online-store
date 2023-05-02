@@ -71,16 +71,28 @@ export class DataStorageService {
       {})
       // .pipe()
       ;
+
   }
 
 
 
   // Log In // TODO: continuar aquí...
-  logIn() {
+  logIn(email: string, password: string, lastLoginFullDate: string) {
+    
+    // Comprobacion
+    // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
+
     return this.httpClient
-      .post<UserInterface | any>(environment.apiBaseUrl + '/login.php', {})
+      .post<UserInterface | any>(environment.apiBaseUrl + '/login.php', // El any es para cubrirme las espaldas por si la API devuelve un mensaje de error como: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1…ry 'hewemim@mailinator.com' for key 'users.email'"}
+      {
+        email: email,
+        password: password,
+        lastLoginFullDate: lastLoginFullDate,
+      },
+      {})
       // .pipe()
       ;
+
   }
 
 

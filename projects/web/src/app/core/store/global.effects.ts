@@ -235,9 +235,9 @@ export class GlobalEffects {
                             console.log("signUpSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
                             console.log(signUpHttpRequestResponseData.resultado);
 
-                            // Mensajes de error de MySQL
-                            // Parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
-                            let errorCode = signUpHttpRequestResponseData.resultado.substring(0, signUpHttpRequestResponseData.resultado.indexOf(":"));
+                            // Mensajes de error de MySQL o mis mensajes de error desde la API
+                            // Si el un mensaje de error de MySQL: parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
+                            let errorCode = ( signUpHttpRequestResponseData.resultado.includes(':') ? (signUpHttpRequestResponseData.resultado.substring(0, signUpHttpRequestResponseData.resultado.indexOf(":"))) : signUpHttpRequestResponseData.resultado );
 
                             // Comprobacion
                             // console.log('signUpSideEffect > errorCode: ' + errorCode);
@@ -275,5 +275,119 @@ export class GlobalEffects {
     ));
 
 
+
+    // Side Effect de la Log In Action Start Action de Global
+    logInSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(GlobalActions.LogInStart),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (logInStartActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: logInStartActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobacion
+            // console.log('logInStartActionData:');
+            // console.log(logInStartActionData);
+
+            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+            return this.dataStorageService.logIn(
+                    logInStartActionData.emailPayload,
+                    logInStartActionData.passwordPayload,
+                    logInStartActionData.lastLoginFullDatePayload,
+                )
+                .pipe(
+
+                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+
+                    switchMap(logInHttpRequestResponseData => {
+
+                        // TODO: Comprobacion
+                        // console.log('logInSideEffect - logInHttpRequestResponseData:');
+                        // console.log(logInHttpRequestResponseData);
+
+                        // Procesamiento de datos si es necesario...
+
+                        /* Si la API devuelve un mensaje de error.
+                           No un Error 500, ya que eso aparece abajo en errorResponse;
+                           si no, por ejemplo, si el email ya existe en la tabla.
+                           Estos errores vienen de https://github.com/david-borge/online-store-backend > login.php > catch (Exception $e)
+                           Ejemplo: "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'"
+                           Ejemplo del objeto completo: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'"}
+                        */
+
+                        // Comprobacion
+                        console.log('logInHttpRequestResponseData.resultado: ');
+                        console.log(logInHttpRequestResponseData.resultado);
+
+                        // Si el login ha sido exitoso (el email introducido en el formulario existe, la contraseña introducida en el form coincide la contraseña correspondiente en la de la Base de Datos)
+                        if( logInHttpRequestResponseData.resultado == true ) {
+
+                            // console.log("logInSideEffect: OK!");
+
+                            return of(
+
+                                // Procesar datos si es necesario...
     
+                                // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                                // TODO: cambiar a LoginStart. Si el Log In ha ido bien, hago Log In automáticamente
+                                GlobalActions.LogInEndSuccess(),
+    
+                            );
+
+                        }
+                        
+                        // Si el log in ha fallado
+                        // Ejemplo: LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE
+                        else {
+
+                            // Comprobacion
+                            console.log("logInSideEffect: La API devuelve un mensaje de error (no un Error 500, del tipo el email ya existe):");
+                            console.log(logInHttpRequestResponseData.resultado);
+
+                            // Mensajes de error de MySQL o mis mensajes de error desde la API
+                            // Si el un mensaje de error de MySQL: Parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
+                            let errorCode = ( logInHttpRequestResponseData.resultado.includes(':') ? (logInHttpRequestResponseData.resultado.substring(0, logInHttpRequestResponseData.resultado.indexOf(":"))) : logInHttpRequestResponseData.resultado );
+
+                            // Comprobacion
+                            console.log('logInSideEffect > errorCode: ' + errorCode);
+
+                            // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                            return of(
+                                GlobalActions.LogInEndFailure({
+                                    logInResultFailurePayload: errorCode, // Ejemplo: LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE
+                                }),
+                            );
+
+                        }
+
+                    }),
+                    catchError(errorResponse => {
+
+                        // Error handling code...
+
+                        // Mostrar el error en la consola
+                        console.log('logInSideEffect - errorResponse:');
+                        console.log(errorResponse);
+
+                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                        return of(
+                            GlobalActions.LogInEndFailure({
+                                logInResultFailurePayload: 'LOGIN_ERROR_HTTP_REQUEST_FAILED',
+                            }),
+                        );
+
+                    }),
+                );
+
+        }),
+
+    ));
+
+
+
 }
