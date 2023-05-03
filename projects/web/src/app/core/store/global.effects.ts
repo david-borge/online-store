@@ -466,8 +466,9 @@ export class GlobalEffects {
 
             // Borrar cookies "authToken" y "authExpirationDate"
             if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
-                this.cookiesService.eliminarUnaCookie("authToken");
+                this.cookiesService.eliminarUnaCookie("authEmail");
                 this.cookiesService.eliminarUnaCookie("authExpirationDate");
+                this.cookiesService.eliminarUnaCookie("authToken");
             }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction

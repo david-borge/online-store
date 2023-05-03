@@ -28,7 +28,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   loggedIn: boolean = true;
   authMode: 'SIGNUP' | 'LOGIN' = 'SIGNUP';
   sectionHeaderTitleText: string = 'Sign Up';
-  authCookieValueLoaded: boolean = false;
+  authEmailAndauthExpirationDateAndauthTokenCookiesValuesLoaded: boolean = false;
   imagesInThisPageLoaded: boolean = true; // TODO:
   accountPagePreviouslyVisited: boolean = false; // TODO:
   currentlyInThePageIEnteredFrom: boolean = false; // TODO:
@@ -57,7 +57,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
       // authTokenCookieValue: no mostrar el contenido hasta que authTokenCookieValue no sea null
       // Esto es importante porque, si no, el prerender es del formulario de Sign Up / Log In y se muestra durante un instante antes de mostrar las secciones correspondientes a que el usuario está logueado
-      this.authCookieValueLoaded = (globalReducerData.authTokenCookieValue != null);
+      this.authEmailAndauthExpirationDateAndauthTokenCookiesValuesLoaded = (globalReducerData.authEmailCookieValue != null) && (globalReducerData.authExpirationDateCookieValue != null) && (globalReducerData.authTokenCookieValue != null);
 
       // User (firstName, lastName, email)
       this.user = globalReducerData.user;
