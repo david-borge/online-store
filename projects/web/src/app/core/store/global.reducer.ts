@@ -5,6 +5,7 @@
 import { createReducer, on } from "@ngrx/store";
 
 import * as GlobalActions from "./global.actions";  // Importar todo y guardarlo en el alias GlobalActions
+import { UserInterface } from "../models/user.interface";
 
 
 
@@ -18,6 +19,7 @@ export interface GlobalReducerStateInterface {
   authCookieValue: string | null;
   authMode: 'SIGNUP' | 'LOGIN';
   signUpLogInResult: string;
+  user: UserInterface;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -32,6 +34,7 @@ const initialState: GlobalReducerStateInterface = {
   authCookieValue: null,
   authMode: 'SIGNUP',
   signUpLogInResult: '',
+  user: {} as UserInterface,
 }
 
 
@@ -169,7 +172,7 @@ export const globalReducer = createReducer(
 
 
     /** Set Logged In To True Action **/
-    on(GlobalActions.SetLoggedInToTrue,
+    /* on(GlobalActions.SetLoggedInToTrue,
       (state, action) => ({
 
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
@@ -179,7 +182,7 @@ export const globalReducer = createReducer(
 
         loggedIn: true,
           
-      })),
+      })), */
 
 
 
@@ -252,6 +255,11 @@ export const globalReducer = createReducer(
         ...state,
 
         loggedIn: true,
+        user: {
+          firstName: action.firstNamePayload,
+          lastName: action.lastNamePayload,
+          email: action.emailPayload,
+        } as UserInterface,
           
       })),
 

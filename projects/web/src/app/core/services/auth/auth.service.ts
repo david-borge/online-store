@@ -61,7 +61,14 @@ export class AuthService {
 
     // - Si la fecha no está caducada (ahora es menor que la fecha de la cookie): Global Store: loggedIn = true
     if ( !fechaCookieAuthCaducada ) {
-      this.store.dispatch( GlobalActions.SetLoggedInToTrue() );
+
+      this.store.dispatch( GlobalActions.LogInStart({
+        emailPayload: 'david.borge.olmedo@gmail.com',
+        passwordPayload: '1234567890',
+        lastLoginFullDatePayload: '',
+      }) );
+      // [No usado] this.store.dispatch( GlobalActions.SetLoggedInToTrue() );
+
     }
 
   }
@@ -105,6 +112,8 @@ export class AuthService {
         return 'There was a problem signing up. Please try again.';
 
       case 'LOGIN_ERROR_HTTP_REQUEST_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > catch (Exception $e)
+      case 'LOGIN_ERROR_LASTLOGINFULLDATE_UPDATE_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_LASTLOGINFULLDATE_UPDATE_FAILED',
+      case 'LOGIN_ERROR_GET_USER_DATA_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_GET_USER_DATA_FAILED',
         return 'There was a problem loggin in. Please try again.';
     
       case 'SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > signup.php > exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
@@ -116,7 +125,7 @@ export class AuthService {
       case 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE',
       case 'LOGIN_ERROR_PASSWORD_IS_NOT_CORRECT': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => true,
         return 'El email o la contraseña no es correcto.'; // Por temas de privacidad y seguridad, no digo al usuario que si el problema es que el email no existe o si es que la contraseña no es correcta
-
+      
       case 'SQLSTATE[23000]': // Ver https://github.com/david-borge/online-store-backend > signup.php > catch (Exception $e)
         return 'Este email ya existe.';
 

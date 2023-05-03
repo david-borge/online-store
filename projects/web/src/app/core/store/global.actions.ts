@@ -144,12 +144,12 @@ export const GetAuthCookieValueEnd = createAction(
 
 
 /** Set Logged In To True Action **/
-export const SetLoggedInToTrue = createAction(
+/* export const SetLoggedInToTrue = createAction(
 
   // Tipo de la Action
   '[Global] Set Logged In To True',
 
-);
+); */
 
 
 
@@ -225,6 +225,14 @@ export const SignUpLogInEndSuccess = createAction(
 
   // Tipo de la Action
   '[Global] Log In End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    firstNamePayload: string,
+    lastNamePayload: string,
+    emailPayload: string,
+  }>(),
 
 );
 

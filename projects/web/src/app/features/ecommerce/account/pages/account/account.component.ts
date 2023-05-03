@@ -8,6 +8,8 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
 
 import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
+import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
+
 
 @Component({
   selector: 'app-account',
@@ -30,6 +32,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   imagesInThisPageLoaded: boolean = true; // TODO:
   accountPagePreviouslyVisited: boolean = false; // TODO:
   currentlyInThePageIEnteredFrom: boolean = false; // TODO:
+  user: UserInterface = {} as UserInterface;
   numberOfOrders :number = 2; // TODO:
 
 
@@ -55,6 +58,9 @@ export class AccountComponent implements OnInit, OnDestroy {
       // authCookieValue: no mostrar el contenido hasta que authCookieValue no sea null
       // Esto es importante porque, si no, el prerender es del formulario de Sign Up / Log In y se muestra durante un instante antes de mostrar las secciones correspondientes a que el usuario está logueado
       this.authCookieValueLoaded = (globalReducerData.authCookieValue != null);
+
+      // User (firstName, lastName, email)
+      this.user = globalReducerData.user;
 
     });
 

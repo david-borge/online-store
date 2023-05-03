@@ -35,12 +35,15 @@
                         
                         <!-- Profile Information Container - Name -->
                         <div class="profile-information-container--name-container">
-                            <h2>Leslie Flores</h2>
+                            <h2>{{user.firstName}} {{user.lastName}}</h2>
+                            <!-- Ejemplo: Leslie Flores -->
                         </div>
                         
                         <!-- Profile Information Container - Email -->
                         <div class="profile-information-container--email-container">
-                            <div class="profile-information-container--email">leslieflores@gmail.com</div>
+                            <!-- FIXME: límite de caracteres (con elipsis de CSS?) -->
+                            <div class="profile-information-container--email">{{user.email}}</div>
+                            <!-- Ejemplo: leslieflores@gmail.com -->
                         </div>
                         
                     </div>

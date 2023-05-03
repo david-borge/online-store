@@ -312,8 +312,8 @@ export class GlobalEffects {
                     switchMap(logInHttpRequestResponseData => {
 
                         // TODO: Comprobación
-                        // console.log('logInStartSideEffect - logInHttpRequestResponseData:');
-                        // console.log(logInHttpRequestResponseData);
+                        console.log('logInStartSideEffect - logInHttpRequestResponseData:');
+                        console.log(logInHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
 
@@ -340,7 +340,11 @@ export class GlobalEffects {
                                 // Procesar datos si es necesario...
     
                                 // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                                GlobalActions.SignUpLogInEndSuccess(), // loggedIn a true y crear cookie "auth"
+                                GlobalActions.SignUpLogInEndSuccess({
+                                    firstNamePayload: logInHttpRequestResponseData.firstName,
+                                    lastNamePayload: logInHttpRequestResponseData.lastName,
+                                    emailPayload: logInStartActionData.emailPayload,
+                                }), // loggedIn a true y crear cookie "auth"
     
                             );
 
