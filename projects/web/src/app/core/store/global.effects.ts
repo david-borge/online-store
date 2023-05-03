@@ -153,8 +153,9 @@ export class GlobalEffects {
 
                 // Leer valor de cookie
                 return of( GlobalActions.GetAuthAndExpirationDateCookiesValuesEnd({
-                    authCookieValuePayload: this.cookiesService.leerUnaCookie( "authExpirationDate" ),
-                    authExpirationDateCookiePayload: '',
+                    authEmailCookieValuePayload:     this.cookiesService.leerUnaCookie( "authEmail" ),
+                    authTokenCookieValuePayload:     this.cookiesService.leerUnaCookie( "authToken" ),
+                    authExpirationDateCookiePayload: this.cookiesService.leerUnaCookie( "authExpirationDate" ),
                 }) );
 
             }
@@ -234,7 +235,7 @@ export class GlobalEffects {
                                     emailPayload: signUpStartActionData.emailPayload,
                                     passwordPayload: signUpStartActionData.passwordPayload,
                                     lastLoginFullDatePayload: signUpStartActionData.lastLoginFullDatePayload,
-                                    token: signUpStartActionData.tokenPayload,
+                                    tokenPayload: signUpStartActionData.tokenPayload,
                                 }),
     
                             );
@@ -307,7 +308,7 @@ export class GlobalEffects {
                     logInStartActionData.emailPayload,
                     logInStartActionData.passwordPayload,
                     logInStartActionData.lastLoginFullDatePayload,
-                    logInStartActionData.token,
+                    logInStartActionData.tokenPayload,
                 )
                 .pipe(
 
@@ -350,7 +351,7 @@ export class GlobalEffects {
                                     firstNamePayload: logInHttpRequestResponseData.firstName,
                                     lastNamePayload: logInHttpRequestResponseData.lastName,
                                     emailPayload: logInStartActionData.emailPayload,
-                                    tokenPayload: logInStartActionData.token,
+                                    tokenPayload: logInStartActionData.tokenPayload,
                                 }), // loggedIn a true y crear cookies "authToken" y "authExpirationDate"
     
                             );
@@ -407,7 +408,7 @@ export class GlobalEffects {
 
 
     // Side Effect de la Sign Up Log In Action End Success Action de Global
-    // Crear la cookie auth
+    // Crear las cookies "authToken" y "authExpirationDate"
     signUpLogInEndSuccessSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
@@ -426,8 +427,10 @@ export class GlobalEffects {
             // Guardar cookies "authToken" y "authExpirationDate" con el valor del token de autentificación (generado aleatoriamente) y de la fecha de expiración (ahora + 7 días), ambas con una duración de 7 días
             // Nota: hay que almacenarlo en dos cookies distintas porque desde JS no se puede leer la fecha de expiración de una cookie
             if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
-                this.cookiesService.ponerCookie("authToken", logInEndSuccessActionData.tokenPayload, 7);
-                this.cookiesService.ponerCookie("authExpirationDate", (this.addDays(new Date(), 7)).toString(), 7);
+                let logInDuration = 7; // En días (los que yo quiera)
+                this.cookiesService.ponerCookie("authEmail", logInEndSuccessActionData.emailPayload, logInDuration);
+                this.cookiesService.ponerCookie("authToken", logInEndSuccessActionData.tokenPayload, logInDuration);
+                this.cookiesService.ponerCookie("authExpirationDate", (this.addDays(new Date(), logInDuration)).toString(), logInDuration);
             }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction

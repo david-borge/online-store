@@ -136,7 +136,8 @@ export const GetAuthAndExpirationDateCookiesValuesEnd = createAction(
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    authCookieValuePayload: string | null,
+    authEmailCookieValuePayload: string | null,
+    authTokenCookieValuePayload: string | null,
     authExpirationDateCookiePayload: string | null,
   }>(),
 
@@ -216,7 +217,7 @@ export const LogInStart = createAction(
     emailPayload: string,
     passwordPayload: string,
     lastLoginFullDatePayload: string,
-    token: string,
+    tokenPayload: string,
   }>(),
 
 );

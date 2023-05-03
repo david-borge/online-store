@@ -16,7 +16,8 @@ export interface GlobalReducerStateInterface {
   activeNavigationItem: string | null;
   lastActiveMainPage: string | null;
   loggedIn: boolean;
-  authTokenCookieValue: string | null;
+  authEmailCookieValue: string | null;
+  authTokenCookieValue: string | null; // El authToken cambia cada vez que se inicia y se cierra la sesión. Es único para cada usuario.
   authExpirationDateCookieValue: string | null;
   authMode: 'SIGNUP' | 'LOGIN';
   signUpLogInResult: string;
@@ -32,6 +33,7 @@ const initialState: GlobalReducerStateInterface = {
   activeNavigationItem: '',
   lastActiveMainPage: '',
   loggedIn: false,
+  authEmailCookieValue: null,
   authTokenCookieValue: null,
   authExpirationDateCookieValue: null,
   authMode: 'SIGNUP',
@@ -151,7 +153,8 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        authTokenCookieValue: action.authCookieValuePayload,
+        authEmailCookieValue: action.authEmailCookieValuePayload,
+        authTokenCookieValue: action.authTokenCookieValuePayload,
         authExpirationDateCookieValue: action.authExpirationDateCookiePayload,
           
       })),

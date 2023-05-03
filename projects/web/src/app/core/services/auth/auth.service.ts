@@ -29,6 +29,8 @@ export class AuthService {
   checkIfUserIsLoggedIn(): void {
 
     let fechaCookieAuthCaducada: boolean = true;
+    let authEmailCookieValue: string | null = '';
+    let authTokenCookieValue: string | null = '';
 
     // - Leer la cookie “auth” y guardar su valor en la Global Store
     this.store.dispatch( GlobalActions.GetAuthTokenAndAuthExpirationDateCookiesValuesStart() );
@@ -39,20 +41,24 @@ export class AuthService {
       (globalReducerData) => {
 
         // Comprobación
-        console.log('Fecha actual: ' + new Date());
-        console.log('authTokenCookieValue: ' + globalReducerData.authTokenCookieValue);
+        // console.log('Fecha actual: ' + new Date());
+        // console.log('authTokenCookieValue: ' + globalReducerData.authTokenCookieValue);
+        // console.log('authExpirationDateCookieValue: ' + globalReducerData.authExpirationDateCookieValue);
 
-        // Si authTokenCookieValue no es ""
-        if ( globalReducerData.authTokenCookieValue != null && globalReducerData.authTokenCookieValue != '' ) {
+        // Si authEmailCookieValue, authExpirationDateCookieValue y authTokenCookieValue no son ""
+        if ( globalReducerData.authEmailCookieValue != null && globalReducerData.authEmailCookieValue != '' && globalReducerData.authExpirationDateCookieValue != null && globalReducerData.authExpirationDateCookieValue != '' && globalReducerData.authTokenCookieValue != null && globalReducerData.authTokenCookieValue != '' ) {
           
           // Si la fecha no está caducada (ahora es menor que la fecha de la cookie)
-          if ( new Date() < new Date(globalReducerData.authTokenCookieValue) ) {
+          if ( new Date() < new Date(globalReducerData.authExpirationDateCookieValue) ) {
             
             // Comprobación
-            // console.log('La fecha de la cookie "authExpirationDate" no está caducada (ahora es menor que la fecha de la cookie).');
+            console.log('La fecha de la cookie "authExpirationDate" no está caducada (ahora es menor que la fecha de la cookie).');
 
             // Comprobar si la fecha está caducada
             fechaCookieAuthCaducada = false;
+
+            authEmailCookieValue = globalReducerData.authEmailCookieValue;
+            authTokenCookieValue = globalReducerData.authTokenCookieValue;
 
           }
 
@@ -65,10 +71,10 @@ export class AuthService {
     if ( !fechaCookieAuthCaducada ) {
 
       this.store.dispatch( GlobalActions.LogInStart({
-        emailPayload: 'david.borge.olmedo@gmail.com',
+        emailPayload: authEmailCookieValue,
         passwordPayload: '',
         lastLoginFullDatePayload: '',
-        token: '',
+        tokenPayload: authTokenCookieValue,
       }) );
       // [No usado] this.store.dispatch( GlobalActions.SetLoggedInToTrue() );
 
@@ -99,7 +105,7 @@ export class AuthService {
 
 
   // Authentication - Log In (Iniciar sesión)
-  logIn(email: string, password: string, lastLoginFullDate: string) {
+  logIn(email: string, password: string, lastLoginFullDate: string, token: string) {
 
     // Comprobación
     // console.log('AuthService > Log In');
@@ -108,7 +114,7 @@ export class AuthService {
       emailPayload: email,
       passwordPayload: password,
       lastLoginFullDatePayload: lastLoginFullDate,
-      token: '',
+      tokenPayload: token, // El authToken cambia cada vez que se inicia y se cierra la sesión. Es único para cada usuario.
     }) );
 
   }
