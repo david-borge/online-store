@@ -23,31 +23,33 @@ export class AuthService {
     private store: Store<fromApp.AppState>,
   ) {}
 
+
+
   // Authentication - Comprobar si el usuario está logueado (leer la cookie “auth”, guardar su valor en la Global Store y ajustar el valor de loggedIn de la Global Store acordemente)
   checkIfUserIsLoggedIn(): void {
 
     let fechaCookieAuthCaducada: boolean = true;
 
     // - Leer la cookie “auth” y guardar su valor en la Global Store
-    this.store.dispatch( GlobalActions.GetAuthCookieValueStart() );
+    this.store.dispatch( GlobalActions.GetAuthTokenAndAuthExpirationDateCookiesValuesStart() );
 
-    // - Comprobar si estoy logueado en la app: comprobar el valor de Global Store > authCookieValue
-    // Si authCookieValue no es "" y si la fecha no está caducada (ahora es menor que la fecha de la cookie): Global Store: loggedIn = true
+    // - Comprobar si estoy logueado en la app: comprobar el valor de Global Store > authTokenCookieValue
+    // Si authTokenCookieValue no es "" y si la fecha no está caducada (ahora es menor que la fecha de la cookie): Global Store: loggedIn = true
     this.store.select("globalReducerObservable").pipe(take(1)).subscribe(
       (globalReducerData) => {
 
         // Comprobación
-        // console.log('Fecha actual: ' + new Date());
-        // console.log('authCookieValue: ' + globalReducerData.authCookieValue);
+        console.log('Fecha actual: ' + new Date());
+        console.log('authTokenCookieValue: ' + globalReducerData.authTokenCookieValue);
 
-        // Si authCookieValue no es ""
-        if ( globalReducerData.authCookieValue != null && globalReducerData.authCookieValue != '' ) {
+        // Si authTokenCookieValue no es ""
+        if ( globalReducerData.authTokenCookieValue != null && globalReducerData.authTokenCookieValue != '' ) {
           
           // Si la fecha no está caducada (ahora es menor que la fecha de la cookie)
-          if ( new Date() < new Date(globalReducerData.authCookieValue) ) {
+          if ( new Date() < new Date(globalReducerData.authTokenCookieValue) ) {
             
             // Comprobación
-            // console.log('La fecha de la cookie "auth" no está caducada (ahora es menor que la fecha de la cookie).');
+            // console.log('La fecha de la cookie "authExpirationDate" no está caducada (ahora es menor que la fecha de la cookie).');
 
             // Comprobar si la fecha está caducada
             fechaCookieAuthCaducada = false;
@@ -64,8 +66,9 @@ export class AuthService {
 
       this.store.dispatch( GlobalActions.LogInStart({
         emailPayload: 'david.borge.olmedo@gmail.com',
-        passwordPayload: '1234567890',
+        passwordPayload: '',
         lastLoginFullDatePayload: '',
+        token: '',
       }) );
       // [No usado] this.store.dispatch( GlobalActions.SetLoggedInToTrue() );
 
@@ -73,8 +76,10 @@ export class AuthService {
 
   }
 
+
+
   // Authentication - Sign Up (Registro)
-  signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string) {
+  signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string, token: string) {
     
     // Comprobación
     // console.log('AuthService > Sign Up');
@@ -86,9 +91,12 @@ export class AuthService {
       passwordPayload: password,
       signUpFullDatePayload: signUpFullDate,
       lastLoginFullDatePayload: lastLoginFullDate,
+      tokenPayload: token,
     }) );
 
   }
+
+
 
   // Authentication - Log In (Iniciar sesión)
   logIn(email: string, password: string, lastLoginFullDate: string) {
@@ -100,9 +108,12 @@ export class AuthService {
       emailPayload: email,
       passwordPayload: password,
       lastLoginFullDatePayload: lastLoginFullDate,
+      token: '',
     }) );
 
   }
+
+
 
   authMessages(messageCode: string): string {
 
@@ -136,11 +147,26 @@ export class AuthService {
 
   }
 
+
+
   logOut() {
 
-    // Log Out: borrar cookie "auth" y Global Store > loggedIn = false
+    // Log Out: borrar cookies "authToken" y "authExpirationDate" y Global Store > loggedIn = false
     this.store.dispatch( GlobalActions.LogOut() );
 
   }
+
+
+
+  // Generar token de autentificación
+  generateToken() {
+    return this.rand() + this.rand(); // to make it longer
+  };
+
+  rand() {
+    return Math.random().toString(36).substr(2); // remove `0.`
+  };
   
+
+
 }

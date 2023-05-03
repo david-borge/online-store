@@ -7,5 +7,6 @@ export interface UserInterface {
     password          : string;
     signUpFullDate    : string;
     lastLoginFullDate : string;
+    token             : string;
 
 }

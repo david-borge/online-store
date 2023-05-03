@@ -53,7 +53,7 @@ export class DataStorageService {
 
 
 
-  signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string) {
+  signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string, token: string) {
 
     // Comprobación
     // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
@@ -67,6 +67,7 @@ export class DataStorageService {
         password: password,
         signUpFullDate: signUpFullDate,
         lastLoginFullDate: lastLoginFullDate,
+        token: token,
       },
       {})
       // .pipe()
@@ -77,7 +78,7 @@ export class DataStorageService {
 
 
   // Log In // TODO: continuar aquí...
-  logIn(email: string, password: string, lastLoginFullDate: string) {
+  logIn(email: string, password: string, lastLoginFullDate: string, token: string) {
     
     // Comprobación
     // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
@@ -88,6 +89,7 @@ export class DataStorageService {
         email: email,
         password: password,
         lastLoginFullDate: lastLoginFullDate,
+        token: token,
       },
       {})
       // .pipe()

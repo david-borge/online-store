@@ -38,7 +38,7 @@ export class CookiesService {
 
 
 
-  // Leer Cookie
+  // Leer valor de una Cookie
   leerUnaCookie(nombre: string)  //Si buscamos una cookie que no existe, no saca nada en el alert. Funci�n sacada de w3schools.com
   {
     var resultado = "";
@@ -76,5 +76,5 @@ export class CookiesService {
   }
 
 
-
+  
 }

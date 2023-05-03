@@ -115,28 +115,29 @@ export const SetCookieKeyValue = createAction(
 
 
 
-/** Get Auth Cookie Value Start Action **/
-// Side Effects asociados: getAuthCookieValueSideEffect
-export const GetAuthCookieValueStart = createAction(
+/** Get Auth Token And Auth Expiration Date Cookies Values Start Action **/
+// Side Effects asociados: getAuthAndExpirationDateCookiesValuesSideEffect
+export const GetAuthTokenAndAuthExpirationDateCookiesValuesStart = createAction(
 
   // Tipo de la Action
-  '[Global] Get Auth Cookie Value Start',
+  '[Global] Get Auth Token And Auth Expiration Date Cookies Values Start',
   
 );
 
 
 
-/** Get Auth Cookie Value End Action **/
-// Side Effects asociados: getAuthCookieValueSideEffect
-export const GetAuthCookieValueEnd = createAction(
+/** Get Auth And Expiration Date Cookies Values End Action **/
+// Side Effects asociados: getAuthAndExpirationDateCookiesValuesSideEffect
+export const GetAuthAndExpirationDateCookiesValuesEnd = createAction(
 
   // Tipo de la Action
-  '[Global] Get Auth Cookie Value End',
+  '[Global] Get Auth And Expiration Date Cookies Values End',
   
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
     authCookieValuePayload: string | null,
+    authExpirationDateCookiePayload: string | null,
   }>(),
 
 );
@@ -179,6 +180,7 @@ export const SignUpStart = createAction(
     passwordPayload: string,
     signUpFullDatePayload: string,
     lastLoginFullDatePayload: string,
+    tokenPayload: string,
   }>(),
 
 );
@@ -214,6 +216,7 @@ export const LogInStart = createAction(
     emailPayload: string,
     passwordPayload: string,
     lastLoginFullDatePayload: string,
+    token: string,
   }>(),
 
 );
@@ -232,6 +235,7 @@ export const SignUpLogInEndSuccess = createAction(
     firstNamePayload: string,
     lastNamePayload: string,
     emailPayload: string,
+    tokenPayload: string,
   }>(),
 
 );
@@ -265,7 +269,7 @@ export const EmptySignUpLogInResult = createAction(
 
 
 /** Log Out Action **/
-// Log Out: borrar cookie "auth" y Global Store > loggedIn = false
+// Log Out: borrar cookie "authToken" y "authExpirationDate" y Global Store > loggedIn = false
 // Side Effects asociados: logOutSideEffect
 export const LogOut = createAction(
 

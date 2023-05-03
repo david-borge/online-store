@@ -14,6 +14,7 @@ import * as GlobalActions from './global.actions';
 
 import { CookiesService } from '../services/cookies/cookies.service';
 import { DataStorageService } from '../services/data-storage/data-storage.service';
+import { AuthService } from '../services/auth/auth.service';
 
 
 
@@ -30,6 +31,7 @@ export class GlobalEffects {
         @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
         private cookiesService: CookiesService,
         private dataStorageService: DataStorageService,
+        private authService: AuthService,
     ) { }
 
 
@@ -128,12 +130,12 @@ export class GlobalEffects {
 
 
 
-    // Side Effect de la Get Auth Cookie Value Start Action de Global
-    getAuthCookieValueSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+    // Side Effect de la Get Auth Token And Auth Expiration Date Cookies Values Start Action de Global
+    getAuthAndExpirationDateCookiesValuesSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
-        ofType(GlobalActions.GetAuthCookieValueStart),
+        ofType(GlobalActions.GetAuthTokenAndAuthExpirationDateCookiesValuesStart),
 
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
         switchMap( (getAuthCookieValueActionData) => {
@@ -147,11 +149,12 @@ export class GlobalEffects {
                 // console.log(getAuthCookieValueActionData);
 
                 // Comprobación
-                // console.log('Value of cookie "auth": ' + this.cookiesService.leerUnaCookie( "auth" ));
+                // console.log('Value of cookie "authExpirationDate": ' + this.cookiesService.leerUnaCookie( "authExpirationDate" ));
 
                 // Leer valor de cookie
-                return of( GlobalActions.GetAuthCookieValueEnd({
-                    authCookieValuePayload: this.cookiesService.leerUnaCookie( "auth" ),
+                return of( GlobalActions.GetAuthAndExpirationDateCookiesValuesEnd({
+                    authCookieValuePayload: this.cookiesService.leerUnaCookie( "authExpirationDate" ),
+                    authExpirationDateCookiePayload: '',
                 }) );
 
             }
@@ -188,6 +191,7 @@ export class GlobalEffects {
                     signUpStartActionData.passwordPayload,
                     signUpStartActionData.signUpFullDatePayload,
                     signUpStartActionData.lastLoginFullDatePayload,
+                    signUpStartActionData.tokenPayload,
                 )
                 .pipe(
 
@@ -198,8 +202,8 @@ export class GlobalEffects {
                     switchMap(signUpHttpRequestResponseData => {
 
                         // Comprobación
-                        // console.log('signUpStartSideEffect - signUpHttpRequestResponseData:');
-                        // console.log(signUpHttpRequestResponseData);
+                        console.log('signUpStartSideEffect - signUpHttpRequestResponseData:');
+                        console.log(signUpHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
 
@@ -230,6 +234,7 @@ export class GlobalEffects {
                                     emailPayload: signUpStartActionData.emailPayload,
                                     passwordPayload: signUpStartActionData.passwordPayload,
                                     lastLoginFullDatePayload: signUpStartActionData.lastLoginFullDatePayload,
+                                    token: signUpStartActionData.tokenPayload,
                                 }),
     
                             );
@@ -302,6 +307,7 @@ export class GlobalEffects {
                     logInStartActionData.emailPayload,
                     logInStartActionData.passwordPayload,
                     logInStartActionData.lastLoginFullDatePayload,
+                    logInStartActionData.token,
                 )
                 .pipe(
 
@@ -344,7 +350,8 @@ export class GlobalEffects {
                                     firstNamePayload: logInHttpRequestResponseData.firstName,
                                     lastNamePayload: logInHttpRequestResponseData.lastName,
                                     emailPayload: logInStartActionData.emailPayload,
-                                }), // loggedIn a true y crear cookie "auth"
+                                    tokenPayload: logInStartActionData.token,
+                                }), // loggedIn a true y crear cookies "authToken" y "authExpirationDate"
     
                             );
 
@@ -416,9 +423,11 @@ export class GlobalEffects {
             // console.log('logInEndSuccessActionData:');
             // console.log(logInEndSuccessActionData);
 
-            // Guardar cookie "auth" con el valor de la fecha actual más 7 días y duración de 7 días
+            // Guardar cookies "authToken" y "authExpirationDate" con el valor del token de autentificación (generado aleatoriamente) y de la fecha de expiración (ahora + 7 días), ambas con una duración de 7 días
+            // Nota: hay que almacenarlo en dos cookies distintas porque desde JS no se puede leer la fecha de expiración de una cookie
             if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
-                this.cookiesService.ponerCookie("auth", (this.addDays(new Date(), 7)).toString(), 7);
+                this.cookiesService.ponerCookie("authToken", logInEndSuccessActionData.tokenPayload, 7);
+                this.cookiesService.ponerCookie("authExpirationDate", (this.addDays(new Date(), 7)).toString(), 7);
             }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction
@@ -437,7 +446,6 @@ export class GlobalEffects {
 
 
     // Side Effect de la Log Out Action de Global
-    // Crear la cookie auth
     logOutSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
@@ -453,9 +461,10 @@ export class GlobalEffects {
             // console.log('logOutActionData:');
             // console.log(logOutActionData);
 
-            // Borrar cookie "auth"
+            // Borrar cookies "authToken" y "authExpirationDate"
             if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
-                this.cookiesService.eliminarUnaCookie("auth");
+                this.cookiesService.eliminarUnaCookie("authToken");
+                this.cookiesService.eliminarUnaCookie("authExpirationDate");
             }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction

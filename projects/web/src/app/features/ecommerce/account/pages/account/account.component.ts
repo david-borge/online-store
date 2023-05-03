@@ -55,9 +55,9 @@ export class AccountComponent implements OnInit, OnDestroy {
       // Section Header Title Text (based on the authMode)
       this.sectionHeaderTitleText = ( (this.authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' );
 
-      // authCookieValue: no mostrar el contenido hasta que authCookieValue no sea null
+      // authTokenCookieValue: no mostrar el contenido hasta que authTokenCookieValue no sea null
       // Esto es importante porque, si no, el prerender es del formulario de Sign Up / Log In y se muestra durante un instante antes de mostrar las secciones correspondientes a que el usuario está logueado
-      this.authCookieValueLoaded = (globalReducerData.authCookieValue != null);
+      this.authCookieValueLoaded = (globalReducerData.authTokenCookieValue != null);
 
       // User (firstName, lastName, email)
       this.user = globalReducerData.user;

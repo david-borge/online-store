@@ -16,7 +16,8 @@ export interface GlobalReducerStateInterface {
   activeNavigationItem: string | null;
   lastActiveMainPage: string | null;
   loggedIn: boolean;
-  authCookieValue: string | null;
+  authTokenCookieValue: string | null;
+  authExpirationDateCookieValue: string | null;
   authMode: 'SIGNUP' | 'LOGIN';
   signUpLogInResult: string;
   user: UserInterface;
@@ -31,7 +32,8 @@ const initialState: GlobalReducerStateInterface = {
   activeNavigationItem: '',
   lastActiveMainPage: '',
   loggedIn: false,
-  authCookieValue: null,
+  authTokenCookieValue: null,
+  authExpirationDateCookieValue: null,
   authMode: 'SIGNUP',
   signUpLogInResult: '',
   user: {} as UserInterface,
@@ -139,9 +141,9 @@ export const globalReducer = createReducer(
 
 
 
-    /** Get Auth Cookie Value Start Action **/
-    // Side Effects asociados: getAuthCookieValueSideEffect
-    on(GlobalActions.GetAuthCookieValueEnd,
+    /** Get Auth And Expiration Date Cookies Values End Action **/
+    // Side Effects asociados: getAuthAndExpirationDateCookiesValuesSideEffect
+    on(GlobalActions.GetAuthAndExpirationDateCookiesValuesEnd,
       (state, action) => ({
 
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
@@ -149,14 +151,15 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        authCookieValue: action.authCookieValuePayload,
+        authTokenCookieValue: action.authCookieValuePayload,
+        authExpirationDateCookieValue: action.authExpirationDateCookiePayload,
           
       })),
 
 
 
     /** Log Out Action **/
-    // Log Out: borrar cookie "auth" y Global Store > loggedIn = false
+    // Log Out: borrar cookies "authToken" y "authExpirationDate" y Global Store > loggedIn = false
     // Side Effects asociados: deleteCookieSideEffect
     on(GlobalActions.LogOut,
       (state, action) => ({
