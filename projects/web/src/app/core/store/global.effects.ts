@@ -156,6 +156,7 @@ export class GlobalEffects {
                     authEmailCookieValuePayload:     this.cookiesService.leerUnaCookie( "authEmail" ),
                     authTokenCookieValuePayload:     this.cookiesService.leerUnaCookie( "authToken" ),
                     authExpirationDateCookiePayload: this.cookiesService.leerUnaCookie( "authExpirationDate" ),
+                    signUpLogInResultPayload:        ( (this.cookiesService.leerUnaCookie( "authEmail" ) == '') ? 'notLoggedIn' : '' )
                 }) );
 
             }
@@ -203,8 +204,8 @@ export class GlobalEffects {
                     switchMap(signUpHttpRequestResponseData => {
 
                         // Comprobación
-                        console.log('signUpStartSideEffect - signUpHttpRequestResponseData:');
-                        console.log(signUpHttpRequestResponseData);
+                        // console.log('signUpStartSideEffect - signUpHttpRequestResponseData:');
+                        // console.log(signUpHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
 

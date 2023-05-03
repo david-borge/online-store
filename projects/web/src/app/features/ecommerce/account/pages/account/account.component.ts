@@ -28,10 +28,10 @@ export class AccountComponent implements OnInit, OnDestroy {
   loggedIn: boolean = true;
   authMode: 'SIGNUP' | 'LOGIN' = 'SIGNUP';
   sectionHeaderTitleText: string = 'Sign Up';
-  authEmailAndauthExpirationDateAndauthTokenCookiesValuesLoaded: boolean = false;
   imagesInThisPageLoaded: boolean = true; // TODO:
   accountPagePreviouslyVisited: boolean = false; // TODO:
   currentlyInThePageIEnteredFrom: boolean = false; // TODO:
+  signUpLogInResult: string = '';
   user: UserInterface = {} as UserInterface;
   numberOfOrders :number = 2; // TODO:
 
@@ -55,9 +55,8 @@ export class AccountComponent implements OnInit, OnDestroy {
       // Section Header Title Text (based on the authMode)
       this.sectionHeaderTitleText = ( (this.authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' );
 
-      // authTokenCookieValue: no mostrar el contenido hasta que authTokenCookieValue no sea null
-      // Esto es importante porque, si no, el prerender es del formulario de Sign Up / Log In y se muestra durante un instante antes de mostrar las secciones correspondientes a que el usuario está logueado
-      this.authEmailAndauthExpirationDateAndauthTokenCookiesValuesLoaded = (globalReducerData.authEmailCookieValue != null) && (globalReducerData.authExpirationDateCookieValue != null) && (globalReducerData.authTokenCookieValue != null);
+      // signUpLogInResult
+      this.signUpLogInResult = globalReducerData.signUpLogInResult;
 
       // User (firstName, lastName, email)
       this.user = globalReducerData.user;

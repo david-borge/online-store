@@ -139,6 +139,7 @@ export const GetAuthAndExpirationDateCookiesValuesEnd = createAction(
     authEmailCookieValuePayload: string | null,
     authTokenCookieValuePayload: string | null,
     authExpirationDateCookiePayload: string | null,
+    signUpLogInResultPayload: string,
   }>(),
 
 );

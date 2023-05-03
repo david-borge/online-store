@@ -156,6 +156,7 @@ export const globalReducer = createReducer(
         authEmailCookieValue: action.authEmailCookieValuePayload,
         authTokenCookieValue: action.authTokenCookieValuePayload,
         authExpirationDateCookieValue: action.authExpirationDateCookiePayload,
+        signUpLogInResult: action.signUpLogInResultPayload,
           
       })),
 
@@ -261,6 +262,7 @@ export const globalReducer = createReducer(
         ...state,
 
         loggedIn: true,
+        signUpLogInResult: 'true',
         user: {
           firstName: action.firstNamePayload,
           lastName: action.lastNamePayload,
@@ -295,7 +297,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        signUpLogInResult: '',
+        signUpLogInResult: 'notLoggedIn',
           
       })),
 
