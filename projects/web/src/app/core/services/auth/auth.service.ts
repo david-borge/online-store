@@ -52,7 +52,7 @@ export class AuthService {
           if ( new Date() < new Date(globalReducerData.authExpirationDateCookieValue) ) {
             
             // Comprobación
-            console.log('La fecha de la cookie "authExpirationDate" no está caducada (ahora es menor que la fecha de la cookie).');
+            // console.log('La fecha de la cookie "authExpirationDate" no está caducada (ahora es menor que la fecha de la cookie).');
 
             // Comprobar si la fecha está caducada
             fechaCookieAuthCaducada = false;
@@ -128,22 +128,26 @@ export class AuthService {
       case 'SIGNUP_ERROR_HTTP_REQUEST_FAILED':
         return 'There was a problem signing up. Please try again.';
 
-      case 'LOGIN_ERROR_HTTP_REQUEST_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > catch (Exception $e)
+      case 'LOGIN_ERROR_HTTP_REQUEST_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: catch (Exception $e)
       case 'LOGIN_ERROR_LASTLOGINFULLDATE_UPDATE_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_LASTLOGINFULLDATE_UPDATE_FAILED',
       case 'LOGIN_ERROR_GET_USER_DATA_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_GET_USER_DATA_FAILED',
         return 'There was a problem loggin in. Please try again.';
     
-      case 'SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > signup.php > exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
+      case 'SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > signup.php > Línea: exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
         return 'The Sign Up API didn\'t recieve its payload.';
     
-      case 'LOGIN_ERROR_API_DIDNT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > login.php > exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
+      case 'LOGIN_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
         return 'The Log In API didn\'t recieve its payload.';
+    
+      case 'LOGIN_ERROR_API_DID_NOT_RECIEVE_THE_EMAIL_OR_THE_TOKEN_IN_THE_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_API_DID_NOT_RECIEVE_THE_EMAIL_OR_THE_TOKEN_IN_THE_PAYLOAD',
+        return 'The Log In API didn\'t recieve the email or the token in the payload.';
     
       case 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE',
       case 'LOGIN_ERROR_PASSWORD_IS_NOT_CORRECT': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => true,
+      case 'LOGIN_ERROR_TOKEN_IS_NOT_CORRECT': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_TOKEN_IS_NOT_CORRECT',
         return 'El email o la contraseña no es correcto.'; // Por temas de privacidad y seguridad, no digo al usuario que si el problema es que el email no existe o si es que la contraseña no es correcta
       
-      case 'SQLSTATE[23000]': // Ver https://github.com/david-borge/online-store-backend > signup.php > catch (Exception $e)
+      case 'SQLSTATE[23000]': // Ver https://github.com/david-borge/online-store-backend > signup.php > Línea: catch (Exception $e)
         return 'Este email ya existe.';
 
       default:
