@@ -29,7 +29,7 @@ const initialState: GlobalReducerStateInterface = {
   activeNavigationItem: '',
   lastActiveMainPage: '',
   loggedIn: false,
-  authCookieValue: '',
+  authCookieValue: null,
   authMode: 'SIGNUP',
   signUpLogInResult: '',
 }
