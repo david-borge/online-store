@@ -115,30 +115,29 @@
                     [sectionHeaderTitleText]    = "'Active Orders'"
                     [sectionHeaderLink]         = "true"
                     [sectionHeaderLinkURL]      = "'/orders'"
-                    [sectionHeaderLinkText]     = "'View all'"
+                    [sectionHeaderLinkText]     = "'View all orders'"
                 ></app-section-header>
 
                 <div class="container">
-                        
+                    
                     <!-- Active Orders List -->
-                    <div class="orders-list" *ngIf="(numberOfOrders > 0)">
+                    <div class="orders-list" *ngIf="(activeOrders.length > 0)">
 
                         <!-- Product Card -->
                         <app-product-card
+                            *ngFor="let activeOrder of activeOrders"
                             [productCardTypeClass] = "'product-card-order'"
-                        ></app-product-card>
-                        <!-- [productCardURL]       = "'/order/1'" -->
-
-                        <!-- Product Card -->
-                        <app-product-card
-                            [productCardTypeClass] = "'product-card-order'"
+                            [orderId]              = "activeOrder.id"
+                            [orderImageThumbnail]  = "activeOrder.imageThumbnail"
+                            [orderTotal]           = "activeOrder.orderTotal"
+                            [orderArrivalDate]     = "activeOrder.deliveryFullDate"
                         ></app-product-card>
                         <!-- [productCardURL]       = "'/order/1'" -->
 
                     </div>
 
                     <!-- No Orders Informative Card -->
-                    <app-informative-card *ngIf="(numberOfOrders == 0)"></app-informative-card>
+                    <app-informative-card *ngIf="(activeOrders.length == 0)"></app-informative-card>
 
                 </div>
 

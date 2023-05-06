@@ -131,6 +131,7 @@ export class AuthService {
       case 'LOGIN_ERROR_HTTP_REQUEST_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: catch (Exception $e)
       case 'LOGIN_ERROR_LASTLOGINFULLDATE_UPDATE_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_LASTLOGINFULLDATE_UPDATE_FAILED',
       case 'LOGIN_ERROR_GET_USER_DATA_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_GET_USER_DATA_FAILED',
+      case 'LOGIN_ERROR_GET_ACTIVE_ORDERS_DATA_FAILED': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_GET_ACTIVE_ORDERS_DATA_FAILED',
         return 'There was a problem loggin in. Please try again.';
     
       case 'SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > signup.php > Línea: exit("SIGNUP_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
@@ -144,12 +145,12 @@ export class AuthService {
     
       case 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_EMAIL_DOES_NOT_EXIST_IN_THE_DATABASE',
       case 'LOGIN_ERROR_PASSWORD_IS_NOT_CORRECT': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => true,
-      case 'LOGIN_ERROR_TOKEN_IS_NOT_CORRECT': // Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_TOKEN_IS_NOT_CORRECT',
-        return 'El email o la contraseña no es correcto.'; // Por temas de privacidad y seguridad, no digo al usuario que si el problema es que el email no existe o si es que la contraseña no es correcta
+      return 'El email o la contraseña no es correcto.'; // Por temas de privacidad y seguridad, no digo al usuario que si el problema es que el email no existe o si es que la contraseña no es correcta
       
       case 'SQLSTATE[23000]': // Ver https://github.com/david-borge/online-store-backend > signup.php > Línea: catch (Exception $e)
-        return 'Este email ya existe.';
-
+      return 'Este email ya existe.';
+      
+      case 'LOGIN_ERROR_TOKEN_IS_NOT_CORRECT': // Elijo no mostrar ningún mensaje de error cuando se haga auto log out. Ver https://github.com/david-borge/online-store-backend > login.php > Línea: "resultado" => 'LOGIN_ERROR_TOKEN_IS_NOT_CORRECT',
       default:
         return '';
 

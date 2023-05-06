@@ -9,6 +9,7 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
 import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
 import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
+import { ActiveOrderInterface } from 'projects/web/src/app/core/models/activeOrder.interface';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class AccountComponent implements OnInit, OnDestroy {
   currentlyInThePageIEnteredFrom: boolean = false; // TODO:
   signUpLogInResult: string = '';
   user: UserInterface = {} as UserInterface;
-  numberOfOrders :number = 2; // TODO:
+  activeOrders: ActiveOrderInterface[] = [];
+  ordersTotals: number[] = [];
 
 
   constructor(
@@ -46,20 +48,23 @@ export class AccountComponent implements OnInit, OnDestroy {
     // Leer la Global Store
     this.globalReducerObservableSubscription = this.store.select("globalReducerObservable").subscribe( globalReducerData => {
 
-      // Authentication - Carga de una página - Comprobar si estoy logueado en una página: leer Global Store > loggedIn
+      // - Authentication - Carga de una página - Comprobar si estoy logueado en una página: leer Global Store > loggedIn
       this.loggedIn = globalReducerData.loggedIn;
 
       // Authentication - Comprobar en qué modo de autentificación estoy ('SIGNUP' | 'LOGIN')
       this.authMode = globalReducerData.authMode;
 
-      // Section Header Title Text (based on the authMode)
+      // - Section Header Title Text (based on the authMode)
       this.sectionHeaderTitleText = ( (this.authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' );
 
-      // signUpLogInResult
+      // - signUpLogInResult
       this.signUpLogInResult = globalReducerData.signUpLogInResult;
 
-      // User (firstName, lastName, email)
+      // - User (firstName, lastName, email)
       this.user = globalReducerData.user;
+
+      // - activeOrders
+      this.activeOrders = globalReducerData.activeOrders;
 
     });
 

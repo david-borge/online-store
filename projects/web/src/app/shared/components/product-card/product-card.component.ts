@@ -11,11 +11,18 @@ import { ProductInterface } from '../../../core/models/product.interface';
 })
 export class ProductCardComponent {
 
-  // Propiedades - Product Card
+  // Propiedades - Product or Order Card - Product
   @Input() product = {} as ProductInterface;
   @Input() productCardTypeClass: string = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
   @Input() productCardProductNameTitleHeadingTag: string = '';
   productCardTitleHeadingTagInnerHTML: string = '';
+  
+  // Propiedades - Product or Order Card - Order
+  @Input() orderId             : number = 0;
+  @Input() orderImageThumbnail : string = '';
+  @Input() orderTotal          : number = 0;
+  @Input() orderArrivalDate    : string = '';
+  orderArrivalDateFormated     : string = '';
 
 
   ngOnInit(): void {
@@ -25,13 +32,39 @@ export class ProductCardComponent {
       this.productCardProductNameTitleHeadingTag = 'h2'; // Valor por defecto en caso de que no se proporcione
     this.productCardTitleHeadingTagInnerHTML = '<' + this.productCardProductNameTitleHeadingTag + '>' + this.product.name + '</' + this.productCardProductNameTitleHeadingTag + '>';
 
+    // Order arrival date: formatear fecha
+    if (this.orderArrivalDate != '') {
 
-    // TODO: si es una Order
-    if( this.productCardTypeClass == 'product-card-order' ) {
-      this.product.imageThumbnail = 'assets/img/products/dualsense-wireless-controller';
-      this.product.price          = 82.19;
+      let nowDate = new Date();
+      let orderArrivalDateDate = new Date(this.orderArrivalDate);
+
+      // Comprobacion
+      // console.log('nowDate: ' + nowDate);
+
+      // Si llega hoy
+      if ( this.sameDay(nowDate, orderArrivalDateDate) ) {
+        this.orderArrivalDateFormated = 'today';
+      }
+
+      // Si llega mañana
+      else if ( this.tomorrow(nowDate, orderArrivalDateDate) ) {
+        this.orderArrivalDateFormated = 'tomorrow';
+      }
+
     }
 
+  }
+
+  sameDay(date1: Date, date2: Date) {
+    return date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate();
+  }
+
+  tomorrow(date1: Date, date2: Date) {
+    return date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      ( date1.getDate() + 1 ) === date2.getDate();
   }
 
 }

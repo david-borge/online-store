@@ -5,7 +5,9 @@
 import { createReducer, on } from "@ngrx/store";
 
 import * as GlobalActions from "./global.actions";  // Importar todo y guardarlo en el alias GlobalActions
+
 import { UserInterface } from "../models/user.interface";
+import { ActiveOrderInterface } from "../models/activeOrder.interface";
 
 
 
@@ -22,6 +24,7 @@ export interface GlobalReducerStateInterface {
   authMode: 'SIGNUP' | 'LOGIN';
   signUpLogInResult: string;
   user: UserInterface;
+  activeOrders: ActiveOrderInterface[]; // Cada elemento es un objeto con: order.id, product.imageThumbnail, product.price, product.productQuantity
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -39,6 +42,7 @@ const initialState: GlobalReducerStateInterface = {
   authMode: 'SIGNUP',
   signUpLogInResult: '',
   user: {} as UserInterface,
+  activeOrders: [],
 }
 
 
@@ -268,6 +272,7 @@ export const globalReducer = createReducer(
           lastName: action.lastNamePayload,
           email: action.emailPayload,
         } as UserInterface,
+        activeOrders: action.dataForActiveOrdersPayload,
           
       })),
 

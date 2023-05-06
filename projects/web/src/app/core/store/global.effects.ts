@@ -319,9 +319,9 @@ export class GlobalEffects {
 
                     switchMap(logInHttpRequestResponseData => {
 
-                        // TODO: Comprobación
-                        // console.log('logInStartSideEffect - logInHttpRequestResponseData:');
-                        // console.log(logInHttpRequestResponseData);
+                        // Comprobación
+                        console.log('logInStartSideEffect - logInHttpRequestResponseData:');
+                        console.log(logInHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
 
@@ -353,6 +353,7 @@ export class GlobalEffects {
                                     lastNamePayload: logInHttpRequestResponseData.lastName,
                                     emailPayload: logInStartActionData.emailPayload,
                                     tokenPayload: logInStartActionData.tokenPayload,
+                                    dataForActiveOrdersPayload: logInHttpRequestResponseData.orders,
                                 }), // loggedIn a true y crear cookies "authToken" y "authExpirationDate"
     
                             );

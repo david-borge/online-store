@@ -1,14 +1,14 @@
 <!-- Product Card -->
 <div class="product-card {{productCardTypeClass}}" [ngStyle]="{ 'background-color': ((productCardTypeClass == 'product-card-featured') ? product.cardAndHeaderBackgroundColor : '') }">
 
-    <a routerLink="/product/{{product.slug}}">
+    <a [routerLink]="( (orderId != 0) ? ('/order/' + orderId) : ('/product/' + product.slug) )">
 
         <!-- Product Image -->
         <div class="product-card-image-container">
             <picture>
-                <source srcset="{{product.imageThumbnail}}.webp" type="image/webp">
+                <source srcset="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.webp" type="image/webp">
                 <!-- <img ngSrc="{{product.imageThumbnail}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority> -->
-                <img ngSrc="{{product.imageThumbnail}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority imageLoadDirective>
+                <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority imageLoadDirective>
                 <!-- Ejemplo: -->
                 <!-- <source srcset="/assets/img/products/dualsense-wireless-controller-thumbnail.webp" type="image/webp"> -->
                 <!-- <img ngSrc="/assets/img/products/dualsense-wireless-controller-thumbnail.png" alt="DualSense Wireless Controller" width="508" height="475"> -->
@@ -40,10 +40,10 @@
             <div class="order-total" *ngIf="(productCardTypeClass == 'product-card-order')">Order total</div>
 
             <!-- Product or Order Price -->
-            <div class="product-or-order-card-price">{{product.price  | currency:'EUR':'symbol':'1.2-2'}}</div>
+            <div class="product-or-order-card-price">{{ ( (orderTotal != 0) ? orderTotal : product.price )  | currency:'EUR':'symbol':'1.2-2' }}</div>
 
             <!-- Order Arrival Date -->
-            <div class="order-arrival-date" *ngIf="(productCardTypeClass == 'product-card-order')">Arriving tomorrow</div>
+            <div class="order-arrival-date" *ngIf="(productCardTypeClass == 'product-card-order')">Arriving {{ ( (orderArrivalDateFormated != '') ? orderArrivalDateFormated :  ( orderArrivalDate | date:'d MMM' ) ) }}</div>
 
         </div>
 

@@ -6,5 +6,6 @@ export interface OrderInterface {
     deliveryFullDate : string;
     addressId        : number;
     paymentMethodId  : number;
+    active           : number;   // En MySQL no hay tipo Boolean, sino TINIINT, con valores 1 y 0. Por defecto: 1 (activa)
 
 }

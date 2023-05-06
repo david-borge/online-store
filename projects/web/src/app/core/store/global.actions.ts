@@ -238,6 +238,7 @@ export const SignUpLogInEndSuccess = createAction(
     lastNamePayload: string,
     emailPayload: string,
     tokenPayload: string,
+    dataForActiveOrdersPayload: [],
   }>(),
 
 );
