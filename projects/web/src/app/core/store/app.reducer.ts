@@ -13,6 +13,7 @@ import * as fromGlobal from './global.reducer';
 import * as fromHome from '../../features/ecommerce/home/store/home.reducer';
 import * as fromCategories from '../../features/ecommerce/categories/store/categories.reducer';
 import * as fromProduct from '../../features/ecommerce/product/store/product.reducer';
+import * as fromOrder from '../../features/ecommerce/order/store/order.reducer';
 
 
 
@@ -23,6 +24,7 @@ export interface AppState {
     homeReducerObservable: fromHome.HomeReducerStateInterface;
     categoriesReducerObservable: fromCategories.CategoriesReducerStateInterface;
     productReducerObservable: fromProduct.ProductReducerStateInterface;
+    orderReducerObservable: fromOrder.OrderReducerStateInterface;
 }
 
 
@@ -33,4 +35,5 @@ export const appReducer: ActionReducerMap<AppState> = {
     homeReducerObservable: fromHome.homeReducer,
     categoriesReducerObservable: fromCategories.categoriesReducer,
     productReducerObservable: fromProduct.productReducer,
+    orderReducerObservable: fromOrder.orderReducer,
 };

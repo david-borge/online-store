@@ -2,6 +2,8 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 import { ProductInterface } from '../../../core/models/product.interface';
 
+import { PreFetchService } from '../../../core/services/prefetch/prefetch.service';
+
 
 @Component({
   selector: 'app-product-card',
@@ -25,6 +27,9 @@ export class ProductCardComponent {
   orderArrivalDateFormated     : string = '';
 
 
+  constructor(
+    private preFetchService: PreFetchService,
+  ) {}
   ngOnInit(): void {
 
     // Product Card Name HTML
@@ -67,4 +72,5 @@ export class ProductCardComponent {
       ( date1.getDate() + 1 ) === date2.getDate();
   }
 
+  
 }

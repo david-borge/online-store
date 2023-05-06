@@ -320,8 +320,8 @@ export class GlobalEffects {
                     switchMap(logInHttpRequestResponseData => {
 
                         // Comprobación
-                        console.log('logInStartSideEffect - logInHttpRequestResponseData:');
-                        console.log(logInHttpRequestResponseData);
+                        // console.log('logInStartSideEffect - logInHttpRequestResponseData:');
+                        // console.log(logInHttpRequestResponseData);
 
                         // Procesamiento de datos si es necesario...
 

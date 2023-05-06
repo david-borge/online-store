@@ -11,11 +11,12 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
+import { environment } from 'projects/web/src/environments/environment.development';
+
 import { ProductInterface } from '../../models/product.interface';
 import { CategoryInterface } from '../../models/category.interface';
 import { UserInterface } from '../../models/user.interface';
-
-import { environment } from 'projects/web/src/environments/environment.development';
+import { OrderInterface } from '../../models/order.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -53,6 +54,7 @@ export class DataStorageService {
 
 
 
+  // Sign Up
   signUp(firstName: string, lastName: string, email: string, password: string, signUpFullDate: string, lastLoginFullDate: string, token: string) {
 
     // Comprobación
@@ -77,7 +79,7 @@ export class DataStorageService {
 
 
 
-  // Log In // TODO: continuar aquí...
+  // Log In
   logIn(email: string, password: string, lastLoginFullDate: string, token: string) {
     
     // Comprobación
@@ -98,6 +100,36 @@ export class DataStorageService {
   }
 
 
+
+  // Get Order data
+  getOrderDataHttpRequest(orderNumber: number) {
+    return this.httpClient
+      .post<OrderInterface>(environment.apiBaseUrl + '/getOrderData.php',
+      {
+        orderNumber: orderNumber,
+      },
+      {})
+      // .pipe()
+      ;
+  }
+
+
+  authMessages(messageCode: string): string {
+
+    switch (messageCode) {
+
+      case 'GET_ORDER_DATA_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD': // Ver https://github.com/david-borge/online-store-backend > getOrderData.php > Línea: exit("GET_ORDER_DATA_ERROR_API_DID_NOT_RECIEVE_ITS_PAYLOAD");
+        return 'The Log In API didn\'t recieve its payload.';
+      
+      case 'GET_ORDER_DATA_ERROR_GET_ORDER_DATA_FAILED': // Ver https://github.com/david-borge/online-store-backend > getOrderData.php > Línea: "resultado" => 'GET_ORDER_DATA_ERROR_GET_ORDER_DATA_FAILED',
+        return 'There was an error recovering the Order data.';
+    
+      default:
+        return '';
+
+    }
+
+  }
 
   // (No usado) Get Featured Products
   /* getFeaturedProducts() {

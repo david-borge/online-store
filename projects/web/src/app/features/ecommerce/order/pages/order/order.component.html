@@ -3,133 +3,14 @@
 <!-- Header Tag -->
 <app-header
     [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'Order #1'"
+    [overlayHeaderPageTitle] = "('Order #' + currentOrderNumber)"
 ></app-header>
 
 <!-- Main -->
 <main role="main" style="padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
 
-    <!-- Order Dates -->
-    <div class="section section-with-bottom-separator">
-
-        <div class="container">
-
-            <div class="date-with-title-list">
-
-                <!-- Date with Title -->
-                <app-date-with-title
-                    [dateWithTitleTitle] = "'Order date'"
-                    [dateWithTitleDate]  = "'15 nov. 2022, 14:22'"
-                ></app-date-with-title>
-
-                <!-- Date with Title -->
-                <app-date-with-title
-                    [dateWithTitleTitle] = "'Arrival date'"
-                    [dateWithTitleDate]  = "'16 nov. 2022, 16:34'"
-                ></app-date-with-title>
-
-            </div>
-
-        </div>
-        
-    </div>
-
-    <!-- Order Total -->
-    <div class="section section-with-bottom-separator">
-
-        <div class="container">
-
-            <div class="order-total-title" style="margin-bottom: 4px;">
-                <h2>Order total</h2>
-            </div>
-
-            <div class="order-total-price">
-                <div>123.45 €</div>
-            </div>
-
-        </div>
-        
-    </div>
-
-    <!-- Order Products -->
-    <div class="section section-with-bottom-separator">
-
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClasses]  = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Products'"
-        ></app-section-header>
-
-        <!-- Order Products List -->
-        <div class="order-products-list">
-                
-            <!-- Cart and Checkout Product Card -->
-            <app-cart-checkout-product-card
-                [cartCheckoutProductCardShowButtons] = "false"
-            ></app-cart-checkout-product-card>
-        
-            <!-- Cart and Checkout Product Card -->
-            <app-cart-checkout-product-card
-                [cartCheckoutProductCardShowButtons] = "false"
-            ></app-cart-checkout-product-card>
-        
-        </div>
-        
-    </div>
-
-    <!-- Order Address -->
-    <div class="section section-with-bottom-separator">
-
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClasses]  = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Address'"
-        ></app-section-header>
-
-        <div class="container">
-            
-            <!-- Address Card -->
-            <app-address-card
-                [addressCardSelected]   = "true"
-                [addressCardPersonName] = "'Leslie Flores'"
-                [addressCardAddress]    = "'2972 Westheimer Rd. '"
-                [addressCardPostalCode] = "'85486'"
-                [addressCardCity]       = "'Santa Ana, Illinois '"
-                [addressCardCountry]    = "'United States of America'"
-                [addressCardShowButton] = "false"
-            ></app-address-card>
-            
-        </div>
-        
-    </div>
-
-    <!-- Order Payment Method -->
-    <div class="section">
-
-        <!-- Section Header -->
-        <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClasses]  = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Payment Method'"
-        ></app-section-header>
-
-        <div class="container">
-
-            <!-- Payment Method -->
-            <app-credit-card
-                [creditCardSelected]        = "true"
-                [creditCardType]            = "'mastercard'"
-                [creditCardBankName]        = "'Bank of America'"
-                [creditCardPersonName]      = "'Leslie Flores'"
-                [creditCardLastFourNumbers] = "'0817'"
-                [creditCardExpirationDate]  = "'12/25'"
-            ></app-credit-card>
-
-        </div>
-        
-    </div>
+    <!-- OrderDetailComponent -->
+    <router-outlet></router-outlet>
 
 </main>
   
