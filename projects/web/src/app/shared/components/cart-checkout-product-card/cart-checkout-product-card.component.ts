@@ -7,22 +7,25 @@ import { Component, Input } from '@angular/core';
 })
 export class CartCheckoutProductCardComponent {
 
+  // Propiedades - Cart and Checkout Product Card - Product
+  @Input() productImageThumbnail : string = '';
+  @Input() productName           : string = '';
+  @Input() productPrice          : number = 0;
+  @Input() productQuantity       : number = 0;
+
   // Propiedades - Cart and Checkout Product Card - Navigation CTAs & Copy
   @Input() cartCheckoutProductCardShowButtons :boolean = true;
 
-  // TODO:
-  theHobbitItemCount :number = 1;
-
   onClickMinusOrDeleteButton() {
-    if( this.theHobbitItemCount > 1 ) {
-      this.theHobbitItemCount--;
+    if( this.productQuantity > 1 ) {
+      this.productQuantity--;
     } else {
       // TODO: borrar producto del array
     }
   }
 
   onClickPlusButton() {
-    this.theHobbitItemCount++;
+    this.productQuantity++;
   }
 
 }

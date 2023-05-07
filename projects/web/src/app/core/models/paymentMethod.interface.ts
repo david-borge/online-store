@@ -5,7 +5,7 @@ export interface PaymentMethodInterface {
     type               : 'card'; // card (relational en el futuro)
     cardBankName       : string;
     cardPersonFullName : string;
-    cardnumber         : string;
+    cardNumber         : string;
     cardExpiringMonth  : string;
     cardExpiringYear   : string;
     cardType           : 'visa' | 'mastercard'; // VISA / MasterCard

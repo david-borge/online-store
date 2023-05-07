@@ -49,6 +49,9 @@ export class OrderEffects {
             // console.log('getOrderDataStartActionData:');
             // console.log(getOrderDataStartActionData);
 
+            // Comprobacion: orderNumber
+            // console.log('getOrderDataStartActionData[0].orderNumberPayload: ' + getOrderDataStartActionData[0].orderNumberPayload);
+
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
             return this.dataStorageService.getOrderDataHttpRequest(getOrderDataStartActionData[0].orderNumberPayload)
@@ -58,11 +61,11 @@ export class OrderEffects {
                     debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                     Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                    switchMap(resData => {
+                    switchMap(getOrderDataHttpRequestResponse => {
 
                         // Comprobación
-                        console.log('getOrderDataSideEffect - resData:');
-                        console.log(resData);
+                        console.log('getOrderDataSideEffect - getOrderDataHttpRequestResponse:');
+                        console.log(getOrderDataHttpRequestResponse);
 
                         // Procesamiento de datos si es necesario...
 
@@ -72,10 +75,11 @@ export class OrderEffects {
 
                             // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
                             OrderActions.GetOrderDataEndSuccess({
-                                orderDataPayload: resData,
+                                orderDataProductsAddressAndPaymentMethodPayload: getOrderDataHttpRequestResponse,
                             }),
 
                         );
+
                     }),
                     catchError(errorResponse => {
 

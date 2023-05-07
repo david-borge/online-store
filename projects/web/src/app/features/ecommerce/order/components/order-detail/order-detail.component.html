@@ -8,14 +8,16 @@
             <!-- Date with Title -->
             <app-date-with-title
                 [dateWithTitleTitle] = "'Order date'"
-                [dateWithTitleDate]  = "'15 nov. 2022, 14:22'"
+                [dateWithTitleDate]  = "orderData.orderFullDate"
             ></app-date-with-title>
+            <!-- Ejemplo: '15 nov. 2022, 14:22' -->
 
             <!-- Date with Title -->
             <app-date-with-title
                 [dateWithTitleTitle] = "'Arrival date'"
-                [dateWithTitleDate]  = "'16 nov. 2022, 16:34'"
+                [dateWithTitleDate]  = "orderData.deliveryFullDate"
             ></app-date-with-title>
+            <!-- Ejemplo: '16 nov. 2022, 16:34' -->
 
         </div>
 
@@ -33,7 +35,8 @@
         </div>
 
         <div class="order-total-price">
-            <div>123.45 €</div>
+            <div>{{ orderData.orderTotal | currency:'EUR':'symbol':'1.2-2' }}</div>
+            <!-- Ejemplo: 123.45 € -->
         </div>
 
     </div>
@@ -55,12 +58,12 @@
             
         <!-- Cart and Checkout Product Card -->
         <app-cart-checkout-product-card
+            *ngFor="let product of orderProducts"
             [cartCheckoutProductCardShowButtons] = "false"
-        ></app-cart-checkout-product-card>
-    
-        <!-- Cart and Checkout Product Card -->
-        <app-cart-checkout-product-card
-            [cartCheckoutProductCardShowButtons] = "false"
+            [productImageThumbnail]              = "product.imageThumbnail"
+            [productName]                        = "product.name"
+            [productPrice]                       = "product.price"
+            [productQuantity]                    = "product.productQuantity"
         ></app-cart-checkout-product-card>
     
     </div>
@@ -82,13 +85,20 @@
         <!-- Address Card -->
         <app-address-card
             [addressCardSelected]   = "true"
+            [addressCardPersonName] = "orderAddress.fullName"
+            [addressCardAddress]    = "orderAddress.address"
+            [addressCardPostalCode] = "orderAddress.postalCode"
+            [addressCardCity]       = "orderAddress.city"
+            [addressCardCountry]    = "orderAddress.country"
+            [addressCardShowButton] = "false"
+        ></app-address-card>
+        <!-- Ejemplo:
             [addressCardPersonName] = "'Leslie Flores'"
             [addressCardAddress]    = "'2972 Westheimer Rd. '"
             [addressCardPostalCode] = "'85486'"
             [addressCardCity]       = "'Santa Ana, Illinois '"
             [addressCardCountry]    = "'United States of America'"
-            [addressCardShowButton] = "false"
-        ></app-address-card>
+        -->
         
     </div>
     
@@ -108,13 +118,22 @@
 
         <!-- Payment Method -->
         <app-credit-card
-            [creditCardSelected]        = "true"
-            [creditCardType]            = "'mastercard'"
-            [creditCardBankName]        = "'Bank of America'"
-            [creditCardPersonName]      = "'Leslie Flores'"
-            [creditCardLastFourNumbers] = "'0817'"
-            [creditCardExpirationDate]  = "'12/25'"
+            [cardSelected]        = "true"
+            [cardType]            = "orderPaymentMethod.cardType"
+            [cardBankName]        = "orderPaymentMethod.cardBankName"
+            [cardPersonFullName]  = "orderPaymentMethod.cardPersonFullName"
+            [cardLastFourNumbers] = "orderPaymentMethod.cardLastFourNumbers"
+            [cardExpirationMonth] = "orderPaymentMethod.cardExpiringMonth"
+            [cardExpirationYear]  = "orderPaymentMethod.cardExpiringYear"
         ></app-credit-card>
+        <!-- Ejemplo:
+            [cardType]            = "'mastercard'"
+            [cardBankName]        = "'Bank of America'"
+            [cardPersonFullName]  = "'Leslie Flores'"
+            [cardLastFourNumbers] = "'0817'"
+            [cardExpirationMonth] = "'12'"
+            [cardExpirationYear]  = "'25'"
+        -->
 
     </div>
     

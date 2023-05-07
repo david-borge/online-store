@@ -104,7 +104,7 @@ export class DataStorageService {
   // Get Order data
   getOrderDataHttpRequest(orderNumber: number) {
     return this.httpClient
-      .post<OrderInterface>(environment.apiBaseUrl + '/getOrderData.php',
+      .post<any>(environment.apiBaseUrl + '/getOrderData.php',
       {
         orderNumber: orderNumber,
       },

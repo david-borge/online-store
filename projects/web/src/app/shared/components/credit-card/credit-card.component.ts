@@ -8,12 +8,13 @@ import { Component, Input } from '@angular/core';
 export class CreditCardComponent {
 
   // Propiedades - Credit Card
-  @Input() creditCardSelected        :boolean = false;
-  @Input() creditCardType            :string  = "";
-  @Input() creditCardBankName        :string  = "";
-  @Input() creditCardPersonName      :string  = "";
-  @Input() creditCardLastFourNumbers :string  = "";
-  @Input() creditCardExpirationDate  :string  = "";
-  @Input() creditCardShowButton      :boolean = false;
+  @Input() cardSelected         :boolean = false;
+  @Input() cardType             :string  = "";
+  @Input() cardBankName         :string  = "";
+  @Input() cardPersonFullName   :string  = "";
+  @Input() cardLastFourNumbers  :string  = "";
+  @Input() cardExpirationMonth  :string  = "";
+  @Input() cardExpirationYear   :string  = "";
+  @Input() creditCardShowButton :boolean = false;
 
 }
