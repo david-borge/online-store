@@ -9,10 +9,7 @@ import { Subscription } from 'rxjs';
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as OrderActions from '../../store/order.actions';
 
-import { OrderInterface } from 'projects/web/src/app/core/models/order.interface';
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
-import { AddressInterface } from 'projects/web/src/app/core/models/address.interface';
-import { PaymentMethodInterface } from 'projects/web/src/app/core/models/paymentMethod.interface';
+import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 
 @Component({
   selector: 'app-order-detail',
@@ -26,10 +23,10 @@ export class OrderDetailComponent implements OnInit {
 
   // Template variables
   orderNumber: number = 0;
-  orderData         : any   = {} as any;
-  orderProducts     : any[] = [];
-  orderAddress      : any   = {} as any;
-  orderPaymentMethod: any   = {} as any;
+  orderData          : GetOrderDataPHPInterface['orderData']          = {} as GetOrderDataPHPInterface['orderData'];
+  orderProducts      : GetOrderDataPHPInterface['orderProducts']      = [];
+  orderAddress       : GetOrderDataPHPInterface['orderAddress']       = {} as GetOrderDataPHPInterface['orderAddress'];
+  orderPaymentMethod : GetOrderDataPHPInterface['orderPaymentMethod'] = {} as GetOrderDataPHPInterface['orderPaymentMethod'];
 
   constructor(
     private route: ActivatedRoute,

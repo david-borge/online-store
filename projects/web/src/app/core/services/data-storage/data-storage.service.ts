@@ -16,7 +16,7 @@ import { environment } from 'projects/web/src/environments/environment.developme
 import { ProductInterface } from '../../models/product.interface';
 import { CategoryInterface } from '../../models/category.interface';
 import { UserInterface } from '../../models/user.interface';
-import { OrderInterface } from '../../models/order.interface';
+import { GetOrderDataPHPInterface } from '../../models/getOrderDataPHP.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -104,7 +104,7 @@ export class DataStorageService {
   // Get Order data
   getOrderDataHttpRequest(orderNumber: number) {
     return this.httpClient
-      .post<any>(environment.apiBaseUrl + '/getOrderData.php',
+      .post<GetOrderDataPHPInterface>(environment.apiBaseUrl + '/getOrderData.php',
       {
         orderNumber: orderNumber,
       },
