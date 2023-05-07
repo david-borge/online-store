@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { ProductInterface } from '../../../core/models/product.interface';
 
@@ -11,7 +11,7 @@ import { PreFetchService } from '../../../core/services/prefetch/prefetch.servic
   styleUrls: ['./product-card.component.scss'],
   encapsulation: ViewEncapsulation.None,  // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-card-name *)
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit {
 
   // Propiedades - Product or Order Card - Product
   @Input() product = {} as ProductInterface;
@@ -30,6 +30,7 @@ export class ProductCardComponent {
   constructor(
     private preFetchService: PreFetchService,
   ) {}
+  
   ngOnInit(): void {
 
     // Product Card Name HTML

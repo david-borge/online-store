@@ -9,7 +9,7 @@
 
 import { createAction, props } from "@ngrx/store";
 
-import { OrderInterface } from "projects/web/src/app/core/models/order.interface";
+import { GetOrderDataPHPInterface } from "projects/web/src/app/core/models/getOrderDataPHP.interface";
 
 
 
@@ -52,8 +52,8 @@ export const GetOrderDataEndSuccess = createAction(
 
   // Payload de la Action, si es que esta Action lo necesita
   props<{
-      // Si el método de la action requiere un solo parámetro, payload es un solo valor
-      orderDataProductsAddressAndPaymentMethodPayload: any,
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    orderDataProductsAddressAndPaymentMethodPayload: GetOrderDataPHPInterface,
   }>(),
 
 );
@@ -66,8 +66,8 @@ export const GetOrderDataEndFailure = createAction(
 
   // Payload de la Action, si es que esta Action lo necesita
   props<{
-      // Si el método de la action requiere un solo parámetro, payload es un solo valor
-      getOrderDataErrorMessagePayload: string,
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    getOrderDataErrorMessagePayload: string,
   }>(),
 
 );

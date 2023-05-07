@@ -17,6 +17,7 @@ import { ProductInterface } from '../../models/product.interface';
 import { CategoryInterface } from '../../models/category.interface';
 import { UserInterface } from '../../models/user.interface';
 import { GetOrderDataPHPInterface } from '../../models/getOrderDataPHP.interface';
+import { GetOrdersPHPInterface } from '../../models/getOrdersPHP.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -101,12 +102,26 @@ export class DataStorageService {
 
 
 
-  // Get Order data
+  // Get Order data (Page: /order/:order-number)
   getOrderDataHttpRequest(orderNumber: number) {
     return this.httpClient
       .post<GetOrderDataPHPInterface>(environment.apiBaseUrl + '/getOrderData.php',
       {
         orderNumber: orderNumber,
+      },
+      {})
+      // .pipe()
+      ;
+  }
+
+
+
+  // Get Orders (Page: /orders)
+  getOrdersHttpRequest(email: string) {
+    return this.httpClient
+      .post<GetOrdersPHPInterface>(environment.apiBaseUrl + '/getOrders.php',
+      {
+        email: email,
       },
       {})
       // .pipe()

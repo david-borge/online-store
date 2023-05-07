@@ -124,6 +124,7 @@
                     <div class="orders-list" *ngIf="(activeOrders.length > 0)">
 
                         <!-- Product Card -->
+                        <!-- FIXME: corregir tamaño de las imágenes (hay que cargar el width y height de la Base de Datos) -->
                         <app-product-card
                             *ngFor="let activeOrder of activeOrders"
                             [productCardTypeClass] = "'product-card-order'"
@@ -132,7 +133,6 @@
                             [orderTotal]           = "activeOrder.orderTotal"
                             [orderArrivalDate]     = "activeOrder.deliveryFullDate"
                         ></app-product-card>
-                        <!-- [productCardURL]       = "'/order/1'" -->
 
                     </div>
 

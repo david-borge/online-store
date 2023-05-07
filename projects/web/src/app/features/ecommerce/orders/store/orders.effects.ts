@@ -1,4 +1,4 @@
-/*** OrderEffects ***/
+/*** OrdersEffects ***/
 
 
 
@@ -11,13 +11,13 @@ import { catchError, switchMap, withLatestFrom } from 'rxjs/operators'
 import { of } from 'rxjs';
 
 import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
-import * as OrderActions from './order.actions';
+import * as OrdersActions from './orders.actions';
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
 
 
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
-export class OrderEffects {
+export class OrdersEffects {
 
     // La idea es ejecutar cualquier código (como HTTP Request o LocalStorage) que deba ocurrir cuando se ejecute la acción asociada al Side Effect y, después, dispatch una nueva Action
     
@@ -31,41 +31,38 @@ export class OrderEffects {
 
 
 
-    // Side Effect de la Get Order Data Start Action de Order
-    getOrderDataSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+    // Side Effect de la Get Orders Start Action de Order
+    getOrdersSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
-        ofType(OrderActions.GetOrderDataStart),
+        ofType(OrdersActions.GetOrdersStart),
 
-        withLatestFrom( this.store.select('orderReducerObservable') ),
+        withLatestFrom( this.store.select('ordersReducerObservable') ),
 
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-        switchMap( (getOrderDataStartActionData) => {
+        switchMap( (getOrdersStartActionData) => {
 
-            // Aquí puedo usar los datos del payload de la Action: getOrderDataStartActionData.nombrePayloadPayload.propiedad1
+            // Aquí puedo usar los datos del payload de la Action: getOrdersStartActionData.nombrePayloadPayload.propiedad1
 
             // Comprobación
-            // console.log('getOrderDataStartActionData:');
-            // console.log(getOrderDataStartActionData);
-
-            // Comprobacion: orderNumber
-            // console.log('getOrderDataStartActionData[0].orderNumberPayload: ' + getOrderDataStartActionData[0].orderNumberPayload);
+            // console.log('getOrdersStartActionData:');
+            // console.log(getOrdersStartActionData);
 
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getOrderDataHttpRequest(getOrderDataStartActionData[0].orderNumberPayload)
+            return this.dataStorageService.getOrdersHttpRequest('david.borge.olmedo@gmail.com') // TODO:
                 .pipe(
 
                     /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
                     debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                     Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                    switchMap(getOrderDataHttpRequestResponse => {
+                    switchMap(getOrdersHttpRequestResponse => {
 
                         // Comprobación
-                        // console.log('getOrderDataSideEffect - getOrderDataHttpRequestResponse:');
-                        // console.log(getOrderDataHttpRequestResponse);
+                        // console.log('getOrdersSideEffect - getOrdersHttpRequestResponse:');
+                        // console.log(getOrdersHttpRequestResponse);
 
                         // Procesamiento de datos si es necesario...
 
@@ -74,8 +71,8 @@ export class OrderEffects {
                             // Procesar datos si es necesario...
 
                             // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                            OrderActions.GetOrderDataEndSuccess({
-                                orderDataProductsAddressAndPaymentMethodPayload: getOrderDataHttpRequestResponse,
+                            OrdersActions.GetOrdersEndSuccess({
+                                ordersPayload: getOrdersHttpRequestResponse.orders,
                             }),
 
                         );
@@ -86,22 +83,19 @@ export class OrderEffects {
                         // Error handling code...
 
                         // Mostrar el error en la consola
-                        console.log('getOrderDataSideEffect - errorResponse:');
+                        console.log('getOrdersSideEffect - errorResponse:');
                         console.log(errorResponse);
 
                         // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
                         return of(
-                            OrderActions.GetOrderDataEndFailure({
-                                getOrderDataErrorMessagePayload: 'There was an error when loading the Order data.',
+                            OrdersActions.GetOrdersEndFailure({
+                                getOrdersErrorMessagePayload: 'There was an error when loading the Order data.',
                             }),
                         );
 
                     }),
             );
 
-            // Como siempre hay que devolver una Action, devuelvo una DummyAction
-            return of( OrderActions.DummyAction() );
-                
         }),
 
     ));

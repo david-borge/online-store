@@ -65,4 +65,11 @@ export class OrderDetailComponent implements OnInit {
 
   }
 
+  ngOnDestroy(): void {
+
+    // Cancelar suscripciones
+    this.orderReducerObservableSubscription.unsubscribe();
+
+  }
+
 }
