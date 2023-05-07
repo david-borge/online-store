@@ -20,7 +20,7 @@
         <div class="content-container">
 
             <!-- Payment Method List -->
-            <div class="section" *ngIf="(numberOfPaymentMethods > 0)">
+            <div class="section" *ngIf="(paymentMethods.length > 0)">
                 <div class="container">
         
                     <!-- Payment Method Card List -->
@@ -28,7 +28,17 @@
         
                         <!-- Payment Method -->
                         <app-credit-card
+                            *ngFor="let paymentMethod of paymentMethods"
                             [cardSelected]         = "true"
+                            [cardType]             = "paymentMethod.cardType"
+                            [cardBankName]         = "paymentMethod.cardBankName"
+                            [cardPersonFullName]   = "paymentMethod.cardPersonFullName"
+                            [cardLastFourNumbers]  = "paymentMethod.cardLastFourNumbers"
+                            [cardExpirationMonth]  = "paymentMethod.cardExpirationMonth"
+                            [cardExpirationYear]   = "paymentMethod.cardExpirationYear"
+                            [creditCardShowButton] = "true"
+                        ></app-credit-card>
+                        <!-- Ejemplo:
                             [cardType]             = "'mastercard'"
                             [cardBankName]         = "'Bank of America'"
                             [cardPersonFullName]   = "'Leslie Flores'"
@@ -36,38 +46,14 @@
                             [cardExpirationMonth]  = "'12'"
                             [cardExpirationYear]   = "'25'"
                             [creditCardShowButton] = "true"
-                        ></app-credit-card>
-        
-                        <!-- Payment Method -->
-                        <app-credit-card
-                            [cardSelected]         = "false"
-                            [cardType]             = "'visa'"
-                            [cardBankName]         = "'Goldman Sachs'"
-                            [cardPersonFullName]   = "'Joseph Simon'"
-                            [cardLastFourNumbers]  = "'8406'"
-                            [cardExpirationMonth]  = "'12'"
-                            [cardExpirationYear]   = "'25'"
-                            [creditCardShowButton] = "true"
-                        ></app-credit-card>
-        
-                        <!-- Payment Method -->
-                        <app-credit-card
-                            [cardSelected]         = "false"
-                            [cardType]             = "'mastercard'"
-                            [cardBankName]         = "'Bank of America'"
-                            [cardPersonFullName]   = "'Leslie Flores'"
-                            [cardLastFourNumbers]  = "'0817'"
-                            [cardExpirationMonth]  = "'12'"
-                            [cardExpirationYear]   = "'25'"
-                            [creditCardShowButton] = "true"
-                        ></app-credit-card>
+                        -->
         
                     </div>
         
                 </div>
             </div>
 
-            <div class="empty-text container" *ngIf="(numberOfPaymentMethods == 0)">There is no payment method yet.</div>
+            <div class="empty-text container" *ngIf="(paymentMethods.length == 0)">There is no payment method yet.</div>
             
         </div>
 

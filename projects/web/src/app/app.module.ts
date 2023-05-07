@@ -29,6 +29,7 @@ import { ProductEffects } from './features/ecommerce/product/store/product.effec
 import { OrderEffects } from './features/ecommerce/order/store/order.effects';
 import { OrdersEffects } from './features/ecommerce/orders/store/orders.effects';
 import { AddressesEffects } from './features/ecommerce/addresses/store/addresses.effects';
+import { PaymentMethodEffects } from './features/ecommerce/payment-methods/store/payment-methods.effects';
 
 // (Antiguo) Firestore Database
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
@@ -58,7 +59,7 @@ import { AddressesEffects } from './features/ecommerce/addresses/store/addresses
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
 
     StoreModule.forRoot(fromApp.appReducer),  // Action Reducer Map: un objeto JS con la lista de Reducers de la app ({identificadorQueQuiera: MiReducerAsociadoAlIdentificador})
-    EffectsModule.forRoot([ GlobalEffects, LoadingScreenEffects, HomeEffects, CategoriesEffects, ProductEffects, OrderEffects, OrdersEffects, AddressesEffects ]), // Array de Side Effects
+    EffectsModule.forRoot([ GlobalEffects, LoadingScreenEffects, HomeEffects, CategoriesEffects, ProductEffects, OrderEffects, OrdersEffects, AddressesEffects, PaymentMethodEffects ]), // Array de Side Effects
     StoreDevtoolsModule.instrument({ logOnly: environment.production }), // Instrument recibe un objeto con la configuración de Store Devtools. Con logOnly: environment.production, hacemos que solo se generen los log messages en producción.
     StoreRouterConnectingModule.forRoot(), // The Router Store
     

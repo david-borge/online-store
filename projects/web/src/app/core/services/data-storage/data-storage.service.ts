@@ -19,6 +19,7 @@ import { UserInterface } from '../../models/user.interface';
 import { GetOrderDataPHPInterface } from '../../models/getOrderDataPHP.interface';
 import { GetOrdersPHPInterface } from '../../models/getOrdersPHP.interface';
 import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface';
+import { GetPaymentMethodsPHPInterface } from '../../models/getPaymentMethodsPHP.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -135,6 +136,20 @@ export class DataStorageService {
   getAddressesHttpRequest(email: string) {
     return this.httpClient
       .post<GetAddressesPHPInterface>(environment.apiBaseUrl + '/getAddresses.php',
+      {
+        email: email,
+      },
+      {})
+      // .pipe()
+      ;
+  }
+
+
+
+  // Get Payment Methods (Page: /payment-methods)
+  getPaymentMethodsHttpRequest(email: string) {
+    return this.httpClient
+      .post<GetPaymentMethodsPHPInterface>(environment.apiBaseUrl + '/getPaymentMethods.php',
       {
         email: email,
       },

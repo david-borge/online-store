@@ -31,8 +31,8 @@ export interface GetOrderDataPHPInterface {
         cardBankName        : PaymentMethodInterface["cardBankName"],
         cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
         cardLastFourNumbers : string,
-        cardExpiringMonth   : PaymentMethodInterface["cardExpiringMonth"],
-        cardExpiringYear    : PaymentMethodInterface["cardExpiringYear"],
+        cardExpirationMonth   : PaymentMethodInterface["cardExpirationMonth"],
+        cardExpirationYear    : PaymentMethodInterface["cardExpirationYear"],
         cardType            : PaymentMethodInterface["cardType"],
     }
 }

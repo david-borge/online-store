@@ -16,6 +16,7 @@ import * as fromProduct from '../../features/ecommerce/product/store/product.red
 import * as fromOrder from '../../features/ecommerce/order/store/order.reducer';
 import * as fromOrders from '../../features/ecommerce/orders/store/orders.reducer';
 import * as fromAddresses from '../../features/ecommerce/addresses/store/addresses.reducer';
+import * as fromPaymentMethods from '../../features/ecommerce/payment-methods/store/payment-methods.reducer';
 
 
 
@@ -29,6 +30,7 @@ export interface AppState {
     orderReducerObservable: fromOrder.OrderReducerStateInterface;
     ordersReducerObservable: fromOrders.OrdersReducerStateInterface;
     addressesReducerObservable: fromAddresses.AddressesReducerStateInterface;
+    paymentMethodsReducerObservable: fromPaymentMethods.PaymentMethodsReducerStateInterface;
 }
 
 
@@ -42,4 +44,5 @@ export const appReducer: ActionReducerMap<AppState> = {
     orderReducerObservable: fromOrder.orderReducer,
     ordersReducerObservable: fromOrders.ordersReducer,
     addressesReducerObservable: fromAddresses.addressesReducer,
+    paymentMethodsReducerObservable: fromPaymentMethods.paymentMethodsReducer,
 };
