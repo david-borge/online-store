@@ -15,6 +15,7 @@ import * as fromCategories from '../../features/ecommerce/categories/store/categ
 import * as fromProduct from '../../features/ecommerce/product/store/product.reducer';
 import * as fromOrder from '../../features/ecommerce/order/store/order.reducer';
 import * as fromOrders from '../../features/ecommerce/orders/store/orders.reducer';
+import * as fromAddresses from '../../features/ecommerce/addresses/store/addresses.reducer';
 
 
 
@@ -27,6 +28,7 @@ export interface AppState {
     productReducerObservable: fromProduct.ProductReducerStateInterface;
     orderReducerObservable: fromOrder.OrderReducerStateInterface;
     ordersReducerObservable: fromOrders.OrdersReducerStateInterface;
+    addressesReducerObservable: fromAddresses.AddressesReducerStateInterface;
 }
 
 
@@ -39,4 +41,5 @@ export const appReducer: ActionReducerMap<AppState> = {
     productReducerObservable: fromProduct.productReducer,
     orderReducerObservable: fromOrder.orderReducer,
     ordersReducerObservable: fromOrders.ordersReducer,
+    addressesReducerObservable: fromAddresses.addressesReducer,
 };
