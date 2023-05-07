@@ -1,7 +1,10 @@
+import { OrderInterface } from "./order.interface";
+import { ProductInterface } from "./product.interface";
+
 export interface ActiveOrderInterface {
 
-    id               : number;
-    imageThumbnail   : string;
+    id               : OrderInterface["id"];
+    imageThumbnail   : ProductInterface["imageThumbnail"];
     orderTotal       : number;
-    deliveryFullDate : string;
+    deliveryFullDate : OrderInterface["deliveryFullDate"];
 }
