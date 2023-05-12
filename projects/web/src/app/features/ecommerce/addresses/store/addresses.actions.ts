@@ -10,6 +10,7 @@
 import { createAction, props } from "@ngrx/store";
 
 import { AddressInterface } from "projects/web/src/app/core/models/address.interface";
+import { CountryInterface } from "projects/web/src/app/core/models/country.interface";
 import { GetAddressesPHPInterface } from "projects/web/src/app/core/models/getAddressesPHP.interface";
 import { AddNewAddressPHPInterface } from "projects/web/src/app/core/models/AddNewAddressPHPInterface";
 
@@ -99,6 +100,45 @@ export const AddNewAddresEndFailure = createAction(
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
       addNewAddressErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
+/** Get All Countries Start Action **/
+// Side Effects asociados: getAllCountriesSideEffect (añadir la nueva address a la base de datos mediante un HTTP Request)
+export const GetAllCountriesStart = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Get All Countries Start',
+
+);
+
+/** |-> Get All Countries End Success Action **/
+export const GetAllCountriesEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Get All Countries End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      allCountriesPayload: CountryInterface[],
+  }>(),
+
+);
+
+/** |-> Get All Countries End Failure Action **/
+export const GetAllCountriesEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Get All Countries End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      getAllCountriesErrorMessagePayload: string,
   }>(),
 
 );

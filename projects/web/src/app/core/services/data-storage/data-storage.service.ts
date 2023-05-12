@@ -16,6 +16,7 @@ import { environment } from 'projects/web/src/environments/environment.developme
 import { ProductInterface } from '../../models/product.interface';
 import { CategoryInterface } from '../../models/category.interface';
 import { UserInterface } from '../../models/user.interface';
+import { CountryInterface } from '../../models/country.interface';
 import { GetOrderDataPHPInterface } from '../../models/getOrderDataPHP.interface';
 import { GetOrdersPHPInterface } from '../../models/getOrdersPHP.interface';
 import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface';
@@ -39,20 +40,24 @@ export class DataStorageService {
 
   // Get all Products
   getAllProductsHttpRequest() {
+
     return this.httpClient
       .get<ProductInterface[]>(environment.apiBaseUrl + '/getAllProducts.php', {})
       // .pipe()
       ;
+
   }
 
 
 
   // Get all Categories
   getAllCategoriesHttpRequest() {
+
     return this.httpClient
       .get<CategoryInterface[]>(environment.apiBaseUrl + '/getAllCategories.php', {})
       // .pipe()
       ;
+
   }
 
 
@@ -156,6 +161,18 @@ export class DataStorageService {
       {})
       // .pipe()
       ;
+  }
+
+
+
+  // Get all Countries
+  getAllCountriesHttpRequest() {
+
+    return this.httpClient
+      .get<CountryInterface[]>(environment.apiBaseUrl + '/getAllCountries.php', {})
+      // .pipe()
+      ;
+      
   }
 
 

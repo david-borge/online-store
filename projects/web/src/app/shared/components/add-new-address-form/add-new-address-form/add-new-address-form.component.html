@@ -1,4 +1,4 @@
-<form id="addNewAddress" [formGroup]="addNewAddress" (ngSubmit)="onSubmit();">
+<form id="addNewAddressForm" [formGroup]="addNewAddressForm" #addNewAddressFormRef="ngForm">
 
     <div class="row">
         <div class="col-6">
@@ -31,10 +31,9 @@
         <div class="col-6">
 
             <div class="form-floating mb-4">
-                <select id="country" name="country" class="form-select" aria-label="Country">
-                  <option value="1" selected>One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select id="country" name="country" class="form-select" aria-label="Country" formControlName="country">
+                  <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+                  <!-- <option value="1" selected>One</option> -->
                 </select>
                 <label for="country">Country</label>
             </div>
@@ -52,8 +51,6 @@
             <label for="fullName">Full Name</label>
         </div>
     </div>
-
-    <!-- <button type="submit" class="btn btn-primary w-100">{{( (authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' )}}</button> -->
 
     <div class="card text-bg-danger mt-5 mb-3" *ngIf="(addNewAddressResult != '')">
         <div class="card-body">
