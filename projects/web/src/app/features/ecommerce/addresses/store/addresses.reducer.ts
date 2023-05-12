@@ -8,6 +8,7 @@ import * as AddressesActions from "./addresses.actions";  // Importar todo y gua
 
 import { GetAddressesPHPInterface } from "projects/web/src/app/core/models/getAddressesPHP.interface";
 import { CountryInterface } from "projects/web/src/app/core/models/country.interface";
+import { AddressInterface } from "projects/web/src/app/core/models/address.interface";
 
 
 
@@ -17,6 +18,14 @@ export interface AddressesReducerStateInterface {
   addresses: GetAddressesPHPInterface["addresses"];
   countries: CountryInterface[];
   getAllCountriesErrorMessage: string;
+  newAddress: {
+    fullName   : AddressInterface["fullName"],
+    address    : AddressInterface["address"],
+    postalCode : AddressInterface["postalCode"],
+    city       : AddressInterface["city"],
+    countryId  : AddressInterface["countryId"],
+  };
+  addNewAddressErrorMessage: string;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -26,17 +35,9 @@ const initialState: AddressesReducerStateInterface = {
   // loadStatus: 'NOT_LOADED',
   addresses: [],
   countries: [],
-  /* countries: [
-    {
-      id: 1,
-      name: 'Spain',
-    },
-    {
-      id: 2,
-      name: 'India',
-    },
-  ], */
   getAllCountriesErrorMessage: '',
+  newAddress: {} as AddressInterface,
+  addNewAddressErrorMessage: '',
 }
 
 
@@ -130,5 +131,70 @@ export const addressesReducer = createReducer(
 
       })),
 
+
+    
+    /** Add New Address Start Action **/
+    // Side Effects asociados: addNewAddressSideEffect (toma los datos de la Addresses desde la base de datos mediante un HTTP Request)
+    on(AddressesActions.AddNewAddressStart,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+    /** |-> Add New Address End Success Action **/
+    on(AddressesActions.AddNewAddressEndSuccess,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        // Cargar todos los datos desde la base de datos
+        newAddress: action.addNewAddresSuccessPayload,
+
+        // TODO:
+        // addresses: [
+        //   ...state.addresses,
+        //   action.addNewAddresSuccessPayload,
+        // ],
+        
+      })),
+
+    /** |-> Add New Address End Failure Action **/
+    on(AddressesActions.AddNewAddressEndFailure,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+        // Mensaje de error
+        addNewAddressErrorMessage: action.addNewAddressErrorMessagePayload,
+
+      })),
+
+
+    
+    /** Save New Address To Store Action **/
+    // Side Effects asociados: addNewAddressSideEffect (toma los datos de la Addresses desde la base de datos mediante un HTTP Request)
+    on(AddressesActions.SaveNewAddressToStore,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        newAddress: action.newAddressPayload,
+          
+      })),
 
 );

@@ -49,7 +49,7 @@ export class BottomOverlayComponent {
 
       // Add new address
       case 'ADD_NEW_ADDRESS':
-        this.accountService.addNewAddress(this.newAddress);
+        this.accountService.addNewAddress();
         break;
 
       // Add new payment method

@@ -61,51 +61,6 @@ export const GetAddressesEndFailure = createAction(
 
 
 
-/** Add New Address Start Action **/
-// Side Effects asociados: addNewAddressSideEffect (añadir la nueva address a la base de datos mediante un HTTP Request)
-export const AddNewAddresStart = createAction(
-
-  // Tipo de la Action
-  '[Addresses] Add New Address Start',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    newAddress: AddressInterface,
-  }>(),
-
-);
-
-/** |-> Add New Address End Success Action **/
-export const AddNewAddresEndSuccess = createAction(
-
-  // Tipo de la Action
-  '[Addresses] Add New Address End Success',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-      // Si el método de la action requiere un solo parámetro, payload es un solo valor
-      addNewAddresSuccessPayload: AddNewAddressPHPInterface["newAddress"],
-  }>(),
-
-);
-
-/** |-> Add New Address End Failure Action **/
-export const AddNewAddresEndFailure = createAction(
-
-  // Tipo de la Action
-  '[Addresses] Add New Address End Failure',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-      // Si el método de la action requiere un solo parámetro, payload es un solo valor
-      addNewAddressErrorMessagePayload: string,
-  }>(),
-
-);
-
-
-
 /** Get All Countries Start Action **/
 // Side Effects asociados: getAllCountriesSideEffect (añadir la nueva address a la base de datos mediante un HTTP Request)
 export const GetAllCountriesStart = createAction(
@@ -143,6 +98,79 @@ export const GetAllCountriesEndFailure = createAction(
 
 );
 
+
+
+/** Add New Address Start Action **/
+// Side Effects asociados: addNewAddressSideEffect (añadir la nueva address a la base de datos mediante un HTTP Request)
+export const AddNewAddressStart = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Add New Address Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newAddressPayload: {
+      fullName   : AddressInterface["fullName"],
+      address    : AddressInterface["address"],
+      postalCode : AddressInterface["postalCode"],
+      city       : AddressInterface["city"],
+      countryId  : AddressInterface["countryId"],
+    },
+  }>(),
+
+);
+
+/** |-> Add New Address End Success Action **/
+export const AddNewAddressEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Add New Address End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      addNewAddresSuccessPayload: AddNewAddressPHPInterface["newAddress"],
+  }>(),
+
+);
+
+/** |-> Add New Address End Failure Action **/
+export const AddNewAddressEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Add New Address End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      addNewAddressErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
+/** Save New Address To Store Action **/
+// Side Effects asociados: addNewAddressSideEffect (añadir la nueva address a la base de datos mediante un HTTP Request)
+export const SaveNewAddressToStore = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Save New Address To Store',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newAddressPayload: {
+      fullName   : AddressInterface["fullName"],
+      address    : AddressInterface["address"],
+      postalCode : AddressInterface["postalCode"],
+      city       : AddressInterface["city"],
+      countryId  : AddressInterface["countryId"],
+    },
+  }>(),
+
+);
 
 
 /** Dummy Action **/

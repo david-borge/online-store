@@ -1,4 +1,5 @@
-<form id="addNewAddressForm" [formGroup]="addNewAddressForm" #addNewAddressFormRef="ngForm">
+<form id="addNewAddressForm" [formGroup]="addNewAddressForm">
+<!-- <form id="addNewAddressForm" [formGroup]="addNewAddressForm" (ngSubmit)="onSubmit();"> -->
 
     <div class="row">
         <div class="col-6">
@@ -31,11 +32,11 @@
         <div class="col-6">
 
             <div class="form-floating mb-4">
-                <select id="country" name="country" class="form-select" aria-label="Country" formControlName="country">
+                <select id="countryId" name="countryId" class="form-select" aria-label="Country" formControlName="countryId">
                   <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
                   <!-- <option value="1" selected>One</option> -->
                 </select>
-                <label for="country">Country</label>
+                <label for="countryId">Country</label>
             </div>
 
         </div>
@@ -51,6 +52,9 @@
             <label for="fullName">Full Name</label>
         </div>
     </div>
+
+    <!-- Comprobación -->
+    <!-- <button type="submit" class="mt-4 btn btn-primary w-100">Submit</button> -->
 
     <div class="card text-bg-danger mt-5 mb-3" *ngIf="(addNewAddressResult != '')">
         <div class="card-body">

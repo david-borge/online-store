@@ -12,7 +12,10 @@ import { of } from 'rxjs';
 
 import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from './addresses.actions';
+
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
+import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
+
 import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
 
 
@@ -28,6 +31,7 @@ export class AddressesEffects {
         private actionsObservable: Actions,
         private dataStorageService: DataStorageService,
         private store: Store<fromApp.AppState>,
+        private cookiesService: CookiesService,
     ) { }
 
 
@@ -162,6 +166,79 @@ export class AddressesEffects {
                         return of(
                             AddressesActions.GetAllCountriesEndFailure({
                                 getAllCountriesErrorMessagePayload: 'There was an error when loading the Country list.',
+                            }),
+                        );
+
+                    }),
+            );
+
+        }),
+
+    ));
+
+
+
+    // Side Effect de la Add New Address Start Action de Addresses
+    addNewAddressSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(AddressesActions.AddNewAddressStart),
+
+        withLatestFrom( this.store.select('addressesReducerObservable') ),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (addNewAddressStartActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: addNewAddressStartActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobación
+            console.log('addNewAddressStartActionData:');
+            console.log(addNewAddressStartActionData);
+
+            console.log('authTokenCookieValue: ' + this.cookiesService.leerUnaCookie('authToken'));
+
+           
+            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+            return this.dataStorageService.addNewAddressHttpRequest(addNewAddressStartActionData[0].newAddressPayload, this.cookiesService.leerUnaCookie('authToken'))
+                .pipe(
+
+                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+
+                    switchMap( (addNewAddressHttpRequestResponse) => {
+
+                        // Comprobación
+                        console.log('addNewAddressSideEffect - addNewAddressHttpRequestResponse:');
+                        console.log(addNewAddressHttpRequestResponse);
+
+                        // Procesamiento de datos si es necesario...
+
+                        return of(
+
+                            // Procesar datos si es necesario...
+
+                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                            AddressesActions.AddNewAddressEndSuccess({
+                                addNewAddresSuccessPayload: addNewAddressHttpRequestResponse,
+                            }),
+
+                        );
+
+                    }),
+                    catchError(errorResponse => {
+
+                        // Error handling code...
+
+                        // Mostrar el error en la consola
+                        console.log('addNewAddressSideEffect - errorResponse:');
+                        console.log(errorResponse);
+
+                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                        return of(
+                            AddressesActions.AddNewAddressEndFailure({
+                                addNewAddressErrorMessagePayload: 'There was an error when loading the Country list.',
                             }),
                         );
 

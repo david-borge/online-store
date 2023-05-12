@@ -17,6 +17,7 @@ import { ProductInterface } from '../../models/product.interface';
 import { CategoryInterface } from '../../models/category.interface';
 import { UserInterface } from '../../models/user.interface';
 import { CountryInterface } from '../../models/country.interface';
+import { AddressInterface } from '../../models/address.interface';
 import { GetOrderDataPHPInterface } from '../../models/getOrderDataPHP.interface';
 import { GetOrdersPHPInterface } from '../../models/getOrdersPHP.interface';
 import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface';
@@ -165,7 +166,7 @@ export class DataStorageService {
 
 
 
-  // Get all Countries
+  // Get All Countries
   getAllCountriesHttpRequest() {
 
     return this.httpClient
@@ -175,6 +176,34 @@ export class DataStorageService {
       
   }
 
+
+
+  // Add New Address
+  addNewAddressHttpRequest(
+    newAddress: {
+      fullName   : AddressInterface["fullName"],
+      address    : AddressInterface["address"],
+      postalCode : AddressInterface["postalCode"],
+      city       : AddressInterface["city"],
+      countryId  : AddressInterface["countryId"],
+    },
+    authToken: string,
+  ) {
+
+    // Comprobación
+    // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
+
+    return this.httpClient
+      .post<any>(environment.apiBaseUrl + '/addNewAddress.php', // El any es para cubrirme las espaldas por si la API devuelve un mensaje de error como: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1…ry 'hewemim@mailinator.com' for key 'users.email'"}
+      {
+        newAddress: newAddress,
+        authToken: authToken,
+      },
+      {})
+      // .pipe()
+      ;
+
+  }
 
   authMessages(messageCode: string): string {
 

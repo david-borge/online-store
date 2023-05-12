@@ -17,7 +17,7 @@ import { CountryInterface } from 'projects/web/src/app/core/models/country.inter
   templateUrl: './add-new-address-form.component.html',
   styleUrls: ['./add-new-address-form.component.scss']
 })
-export class AddNewAddressFormComponent {
+export class AddNewAddressFormComponent implements OnInit,OnDestroy {
 
   // Suscripciones a la Store
   addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -27,8 +27,8 @@ export class AddNewAddressFormComponent {
 
   // Variables del formulario
   addNewAddressForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
-  addNewAddressResult: string = '';
   @ViewChild('addNewAddressFormRef') addNewAddressFormViewChild: NgForm = {} as NgForm;
+  addNewAddressResult: string = '';
   
   constructor(
     private store: Store<fromApp.AppState>,
@@ -36,7 +36,7 @@ export class AddNewAddressFormComponent {
 
   ngOnInit(): void {
 
-    // Cargar la lista de Countries a la Store
+    // - Cargar la lista de Countries a la Store
     this.store.dispatch( AddressesActions.GetAllCountriesStart() );
 
     // - Leer la Addresses Store
@@ -58,24 +58,51 @@ export class AddNewAddressFormComponent {
       'address'    : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
       'postalCode' : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
       'city'       : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-      'country'    : new FormControl(1,    [Validators.required]),  // Por defecto, selecciono la option con value="1" (el primer Country de la lista)
+      'countryId'  : new FormControl(1,    [Validators.required]),  // Por defecto, selecciono la option con value="1" (el primer Country de la lista)
       'fullName'   : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
     });
 
+    // - Status Observable: guardar los valores de los campos en la Addreses Store (si se ha rellenado el formulario completo y correctamente)
+    this.addNewAddressForm.statusChanges.subscribe(
+      (statusChanges) => {
+
+        // Comprobación
+        // console.log('statusChanges (VALID | INVALID | PENDING): ' + statusChanges);
+
+        if ( statusChanges === 'VALID') {
+          
+          // Comprobación
+          // console.log('Valores del formulario: ' + this.addNewAddressForm.get('address')?.value + ' - ' + this.addNewAddressForm.get('postalCode')?.value + ' - ' + this.addNewAddressForm.get('city')?.value + ' - ' + this.addNewAddressForm.get('countryId')?.value + ' - ' + this.addNewAddressForm.get('fullName')?.value);
+          
+          // Guardar los valores de los campos en la Addresses Store
+          this.store.dispatch( AddressesActions.SaveNewAddressToStore({
+            newAddressPayload: {
+              fullName   : this.addNewAddressForm.get('fullName')?.value,
+              address    : this.addNewAddressForm.get('address')?.value,
+              postalCode : this.addNewAddressForm.get('postalCode')?.value,
+              city       : this.addNewAddressForm.get('city')?.value,
+              countryId  : this.addNewAddressForm.get('countryId')?.value,
+            },
+          }) );
+
+        }
+
+      }
+    );
+
   }
 
-  onSubmit() {
+  /* onSubmit() {
 
     // Comprobación
-    console.log('Form submitted!');
-    console.log('addNewAddressFormViewChild:');
-    console.log(this.addNewAddressFormViewChild);
-    
+    console.log('addNewAddressForm:');
+    console.log(this.addNewAddressForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+
     // Reestablecer el form
     // CUIDADO: esta línea hace que los valores no salgan bien la comprobación anterior
     // this.addNewAddressForm.reset();
 
-  }
+  } */
 
   ngOnDestroy(): void {
     this.addressesReducerObservableSubscription.unsubscribe();

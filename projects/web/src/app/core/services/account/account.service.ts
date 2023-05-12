@@ -13,14 +13,33 @@ import { AddressInterface } from '../../models/address.interface';
 })
 export class AccountService {
 
+  newAddress: {
+    fullName   : AddressInterface["fullName"],
+    address    : AddressInterface["address"],
+    postalCode : AddressInterface["postalCode"],
+    city       : AddressInterface["city"],
+    countryId  : AddressInterface["countryId"],
+  } = { fullName: '', address: '', postalCode: '', city: '', countryId: 0};
+
   constructor(
     private store: Store<fromApp.AppState>,
-  ) {}
+  ) {
 
-  addNewAddress(newAddress: AddressInterface) {
+    // Leer datos de la Addresses Store
+    this.store.select("addressesReducerObservable").subscribe(
+      addressesReducerData => {
 
-    this.store.dispatch( AddressesActions.AddNewAddresStart({
-      newAddress: newAddress,
+        this.newAddress = addressesReducerData.newAddress;
+
+      }
+    );
+
+  }
+
+  addNewAddress() {
+
+    this.store.dispatch( AddressesActions.AddNewAddressStart({
+      newAddressPayload: this.newAddress,
     }) );
     
   }

@@ -8,7 +8,7 @@ export interface AddNewAddressPHPInterface {
         address    : AddressInterface["address"];
         postalCode : AddressInterface["postalCode"];
         city       : AddressInterface["city"];
-        country    : string;
+        countryId  : AddressInterface["countryId"];
     }
 
 }

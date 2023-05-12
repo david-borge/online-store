@@ -44,8 +44,7 @@ const initialState: GlobalReducerStateInterface = {
   signUpLogInResult: '',
   user: {} as UserInterface,
   activeOrders: [],
-  // showBottomOverlay: false,
-  showBottomOverlay: true,
+  showBottomOverlay: false,
 }
 
 
