@@ -4,8 +4,10 @@ import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
+import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
 
 import { AddressInterface } from '../../models/address.interface';
+import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
 
 
 @Injectable({
@@ -19,7 +21,31 @@ export class AccountService {
     postalCode : AddressInterface["postalCode"],
     city       : AddressInterface["city"],
     countryId  : AddressInterface["countryId"],
-  } = { fullName: '', address: '', postalCode: '', city: '', countryId: 0};
+  } = {
+    fullName: '',
+    address: '',
+    postalCode: '',
+    city: '',
+    countryId: 0
+  };
+
+  newCard:{
+    type                : PaymentMethodInterface["type"],
+    cardBankName        : PaymentMethodInterface["cardBankName"],
+    cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
+    cardNumber          : PaymentMethodInterface["cardNumber"],
+    cardExpirationMonth : PaymentMethodInterface["cardExpirationMonth"],
+    cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
+    cardType            : PaymentMethodInterface["cardType"],
+  } = {
+    type                : 'card',
+    cardBankName        : 'Bank of America', // 'Bank of America' | 'Goldman Sachs' | 'Citigroup' | 'Wells Fargo' | 'Capital One Financial'
+    cardPersonFullName  : '',
+    cardNumber          : '',
+    cardExpirationMonth : '',
+    cardExpirationYear  : '',
+    cardType            : 'visa',
+  };
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -30,6 +56,15 @@ export class AccountService {
       addressesReducerData => {
 
         this.newAddress = addressesReducerData.newAddress;
+
+      }
+    );
+
+    // Leer datos de la Payment Method Store
+    this.store.select("paymentMethodsReducerObservable").subscribe(
+      paymentMethodsReducerData => {
+
+        this.newCard = paymentMethodsReducerData.newCard;
 
       }
     );
@@ -46,10 +81,9 @@ export class AccountService {
 
   addNewPaymentMethod() {
 
-    // TODO:
-    // this.store.dispatch( AddressesActions.AddNewAddressStart({
-    //   newAddressPayload: this.newAddress,
-    // }) );
+    this.store.dispatch( PaymentMethodsActions.AddNewCardStart({
+      newCardPayload: this.newCard,
+    }) );
     
   }
   

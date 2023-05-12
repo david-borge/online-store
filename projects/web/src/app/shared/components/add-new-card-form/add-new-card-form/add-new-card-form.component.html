@@ -1,5 +1,5 @@
-<form id="addNewAddressForm" [formGroup]="addNewAddressForm">
-<!-- <form id="addNewAddressForm" [formGroup]="addNewAddressForm" (ngSubmit)="onSubmit();"> -->
+<form id="addNewCardForm" [formGroup]="addNewCardForm">
+<!-- <form id="addNewCardForm" [formGroup]="addNewCardForm" (ngSubmit)="onSubmit();"> -->
     
         <div class="input-group mb-4">
             <span class="input-group-text input-group-text-floating">
@@ -48,7 +48,7 @@
             <div class="col-6">
     
                 <div class="form-floating">
-                    <input id="cardExpirationYear" name="cardExpirationYear" type="number" class="form-control" placeholder="{{currentYear}}" step="1" min="{{currentYear}}" formControlName="cardExpirationYear">
+                    <input id="cardExpirationYear" name="cardExpirationYear" type="number" class="form-control" [placeholder]="currentYear" step="1" [min]="currentYear" formControlName="cardExpirationYear">
                     <label for="cardExpirationYear">Expiration Year</label>
                 </div>
     

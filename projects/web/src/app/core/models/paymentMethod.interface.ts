@@ -3,7 +3,7 @@ export interface PaymentMethodInterface {
     id                 : number;
     userId             : number;
     type               : 'card'; // card (relational en el futuro)
-    cardBankName       : string;
+    cardBankName       : 'Bank of America' | 'Goldman Sachs' | 'Citigroup' | 'Wells Fargo' | 'Capital One Financial'; // Aleatorio
     cardPersonFullName : string;
     cardNumber         : string;
     cardExpirationMonth  : string;

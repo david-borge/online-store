@@ -193,10 +193,10 @@ export class AddressesEffects {
             // Aquí puedo usar los datos del payload de la Action: addNewAddressStartActionData.nombrePayloadPayload.propiedad1
 
             // Comprobación
-            console.log('addNewAddressStartActionData:');
-            console.log(addNewAddressStartActionData);
+            // console.log('addNewAddressStartActionData:');
+            // console.log(addNewAddressStartActionData);
 
-            console.log('authTokenCookieValue: ' + this.cookiesService.leerUnaCookie('authToken'));
+            // console.log('authTokenCookieValue: ' + this.cookiesService.leerUnaCookie('authToken'));
 
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
@@ -210,8 +210,8 @@ export class AddressesEffects {
                     switchMap( (addNewAddressHttpRequestResponse) => {
 
                         // Comprobación
-                        console.log('addNewAddressSideEffect - addNewAddressHttpRequestResponse:');
-                        console.log(addNewAddressHttpRequestResponse);
+                        // console.log('addNewAddressSideEffect - addNewAddressHttpRequestResponse:');
+                        // console.log(addNewAddressHttpRequestResponse);
 
                         // Procesamiento de datos si es necesario...
 

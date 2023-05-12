@@ -1,32 +1,26 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
-import { Subscription } from 'rxjs';
-
 import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
-import * as AddressesActions from '../../../../features/ecommerce/addresses/store/addresses.actions';
+import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-methods/store/payment-methods.actions';
 
-import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
 
 @Component({
   selector: 'app-add-new-card-form',
   templateUrl: './add-new-card-form.component.html',
   styleUrls: ['./add-new-card-form.component.scss']
 })
-export class AddNewCardFormComponent {
-
-  // Suscripciones a la Store
-  addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
+export class AddNewCardFormComponent implements OnInit {
 
   // Variables para la Template
   currentYear: number = new Date().getFullYear();
 
   // Variables del formulario
-  addNewAddressForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
-  @ViewChild('addNewAddressFormRef') addNewAddressFormViewChild: NgForm = {} as NgForm;
+  addNewCardForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
+  @ViewChild('addNewCardFormRef') addNewCardFormViewChild: NgForm = {} as NgForm;
   addNewCardResult: string = '';
   
   constructor(
@@ -35,27 +29,22 @@ export class AddNewCardFormComponent {
 
   ngOnInit(): void {
 
-    // - Cargar la lista de Countries a la Store
-    this.store.dispatch( AddressesActions.GetAllCountriesStart() );
-
     // - Add New Card Form
-    this.addNewAddressForm = new FormGroup({
+    this.addNewCardForm = new FormGroup({
       // Controles: 'name_del_control': new FormControl(valor_inicial, validadores_normales, validadores_asincronos)
       // Validadores de Angular (Reactive approach): usar estos métodos en el TS: https://angular.io/api/forms/Validators
       /* Comprobación de validadores:
           - Clases ng-valid y ng-invalid en el control
-          - Objeto JS del form: addNewAddressForm.controls.name_o_ruta_del_control.errors. En addNewAddressForm.errors no aparece.
+          - Objeto JS del form: addNewCardForm.controls.name_o_ruta_del_control.errors. En addNewCardForm.errors no aparece.
       */
-      'address'    : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-      'postalCode' : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-      'city'       : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-      'fullName'   : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-      'cardExpirationMonth'  : new FormControl(1, [Validators.required]),  // Por defecto, selecciono el primer mes (enero)
+      'cardPersonFullName'  : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
+      'cardNumber'          : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
+      'cardExpirationMonth' : new FormControl(1, [Validators.required]),  // Por defecto, selecciono el primer mes (enero)
       'cardExpirationYear'  : new FormControl(this.currentYear, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
     });
 
     // - Status Observable: guardar los valores de los campos en la Addreses Store (si se ha rellenado el formulario completo y correctamente)
-    this.addNewAddressForm.statusChanges.subscribe(
+    this.addNewCardForm.statusChanges.subscribe(
       (statusChanges) => {
 
         // Comprobación
@@ -64,17 +53,20 @@ export class AddNewCardFormComponent {
         if ( statusChanges === 'VALID') {
           
           // Comprobación
-          // console.log('Valores del formulario: ' + this.addNewAddressForm.get('address')?.value + ' - ' + this.addNewAddressForm.get('postalCode')?.value + ' - ' + this.addNewAddressForm.get('city')?.value + ' - ' + this.addNewAddressForm.get('countryId')?.value + ' - ' + this.addNewAddressForm.get('fullName')?.value);
+          // console.log('Valores del formulario: ' + this.addNewCardForm.get('address')?.value + ' - ' + this.addNewCardForm.get('postalCode')?.value + ' - ' + this.addNewCardForm.get('city')?.value + ' - ' + this.addNewCardForm.get('countryId')?.value + ' - ' + this.addNewCardForm.get('fullName')?.value);
           
-          // Guardar los valores de los campos en la Addresses Store
-          this.store.dispatch( AddressesActions.SaveNewAddressToStore({
-            newAddressPayload: {
-              fullName   : this.addNewAddressForm.get('fullName')?.value,
-              address    : this.addNewAddressForm.get('address')?.value,
-              postalCode : this.addNewAddressForm.get('postalCode')?.value,
-              city       : this.addNewAddressForm.get('city')?.value,
-              countryId  : this.addNewAddressForm.get('countryId')?.value,
-            },
+          // Guardar los valores de los campos en la Payment Method Store
+          let bankNames: ('Bank of America' | 'Goldman Sachs' | 'Citigroup' | 'Wells Fargo' | 'Capital One Financial')[] = ['Bank of America', 'Goldman Sachs', 'Citigroup', 'Wells Fargo', 'Capital One Financial'];
+          this.store.dispatch( PaymentMethodsActions.SaveNewCardToStore({
+            newCardPayload: {
+              type                : 'card',
+              cardBankName        : bankNames[Math.floor(Math.random() * 5)], // Aleatoriamente: 'Bank of America' | 'Goldman Sachs' | 'Citigroup' | 'Wells Fargo' | 'Capital One Financial'
+              cardPersonFullName  : this.addNewCardForm.get('cardPersonFullName')?.value,
+              cardNumber          : this.addNewCardForm.get('cardNumber')?.value,
+              cardExpirationMonth : this.addNewCardForm.get('cardExpirationMonth')?.value,
+              cardExpirationYear  : this.addNewCardForm.get('cardExpirationYear')?.value,
+              cardType            : ( ( Math.round(Math.random()) == 1 ) ? 'visa' : 'mastercard' ), // Aleatoriamente: "visa" | "mastercard"
+            }
           }) );
 
         }
@@ -87,17 +79,13 @@ export class AddNewCardFormComponent {
   /* onSubmit() {
 
     // Comprobación
-    console.log('addNewAddressForm:');
-    console.log(this.addNewAddressForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+    console.log('addNewCardForm:');
+    console.log(this.addNewCardForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
 
     // Reestablecer el form
     // CUIDADO: esta línea hace que los valores no salgan bien la comprobación anterior
-    // this.addNewAddressForm.reset();
+    // this.addNewCardForm.reset();
 
   } */
-
-  ngOnDestroy(): void {
-    this.addressesReducerObservableSubscription.unsubscribe();
-  }
 
 }

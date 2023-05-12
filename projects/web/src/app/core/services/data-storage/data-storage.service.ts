@@ -22,6 +22,7 @@ import { GetOrderDataPHPInterface } from '../../models/getOrderDataPHP.interface
 import { GetOrdersPHPInterface } from '../../models/getOrdersPHP.interface';
 import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface';
 import { GetPaymentMethodsPHPInterface } from '../../models/getPaymentMethodsPHP.interface';
+import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -197,6 +198,37 @@ export class DataStorageService {
       .post<any>(environment.apiBaseUrl + '/addNewAddress.php', // El any es para cubrirme las espaldas por si la API devuelve un mensaje de error como: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1…ry 'hewemim@mailinator.com' for key 'users.email'"}
       {
         newAddress: newAddress,
+        authToken: authToken,
+      },
+      {})
+      // .pipe()
+      ;
+
+  }
+
+
+
+  // Add New Card
+  addNewCardHttpRequest(
+    newCard: {
+      type                : PaymentMethodInterface["type"],
+      cardBankName        : PaymentMethodInterface["cardBankName"],
+      cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
+      cardNumber          : PaymentMethodInterface["cardNumber"],
+      cardExpirationMonth : PaymentMethodInterface["cardExpirationMonth"],
+      cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
+      cardType            : PaymentMethodInterface["cardType"],
+    },
+    authToken: string,
+  ) {
+
+    // Comprobación
+    // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
+
+    return this.httpClient
+      .post<any>(environment.apiBaseUrl + '/addNewCard.php', // El any es para cubrirme las espaldas por si la API devuelve un mensaje de error como: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1…ry 'hewemim@mailinator.com' for key 'users.email'"}
+      {
+        newCard: newCard,
         authToken: authToken,
       },
       {})

@@ -9,6 +9,8 @@
 
 import { createAction, props } from "@ngrx/store";
 
+import { PaymentMethodInterface } from "projects/web/src/app/core/models/paymentMethod.interface";
+import { AddNewCardPHPInterface } from "projects/web/src/app/core/models/AddNewCardPHPInterface";
 import { GetPaymentMethodsPHPInterface } from "projects/web/src/app/core/models/getPaymentMethodsPHP.interface";
 
 
@@ -56,6 +58,83 @@ export const GetPaymentMethodsEndFailure = createAction(
 
 );
 
+
+
+/** Add New Card Start Action **/
+// Side Effects asociados: addNewCardSideEffect (añadir la nueva Card a la base de datos mediante un HTTP Request)
+export const AddNewCardStart = createAction(
+
+  // Tipo de la Action
+  '[PaymentMethods] Add New Card Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newCardPayload: {
+      type                : PaymentMethodInterface["type"],
+      cardBankName        : PaymentMethodInterface["cardBankName"],
+      cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
+      cardNumber          : PaymentMethodInterface["cardNumber"],
+      cardExpirationMonth : PaymentMethodInterface["cardExpirationMonth"],
+      cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
+      cardType            : PaymentMethodInterface["cardType"],
+    },
+  }>(),
+
+);
+
+/** |-> Add New Card End Success Action **/
+export const AddNewCardEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[PaymentMethods] Add New Card End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      addNewCardSuccessPayload: AddNewCardPHPInterface["newCard"],
+  }>(),
+
+);
+
+/** |-> Add New Card End Failure Action **/
+export const AddNewCardEndFailure = createAction(
+
+  // Tipo de la Action
+  '[PaymentMethods] Add New Card End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      addNewCardErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
+/** Save New Card To Store Action **/
+// Side Effects asociados: addNewCardSideEffect (añadir la nueva card a la base de datos mediante un HTTP Request)
+export const SaveNewCardToStore = createAction(
+
+  // Tipo de la Action
+  '[PaymentMethods] Save New Card To Store',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newCardPayload: {
+      type                : PaymentMethodInterface["type"],
+      cardBankName        : PaymentMethodInterface["cardBankName"],
+      cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
+      cardNumber          : PaymentMethodInterface["cardNumber"],
+      cardExpirationMonth : PaymentMethodInterface["cardExpirationMonth"],
+      cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
+      cardType            : PaymentMethodInterface["cardType"],
+    },
+  }>(),
+
+);
 
 
 /** Dummy Action **/
