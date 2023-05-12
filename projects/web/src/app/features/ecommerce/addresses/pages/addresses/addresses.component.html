@@ -71,7 +71,6 @@
 <app-footer
     [navigationShowCtasAndCopy]              = "true"
     [navigationShowCopy]                     = "false"
-    [navigationCopyLabel]                    = "''"
     [navigationCopyPrice]                    = "79.99"
     [navigationButtonRightText]              = "'Add new address'"
     [navigationButtonRightClasses]           = "'btn-outline-secondary btn-sm'"
@@ -84,7 +83,7 @@
 <!-- Bottom Overlay -->
 <app-bottom-overlay
     *ngIf="showBottomOverlay"
-    (clickOnCerrarBottomOverlayBtnEventEmitter)="showBottomOverlay = false;"
     [bottomOverlayTitle]         = "'Add new delivery address'"
     [bottomOverlayAddButtonText] = "'Add address'"
+    [bottomOverlayBodyContent]   = "'ADD_NEW_ADDRESS'"
 ></app-bottom-overlay>

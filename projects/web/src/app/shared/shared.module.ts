@@ -19,6 +19,7 @@ import { BottomOverlayComponent } from './components/bottom-overlay/bottom-overl
 import { PrefetchDirective } from './directives/prefetch/prefetch.directive';
 import { ImageLoadDirective } from './directives/image-load/image-load.directive';
 import { SignupLoginFormComponent } from './components/signup-login-form/signup-login-form.component';
+import { AddNewAddressFormComponent } from './components/add-new-address-form/add-new-address-form/add-new-address-form.component';
 
 
 
@@ -42,6 +43,7 @@ import { SignupLoginFormComponent } from './components/signup-login-form/signup-
     // Mis directivas personalizadas
     PrefetchDirective,
     ImageLoadDirective,
+    AddNewAddressFormComponent,
   ],
   imports: [
     CommonModule,

@@ -1,15 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
+
+import { take } from 'rxjs';
 
 import * as fromApp from '../../store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../store/global.actions';
 
 import { PreFetchService } from '../../services/prefetch/prefetch.service';
 import { RoutingService } from '../../services/routing/routing.service';
-import { take } from 'rxjs';
 
 
 
@@ -18,10 +19,11 @@ import { take } from 'rxjs';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnChanges {
 
   // Propiedades - Footer - Navigation CTAs & Copy
   @Input() navigationShowCtasAndCopy :boolean = false;
+  currentURL: string = '';
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Copy
   @Input() navigationShowCopy  :boolean = true;
@@ -30,7 +32,7 @@ export class FooterComponent implements OnInit {
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
   @Input() navigationButtonRightText              :string  = '';
-  @Input() navigationButtonRightURL               :string  = '/checkout';
+  @Input() navigationButtonRightURL               :string  = '';
   @Input() navigationButtonRightClasses           :string  = 'btn-primary btn-lg';
   @Input() navigationShowButtonRightRightIcon     :boolean = false;
   @Input() navigationShowButtonRightRightIconType :string = 'check';
@@ -56,6 +58,9 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // - Leer en qué URL estoy
+    this.currentURL = this.router.url;
 
     // - Si el carrito está vacío, mostrar el botón "Explore the Store", que lleva a la Home Page
     if( this.numberOfProductsInCart == 0 ) {
@@ -83,15 +88,15 @@ export class FooterComponent implements OnInit {
     // console.log('activeNavigationItem: ' + this.activeNavigationItem + ' - lastActiveMainPage: ' + this.lastActiveMainPage);
 
     // · Si aterrizo en una de las páginas principales
-    if( (this.router.url == '/home') || (this.router.url == '/categories') || (this.router.url == '/cart') || (this.router.url == '/account')) {
+    if( (this.currentURL == '/home') || (this.currentURL == '/categories') || (this.currentURL == '/cart') || (this.currentURL == '/account')) {
 
       // Comprobación
-      // console.log('En una página principal: ' + this.router.url);
+      // console.log('En una página principal: ' + this.currentURL);
 
-      this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: this.router.url, }) );
+      this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: this.currentURL, }) );
       this.store.dispatch( GlobalActions.SetLocalStorageKeyValue({
         localStorageKeyPayload: 'lastActiveMainPage',
-        localStorageValuePayload: this.router.url,
+        localStorageValuePayload: this.currentURL,
       }) );
       
       this.store.dispatch( GlobalActions.GetLocalStorageValueStart({
@@ -101,7 +106,7 @@ export class FooterComponent implements OnInit {
     }
 
     // · Si aterrizo en una página de categoría, activo /categories
-    else if ( this.router.url.includes('/category/') ) {
+    else if ( this.currentURL.includes('/category/') ) {
 
       // Comprobación
       // console.log('En una página de categoría');
@@ -111,7 +116,7 @@ export class FooterComponent implements OnInit {
     }
 
     // · Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.
-    else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '') ) {
+    else if ( this.currentURL.includes('/product/') && (this.lastActiveMainPage == '') ) {
 
       // Comprobación
       // console.log('Si estoy en una página de producto habiendo llegado desde la home o desde categorías y recargo la página, debería marcarse la página de home o categorías, según lo que ponga en Local Storage en lastActiveMainPage.');
@@ -137,7 +142,7 @@ export class FooterComponent implements OnInit {
     }
 
     // · Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la home, activo /home
-    else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/home') ) {
+    else if ( this.currentURL.includes('/product/') && (this.lastActiveMainPage == '/home') ) {
       
       // Comprobación
       // console.log('En una página de producto si la última página principal ha sido /home.');
@@ -147,7 +152,7 @@ export class FooterComponent implements OnInit {
     }
 
     // · Si llego a una página de producto habiendo estado antes en otra página y siendo la última página principal activa la categories, activo /categories
-    else if ( this.router.url.includes('/product/') && (this.lastActiveMainPage == '/categories') ) {
+    else if ( this.currentURL.includes('/product/') && (this.lastActiveMainPage == '/categories') ) {
       
       // Comprobación
       // console.log('En una página de producto si la última página principal ha sido /categories.');
@@ -181,8 +186,55 @@ export class FooterComponent implements OnInit {
   }
 
   onCLickNavigationButtonRight() {
-    this.router.navigate([ this.navigationButtonRightURL ]);
+
+    // Ejecuto una acción u otra dependiendo de en qué página estoy
+
+    // Comprobacion
+    // console.log('currentURL: ' + this.currentURL);
+    
+    // · Página de un producto: añadir al carrito
+    if (this.currentURL.includes('/product/')) {
+
+      // TODO: Add to cart
+
+    }
+    
+    // · Página de carrito: ir al checkout
+    else if (this.currentURL.includes('/cart')) {
+      
+      // TODO: Ir al checkout
+      
+    }
+    
+    // · Página de Delivery addresses: add new address
+    else if (this.currentURL.includes('/addresses')) {
+      
+      // Mostrar el "Add new address" overlay
+      this.store.dispatch( GlobalActions.ShowOrHideBottomOverlay({
+        showBottomOverlayValue: true,
+      }) );
+
+    }
+
+    // Navegación
+    // this.router.navigate([ this.navigationButtonRightURL ]);
+
   }
+
+
+
+  ngOnChanges() {
+    
+    // - Determinar si se debe mostrar .navigation-ctas-and-copy-container (las condiciones varían según la página)
+
+    // Página de un producto
+    if ( this.currentURL.includes('/product/') ) {
+      this.navigationShowCtasAndCopy = (this.navigationCopyPrice != 0); // Solo mostrar .navigation-ctas-and-copy-container si ya se ha cargado el precio del producto
+    }
+
+  }
+
+  
   
   // Proceso de carga de una página: Paso 2.1. Con pre-fetch, hacer una HTTP Request a la API de Backend para descargar datos desde la Base de Datos. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
   prefetch(elementosAprefetch: string[]): void {

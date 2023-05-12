@@ -9,7 +9,9 @@
 
 import { createAction, props } from "@ngrx/store";
 
+import { AddressInterface } from "projects/web/src/app/core/models/address.interface";
 import { GetAddressesPHPInterface } from "projects/web/src/app/core/models/getAddressesPHP.interface";
+import { AddNewAddressPHPInterface } from "projects/web/src/app/core/models/AddNewAddressPHPInterface";
 
 
 
@@ -52,6 +54,51 @@ export const GetAddressesEndFailure = createAction(
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
       getAddressesErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
+/** Add New Address Start Action **/
+// Side Effects asociados: addNewAddressSideEffect (añadir la nueva address a la base de datos mediante un HTTP Request)
+export const AddNewAddresStart = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Add New Address Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newAddress: AddressInterface,
+  }>(),
+
+);
+
+/** |-> Add New Address End Success Action **/
+export const AddNewAddresEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Add New Address End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      addNewAddresSuccessPayload: AddNewAddressPHPInterface["newAddress"],
+  }>(),
+
+);
+
+/** |-> Add New Address End Failure Action **/
+export const AddNewAddresEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Add New Address End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      addNewAddressErrorMessagePayload: string,
   }>(),
 
 );

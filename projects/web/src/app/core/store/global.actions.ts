@@ -283,6 +283,22 @@ export const LogOut = createAction(
 
 
 
+/** Show or Hide Bottom Overlay Action **/
+export const ShowOrHideBottomOverlay = createAction(
+
+  // Tipo de la Action
+  '[Global] Show or Hide Bottom Overlay',
+  
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    showBottomOverlayValue: boolean,
+  }>(),
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

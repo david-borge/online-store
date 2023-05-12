@@ -24,13 +24,16 @@
     bottom: 0;
     left: 0;
 
-    background-color: rgb(0 0 0 / 60%);
+    background-color: rgb(0 0 0 / 30%);
+    backdrop-filter: saturate(180%) blur(20px);
 }
 
 .bottom-overlay--dialog {
     z-index: 0;
 
     width: 100%;
+
+    padding: 0 10px;
 
     display: flex;
     justify-content: center;
@@ -64,6 +67,14 @@
     position: absolute;
     top: 16px;
     right: 16px;
+
+    width: auto;
+    height: auto;
+
+    border-radius: 50%;
+    background: var(--N200);
+    
+    display: flex;
 }
 
 .bottom-overlay--body {
@@ -71,6 +82,7 @@
 }
 
 .bottom-overlay--footer {
+    // border-top: 1px solid var(--N200);
     padding: 12px 24px;
 
     display: flex;

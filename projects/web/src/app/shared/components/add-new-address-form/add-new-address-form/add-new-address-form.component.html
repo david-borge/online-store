@@ -1,0 +1,65 @@
+<form id="addNewAddress" [formGroup]="addNewAddress" (ngSubmit)="onSubmit();">
+
+    <div class="row">
+        <div class="col-6">
+
+            <div class="form-floating mb-4">
+                <input id="address" name="address" type="text" class="form-control" placeholder="Address" formControlName="address">
+                <label for="address">Address</label>
+            </div>
+
+        </div>
+        <div class="col-6">
+
+            <div class="form-floating mb-4">
+                <input id="postalCode" name="postalCode" type="text" class="form-control" placeholder="Postal Code" formControlName="postalCode">
+                <label for="postalCode">Postal Code</label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+
+            <div class="form-floating mb-4">
+                <input id="city" name="city" type="text" class="form-control" placeholder="City" formControlName="city">
+                <label for="city">City</label>
+            </div>
+
+        </div>
+        <div class="col-6">
+
+            <div class="form-floating mb-4">
+                <select id="country" name="country" class="form-select" aria-label="Country">
+                  <option value="1" selected>One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <label for="country">Country</label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-text input-group-text-floating">
+            <!-- Icon: user.svg -->
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.99984 9.16667C11.8408 9.16667 13.3332 7.67428 13.3332 5.83333C13.3332 3.99238 11.8408 2.5 9.99984 2.5C8.15889 2.5 6.6665 3.99238 6.6665 5.83333C6.6665 7.67428 8.15889 9.16667 9.99984 9.16667Z" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="form-floating">
+            <input id="fullName" name="fullName" type="fullName" class="form-control" placeholder="Full Name" formControlName="fullName">
+            <label for="fullName">Full Name</label>
+        </div>
+    </div>
+
+    <!-- <button type="submit" class="btn btn-primary w-100">{{( (authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' )}}</button> -->
+
+    <div class="card text-bg-danger mt-5 mb-3" *ngIf="(addNewAddressResult != '')">
+        <div class="card-body">
+            <h5 class="card-title">Error</h5>
+            <p class="card-text">{{addNewAddressResult}}</p>
+        </div>
+    </div>
+
+</form>

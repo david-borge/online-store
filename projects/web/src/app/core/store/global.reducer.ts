@@ -25,6 +25,7 @@ export interface GlobalReducerStateInterface {
   signUpLogInResult: string;
   user: UserInterface;
   activeOrders: ActiveOrderInterface[]; // Cada elemento es un objeto con: order.id, product.imageThumbnail, product.price, product.productQuantity
+  showBottomOverlay: boolean;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -43,6 +44,8 @@ const initialState: GlobalReducerStateInterface = {
   signUpLogInResult: '',
   user: {} as UserInterface,
   activeOrders: [],
+  // showBottomOverlay: false,
+  showBottomOverlay: true,
 }
 
 
@@ -303,6 +306,21 @@ export const globalReducer = createReducer(
         ...state,
 
         signUpLogInResult: 'notLoggedIn',
+          
+      })),
+
+
+    /** Show or Hide Bottom Overlay Action **/
+    on(GlobalActions.ShowOrHideBottomOverlay,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        showBottomOverlay: action.showBottomOverlayValue,
           
       })),
 

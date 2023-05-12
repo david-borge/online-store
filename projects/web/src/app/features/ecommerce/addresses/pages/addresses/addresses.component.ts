@@ -25,8 +25,6 @@ export class AddressesComponent implements OnInit {
 
   // Template variables
   addresses: GetAddressesPHPInterface["addresses"] = [];
-
-  // TODO:
   showBottomOverlay: boolean = false;
 
 
@@ -36,9 +34,19 @@ export class AddressesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // Recuperar el email del usuario desde la Global Store
+    // Leer datos de la Global Store
     let userEmail = '';
-    this.store.select("globalReducerObservable").subscribe(globalReducerData => { userEmail = globalReducerData.user.email; });
+    this.store.select("globalReducerObservable").subscribe(
+      globalReducerData => {
+
+        // Recuperar el email del usuario desde la Global Store
+        userEmail = globalReducerData.user.email;
+
+        // Leer las propiedades de BottomOverlay de la Global Store
+        this.showBottomOverlay = globalReducerData.showBottomOverlay;
+
+      }
+    );
 
     // Recuperar los datos de la Order de la Base de Datos y guardarlos en la Store
     this.store.dispatch( AddressesActions.GetAddressesStart({
