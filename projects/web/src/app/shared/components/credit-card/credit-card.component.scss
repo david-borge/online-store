@@ -42,6 +42,7 @@
 .credit-card--bank-name {
     @include heading-4;
     color: var(--N900);
+    text-align: left;
 }
 
 // Credit Card - Person Name
