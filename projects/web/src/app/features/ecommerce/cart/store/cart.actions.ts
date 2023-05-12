@@ -7,7 +7,9 @@
 
 
 
-import { createAction } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
+
+import { GetCartDataPHPInterface } from "projects/web/src/app/core/models/GetCartDataPHP.interface";
 
 
 
@@ -46,6 +48,45 @@ export const SetCartPageImagesLoadedToTrue = createAction(
 
   // Tipo de la Action
   '[Cart] Set Cart Page Images Loaded To True',
+
+);
+
+
+
+/** Get Cart Data Start Action **/
+// Side Effects asociados: getCartDataSideEffect (coger el Cart data del usuario actual desde la base de datos mediante un HTTP Request)
+export const GetCartDataStart = createAction(
+
+  // Tipo de la Action
+  '[Cart] Get Cart Data Start',
+
+);
+
+/** |-> Get Cart Data End Success Action **/
+export const GetCartDataEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Cart] Get Cart Data End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      cartDataPayload: GetCartDataPHPInterface["cartData"],
+  }>(),
+
+);
+
+/** |-> Get Cart Data End Failure Action **/
+export const GetCartDataEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Cart] Get Cart Data End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      getCartDataErrorMessagePayload: string,
+  }>(),
 
 );
 

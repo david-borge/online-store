@@ -18,14 +18,20 @@
         <div class="content-container">
 
             <!-- Product List -->
-            <div class="cart-checkout-product-card-container" *ngIf="(numberOfProductsInCart > 0)">
+            <div class="cart-checkout-product-card-container" *ngIf="(cartData.length > 0)">
                 
                 <!-- Cart and Checkout Product Card -->
-                <app-cart-checkout-product-card></app-cart-checkout-product-card>
+                <app-cart-checkout-product-card
+                    *ngFor="let product of cartData"
+                    [productImageThumbnail]              = "product.imageThumbnail"
+                    [productName]                        = "product.name"
+                    [productPrice]                       = "product.price"
+                    [productQuantity]                    = "product.productQuantity"
+                ></app-cart-checkout-product-card>
                 
             </div>
 
-            <div class="empty-text container" *ngIf="(numberOfProductsInCart == 0)">Your cart is empty.</div>
+            <div class="empty-text container" *ngIf="(cartData.length == 0)">Your cart is empty.</div>
             
         </div>
 
