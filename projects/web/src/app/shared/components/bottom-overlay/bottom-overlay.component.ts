@@ -53,7 +53,7 @@ export class BottomOverlayComponent {
         break;
 
       // Add new payment method
-      case 'ADD_NEW_ADDRESS':
+      case 'ADD_NEW_PAYMENT_METHOD':
         this.accountService.addNewPaymentMethod();
         break;
     

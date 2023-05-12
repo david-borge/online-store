@@ -215,6 +215,16 @@ export class FooterComponent implements OnInit, OnChanges {
       }) );
 
     }
+    
+    // · Página de Payment methods: add new payment method
+    else if (this.currentURL.includes('/payment-methods')) {
+      
+      // Mostrar el "Add new address" overlay
+      this.store.dispatch( GlobalActions.ShowOrHideBottomOverlay({
+        showBottomOverlayValue: true,
+      }) );
+
+    }
 
     // Navegación
     // this.router.navigate([ this.navigationButtonRightURL ]);

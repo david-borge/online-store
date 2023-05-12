@@ -22,7 +22,11 @@
 
             <div class="bottom-overlay--body">
 
+                <!-- Add New Address Form -->
                 <app-add-new-address-form *ngIf="(bottomOverlayBodyContent == 'ADD_NEW_ADDRESS')"></app-add-new-address-form>
+
+                <!-- Add New Card Form -->
+                <app-add-new-card-form *ngIf="(bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD')"></app-add-new-card-form>
 
             </div>
 

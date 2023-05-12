@@ -656,10 +656,13 @@ $body-color: var(--N800);
     padding-top: 17px;
     padding-bottom: 0;
     height: 48px;
+
+    background-position: right 0.75rem bottom 6px; // Posición del angle-down
 }
 
 .form-floating > .form-select + label {
     padding-top: 11px;
+    padding-right: 0;
     padding-bottom: 11px;
     height: 48px;
 }

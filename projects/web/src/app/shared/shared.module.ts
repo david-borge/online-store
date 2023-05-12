@@ -20,6 +20,7 @@ import { PrefetchDirective } from './directives/prefetch/prefetch.directive';
 import { ImageLoadDirective } from './directives/image-load/image-load.directive';
 import { SignupLoginFormComponent } from './components/signup-login-form/signup-login-form.component';
 import { AddNewAddressFormComponent } from './components/add-new-address-form/add-new-address-form/add-new-address-form.component';
+import { AddNewCardFormComponent } from './components/add-new-card-form/add-new-card-form/add-new-card-form.component';
 
 
 
@@ -44,6 +45,7 @@ import { AddNewAddressFormComponent } from './components/add-new-address-form/ad
     PrefetchDirective,
     ImageLoadDirective,
     AddNewAddressFormComponent,
+    AddNewCardFormComponent,
   ],
   imports: [
     CommonModule,

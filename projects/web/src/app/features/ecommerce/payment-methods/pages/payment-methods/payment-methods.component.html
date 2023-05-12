@@ -9,7 +9,7 @@
 ></app-header>
     
 <!-- Main -->
-<main role="main" style="padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
+<main role="main" style="padding-bottom: calc(var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical));">
 
     <div class="illustration-and-content-container">
 
@@ -62,4 +62,21 @@
 </main>
   
 <!-- Footer Tag -->
-<app-footer></app-footer>
+<app-footer
+    [navigationShowCtasAndCopy]              = "true"
+    [navigationShowCopy]                     = "false"
+    [navigationButtonRightText]              = "'Add new card'"
+    [navigationButtonRightClasses]           = "'btn-outline-secondary btn-sm'"
+    [navigationShowButtonRightRightIcon]     = "true"
+    [navigationShowButtonRightRightIconType] = "'plus'"
+></app-footer>
+
+
+
+<!-- Bottom Overlay -->
+<app-bottom-overlay
+    *ngIf="showBottomOverlay"
+    [bottomOverlayTitle]         = "'Add new credit or debit card'"
+    [bottomOverlayAddButtonText] = "'Add card'"
+    [bottomOverlayBodyContent]   = "'ADD_NEW_PAYMENT_METHOD'"
+></app-bottom-overlay>

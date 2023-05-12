@@ -46,6 +46,11 @@ export class AccountService {
 
   addNewPaymentMethod() {
 
+    // TODO:
+    // this.store.dispatch( AddressesActions.AddNewAddressStart({
+    //   newAddressPayload: this.newAddress,
+    // }) );
+    
   }
   
 }
