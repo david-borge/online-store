@@ -64,24 +64,28 @@ export class FooterComponent implements OnInit, OnChanges {
     
 
 
-    // Leer de la Cart Store el número de productos en el carrito
-    this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
+    // Si esto en el Cart, leer de la Cart Store el número de productos en el carrito
+    if ( this.currentURL.includes('/cart') ) {
 
-      this.numberOfProductsInCart = cartReducerData.cartData.length;
+      this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
 
-      // Si el carrito está vacío, mostrar el botón "Explore the Store", que lleva a la Home Page
-      if( this.numberOfProductsInCart == 0 ) {
-        this.navigationButtonRightText = "Explore the Store";
-        this.navigationButtonRightURL  = "/home";
-      }
+        this.numberOfProductsInCart = cartReducerData.cartData.length;
+          
+        // Si el carrito está vacío, mostrar el botón "Explore the Store", que lleva a la Home Page
+        if( this.numberOfProductsInCart == 0 ) {
+          this.navigationButtonRightText = "Explore the Store";
+          this.navigationButtonRightURL  = "/home";
+        }
 
-      // TODO: Si el carrito no está vacío, ir al checkout
-      else {
-        this.navigationButtonRightText = "Checkout";
-        this.navigationButtonRightURL  = "/checkout";
-      }
+        // TODO: Si el carrito no está vacío, ir al checkout
+        else {
+          this.navigationButtonRightText = "Checkout";
+          this.navigationButtonRightURL  = "/checkout";
+        }
 
-    });
+      });
+      
+    }
     
 
 
