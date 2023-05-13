@@ -292,6 +292,23 @@ export class DataStorageService {
 
 
 
+  // Add Product To Cart (Page: /product/:product-slug)
+  addProductToCartHttpRequest(authToken: string, productSlug: ProductInterface["slug"]) {
+
+    return this.httpClient
+      .post<GetCartDataPHPInterface["cartData"][0]>(environment.apiBaseUrl + '/addProductToCart.php',
+      {
+        authToken: authToken,
+        productSlug: productSlug,
+      },
+      {})
+      // .pipe()
+      ;
+      
+  }
+
+
+
   authMessages(messageCode: string): string {
 
     switch (messageCode) {

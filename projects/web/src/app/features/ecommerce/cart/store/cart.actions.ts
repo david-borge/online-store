@@ -190,6 +190,51 @@ export const DeleteProductFromCartEndFailure = createAction(
 
 
 
+/** Add Product To Cart Start Action **/
+// Side Effects asociados: addProductToCartSideEffect (coger el Cart data del usuario actual desde la base de datos mediante un HTTP Request)
+export const AddProductToCartStart = createAction(
+
+  // Tipo de la Action
+  '[Cart] Add Product To Cart Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    productSlugPayload : ProductInterface["slug"],
+  }>(),
+
+);
+
+/** |-> Add Product To Cart End Success Action **/
+export const AddProductToCartEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Cart] Add Product To Cart End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newProductDataPayload : GetCartDataPHPInterface["cartData"][0], // Como GetCartDataPHPInterface["cartData"] es un array, cojo solo un elemento
+  }>(),
+
+);
+
+/** |-> Add Product To Cart End Failure Action **/
+export const AddProductToCartEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Cart] Add Product To Cart End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    addProductToCartErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

@@ -8,9 +8,12 @@ import { take } from 'rxjs';
 
 import * as fromApp from '../../store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../store/global.actions';
+import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
 
 import { PreFetchService } from '../../services/prefetch/prefetch.service';
 import { RoutingService } from '../../services/routing/routing.service';
+import { ProductInterface } from '../../models/product.interface';
+import { CartInterface } from '../../models/cart.interface';
 
 
 
@@ -29,6 +32,7 @@ export class FooterComponent implements OnInit, OnChanges {
   @Input() navigationShowCopy  :boolean = true;
   @Input() navigationCopyLabel :string  = '';
   @Input() navigationCopyPrice :number  = 0;
+  numberOfProductsInCart :number = 2;
   
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
   @Input() navigationButtonRightText              :string  = '';
@@ -40,9 +44,6 @@ export class FooterComponent implements OnInit, OnChanges {
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Item
   activeNavigationItem: string | null = '';
   lastActiveMainPage: string | null = '';
-
-  // TODO:
-  numberOfProductsInCart :number = 2;
 
 
   constructor(
@@ -67,7 +68,7 @@ export class FooterComponent implements OnInit, OnChanges {
     // Si esto en el Cart, leer de la Cart Store el número de productos en el carrito
     if ( this.currentURL.includes('/cart') ) {
 
-      this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
+      this.store.select('cartReducerObservable').pipe(take(1)).subscribe( (cartReducerData) => {
 
         this.numberOfProductsInCart = cartReducerData.cartData.length;
           
@@ -84,7 +85,7 @@ export class FooterComponent implements OnInit, OnChanges {
         }
 
       });
-      
+
     }
     
 
@@ -211,10 +212,19 @@ export class FooterComponent implements OnInit, OnChanges {
     // Comprobacion
     // console.log('currentURL: ' + this.currentURL);
     
-    // · Página de un producto: añadir al carrito
+    // · Página de un producto: add to cart (añadir al carrito)
     if (this.currentURL.includes('/product/')) {
 
-      // TODO: Add to cart
+      // Recuperar de la Cart Store el id del producto que hay que añadir al carrito
+      let newProductSlug: ProductInterface["slug"] = '';
+      this.store.select('homeReducerObservable').pipe(take(1)).subscribe( (cartReducerData) => {
+        newProductSlug = cartReducerData.currentProductSlug;
+      });
+
+      // Add to cart (añadir al carrito)
+      this.store.dispatch( CartActions.AddProductToCartStart({
+        productSlugPayload: newProductSlug,
+      }) );
 
     }
     

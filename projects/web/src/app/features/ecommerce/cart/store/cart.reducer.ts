@@ -7,6 +7,8 @@ import { createReducer, on } from "@ngrx/store";
 import * as CartActions from "./cart.actions";  // Importar todo y guardarlo en el alias CartActions
 
 import { GetCartDataPHPInterface } from "projects/web/src/app/core/models/GetCartDataPHP.interface";
+import { ProductInterface } from "projects/web/src/app/core/models/product.interface";
+import { CartInterface } from "projects/web/src/app/core/models/cart.interface";
 
 
 
@@ -20,6 +22,8 @@ export interface CartReducerStateInterface {
   cartData: GetCartDataPHPInterface["cartData"];
   getCartDataErrorMessage: string;
   updateProductQuantityErrorMessage: string;
+  newProductSlug: ProductInterface["id"];
+  newProductQuantity: CartInterface["productQuantity"];
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -55,6 +59,8 @@ const initialState: CartReducerStateInterface = {
   ], */
   getCartDataErrorMessage: '',
   updateProductQuantityErrorMessage: '',
+  newProductSlug: 0,
+  newProductQuantity: 0,
 }
 
 
@@ -278,6 +284,48 @@ export const cartReducer = createReducer(
 
       })),
 
+
+    
+    /** Add Product To Cart Start Action **/
+    // Side Effects asociados: addProductToCartSideEffect (borrar la fila de la tabla cart con el productId y userId correspondiente de la base de datos mediante un HTTP Request)
+    on(CartActions.AddProductToCartStart,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+    /** |-> Add Product To Cart End Success Action **/
+    on(CartActions.AddProductToCartEndSuccess, (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        cartData: [
+          ...state.cartData,
+          action.newProductDataPayload,
+        ],
+
+      })),
+
+    /** |-> Add Product To Cart End Failure Action **/
+    on(CartActions.AddProductToCartEndFailure,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+        // Mensaje de error
+        addProductToCartErrorMessagePayload: action.addProductToCartErrorMessagePayload,
+
+      })),
 
       
 );
