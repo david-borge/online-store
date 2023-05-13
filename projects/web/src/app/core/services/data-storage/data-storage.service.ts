@@ -24,6 +24,7 @@ import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface
 import { GetPaymentMethodsPHPInterface } from '../../models/getPaymentMethodsPHP.interface';
 import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
 import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
+import { CartInterface } from '../../models/cart.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -247,6 +248,24 @@ export class DataStorageService {
       .post<GetCartDataPHPInterface["cartData"]>(environment.apiBaseUrl + '/getCartData.php',
       {
         authToken: authToken,
+      },
+      {})
+      // .pipe()
+      ;
+      
+  }
+
+
+
+  // Get Cart Data (Page: /cart)
+  updateProductQuantityHttpRequest(authToken: string, productId: ProductInterface["id"], productQuantity: CartInterface["productQuantity"]) {
+
+    return this.httpClient
+      .post<boolean>(environment.apiBaseUrl + '/updateProductQuantity.php',
+      {
+        authToken      : authToken,
+        productId      : productId,
+        productQuantity: productQuantity,
       },
       {})
       // .pipe()

@@ -19,6 +19,7 @@ export interface CartReducerStateInterface {
   cartPagePreviouslyVisited: boolean;
   cartData: GetCartDataPHPInterface["cartData"];
   getCartDataErrorMessage: string;
+  updateProductQuantityErrorMessage: string;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -53,6 +54,7 @@ const initialState: CartReducerStateInterface = {
     },
   ], */
   getCartDataErrorMessage: '',
+  updateProductQuantityErrorMessage: '',
 }
 
 
@@ -167,6 +169,57 @@ export const cartReducer = createReducer(
           
         // Mensaje de error
         getCartDataErrorMessage: action.getCartDataErrorMessagePayload,
+
+      })),
+
+
+    
+    /** Update Product Quantity Start Action **/
+    // Side Effects asociados: updateProductQuantitySideEffect (actualizar productQuantity del productId y userId correspondiente en la base de datos mediante un HTTP Request)
+    on(CartActions.UpdateProductQuantityStart,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+    /** |-> Update Product Quantity End Success Action **/
+    on(CartActions.UpdateProductQuantityEndSuccess, (state, action) => {
+
+      /* Editar un valor de un objeto que está dentro de un array (OpenAI Generated Code) */
+      
+      // Make a copy of the cartData array
+      const updatedCartData = [...state.cartData];
+
+      // Update the product quantity of the item at the specified index
+      updatedCartData[action.cartDataArrayIdPayload] = {
+        ...updatedCartData[action.cartDataArrayIdPayload],
+        productQuantity: action.productQuantityPayload,
+      };
+      
+      // Return the updated state
+      return {
+        ...state,
+        cartData: updatedCartData,
+      };
+
+    }),
+
+    /** |-> Update Product Quantity End Failure Action **/
+    on(CartActions.UpdateProductQuantityEndFailure,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+        // Mensaje de error
+        updateProductQuantityErrorMessage: action.updateProductQuantityErrorMessagePayload,
 
       })),
 

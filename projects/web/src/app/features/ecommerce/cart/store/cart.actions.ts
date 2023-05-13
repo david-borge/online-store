@@ -9,6 +9,8 @@
 
 import { createAction, props } from "@ngrx/store";
 
+import { CartInterface } from "projects/web/src/app/core/models/cart.interface";
+import { ProductInterface } from "projects/web/src/app/core/models/product.interface";
 import { GetCartDataPHPInterface } from "projects/web/src/app/core/models/GetCartDataPHP.interface";
 
 
@@ -86,6 +88,55 @@ export const GetCartDataEndFailure = createAction(
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
       getCartDataErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
+/** Update Product Quantity Start Action **/
+// Side Effects asociados: updateProductQuantitySideEffect (coger el Cart data del usuario actual desde la base de datos mediante un HTTP Request)
+export const UpdateProductQuantityStart = createAction(
+
+  // Tipo de la Action
+  '[Cart] Update Product Quantity Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    cartDataArrayIdPayload : number,
+    productQuantityPayload : CartInterface["productQuantity"],
+    productIdPayload       : ProductInterface["id"],
+  }>(),
+
+);
+
+/** |-> Update Product Quantity End Success Action **/
+export const UpdateProductQuantityEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Cart] Update Product Quantity End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    cartDataArrayIdPayload : number,
+    productQuantityPayload : CartInterface["productQuantity"],
+    productIdPayload       : ProductInterface["id"],
+  }>(),
+
+);
+
+/** |-> Update Product Quantity End Failure Action **/
+export const UpdateProductQuantityEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Cart] Update Product Quantity End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    updateProductQuantityErrorMessagePayload: string,
   }>(),
 
 );
