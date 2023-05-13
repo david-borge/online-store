@@ -61,13 +61,28 @@ export class FooterComponent implements OnInit, OnChanges {
 
     // - Leer en qué URL estoy
     this.currentURL = this.router.url;
+    
 
-    // - Si el carrito está vacío, mostrar el botón "Explore the Store", que lleva a la Home Page
-    if( this.numberOfProductsInCart == 0 ) {
-      this.navigationButtonRightText = "Explore the Store";
-      this.navigationButtonRightURL  = "/home";
-    }
 
+    // Leer de la Cart Store el número de productos en el carrito
+    this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
+
+      this.numberOfProductsInCart = cartReducerData.cartData.length;
+
+      // Si el carrito está vacío, mostrar el botón "Explore the Store", que lleva a la Home Page
+      if( this.numberOfProductsInCart == 0 ) {
+        this.navigationButtonRightText = "Explore the Store";
+        this.navigationButtonRightURL  = "/home";
+      }
+
+      // TODO: Si el carrito no está vacío, ir al checkout
+      else {
+        this.navigationButtonRightText = "Checkout";
+        this.navigationButtonRightURL  = "/checkout";
+      }
+
+    });
+    
 
 
     // - Leer de la Store la última página principal visitada (lastActiveMainPage)
@@ -202,8 +217,12 @@ export class FooterComponent implements OnInit, OnChanges {
     // · Página de carrito: ir al checkout
     else if (this.currentURL.includes('/cart')) {
       
-      // TODO: Ir al checkout
+      // Si el carrito está vacío, mostrar el botón "Explore the Store", que lleva a la Home Page
+      this.router.navigate([ this.navigationButtonRightURL ]);
       
+      // TODO: Si el carrito no está vacío, ir al checkout
+
+
     }
     
     // · Página de Delivery addresses: add new address
