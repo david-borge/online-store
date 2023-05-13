@@ -275,6 +275,23 @@ export class DataStorageService {
 
 
 
+  // Delete Product From Cart (Page: /cart)
+  deleteProductFromCartHttpRequest(authToken: string, productId: ProductInterface["id"]) {
+
+    return this.httpClient
+      .post<boolean>(environment.apiBaseUrl + '/deleteProductFromCart.php',
+      {
+        authToken: authToken,
+        productId: productId,
+      },
+      {})
+      // .pipe()
+      ;
+      
+  }
+
+
+
   authMessages(messageCode: string): string {
 
     switch (messageCode) {

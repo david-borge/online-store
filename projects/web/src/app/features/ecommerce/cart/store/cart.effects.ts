@@ -193,4 +193,89 @@ export class CartEffects {
 
 
 
+    // Side Effect de la Delete Product From Cart Start Action de Cart
+    deleteProductFromCartSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(CartActions.DeleteProductFromCartStart),
+
+        withLatestFrom( this.store.select('cartReducerObservable') ),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (deleteProductFromCartStartActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: deleteProductFromCartStartActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobación
+            // console.log('deleteProductFromCartStartActionData:');
+            // console.log(deleteProductFromCartStartActionData);
+
+        
+            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+            return this.dataStorageService.deleteProductFromCartHttpRequest( this.cookiesService.leerUnaCookie("authToken"), deleteProductFromCartStartActionData[0].productIdPayload )
+                .pipe(
+
+                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+
+                    switchMap( (deleteProductFromCartHttpRequestResponse: boolean) => {
+
+                        // Comprobación
+                        // console.log('deleteProductFromCartSideEffect - deleteProductFromCartHttpRequestResponse:');
+                        // console.log(deleteProductFromCartHttpRequestResponse);
+
+                        // Procesamiento de datos si es necesario...
+
+                        if ( deleteProductFromCartHttpRequestResponse == true ) {
+                            
+                            return of(
+
+                                // Procesar datos si es necesario...
+
+                                // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                                CartActions.DeleteProductFromCartEndSuccess({
+                                    cartDataArrayIdPayload : deleteProductFromCartStartActionData[0].cartDataArrayIdPayload,
+                                    productIdPayload       : deleteProductFromCartStartActionData[0].productIdPayload,
+                                }),
+
+                            );
+
+                        } else {
+
+                            return of(
+                                CartActions.DeleteProductFromCartEndFailure({
+                                    deleteProductFromCartErrorMessagePayload: 'There was an error when loading the Country list.',
+                                }),
+                            );
+
+                        }
+
+
+                    }),
+                    catchError(errorResponse => {
+
+                        // Error handling code...
+
+                        // Mostrar el error en la consola
+                        console.log('deleteProductFromCartSideEffect - errorResponse:');
+                        console.log(errorResponse);
+
+                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                        return of(
+                            CartActions.DeleteProductFromCartEndFailure({
+                                deleteProductFromCartErrorMessagePayload: 'There was an error when loading the Country list.',
+                            }),
+                        );
+
+                    }),
+            );
+
+        }),
+
+    ));
+
+
+
 }

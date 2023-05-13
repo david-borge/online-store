@@ -224,5 +224,60 @@ export const cartReducer = createReducer(
       })),
 
 
+    
+    /** Delete Product From Cart Start Action **/
+    // Side Effects asociados: deleteProductFromCartSideEffect (borrar la fila de la tabla cart con el productId y userId correspondiente de la base de datos mediante un HTTP Request)
+    on(CartActions.DeleteProductFromCartStart,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+    /** |-> Delete Product From Cart End Success Action **/
+    on(CartActions.DeleteProductFromCartEndSuccess, (state, action) => {
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        /** Borrar un valor **/
+        /** CUIDADO: al usar return hay que omitir los paréntesis después de => **/
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+        return {
+
+            // Copiamos el App State (inicial) (en todas las propiedades de state)
+            ...state,
+
+            cartData: state.cartData.filter(
+                // Filter es una función de JS que devuelve un array, así que cumplimos con la regla de no editar el state original
+                // Filter ejecuta una función en cada elemento del array. Si la función devuelve true, ese elemento será parte del array que devuelve.
+                (item, itemIndex) => {
+
+                  return (itemIndex !== action.cartDataArrayIdPayload);  // action.cartDataArrayIdPayload es el índice del item que voy a borrar
+
+                }
+            ),
+
+        };
+
+      }),
+
+    /** |-> Delete Product From Cart End Failure Action **/
+    on(CartActions.DeleteProductFromCartEndFailure,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+        // Mensaje de error
+        deleteProductFromCartErrorMessagePayload: action.deleteProductFromCartErrorMessagePayload,
+
+      })),
+
+
       
 );

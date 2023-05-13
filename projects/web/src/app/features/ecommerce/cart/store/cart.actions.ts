@@ -143,6 +143,53 @@ export const UpdateProductQuantityEndFailure = createAction(
 
 
 
+/** Delete Product From Cart Start Action **/
+// Side Effects asociados: deleteProductFromCartSideEffect (coger el Cart data del usuario actual desde la base de datos mediante un HTTP Request)
+export const DeleteProductFromCartStart = createAction(
+
+  // Tipo de la Action
+  '[Cart] Delete Product From Cart Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    cartDataArrayIdPayload : number,
+    productIdPayload       : ProductInterface["id"],
+  }>(),
+
+);
+
+/** |-> Delete Product From Cart End Success Action **/
+export const DeleteProductFromCartEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Cart] Delete Product From Cart End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    cartDataArrayIdPayload : number,
+    productIdPayload       : ProductInterface["id"],
+  }>(),
+
+);
+
+/** |-> Delete Product From Cart End Failure Action **/
+export const DeleteProductFromCartEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Cart] Delete Product From Cart End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    deleteProductFromCartErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

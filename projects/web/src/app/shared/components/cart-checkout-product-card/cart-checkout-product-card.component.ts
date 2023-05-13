@@ -36,11 +36,26 @@ export class CartCheckoutProductCardComponent {
 
   onClickMinusOrDeleteButton() {
 
+    this.productQuantity--;
+
+    // Decrease Product Quantity
     if ( this.productQuantity > 0 ) {
-      this.productQuantity--;
+
+      // Actualizar cantidad del producto en la Cart Store y en la Base de Datos
+      this.updateProductQuantity();
+
     }
 
-    this.updateProductQuantity();
+    // Delete Product From Cart
+    else {
+
+      // Delete Product From Cart en la Cart Store y en la Base de Datos
+      this.store.dispatch( CartActions.DeleteProductFromCartStart({
+        cartDataArrayIdPayload : this.cartDataArrayId,
+        productIdPayload: this.productId,
+      }) );
+      
+    }
 
   }
 
@@ -48,10 +63,12 @@ export class CartCheckoutProductCardComponent {
 
     this.productQuantity++;
 
+    // Actualizar cantidad del producto en la Cart Store y en la Base de Datos
     this.updateProductQuantity();
 
   }
 
+  // Actualizar cantidad del producto en la Cart Store y en la Base de Datos
   updateProductQuantity() {
 
     // Comprobacion
