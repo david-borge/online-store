@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
@@ -30,6 +31,7 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<fromApp.AppState>,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +77,12 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
       showBottomOverlayValue: true,
     }) );
     
+  }
+
+  onClickPaymentButton() {
+
+    this.router.navigate(['/checkout/payment-method']);
+
   }
 
   ngOnDestroy(): void {

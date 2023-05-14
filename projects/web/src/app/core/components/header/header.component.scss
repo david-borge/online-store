@@ -51,6 +51,10 @@ header {
     right: calc( var(--bs-gutter-x) / 2);
 } */
 
+.overlay-header-subpage .overlay-header-title .overlay-header-page-title-sup-title {
+    @include body-14px-regular;
+}
+
 // Overlay Header - Main Page
 .overlay-header.overlay-header-main-page > div {
     min-height: 90px;
@@ -131,6 +135,7 @@ header {
 
 // Overlay Header - With Steps
 .overlay-header-with-steps .overlay-header-title {
+    padding-right: calc( var(--bs-gutter-x) / 2 );
     text-align: left;
 }
 

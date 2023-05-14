@@ -13,7 +13,8 @@ export class HeaderComponent {
   @Input() headerTagType :string = 'overlay-header-main-page';
   
   // Propiedades - Header Tag - Título
-  @Input() overlayHeaderPageTitle :string  = 'Subpage Title';
+  @Input() overlayHeaderPageTitleSupTitle :string = '';
+  @Input() overlayHeaderPageTitle :string = 'Subpage Title';
   
   // Propiedades - Header Tag - Tipo: overlay-header-main-page
 

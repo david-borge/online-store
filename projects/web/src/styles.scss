@@ -498,8 +498,40 @@
 
 }
 
+.color-N900 {
+    color: var(--N900);
+}
+
+.color-N800 {
+    color: var(--N800);
+}
+
 .color-N700 {
     color: var(--N700);
+}
+
+.color-N600 {
+    color: var(--N600);
+}
+
+.color-N500 {
+    color: var(--N500);
+}
+
+.color-N400 {
+    color: var(--N400);
+}
+
+.color-N300 {
+    color: var(--N300);
+}
+
+.color-N200 {
+    color: var(--N200);
+}
+
+.color-N100 {
+    color: var(--N100);
 }
 
 
@@ -822,7 +854,8 @@ body {
 .app-orders--class-for-router-outlet,
 .app-addresses--class-for-router-outlet,
 .app-payment-methods--class-for-router-outlet,
-.app-checkout-step-address--class-for-router-outlet {
+.app-checkout-step-address--class-for-router-outlet,
+.app-checkout-step-payment-method--class-for-router-outlet {
     flex: 1;
 
     display: flex;
@@ -909,6 +942,15 @@ svg-icon {
 
 
 
+// Payment Method Card List
+.payment-method-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+
 // Checkout Steps - Select the address / card
 .select-the-address-or-card {
     margin-bottom: 24px;
@@ -918,12 +960,36 @@ svg-icon {
 
 
 
-// Checkout Steps - Button Container
-.button-container {
-    border-top: 1px solid var(--N200);
+// Checkout Steps - Add address / card button
+.next-step-add-button-container {
+    position: fixed;
+    bottom: var(--altura-next-step-button-container);
+    width: 100%;
+
     padding: 12px calc(var(--bs-gutter-x) * 0.5);
+    
+    background-color: white;
 }
 
-.button-container button {
+
+
+// Checkout Steps - Button Container
+:root {
+    --altura-next-step-add-button-container: 60px;
+    --altura-next-step-button-container: 73px;
+}
+
+.next-step-button-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+    border-top: 1px solid var(--N200);
+    padding: 12px calc(var(--bs-gutter-x) * 0.5);
+
+    background-color: white;
+}
+
+.next-step-button-container button {
     min-height: 48px;
 }

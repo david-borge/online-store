@@ -47,7 +47,8 @@
 
             <!-- Overlay Header - Title -->
             <div class="overlay-header-title">
-                <h1>{{overlayHeaderPageTitle}}</h1>
+                <div *ngIf="(overlayHeaderPageTitleSupTitle != '')" class="overlay-header-page-title-sup-title">{{overlayHeaderPageTitleSupTitle}}</div>
+                <h1 [innerHTML]="overlayHeaderPageTitle"></h1>
             </div>
 
             <!-- (No usado) Overlay Header - Close Icon -->

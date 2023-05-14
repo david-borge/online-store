@@ -5,12 +5,12 @@
 <!-- Header Tag -->
 <app-header
     [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'Where Do You Want Your Delivery?'"
+    [overlayHeaderPageTitle] = "'Where Do You Want <br/>Your Delivery?'"
     [overlayHeaderSubpageWithSteps] = "true"
 ></app-header>
     
 <!-- Main -->
-<main role="main" style="padding-bottom: var(--espacio-vertical);">
+<main role="main" style="padding-bottom: calc( var(--altura-next-step-add-button-container) + var(--altura-next-step-button-container) + var(--espacio-vertical) );">
 
     <div class="illustration-and-content-container">
 
@@ -50,16 +50,8 @@
                                 [addressCardCountry]    = "'United States of America'"
                             -->
 
-                            <button type="button" class="btn btn-outline-secondary btn-sm w-100 btn-with-icon" (click)="onClickAddNewAddressButton();">
-                                Add new address
-                        
-                                <!-- Icon: chevron-right -->
-                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        
-                            </button>
-            
                         </div>
-            
+        
                     </div>
                 </div>
                 
@@ -72,10 +64,23 @@
     </div>
 
 </main>
-  
-<!-- Button Container -->
-<div class="button-container">
-    <button type="button" class="btn btn-primary btn-lg w-100 btn-with-icon">
+
+
+
+<!-- Next Step Add Button Container -->
+<div class="next-step-add-button-container">
+    <button type="button" class="btn btn-outline-secondary btn-sm w-100 btn-with-icon next-step-add-button" (click)="onClickAddNewAddressButton();">
+        Add new address
+
+        <!-- Icon: chevron-right -->
+        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+    </button>
+</div>
+
+<!-- Next Step Button Container -->
+<div class="next-step-button-container">
+    <button type="button" class="btn btn-primary btn-lg w-100 btn-with-icon" (click)="onClickPaymentButton();">
         Payment
 
         <!-- Icon: chevron-right -->
