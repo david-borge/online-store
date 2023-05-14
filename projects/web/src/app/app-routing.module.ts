@@ -80,6 +80,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/ecommerce/payment-methods/payment-methods.module').then( (modulo) => modulo.PaymentMethodsModule ),
   },
 
+  // Checkout Step Pages
+  {
+    path: 'checkout',
+    loadChildren: () => import('./features/ecommerce/checkout/checkout.module').then( (modulo) => modulo.CheckoutModule ),
+  },
+
 ];
 
 @NgModule({

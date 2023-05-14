@@ -40,11 +40,9 @@ export class CartComponent implements OnInit, OnDestroy {
     // - Leer los datos del carrito desde la Cart Store
     this.cartReducerObservableSubscription = this.store.select("cartReducerObservable").subscribe(
       cartReducerData => {
-        this.cartData = cartReducerData.cartData;
 
-        // Comprobacion
-        console.log('cartData:');
-        console.log(this.cartData);
+        this.cartData = cartReducerData.cartData;
+        
       }
     );
 

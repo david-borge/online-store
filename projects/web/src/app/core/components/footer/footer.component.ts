@@ -65,10 +65,10 @@ export class FooterComponent implements OnInit, OnChanges {
     
 
 
-    // Si esto en el Cart, leer de la Cart Store el número de productos en el carrito
-    if ( this.currentURL.includes('/cart') ) {
-
-      this.store.select('cartReducerObservable').pipe(take(1)).subscribe( (cartReducerData) => {
+    this.store.select('cartReducerObservable').pipe(take(1)).subscribe( (cartReducerData) => {
+      
+      // Si esto en el CarRouterModule.t, leer de la Cart Store el número de productos en el carrito
+      if ( this.currentURL.includes('/cart') ) {
 
         this.numberOfProductsInCart = cartReducerData.cartData.length;
           
@@ -84,9 +84,10 @@ export class FooterComponent implements OnInit, OnChanges {
           this.navigationButtonRightURL  = "/checkout";
         }
 
-      });
+      }
 
-    }
+    });
+
     
 
 
