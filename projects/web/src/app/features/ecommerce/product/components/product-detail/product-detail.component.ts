@@ -20,11 +20,14 @@ import { ProductInterface } from 'projects/web/src/app/core/models/product.inter
 })
 export class ProductDetailComponent implements OnInit {
 
-  // productSlug: string = '';
+  // Suscripciones a la Store
+  homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+
+  // Variables para la Template
   productSlug: string = '';
   @Input() product = {} as ProductInterface;
+  featuredProducts : ProductInterface[] = [];
 
-  homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -50,16 +53,16 @@ export class ProductDetailComponent implements OnInit {
       .subscribe(
 
         // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
-        (allProductsResponseData)  => {
+        (homeReducerData)  => {
 
-          // console.log('allProductsResponseData get:');
-          // console.log(allProductsResponseData);
+          // console.log('homeReducerData get:');
+          // console.log(homeReducerData);
 
           // Compruebo si hay algún producto antes de filtrar
-          if ( allProductsResponseData.allProducts.length > 0 ) {
+          if ( homeReducerData.allProducts.length > 0 ) {
             
-            // Filtro los productos - Producto con el slug apropiado
-            this.product = allProductsResponseData.allProducts.filter(
+            // - Filtro los productos - Producto con el slug apropiado
+            this.product = homeReducerData.allProducts.filter(
 
               // Cada producto
               ( product: ProductInterface ) => {
@@ -73,6 +76,19 @@ export class ProductDetailComponent implements OnInit {
 
             // console.log('product:');
             // console.log(this.product);
+
+            // - Filtro los productos - Featured Products
+            this.featuredProducts = homeReducerData.allProducts.filter(
+
+              // Cada producto
+              ( product: ProductInterface ) => {
+
+                // Criterio para mostrar o no cada producto
+                return (product.featured == 1);
+
+              }
+
+            );
 
           }
 

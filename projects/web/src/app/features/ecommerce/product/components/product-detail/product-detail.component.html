@@ -78,7 +78,8 @@
     </div>
 
     <!-- Featured Products -->
-    <div class="section">
+    <!-- Solo mostrar las categorias cuando se hayan cargado desde la base de datos y se hayan cargado las imágenes, para evitar flashazos de información incompleta. -->
+    <div *ngIf="featuredProducts.length != 0" class="section">
 
         <!-- Section Header -->
         <app-section-header
@@ -95,7 +96,9 @@
         ></app-section-header>
         
         <!-- Featured Products Carrousel -->
-        <app-featured-products-carrousel></app-featured-products-carrousel>
+        <app-featured-products-carrousel
+            [featuredProductsList] = "featuredProducts"
+        ></app-featured-products-carrousel>
 
     </div>
 
