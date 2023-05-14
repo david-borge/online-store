@@ -52,6 +52,8 @@ header {
 } */
 
 .overlay-header-subpage .overlay-header-title .overlay-header-page-title-sup-title {
+    margin-bottom: 3px;
+    
     @include body-14px-regular;
 }
 

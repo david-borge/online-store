@@ -81,7 +81,7 @@ export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
 
   onClickPaymentButton() {
 
-    this.router.navigate(['/checkout/payment-method']);
+    this.router.navigate(['/checkout/order-review']);
 
   }
 

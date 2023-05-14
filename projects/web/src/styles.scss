@@ -625,7 +625,8 @@ $body-color: var(--N800);
 
 // Botones - Tertiary
 .btn-tertiary {
-    background-color: var(--Y300);
+    background-color: var(--Y500);
+    // background-color: var(--Y300);
 
     @include body-16px-medium;
 
@@ -855,7 +856,8 @@ body {
 .app-addresses--class-for-router-outlet,
 .app-payment-methods--class-for-router-outlet,
 .app-checkout-step-address--class-for-router-outlet,
-.app-checkout-step-payment-method--class-for-router-outlet {
+.app-checkout-step-payment-method--class-for-router-outlet,
+.app-checkout-step-order-confirmation--class-for-router-outlet {
     flex: 1;
 
     display: flex;

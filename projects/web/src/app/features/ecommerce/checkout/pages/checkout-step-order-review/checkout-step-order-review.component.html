@@ -1,1 +1,130 @@
-<p>checkout-step-order-review works!</p>
+<!-- Checkout steps: Order Review Page -->
+
+<!-- Header Tag -->
+<app-header
+    [headerTagType] = "'overlay-header-subpage'"
+    [overlayHeaderPageTitleSupTitle] = "'Great!'"
+    [overlayHeaderPageTitle] = "'This is your order'"
+    [overlayHeaderSubpageWithSteps] = "true"
+></app-header>
+
+<!-- Main -->
+<main role="main" style="padding-bottom: calc( 115px + var(--espacio-vertical) );">
+
+    <!-- Order Products -->
+    <div class="section section-with-bottom-separator">
+
+        <!-- Section Header -->
+        <app-section-header
+            [sectionHeaderTitleTag]      = "'h2'"
+            [sectionHeaderTitleClasses]  = "'heading-4'"
+            [sectionHeaderTitleText]     = "'Products'"
+        ></app-section-header>
+
+        <!-- Order Products List -->
+        <div class="order-products-list">
+                
+            <!-- Cart and Checkout Product Card -->
+            <app-cart-checkout-product-card
+                *ngFor="let product of orderProducts"
+                [cartCheckoutProductCardShowButtons] = "false"
+                [productImageThumbnail]              = "product.imageThumbnail"
+                [productName]                        = "product.name"
+                [productPrice]                       = "product.price"
+                [productQuantity]                    = "product.productQuantity"
+            ></app-cart-checkout-product-card>
+        
+        </div>
+        
+    </div>
+
+    <!-- Order Address -->
+    <div class="section section-with-bottom-separator">
+
+        <!-- Section Header -->
+        <app-section-header
+            [sectionHeaderTitleTag]     = "'h2'"
+            [sectionHeaderTitleClasses] = "'heading-4'"
+            [sectionHeaderTitleText]    = "'Address'"
+            [sectionHeaderButton]       = "true"
+            [sectionHeaderButtonURL]    = "'/checkout/address'"
+            [sectionHeaderButtonText]   = "'Edit'"
+        ></app-section-header>
+
+        <div class="container">
+            
+            <!-- Address Card -->
+            <app-address-card
+                [addressCardSelected]   = "true"
+                [addressCardPersonName] = "orderAddress.fullName"
+                [addressCardAddress]    = "orderAddress.address"
+                [addressCardPostalCode] = "orderAddress.postalCode"
+                [addressCardCity]       = "orderAddress.city"
+                [addressCardCountry]    = "orderAddress.country"
+                [addressCardShowButton] = "false"
+            ></app-address-card>
+            <!-- Ejemplo:
+                [addressCardPersonName] = "'Leslie Flores'"
+                [addressCardAddress]    = "'2972 Westheimer Rd. '"
+                [addressCardPostalCode] = "'85486'"
+                [addressCardCity]       = "'Santa Ana, Illinois '"
+                [addressCardCountry]    = "'United States of America'"
+            -->
+            
+        </div>
+        
+    </div>
+
+    <!-- Order Payment Method -->
+    <div class="section">
+
+        <!-- Section Header -->
+        <app-section-header
+            [sectionHeaderTitleTag]     = "'h2'"
+            [sectionHeaderTitleClasses] = "'heading-4'"
+            [sectionHeaderTitleText]    = "'Payment Method'"
+            [sectionHeaderButton]       = "true"
+            [sectionHeaderButtonURL]    = "'/checkout/payment-method'"
+            [sectionHeaderButtonText]   = "'Edit'"
+        ></app-section-header>
+
+        <div class="container">
+
+            <!-- Payment Method -->
+            <app-credit-card
+                [cardSelected]        = "true"
+                [cardType]            = "orderPaymentMethod.cardType"
+                [cardBankName]        = "orderPaymentMethod.cardBankName"
+                [cardPersonFullName]  = "orderPaymentMethod.cardPersonFullName"
+                [cardLastFourNumbers] = "orderPaymentMethod.cardLastFourNumbers"
+                [cardExpirationMonth] = "orderPaymentMethod.cardExpirationMonth"
+                [cardExpirationYear]  = "orderPaymentMethod.cardExpirationYear"
+            ></app-credit-card>
+            <!-- Ejemplo:
+                [cardType]            = "'mastercard'"
+                [cardBankName]        = "'Bank of America'"
+                [cardPersonFullName]  = "'Leslie Flores'"
+                [cardLastFourNumbers] = "'0817'"
+                [cardExpirationMonth] = "'12'"
+                [cardExpirationYear]  = "'25'"
+            -->
+
+        </div>
+        
+    </div>
+
+</main>
+  
+<!-- Pay Now Button Container -->
+<div class="pay-now-container">
+
+    <div class="pay-now-copy">
+        <div class="pay-now-copy-label">Order total</div>
+        <div class="pay-now-copy-price">{{123.45 | currency:'EUR':'symbol':'1.2-2'}}</div>
+    </div>
+
+    <div class="pay-now-button-container">
+        <button type="button" class="btn btn-tertiary btn-lg w-100 btn-with-icon" (click)="onClickPayNowButton();">Pay now</button>
+    </div>
+
+</div>

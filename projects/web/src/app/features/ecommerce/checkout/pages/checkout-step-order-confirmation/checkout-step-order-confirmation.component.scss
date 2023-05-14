@@ -1,0 +1,53 @@
+@import 'projects/web/src/styles.scss';
+
+
+// Woohoo!
+.woohoo {
+    @include heading-1;
+}
+
+
+
+// Animated Confetti
+// Fuente: https://codepen.io/fionnachan/pen/EvaqOB
+$colors: (var(--R500), var(--Y500), var(--B500)); // Importante: colores del confetti
+
+.animated-confetti-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.animated-confetti {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+[class|="confetti"] {
+    position: absolute;
+}
+
+@for $i from 0 through 150 {
+    $w: random(8);
+    $l: random(100);
+    .confetti-#{$i} {
+        width: #{$w}px;
+        height: #{$w*0.4}px;
+        background-color: nth($colors, random(3));
+        top: -10%;
+        left: unquote($l+"%");
+        opacity: random() + 0.5;
+        transform: rotate(#{random()*360}deg);
+        animation: drop-#{$i} unquote(4+random()+"s") unquote(random()+"s") infinite;
+    }
+
+    @keyframes drop-#{$i} {
+        100% {
+            top: 110%;
+            left: unquote($l+random(15)+"%");
+        }
+    }
+}
