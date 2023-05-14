@@ -32,7 +32,7 @@
     </div>
 
     <!-- Overlay Header - Subpage -->
-    <div class="overlay-header overlay-header-subpage" *ngIf="(headerTagType === 'overlay-header-subpage' )" [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }" [ngClass]="{ 'con-color-de-fondo': (overlayHeaderSubpageBackgroundColor != 'inherit') }">
+    <div class="overlay-header overlay-header-subpage" *ngIf="(headerTagType === 'overlay-header-subpage' )" [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }" [ngClass]="{ 'con-color-de-fondo': (overlayHeaderSubpageBackgroundColor != 'inherit'), 'overlay-header-with-steps': overlayHeaderSubpageWithSteps }">
         <div>
 
             <!-- Overlay Header - Left Icon -->
@@ -50,12 +50,22 @@
                 <h1>{{overlayHeaderPageTitle}}</h1>
             </div>
 
-            <!-- Overlay Header - Close Icon -->
-            <div class="overlay-header-close-icon" *ngIf="overlayHeaderSubpageShowCloseIcon">
+            <!-- (No usado) Overlay Header - Close Icon -->
+            <!-- <div class="overlay-header-close-icon" *ngIf="overlayHeaderSubpageShowCloseIcon"> -->
 
                 <!-- Icon: x -->
-                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.5L5 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5L15 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <!-- <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.5L5 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5L15 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> -->
 
+            <!-- </div> -->
+
+            <!-- Overlay Header - With Steps -->
+            <div class="steps" *ngIf="overlayHeaderSubpageWithSteps">
+                <div>
+                    Step 
+                    <span class="current-step">{{currentStep}}</span>
+                    of 
+                    <span class="total-steps">{{totalSteps}}</span>
+                </div>
             </div>
 
         </div>

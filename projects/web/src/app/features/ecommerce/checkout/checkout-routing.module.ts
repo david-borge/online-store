@@ -7,11 +7,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 
-import { CheckoutStepSignUpComponent } from "./pages/checkout-step-sign-up/checkout-step-sign-up/checkout-step-sign-up.component";
-import { CheckoutStepAddressComponent } from "./pages/checkout-step-address/checkout-step-address/checkout-step-address.component";
-import { CheckoutStepPaymentMethodComponent } from "./pages/checkout-step-payment-method/checkout-step-payment-method/checkout-step-payment-method.component";
-import { CheckoutStepOrderReviewComponent } from "./pages/checkout-step-order-review/checkout-step-order-review/checkout-step-order-review.component";
-import { CheckoutStepOrderConfirmationComponent } from "./pages/checkout-step-order-confirmation/checkout-step-order-confirmation/checkout-step-order-confirmation.component";
+import { CheckoutStepSignUpComponent } from "./pages/checkout-step-sign-up/checkout-step-sign-up.component";
+import { CheckoutStepAddressComponent } from "./pages/checkout-step-address/checkout-step-address.component";
+import { CheckoutStepPaymentMethodComponent } from "./pages/checkout-step-payment-method/checkout-step-payment-method.component";
+import { CheckoutStepOrderReviewComponent } from "./pages/checkout-step-order-review/checkout-step-order-review.component";
+import { CheckoutStepOrderConfirmationComponent } from "./pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component";
 
 
 const checkoutRoutes: Routes = [

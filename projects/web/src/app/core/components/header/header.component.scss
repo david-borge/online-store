@@ -13,14 +13,18 @@ header {
 .overlay-header > div {
     padding-right: calc(var(--bs-gutter-x) / 2);
 
+    min-height: 82.5px;
+
     display: flex;
     justify-content: space-between;
 }
 
 // Overlay Header - Espaciado vertical
-.overlay-header-left-icon-container a,
+.overlay-header-left-icon-container a {
+    padding-bottom: 14.1px;
+}
+
 .overlay-header-title {
-    padding-top: 48px;
     padding-bottom: 12px;
 }
 
@@ -33,19 +37,25 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-content: flex-end;
 }
 
 .overlay-header-title * {
     margin-bottom: 0;
 }
 
+/* // No usado
 .overlay-header-close-icon {
     position: absolute;
     top: calc( var(--bs-gutter-x) / 2);
     right: calc( var(--bs-gutter-x) / 2);
-}
+} */
 
 // Overlay Header - Main Page
+.overlay-header.overlay-header-main-page > div {
+    min-height: 90px;
+}
+
 .overlay-header-main-page {
     position: relative;
 }
@@ -67,11 +77,15 @@ header {
 
 
 // Overlay Header - Subpage
+.overlay-header.overlay-header-subpage > div {
+    min-height: 82.5px;
+}
+
 .overlay-header-subpage {
     position: relative;
 }
 
-.overlay-header-subpage::after {
+.overlay-header-subpage:not(.overlay-header-with-steps)::after {
     content: '';
     position: absolute;
     right: 0;
@@ -80,8 +94,15 @@ header {
     height: 1px;
 }
 
-.overlay-header-subpage:not(.con-color-de-fondo):after {
+.overlay-header-subpage:not(.con-color-de-fondo):not(.overlay-header-with-steps):after {
     background-color: var(--N300);
+}
+
+.overlay-header-left-icon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: flex-end;
 }
 
 .overlay-header-left-icon-container a {
@@ -90,7 +111,8 @@ header {
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    height: 100%;
 }
 
 .overlay-header-left-icon-container a:hover {
@@ -103,4 +125,45 @@ header {
 
 .overlay-header-subpage .overlay-header-title * {
     @include heading-4;
+}
+
+
+
+// Overlay Header - With Steps
+.overlay-header-with-steps .overlay-header-title {
+    text-align: left;
+}
+
+.steps {
+    padding-bottom: 12px;
+
+    @include label-14px-medium;
+    color: var(--N400);
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.overlay-header-subpage.overlay-header-with-steps::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--N200);
+}
+
+.overlay-header-subpage.overlay-header-with-steps::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 33%;
+    height: 4px;
+
+    background-color: var(--N900);
 }
