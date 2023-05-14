@@ -212,10 +212,10 @@ export const AddProductToCartEndSuccess = createAction(
   '[Cart] Add Product To Cart End Success',
 
   // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    newProductDataPayload : GetCartDataPHPInterface["cartData"][0], // Como GetCartDataPHPInterface["cartData"] es un array, cojo solo un elemento
-  }>(),
+  // props<{
+  //   // Si el método de la action requiere un solo parámetro, payload es un solo valor
+  //   newProductDataPayload : GetCartDataPHPInterface["cartData"][0], // Como GetCartDataPHPInterface["cartData"] es un array, cojo solo un elemento
+  // }>(),
 
 );
 

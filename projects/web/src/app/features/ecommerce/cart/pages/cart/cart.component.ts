@@ -34,13 +34,17 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    // - Leer los datos del carrito desde la Base de Datos y guardarlos en la Cart Store
+    // - Leer los datos del carrito desde la Base de Datos y guardarlos en la Cart Storeº
     this.store.dispatch( CartActions.GetCartDataStart() );
 
     // - Leer los datos del carrito desde la Cart Store
-    this.store.select("cartReducerObservable").subscribe(
+    this.cartReducerObservableSubscription = this.store.select("cartReducerObservable").subscribe(
       cartReducerData => {
         this.cartData = cartReducerData.cartData;
+
+        // Comprobacion
+        console.log('cartData:');
+        console.log(this.cartData);
       }
     );
 

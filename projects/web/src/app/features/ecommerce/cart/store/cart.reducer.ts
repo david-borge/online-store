@@ -306,10 +306,10 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        cartData: [
-          ...state.cartData,
-          action.newProductDataPayload,
-        ],
+        // cartData: [
+        //   ...state.cartData,
+        //   action.newProductDataPayload,
+        // ],
 
       })),
 

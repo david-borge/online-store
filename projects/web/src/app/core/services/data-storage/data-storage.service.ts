@@ -296,7 +296,7 @@ export class DataStorageService {
   addProductToCartHttpRequest(authToken: string, productSlug: ProductInterface["slug"]) {
 
     return this.httpClient
-      .post<GetCartDataPHPInterface["cartData"][0]>(environment.apiBaseUrl + '/addProductToCart.php',
+      .post<boolean>(environment.apiBaseUrl + '/addProductToCart.php',
       {
         authToken: authToken,
         productSlug: productSlug,

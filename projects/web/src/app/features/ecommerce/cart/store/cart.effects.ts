@@ -305,7 +305,7 @@ export class CartEffects {
                     debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                     Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                    switchMap( (addProductToCartHttpRequestResponse: GetCartDataPHPInterface["cartData"][0]) => {
+                    switchMap( (addProductToCartHttpRequestResponse: boolean) => {
 
                         // Comprobación
                         console.log('addProductToCartSideEffect - addProductToCartHttpRequestResponse:');
@@ -318,9 +318,9 @@ export class CartEffects {
                             // Procesar datos si es necesario...
 
                             // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                            CartActions.AddProductToCartEndSuccess({
+                            CartActions.AddProductToCartEndSuccess(/* {
                                 newProductDataPayload: addProductToCartHttpRequestResponse,
-                            }),
+                            } */),
 
                         );
 
