@@ -1,6 +1,14 @@
 @import 'projects/web/src/styles.scss';
 
 
+// Order Products List
+.order-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
 
 // Pay Now Container
 .pay-now-container {

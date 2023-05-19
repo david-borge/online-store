@@ -20,7 +20,8 @@ const checkoutRoutes: Routes = [
     // Checkout Step Page: Address (/checkout)
     {
         path: '',
-        component: CheckoutStepAddressComponent,
+        redirectTo: '/checkout/address',  // Si se entra a /checkout, le llevo a /checkout/address // TODO: cuidado con si no se ha iniciado sesión
+        // component: CheckoutStepAddressComponent,
         pathMatch: 'full',  // Since the default value of pathMatch is 'prefix', Angular checks if the path you entered in the URL does start with the path specified in the route. Of course every path starts with ''  (Important: That's no whitespace, it's simply "nothing"). To fix this behavior, you need to change the matching strategy to 'full'. Ver: https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656336
     },
    

@@ -56,9 +56,9 @@ export class OrderDetailComponent implements OnInit {
       orderReducerData => {
 
         this.orderData          = orderReducerData.orderData;
-        this.orderProducts      = orderReducerData.orderProducts;
-        this.orderAddress       = orderReducerData.orderAddress;
-        this.orderPaymentMethod = orderReducerData.orderPaymentMethod;
+        // this.orderProducts      = orderReducerData.orderProducts; // FIXME:
+        // this.orderAddress       = orderReducerData.orderAddress; // FIXME:
+        // this.orderPaymentMethod = orderReducerData.orderPaymentMethod; // FIXME:
 
       }
     );

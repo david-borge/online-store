@@ -62,6 +62,10 @@
 }
 
 // Credit Card - Last Four Numbers
+.credit-card--last-four-numbers {
+    text-align: left;
+}
+
 .credit-card--last-four-numbers--numbers,
 .credit-card--last-four-numbers--asterics {
     @include label-14px-medium;

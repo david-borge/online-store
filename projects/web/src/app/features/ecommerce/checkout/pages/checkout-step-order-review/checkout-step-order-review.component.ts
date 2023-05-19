@@ -18,6 +18,7 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
   // Suscripciones a la Store
   orderReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  cartReducerObservableSubscription: Subscription = Subscription.EMPTY;
   addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
   paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -42,7 +43,14 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
       
       this.currentOrderNumber = orderReducerData.currentOrderNumber;
       this.orderData          = orderReducerData.orderData;
-      this.orderProducts      = orderReducerData.orderProducts;
+      
+      
+    });
+
+    // Leer orderProducts de la Cart Store
+    this.cartReducerObservableSubscription = this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
+
+      this.orderProducts = cartReducerData.cartData;
       
     });
 
@@ -84,6 +92,7 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
     // Cancelar suscripciones
     this.orderReducerObservableSubscription.unsubscribe();
+    this.cartReducerObservableSubscription.unsubscribe();
     this.addressesReducerObservableSubscription.unsubscribe();
     this.paymentMethodsReducerObservableSubscription.unsubscribe();
     
