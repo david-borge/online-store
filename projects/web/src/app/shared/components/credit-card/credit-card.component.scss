@@ -133,3 +133,10 @@
 .credit-card-selected .credit-card--expiration-date--title {
     color: var(--N100);
 }
+
+
+
+// Credit Card - Select button
+app-select-button {
+    z-index: 1;
+}

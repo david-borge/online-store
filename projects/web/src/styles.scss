@@ -967,6 +967,7 @@ svg-icon {
     position: fixed;
     bottom: var(--altura-next-step-button-container);
     width: 100%;
+    z-index: 2;
 
     padding: 12px calc(var(--bs-gutter-x) * 0.5);
     
@@ -985,6 +986,7 @@ svg-icon {
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 2;
     
     border-top: 1px solid var(--N200);
     padding: 12px calc(var(--bs-gutter-x) * 0.5);
