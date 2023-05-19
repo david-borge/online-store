@@ -96,5 +96,42 @@ export const orderReducer = createReducer(
       })),
 
 
+    
+    /** Save Order Start Action **/
+    // Side Effects asociados: saveOrderStartSideEffect (toma los datos de la Order desde la base de datos mediante un HTTP Request)
+    on(OrderActions.SaveOrderStart,
+      (state, action) => ({
+
+        /* Añadir un valor */
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+    /** |-> Save Order End Success Action **/
+    on(OrderActions.SaveOrderEndSuccess,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+        
+      })),
+
+    /** |-> Save Order End Failure Action **/
+    on(OrderActions.SaveOrderEndFailure,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+          
+      })),
+
+
 
 );

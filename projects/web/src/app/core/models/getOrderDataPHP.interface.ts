@@ -20,6 +20,7 @@ export interface GetOrderDataPHPInterface {
         productQuantity : OrderProductInterface["productQuantity"],
     }[],
     orderAddress: {
+        id         : AddressInterface["id"],
         fullName   : AddressInterface["fullName"],
         address    : AddressInterface["address"],
         postalCode : AddressInterface["postalCode"],
@@ -27,12 +28,13 @@ export interface GetOrderDataPHPInterface {
         country    : CountryInterface["name"],
     },
     orderPaymentMethod: {
+        id                  : PaymentMethodInterface["id"],
         type                : PaymentMethodInterface["type"],
         cardBankName        : PaymentMethodInterface["cardBankName"],
         cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
         cardLastFourNumbers : string,
-        cardExpirationMonth   : PaymentMethodInterface["cardExpirationMonth"],
-        cardExpirationYear    : PaymentMethodInterface["cardExpirationYear"],
+        cardExpirationMonth : PaymentMethodInterface["cardExpirationMonth"],
+        cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
         cardType            : PaymentMethodInterface["cardType"],
     }
 }

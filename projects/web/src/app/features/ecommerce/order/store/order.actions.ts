@@ -10,6 +10,8 @@
 import { createAction, props } from "@ngrx/store";
 
 import { GetOrderDataPHPInterface } from "projects/web/src/app/core/models/getOrderDataPHP.interface";
+import { OrderInterface } from "projects/web/src/app/core/models/order.interface";
+import { UserInterface } from "projects/web/src/app/core/models/user.interface";
 
 
 
@@ -68,6 +70,49 @@ export const GetOrderDataEndFailure = createAction(
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
     getOrderDataErrorMessagePayload: string,
+  }>(),
+
+);
+
+
+
+/** Save Order Start Action **/
+// Side Effects asociados: saveOrderStartSideEffect (guardar la nueva Order en la base de datos mediante un HTTP Request)
+export const SaveOrderStart = createAction(
+
+  // Tipo de la Action
+  '[Order] Save Order Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    orderFullDatePayload   : OrderInterface['orderFullDate'],
+    deliveryFullDatePayload: OrderInterface['deliveryFullDate'],
+    addressIdPayload       : OrderInterface['addressId'],
+    paymentMethodIdPayload : OrderInterface['paymentMethodId'],
+  }>(),
+
+);
+
+/** |-> Save Order End Success Action **/
+// Side Effects asociados: saveOrderEndSuccessSideEffect (redireccionar a /checkout/order-confirmation)
+export const SaveOrderEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Order] Save Order End Success',
+
+);
+
+/** |-> Save Order End Failure Action **/
+export const SaveOrderEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Order] Save Order End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    saveOrderDataErrorMessagePayload: string,
   }>(),
 
 );

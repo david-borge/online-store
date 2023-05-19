@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as OrderActions from '../../../order/store/order.actions';
 
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 
@@ -34,7 +34,6 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<fromApp.AppState>,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -55,8 +54,8 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
       this.orderProducts = cartReducerData.cartData;
 
       // Comprobacion
-      console.log('orderProducts:');
-      console.log(this.orderProducts);
+      // console.log('orderProducts:');
+      // console.log(this.orderProducts);
 
       // Calcular orderTotal (a partir del precio y la cantidad de los productos, datos que están en orderProducts)
       this.orderProducts.map( orderProduct => {
@@ -95,7 +94,13 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
   onClickPayNowButton() {
 
-    this.router.navigate(['/checkout/order-confirmation']);
+    // Guardar la Order en la Base de Datos
+    this.store.dispatch( OrderActions.SaveOrderStart({
+      orderFullDatePayload   : new Date().toString(), // Ahora
+      deliveryFullDatePayload: new Date(new Date().setDate(new Date().getDate() + 1)).toString(), // Mañana
+      addressIdPayload       : this.orderAddress.id,
+      paymentMethodIdPayload : this.orderPaymentMethod.id,
+    }) );
 
   }
   
