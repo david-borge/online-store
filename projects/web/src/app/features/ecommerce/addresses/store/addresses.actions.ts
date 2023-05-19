@@ -173,6 +173,24 @@ export const SaveNewAddressToStore = createAction(
 );
 
 
+
+/** Change Default Address Action **/
+export const ChangeDefaultAddress = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Change Default Address',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newDefaultAddressIdPayload: number,
+    addressArrayIdPayload: number,
+  }>(),
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

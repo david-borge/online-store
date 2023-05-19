@@ -29,7 +29,7 @@
                         <!-- Payment Method -->
                         <app-credit-card
                             *ngFor="let paymentMethod of paymentMethods"
-                            [cardSelected]         = "true"
+                            [cardSelected]         = "1"
                             [cardType]             = "paymentMethod.cardType"
                             [cardBankName]         = "paymentMethod.cardBankName"
                             [cardPersonFullName]   = "paymentMethod.cardPersonFullName"

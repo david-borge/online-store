@@ -9,6 +9,7 @@ export interface GetAddressesPHPInterface {
         postalCode : AddressInterface["postalCode"];
         city       : AddressInterface["city"];
         country    : string;
+        isDefault  : AddressInterface["isDefault"];
     }[]
 
 }

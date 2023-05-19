@@ -17,6 +17,7 @@ import { DataStorageService } from 'projects/web/src/app/core/services/data-stor
 import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
 
 import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
+import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
 
 
 
@@ -63,7 +64,7 @@ export class AddressesEffects {
                     debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                     Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                    switchMap(getAddressesHttpRequestResponse => {
+                    switchMap((getAddressesHttpRequestResponse: GetAddressesPHPInterface) => {
 
                         // Comprobación
                         // console.log('getAddressesSideEffect - getAddressesHttpRequestResponse:');

@@ -33,17 +33,19 @@
             
                             <!-- Address Card -->
                             <app-address-card
-                                *ngFor="let address of addresses"
-                                [addressCardSelected]   = "true"
-                                [addressCardPersonName] = "address.fullName"
+                                *ngFor="let address of addresses; let i = index"
+                                [addressCardId]         = "address.id"
+                                [addressCardIsDefault]  = "address.isDefault"
+                                [addressCardFullName]   = "address.fullName"
                                 [addressCardAddress]    = "address.address"
                                 [addressCardPostalCode] = "address.postalCode"
                                 [addressCardCity]       = "address.city"
                                 [addressCardCountry]    = "address.country"
                                 [addressCardShowButton] = "true"
+                                [addressArrayId]        = "i"
                             ></app-address-card>
                             <!-- Ejemplo:
-                                [addressCardPersonName] = "'Leslie Flores'"
+                                [addressCardFullName] = "'Leslie Flores'"
                                 [addressCardAddress]    = "'2972 Westheimer Rd. '"
                                 [addressCardPostalCode] = "'85486'"
                                 [addressCardCity]       = "'Santa Ana, Illinois '"

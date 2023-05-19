@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class CreditCardComponent {
 
   // Propiedades - Credit Card
-  @Input() cardSelected         :boolean = false;
+  @Input() cardSelected         :number = 0;
   @Input() cardType             :string  = "";
   @Input() cardBankName         :string  = "";
   @Input() cardPersonFullName   :string  = "";

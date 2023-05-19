@@ -197,4 +197,54 @@ export const addressesReducer = createReducer(
           
       })),
 
+
+    
+    /** Change Default Address Action **/
+    on(AddressesActions.ChangeDefaultAddress,
+      (state, action) => {
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Comprobacion
+        // console.log('action.newDefaultAddressIdPayload: ' + action.newDefaultAddressIdPayload);
+
+        // - Cambiar el isDefault de la Address Card seleccionada
+        /* Editar un valor de un objeto que está dentro de un array (OpenAI Generated Code) */
+        // Make a copy of the addresses array
+        const updatedAddresses = [...state.addresses];
+        
+        // Update the product quantity of the item at the specified index
+        let selectedAddressCardIsDefaultOriginalValue = updatedAddresses[action.addressArrayIdPayload]['isDefault'];
+        updatedAddresses[action.addressArrayIdPayload] = {
+          ...updatedAddresses[action.addressArrayIdPayload],
+          isDefault: ( (updatedAddresses[action.addressArrayIdPayload]['isDefault'] == 0) ? 1 : 0 ), // Cambiar el valor de 0 a 1 o viceversa
+        };
+
+        // - Si el valor de isDefault de la Address Card seleccionada ha pasado de 0 a 1, poner el isDefault del resto de las Address Cards a 0
+        if ( selectedAddressCardIsDefaultOriginalValue == 0 ) {
+
+          // Comprobacion
+          // console.log('Poner el isDefault del resto de las Address Cards a 0');
+
+          for (let index = 0; index < updatedAddresses.length; index++) {
+            if ( index != action.addressArrayIdPayload ) {
+            
+              updatedAddresses[index] = {
+                ...updatedAddresses[index],
+                isDefault: 0,
+              };
+
+            }
+          }
+
+        }
+        
+        // Return the updated state
+        return {
+          ...state,
+          addresses: updatedAddresses,
+        };
+          
+      }),
+
 );
