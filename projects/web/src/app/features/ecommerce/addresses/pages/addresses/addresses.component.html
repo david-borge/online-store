@@ -31,14 +31,15 @@
                             <!-- Address Card -->
                             <app-address-card
                                 *ngFor="let address of addresses"
-                                [addressCardIsDefault]   = "0"
-                                [addressCardFullName] = "address.fullName"
+                                [addressCardIsDefault]  = "1"
+                                [addressCardFullName]   = "address.fullName"
                                 [addressCardAddress]    = "address.address"
                                 [addressCardPostalCode] = "address.postalCode"
                                 [addressCardCity]       = "address.city"
                                 [addressCardCountry]    = "address.country"
                                 [addressCardShowButton] = "false"
                             ></app-address-card>
+                            <!-- TODO: Añadir la opción de cambiar la Address por defecto -->
                             <!-- Ejemplo:
                                 [addressCardFullName] = "'Leslie Flores'"
                                 [addressCardAddress]    = "'2972 Westheimer Rd. '"
