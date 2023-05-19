@@ -34,15 +34,8 @@ export class AddressCardComponent {
 
   onClickAddressCardOrSelectButton() {
 
-    // Comprobacion
-    // console.log('Click!');
-
-    // Cambiar el valor de isDefault
-    // this.addressCardIsDefault = ( (this.addressCardIsDefault == 0) ? 1 : 0 );
-
     // Change Default Address: cambiar el valor de isDefault en la Addresses Store: al seleccionar una, desactivar el resto
     this.store.dispatch( AddressesActions.ChangeDefaultAddress({
-      newDefaultAddressIdPayload: this.addressCardId,
       addressArrayIdPayload     : this.addressArrayId,
     }) );
 

@@ -160,4 +160,53 @@ export const paymentMethodsReducer = createReducer(
           
       })),
 
+
+    
+    /** Change Default Credit Action **/
+    on(PaymentMethodsActions.ChangeDefaultPaymentMethod,
+      (state, action) => {
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // - Cambiar el isDefault de la Credit Card seleccionada
+        /* Editar un valor de un objeto que está dentro de un array (OpenAI Generated Code) */
+        // Make a copy of the paymentMethods array
+        const updatedPaymentMethods = [...state.paymentMethods];
+        
+        // Update the product quantity of the item at the specified index
+        let selectedCreditCardIsDefaultOriginalValue = updatedPaymentMethods[action.paymentMethodArrayIdPayload]['isDefault'];
+        updatedPaymentMethods[action.paymentMethodArrayIdPayload] = {
+          ...updatedPaymentMethods[action.paymentMethodArrayIdPayload],
+          isDefault: ( (updatedPaymentMethods[action.paymentMethodArrayIdPayload]['isDefault'] == 0) ? 1 : 0 ), // Cambiar el valor de 0 a 1 o viceversa
+        };
+
+        // - Si el valor de isDefault de la Credit Card seleccionada ha pasado de 0 a 1, poner el isDefault del resto de las Credit Cards a 0
+        if ( selectedCreditCardIsDefaultOriginalValue == 0 ) {
+
+          // Comprobacion
+          // console.log('Poner el isDefault del resto de las Credit Cards a 0');
+
+          for (let index = 0; index < updatedPaymentMethods.length; index++) {
+            if ( index != action.paymentMethodArrayIdPayload ) {
+            
+              updatedPaymentMethods[index] = {
+                ...updatedPaymentMethods[index],
+                isDefault: 0,
+              };
+
+            }
+          }
+
+        }
+        
+        // Return the updated state
+        return {
+          ...state,
+          paymentMethods: updatedPaymentMethods,
+        };
+          
+      }),
+
+
+
 );

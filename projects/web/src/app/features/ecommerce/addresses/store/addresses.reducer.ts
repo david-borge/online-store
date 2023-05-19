@@ -205,9 +205,6 @@ export const addressesReducer = createReducer(
 
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
-        // Comprobacion
-        // console.log('action.newDefaultAddressIdPayload: ' + action.newDefaultAddressIdPayload);
-
         // - Cambiar el isDefault de la Address Card seleccionada
         /* Editar un valor de un objeto que está dentro de un array (OpenAI Generated Code) */
         // Make a copy of the addresses array

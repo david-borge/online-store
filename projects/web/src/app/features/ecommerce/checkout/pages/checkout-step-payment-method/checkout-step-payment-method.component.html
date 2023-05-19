@@ -32,8 +32,7 @@
         
                         <!-- Payment Method -->
                         <app-credit-card
-                            *ngFor="let paymentMethod of paymentMethods"
-                            [cardSelected]         = "1"
+                            *ngFor="let paymentMethod of paymentMethods; let i = index"
                             [cardType]             = "paymentMethod.cardType"
                             [cardBankName]         = "paymentMethod.cardBankName"
                             [cardPersonFullName]   = "paymentMethod.cardPersonFullName"
@@ -41,6 +40,8 @@
                             [cardExpirationMonth]  = "paymentMethod.cardExpirationMonth"
                             [cardExpirationYear]   = "paymentMethod.cardExpirationYear"
                             [creditCardShowButton] = "true"
+                            [cardIsDefault]        = "paymentMethod.isDefault"
+                            [cardArrayId]          = "i"
                         ></app-credit-card>
                         <!-- Ejemplo:
                             [cardType]             = "'mastercard'"
@@ -50,6 +51,7 @@
                             [cardExpirationMonth]  = "'12'"
                             [cardExpirationYear]   = "'25'"
                             [creditCardShowButton] = "true"
+                            [cardIsDefault]         = "1"
                         -->
         
                     </div>
