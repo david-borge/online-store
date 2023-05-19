@@ -29,6 +29,7 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
   orderProducts      : GetOrderDataPHPInterface['orderProducts']      = [];
   orderAddress       : GetOrderDataPHPInterface['orderAddress']       = {} as GetOrderDataPHPInterface['orderAddress'];
   orderPaymentMethod : GetOrderDataPHPInterface['orderPaymentMethod'] = {} as GetOrderDataPHPInterface['orderPaymentMethod'];
+  orderTotal         : number = 0;
 
 
   constructor(
@@ -47,10 +48,20 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
       
     });
 
-    // Leer orderProducts de la Cart Store
+    // Leer orderProducts de la Cart Store y calcular orderTotal (a partir del precio y la cantidad de los productos, datos que están en orderProducts)
     this.cartReducerObservableSubscription = this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
 
+      // Leer orderProducts de la Cart Store
       this.orderProducts = cartReducerData.cartData;
+
+      // Comprobacion
+      console.log('orderProducts:');
+      console.log(this.orderProducts);
+
+      // Calcular orderTotal (a partir del precio y la cantidad de los productos, datos que están en orderProducts)
+      this.orderProducts.map( orderProduct => {
+        this.orderTotal += (orderProduct.price * orderProduct.productQuantity);
+      });
       
     });
 

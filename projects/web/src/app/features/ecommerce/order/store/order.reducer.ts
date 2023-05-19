@@ -15,6 +15,7 @@ export interface OrderReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   currentOrderNumber : number;
   orderData          : GetOrderDataPHPInterface["orderData"];
+  // orderTotal         : number;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -24,6 +25,7 @@ const initialState: OrderReducerStateInterface = {
   // loadStatus: 'NOT_LOADED',
   currentOrderNumber : 0,
   orderData          : {} as GetOrderDataPHPInterface["orderData"],
+  // orderTotal         : 0,
 }
 
 

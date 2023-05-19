@@ -116,11 +116,11 @@
 </main>
   
 <!-- Pay Now Button Container -->
-<div class="pay-now-container">
+<div class="pay-now-container" *ngIf="(orderTotal != 0)">
 
     <div class="pay-now-copy">
         <div class="pay-now-copy-label">Order total</div>
-        <div class="pay-now-copy-price">{{123.45 | currency:'EUR':'symbol':'1.2-2'}}</div>
+        <div class="pay-now-copy-price">{{orderTotal | currency:'EUR':'symbol':'1.2-2'}}</div>
     </div>
 
     <div class="pay-now-button-container">
