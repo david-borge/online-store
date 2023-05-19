@@ -55,13 +55,13 @@
             
             <!-- Address Card -->
             <app-address-card
-                [addressCardIsDefault]   = "0"
-                [addressCardFullName] = "orderAddress.fullName"
+                [addressCardFullName]   = "orderAddress.fullName"
                 [addressCardAddress]    = "orderAddress.address"
                 [addressCardPostalCode] = "orderAddress.postalCode"
                 [addressCardCity]       = "orderAddress.city"
                 [addressCardCountry]    = "orderAddress.country"
                 [addressCardShowButton] = "false"
+                [addressCardIsDefault]  = "1"
             ></app-address-card>
             <!-- Ejemplo:
                 [addressCardFullName] = "'Leslie Flores'"
@@ -92,13 +92,13 @@
 
             <!-- Payment Method -->
             <app-credit-card
-                [cardIsDefault]       = "1"
                 [cardType]            = "orderPaymentMethod.cardType"
                 [cardBankName]        = "orderPaymentMethod.cardBankName"
                 [cardPersonFullName]  = "orderPaymentMethod.cardPersonFullName"
                 [cardLastFourNumbers] = "orderPaymentMethod.cardLastFourNumbers"
                 [cardExpirationMonth] = "orderPaymentMethod.cardExpirationMonth"
                 [cardExpirationYear]  = "orderPaymentMethod.cardExpirationYear"
+                [cardIsDefault]       = "1"
             ></app-credit-card>
             <!-- Ejemplo:
                 [cardType]            = "'mastercard'"

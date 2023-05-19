@@ -18,6 +18,8 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
   // Suscripciones a la Store
   orderReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Template variables
   currentOrderNumber: number = 0;
@@ -41,8 +43,32 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
       this.currentOrderNumber = orderReducerData.currentOrderNumber;
       this.orderData          = orderReducerData.orderData;
       this.orderProducts      = orderReducerData.orderProducts;
-      this.orderAddress       = orderReducerData.orderAddress;
-      this.orderPaymentMethod = orderReducerData.orderPaymentMethod;
+      
+    });
+
+    // Leer orderAddress de la Addresses Store
+    this.addressesReducerObservableSubscription = this.store.select('addressesReducerObservable').subscribe( (addressesReducerData) => {
+      
+      // orderAddress será la address donde isDefault sea 1
+      for (const address of addressesReducerData.addresses) {
+        if (address.isDefault === 1) {
+          this.orderAddress = address;
+          break;
+        }
+      }
+      
+    });
+
+    // Leer orderPaymentMethod de la Payment Methods Store
+    this.paymentMethodsReducerObservableSubscription = this.store.select('paymentMethodsReducerObservable').subscribe( (paymentMethodsReducerData) => {
+      
+      // orderPaymentMethod será la payment method donde isDefault sea 1
+      for (const paymentMethod of paymentMethodsReducerData.paymentMethods) {
+        if (paymentMethod.isDefault === 1) {
+          this.orderPaymentMethod = paymentMethod;
+          break;
+        }
+      }
       
     });
 
@@ -58,6 +84,8 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
     // Cancelar suscripciones
     this.orderReducerObservableSubscription.unsubscribe();
+    this.addressesReducerObservableSubscription.unsubscribe();
+    this.paymentMethodsReducerObservableSubscription.unsubscribe();
     
   }
 
