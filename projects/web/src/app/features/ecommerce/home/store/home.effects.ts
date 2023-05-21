@@ -140,8 +140,8 @@ export class HomeEffects {
                     switchMap( (getCurrentProductReviewsResponse: GetCurrentProductReviewsPHPInterface[]) => {
 
                         // Comprobación
-                        console.log('getCurrentProductReviewsSideEffect - getCurrentProductReviewsResponse:');
-                        console.log(getCurrentProductReviewsResponse);
+                        // console.log('getCurrentProductReviewsSideEffect - getCurrentProductReviewsResponse:');
+                        // console.log(getCurrentProductReviewsResponse);
 
                         // Procesamiento de datos si es necesario...
 
