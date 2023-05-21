@@ -77,6 +77,11 @@
     gap: 48px;
 }
 
+.there-are-no-reviews-yet {
+    @include body-14px-regular;
+    color: var(--N600);
+}
+
 
 
 // Product Page - Reviews - Product Reviews Item

@@ -10,7 +10,7 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
 import * as HomeActions from '../../../home/store/home.actions';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
-import { GetReviewsPHPInterface } from 'projects/web/src/app/core/models/getReviewsPHP.interface';
+import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
 
 
 
@@ -29,24 +29,7 @@ export class ProductDetailComponent implements OnInit {
   productSlug: string = '';
   @Input() product = {} as ProductInterface;
   featuredProducts : ProductInterface[] = [];
-  // productReviewsList: ReviewInterface[] = [];
-  // Ejemplo:
-  productReviewsList: GetReviewsPHPInterface[] = [
-    {
-      title               : 'Review 1 Title',
-      starsWidth          : 40,
-      publicationFullDate : 'Sun May 21 2023 12:22:50 GMT+0200 (Central European Summer Time)',
-      content             : 'Review 1 content. Review 1 content. Review 1 content. Review 1 content. Review 1 content. Review 1 content.',
-      fullName            : 'Full Name 1',
-    },
-    {
-      title               : 'Review 2 Title',
-      starsWidth          : 85,
-      publicationFullDate : 'Sun Jan 13 2023 12:22:50 GMT+0200 (Central European Summer Time)',
-      content             : 'Review 2 content. Review 2 content. Review 2 content. Review 2 content. Review 2 content. Review 2 content.',
-      fullName            : 'Full Name 2',
-    },
-  ];
+  currentProductReviews: GetCurrentProductReviewsPHPInterface[] = [];
 
 
   constructor(
@@ -65,10 +48,16 @@ export class ProductDetailComponent implements OnInit {
     // Guardar el productSlug del producto actual en la Store para poder leerlo en ProductComponent y mostrar el título y el color de fondo apropiados en el header
     this.store.dispatch( HomeActions.SaveCurrentProductSlug({ currentProductSlugPayload: this.productSlug }) );
 
+    // Guardar currentProductReviews en la Home Store
+    this.store.dispatch( HomeActions.GetCurrentProductReviewsStart({
+      currentProductSlugPayload: this.productSlug,
+    }) );
+
 
     // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
     // Leer datos desde la Store y mostrarlos
     // All Products - Filtrando para mostrar solo el producto con el slug correspondiente
+    // currentProductReviews
     this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
       .subscribe(
 
@@ -78,7 +67,7 @@ export class ProductDetailComponent implements OnInit {
           // console.log('homeReducerData get:');
           // console.log(homeReducerData);
 
-          // Compruebo si hay algún producto antes de filtrar
+          // - Compruebo si hay algún producto antes de filtrar
           if ( homeReducerData.allProducts.length > 0 ) {
             
             // - Filtro los productos - Producto con el slug apropiado
@@ -111,6 +100,9 @@ export class ProductDetailComponent implements OnInit {
             );
 
           }
+
+          // - currentProductReviews
+          this.currentProductReviews = homeReducerData.currentProductReviews;
 
         },
 

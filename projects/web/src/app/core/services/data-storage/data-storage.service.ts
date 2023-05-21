@@ -26,6 +26,7 @@ import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
 import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
 import { CartInterface } from '../../models/cart.interface';
 import { OrderInterface } from '../../models/order.interface';
+import { GetCurrentProductReviewsPHPInterface } from '../../models/getCurrentProductReviewsPHP.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -334,6 +335,21 @@ export class DataStorageService {
       
   }
 
+
+
+  // Get Current Product Reviews
+  getCurrentProductReviewsHttpRequest(currentProductSlug: ProductInterface['slug']) {
+
+    return this.httpClient
+      .post<GetCurrentProductReviewsPHPInterface[]>(environment.apiBaseUrl + '/getCurrentProductReviews.php',
+      {
+        currentProductSlug : currentProductSlug,
+      },
+      {})
+      // .pipe()
+      ;
+
+  }
   
 
   authMessages(messageCode: string): string {

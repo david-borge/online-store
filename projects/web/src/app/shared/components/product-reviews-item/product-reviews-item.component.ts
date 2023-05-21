@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { GetReviewsPHPInterface } from '../../../core/models/getReviewsPHP.interface';
+import { GetCurrentProductReviewsPHPInterface } from '../../../core/models/getCurrentProductReviewsPHP.interface';
 
 @Component({
   selector: 'app-product-reviews-item',
@@ -9,6 +9,6 @@ import { GetReviewsPHPInterface } from '../../../core/models/getReviewsPHP.inter
 })
 export class ProductReviewsItemComponent {
 
-  @Input() productReview : GetReviewsPHPInterface = {} as GetReviewsPHPInterface;
+  @Input() productReview : GetCurrentProductReviewsPHPInterface = {} as GetCurrentProductReviewsPHPInterface;
 
 }

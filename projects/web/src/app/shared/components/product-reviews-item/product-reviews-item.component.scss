@@ -6,20 +6,11 @@
 // Product Reviews Item
 .product-reviews-item--title-ratings-container {
     margin-bottom: 8px;
-    display: flex;
-    align-items: stretch;
 }
 
 // Product Reviews Item - Review Item - Title
 .product-reviews-item--title {
-    flex: 1;
-
     @include label-16px-semi-bold;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
 }
 
 .product-reviews-item--title * {
@@ -30,9 +21,7 @@
 
 // Product Reviews Item - Review Item - Rating
 .product-reviews-item--rating-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin-bottom: 6px;
 }
 
 .product-reviews-item--rating {

@@ -64,14 +64,16 @@
                     <h2>Reviews</h2>
                 </div>
 
-                <div class="product-reviews-list">
+                <div class="product-reviews-list" *ngIf="(currentProductReviews.length != 0)">
 
                     <app-product-reviews-item
-                        *ngFor="let productReview of productReviewsList"
+                        *ngFor="let productReview of currentProductReviews"
                         [productReview] = productReview
                     ></app-product-reviews-item>
-                    
+                
                 </div>
+
+                <div *ngIf="(currentProductReviews.length === 0)" class="there-are-no-reviews-yet">There are no reviews yet.</div>
 
             </div>
 

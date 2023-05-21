@@ -2,10 +2,6 @@
 <div class="product-reviews-item">
 
     <div class="product-reviews-item--title-ratings-container">
-        <div class="product-reviews-item--title">
-            <h4>{{productReview.title}}</h4>
-            <!-- Ejemplo: <h4>Consectetur tellus volutpat.</h4> -->
-        </div>
         <div class="product-reviews-item--rating-container">
             <div class="product-reviews-item--rating">
                 <div class="empty-stars"></div>
@@ -13,13 +9,17 @@
                 <!-- Ejemplo: <div class="full-stars" style="width: 60%;"></div> -->
             </div>
         </div>
+        <div class="product-reviews-item--title">
+            <h4>{{productReview.title}}</h4>
+            <!-- Ejemplo: <h4>Consectetur tellus volutpat.</h4> -->
+        </div>
     </div>
 
     <div class="product-reviews-item--date">{{ productReview.publicationFullDate | date:'d MMMM yyyy' }}</div>
     <!-- Ejemplo: <div class="product-reviews-item--date">1 January, 2023</div> -->
 
-    <div class="product-reviews-item--content">
-        {{productReview.content}}
+    <!-- TODO: añadir acordeón a partir de cierta longitud de productReview.content -->
+    <div class="product-reviews-item--content" [innerHTML]="productReview.content">
         <!-- Ejemplo: <p>Massa morbi id lorem ultricies. Aliquet eu dolor cras ipsum hendrerit id ut habitant nisi. Lectus ipsum faucibus sed fringilla at tempor.</p> -->
     </div>
 

@@ -1,7 +1,7 @@
 import { ReviewInterface } from "./review.interface";
 import { UserInterface } from "./user.interface";
 
-export interface GetReviewsPHPInterface {
+export interface GetCurrentProductReviewsPHPInterface {
 
     title               : ReviewInterface['title'];
     starsWidth          : number;

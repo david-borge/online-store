@@ -10,6 +10,7 @@
 import { createAction, props } from "@ngrx/store";
 
 import { ProductInterface } from "projects/web/src/app/core/models/product.interface";
+import { GetCurrentProductReviewsPHPInterface } from "projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface";
 
 
 
@@ -103,6 +104,51 @@ export const SetHomePageImagesLoadedToTrue = createAction(
 
   // Tipo de la Action
   '[Home] Set Home Page Images Loaded To True',
+
+);
+
+
+
+/** Get Current Product Reviews Start Action **/
+// Side Effects asociados: getCurrentProductReviewsSideEffect (toma todos las Reviews de un Product desde la base de datos mediante un HTTP Request)
+export const GetCurrentProductReviewsStart = createAction(
+
+  // Tipo de la Action
+  '[Home] Get Current Product Reviews Start',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    currentProductSlugPayload: string,
+  }>(),
+
+);
+
+/** |-> Get Current Product Reviews End Success Action **/
+export const GetCurrentProductReviewsEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Home] Get Current Product Reviews End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      currentProductReviewsPayload: GetCurrentProductReviewsPHPInterface[],
+  }>(),
+
+);
+
+/** |-> Get Current Product Reviews End Failure Action **/
+export const GetCurrentProductReviewsEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Home] Get Current Product Reviews End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+      // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      getCurrentProductReviewsErrorMessagePayload: string,
+  }>(),
 
 );
 
