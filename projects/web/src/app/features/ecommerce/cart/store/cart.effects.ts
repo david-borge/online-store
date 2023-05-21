@@ -308,8 +308,8 @@ export class CartEffects {
                     switchMap( (addProductToCartHttpRequestResponse: boolean) => {
 
                         // Comprobación
-                        console.log('addProductToCartSideEffect - addProductToCartHttpRequestResponse:');
-                        console.log(addProductToCartHttpRequestResponse);
+                        // console.log('addProductToCartSideEffect - addProductToCartHttpRequestResponse:');
+                        // console.log(addProductToCartHttpRequestResponse);
 
                         // Procesamiento de datos si es necesario...
 

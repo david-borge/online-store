@@ -65,7 +65,7 @@ export class FooterComponent implements OnInit, OnChanges {
     
 
 
-    this.store.select('cartReducerObservable').pipe(take(1)).subscribe( (cartReducerData) => {
+    this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
       
       // Si esto en el CarRouterModule.t, leer de la Cart Store el número de productos en el carrito
       if ( this.currentURL.includes('/cart') ) {
@@ -78,7 +78,7 @@ export class FooterComponent implements OnInit, OnChanges {
           this.navigationButtonRightURL  = "/home";
         }
 
-        // TODO: Si el carrito no está vacío, ir al checkout
+        // Si el carrito no está vacío, ir al checkout
         else {
           this.navigationButtonRightText = "Checkout";
           this.navigationButtonRightURL  = "/checkout";
