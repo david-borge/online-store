@@ -66,9 +66,10 @@
 
                 <div class="product-reviews-list">
 
-                    <!-- <app-product-reviews-item
-                        *ngFor="let nombre_individual of productReviewsList"
-                    ></app-product-reviews-item> -->
+                    <app-product-reviews-item
+                        *ngFor="let productReview of productReviewsList"
+                        [productReview] = productReview
+                    ></app-product-reviews-item>
                     
                 </div>
 

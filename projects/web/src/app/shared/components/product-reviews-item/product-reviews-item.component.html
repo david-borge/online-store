@@ -3,30 +3,42 @@
 
     <div class="product-reviews-item--title-ratings-container">
         <div class="product-reviews-item--title">
-            <h4>Consectetur tellus volutpat.</h4>
+            <h4>{{productReview.title}}</h4>
+            <!-- Ejemplo: <h4>Consectetur tellus volutpat.</h4> -->
         </div>
         <div class="product-reviews-item--rating-container">
             <div class="product-reviews-item--rating">
                 <div class="empty-stars"></div>
-                <div class="full-stars" style="width: 60%;"></div>
+                <div class="full-stars" [ngStyle]="{ 'width': (productReview.starsWidth + '%') }"></div>
+                <!-- Ejemplo: <div class="full-stars" style="width: 60%;"></div> -->
             </div>
         </div>
     </div>
 
-    <div class="product-reviews-item--date">January 1, 2023</div>
+    <div class="product-reviews-item--date">{{ productReview.publicationFullDate | date:'d MMMM yyyy' }}</div>
+    <!-- Ejemplo: <div class="product-reviews-item--date">1 January, 2023</div> -->
 
     <div class="product-reviews-item--content">
-        <p>Massa morbi id lorem ultricies. Aliquet eu dolor cras ipsum hendrerit id ut habitant nisi. Lectus ipsum faucibus sed fringilla at tempor.</p>
+        {{productReview.content}}
+        <!-- Ejemplo: <p>Massa morbi id lorem ultricies. Aliquet eu dolor cras ipsum hendrerit id ut habitant nisi. Lectus ipsum faucibus sed fringilla at tempor.</p> -->
     </div>
 
     <div class="product-reviews-item--profile-container">
         <div class="product-reviews-item--profile-picture">
-            <picture>
+
+            <!-- Icon: generic-avatar.svg -->
+            <svg style="max-width: 24px; max-height: 24px;" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="80" height="80" rx="40" fill="#F6F6F6"/><path d="M53.3332 55V51.6667C53.3332 49.8986 52.6308 48.2029 51.3805 46.9526C50.1303 45.7024 48.4346 45 46.6665 45H33.3332C31.5651 45 29.8694 45.7024 28.6191 46.9526C27.3689 48.2029 26.6665 49.8986 26.6665 51.6667V55" stroke="#B1B2B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M40.0002 38.3333C43.6821 38.3333 46.6668 35.3486 46.6668 31.6667C46.6668 27.9848 43.6821 25 40.0002 25C36.3183 25 33.3335 27.9848 33.3335 31.6667C33.3335 35.3486 36.3183 38.3333 40.0002 38.3333Z" stroke="#B1B2B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            <!-- <picture>
                 <source srcset="assets/img/avatars/brooklyn-simmons.webp" type="image/webp">
-                <img src="assets/img/avatars/brooklyn-simmons.png" width="24px" height="24px" alt="Brooklyn Simmons">
-            </picture>
+                <img src="assets/img/avatars/brooklyn-simmons.png" width="24px" height="24px" alt="Brooklyn Simmons"> -->
+                <!-- Ejemplo: 
+                    <source srcset="assets/img/avatars/brooklyn-simmons.webp" type="image/webp">
+                    <img src="assets/img/avatars/brooklyn-simmons.png" width="24px" height="24px" alt="Brooklyn Simmons"> -->
+            <!-- </picture> -->
         </div>
-        <div class="product-reviews-item--profile-name">Brooklyn Simmons</div>
+        <div class="product-reviews-item--profile-name">{{productReview.fullName}}</div>
+        <!-- Ejemplo: <div class="product-reviews-item--profile-name">Brooklyn Simmons</div> -->
     </div>
 
 </div>

@@ -8,7 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as HomeActions from '../../../home/store/home.actions';
+
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+import { GetReviewsPHPInterface } from 'projects/web/src/app/core/models/getReviewsPHP.interface';
 
 
 
@@ -27,6 +29,24 @@ export class ProductDetailComponent implements OnInit {
   productSlug: string = '';
   @Input() product = {} as ProductInterface;
   featuredProducts : ProductInterface[] = [];
+  // productReviewsList: ReviewInterface[] = [];
+  // Ejemplo:
+  productReviewsList: GetReviewsPHPInterface[] = [
+    {
+      title               : 'Review 1 Title',
+      starsWidth          : 40,
+      publicationFullDate : 'Sun May 21 2023 12:22:50 GMT+0200 (Central European Summer Time)',
+      content             : 'Review 1 content. Review 1 content. Review 1 content. Review 1 content. Review 1 content. Review 1 content.',
+      fullName            : 'Full Name 1',
+    },
+    {
+      title               : 'Review 2 Title',
+      starsWidth          : 85,
+      publicationFullDate : 'Sun Jan 13 2023 12:22:50 GMT+0200 (Central European Summer Time)',
+      content             : 'Review 2 content. Review 2 content. Review 2 content. Review 2 content. Review 2 content. Review 2 content.',
+      fullName            : 'Full Name 2',
+    },
+  ];
 
 
   constructor(

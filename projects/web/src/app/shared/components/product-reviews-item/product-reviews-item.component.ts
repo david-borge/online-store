@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { GetReviewsPHPInterface } from '../../../core/models/getReviewsPHP.interface';
 
 @Component({
   selector: 'app-product-reviews-item',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-reviews-item.component.scss']
 })
 export class ProductReviewsItemComponent {
+
+  @Input() productReview : GetReviewsPHPInterface = {} as GetReviewsPHPInterface;
 
 }
