@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
@@ -22,12 +22,17 @@ export class AddNewCardFormComponent implements OnInit {
   addNewCardForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
   @ViewChild('addNewCardFormRef') addNewCardFormViewChild: NgForm = {} as NgForm;
   addNewCardResult: string = '';
+  @ViewChild('cardPersonFullNameLocalReference', {static: true}) cardPersonFullNameLocalReferenceViewChild: ElementRef = {} as ElementRef;
+
   
   constructor(
     private store: Store<fromApp.AppState>,
   ) {}
 
   ngOnInit(): void {
+
+    // Pone el foco en el campo cardPersonFullName al carga el formulario
+    this.cardPersonFullNameLocalReferenceViewChild.nativeElement.focus();
 
     // - Add New Card Form
     this.addNewCardForm = new FormGroup({

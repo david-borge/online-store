@@ -4,13 +4,15 @@
 
 <!-- Header Tag -->
 <app-header
+    *ngIf="!showBottomOverlay"
     [headerTagType] = "'overlay-header-subpage'"
     [overlayHeaderPageTitle] = "'Payment Methods'"
 ></app-header>
     
 <!-- Main -->
 <!-- <main role="main" style="padding-bottom: var(--espacio-vertical);"> -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc(var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical));">
+<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc(var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical));"
+    *ngIf="!showBottomOverlay">
 
     <div class="illustration-and-content-container">
 
@@ -65,6 +67,7 @@
   
 <!-- Footer Tag -->
 <app-footer
+    *ngIf="!showBottomOverlay"
     [navigationShowCtasAndCopy]              = "true"
     [navigationShowCopy]                     = "false"
     [navigationButtonRightText]              = "'Add new card'"

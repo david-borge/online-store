@@ -1,5 +1,5 @@
 <!-- Contenedor solo móvil -->
-<div id="contenedor-solo-movil">
+<div id="contenedor-solo-movil" [ngClass]="{ 'show-bottom-overlay': showBottomOverlay, }">
   
   <!-- Loading Screen -->
   <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
@@ -29,12 +29,17 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
   addNewAddressForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
   @ViewChild('addNewAddressFormRef') addNewAddressFormViewChild: NgForm = {} as NgForm;
   addNewAddressResult: string = '';
+  @ViewChild('addressLocalReference', {static: true}) addressLocalReferenceViewChild: ElementRef = {} as ElementRef;
+
   
   constructor(
     private store: Store<fromApp.AppState>,
   ) {}
 
   ngOnInit(): void {
+
+    // Pone el foco en el campo address al carga el formulario
+    this.addressLocalReferenceViewChild.nativeElement.focus();
 
     // - Cargar la lista de Countries a la Store
     this.store.dispatch( AddressesActions.GetAllCountriesStart() );
