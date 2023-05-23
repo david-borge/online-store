@@ -59,7 +59,7 @@ header {
 
 // Overlay Header - Main Page
 .overlay-header.overlay-header-main-page > div {
-    min-height: 90px;
+    min-height: var(--header-altura-overlay-header-main-page);
 }
 
 .overlay-header-main-page {
@@ -84,7 +84,7 @@ header {
 
 // Overlay Header - Subpage
 .overlay-header.overlay-header-subpage > div {
-    min-height: 82.5px;
+    min-height: var(--header-altura-overlay-header-subpage);
 }
 
 .overlay-header-subpage {

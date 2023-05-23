@@ -668,16 +668,6 @@ $body-color: var(--N800);
 
 
 
-/* // Footer
-:root {
-    --footer-altura-sin-navigation-ctas-and-copy: 87px;
-    --footer-altura-con-navigation-ctas-and-copy-btn-lg: 149px;
-    --footer-altura-con-navigation-ctas-and-copy-btn-sm: 137px;
-} */
-
-
-
-
 
 /***** SCSS de toda la aplicación *****/
 
@@ -894,6 +884,19 @@ app-footer {
     bottom: 0;
 }
 
+:root {
+    --header-altura-hero: 116px;
+    --header-altura-overlay-header-main-page: 90px;
+    --header-altura-overlay-header-subpage: 82.5px;
+
+    --footer-altura-sin-navigation-ctas-and-copy: 83px;
+    --footer-altura-con-navigation-ctas-and-copy-btn-lg: 144px;
+    --footer-altura-con-navigation-ctas-and-copy-btn-sm: 137px;
+
+    --altura-next-step-add-button-container: 60px;
+    --altura-next-step-button-container: 73px;
+}
+
 
 
 // SVG Icons
@@ -988,11 +991,6 @@ svg-icon {
 
 
 // Checkout Steps - Button Container
-:root {
-    --altura-next-step-add-button-container: 60px;
-    --altura-next-step-button-container: 73px;
-}
-
 .next-step-button-container {
     position: fixed;
     bottom: 0;
