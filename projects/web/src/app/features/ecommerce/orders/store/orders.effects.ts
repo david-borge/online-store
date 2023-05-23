@@ -51,7 +51,7 @@ export class OrdersEffects {
 
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getOrdersHttpRequest('david.borge.olmedo@gmail.com') // TODO:
+            return this.dataStorageService.getOrdersHttpRequest('david.borge.olmedo@gmail.com') // FIXME:
                 .pipe(
 
                     /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),

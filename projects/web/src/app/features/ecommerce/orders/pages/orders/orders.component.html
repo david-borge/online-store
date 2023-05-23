@@ -40,12 +40,13 @@
                         <div class="orders-list">
 
                             <!-- Product Card -->
-                            <!-- FIXME: corregir tamaño de las imágenes (hay que cargar el width y height de la Base de Datos) -->
                             <app-product-card
                                 *ngFor="let activeOrder of activeOrders"
                                 [productCardTypeClass] = "'product-card-order'"
                                 [orderId]              = "activeOrder.id"
                                 [orderImageThumbnail]  = "activeOrder.imageThumbnail"
+                                [orderImageWidth]      = "activeOrder.imageWidth"
+                                [orderImageHeight]     = "activeOrder.imageHeight"
                                 [orderTotal]           = "activeOrder.orderTotal"
                                 [orderArrivalDate]     = "activeOrder.deliveryFullDate"
                             ></app-product-card>
@@ -71,12 +72,13 @@
                         <div class="orders-list">
 
                             <!-- Product Card -->
-                            <!-- FIXME: corregir tamaño de las imágenes (hay que cargar el width y height de la Base de Datos) -->
                             <app-product-card
                                 *ngFor="let previousOrder of previousOrders"
                                 [productCardTypeClass] = "'product-card-order'"
                                 [orderId]              = "previousOrder.id"
                                 [orderImageThumbnail]  = "previousOrder.imageThumbnail"
+                                [orderImageWidth]      = "previousOrder.imageWidth"
+                                [orderImageHeight]     = "previousOrder.imageHeight"
                                 [orderTotal]           = "previousOrder.orderTotal"
                                 [orderArrivalDate]     = "previousOrder.deliveryFullDate"
                             ></app-product-card>

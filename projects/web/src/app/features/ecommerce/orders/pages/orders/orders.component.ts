@@ -24,7 +24,7 @@ export class OrdersComponent implements OnInit {
   ordersReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Template variables
-  activeOrders: GetOrdersPHPInterface["orders"] = [];
+  activeOrders  : GetOrdersPHPInterface["orders"] = [];
   previousOrders: GetOrdersPHPInterface["orders"] = [];
 
 
