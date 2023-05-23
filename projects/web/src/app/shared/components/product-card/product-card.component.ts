@@ -21,7 +21,9 @@ export class ProductCardComponent implements OnInit {
   
   // Propiedades - Product or Order Card - Order
   @Input() orderId             : number = 0;
-  @Input() orderImageThumbnail : string = '';
+  @Input() orderImageThumbnail : ProductInterface['imageThumbnail'] = '';
+  @Input() orderImageWidth     : ProductInterface['imageWidth'] = '';
+  @Input() orderImageHeight    : ProductInterface['imageHeight'] = '';
   @Input() orderTotal          : number = 0;
   @Input() orderArrivalDate    : string = '';
   orderArrivalDateFormated     : string = '';
