@@ -873,11 +873,10 @@ body {
 // HeaderComponent & FooterComponent - Sticky position
 app-header,
 app-footer {
-    position: sticky;
-    // position: fixed;
+    position: fixed; // MUCHO CUIDADO: no usar sticky aquí porque hace que el footer no funcione bien en móviles porque compensa la altura de la barra de navegación del navegador
     
-    left: 0;
-    // transform: translateX(-50%);
+    left: 50%;
+    transform: translateX(-50%);
 
     width: 100%;
     max-width: var(--ancho-contenedor-solo-movil);
