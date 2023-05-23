@@ -668,12 +668,12 @@ $body-color: var(--N800);
 
 
 
-// Footer
+/* // Footer
 :root {
     --footer-altura-sin-navigation-ctas-and-copy: 87px;
     --footer-altura-con-navigation-ctas-and-copy-btn-lg: 149px;
     --footer-altura-con-navigation-ctas-and-copy-btn-sm: 137px;
-}
+} */
 
 
 
@@ -870,19 +870,29 @@ body {
 
 
 
-// FooterComponent
+// HeaderComponent & FooterComponent - Sticky position
+app-header,
 app-footer {
-    position: fixed;
+    position: sticky;
+    // position: fixed;
     
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    // transform: translateX(-50%);
 
-    bottom: 0;
-    
     width: 100%;
     max-width: var(--ancho-contenedor-solo-movil);
 
     z-index: 2;
+}
+
+app-header {
+    top: 0;
+
+    background-color: white;
+}
+
+app-footer {
+    bottom: 0;
 }
 
 
