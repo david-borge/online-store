@@ -21,7 +21,7 @@ const productRoutes: Routes = [
 
     // Product Page (/product/dualsense-wireless-controller)
     {
-        path: '',
+        path: '', // 'product'
         component: ProductComponent,
         children: [
             {

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { ProductInterface } from '../../../core/models/product.interface';
 
 import { PreFetchService } from '../../../core/services/prefetch/prefetch.service';
@@ -31,7 +33,18 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private preFetchService: PreFetchService,
-  ) {}
+    private router: Router,
+  ) {
+
+    /* IMPORTANTE: esto es para que funcionen los enlaces de los Featured products en la página de un producto.
+       Hace que el componente se recargue al hacer click en los enlaces de los Featured products en la página de un producto.
+       Si no hago esto, los datos del producto no cambian al cambiar de ruta.
+    */
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+
+  }
   
   ngOnInit(): void {
 

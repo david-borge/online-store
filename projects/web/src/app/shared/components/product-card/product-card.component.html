@@ -1,7 +1,8 @@
 <!-- Product Card -->
 <div class="product-card {{productCardTypeClass}}" [ngStyle]="{ 'background-color': ((productCardTypeClass == 'product-card-featured') ? product.cardAndHeaderBackgroundColor : '') }">
 
-    <a [routerLink]="( (orderId != 0) ? ('/order/' + orderId) : ('/product/' + product.slug) )">
+    <a [routerLink]="[( (orderId != 0) ? ('/order/' + orderId) : ('/product/' + product.slug) )]">
+    <!-- Ejemplo: <a [routerLink]="['/product/the-metamorphosis']"> -->
 
         <!-- Product Image -->
         <div class="product-card-image-container">
