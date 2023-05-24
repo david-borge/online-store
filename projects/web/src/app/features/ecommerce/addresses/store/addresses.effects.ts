@@ -222,7 +222,16 @@ export class AddressesEffects {
 
                             // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
                             AddressesActions.AddNewAddressEndSuccess({
-                                addNewAddresSuccessPayload: addNewAddressHttpRequestResponse,
+                                addNewAddresSuccessPayload: {
+                                    id        : 0,
+                                    fullName  : addNewAddressStartActionData[0].newAddressPayload.fullName,
+                                    address   : addNewAddressStartActionData[0].newAddressPayload.address,
+                                    postalCode: addNewAddressStartActionData[0].newAddressPayload.postalCode,
+                                    city      : addNewAddressStartActionData[0].newAddressPayload.city,
+                                    country   : addNewAddressStartActionData[0].newAddressCountryNamePayload,
+                                    isDefault : 1,
+                                } as GetAddressesPHPInterface["addresses"][0],
+                                // addNewAddresSuccessPayload: addNewAddressStartActionData[0].newAddressPayload,
                             }),
 
                         );

@@ -32,9 +32,11 @@ export class BottomOverlayComponent {
   ) {}
 
   hideBottomOverlay() {
+    
     this.store.dispatch( GlobalActions.ShowOrHideBottomOverlay({
       showBottomOverlayValue: false,
     }) );
+
   }
 
   onClickAddButton() {

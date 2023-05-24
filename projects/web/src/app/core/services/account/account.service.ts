@@ -8,6 +8,7 @@ import * as PaymentMethodsActions from '../../../features/ecommerce/payment-meth
 
 import { AddressInterface } from '../../models/address.interface';
 import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
+import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface';
 
 
 @Injectable({
@@ -28,6 +29,8 @@ export class AccountService {
     city: '',
     countryId: 0
   };
+
+  newAddressCountryName: (GetAddressesPHPInterface['addresses'][0]['country'] | undefined) = '';
 
   newCard:{
     type                : PaymentMethodInterface["type"],
@@ -56,6 +59,7 @@ export class AccountService {
       addressesReducerData => {
 
         this.newAddress = addressesReducerData.newAddress;
+        this.newAddressCountryName = addressesReducerData.newAddressCountryName;
 
       }
     );
@@ -75,6 +79,7 @@ export class AccountService {
 
     this.store.dispatch( AddressesActions.AddNewAddressStart({
       newAddressPayload: this.newAddress,
+      newAddressCountryNamePayload: this.newAddressCountryName,
     }) );
     
   }

@@ -25,6 +25,7 @@ export interface AddressesReducerStateInterface {
     city       : AddressInterface["city"],
     countryId  : AddressInterface["countryId"],
   };
+  newAddressCountryName: GetAddressesPHPInterface['addresses'][0]['country'] | undefined,
   addNewAddressErrorMessage: string;
 }
 
@@ -37,6 +38,7 @@ const initialState: AddressesReducerStateInterface = {
   countries: [],
   getAllCountriesErrorMessage: '',
   newAddress: {} as AddressInterface,
+  newAddressCountryName: '',
   addNewAddressErrorMessage: '',
 }
 
@@ -155,14 +157,12 @@ export const addressesReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        // Cargar todos los datos desde la base de datos
-        newAddress: action.addNewAddresSuccessPayload,
+        addresses: [
+          ...state.addresses,
+          action.addNewAddresSuccessPayload,
+        ],
 
-        // TODO:
-        // addresses: [
-        //   ...state.addresses,
-        //   action.addNewAddresSuccessPayload,
-        // ],
+
         
       })),
 
@@ -194,6 +194,8 @@ export const addressesReducer = createReducer(
         ...state,
 
         newAddress: action.newAddressPayload,
+        newAddressCountryName: state.countries.find(country => country.id === +action.newAddressCountryNamePayload)?.name,
+        // newAddressCountryName: action.newAddressCountryNamePayload,
           
       })),
 

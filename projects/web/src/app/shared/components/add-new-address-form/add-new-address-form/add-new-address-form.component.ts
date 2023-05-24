@@ -73,6 +73,7 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
 
         // Comprobación
         // console.log('statusChanges (VALID | INVALID | PENDING): ' + statusChanges);
+        // console.log('newAddressCountryNamePayload: ' + this.countries.find(country => country.id === +this.addNewAddressForm.get('countryId')?.value)?.name ); // CUIDADO: hay que añadir el + delante de this.addNewAddressForm para convertir el string a número si uso el operador ===
 
         if ( statusChanges === 'VALID') {
           
@@ -88,6 +89,7 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
               city       : this.addNewAddressForm.get('city')?.value,
               countryId  : this.addNewAddressForm.get('countryId')?.value,
             },
+            newAddressCountryNamePayload: this.addNewAddressForm.get('countryId')?.value,
           }) );
 
         }
@@ -96,7 +98,7 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
     );
 
   }
-
+  
   /* onSubmit() {
 
     // Comprobación

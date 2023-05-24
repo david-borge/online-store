@@ -117,6 +117,7 @@ export const AddNewAddressStart = createAction(
       city       : AddressInterface["city"],
       countryId  : AddressInterface["countryId"],
     },
+    newAddressCountryNamePayload: GetAddressesPHPInterface['addresses'][0]['country'] | undefined,
   }>(),
 
 );
@@ -130,7 +131,7 @@ export const AddNewAddressEndSuccess = createAction(
   // Payload de la Action, si es que esta Action lo necesita
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
-      addNewAddresSuccessPayload: AddNewAddressPHPInterface["newAddress"],
+      addNewAddresSuccessPayload: GetAddressesPHPInterface["addresses"][0],
   }>(),
 
 );
@@ -168,6 +169,7 @@ export const SaveNewAddressToStore = createAction(
       city       : AddressInterface["city"],
       countryId  : AddressInterface["countryId"],
     },
+    newAddressCountryNamePayload: GetAddressesPHPInterface['addresses'][0]['country'],
   }>(),
 
 );
