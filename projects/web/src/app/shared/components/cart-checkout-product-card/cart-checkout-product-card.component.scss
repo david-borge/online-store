@@ -119,6 +119,7 @@
     min-width: 20px;
 
     @include label-14px-semi-bold;
+    line-height: 100%;
     text-align: center;
     max-width: 60px;
     // TODO: change font-size based on number of characters to prevent overflow.
