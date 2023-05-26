@@ -27,6 +27,7 @@ import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
 import { CartInterface } from '../../models/cart.interface';
 import { OrderInterface } from '../../models/order.interface';
 import { GetCurrentProductReviewsPHPInterface } from '../../models/getCurrentProductReviewsPHP.interface';
+import { OrderProductInterface } from '../../models/orderProduct.interface';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';
@@ -313,21 +314,26 @@ export class DataStorageService {
 
   // Save Order (Page: /checkout/order-review)
   saveOrderHttpRequest(
-    authToken       : UserInterface['token'],
-    orderFullDate   : OrderInterface['orderFullDate'],
-    deliveryFullDate: OrderInterface['deliveryFullDate'],
-    addressId       : OrderInterface['addressId'],
-    paymentMethodId : OrderInterface['paymentMethodId'],
+    authToken        : UserInterface['token'],
+    orderFullDate    : OrderInterface['orderFullDate'],
+    deliveryFullDate : OrderInterface['deliveryFullDate'],
+    addressId        : OrderInterface['addressId'],
+    paymentMethodId  : OrderInterface['paymentMethodId'],
+    orderProductsData: {
+      productId      : OrderProductInterface['productId'],
+      productQuantity: OrderProductInterface['productQuantity'],
+    }[]
   ) {
 
     return this.httpClient
       .post<boolean>(environment.apiBaseUrl + '/saveOrder.php',
       {
-        authToken       : authToken,
-        orderFullDate   : orderFullDate,
-        deliveryFullDate: deliveryFullDate,
-        addressId       : addressId,
-        paymentMethodId : paymentMethodId,
+        authToken         : authToken,
+        orderFullDate     : orderFullDate,
+        deliveryFullDate  : deliveryFullDate,
+        addressId         : addressId,
+        paymentMethodId   : paymentMethodId,
+        orderProductsData : orderProductsData
       },
       {})
       // .pipe()

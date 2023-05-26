@@ -11,6 +11,7 @@ import { createAction, props } from "@ngrx/store";
 
 import { GetOrderDataPHPInterface } from "projects/web/src/app/core/models/getOrderDataPHP.interface";
 import { OrderInterface } from "projects/web/src/app/core/models/order.interface";
+import { OrderProductInterface } from "projects/web/src/app/core/models/orderProduct.interface";
 import { UserInterface } from "projects/web/src/app/core/models/user.interface";
 
 
@@ -86,10 +87,14 @@ export const SaveOrderStart = createAction(
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    orderFullDatePayload   : OrderInterface['orderFullDate'],
-    deliveryFullDatePayload: OrderInterface['deliveryFullDate'],
-    addressIdPayload       : OrderInterface['addressId'],
-    paymentMethodIdPayload : OrderInterface['paymentMethodId'],
+    orderFullDatePayload     : OrderInterface['orderFullDate'],
+    deliveryFullDatePayload  : OrderInterface['deliveryFullDate'],
+    addressIdPayload         : OrderInterface['addressId'],
+    paymentMethodIdPayload   : OrderInterface['paymentMethodId'],
+    orderProductsDataPayload : {
+      productId      : OrderProductInterface['productId'],
+      productQuantity: OrderProductInterface['productQuantity'],
+    }[],
   }>(),
 
 );

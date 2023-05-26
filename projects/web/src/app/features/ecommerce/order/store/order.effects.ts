@@ -139,6 +139,8 @@ export class OrderEffects {
             // console.log('deliveryFullDate: ' + saveOrderStartActionData[0].deliveryFullDatePayload);
             // console.log('addressId: ' + saveOrderStartActionData[0].addressIdPayload);
             // console.log('paymentMethodId: ' + saveOrderStartActionData[0].paymentMethodIdPayload);
+            // console.log('orderProductsData: ');
+            // console.log(saveOrderStartActionData[0].orderProductsDataPayload);
 
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
@@ -148,6 +150,7 @@ export class OrderEffects {
                     saveOrderStartActionData[0].deliveryFullDatePayload,
                     saveOrderStartActionData[0].addressIdPayload,
                     saveOrderStartActionData[0].paymentMethodIdPayload,
+                    saveOrderStartActionData[0].orderProductsDataPayload,
                 )
                 .pipe(
 

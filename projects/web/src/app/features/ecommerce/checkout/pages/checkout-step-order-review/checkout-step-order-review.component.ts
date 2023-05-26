@@ -8,6 +8,7 @@ import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNom
 import * as OrderActions from '../../../order/store/order.actions';
 
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
+import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 
 @Component({
   selector: 'app-checkout-step-order-review',
@@ -26,7 +27,7 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
   currentOrderNumber: number = 0;
   orderNumber: number = 0;
   orderData          : GetOrderDataPHPInterface['orderData']          = {} as GetOrderDataPHPInterface['orderData'];
-  orderProducts      : GetOrderDataPHPInterface['orderProducts']      = [];
+  orderProducts      : GetCartDataPHPInterface["cartData"]            = [];
   orderAddress       : GetOrderDataPHPInterface['orderAddress']       = {} as GetOrderDataPHPInterface['orderAddress'];
   orderPaymentMethod : GetOrderDataPHPInterface['orderPaymentMethod'] = {} as GetOrderDataPHPInterface['orderPaymentMethod'];
   orderTotal         : number = 0;
@@ -96,10 +97,16 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
     // Guardar la Order en la Base de Datos
     this.store.dispatch( OrderActions.SaveOrderStart({
-      orderFullDatePayload   : new Date().toString(), // Ahora
-      deliveryFullDatePayload: new Date(new Date().setDate(new Date().getDate() + 1)).toString(), // Mañana
-      addressIdPayload       : this.orderAddress.id,
-      paymentMethodIdPayload : this.orderPaymentMethod.id,
+      orderFullDatePayload    : new Date().toString(), // Ahora
+      deliveryFullDatePayload : new Date(new Date().setDate(new Date().getDate() + 1)).toString(), // Mañana
+      addressIdPayload        : this.orderAddress.id,
+      paymentMethodIdPayload  : this.orderPaymentMethod.id,
+      orderProductsDataPayload: this.orderProducts.map(orderProduct => {
+        return {
+          productId      : orderProduct.productId,
+          productQuantity: orderProduct.productQuantity,
+        }
+      }),
     }) );
 
   }
