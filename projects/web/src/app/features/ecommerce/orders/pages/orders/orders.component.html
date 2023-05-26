@@ -21,12 +21,13 @@
 
         </div>
 
-        <div *ngIf="(activeOrders.length > 0) && (previousOrders.length > 0)" [ngClass]="{ 'content-container': ((activeOrders.length == 0) && (previousOrders.length == 0)) }">
+        <!-- Active & Previous Orders -->
+        <div *ngIf="(activeOrders.length > 0) || (previousOrders.length > 0)" [ngClass]="{ 'content-container': ((activeOrders.length == 0) && (previousOrders.length == 0)) }">
 
-            <!-- Active & Previous Orders -->
             <div>
-                    
-                <div class="section section-with-bottom-separator">
+                
+                <!-- Active orders -->
+                <div *ngIf="(activeOrders.length > 0)" class="section" [ngClass]="{ 'section-with-bottom-separator': (previousOrders.length > 0) }">
 
                     <!-- Section Header -->
                     <app-section-header
@@ -58,7 +59,8 @@
 
                 </div>
 
-                <div class="section">
+                <!-- Previous orders -->
+                <div *ngIf="(previousOrders.length > 0)" class="section">
 
                     <!-- Section Header -->
                     <app-section-header
