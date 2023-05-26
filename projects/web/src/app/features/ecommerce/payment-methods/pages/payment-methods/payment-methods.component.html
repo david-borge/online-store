@@ -22,14 +22,15 @@
 
         <div class="content-container">
 
-            <!-- Payment Method List -->
+            <!-- Payment Methods List -->
             <div class="section" *ngIf="(paymentMethods.length > 0)">
                 <div class="container">
         
-                    <!-- Payment Method Card List -->
+                    <!-- Payment Method Cards List -->
                     <div class="payment-method-card-list">
         
-                        <!-- Payment Method -->
+                        <!-- Payment Methods -->
+                        <!-- FIXME: mostrar primero las últimas addresses añadidas -->
                         <app-credit-card
                             *ngFor="let paymentMethod of paymentMethods"
                             [cardIsDefault]        = "1"
