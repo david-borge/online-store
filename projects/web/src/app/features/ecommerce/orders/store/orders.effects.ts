@@ -64,8 +64,8 @@ export class OrdersEffects {
                     switchMap(getOrdersHttpRequestResponse => {
 
                         // Comprobación
-                        console.log('getOrdersSideEffect - getOrdersHttpRequestResponse:');
-                        console.log(getOrdersHttpRequestResponse);
+                        // console.log('getOrdersSideEffect - getOrdersHttpRequestResponse:');
+                        // console.log(getOrdersHttpRequestResponse);
 
                         // Procesamiento de datos si es necesario...
 

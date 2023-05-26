@@ -58,7 +58,7 @@ export class AddressesEffects {
 
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getAddressesHttpRequest('david.borge.olmedo@gmail.com') // TODO:
+            return this.dataStorageService.getAddressesHttpRequest( this.cookiesService.leerUnaCookie( "authToken" ) )
                 .pipe(
 
                     /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),

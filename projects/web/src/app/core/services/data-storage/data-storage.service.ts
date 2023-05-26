@@ -144,11 +144,11 @@ export class DataStorageService {
 
 
   // Get Addresses (Page: /addresses)
-  getAddressesHttpRequest(email: string) {
+  getAddressesHttpRequest(authToken: UserInterface['token']) {
     return this.httpClient
       .post<GetAddressesPHPInterface>(environment.apiBaseUrl + '/getAddresses.php',
       {
-        email: email,
+        authToken: authToken,
       },
       {})
       // .pipe()
