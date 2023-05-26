@@ -12,7 +12,9 @@ import { of } from 'rxjs';
 
 import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as OrdersActions from './orders.actions';
+
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
+import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
 
 
 
@@ -27,6 +29,7 @@ export class OrdersEffects {
         private actionsObservable: Actions,
         private dataStorageService: DataStorageService,
         private store: Store<fromApp.AppState>,
+        private cookiesService: CookiesService,
     ) { }
 
 
@@ -51,7 +54,7 @@ export class OrdersEffects {
 
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getOrdersHttpRequest('david.borge.olmedo@gmail.com') // FIXME:
+            return this.dataStorageService.getOrdersHttpRequest( this.cookiesService.leerUnaCookie( "authToken" ) )
                 .pipe(
 
                     /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
@@ -61,8 +64,8 @@ export class OrdersEffects {
                     switchMap(getOrdersHttpRequestResponse => {
 
                         // Comprobación
-                        // console.log('getOrdersSideEffect - getOrdersHttpRequestResponse:');
-                        // console.log(getOrdersHttpRequestResponse);
+                        console.log('getOrdersSideEffect - getOrdersHttpRequestResponse:');
+                        console.log(getOrdersHttpRequestResponse);
 
                         // Procesamiento de datos si es necesario...
 

@@ -130,11 +130,11 @@ export class DataStorageService {
 
 
   // Get Orders (Page: /orders)
-  getOrdersHttpRequest(email: string) {
+  getOrdersHttpRequest(authToken: UserInterface['token']) {
     return this.httpClient
       .post<GetOrdersPHPInterface>(environment.apiBaseUrl + '/getOrders.php',
       {
-        email: email,
+        authToken: authToken,
       },
       {})
       // .pipe()
