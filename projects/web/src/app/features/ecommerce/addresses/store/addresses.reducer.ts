@@ -149,6 +149,7 @@ export const addressesReducer = createReducer(
       })),
 
     /** |-> Add New Address End Success Action **/
+    // Side Effects asociados: addNewAddressEndSuccessSideEffect (cerrar el Bottom Overlay, es decir, poner showBottomOverlay = false en la Global Store)
     on(AddressesActions.AddNewAddressEndSuccess,
       (state, action) => ({
 
