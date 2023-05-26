@@ -80,6 +80,10 @@ export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
   }
 
   onClickPaymentButton() {
+    
+    this.store.dispatch( GlobalActions.ChangeCurrentStepValue({
+      amount: 1,
+    }) );
 
     this.router.navigate(['/checkout/order-review']);
 

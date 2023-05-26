@@ -26,6 +26,10 @@ export interface GlobalReducerStateInterface {
   user: UserInterface;
   activeOrders: ActiveOrderInterface[]; // Cada elemento es un objeto con: order.id, product.imageThumbnail, product.price, product.productQuantity
   showBottomOverlay: boolean;
+  checkoutSteps: {
+    currentStep: number;
+    totalNumberOfSteps: number;
+  },
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -45,6 +49,10 @@ const initialState: GlobalReducerStateInterface = {
   user: {} as UserInterface,
   activeOrders: [],
   showBottomOverlay: false,
+  checkoutSteps: {
+    currentStep: 1,
+    totalNumberOfSteps: 3,
+  },
 }
 
 
@@ -320,6 +328,40 @@ export const globalReducer = createReducer(
         ...state,
 
         showBottomOverlay: action.showBottomOverlayValue,
+          
+      })),
+
+
+    /** Change Current Step Value Action **/
+    on(GlobalActions.ChangeCurrentStepValue,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        checkoutSteps: {
+          ...state.checkoutSteps,
+          currentStep: state.checkoutSteps.currentStep + action.amount, // amount puede ser un número positivo o negativo
+        },
+          
+      })),
+
+
+    /** Reset Current Step Value Action **/
+    on(GlobalActions.ResetCurrentStepValue,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        checkoutSteps: {
+          ...state.checkoutSteps,
+          currentStep: 1,
+        },
           
       })),
 

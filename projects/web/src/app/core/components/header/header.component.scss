@@ -169,8 +169,11 @@ header {
     left: 0;
     z-index: 1;
 
-    width: 33%;
+    width: var(--step-bar-percentaje);
     height: 4px;
 
     background-color: var(--N900);
+
+    // FIXME:
+    // transition: width 1s ease-in-out;
 }

@@ -158,8 +158,8 @@ export class OrderEffects {
                     switchMap(saveOrderDataHttpRequestResponse => {
 
                         // Comprobación
-                        console.log('saveOrderStartSideEffect - saveOrderDataHttpRequestResponse:');
-                        console.log(saveOrderDataHttpRequestResponse);
+                        // console.log('saveOrderStartSideEffect - saveOrderDataHttpRequestResponse:');
+                        // console.log(saveOrderDataHttpRequestResponse);
 
                         // Procesamiento de datos si es necesario...
 

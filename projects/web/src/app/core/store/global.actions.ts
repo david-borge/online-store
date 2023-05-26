@@ -299,6 +299,32 @@ export const ShowOrHideBottomOverlay = createAction(
 
 
 
+/** Change Current Step Value Action **/
+export const ChangeCurrentStepValue = createAction(
+
+  // Tipo de la Action
+  '[Global] Change Current Step Value',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    amount: number,
+  }>(),
+
+);
+
+
+
+/** Reset Current Step Value Action **/
+export const ResetCurrentStepValue = createAction(
+
+  // Tipo de la Action
+  '[Global] Reset Current Step Value',
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

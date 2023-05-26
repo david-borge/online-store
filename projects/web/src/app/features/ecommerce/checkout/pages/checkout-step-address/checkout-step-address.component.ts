@@ -38,6 +38,7 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
 
     // Leer datos de la Global Store
     let userEmail = '';
+    let totalNumberOfSteps = 0;
     this.store.select("globalReducerObservable").subscribe(
       globalReducerData => {
 
@@ -46,6 +47,9 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
 
         // Leer las propiedades de BottomOverlay de la Global Store
         this.showBottomOverlay = globalReducerData.showBottomOverlay;
+
+        // Leer totalNumberOfSteps de la Global Store
+        totalNumberOfSteps = globalReducerData.checkoutSteps.totalNumberOfSteps;
 
       }
     );
@@ -68,6 +72,10 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
       }
     );
 
+    // Resetar el valor de currentStep en la Global Store (volver a ponerlo en 1)
+    // Esto es por si ya he hecho algún pedido durante esta sesión
+    this.store.dispatch( GlobalActions.ResetCurrentStepValue() );
+
   }
 
   onClickAddNewAddressButton() {
@@ -80,6 +88,10 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
   }
 
   onClickPaymentButton() {
+
+    this.store.dispatch( GlobalActions.ChangeCurrentStepValue({
+      amount: 1,
+    }) );
 
     this.router.navigate(['/checkout/payment-method']);
 

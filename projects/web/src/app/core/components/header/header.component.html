@@ -33,7 +33,7 @@
     </div>
 
     <!-- Overlay Header - Subpage -->
-    <div class="overlay-header overlay-header-subpage" *ngIf="(headerTagType === 'overlay-header-subpage' )" [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }" [ngClass]="{ 'con-color-de-fondo': (overlayHeaderSubpageBackgroundColor != 'inherit'), 'overlay-header-with-steps': overlayHeaderSubpageWithSteps }">
+    <div class="overlay-header overlay-header-subpage" *ngIf="(headerTagType === 'overlay-header-subpage' )" [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }" [ngClass]="{ 'con-color-de-fondo': (overlayHeaderSubpageBackgroundColor != 'inherit'), 'overlay-header-with-steps': overlayHeaderSubpageWithSteps }" #overlayHeaderSubpageOverlayHeaderWithStepsLocalReference>
         <div>
 
             <!-- Overlay Header - Left Icon -->
@@ -66,7 +66,7 @@
                     Step 
                     <span class="current-step">{{currentStep}}</span>
                     of 
-                    <span class="total-steps">{{totalSteps}}</span>
+                    <span class="total-steps">{{totalNumberOfSteps}}</span>
                 </div>
             </div>
 
