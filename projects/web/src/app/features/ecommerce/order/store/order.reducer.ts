@@ -15,6 +15,9 @@ export interface OrderReducerStateInterface {
   // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   currentOrderNumber : number;
   orderData          : GetOrderDataPHPInterface["orderData"];
+  orderProducts      : GetOrderDataPHPInterface["orderProducts"];
+  orderAddress       : GetOrderDataPHPInterface["orderAddress"];
+  orderPaymentMethod : GetOrderDataPHPInterface["orderPaymentMethod"];
   // orderTotal         : number;
 }
 
@@ -25,6 +28,9 @@ const initialState: OrderReducerStateInterface = {
   // loadStatus: 'NOT_LOADED',
   currentOrderNumber : 0,
   orderData          : {} as GetOrderDataPHPInterface["orderData"],
+  orderProducts      : {} as GetOrderDataPHPInterface["orderProducts"],
+  orderAddress       : {} as GetOrderDataPHPInterface["orderAddress"],
+  orderPaymentMethod : {} as GetOrderDataPHPInterface["orderPaymentMethod"],
   // orderTotal         : 0,
 }
 

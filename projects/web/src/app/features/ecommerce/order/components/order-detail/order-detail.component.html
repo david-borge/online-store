@@ -84,8 +84,8 @@
         
         <!-- Address Card -->
         <app-address-card
-            [addressCardIsDefault]   = "0"
-            [addressCardFullName] = "orderAddress.fullName"
+            [addressCardIsDefault]  = "1"
+            [addressCardFullName]   = "orderAddress.fullName"
             [addressCardAddress]    = "orderAddress.address"
             [addressCardPostalCode] = "orderAddress.postalCode"
             [addressCardCity]       = "orderAddress.city"
@@ -93,7 +93,8 @@
             [addressCardShowButton] = "false"
         ></app-address-card>
         <!-- Ejemplo:
-            [addressCardFullName] = "'Leslie Flores'"
+            [addressCardIsDefault]  = "1"
+            [addressCardFullName]   = "'Leslie Flores'"
             [addressCardAddress]    = "'2972 Westheimer Rd. '"
             [addressCardPostalCode] = "'85486'"
             [addressCardCity]       = "'Santa Ana, Illinois '"
@@ -118,7 +119,7 @@
 
         <!-- Payment Method -->
         <app-credit-card
-            [cardIsDefault]       = "0"
+            [cardIsDefault]       = "1"
             [cardType]            = "orderPaymentMethod.cardType"
             [cardBankName]        = "orderPaymentMethod.cardBankName"
             [cardPersonFullName]  = "orderPaymentMethod.cardPersonFullName"
@@ -127,6 +128,7 @@
             [cardExpirationYear]  = "orderPaymentMethod.cardExpirationYear"
         ></app-credit-card>
         <!-- Ejemplo:
+            [cardIsDefault]       = "1"
             [cardType]            = "'mastercard'"
             [cardBankName]        = "'Bank of America'"
             [cardPersonFullName]  = "'Leslie Flores'"
