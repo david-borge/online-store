@@ -33,9 +33,6 @@ export class SectionHeaderComponent implements OnChanges {
   @Input() sectionHeaderButtonURL  :string  = '';
   @Input() sectionHeaderButtonText :string  = '';
 
-  // FIXME:
-  numberOfOrders :number = 2;
-
 
   constructor(
     public router: Router,

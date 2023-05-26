@@ -31,7 +31,7 @@
             </div>
 
             <!-- Section Header - Link -->
-            <div class="section-header-link-container" *ngIf="sectionHeaderLink && (numberOfOrders > 0)">
+            <div class="section-header-link-container" *ngIf="sectionHeaderLink">
                 <!-- <a [routerLink]="['/slug']">{{sectionHeaderLinkText}}</a> -->
                 <a routerLink="{{sectionHeaderLinkURL}}">{{sectionHeaderLinkText}}</a> <!-- Ejemplo: View All -->
             </div>
