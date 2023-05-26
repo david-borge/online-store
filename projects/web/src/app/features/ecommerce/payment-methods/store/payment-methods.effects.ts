@@ -149,7 +149,7 @@ export class PaymentMethodEffects {
 
                             // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
                             PaymentMethodsActions.AddNewCardEndSuccess({
-                                addNewCardSuccessPayload: addNewCardHttpRequestResponse,
+                                newCardPayload: addNewCardStartActionData[0].newCardPayload,
                             }),
 
                         );

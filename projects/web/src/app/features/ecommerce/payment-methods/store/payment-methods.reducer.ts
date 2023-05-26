@@ -120,13 +120,23 @@ export const paymentMethodsReducer = createReducer(
         ...state,
 
         // Cargar todos los datos desde la base de datos
-        newCard: action.addNewCardSuccessPayload,
+        newCard: action.newCardPayload,
 
-        // TODO:
-        // cards: [
-        //   ...state.cards,
-        //   action.addNewCardSuccessPayload,
-        // ],
+        paymentMethods: [
+          ...state.paymentMethods,
+          {
+            id: 0, // Da igual, es solo para la Store
+            userId: 0, // Da igual, es solo para la Store
+            type: action.newCardPayload.type,
+            cardBankName: action.newCardPayload.cardBankName,
+            cardPersonFullName: action.newCardPayload.cardPersonFullName,
+            cardLastFourNumbers: action.newCardPayload.cardNumber.substring(action.newCardPayload.cardNumber.length - 4), // Los 4 últimos números
+            cardExpirationMonth: action.newCardPayload.cardExpirationMonth,
+            cardExpirationYear: action.newCardPayload.cardExpirationYear,
+            cardType: action.newCardPayload.cardType,
+            isDefault: 1,
+          },
+        ],
         
       })),
 

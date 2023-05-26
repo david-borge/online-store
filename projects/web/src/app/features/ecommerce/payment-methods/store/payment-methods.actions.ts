@@ -89,10 +89,17 @@ export const AddNewCardEndSuccess = createAction(
   // Tipo de la Action
   '[PaymentMethods] Add New Card End Success',
 
-  // Payload de la Action, si es que esta Action lo necesita
   props<{
-      // Si el método de la action requiere un solo parámetro, payload es un solo valor
-      addNewCardSuccessPayload: AddNewCardPHPInterface["newCard"],
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newCardPayload: {
+      type                : PaymentMethodInterface["type"],
+      cardBankName        : PaymentMethodInterface["cardBankName"],
+      cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
+      cardNumber          : PaymentMethodInterface["cardNumber"],
+      cardExpirationMonth : PaymentMethodInterface["cardExpirationMonth"],
+      cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
+      cardType            : PaymentMethodInterface["cardType"],
+    },
   }>(),
 
 );

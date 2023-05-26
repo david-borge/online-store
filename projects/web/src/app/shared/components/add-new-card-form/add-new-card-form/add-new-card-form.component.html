@@ -18,6 +18,7 @@
                 <svg width="20" height="20" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_47575_10970)"><path d="M35.5001 6.6665H5.50008C3.65913 6.6665 2.16675 8.15889 2.16675 9.99984V29.9998C2.16675 31.8408 3.65913 33.3332 5.50008 33.3332H35.5001C37.341 33.3332 38.8334 31.8408 38.8334 29.9998V9.99984C38.8334 8.15889 37.341 6.6665 35.5001 6.6665Z" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.16675 16.6665H38.8334" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_47575_10970"><rect width="40" height="40" fill="white" transform="translate(0.5)"/></clipPath></defs></svg>
             </span>
             <div class="form-floating">
+                <!-- FIXME: dejar establecidos los espacios yo mismo para que no haya errores. También la longiud. -->
                 <input id="cardNumber" name="cardNumber" type="text" class="form-control" placeholder="Card Number" formControlName="cardNumber">
                 <label for="cardNumber">Card Number</label>
             </div>
@@ -26,6 +27,7 @@
         <div class="row">
             <div class="col-6">
                 
+                <!-- FIXME: no meter una fecha más pequeña que la actual -->
                 <div class="form-floating">
                     <select id="cardExpirationMonth" name="cardExpirationMonth" class="form-select" aria-label="Country" formControlName="cardExpirationMonth">
                         <option value="1">January</option>
@@ -47,6 +49,7 @@
             </div>
             <div class="col-6">
     
+                <!-- FIXME: no permitir meter números más pequeños que el año actual o mostrar un error si se hace. -->
                 <div class="form-floating">
                     <input id="cardExpirationYear" name="cardExpirationYear" type="number" class="form-control" [placeholder]="currentYear" step="1" [min]="currentYear" formControlName="cardExpirationYear">
                     <label for="cardExpirationYear">Expiration Year</label>
