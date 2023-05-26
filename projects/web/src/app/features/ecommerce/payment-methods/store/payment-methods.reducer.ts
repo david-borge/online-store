@@ -110,6 +110,7 @@ export const paymentMethodsReducer = createReducer(
       })),
 
     /** |-> Add New Card End Success Action **/
+    // Side Effects asociados: addNewCardEndSuccessSideEffect (cerrar el Bottom Overlay, es decir, poner showBottomOverlay = false en la Global Store)
     on(PaymentMethodsActions.AddNewCardEndSuccess,
       (state, action) => ({
 
