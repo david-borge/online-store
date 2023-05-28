@@ -216,6 +216,7 @@ export const addressesReducer = createReducer(
 
     
     /** Change Default Address Start Action **/
+    // Side Effects asociados: changeDefaultAddressSideEffect (cambiar el valor de isDefault en la Addresses Store y en la Base de Datos mediante un HTTP Request: al seleccionar una, desactivar el resto)
     // Actualizo la Store en el Start y no en EndSuccess para que no haya ese retardo de milisegundos en la interfaz provocado por la HTTP Request
     on(AddressesActions.ChangeDefaultAddressStart,
       (state, action) => {

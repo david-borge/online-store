@@ -172,6 +172,22 @@ export class DataStorageService {
 
 
 
+  // Change Default Payment Method
+  changeDefaultPaymentMethod( authToken: string, paymentMethodId: PaymentMethodInterface['id'] ) {
+
+    return this.httpClient
+      .post<boolean>(environment.apiBaseUrl + '/changeDefaultPaymentMethod.php',
+      {
+        authToken : authToken,
+        paymentMethodId : paymentMethodId,
+      },
+      {})
+      // .pipe()
+      ;
+
+  }
+
+
   // Get All Countries
   getAllCountriesHttpRequest() {
 

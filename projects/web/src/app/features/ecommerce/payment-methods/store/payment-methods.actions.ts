@@ -146,8 +146,10 @@ export const SaveNewCardToStore = createAction(
 
 
 
-/** Change Default Payment Method Action **/
-export const ChangeDefaultPaymentMethod = createAction(
+/** Change Default Payment Method Start Action **/
+// Side Effects asociados: changeDefaultPaymentMethodSideEffect (cambiar el valor de isDefault en la Payment Methods Store y en la Base de Datos mediante un HTTP Request: al seleccionar una, desactivar el resto)
+// Actualizo la Store en el Start y no en EndSuccess para que no haya ese retardo de milisegundos en la interfaz provocado por la HTTP Request
+export const ChangeDefaultPaymentMethodStart = createAction(
 
   // Tipo de la Action
   '[PaymentMethods] Change Default Payment Method',
@@ -157,6 +159,34 @@ export const ChangeDefaultPaymentMethod = createAction(
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
     paymentMethodArrayIdPayload: number,
     paymentMethodIdPayload     : PaymentMethodInterface['id'],
+  }>(),
+
+);
+
+/** |-> Change Default Payment Method End Success Action **/
+export const ChangeDefaultPaymentMethodEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[PaymentMethods] Change Default Payment Method End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    paymentMethodArrayIdPayload: number,
+  }>(),
+
+);
+
+/** |-> Change Default Payment Method End Failure Action **/
+export const ChangeDefaultPaymentMethodEndFailure = createAction(
+
+  // Tipo de la Action
+  '[PaymentMethods] Change Default Payment Method End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    changeDefaultPaymentMethodErrorMessagePayload: string,
   }>(),
 
 );

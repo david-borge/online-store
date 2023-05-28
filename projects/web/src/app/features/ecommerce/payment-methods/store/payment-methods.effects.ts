@@ -35,7 +35,7 @@ export class PaymentMethodEffects {
 
 
 
-    // Side Effect de la Get PaymentMethod Start Action de PaymentMethod
+    // Side Effect de la Get PaymentMethod Start Action de PaymentMethods
     getPaymentMethodsSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
@@ -106,7 +106,7 @@ export class PaymentMethodEffects {
 
 
 
-    // Side Effect de la Add New Card Start Action de PaymentMethod
+    // Side Effect de la Add New Card Start Action de PaymentMethods
     addNewCardSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
@@ -180,7 +180,7 @@ export class PaymentMethodEffects {
 
 
 
-    // Side Effect de la Add New Address End Success Action de Addresses
+    // Side Effect de la Add New Card End Success Action de PaymentMethods
     addNewCardEndSuccessSideEffect = createEffect(() => this.actionsObservable.pipe(
         ofType(PaymentMethodsActions.AddNewCardEndSuccess),
         map(() => {
@@ -189,5 +189,80 @@ export class PaymentMethodEffects {
 
         })
     ));
+
+
+
+    // Side Effect de la Change Default Payment Method Start Action de PaymentMethods
+    changeDefaultPaymentMethodSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(PaymentMethodsActions.ChangeDefaultPaymentMethodStart),
+
+        withLatestFrom( this.store.select('paymentMethodsReducerObservable') ),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (changeDefaultPaymentMethodActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: changeDefaultPaymentMethodActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobación
+            // console.log('changeDefaultPaymentMethodActionData:');
+            // console.log(changeDefaultPaymentMethodActionData);
+
+            // console.log('authTokenCookieValue: ' + this.cookiesService.leerUnaCookie('authToken'));
+
+           
+            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+            return this.dataStorageService.changeDefaultPaymentMethod( this.cookiesService.leerUnaCookie('authToken'), changeDefaultPaymentMethodActionData[0].paymentMethodIdPayload )
+                .pipe(
+
+                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+
+                    switchMap( (changeDefaultPaymentMethodHttpRequestResponse) => {
+
+                        // Comprobación
+                        // console.log('changeDefaultPaymentMethodSideEffect - changeDefaultPaymentMethodHttpRequestResponse:');
+                        // console.log(changeDefaultPaymentMethodHttpRequestResponse);
+
+                        // Procesamiento de datos si es necesario...
+
+                        return of(
+
+                            // Procesar datos si es necesario...
+
+                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                            PaymentMethodsActions.ChangeDefaultPaymentMethodEndSuccess({
+                                paymentMethodArrayIdPayload: changeDefaultPaymentMethodActionData[0].paymentMethodArrayIdPayload,
+                            }),
+
+                        );
+
+                    }),
+                    catchError(errorResponse => {
+
+                        // Error handling code...
+
+                        // Mostrar el error en la consola
+                        console.log('changeDefaultPaymentMethodSideEffect - errorResponse:');
+                        console.log(errorResponse);
+
+                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                        return of(
+                            PaymentMethodsActions.ChangeDefaultPaymentMethodEndFailure({
+                                changeDefaultPaymentMethodErrorMessagePayload: 'There was an error when changing the selected payment method.',
+                            }),
+                        );
+
+                    }),
+            );
+
+        }),
+
+    ));
+
+
 
 }

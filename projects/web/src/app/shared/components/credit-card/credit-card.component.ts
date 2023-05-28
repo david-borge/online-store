@@ -36,7 +36,7 @@ export class CreditCardComponent {
   onClickCreditCardOrSelectButton() {
 
     // Change Default Credit Card: cambiar el valor de isDefault en la Payment Methods Store: al seleccionar una, desactivar el resto
-    this.store.dispatch( PaymentMethodsActions.ChangeDefaultPaymentMethod({
+    this.store.dispatch( PaymentMethodsActions.ChangeDefaultPaymentMethodStart({
       paymentMethodArrayIdPayload : this.cardArrayId,
       paymentMethodIdPayload      : this.cardId,
     }) );

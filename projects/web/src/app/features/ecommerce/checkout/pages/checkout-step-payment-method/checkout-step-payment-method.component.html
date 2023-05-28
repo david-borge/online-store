@@ -33,6 +33,7 @@
                         <!-- Payment Method -->
                         <app-credit-card
                             *ngFor="let paymentMethod of paymentMethods; let i = index"
+                            [cardId]               = "paymentMethod.id"
                             [cardType]             = "paymentMethod.cardType"
                             [cardBankName]         = "paymentMethod.cardBankName"
                             [cardPersonFullName]   = "paymentMethod.cardPersonFullName"
