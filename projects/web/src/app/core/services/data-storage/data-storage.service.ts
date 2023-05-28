@@ -213,6 +213,23 @@ export class DataStorageService {
 
 
 
+  // Change Default Address
+  changeDefaultAddress( authToken: string, addressId: AddressInterface['id'] ) {
+
+    return this.httpClient
+      .post<boolean>(environment.apiBaseUrl + '/changeDefaultAddress.php',
+      {
+        authToken : authToken,
+        addressId : addressId,
+      },
+      {})
+      // .pipe()
+      ;
+
+  }
+
+
+
   // Add New Card
   addNewCardHttpRequest(
     newCard: {
@@ -356,6 +373,7 @@ export class DataStorageService {
       ;
 
   }
+
   
 
   authMessages(messageCode: string): string {

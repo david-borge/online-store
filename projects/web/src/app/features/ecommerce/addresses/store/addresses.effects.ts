@@ -274,4 +274,77 @@ export class AddressesEffects {
 
 
 
+    // Side Effect de la Change Default Address Start Action de Addresses
+    changeDefaultAddressSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
+
+        // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
+        // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
+        ofType(AddressesActions.ChangeDefaultAddressStart),
+
+        withLatestFrom( this.store.select('addressesReducerObservable') ),
+
+        // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
+        switchMap( (changeDefaultAddressActionData) => {
+
+            // Aquí puedo usar los datos del payload de la Action: changeDefaultAddressActionData.nombrePayloadPayload.propiedad1
+
+            // Comprobación
+            // console.log('changeDefaultAddressActionData:');
+            // console.log(changeDefaultAddressActionData);
+
+            // console.log('authTokenCookieValue: ' + this.cookiesService.leerUnaCookie('authToken'));
+
+           
+            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+            return this.dataStorageService.changeDefaultAddress( this.cookiesService.leerUnaCookie('authToken'), changeDefaultAddressActionData[0].addressCardIdPayload )
+                .pipe(
+
+                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+
+                    switchMap( (changeDefaultAddressHttpRequestResponse) => {
+
+                        // Comprobación
+                        // console.log('changeDefaultAddressSideEffect - changeDefaultAddressHttpRequestResponse:');
+                        // console.log(changeDefaultAddressHttpRequestResponse);
+
+                        // Procesamiento de datos si es necesario...
+
+                        return of(
+
+                            // Procesar datos si es necesario...
+
+                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                            AddressesActions.ChangeDefaultAddressEndSuccess({
+                                addressArrayIdPayload: changeDefaultAddressActionData[0].addressArrayIdPayload,
+                            }),
+
+                        );
+
+                    }),
+                    catchError(errorResponse => {
+
+                        // Error handling code...
+
+                        // Mostrar el error en la consola
+                        console.log('changeDefaultAddressSideEffect - errorResponse:');
+                        console.log(errorResponse);
+
+                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                        return of(
+                            AddressesActions.ChangeDefaultAddressEndFailure({
+                                changeDefaultAddressErrorMessagePayload: 'There was an error when changing the selected address.',
+                            }),
+                        );
+
+                    }),
+            );
+
+        }),
+
+    ));
+
+
+
 }

@@ -176,16 +176,50 @@ export const SaveNewAddressToStore = createAction(
 
 
 
-/** Change Default Address Action **/
-export const ChangeDefaultAddress = createAction(
+/** Change Default Address Start Action **/
+// Side Effects asociados: changeDefaultAddressSideEffect (cambiar el valor de isDefault en la Addresses Store y en la Base de Datos mediante un HTTP Request: al seleccionar una, desactivar el resto)
+export const ChangeDefaultAddressStart = createAction(
 
   // Tipo de la Action
-  '[Addresses] Change Default Address',
+  '[Addresses] Change Default Address Start',
 
   // Payload de la Action, si es que esta Action lo necesita
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
     addressArrayIdPayload: number,
+    addressCardIdPayload : AddressInterface["id"],
+  }>(),
+
+);
+
+
+
+/** Change Default Address End Success Action **/
+export const ChangeDefaultAddressEndSuccess = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Change Default Address End Success',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    addressArrayIdPayload: number,
+  }>(),
+
+);
+
+
+
+/** Change Default Address End Failure Action **/
+export const ChangeDefaultAddressEndFailure = createAction(
+
+  // Tipo de la Action
+  '[Addresses] Change Default Address End Failure',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    changeDefaultAddressErrorMessagePayload: string,
   }>(),
 
 );

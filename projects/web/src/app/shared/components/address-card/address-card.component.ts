@@ -34,9 +34,10 @@ export class AddressCardComponent {
 
   onClickAddressCardOrSelectButton() {
 
-    // Change Default Address: cambiar el valor de isDefault en la Addresses Store: al seleccionar una, desactivar el resto
-    this.store.dispatch( AddressesActions.ChangeDefaultAddress({
-      addressArrayIdPayload     : this.addressArrayId,
+    // Change Default Address: cambiar el valor de isDefault en la Addresses Store y en la Base de Datos: al seleccionar una, desactivar el resto
+    this.store.dispatch( AddressesActions.ChangeDefaultAddressStart({
+      addressArrayIdPayload : this.addressArrayId,
+      addressCardIdPayload  : this.addressCardId,
     }) );
 
   }
