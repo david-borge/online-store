@@ -55,7 +55,7 @@ export class PaymentMethodEffects {
 
            
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getPaymentMethodsHttpRequest('david.borge.olmedo@gmail.com') // TODO:
+            return this.dataStorageService.getPaymentMethodsHttpRequest( this.cookiesService.leerUnaCookie( "authToken" ) )
                 .pipe(
 
                     /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),

@@ -159,11 +159,11 @@ export class DataStorageService {
 
 
   // Get Payment Methods (Page: /payment-methods)
-  getPaymentMethodsHttpRequest(email: string) {
+  getPaymentMethodsHttpRequest(authToken: string) {
     return this.httpClient
       .post<GetPaymentMethodsPHPInterface>(environment.apiBaseUrl + '/getPaymentMethods.php',
       {
-        email: email,
+        authToken: authToken,
       },
       {})
       // .pipe()
