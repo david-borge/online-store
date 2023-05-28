@@ -6,6 +6,7 @@ import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreCom
 import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
 
 import { GetPaymentMethodsPHPInterface } from '../../../core/models/getPaymentMethodsPHP.interface';
+import { PaymentMethodInterface } from '../../../core/models/paymentMethod.interface';
 
 @Component({
   selector: 'app-credit-card',
@@ -15,6 +16,7 @@ import { GetPaymentMethodsPHPInterface } from '../../../core/models/getPaymentMe
 export class CreditCardComponent {
 
   // Propiedades - Credit Card
+  @Input() cardId               : PaymentMethodInterface['id'] = 0;
   @Input() cardType             : GetPaymentMethodsPHPInterface['paymentMethods'][0]['cardType']  = "visa";
   @Input() cardBankName         : GetPaymentMethodsPHPInterface['paymentMethods'][0]['cardBankName']  = "Bank of America";
   @Input() cardPersonFullName   : GetPaymentMethodsPHPInterface['paymentMethods'][0]['cardPersonFullName']  = "";
@@ -35,7 +37,8 @@ export class CreditCardComponent {
 
     // Change Default Credit Card: cambiar el valor de isDefault en la Payment Methods Store: al seleccionar una, desactivar el resto
     this.store.dispatch( PaymentMethodsActions.ChangeDefaultPaymentMethod({
-      paymentMethodArrayIdPayload     : this.cardArrayId,
+      paymentMethodArrayIdPayload : this.cardArrayId,
+      paymentMethodIdPayload      : this.cardId,
     }) );
 
   }

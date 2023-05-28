@@ -112,33 +112,46 @@ export const paymentMethodsReducer = createReducer(
     /** |-> Add New Card End Success Action **/
     // Side Effects asociados: addNewCardEndSuccessSideEffect (cerrar el Bottom Overlay, es decir, poner showBottomOverlay = false en la Global Store)
     on(PaymentMethodsActions.AddNewCardEndSuccess,
-      (state, action) => ({
+      (state, action) => {
 
-        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
-
-        // Copiamos el App State (inicial) (en todas las propiedades de state)
-        ...state,
-
-        // Cargar todos los datos desde la base de datos
-        newCard: action.newCardPayload,
-
-        paymentMethods: [
-          ...state.paymentMethods,
-          {
-            id: 0, // Da igual, es solo para la Store
-            userId: 0, // Da igual, es solo para la Store
-            type: action.newCardPayload.type,
-            cardBankName: action.newCardPayload.cardBankName,
-            cardPersonFullName: action.newCardPayload.cardPersonFullName,
-            cardLastFourNumbers: action.newCardPayload.cardNumber.substring(action.newCardPayload.cardNumber.length - 4), // Los 4 últimos números
-            cardExpirationMonth: action.newCardPayload.cardExpirationMonth,
-            cardExpirationYear: action.newCardPayload.cardExpirationYear,
-            cardType: action.newCardPayload.cardType,
-            isDefault: 1,
-          },
-        ],
         
-      })),
+        // - Cambiar el isDefault a 0 de las otras Credit Cards
+        /* Editar un valor de un objeto que está dentro de un array (OpenAI Generated Code) */
+        // Make a copy of the paymentMethods array
+        const updatedPaymentMethods = [...state.paymentMethods];
+      
+        for (let index = 0; index < updatedPaymentMethods.length; index++) {
+          if ( index != action.newCardId ) {
+          
+            updatedPaymentMethods[index] = {
+              ...updatedPaymentMethods[index],
+              isDefault: 0,
+            };
+
+          }
+        }
+
+        // Return the updated state
+        return {
+          ...state,
+          paymentMethods: [
+            ...updatedPaymentMethods,
+            {
+              id: action.newCardId,
+              userId: 0, // Da igual, es solo para la Store
+              type: action.newCardPayload.type,
+              cardBankName: action.newCardPayload.cardBankName,
+              cardPersonFullName: action.newCardPayload.cardPersonFullName,
+              cardLastFourNumbers: action.newCardPayload.cardNumber.substring(action.newCardPayload.cardNumber.length - 4), // Los 4 últimos números
+              cardExpirationMonth: action.newCardPayload.cardExpirationMonth,
+              cardExpirationYear: action.newCardPayload.cardExpirationYear,
+              cardType: action.newCardPayload.cardType,
+              isDefault: 1,
+            },
+          ],
+        };
+        
+      }),
 
     /** |-> Add New Card End Failure Action **/
     on(PaymentMethodsActions.AddNewCardEndFailure,

@@ -153,17 +153,6 @@ export const addressesReducer = createReducer(
     on(AddressesActions.AddNewAddressEndSuccess,
       (state, action) => {
 
-        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
-
-        // // Copiamos el App State (inicial) (en todas las propiedades de state)
-        // ...state,
-
-        // addresses: [
-        //   ...state.addresses,
-        //   action.addNewAddresSuccessPayload,
-        // ],
-
-        
         // - Cambiar el isDefault a 0 de las otras Address Cards
         /* Editar un valor de un objeto que está dentro de un array (OpenAI Generated Code) */
         // Make a copy of the addresses array

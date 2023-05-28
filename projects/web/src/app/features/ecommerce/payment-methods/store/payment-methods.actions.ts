@@ -10,7 +10,7 @@
 import { createAction, props } from "@ngrx/store";
 
 import { PaymentMethodInterface } from "projects/web/src/app/core/models/paymentMethod.interface";
-import { AddNewCardPHPInterface } from "projects/web/src/app/core/models/AddNewCardPHPInterface";
+// import { AddNewCardPHPInterface } from "projects/web/src/app/core/models/AddNewCardPHPInterface";
 import { GetPaymentMethodsPHPInterface } from "projects/web/src/app/core/models/getPaymentMethodsPHP.interface";
 
 
@@ -91,6 +91,7 @@ export const AddNewCardEndSuccess = createAction(
 
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    newCardId  : PaymentMethodInterface['id'],
     newCardPayload: {
       type                : PaymentMethodInterface["type"],
       cardBankName        : PaymentMethodInterface["cardBankName"],
@@ -155,6 +156,7 @@ export const ChangeDefaultPaymentMethod = createAction(
   props<{
     // Si el método de la action requiere un solo parámetro, payload es un solo valor
     paymentMethodArrayIdPayload: number,
+    paymentMethodIdPayload     : PaymentMethodInterface['id'],
   }>(),
 
 );
