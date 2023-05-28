@@ -15,8 +15,9 @@ import * as CartActions from './cart.actions';
 
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
 import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
+import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
-import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
+// import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 
 
 
@@ -32,6 +33,7 @@ export class CartEffects {
         private store: Store<fromApp.AppState>,
         private dataStorageService: DataStorageService,
         private cookiesService: CookiesService,
+        private authService: AuthService,
     ) { }
 
 
@@ -296,9 +298,17 @@ export class CartEffects {
             // console.log('addProductToCartStartActionData:');
             // console.log(addProductToCartStartActionData);
 
+
+            // Si el usuario NO ha iniciado sesión, creo un authToken nuevo
+            let authToken = this.cookiesService.leerUnaCookie("authToken");
+            if ( authToken == '' ) {
+                this.authService.generateAuthTokenCookie( this.authService.generateToken() ); // Token de autentificación aleatorio y guardarlo en la cookie authToken
+                this.authService.generateAuthExpirationDateCookie(); // Generar cookie authExpirationDate
+            }
+
         
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.addProductToCartHttpRequest( this.cookiesService.leerUnaCookie("authToken"), addProductToCartStartActionData[0].productSlugPayload )
+            return this.dataStorageService.addProductToCartHttpRequest( authToken, addProductToCartStartActionData[0].productSlugPayload )
                 .pipe(
 
                     /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),

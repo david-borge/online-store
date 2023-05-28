@@ -429,10 +429,9 @@ export class GlobalEffects {
             // Guardar cookies "authToken" y "authExpirationDate" con el valor del token de autentificación (generado aleatoriamente) y de la fecha de expiración (ahora + 7 días), ambas con una duración de 7 días
             // Nota: hay que almacenarlo en dos cookies distintas porque desde JS no se puede leer la fecha de expiración de una cookie
             if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
-                let logInDuration = 7; // En días (los que yo quiera)
-                this.cookiesService.ponerCookie("authEmail", logInEndSuccessActionData.emailPayload, logInDuration);
-                this.cookiesService.ponerCookie("authToken", logInEndSuccessActionData.tokenPayload, logInDuration);
-                this.cookiesService.ponerCookie("authExpirationDate", (this.addDays(new Date(), logInDuration)).toString(), logInDuration);
+                this.authService.generateAuthTokenCookie( logInEndSuccessActionData.tokenPayload ); // Token de autentificación aleatorio y guardarlo en la cookie authToken
+                this.authService.generateAuthExpirationDateCookie(); // Generar cookie authExpirationDate
+                this.authService.generateAuthEmailCookie( logInEndSuccessActionData.emailPayload ); // Generar cookie authEmail
             }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction
@@ -441,12 +440,6 @@ export class GlobalEffects {
         }),
 
     ));
-
-    addDays(date: Date, days: number) {
-        var result = new Date(date);
-        result.setDate(result.getDate() + days);
-        return result;
-    }
 
 
 

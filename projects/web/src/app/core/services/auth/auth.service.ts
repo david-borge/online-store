@@ -13,14 +13,20 @@ import { take } from 'rxjs';
 import * as fromApp from '../../store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../store/global.actions';
 
+import { CookiesService } from '../cookies/cookies.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  // Duración de las cookies de autentificación (authToken, authExpirationDate, authEmail)
+  logInDuration = 7; // En días (los que yo quiera)
+
   constructor(
     private store: Store<fromApp.AppState>,
+    private cookiesService: CookiesService,
   ) {}
 
 
@@ -169,15 +175,38 @@ export class AuthService {
 
 
 
-  // Generar token de autentificación
+  // Generar cookies de autentificación: authToken, authExpirationDate, authEmail
+  generateAuthTokenCookie(token: string) {
+    this.cookiesService.ponerCookie("authToken", token, this.logInDuration);
+  }
+
+  generateAuthExpirationDateCookie() {
+    this.cookiesService.ponerCookie("authExpirationDate", (this.addDays(new Date(), this.logInDuration)).toString(), this.logInDuration);
+  }
+
+  generateAuthEmailCookie(email: string) {
+    this.cookiesService.ponerCookie("authEmail", email, this.logInDuration);
+  }
+
+
+
+  // Función auxiliar: Generar token de autentificación
   generateToken() {
     return this.rand() + this.rand(); // to make it longer
   };
 
+  // Función auxiliar: generar código alfanumérico aleatorio
   rand() {
     return Math.random().toString(36).substr(2); // remove `0.`
   };
-  
+
+  // Función auxiliar: sumar días a una fecha
+  addDays(date: Date, days: number) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
 
 
 }
