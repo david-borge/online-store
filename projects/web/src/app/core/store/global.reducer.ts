@@ -367,4 +367,21 @@ export const globalReducer = createReducer(
 
 
 
+    /** Change Total Number Of Steps Value Action **/
+    on(GlobalActions.ChangeTotalNumberOfStepsValue,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        checkoutSteps: {
+          ...state.checkoutSteps,
+          totalNumberOfSteps: state.checkoutSteps.totalNumberOfSteps + action.amount, // amount puede ser un número positivo o negativo
+        },
+          
+      })),
+
+
 );

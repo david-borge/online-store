@@ -325,6 +325,22 @@ export const ResetCurrentStepValue = createAction(
 
 
 
+/** Change Total Number Of Steps Value Action **/
+export const ChangeTotalNumberOfStepsValue = createAction(
+
+  // Tipo de la Action
+  '[Global] Change Total Number Of Steps Value',
+
+  // Payload de la Action, si es que esta Action lo necesita
+  props<{
+    // Si el método de la action requiere un solo parámetro, payload es un solo valor
+    amount: number,
+  }>(),
+
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

@@ -3,6 +3,7 @@
 
 
 import { Inject, Injectable, InjectionToken, PLATFORM_ID } from '@angular/core';
+import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -32,6 +33,7 @@ export class GlobalEffects {
         private cookiesService: CookiesService,
         private dataStorageService: DataStorageService,
         private authService: AuthService,
+        private router: Router,
     ) { }
 
 
@@ -426,12 +428,22 @@ export class GlobalEffects {
             // console.log('logInEndSuccessActionData:');
             // console.log(logInEndSuccessActionData);
 
-            // Guardar cookies "authToken" y "authExpirationDate" con el valor del token de autentificación (generado aleatoriamente) y de la fecha de expiración (ahora + 7 días), ambas con una duración de 7 días
-            // Nota: hay que almacenarlo en dos cookies distintas porque desde JS no se puede leer la fecha de expiración de una cookie
-            if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
+
+            // Si estoy en el navegador (protección para SSR)
+            if (isPlatformBrowser(this.platformId)) {
+
+                // Guardar cookies "authToken" y "authExpirationDate" con el valor del token de autentificación (generado aleatoriamente) y de la fecha de expiración (ahora + 7 días), ambas con una duración de 7 días
+                // Nota: hay que almacenarlo en dos cookies distintas porque desde JS no se puede leer la fecha de expiración de una cookie
                 this.authService.generateAuthTokenCookie( logInEndSuccessActionData.tokenPayload ); // Token de autentificación aleatorio y guardarlo en la cookie authToken
                 this.authService.generateAuthExpirationDateCookie(); // Generar cookie authExpirationDate
                 this.authService.generateAuthEmailCookie( logInEndSuccessActionData.emailPayload ); // Generar cookie authEmail
+
+                
+                // Si estoy en '/checkout/signup-login' redireccionar a '/checkout/address'
+                if ( this.router.url.includes('/checkout/signup-login') ) {
+                    this.router.navigate(['/checkout/address']);
+                }
+
             }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction

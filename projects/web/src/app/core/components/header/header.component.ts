@@ -46,6 +46,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   totalNumberOfSteps: number = 3;
   @HostBinding('style.--step-bar-percentaje') stepBarPercentaje = '0%'; // Define the CSS variable value as a component property
 
+  // Propiedades auxiliares
+  loggedIn: boolean = false;
+
+
   constructor(
     public router: Router,
     private _location: Location,
@@ -62,11 +66,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.currentStep = globalReducerData.checkoutSteps.currentStep;
         this.totalNumberOfSteps = globalReducerData.checkoutSteps.totalNumberOfSteps;
 
+        // Si el usuario no ha iniciado sesión, añadir un paso más (el sign up o log in)
+        this.loggedIn = globalReducerData.loggedIn;
+
+        // Si estoy en 'checkout/signup-login' y el usuario no ha iniciado sesión, añadir un paso más (el sign up o log in)
+        if ( this.router.url.includes('/checkout/signup-login') && !this.loggedIn && this.totalNumberOfSteps < 4 ) {
+          
+          this.store.dispatch( GlobalActions.ChangeTotalNumberOfStepsValue({ amount: 1, }) );
+
+        }
+        
         // Update the Step Bar Percentaje CSS variable value
         this.stepBarPercentaje = ( (this.currentStep / this.totalNumberOfSteps) * 100 ) + '%';
 
       }
     );
+
 
   }
 
