@@ -7,51 +7,58 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 
-import { CheckoutStepSignUpComponent } from "./pages/checkout-step-sign-up/checkout-step-sign-up.component";
+import { CheckoutStepSignupLoginComponent } from "./pages/checkout-step-sign-up/checkout-step-signup-login.component";
 import { CheckoutStepAddressComponent } from "./pages/checkout-step-address/checkout-step-address.component";
 import { CheckoutStepPaymentMethodComponent } from "./pages/checkout-step-payment-method/checkout-step-payment-method.component";
 import { CheckoutStepOrderReviewComponent } from "./pages/checkout-step-order-review/checkout-step-order-review.component";
 import { CheckoutStepOrderConfirmationComponent } from "./pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component";
 
+import { CheckoutStepSignupLoginGuard } from "../../../core/guards/checkout-step-signup-login/checkout-step-signup-login.guard";
+import { CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard } from "../../../core/guards/checkout-steps-address-payment-method-order-review-order-confirmation/checkout-steps-address-payment-method-order-review-order-confirmation.guard";
+
 
 const checkoutRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
-   
+
     // Checkout Step Page: Address (/checkout)
     {
         path: '',
-        redirectTo: '/checkout/address',  // Si se entra a /checkout, le llevo a /checkout/address // TODO: cuidado con si no se ha iniciado sesión
-        // component: CheckoutStepAddressComponent,
+        redirectTo: '/checkout/signup-login',  // Si se entra a /checkout, le llevo a /signup-login
         pathMatch: 'full',  // Since the default value of pathMatch is 'prefix', Angular checks if the path you entered in the URL does start with the path specified in the route. Of course every path starts with ''  (Important: That's no whitespace, it's simply "nothing"). To fix this behavior, you need to change the matching strategy to 'full'. Ver: https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656336
     },
    
-    // Checkout Step Page: Sign Up (/checkout/sign-up)
+    // Checkout Step Page: Sign Up or Log In (/checkout/signup-login)
     {
-        path: 'sign-up',
-        component: CheckoutStepSignUpComponent,
+        path: 'signup-login',
+        canActivate: [ CheckoutStepSignupLoginGuard ], // If user is logged in, redirect from '/checkout/signup-login' to '/checkout/address'
+        component: CheckoutStepSignupLoginComponent,
     },
-
+    
     // Checkout Step Page: Address (/checkout/address)
     {
         path: 'address',
+        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
         component: CheckoutStepAddressComponent,
     },
    
     // Checkout Step Page: Payment Method (/checkout/payment-method)
     {
         path: 'payment-method',
+        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
         component: CheckoutStepPaymentMethodComponent,
     },
    
     // Checkout Step Page: Order Review (/checkout/order-review)
     {
         path: 'order-review',
+        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
         component: CheckoutStepOrderReviewComponent,
     },
    
     // Checkout Step Page: Order Confirmation (/checkout/order-confirmation)
     {
         path: 'order-confirmation',
+        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
         component: CheckoutStepOrderConfirmationComponent,
     },
    

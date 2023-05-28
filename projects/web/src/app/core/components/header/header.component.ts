@@ -87,6 +87,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // Si vuelvo atrás en alguno de los pasos del Checkout, volver al paso anterior del checkout (no a la página anterior del historial, que no tiene por qué ser el paso anterior del checkout debido a la existencia de los botones 'Edit' de '/checkout/order-review')
     switch (currentURL) {
 
+      case '/checkout/signup-login':
+        this.router.navigate([ '/cart' ]);
+        break;
+
       case '/checkout/address':
         this.router.navigate([ '/cart' ]);
         break;

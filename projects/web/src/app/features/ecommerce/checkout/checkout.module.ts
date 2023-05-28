@@ -7,7 +7,7 @@ import { CoreModule } from '../../../core/core.module';
 import { SharedModule } from '../../../shared/shared.module';
 import { CheckoutStepAddressComponent } from './pages/checkout-step-address/checkout-step-address.component';
 import { CheckoutStepPaymentMethodComponent } from './pages/checkout-step-payment-method/checkout-step-payment-method.component';
-import { CheckoutStepSignUpComponent } from './pages/checkout-step-sign-up/checkout-step-sign-up.component';
+import { CheckoutStepSignupLoginComponent } from './pages/checkout-step-sign-up/checkout-step-signup-login.component';
 import { CheckoutStepOrderReviewComponent } from './pages/checkout-step-order-review/checkout-step-order-review.component';
 import { CheckoutStepOrderConfirmationComponent } from './pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component';
 
@@ -17,7 +17,7 @@ import { CheckoutStepOrderConfirmationComponent } from './pages/checkout-step-or
   declarations: [
     CheckoutStepAddressComponent,
     CheckoutStepPaymentMethodComponent,
-    CheckoutStepSignUpComponent,
+    CheckoutStepSignupLoginComponent,
     CheckoutStepOrderReviewComponent,
     CheckoutStepOrderConfirmationComponent
   ],

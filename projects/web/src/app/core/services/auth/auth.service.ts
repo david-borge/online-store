@@ -32,8 +32,9 @@ export class AuthService {
 
 
   // Authentication - Comprobar si el usuario está logueado (leer la cookie “auth”, guardar su valor en la Global Store y ajustar el valor de loggedIn de la Global Store acordemente)
-  checkIfUserIsLoggedIn(): void {
+  checkIfUserIsLoggedIn(): boolean {
 
+    let loggedIn: boolean = false;
     let fechaCookieAuthCaducada: boolean = true;
     let authEmailCookieValue: string | null = '';
     let authTokenCookieValue: string | null = '';
@@ -66,6 +67,8 @@ export class AuthService {
             authEmailCookieValue = globalReducerData.authEmailCookieValue;
             authTokenCookieValue = globalReducerData.authTokenCookieValue;
 
+            loggedIn = true;
+
           }
 
         }
@@ -85,6 +88,8 @@ export class AuthService {
       // [No usado] this.store.dispatch( GlobalActions.SetLoggedInToTrue() );
 
     }
+
+    return loggedIn;
 
   }
 
