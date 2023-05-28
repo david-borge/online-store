@@ -200,7 +200,7 @@ export class DataStorageService {
     // console.log("DataStorageService > signUp(): " + firstName + ", " + lastName + ", " + email + ", " + password + ", " + signUpFullDate + ", " + lastLoginFullDate);
 
     return this.httpClient
-      .post<GetAddressesPHPInterface["addresses"][0]>(environment.apiBaseUrl + '/addNewAddress.php', // El any es para cubrirme las espaldas por si la API devuelve un mensaje de error como: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1…ry 'hewemim@mailinator.com' for key 'users.email'"}
+      .post<number>(environment.apiBaseUrl + '/addNewAddress.php', // El any es para cubrirme las espaldas por si la API devuelve un mensaje de error como: {resultado: "SQLSTATE[23000]: Integrity constraint violation: 1…ry 'hewemim@mailinator.com' for key 'users.email'"}
       {
         newAddress: newAddress,
         authToken: authToken,

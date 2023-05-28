@@ -151,21 +151,45 @@ export const addressesReducer = createReducer(
     /** |-> Add New Address End Success Action **/
     // Side Effects asociados: addNewAddressEndSuccessSideEffect (cerrar el Bottom Overlay, es decir, poner showBottomOverlay = false en la Global Store)
     on(AddressesActions.AddNewAddressEndSuccess,
-      (state, action) => ({
+      (state, action) => {
 
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
-        // Copiamos el App State (inicial) (en todas las propiedades de state)
-        ...state,
+        // // Copiamos el App State (inicial) (en todas las propiedades de state)
+        // ...state,
 
-        addresses: [
-          ...state.addresses,
-          action.addNewAddresSuccessPayload,
-        ],
-
+        // addresses: [
+        //   ...state.addresses,
+        //   action.addNewAddresSuccessPayload,
+        // ],
 
         
-      })),
+        // - Cambiar el isDefault a 0 de las otras Address Cards
+        /* Editar un valor de un objeto que está dentro de un array (OpenAI Generated Code) */
+        // Make a copy of the addresses array
+        const updatedAddresses = [...state.addresses];
+      
+        for (let index = 0; index < updatedAddresses.length; index++) {
+          if ( index != action.newAddressId ) {
+          
+            updatedAddresses[index] = {
+              ...updatedAddresses[index],
+              isDefault: 0,
+            };
+
+          }
+        }
+
+        // Return the updated state
+        return {
+          ...state,
+          addresses: [
+            ...updatedAddresses,
+            action.addNewAddresSuccessPayload,
+          ],
+        };
+        
+      }),
 
     /** |-> Add New Address End Failure Action **/
     on(AddressesActions.AddNewAddressEndFailure,

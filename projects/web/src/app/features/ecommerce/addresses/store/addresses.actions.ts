@@ -12,7 +12,7 @@ import { createAction, props } from "@ngrx/store";
 import { AddressInterface } from "projects/web/src/app/core/models/address.interface";
 import { CountryInterface } from "projects/web/src/app/core/models/country.interface";
 import { GetAddressesPHPInterface } from "projects/web/src/app/core/models/getAddressesPHP.interface";
-import { AddNewAddressPHPInterface } from "projects/web/src/app/core/models/AddNewAddressPHPInterface";
+// import { AddNewAddressPHPInterface } from "projects/web/src/app/core/models/AddNewAddressPHPInterface";
 
 
 
@@ -131,6 +131,7 @@ export const AddNewAddressEndSuccess = createAction(
   // Payload de la Action, si es que esta Action lo necesita
   props<{
       // Si el método de la action requiere un solo parámetro, payload es un solo valor
+      newAddressId: AddressInterface['id'],
       addNewAddresSuccessPayload: GetAddressesPHPInterface["addresses"][0],
   }>(),
 

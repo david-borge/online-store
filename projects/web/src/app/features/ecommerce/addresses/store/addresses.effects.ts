@@ -223,8 +223,9 @@ export class AddressesEffects {
 
                             // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
                             AddressesActions.AddNewAddressEndSuccess({
+                                newAddressId: 0,
                                 addNewAddresSuccessPayload: {
-                                    id        : 0,
+                                    id        : addNewAddressHttpRequestResponse, // newAddressId
                                     fullName  : addNewAddressStartActionData[0].newAddressPayload.fullName,
                                     address   : addNewAddressStartActionData[0].newAddressPayload.address,
                                     postalCode: addNewAddressStartActionData[0].newAddressPayload.postalCode,
