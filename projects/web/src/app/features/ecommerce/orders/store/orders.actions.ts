@@ -58,6 +58,17 @@ export const GetOrdersEndFailure = createAction(
 
 
 
+/** Log Out Action **/
+// Log Out: Borrar datos de la Orders Store (orders)
+export const LogOut = createAction(
+
+  // Tipo de la Action
+  '[Global] Log Out',
+  
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

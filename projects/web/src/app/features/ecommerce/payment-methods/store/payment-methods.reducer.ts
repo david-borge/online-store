@@ -235,4 +235,29 @@ export const paymentMethodsReducer = createReducer(
 
 
 
+    /** Log Out Action **/
+    // Log Out: Borrar datos de la PaymentMethods Store (paymentMethods, newCard, addNewCardErrorMessage)
+    on(PaymentMethodsActions.LogOut,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        paymentMethods: [],
+        newCard: {} as {
+          type                : PaymentMethodInterface["type"],
+          cardBankName        : PaymentMethodInterface["cardBankName"],
+          cardPersonFullName  : PaymentMethodInterface["cardPersonFullName"],
+          cardNumber          : PaymentMethodInterface["cardNumber"],
+          cardExpirationMonth : PaymentMethodInterface["cardExpirationMonth"],
+          cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
+          cardType            : PaymentMethodInterface["cardType"],
+        },
+        addNewCardErrorMessage: '',
+        
+      })),
+
+
 );

@@ -193,6 +193,17 @@ export const ChangeDefaultPaymentMethodEndFailure = createAction(
 
 
 
+/** Log Out Action **/
+// Log Out: Borrar datos de la PaymentMethods Store (paymentMethods, newCard, addNewCardErrorMessage)
+export const LogOut = createAction(
+
+  // Tipo de la Action
+  '[Global] Log Out',
+  
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

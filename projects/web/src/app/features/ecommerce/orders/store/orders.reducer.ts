@@ -74,4 +74,18 @@ export const ordersReducer = createReducer(
 
 
 
+    /** Log Out Action **/
+    // Log Out: Borrar datos de la Orders Store (orders)
+    on(OrdersActions.LogOut,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        orders: [],
+        
+      })),
+
 );

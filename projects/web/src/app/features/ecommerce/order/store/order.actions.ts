@@ -124,6 +124,17 @@ export const SaveOrderEndFailure = createAction(
 
 
 
+/** Log Out Action **/
+// Log Out: Borrar datos de la Order Store (currentOrderNumber; orderData; orderProducts; orderAddress; orderPaymentMethod)
+export const LogOut = createAction(
+
+  // Tipo de la Action
+  '[Global] Log Out',
+  
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

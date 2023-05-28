@@ -235,6 +235,17 @@ export const AddProductToCartEndFailure = createAction(
 
 
 
+/** Log Out Action **/
+// Log Out: Borrar datos de la Cart Store (cartData, getCartDataErrorMessage, updateProductQuantityErrorMessage, newProductSlug, newProductQuantity)
+export const LogOut = createAction(
+
+  // Tipo de la Action
+  '[Global] Log Out',
+  
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

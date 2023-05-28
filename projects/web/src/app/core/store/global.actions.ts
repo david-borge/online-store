@@ -272,7 +272,7 @@ export const EmptySignUpLogInResult = createAction(
 
 
 /** Log Out Action **/
-// Log Out: borrar cookie "authToken" y "authExpirationDate" y Global Store > loggedIn = false
+// Log Out: borrar cookies "authToken", "authExpirationDate" y "authEmail" y borrar datos de la Global Store (loggedIn = false; user; activeOrders)
 // Side Effects asociados: logOutSideEffect
 export const LogOut = createAction(
 

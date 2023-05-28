@@ -328,5 +328,26 @@ export const cartReducer = createReducer(
 
       })),
 
+
+
+    /** Log Out Action **/
+    // Log Out: Borrar datos de la Cart Store (cartData, getCartDataErrorMessage, updateProductQuantityErrorMessage, newProductSlug, newProductQuantity)
+    on(CartActions.LogOut,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        cartData: [],
+        getCartDataErrorMessage: '',
+        updateProductQuantityErrorMessage: '',
+        newProductSlug: 0,
+        newProductQuantity: 0,
+        
+      })),
+
+
       
 );

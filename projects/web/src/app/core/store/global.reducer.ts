@@ -177,7 +177,7 @@ export const globalReducer = createReducer(
 
 
     /** Log Out Action **/
-    // Log Out: borrar cookies "authToken" y "authExpirationDate" y Global Store > loggedIn = false
+    // Log Out: borrar cookies "authToken", "authExpirationDate" y "authEmail" y borrar datos de la Global Store (loggedIn = false; user; activeOrders)
     // Side Effects asociados: deleteCookieSideEffect
     on(GlobalActions.LogOut,
       (state, action) => ({
@@ -188,6 +188,8 @@ export const globalReducer = createReducer(
         ...state,
 
         loggedIn: false,
+        user: {} as UserInterface,
+        activeOrders: [],
           
       })),
 

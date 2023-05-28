@@ -262,4 +262,33 @@ export const addressesReducer = createReducer(
           
       }),
 
+
+
+    /** Log Out Action **/
+    // Log Out: Borrar datos de la Addresses Store (addresses; countries; getAllCountriesErrorMessage; newAddress; newAddressCountryName; addNewAddressErrorMessage)
+    on(AddressesActions.LogOut,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        addresses: [],
+        countries: [],
+        getAllCountriesErrorMessage: '',
+        newAddress: {} as {
+          fullName   : AddressInterface["fullName"],
+          address    : AddressInterface["address"],
+          postalCode : AddressInterface["postalCode"],
+          city       : AddressInterface["city"],
+          countryId  : AddressInterface["countryId"],
+        },
+        newAddressCountryName: '',
+        addNewAddressErrorMessage: '',
+        
+      })),
+
+
+
 );

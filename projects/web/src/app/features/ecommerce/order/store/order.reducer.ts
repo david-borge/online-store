@@ -140,4 +140,23 @@ export const orderReducer = createReducer(
 
 
 
+    /** Log Out Action **/
+    // Log Out: Borrar datos de la Order Store (currentOrderNumber; orderData; orderProducts; orderAddress; orderPaymentMethod)
+    on(OrderActions.LogOut,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        currentOrderNumber: 0,
+        orderData: {} as GetOrderDataPHPInterface["orderData"],
+        orderProducts: [],
+        orderAddress: {} as GetOrderDataPHPInterface["orderAddress"],
+        orderPaymentMethod: {} as GetOrderDataPHPInterface["orderPaymentMethod"],
+        
+      })),
+
+
 );

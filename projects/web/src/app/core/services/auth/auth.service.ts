@@ -12,6 +12,11 @@ import { take } from 'rxjs';
 
 import * as fromApp from '../../store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../store/global.actions';
+import * as OrderActions from '../../../features/ecommerce/order/store/order.actions';
+import * as OrdersActions from '../../../features/ecommerce/orders/store/orders.actions';
+import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
+import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
+import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
 
 import { CookiesService } from '../cookies/cookies.service';
 
@@ -171,10 +176,26 @@ export class AuthService {
 
 
 
+  // Log Out
   logOut() {
 
-    // Log Out: borrar cookies "authToken" y "authExpirationDate" y Global Store > loggedIn = false
+    // - Borrar cookies "authToken", "authExpirationDate" y "authEmail" y borrar datos de la Global Store (loggedIn = false; user; activeOrders)
     this.store.dispatch( GlobalActions.LogOut() );
+
+    // - Borrar datos de la Order Store (currentOrderNumber; orderData; orderProducts; orderAddress; orderPaymentMethod)
+    this.store.dispatch( OrderActions.LogOut() );
+
+    // - Borrar datos de la Orders Store (orders)
+    this.store.dispatch( OrdersActions.LogOut() );
+
+    // - Borrar datos de la Addresses Store (addresses; countries; getAllCountriesErrorMessage; newAddress; newAddressCountryName; addNewAddressErrorMessage)
+    this.store.dispatch( AddressesActions.LogOut() );
+
+    // - Borrar datos de la PaymentMethods Store (paymentMethods, newCard, addNewCardErrorMessage)
+    this.store.dispatch( PaymentMethodsActions.LogOut() );
+
+    // - Borrar datos de la Cart Store (cartData, getCartDataErrorMessage, updateProductQuantityErrorMessage, newProductSlug, newProductQuantity)
+    this.store.dispatch( CartActions.LogOut() );
 
   }
 

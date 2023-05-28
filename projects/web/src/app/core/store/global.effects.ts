@@ -471,11 +471,14 @@ export class GlobalEffects {
             // console.log('logOutActionData:');
             // console.log(logOutActionData);
 
-            // Borrar cookies "authToken" y "authExpirationDate"
-            if (isPlatformBrowser(this.platformId)) { // Si estoy en el navegador (protección para SSR)
-                this.cookiesService.eliminarUnaCookie("authEmail");
-                this.cookiesService.eliminarUnaCookie("authExpirationDate");
+            // Si estoy en el navegador (protección para SSR)
+            if (isPlatformBrowser(this.platformId)) {
+
+                // Borrar cookies "authToken" y "authExpirationDate"
                 this.cookiesService.eliminarUnaCookie("authToken");
+                this.cookiesService.eliminarUnaCookie("authExpirationDate");
+                this.cookiesService.eliminarUnaCookie("authEmail");
+
             }
 
             // Como siempre hay que devolver una Action, devuelvo una DummyAction
