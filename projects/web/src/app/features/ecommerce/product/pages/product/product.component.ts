@@ -5,6 +5,7 @@ import { Store } from "@ngrx/store";
 import { Subscription } from 'rxjs';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as CartActions from '../../../cart/store/cart.actions';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
@@ -24,10 +25,13 @@ export class ProductComponent implements OnInit, OnDestroy {
   // Suscripciones a la Store
   homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
   productReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  cartReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Variables para la Template
   currentProductSlug: string = '';
   currentProduct = {} as ProductInterface;
+  footerNavigationButtonRightText: string = 'Add to cart';
+  productAddedToCart: boolean = false;
 
   // Pre-load images of other pages
   imagesInThisPageLoaded: boolean = false;
@@ -125,6 +129,24 @@ export class ProductComponent implements OnInit, OnDestroy {
         
     );
 
+
+
+    // Cart Store
+    this.cartReducerObservableSubscription = this.store.select('cartReducerObservable').subscribe(
+      cartReducerData => {
+
+        // If product is done being added to cart, change the .navigation-button-right-container button text
+        this.productAddedToCart = cartReducerData.productAddedToCart;
+        if ( this.productAddedToCart ) {
+          this.footerNavigationButtonRightText = 'Added!';
+        } else {
+          // Nota: volver a poner productAddedToCart de la Cart Store a false al cabo de unos milisegundos -> ver: footer.component.ts -> setTimeout
+          this.footerNavigationButtonRightText = 'Add to cart';
+        }
+
+      }
+    );
+
   }
 
   ngOnDestroy(): void {
@@ -132,6 +154,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     // Cancelar suscripciones
     this.homeReducerObservableSubscription.unsubscribe();
     this.productReducerObservableSubscription.unsubscribe();
+    this.cartReducerObservableSubscription.unsubscribe();
 
   }
 

@@ -24,6 +24,7 @@ export interface CartReducerStateInterface {
   updateProductQuantityErrorMessage: string;
   newProductSlug: ProductInterface["id"];
   newProductQuantity: CartInterface["productQuantity"];
+  productAddedToCart: boolean;
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -61,6 +62,7 @@ const initialState: CartReducerStateInterface = {
   updateProductQuantityErrorMessage: '',
   newProductSlug: 0,
   newProductQuantity: 0,
+  productAddedToCart: false,
 }
 
 
@@ -307,10 +309,7 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        // cartData: [
-        //   ...state.cartData,
-        //   action.newProductDataPayload,
-        // ],
+        productAddedToCart: true,
 
       })),
 
@@ -345,6 +344,21 @@ export const cartReducer = createReducer(
         updateProductQuantityErrorMessage: '',
         newProductSlug: 0,
         newProductQuantity: 0,
+        
+      })),
+
+
+
+    /** Set Product Added To Cart To False Action **/
+    on(CartActions.SetProductAddedToCartToFalse,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        productAddedToCart: false,
         
       })),
 

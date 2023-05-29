@@ -240,7 +240,17 @@ export const AddProductToCartEndFailure = createAction(
 export const LogOut = createAction(
 
   // Tipo de la Action
-  '[Global] Log Out',
+  '[Cart] Log Out',
+  
+);
+
+
+
+/** Set Product Added To Cart To False Action **/
+export const SetProductAddedToCartToFalse = createAction(
+
+  // Tipo de la Action
+  '[Cart] Set Product Added To Cart To False',
   
 );
 

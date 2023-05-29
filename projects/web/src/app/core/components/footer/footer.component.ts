@@ -45,6 +45,8 @@ export class FooterComponent implements OnInit, OnChanges {
   activeNavigationItem: string | null = '';
   lastActiveMainPage: string | null = '';
 
+  productAddedToCart: boolean = false;
+
 
   constructor(
     private router: Router,
@@ -85,6 +87,8 @@ export class FooterComponent implements OnInit, OnChanges {
         }
 
       }
+
+      this.productAddedToCart = cartReducerData.productAddedToCart;
 
     });
 
@@ -274,6 +278,22 @@ export class FooterComponent implements OnInit, OnChanges {
     // Página de un producto
     if ( this.currentURL.includes('/product/') ) {
       this.navigationShowCtasAndCopy = (this.navigationCopyPrice != 0); // Solo mostrar .navigation-ctas-and-copy-container si ya se ha cargado el precio del producto
+    }
+
+
+
+    // - Product page: volver a poner productAddedToCart de la Cart Store a false al cabo de unos milisegundos
+    if (this.productAddedToCart) {
+      
+      setTimeout(() => {
+
+        // Comprobacion
+        // console.log('Set timeout!');
+        
+        this.store.dispatch( CartActions.SetProductAddedToCartToFalse() );
+        
+      }, 1500);
+      
     }
 
   }
