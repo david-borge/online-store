@@ -26,6 +26,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   // Variables para la Template
   cartData : GetCartDataPHPInterface['cartData'] = [];
+  cartTotal: number = 0;
 
 
   constructor(
@@ -41,7 +42,14 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartReducerObservableSubscription = this.store.select("cartReducerObservable").subscribe(
       cartReducerData => {
 
+        // Cart Data (el listado de productos con sus cantidades)
         this.cartData = cartReducerData.cartData;
+
+        // Cart total
+        this.cartTotal = 0; // Reseteo el valor para que no se sume al total anterior cada vez que se ha un cambio en el listado de productos o en las cantidades
+        this.cartData.map( product => {
+          this.cartTotal += (product.price * product.productQuantity);
+        } );
         
       }
     );
