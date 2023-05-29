@@ -97,8 +97,8 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
 
     // Guardar la Order en la Base de Datos
     this.store.dispatch( OrderActions.SaveOrderStart({
-      orderFullDatePayload    : new Date().toString(), // Ahora
-      deliveryFullDatePayload : new Date(new Date().setDate(new Date().getDate() + 1)).toString(), // Mañana
+      orderFullDatePayload    : new Date().toString(), // orderFullDate es Ahora
+      deliveryFullDatePayload : this.generateDeliveryFullDate(new Date()).toString(), // deliveryFullDate es Ahora + 1 día + 3 horas + 23 minutos
       addressIdPayload        : this.orderAddress.id,
       paymentMethodIdPayload  : this.orderPaymentMethod.id,
       orderProductsDataPayload: this.orderProducts.map(orderProduct => {
@@ -119,6 +119,28 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
     this.addressesReducerObservableSubscription.unsubscribe();
     this.paymentMethodsReducerObservableSubscription.unsubscribe();
     
+  }
+
+
+  // deliveryFullDate es Ahora + 1 día + 3 horas + 23 minutos
+  // OpenAI Generated Code
+  generateDeliveryFullDate(date: Date): Date {
+    const oneDayInMilliseconds = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+    const threeHoursInMilliseconds = 3 * 60 * 60 * 1000; // Number of milliseconds in three hours
+    const twentyThreeMinutesInMilliseconds = 23 * 60 * 1000; // Number of milliseconds in 23 minutes
+  
+    // Convert the input date to milliseconds
+    const dateInMilliseconds = date.getTime();
+  
+    // Calculate the new date by adding the duration
+    const newDateInMilliseconds =
+      dateInMilliseconds +
+      oneDayInMilliseconds +
+      threeHoursInMilliseconds +
+      twentyThreeMinutesInMilliseconds;
+  
+    // Create a new Date object from the new date in milliseconds and return it
+    return new Date(newDateInMilliseconds);
   }
 
 }
