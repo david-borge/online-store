@@ -1,7 +1,7 @@
 <!-- Address Card -->
 <div class="address-card" [ngClass]="{ 'address-card-selected': (addressCardIsDefault == 1) }">
 
-    <button (click)="onClickAddressCardOrSelectButton();">
+    <button (click)="onClickAddressCardOrSelectButton();" [ngStyle]="{ 'cursor': ( !addressCardShowButton ? 'default' : 'pointer' ) }">
 
         <div class="address-card--copy-container">
 
