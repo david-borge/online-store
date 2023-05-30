@@ -186,6 +186,16 @@ export class FooterComponent implements OnInit, OnChanges {
 
     }
 
+    // · Si aterrizo en una interior de Account, como '/orders' o '/order/:order-number' o '/addresses' o '/payment-methods', activo /account
+    else if ( (this.currentURL == '/orders') || this.currentURL.includes('/order/') || (this.currentURL == '/addresses') || (this.currentURL == '/payment-methods') ) {
+
+      // Comprobación
+      // console.log('En una página interior de Account, como '/orders' o '/order/:order-number' o '/addresses' o '/payment-methods'');
+
+      this.store.dispatch( GlobalActions.SetActiveNavigationItem({ activeNavigationItemPayload: '/account', }) );
+
+    }
+
     // Por defecto (cuando llego a la página por primera vez desde el Modo Incógnito), muestro la home
     else {
       
