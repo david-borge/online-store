@@ -10,6 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { OrderComponent } from "./pages/order/order.component";
 import { OrderDetailComponent } from "./components/order-detail/order-detail.component";
 
+import { AccountInnerPagesGuard } from "../../../core/guards/account-inner-pages/account-inner-pages.guard";
+
 const orderRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
    
@@ -17,6 +19,7 @@ const orderRoutes: Routes = [
     {
         path: '',
         component: OrderComponent,
+        
         children: [
             {
                 path: '',
@@ -25,6 +28,7 @@ const orderRoutes: Routes = [
             },
             {
                 path: ':order-number',  // Route parameter
+                canActivate: [ AccountInnerPagesGuard ], // If user is NOT logged in, redirect from '/order/:order-number' to '/account'
                 component: OrderDetailComponent,
             }
 

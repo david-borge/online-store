@@ -9,12 +9,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PaymentMethodsComponent } from "./pages/payment-methods/payment-methods.component";
 
+import { AccountInnerPagesGuard } from "../../../core/guards/account-inner-pages/account-inner-pages.guard";
+
 const paymentMethodsRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
    
-    // PaymentMethods Page
+    // PaymentMethods Page ('/payment-methods')
     {
         path: '',
+        canActivate: [ AccountInnerPagesGuard ], // If user is NOT logged in, redirect from '/payment-methods' to '/account'
         component: PaymentMethodsComponent,
     },
 

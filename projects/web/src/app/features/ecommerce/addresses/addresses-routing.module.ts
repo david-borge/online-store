@@ -9,12 +9,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AddressesComponent } from "./pages/addresses/addresses.component";
 
+import { AccountInnerPagesGuard } from "../../../core/guards/account-inner-pages/account-inner-pages.guard";
+
 const addressesRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
    
-    // Addresses Page
+    // Addresses Page ('/addresses')
     {
         path: '',
+        canActivate: [ AccountInnerPagesGuard ], // If user is NOT logged in, redirect from '/addresses' to '/account'
         component: AddressesComponent,
     },
 
