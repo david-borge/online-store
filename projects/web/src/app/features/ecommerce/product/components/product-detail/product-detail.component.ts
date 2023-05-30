@@ -11,6 +11,7 @@ import * as HomeActions from '../../../home/store/home.actions';
 
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
+import { ReviewInterface } from 'projects/web/src/app/core/models/review.interface';
 
 
 
@@ -30,6 +31,7 @@ export class ProductDetailComponent implements OnInit {
   @Input() product = {} as ProductInterface;
   featuredProducts : ProductInterface[] = [];
   currentProductReviews: GetCurrentProductReviewsPHPInterface[] = [];
+  currentProductRatingNumber: ReviewInterface['ratingNumber'] = 0;
 
 
   constructor(
@@ -103,6 +105,13 @@ export class ProductDetailComponent implements OnInit {
 
           // - currentProductReviews
           this.currentProductReviews = homeReducerData.currentProductReviews;
+
+          // - currentProductRatingNumber
+          this.currentProductRatingNumber = 0;
+          this.currentProductReviews.map( currentProductReview => {
+            this.currentProductRatingNumber += currentProductReview.starsWidth;
+          } );
+          this.currentProductRatingNumber = ( (this.currentProductRatingNumber / this.currentProductReviews.length) * 5 ) / 100 ; // Pasar de porcentaje a puntuación sobre 5
 
         },
 
