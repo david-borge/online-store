@@ -57,51 +57,66 @@ export class CartEffects {
             // console.log(getCartDataStartActionData);
 
         
-            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getCartDataHttpRequest( this.cookiesService.leerUnaCookie("authToken") )
-                .pipe(
+            // Solo hacer la HTTP Request si un usuario ha iniciado sesión
+            if ( this.cookiesService.leerUnaCookie("authToken") ) {
+                
+                // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+                return this.dataStorageService.getCartDataHttpRequest( this.cookiesService.leerUnaCookie("authToken") )
+                    .pipe(
 
-                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
-                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
-                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+                        /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                        debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                        Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                    switchMap( (getCartDataHttpRequestResponse) => {
+                        switchMap( (getCartDataHttpRequestResponse) => {
 
-                        // Comprobación
-                        // console.log('getCartDataSideEffect - getCartDataHttpRequestResponse:');
-                        // console.log(getCartDataHttpRequestResponse);
+                            // Comprobación
+                            // console.log('getCartDataSideEffect - getCartDataHttpRequestResponse:');
+                            // console.log(getCartDataHttpRequestResponse);
 
-                        // Procesamiento de datos si es necesario...
+                            // Procesamiento de datos si es necesario...
 
-                        return of(
+                            return of(
 
-                            // Procesar datos si es necesario...
+                                // Procesar datos si es necesario...
 
-                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                            CartActions.GetCartDataEndSuccess({
-                                cartDataPayload: getCartDataHttpRequestResponse,
-                            }),
+                                // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                                CartActions.GetCartDataEndSuccess({
+                                    cartDataPayload: getCartDataHttpRequestResponse,
+                                }),
 
-                        );
+                            );
 
+                        }),
+                        catchError(errorResponse => {
+
+                            // Error handling code...
+
+                            // Mostrar el error en la consola
+                            console.log('getCartDataSideEffect - errorResponse:');
+                            console.log(errorResponse);
+
+                            // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                            return of(
+                                CartActions.GetCartDataEndFailure({
+                                    getCartDataErrorMessagePayload: 'There was an error when loading the Country list.',
+                                }),
+                            );
+
+                        }),
+                );
+                
+            } else {
+
+                // Si el usuario no ha iniciado sesión, devolver un array vacío
+                return of(
+                    CartActions.GetCartDataEndSuccess({
+                        cartDataPayload: [],
                     }),
-                    catchError(errorResponse => {
-
-                        // Error handling code...
-
-                        // Mostrar el error en la consola
-                        console.log('getCartDataSideEffect - errorResponse:');
-                        console.log(errorResponse);
-
-                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
-                        return of(
-                            CartActions.GetCartDataEndFailure({
-                                getCartDataErrorMessagePayload: 'There was an error when loading the Country list.',
-                            }),
-                        );
-
-                    }),
-            );
+                );
+                
+            }
+            
 
         }),
 
