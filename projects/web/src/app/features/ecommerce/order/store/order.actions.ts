@@ -129,7 +129,7 @@ export const SaveOrderEndFailure = createAction(
 export const LogOut = createAction(
 
   // Tipo de la Action
-  '[Global] Log Out',
+  '[Order] Log Out',
   
 );
 
@@ -139,6 +139,6 @@ export const LogOut = createAction(
 export const DummyAction = createAction(
 
   // Tipo de la Action
-  '[Cart] Dummy Action',
+  '[Order] Dummy Action',
 
 );

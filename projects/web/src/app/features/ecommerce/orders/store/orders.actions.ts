@@ -63,7 +63,7 @@ export const GetOrdersEndFailure = createAction(
 export const LogOut = createAction(
 
   // Tipo de la Action
-  '[Global] Log Out',
+  '[Orders] Log Out',
   
 );
 
@@ -73,6 +73,6 @@ export const LogOut = createAction(
 export const DummyAction = createAction(
 
   // Tipo de la Action
-  '[Cart] Dummy Action',
+  '[Orders] Dummy Action',
 
 );

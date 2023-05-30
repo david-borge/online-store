@@ -198,7 +198,7 @@ export const ChangeDefaultPaymentMethodEndFailure = createAction(
 export const LogOut = createAction(
 
   // Tipo de la Action
-  '[Global] Log Out',
+  '[PaymentMethods] Log Out',
   
 );
 
@@ -208,6 +208,6 @@ export const LogOut = createAction(
 export const DummyAction = createAction(
 
   // Tipo de la Action
-  '[Cart] Dummy Action',
+  '[PaymentMethods] Dummy Action',
 
 );
