@@ -47,6 +47,10 @@ export class OrdersComponent implements OnInit {
     this.ordersReducerObservableSubscription = this.store.select('ordersReducerObservable').subscribe(
       ordersReducerData => {
 
+        // Reset the arrays so that the current result is not added to the previous ones
+        this.activeOrders = [];
+        this.previousOrders = [];
+
         ordersReducerData.orders.filter(
           order => {
 
