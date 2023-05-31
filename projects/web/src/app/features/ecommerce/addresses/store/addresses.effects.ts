@@ -127,53 +127,72 @@ export class AddressesEffects {
             // console.log('getAllCountriesStartActionData:');
             // console.log(getAllCountriesStartActionData);
 
+
+            // Hacer la HTTP Request si NO se ha hecho ya
+            if ( getAllCountriesStartActionData[0].countries.length == 0 ) {
+                
+                // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
+                return this.dataStorageService.getAllCountriesHttpRequest()
+                    .pipe(
+
+                        /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
+                        debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
+                        Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
+
+                        switchMap( (getAddressesHttpRequestResponse: CountryInterface[]) => {
+
+                            // Comprobación
+                            // console.log('getAddressesSideEffect - getAddressesHttpRequestResponse:');
+                            // console.log(getAddressesHttpRequestResponse);
+
+                            // Procesamiento de datos si es necesario...
+
+                            return of(
+
+                                // Procesar datos si es necesario...
+
+                                // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                                AddressesActions.GetAllCountriesEndSuccess({
+                                    allCountriesPayload: getAddressesHttpRequestResponse,
+                                }),
+
+                            );
+
+                        }),
+                        catchError(errorResponse => {
+
+                            // Error handling code...
+
+                            // Mostrar el error en la consola
+                            console.log('getAllCountriesSideEffect - errorResponse:');
+                            console.log(errorResponse);
+
+                            // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
+                            return of(
+                                AddressesActions.GetAllCountriesEndFailure({
+                                    getAllCountriesErrorMessagePayload: 'There was an error when loading the Country list.',
+                                }),
+                            );
+
+                        }),
+                );
+
+            }
+            
+            // Si la HTTP Request ya se había hecho, devolver las countries que ya había en la Store
+            else {
+
+                return of(
+
+                    // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
+                    AddressesActions.GetAllCountriesEndSuccess({
+                        allCountriesPayload: getAllCountriesStartActionData[0].countries,
+                    }),
+
+                );
+
+            }
            
-            // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
-            return this.dataStorageService.getAllCountriesHttpRequest()
-                .pipe(
-
-                    /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
-                    debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
-                    Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
-
-                    switchMap( (getAddressesHttpRequestResponse: CountryInterface[]) => {
-
-                        // Comprobación
-                        // console.log('getAddressesSideEffect - getAddressesHttpRequestResponse:');
-                        // console.log(getAddressesHttpRequestResponse);
-
-                        // Procesamiento de datos si es necesario...
-
-                        return of(
-
-                            // Procesar datos si es necesario...
-
-                            // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
-                            AddressesActions.GetAllCountriesEndSuccess({
-                                allCountriesPayload: getAddressesHttpRequestResponse,
-                            }),
-
-                        );
-
-                    }),
-                    catchError(errorResponse => {
-
-                        // Error handling code...
-
-                        // Mostrar el error en la consola
-                        console.log('getAllCountriesSideEffect - errorResponse:');
-                        console.log(errorResponse);
-
-                        // MUY IMPORTATE: aquí hay que devolver una non-error Observable so our Observable stream never dies.
-                        return of(
-                            AddressesActions.GetAllCountriesEndFailure({
-                                getAllCountriesErrorMessagePayload: 'There was an error when loading the Country list.',
-                            }),
-                        );
-
-                    }),
-            );
-
         }),
 
     ));

@@ -41,9 +41,6 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
     // Pone el foco en el campo address al carga el formulario
     this.addressLocalReferenceViewChild.nativeElement.focus();
 
-    // - Cargar la lista de Countries a la Store
-    this.store.dispatch( AddressesActions.GetAllCountriesStart() );
-
     // - Leer la Addresses Store
     this.addressesReducerObservableSubscription = this.store.select("addressesReducerObservable").subscribe( addressesReducerData => {
 
@@ -51,6 +48,11 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
       this.countries = addressesReducerData.countries;
 
     });
+
+    // - Cargar la lista de Countries a la Store (si NO se ha cargado ya)
+    this.store.dispatch( AddressesActions.GetAllCountriesStart({
+      countries: this.countries,
+    }) );
 
     // - Add New Address Form
     this.addNewAddressForm = new FormGroup({
