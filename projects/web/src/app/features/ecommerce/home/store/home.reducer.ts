@@ -13,7 +13,7 @@ import { GetCurrentProductReviewsPHPInterface } from "projects/web/src/app/core/
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface HomeReducerStateInterface {
-  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  // loadStatus: ProcessStatusInterface['processStatus'];
   allProducts: ProductInterface[];
   currentProductSlug: ProductInterface['slug'];
   numberOfImagesInThisPage: number;
@@ -27,7 +27,7 @@ export interface HomeReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: HomeReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  // loadStatus: 'NOT_LOADED',
+  // loadStatus: 'NOT_STARTED',
   allProducts: [],
   currentProductSlug: '',
   numberOfImagesInThisPage: 0,

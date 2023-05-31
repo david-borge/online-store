@@ -1,0 +1,22 @@
+// Button with loading spinner
+.btn-with-loading-spinner {
+    position: relative;
+    width: 100%;
+}
+
+
+
+// Button with loading spinner - Loading spinner
+.btn-with-loading-spinner--loading-spinner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+
+
+// Button with loading spinner - Process started
+.btn-with-loading-spinner--process-started {
+    padding-right: 38px;
+}

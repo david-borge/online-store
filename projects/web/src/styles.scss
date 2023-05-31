@@ -724,6 +724,15 @@ $body-color: var(--N800);
 
 
 
+// Inputs - Disabled - No cambiar su aspecto
+.form-disabled-input-do-not-change input:disabled,
+.form-disabled-input-do-not-change select:disabled {
+    background-color: white;
+}
+
+
+
+
 // Font Weight (que no están en Bootstrap)
 .font-weight-500 {
     font-weight: 500;
@@ -1014,4 +1023,11 @@ svg-icon {
 // Bottom Overlay - Position
 .show-bottom-overlay {
     overflow-y: hidden;
+}
+
+
+
+// Buttons - Disabled
+.btn {
+    --bs-btn-disabled-opacity: 1;
 }

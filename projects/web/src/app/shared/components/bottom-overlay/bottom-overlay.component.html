@@ -33,11 +33,23 @@
             <div class="bottom-overlay--footer">
 
                 <div class="cancel-btn-container">
-                    <button type="button" class="btn btn-light btn-lg" (click)="hideBottomOverlay();">Cancel</button>
+                    <button type="button"
+                        class="btn btn-light btn-lg"
+                        (click)="hideBottomOverlay();"
+                        [disabled]="(processStatus == 'STARTED')"
+                    >Cancel</button>
                 </div>
 
                 <div class="add-btn-container">
-                    <button type="button" class="btn btn-primary btn-lg" (click)="onClickAddButton();">{{bottomOverlayAddButtonText}}</button>
+                    
+                    <app-btn-with-loading-spinner
+                        [btnWithLoadingSpinnerText] = "bottomOverlayAddButtonText"
+                        [btnWithLoadingSpinnerClasses] = "'btn btn-primary btn-lg'"
+                        [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
+                        [btnWithLoadingSpinnerProcessStatus] = "processStatus"
+                        (onClickBtnWithLoadingSpinnerEventEmitter)="onClickAddButton();"
+                    ></app-btn-with-loading-spinner>
+
                 </div>
 
             </div>

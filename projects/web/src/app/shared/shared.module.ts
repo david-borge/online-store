@@ -21,6 +21,7 @@ import { ImageLoadDirective } from './directives/image-load/image-load.directive
 import { SignupLoginFormComponent } from './components/signup-login-form/signup-login-form.component';
 import { AddNewAddressFormComponent } from './components/add-new-address-form/add-new-address-form/add-new-address-form.component';
 import { AddNewCardFormComponent } from './components/add-new-card-form/add-new-card-form/add-new-card-form.component';
+import { BtnWithLoadingSpinnerComponent } from './components/btn-with-loading-spinner/btn-with-loading-spinner.component';
 
 
 
@@ -46,6 +47,7 @@ import { AddNewCardFormComponent } from './components/add-new-card-form/add-new-
     ImageLoadDirective,
     AddNewAddressFormComponent,
     AddNewCardFormComponent,
+    BtnWithLoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +74,7 @@ import { AddNewCardFormComponent } from './components/add-new-card-form/add-new-
     SelectButtonComponent,
     BottomOverlayComponent,
     SignupLoginFormComponent,
+    BtnWithLoadingSpinnerComponent,
     PrefetchDirective,
     ImageLoadDirective,
   ],

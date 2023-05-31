@@ -10,7 +10,7 @@ import * as LoadingScreenActions from "./loading-screen.actions";  // Importar t
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface LoadingScreenReducerStateInterface {
-  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  // loadStatus: ProcessStatusInterface['processStatus'];
   numberOfImagesInThisPage: number;
   numberOfImagesInThisPageLoaded: number;
 }
@@ -19,7 +19,7 @@ export interface LoadingScreenReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: LoadingScreenReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  // loadStatus: 'NOT_LOADED',
+  // loadStatus: 'NOT_STARTED',
   numberOfImagesInThisPage: 0,
   numberOfImagesInThisPageLoaded: 0,
 }

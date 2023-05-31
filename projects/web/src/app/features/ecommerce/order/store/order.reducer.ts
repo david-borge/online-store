@@ -12,7 +12,7 @@ import { GetOrderDataPHPInterface } from "projects/web/src/app/core/models/getOr
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface OrderReducerStateInterface {
-  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  // loadStatus: ProcessStatusInterface['processStatus'];
   currentOrderNumber : number;
   orderData          : GetOrderDataPHPInterface["orderData"];
   orderProducts      : GetOrderDataPHPInterface["orderProducts"];
@@ -25,7 +25,7 @@ export interface OrderReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: OrderReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  // loadStatus: 'NOT_LOADED',
+  // loadStatus: 'NOT_STARTED',
   currentOrderNumber : 0,
   orderData          : {} as GetOrderDataPHPInterface["orderData"],
   orderProducts      : {} as GetOrderDataPHPInterface["orderProducts"],

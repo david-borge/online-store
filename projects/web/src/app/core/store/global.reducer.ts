@@ -13,7 +13,7 @@ import { ActiveOrderInterface } from "../models/activeOrder.interface";
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface GlobalReducerStateInterface {
-  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  // loadStatus: ProcessStatusInterface['processStatus'];
   firstVisitedPage: string;
   activeNavigationItem: string | null;
   lastActiveMainPage: string | null;
@@ -36,7 +36,7 @@ export interface GlobalReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: GlobalReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  // loadStatus: 'NOT_LOADED',
+  // loadStatus: 'NOT_STARTED',
   firstVisitedPage: '',
   activeNavigationItem: '',
   lastActiveMainPage: '',

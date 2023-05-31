@@ -10,6 +10,7 @@ import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombre
 import * as AddressesActions from '../../../../features/ecommerce/addresses/store/addresses.actions';
 
 import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
+import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
   @ViewChild('addNewAddressFormRef') addNewAddressFormViewChild: NgForm = {} as NgForm;
   addNewAddressResult: string = '';
   @ViewChild('addressLocalReference', {static: true}) addressLocalReferenceViewChild: ElementRef = {} as ElementRef;
+  addNewAddressStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
 
   
   constructor(
@@ -37,7 +39,7 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
   ) {}
 
   ngOnInit(): void {
-
+    
     // Pone el foco en el campo address al carga el formulario
     this.addressLocalReferenceViewChild.nativeElement.focus();
 
@@ -46,6 +48,14 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
 
       // Listado de Countries
       this.countries = addressesReducerData.countries;
+
+      // addNewAddressStatus
+      this.addNewAddressStatus = addressesReducerData.addNewAddressStatus;
+
+      // Disable the form inputs if the add new address process is being done
+      if ( this.addNewAddressStatus == 'STARTED' ) {
+        this.addNewAddressForm.disable();
+      }
 
     });
 

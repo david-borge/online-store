@@ -10,7 +10,7 @@ import * as ProductActions from "./product.actions";  // Importar todo y guardar
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface ProductReducerStateInterface {
-  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  // loadStatus: ProcessStatusInterface['processStatus'];
   numberOfImagesInThisPage: number;
   numberOfImagesInThisPageLoaded: number;
   productPageImagesLoaded: boolean;
@@ -21,7 +21,7 @@ export interface ProductReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: ProductReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  // loadStatus: 'NOT_LOADED',
+  // loadStatus: 'NOT_STARTED',
   numberOfImagesInThisPage: 0,
   numberOfImagesInThisPageLoaded: 0,
   productPageImagesLoaded: false,

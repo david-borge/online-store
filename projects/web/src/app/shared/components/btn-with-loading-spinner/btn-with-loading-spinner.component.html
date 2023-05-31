@@ -1,0 +1,16 @@
+<button type="button"
+    class="btn-with-loading-spinner {{btnWithLoadingSpinnerClasses}}"
+    [ngClass]="{'btn-with-loading-spinner--process-started': (btnWithLoadingSpinnerProcessStatus == 'STARTED')}"
+    (click)="onClickBtnWithLoadingSpinner();"
+    [disabled]="(btnWithLoadingSpinnerProcessStatus == 'STARTED')"
+>
+
+    <!-- Button text -->
+    <span>{{btnWithLoadingSpinnerText}}</span>
+    
+    <!-- Button Loading Spinner -->
+    <span class="btn-with-loading-spinner--loading-spinner" *ngIf="(btnWithLoadingSpinnerProcessStatus == 'STARTED')">
+        <img ngSrc="assets/img/icons/spinner-animated.svg" alt="Spinner" width="{{btnWithLoadingSpinnerSpinnerWidthAndHeight}}" height="{{btnWithLoadingSpinnerSpinnerWidthAndHeight}}" priority>
+    </span>
+
+</button>

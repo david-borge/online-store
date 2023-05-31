@@ -14,7 +14,7 @@ import { PaymentMethodInterface } from "projects/web/src/app/core/models/payment
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface PaymentMethodsReducerStateInterface {
-  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  // loadStatus: ProcessStatusInterface['processStatus'];
   paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'];
   newCard: {
     type                : PaymentMethodInterface["type"],
@@ -32,7 +32,7 @@ export interface PaymentMethodsReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: PaymentMethodsReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  // loadStatus: 'NOT_LOADED',
+  // loadStatus: 'NOT_STARTED',
   paymentMethods: [],
   newCard: {
     type                : 'card',

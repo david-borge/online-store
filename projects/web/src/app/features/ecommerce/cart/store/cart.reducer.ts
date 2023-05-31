@@ -14,7 +14,7 @@ import { CartInterface } from "projects/web/src/app/core/models/cart.interface";
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CartReducerStateInterface {
-  // loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
+  // loadStatus: ProcessStatusInterface['processStatus'];
   numberOfImagesInThisPage: number;
   numberOfImagesInThisPageLoaded: number;
   cartPageImagesLoaded: boolean;
@@ -31,7 +31,7 @@ export interface CartReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: CartReducerStateInterface = {
   // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  // loadStatus: 'NOT_LOADED',
+  // loadStatus: 'NOT_STARTED',
   numberOfImagesInThisPage: 0,
   numberOfImagesInThisPageLoaded: 0,
   cartPageImagesLoaded: false,
