@@ -264,6 +264,16 @@ export const SetProductAddedToCartToFalse = createAction(
 
 
 
+/** Delete Cart Data Action **/
+export const DeleteCartData = createAction(
+
+  // Tipo de la Action
+  '[Cart] Delete Cart Data',
+  
+);
+
+
+
 /** Dummy Action **/
 export const DummyAction = createAction(
 

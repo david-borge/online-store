@@ -367,4 +367,19 @@ export const cartReducer = createReducer(
 
 
 
+    /** Delete Cart Data Action **/
+    on(CartActions.DeleteCartData,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        cartData: [],
+        
+      })),
+
+
+
 );

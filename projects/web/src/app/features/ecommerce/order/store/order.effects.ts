@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { catchError, switchMap, tap, withLatestFrom } from 'rxjs/operators'
+import { catchError, map, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 import { of } from 'rxjs';
 
 import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as OrderActions from './order.actions';
+import * as CartActions from '../../cart/store/cart.actions';
 
 import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
 import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
@@ -228,10 +229,9 @@ export class OrderEffects {
             this.router.navigate(['/checkout/order-confirmation']);
 
         } ),
+        map(() => CartActions.DeleteCartData() ),
 
-    ),
-    { dispatch: false } // Importante: si es necesario, hay que poner esto para indicar que el stream termina aquí (el efecto no debe emitir ninguna acción adicional después de ejecutarse)
-    );
+    ));
 
 
 
