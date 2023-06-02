@@ -47,7 +47,15 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
       this.addressesReducerObservableSubscription = this.store.select( 'addressesReducerObservable' ).subscribe(
         addressReducerData => {
+
+          // processStatus
           this.processStatus = addressReducerData.addNewAddressStatus;
+
+          // bottomOverlayAddButtonText
+          if ( this.processStatus == 'STARTED' ) {
+            this.bottomOverlayAddButtonText = 'Adding...'
+          }
+
         }
       );
 
