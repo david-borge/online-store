@@ -29,6 +29,7 @@
 // Profile Information Container - Email
 .profile-information-container--email-container * {
     @include body-14px-regular;
+    overflow-wrap: anywhere; // Para que el texto del correo pase a la siguiente línea si es demasiado largo
 }
 
 // Profile Information Container - Button

@@ -52,20 +52,17 @@
                     
                     <!-- Profile Information Container - Button -->
                     <div class="profile-information-container--button-container">
-                        <button type="button" class="btn btn-outline-secondary btn-lg" (click)="onClickLogOutButton();">
 
-                            <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
+                        <!-- "Log Out" Button -->
+                        <app-btn-with-loading-spinner
+                            [btnWithLoadingSpinnerText] = "logOutButtonText"
+                            [btnWithLoadingSpinnerTextClasses] = "'text-nowrap'"
+                            [btnWithLoadingSpinnerClasses] = "'btn btn-outline-secondary btn-lg'"
+                            [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
+                            [btnWithLoadingSpinnerProcessStatus] = "logOutGlobalStatus"
+                            (onClickBtnWithLoadingSpinnerEventEmitter)="onClickLogOutButton();"
+                        ></app-btn-with-loading-spinner>
 
-                            </span> -->
-
-                            <span class="navigation-button-left--text">Log out</span>
-
-                            <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
-                                <!-- Icon: plus -->
-                                <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </span> -->
-
-                        </button>
                     </div>
 
                 </div>

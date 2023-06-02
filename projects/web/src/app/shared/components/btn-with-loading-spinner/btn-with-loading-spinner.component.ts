@@ -11,6 +11,7 @@ export class BtnWithLoadingSpinnerComponent {
 
   // Propiedades - Plantilla
   @Input() btnWithLoadingSpinnerText                 : string = '';
+  @Input() btnWithLoadingSpinnerTextClasses          : string = '';
   @Input() btnWithLoadingSpinnerClasses              : string = '';
   @Input() btnWithLoadingSpinnerSpinnerWidthAndHeight: number = 0;
   @Input() btnWithLoadingSpinnerProcessStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';

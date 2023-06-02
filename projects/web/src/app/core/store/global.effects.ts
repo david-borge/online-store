@@ -8,7 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { catchError, switchMap, withLatestFrom } from 'rxjs/operators'
+import { catchError, delay, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators'
 import { of } from 'rxjs';
 
 import * as GlobalActions from './global.actions';
@@ -455,12 +455,12 @@ export class GlobalEffects {
 
 
 
-    // Side Effect de la Log Out Action de Global
+    // Side Effect de la Log Out Start Action de Global
     logOutSideEffect = createEffect(() => this.actionsObservable.pipe(  // Cuidado: las Actions son Observables, pero no hace falta llamar a subscribe() al definir los Side Effects, eso lo hace NgRx automáticamente. Llamar solo a pipe().
 
         // ofType() es un Operator que nos permite decidir que tipos de Side Effects quiero ejecutar en este Observable stream.
         // Es decir, SÓLO ejecutar este Side Effect si la Action una de las definidas dentro de ofType().
-        ofType(GlobalActions.LogOut),
+        ofType(GlobalActions.LogOutStart),
 
         // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
         switchMap( (logOutActionData) => {
@@ -472,19 +472,42 @@ export class GlobalEffects {
             // console.log(logOutActionData);
 
             // Si estoy en el navegador (protección para SSR)
-            if (isPlatformBrowser(this.platformId)) {
+            if ( isPlatformBrowser(this.platformId) ) {
 
-                // Borrar cookies "authToken" y "authExpirationDate"
+                // Borrar cookies "authToken", "authExpirationDate" y "authEmail"
                 this.cookiesService.eliminarUnaCookie("authToken");
                 this.cookiesService.eliminarUnaCookie("authExpirationDate");
                 this.cookiesService.eliminarUnaCookie("authEmail");
 
             }
 
-            // Como siempre hay que devolver una Action, devuelvo una DummyAction
-            return of( GlobalActions.DummyAction() );
+            return of( GlobalActions.LogOutEndSuccess() );
+
+            // return of( GlobalActions.DummyAction() );
                 
         }),
+
+        // PRUEBA: esperar 2 segundos para ver el cambio en el "Log out" button
+        // OpenAI generated code
+        /* mergeMap(() =>
+        of(null).pipe(
+          tap(() => {
+            
+            // Si estoy en el navegador (protección para SSR)
+            if ( isPlatformBrowser(this.platformId) ) {
+
+                // Borrar cookies "authToken", "authExpirationDate" y "authEmail"
+                this.cookiesService.eliminarUnaCookie("authToken");
+                this.cookiesService.eliminarUnaCookie("authExpirationDate");
+                this.cookiesService.eliminarUnaCookie("authEmail");
+
+            }
+            
+          }),
+          delay(2000), // Delay the success action by 2 seconds
+          map(() => GlobalActions.LogOutEndSuccess() )
+        )
+      ) */
 
     ));
 

@@ -32,6 +32,7 @@ export interface GlobalReducerStateInterface {
     currentStep: number;
     totalNumberOfSteps: number;
   },
+  logOutGlobalStatus: ProcessStatusInterface['processStatus'];
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -56,6 +57,7 @@ const initialState: GlobalReducerStateInterface = {
     currentStep: 1,
     totalNumberOfSteps: 3,
   },
+  logOutGlobalStatus: 'NOT_STARTED',
 }
 
 
@@ -179,10 +181,23 @@ export const globalReducer = createReducer(
 
 
 
-    /** Log Out Action **/
-    // Log Out: borrar cookies "authToken", "authExpirationDate" y "authEmail" y borrar datos de la Global Store (loggedIn = false; user; activeOrders)
-    // Side Effects asociados: deleteCookieSideEffect
-    on(GlobalActions.LogOut,
+    /** Log Out Start Action **/
+    // Log Out Start: borrar cookies "authToken", "authExpirationDate" y "authEmail" y borrar datos de la Global Store (loggedIn = false; user; activeOrders)
+    // Side Effects asociados: logOutSideEffect
+    on(GlobalActions.LogOutStart,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        logOutGlobalStatus: 'STARTED',
+          
+      })),
+
+    /** |-> Log Out End Success Action **/
+    on(GlobalActions.LogOutEndSuccess,
       (state, action) => ({
 
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
@@ -193,9 +208,25 @@ export const globalReducer = createReducer(
         loggedIn: false,
         user: {} as UserInterface,
         activeOrders: [],
+        
+        logOutGlobalStatus: 'ENDED_SUCCESSFULLY',
+
+      })),
+
+    /** |-> Log Out End Failure Action **/
+    on(GlobalActions.LogOutEndFailure,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        logOutGlobalStatus: 'ENDED_FAILED',
           
       })),
 
+    
 
     /** Set Logged In To True Action **/
     /* on(GlobalActions.SetLoggedInToTrue,

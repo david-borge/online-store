@@ -180,7 +180,7 @@ export class AuthService {
   logOut() {
 
     // - Borrar cookies "authToken", "authExpirationDate" y "authEmail" y borrar datos de la Global Store (loggedIn = false; user; activeOrders)
-    this.store.dispatch( GlobalActions.LogOut() );
+    this.store.dispatch( GlobalActions.LogOutStart() );
 
     // - Borrar datos de la Order Store (currentOrderNumber; orderData; orderProducts; orderAddress; orderPaymentMethod)
     this.store.dispatch( OrderActions.LogOut() );

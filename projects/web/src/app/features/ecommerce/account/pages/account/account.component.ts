@@ -10,6 +10,7 @@ import { AuthService } from 'projects/web/src/app/core/services/auth/auth.servic
 
 import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
 import { ActiveOrderInterface } from 'projects/web/src/app/core/models/activeOrder.interface';
+import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
 
 
 @Component({
@@ -36,6 +37,8 @@ export class AccountComponent implements OnInit, OnDestroy {
   user: UserInterface = {} as UserInterface;
   activeOrders: ActiveOrderInterface[] = [];
   ordersTotals: number[] = [];
+  logOutButtonText: ('Log out' | 'Logging out...') = 'Log out';
+  logOutGlobalStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
 
 
   constructor(
@@ -65,6 +68,23 @@ export class AccountComponent implements OnInit, OnDestroy {
 
       // - activeOrders
       this.activeOrders = globalReducerData.activeOrders;
+
+      // - logOutGlobalStatus
+      this.logOutGlobalStatus = globalReducerData.logOutGlobalStatus;
+
+      // - logOutButtonText
+      if ( this.logOutGlobalStatus == 'STARTED' ) {
+
+        // Comprobacion
+        // console.log('Logging out...');
+
+        this.logOutButtonText = 'Logging out...';
+
+      } else {
+
+        this.logOutButtonText = 'Log out';
+        
+      }
 
     });
 

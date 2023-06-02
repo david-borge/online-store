@@ -6,7 +6,7 @@
 >
 
     <!-- Button text -->
-    <span>{{btnWithLoadingSpinnerText}}</span>
+    <span [class]="btnWithLoadingSpinnerTextClasses">{{btnWithLoadingSpinnerText}}</span>
     
     <!-- Button Loading Spinner -->
     <span class="btn-with-loading-spinner--loading-spinner" *ngIf="(btnWithLoadingSpinnerProcessStatus == 'STARTED')">
