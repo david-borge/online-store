@@ -66,7 +66,15 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
       
       this.paymentMethodsReducerObservableSubscription = this.store.select( 'paymentMethodsReducerObservable' ).subscribe(
         paymentMethodsReducerData => {
+
+          // processStatus
           this.processStatus = paymentMethodsReducerData.addNewCardStatus;
+          
+          // bottomOverlayAddButtonText
+          if ( this.processStatus == 'STARTED' ) {
+            this.bottomOverlayAddButtonText = 'Adding...'
+          }
+
         }
       );
 
