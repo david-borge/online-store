@@ -181,7 +181,7 @@ export const addressesReducer = createReducer(
             ...updatedAddresses,
             action.addNewAddresSuccessPayload,
           ],
-          addNewAddressStatus: 'ENDED_SUCCESSFULLY',
+          addNewAddressStatus: 'NOT_STARTED', // Reseteo el valor
         };
         
       }),
