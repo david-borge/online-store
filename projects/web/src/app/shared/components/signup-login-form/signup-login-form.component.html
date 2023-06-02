@@ -41,7 +41,15 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary w-100">{{( (authMode == 'SIGNUP') ? 'Sign Up' : 'Log In' )}}</button>
+    <!-- "Sign Up / Log In" button -->
+    <!-- <button type="submit" class="btn btn-primary w-100">{{signUpLogInButtonText}}</button> -->
+    <app-btn-with-loading-spinner
+        [btnWithLoadingSpinnerText] = "signUpLogInButtonText"
+        [btnWithLoadingSpinnerClasses] = "'btn btn-primary w-100'"
+        [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
+        [btnWithLoadingSpinnerProcessStatus] = "signUpLogInStatus"
+        (onClickBtnWithLoadingSpinnerEventEmitter)="onSubmit();"
+    ></app-btn-with-loading-spinner>
 
     <!-- "I want to Sign Up / Log In" button -->
     <button type="button" class="d-block mx-auto btn" style="margin-top: 35px;" (click)="onClickGoToLogInOrSignUp();">I want to {{( (authMode == 'SIGNUP') ? 'Log In' : 'Sign Up' )}}</button>

@@ -8,6 +8,7 @@ import * as GlobalActions from "./global.actions";  // Importar todo y guardarlo
 
 import { UserInterface } from "../models/user.interface";
 import { ActiveOrderInterface } from "../models/activeOrder.interface";
+import { ProcessStatusInterface } from "../models/processStatus.interface";
 
 
 
@@ -22,6 +23,7 @@ export interface GlobalReducerStateInterface {
   authTokenCookieValue: string | null; // El authToken cambia cada vez que se inicia y se cierra la sesión. Es único para cada usuario.
   authExpirationDateCookieValue: string | null;
   authMode: 'SIGNUP' | 'LOGIN';
+  signUpLogInStatus: ProcessStatusInterface['processStatus'];
   signUpLogInResult: string;
   user: UserInterface;
   activeOrders: ActiveOrderInterface[]; // Cada elemento es un objeto con: order.id, product.imageThumbnail, product.price, product.productQuantity
@@ -45,6 +47,7 @@ const initialState: GlobalReducerStateInterface = {
   authTokenCookieValue: null,
   authExpirationDateCookieValue: null,
   authMode: 'SIGNUP',
+  signUpLogInStatus: 'NOT_STARTED',
   signUpLogInResult: '',
   user: {} as UserInterface,
   activeOrders: [],
@@ -234,6 +237,8 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
+        signUpLogInStatus: 'STARTED',
+
       })),
 
 
@@ -246,6 +251,8 @@ export const globalReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
+
+        signUpLogInStatus: 'ENDED_FAILED',
 
         signUpLogInResult: action.signUpResultFailurePayload,
           
@@ -263,6 +270,8 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
+        signUpLogInStatus: 'STARTED',
+
       })),
 
 
@@ -278,6 +287,7 @@ export const globalReducer = createReducer(
         ...state,
 
         loggedIn: true,
+        signUpLogInStatus: 'ENDED_SUCCESSFULLY',
         signUpLogInResult: 'true',
         user: {
           firstName: action.firstNamePayload,
@@ -299,6 +309,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
+        signUpLogInStatus: 'ENDED_FAILED',
         signUpLogInResult: action.logInResultFailurePayload,
           
       })),

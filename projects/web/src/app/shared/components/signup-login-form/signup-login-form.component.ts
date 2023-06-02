@@ -10,6 +10,7 @@ import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreCom
 import * as GlobalActions from '../../../core/store/global.actions';
 
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { ProcessStatusInterface } from '../../../core/models/processStatus.interface';
 
 @Component({
   selector: 'app-signup-login-form',
@@ -27,7 +28,9 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   // Variables del formulario
   signUpForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
   showFirstAndLastNameFields: boolean = ( (this.authMode == 'SIGNUP') );
+  signUpLogInButtonText: string = '';
   signUpLogInResult: string = '';
+  signUpLogInStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
   
   constructor(
     private store: Store<fromApp.AppState>,
@@ -43,6 +46,29 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
       this.authMode = globalReducerData.authMode;
 
       this.showFirstAndLastNameFields = ( (this.authMode == 'SIGNUP') );
+
+      // - signUpLogInStatus
+      this.signUpLogInStatus = globalReducerData.signUpLogInStatus;
+
+      // signUpLogInButtonText
+      if ( this.signUpLogInStatus != 'STARTED' ) {
+
+        if ( this.authMode == 'SIGNUP' ) {
+          this.signUpLogInButtonText = 'Sign Up';
+        } else {
+          this.signUpLogInButtonText = 'Log In';
+        }
+        
+      } else {
+
+        if ( this.authMode == 'SIGNUP' ) {
+          this.signUpLogInButtonText = 'Signing up...';
+        } else {
+          this.signUpLogInButtonText = 'Logging in...';
+        }
+
+      }
+      
 
       this.signUpLogInResult = this.authService.authMessages(globalReducerData.signUpLogInResult);
 
