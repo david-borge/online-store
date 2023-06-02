@@ -8,6 +8,7 @@ import * as PaymentMethodsActions from "./payment-methods.actions";  // Importar
 
 import { GetPaymentMethodsPHPInterface } from "projects/web/src/app/core/models/getPaymentMethodsPHP.interface";
 import { PaymentMethodInterface } from "projects/web/src/app/core/models/paymentMethod.interface";
+import { ProcessStatusInterface } from "projects/web/src/app/core/models/processStatus.interface";
 
 
 
@@ -25,6 +26,7 @@ export interface PaymentMethodsReducerStateInterface {
     cardExpirationYear  : PaymentMethodInterface["cardExpirationYear"],
     cardType            : PaymentMethodInterface["cardType"],
   };
+  addNewCardStatus: ProcessStatusInterface['processStatus'];
   addNewCardErrorMessage: string;
 }
 
@@ -43,6 +45,7 @@ const initialState: PaymentMethodsReducerStateInterface = {
     cardExpirationYear  : '',
     cardType            : 'visa',
   },
+  addNewCardStatus: 'NOT_STARTED',
   addNewCardErrorMessage: '',
 }
 
@@ -106,6 +109,8 @@ export const paymentMethodsReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
+
+        addNewCardStatus: 'STARTED',
           
       })),
 
@@ -149,6 +154,7 @@ export const paymentMethodsReducer = createReducer(
               isDefault: 1,
             },
           ],
+          addNewCardStatus: 'ENDED_SUCCESSFULLY',
         };
         
       }),
@@ -161,7 +167,9 @@ export const paymentMethodsReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
-          
+        
+        addNewCardStatus: 'ENDED_FAILED',
+
         // Mensaje de error
         addNewCardErrorMessage: action.addNewCardErrorMessagePayload,
 

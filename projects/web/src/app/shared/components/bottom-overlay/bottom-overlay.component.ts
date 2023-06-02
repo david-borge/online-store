@@ -22,6 +22,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
   // Suscripciones a la Store
   addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
+  paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Propiedades - Bottom Overlay
   @Input() bottomOverlayTitle         : string  = '';
@@ -50,10 +51,18 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
         }
       );
 
-    }/*  else if ( this.bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD' ) {
-      
-    } */
+    }
     
+    // Add new card
+    else if ( this.bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD' ) {
+      
+      this.paymentMethodsReducerObservableSubscription = this.store.select( 'paymentMethodsReducerObservable' ).subscribe(
+        paymentMethodsReducerData => {
+          this.processStatus = paymentMethodsReducerData.addNewCardStatus;
+        }
+      );
+
+    }
 
   }
 
@@ -102,6 +111,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.addressesReducerObservableSubscription.unsubscribe();
+    this.paymentMethodsReducerObservableSubscription.unsubscribe();
   }
 
 }

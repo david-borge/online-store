@@ -1,11 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
+import { Subscription } from 'rxjs';
+
 import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-methods/store/payment-methods.actions';
+import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
 
 
 @Component({
@@ -13,7 +16,10 @@ import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-m
   templateUrl: './add-new-card-form.component.html',
   styleUrls: ['./add-new-card-form.component.scss']
 })
-export class AddNewCardFormComponent implements OnInit {
+export class AddNewCardFormComponent implements OnInit, OnDestroy {
+
+  // Suscripciones a la Store
+  paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Variables para la Template
   currentYear: number = new Date().getFullYear();
@@ -23,6 +29,7 @@ export class AddNewCardFormComponent implements OnInit {
   @ViewChild('addNewCardFormRef') addNewCardFormViewChild: NgForm = {} as NgForm;
   addNewCardResult: string = '';
   @ViewChild('cardPersonFullNameLocalReference', {static: true}) cardPersonFullNameLocalReferenceViewChild: ElementRef = {} as ElementRef;
+  addNewCardStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
 
   
   constructor(
@@ -33,6 +40,19 @@ export class AddNewCardFormComponent implements OnInit {
 
     // Pone el foco en el campo cardPersonFullName al carga el formulario
     this.cardPersonFullNameLocalReferenceViewChild.nativeElement.focus();
+
+    // - Leer la Payment Methods Store
+    this.paymentMethodsReducerObservableSubscription = this.store.select("paymentMethodsReducerObservable").subscribe( paymentMethodsReducerData => {
+
+      // addNewCardStatus
+      this.addNewCardStatus = paymentMethodsReducerData.addNewCardStatus;
+
+      // Disable the form inputs if the add new card process is being done
+      if ( this.addNewCardStatus == 'STARTED' ) {
+        this.addNewCardForm.disable();
+      }
+
+    });
 
     // - Add New Card Form
     this.addNewCardForm = new FormGroup({
@@ -92,5 +112,9 @@ export class AddNewCardFormComponent implements OnInit {
     // this.addNewCardForm.reset();
 
   } */
+
+  ngOnDestroy(): void {
+    this.paymentMethodsReducerObservableSubscription.unsubscribe();
+  }
 
 }
