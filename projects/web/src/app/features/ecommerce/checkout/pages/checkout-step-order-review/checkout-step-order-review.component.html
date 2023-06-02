@@ -124,7 +124,16 @@
     </div>
 
     <div class="pay-now-button-container">
-        <button type="button" class="btn btn-tertiary btn-lg w-100 btn-with-icon" (click)="onClickPayNowButton();">Pay now</button>
+
+        <app-btn-with-loading-spinner
+            [btnWithLoadingSpinnerText] = "payNowButtonText"
+            [btnWithLoadingSpinnerTextClasses] = "'text-nowrap'"
+            [btnWithLoadingSpinnerClasses] = "'btn btn-tertiary btn-lg w-100 btn-with-icon'"
+            [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
+            [btnWithLoadingSpinnerProcessStatus] = "saveOrderStatus"
+            (onClickBtnWithLoadingSpinnerEventEmitter)="onClickPayNowButton();"
+        ></app-btn-with-loading-spinner>
+
     </div>
 
 </div>

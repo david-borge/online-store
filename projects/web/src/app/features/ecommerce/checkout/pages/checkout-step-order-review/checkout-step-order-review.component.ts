@@ -9,6 +9,7 @@ import * as OrderActions from '../../../order/store/order.actions';
 
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
+import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
 
 @Component({
   selector: 'app-checkout-step-order-review',
@@ -31,6 +32,8 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
   orderAddress       : GetOrderDataPHPInterface['orderAddress']       = {} as GetOrderDataPHPInterface['orderAddress'];
   orderPaymentMethod : GetOrderDataPHPInterface['orderPaymentMethod'] = {} as GetOrderDataPHPInterface['orderPaymentMethod'];
   orderTotal         : number = 0;
+  payNowButtonText   : string = 'Pay now';
+  saveOrderStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
 
 
   constructor(
@@ -44,7 +47,11 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
       
       this.currentOrderNumber = orderReducerData.currentOrderNumber;
       this.orderData          = orderReducerData.orderData;
-      
+      this.saveOrderStatus    = orderReducerData.saveOrderStatus;
+
+      if ( this.saveOrderStatus == 'STARTED' ) {
+        this.payNowButtonText = 'Paying...'
+      }
       
     });
 

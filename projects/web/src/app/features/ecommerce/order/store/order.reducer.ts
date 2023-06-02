@@ -7,6 +7,7 @@ import { createReducer, on } from "@ngrx/store";
 import * as OrderActions from "./order.actions";  // Importar todo y guardarlo en el alias OrderActions
 
 import { GetOrderDataPHPInterface } from "projects/web/src/app/core/models/getOrderDataPHP.interface";
+import { ProcessStatusInterface } from "projects/web/src/app/core/models/processStatus.interface";
 
 
 
@@ -19,6 +20,7 @@ export interface OrderReducerStateInterface {
   orderAddress       : GetOrderDataPHPInterface["orderAddress"];
   orderPaymentMethod : GetOrderDataPHPInterface["orderPaymentMethod"];
   // orderTotal         : number;
+  saveOrderStatus: ProcessStatusInterface['processStatus'];
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -32,6 +34,7 @@ const initialState: OrderReducerStateInterface = {
   orderAddress       : {} as GetOrderDataPHPInterface["orderAddress"],
   orderPaymentMethod : {} as GetOrderDataPHPInterface["orderPaymentMethod"],
   // orderTotal         : 0,
+  saveOrderStatus: 'NOT_STARTED',
 }
 
 
@@ -113,6 +116,8 @@ export const orderReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
+
+        saveOrderStatus: 'STARTED',
           
       })),
 
@@ -125,6 +130,8 @@ export const orderReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
         
+        saveOrderStatus: 'ENDED_SUCCESSFULLY',
+
       })),
 
     /** |-> Save Order End Failure Action **/
@@ -135,6 +142,8 @@ export const orderReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
+
+        saveOrderStatus: 'NOT_STARTED', // Reseteo el valor
           
       })),
 

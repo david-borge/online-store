@@ -31,6 +31,7 @@
 }
 
 
+
 // Navigation Button Icon
 .btn-with-loading-spinner .navigation-button-icon {
     margin-left: 8px;
@@ -44,4 +45,13 @@
 
 .btn-with-loading-spinner .navigation-button-icon-right {
     margin-left: 8px;
+}
+
+
+
+// .btn-tertiary
+.btn-tertiary:disabled {
+    background-color: var(--Y300);
+    border-color: var(--Y300);
+    color: var(--N800);
 }
