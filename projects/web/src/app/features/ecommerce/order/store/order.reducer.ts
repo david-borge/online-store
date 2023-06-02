@@ -130,7 +130,7 @@ export const orderReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
         
-        saveOrderStatus: 'ENDED_SUCCESSFULLY',
+        saveOrderStatus: 'NOT_STARTED', // Reseteo el valor
 
       })),
 

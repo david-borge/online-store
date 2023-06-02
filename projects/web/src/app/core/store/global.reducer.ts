@@ -209,7 +209,7 @@ export const globalReducer = createReducer(
         user: {} as UserInterface,
         activeOrders: [],
         
-        logOutGlobalStatus: 'ENDED_SUCCESSFULLY',
+        logOutGlobalStatus: 'NOT_STARTED', // Reseteo el valor
 
       })),
 
@@ -318,7 +318,7 @@ export const globalReducer = createReducer(
         ...state,
 
         loggedIn: true,
-        signUpLogInStatus: 'ENDED_SUCCESSFULLY',
+        signUpLogInStatus: 'NOT_STARTED', // Reseteo el valor
         signUpLogInResult: 'true',
         user: {
           firstName: action.firstNamePayload,
