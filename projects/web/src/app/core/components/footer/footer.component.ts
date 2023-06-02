@@ -13,7 +13,7 @@ import * as CartActions from '../../../features/ecommerce/cart/store/cart.action
 import { PreFetchService } from '../../services/prefetch/prefetch.service';
 import { RoutingService } from '../../services/routing/routing.service';
 import { ProductInterface } from '../../models/product.interface';
-import { CartInterface } from '../../models/cart.interface';
+import { ProcessStatusInterface } from '../../models/processStatus.interface';
 
 
 
@@ -37,7 +37,7 @@ export class FooterComponent implements OnInit, OnChanges {
   // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
   @Input() navigationButtonRightText              :string  = '';
   @Input() navigationButtonRightURL               :string  = '';
-  @Input() navigationButtonRightClasses           :string  = 'btn-primary btn-lg';
+  @Input() navigationButtonRightClasses           :string  = 'btn btn-primary btn-lg';
   @Input() navigationShowButtonRightRightIcon     :boolean = false;
   @Input() navigationShowButtonRightRightIconType :string = 'check';
 
@@ -45,7 +45,7 @@ export class FooterComponent implements OnInit, OnChanges {
   activeNavigationItem: string | null = '';
   lastActiveMainPage: string | null = '';
 
-  productAddedToCart: boolean = false;
+  processStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
 
 
   constructor(
@@ -69,7 +69,7 @@ export class FooterComponent implements OnInit, OnChanges {
 
     this.store.select('cartReducerObservable').subscribe( (cartReducerData) => {
       
-      // Si esto en el CarRouterModule.t, leer de la Cart Store el número de productos en el carrito
+      // Si estoy en el CarRouterModule.t, leer de la Cart Store el número de productos en el carrito
       if ( this.currentURL.includes('/cart') ) {
 
         this.numberOfProductsInCart = cartReducerData.cartData.length;
@@ -88,7 +88,7 @@ export class FooterComponent implements OnInit, OnChanges {
 
       }
 
-      this.productAddedToCart = cartReducerData.productAddedToCart;
+      this.processStatus = cartReducerData.addProductToCartStatus;
 
     });
 
@@ -289,23 +289,7 @@ export class FooterComponent implements OnInit, OnChanges {
     if ( this.currentURL.includes('/product/') ) {
       this.navigationShowCtasAndCopy = (this.navigationCopyPrice != 0); // Solo mostrar .navigation-ctas-and-copy-container si ya se ha cargado el precio del producto
     }
-
-
-
-    // - Product page: volver a poner productAddedToCart de la Cart Store a false al cabo de unos milisegundos
-    if (this.productAddedToCart) {
-      
-      setTimeout(() => {
-
-        // Comprobacion
-        // console.log('Set timeout!');
-        
-        this.store.dispatch( CartActions.SetProductAddedToCartToFalse() );
-        
-      }, 1500);
-      
-    }
-
+    
   }
 
   

@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 
 import { Subscription } from 'rxjs';
 
@@ -10,6 +10,7 @@ import * as CartActions from '../../../cart/store/cart.actions';
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
+import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   currentProductSlug: string = '';
   currentProduct = {} as ProductInterface;
   footerNavigationButtonRightText: string = 'Add to cart';
-  productAddedToCart: boolean = false;
+  addProductToCartStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
 
   // Pre-load images of other pages
   imagesInThisPageLoaded: boolean = false;
@@ -42,6 +43,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   
   // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
   currentlyInThePageIEnteredFrom: boolean = false;
+
+  resetAddProductToCartStatusProperty: boolean = false;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -132,16 +135,27 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 
     // Cart Store
-    this.cartReducerObservableSubscription = this.store.select('cartReducerObservable').subscribe(
-      cartReducerData => {
+    this.cartReducerObservableSubscription = this.store.select('cartReducerObservable')
+    .subscribe(
+      cartReducerObservable => {
 
         // If product is done being added to cart, change the .navigation-button-right-container button text
-        this.productAddedToCart = cartReducerData.productAddedToCart;
-        if ( this.productAddedToCart ) {
+        this.addProductToCartStatus = cartReducerObservable.addProductToCartStatus;
+        if ( this.addProductToCartStatus == 'ENDED_SUCCESSFULLY' ) {
+
           this.footerNavigationButtonRightText = 'Added!';
-        } else {
-          // Nota: volver a poner productAddedToCart de la Cart Store a false al cabo de unos milisegundos -> ver: footer.component.ts -> setTimeout
-          this.footerNavigationButtonRightText = 'Add to cart';
+
+          // Al cabo de 1500 milisegundos
+          setTimeout(() => {
+            
+            // Volver a poner el texto del botón a 'Add to cart'
+            this.footerNavigationButtonRightText = 'Add to cart';
+
+            // Resetear la propiedad por si el usuario vuelve a pulsar "Add to cart" una segunda vez (en el mismo producto o en otro)
+            this.store.dispatch( CartActions.ResetAddProductToCartStatusProperty() );
+
+          }, 1500);
+
         }
 
       }

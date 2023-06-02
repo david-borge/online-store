@@ -233,6 +233,14 @@ export const AddProductToCartEndFailure = createAction(
 
 );
 
+/** |-> Reset Add Product To Cart Status Property Action **/
+export const ResetAddProductToCartStatusProperty = createAction(
+
+  // Tipo de la Action
+  '[Cart] Reset Add Product To Cart Status Property',
+
+);
+
 
 
 /** Log Out Action **/

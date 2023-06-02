@@ -9,6 +9,7 @@ import * as CartActions from "./cart.actions";  // Importar todo y guardarlo en 
 import { GetCartDataPHPInterface } from "projects/web/src/app/core/models/GetCartDataPHP.interface";
 import { ProductInterface } from "projects/web/src/app/core/models/product.interface";
 import { CartInterface } from "projects/web/src/app/core/models/cart.interface";
+import { ProcessStatusInterface } from "projects/web/src/app/core/models/processStatus.interface";
 
 
 
@@ -24,7 +25,7 @@ export interface CartReducerStateInterface {
   updateProductQuantityErrorMessage: string;
   newProductSlug: ProductInterface["id"];
   newProductQuantity: CartInterface["productQuantity"];
-  productAddedToCart: boolean;
+  addProductToCartStatus: ProcessStatusInterface['processStatus'];
 }
 
 // Reducer State (inicial) - Valores iniciales
@@ -62,7 +63,7 @@ const initialState: CartReducerStateInterface = {
   updateProductQuantityErrorMessage: '',
   newProductSlug: 0,
   newProductQuantity: 0,
-  productAddedToCart: false,
+  addProductToCartStatus: 'NOT_STARTED',
 }
 
 
@@ -290,7 +291,7 @@ export const cartReducer = createReducer(
 
     
     /** Add Product To Cart Start Action **/
-    // Side Effects asociados: addProductToCartSideEffect (borrar la fila de la tabla cart con el productId y userId correspondiente de la base de datos mediante un HTTP Request)
+    // Side Effects asociados: addProductToCartStartSideEffect (borrar la fila de la tabla cart con el productId y userId correspondiente de la base de datos mediante un HTTP Request)
     on(CartActions.AddProductToCartStart,
       (state, action) => ({
 
@@ -298,7 +299,7 @@ export const cartReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
-          
+
       })),
 
     /** |-> Add Product To Cart End Success Action **/
@@ -309,7 +310,7 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        productAddedToCart: true,
+        addProductToCartStatus: 'ENDED_SUCCESSFULLY',
 
       })),
 
@@ -321,10 +322,25 @@ export const cartReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
-          
+        
+        addProductToCartStatus: 'ENDED_FAILED',
+
         // Mensaje de error
         addProductToCartErrorMessagePayload: action.addProductToCartErrorMessagePayload,
 
+      })),
+
+    /** |-> Reset Add Product To Cart Status Property Action **/
+    on(CartActions.ResetAddProductToCartStatusProperty,
+      (state, action) => ({
+
+        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
+
+        // Copiamos el App State (inicial) (en todas las propiedades de state)
+        ...state,
+
+        addProductToCartStatus: 'NOT_STARTED', // Resetear la propiedad por si el usuario vuelve a pulsar "Add to cart" una segunda vez (en el mismo producto o en otro)
+        
       })),
 
 
@@ -349,19 +365,4 @@ export const cartReducer = createReducer(
 
 
 
-    /** Set Product Added To Cart To False Action **/
-    on(CartActions.SetProductAddedToCartToFalse,
-      (state, action) => ({
-
-        // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
-
-        // Copiamos el App State (inicial) (en todas las propiedades de state)
-        ...state,
-
-        productAddedToCart: false,
-        
-      })),
-
-
-      
 );
