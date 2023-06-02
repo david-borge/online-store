@@ -10,6 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from "./pages/product/product.component";
 import { ProductDetailComponent } from "./components/product-detail/product-detail.component";
 
+import { ProductGuard } from "../../../core/guards/product/product.guard";
+
 const productRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
    
@@ -23,6 +25,7 @@ const productRoutes: Routes = [
     {
         path: '', // 'product'
         component: ProductComponent,
+        canDeactivate: [ProductGuard],
         children: [
             {
                 path: '',
