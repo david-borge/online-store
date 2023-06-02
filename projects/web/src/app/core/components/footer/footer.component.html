@@ -9,23 +9,6 @@
 
         <div class="navigation-ctas-and-copy container">
 
-            <!-- (No usado) Navigation Button Left -->
-            <!-- <div class="navigation-button-left-container d-none">
-                <button type="button" class="btn btn-outline-secondary btn-lg"> -->
-
-                    <!-- <span class="navigation-button-icon navigation-button-icon-left navigation-button-left--left-icon">
-
-                    </span> -->
-
-                    <!-- <span class="navigation-button-left--text">Cancel</span>
-
-                    <span class="navigation-button-icon navigation-button-icon-right navigation-button-left--right-icon"> -->
-                        <!-- <svg class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-
-                </button>
-            </div> -->
-
             <!-- Navigation Copy -->
             <div class="navigation-copy" *ngIf="navigationShowCopy && (numberOfProductsInCart > 0)">
                 <div class="navigation-copy-label">{{navigationCopyLabel}}</div>
@@ -41,27 +24,10 @@
                     [btnWithLoadingSpinnerClasses] = "navigationButtonRightClasses"
                     [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
                     [btnWithLoadingSpinnerProcessStatus] = "processStatus"
+                    [navigationShowButtonRightRightIcon]     = "navigationShowButtonRightRightIcon"
+                    [navigationShowButtonRightRightIconType] = "navigationShowButtonRightRightIconType"
                     (onClickBtnWithLoadingSpinnerEventEmitter)="onCLickNavigationButtonRight();"
                 ></app-btn-with-loading-spinner>
-
-                <!-- <button type="button" class="btn {{navigationButtonRightClasses}}" (click)="onCLickNavigationButtonRight();"> -->
-
-                    <!-- <span class="navigation-button-icon navigation-button-icon-right navigation-button-right--left-icon">
-
-                    </span> -->
-
-                    <!-- <span class="navigation-button-right--text">{{navigationButtonRightText}}</span>
-                    <span class="navigation-button-icon navigation-button-icon-right navigation-button-right--right-icon" *ngIf="navigationShowButtonRightRightIcon"> -->
-
-                        <!-- Icon: check -->
-                        <!-- <svg *ngIf="(navigationShowButtonRightRightIconType == 'check')" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.1666 5L7.99998 14.1667L3.83331 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> -->
-
-                        <!-- Icon: plus -->
-                        <!-- <svg *ngIf="(navigationShowButtonRightRightIconType == 'plus')" class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
-                    </span>
-
-                </button> -->
 
             </div>
             

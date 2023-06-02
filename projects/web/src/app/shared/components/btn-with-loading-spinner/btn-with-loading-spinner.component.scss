@@ -1,7 +1,16 @@
 // Button with loading spinner
 .btn-with-loading-spinner {
     position: relative;
+
     width: 100%;
+    height: 100%;
+
+    white-space: nowrap;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -19,4 +28,20 @@
 // Button with loading spinner - Process started
 .btn-with-loading-spinner--process-started {
     padding-right: 38px;
+}
+
+
+// Navigation Button Icon
+.btn-with-loading-spinner .navigation-button-icon {
+    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-with-loading-spinner .navigation-button-icon-left {
+    margin-right: 8px;
+}
+
+.btn-with-loading-spinner .navigation-button-icon-right {
+    margin-left: 8px;
 }

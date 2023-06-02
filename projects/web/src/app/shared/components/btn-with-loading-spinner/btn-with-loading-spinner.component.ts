@@ -17,6 +17,8 @@ export class BtnWithLoadingSpinnerComponent {
   @Input() btnWithLoadingSpinnerClasses              : string = '';
   @Input() btnWithLoadingSpinnerSpinnerWidthAndHeight: number = 0;
   @Input() btnWithLoadingSpinnerProcessStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+  @Input() navigationShowButtonRightRightIcon     :boolean = false;
+  @Input() navigationShowButtonRightRightIconType :string = 'check';
 
   // Propiedades - Eventos
   @Output() onClickBtnWithLoadingSpinnerEventEmitter = new EventEmitter<void>();  // IMPORTANTE: si tipoDeEventDataONombreQueYoQuiera es un objeto (como {serverName: string, serverContent: string}) el nombre que de las propiedades del objeto aquí debe ser el mismo en el componente en el que recojo el evento emitido.
