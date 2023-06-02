@@ -68,6 +68,11 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
         }
 
       }
+
+      // Disable the form inputs if the signing up or logging in process is being done
+      if ( this.signUpLogInStatus == 'STARTED' ) {
+        this.signUpForm.disable();
+      }
       
 
       this.signUpLogInResult = this.authService.authMessages(globalReducerData.signUpLogInResult);
