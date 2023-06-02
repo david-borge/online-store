@@ -154,7 +154,7 @@ export const paymentMethodsReducer = createReducer(
               isDefault: 1,
             },
           ],
-          addNewCardStatus: 'ENDED_SUCCESSFULLY',
+          addNewCardStatus: 'NOT_STARTED', // Reseteo el valor
         };
         
       }),
