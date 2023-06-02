@@ -1,5 +1,7 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { ProcessStatusInterface } from '../../../core/models/processStatus.interface';
 
 @Component({
@@ -22,6 +24,20 @@ export class BtnWithLoadingSpinnerComponent {
   // Propiedades - Propiedades CSS de <app-btn-with-loading-spinner>
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.width') width = '100%';
+
+  currentURL: string = '';
+
+
+  constructor(
+    private router: Router,
+  ) {}
+
+  ngOnInit() {
+    
+    // - Leer en qué URL estoy
+    this.currentURL = this.router.url;
+
+  }
 
   onClickBtnWithLoadingSpinner() {
     this.onClickBtnWithLoadingSpinnerEventEmitter.emit();

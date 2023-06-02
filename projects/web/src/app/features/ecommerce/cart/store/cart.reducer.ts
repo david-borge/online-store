@@ -300,6 +300,8 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
+        addProductToCartStatus: 'STARTED',
+
       })),
 
     /** |-> Add Product To Cart End Success Action **/

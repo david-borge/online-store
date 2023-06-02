@@ -156,6 +156,10 @@ export class ProductComponent implements OnInit, OnDestroy {
 
           }, 1500);
 
+        } else if( this.addProductToCartStatus == 'STARTED' ) {
+
+          this.footerNavigationButtonRightText = 'Adding...';
+
         }
 
       }
