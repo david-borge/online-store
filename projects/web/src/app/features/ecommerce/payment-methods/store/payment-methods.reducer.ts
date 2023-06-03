@@ -140,8 +140,7 @@ export const paymentMethodsReducer = createReducer(
         return {
           ...state,
           paymentMethods: [
-            ...updatedPaymentMethods,
-            {
+            { // Pongo esto primero para que sea el primer elemento del array y se muestre arriba del todo
               id: action.newCardId,
               userId: 0, // Da igual, es solo para la Store
               type: action.newCardPayload.type,
@@ -153,6 +152,7 @@ export const paymentMethodsReducer = createReducer(
               cardType: action.newCardPayload.cardType,
               isDefault: 1,
             },
+            ...updatedPaymentMethods,
           ],
           addNewCardStatus: 'NOT_STARTED', // Reseteo el valor
         };
