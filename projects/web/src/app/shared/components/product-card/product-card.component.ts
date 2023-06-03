@@ -29,6 +29,7 @@ export class ProductCardComponent implements OnInit {
   @Input() orderTotal          : number = 0;
   @Input() orderArrivalDate    : string = '';
   orderArrivalDateFormated     : string = '';
+  orderIsActive                : boolean = false;
 
 
   constructor(
@@ -72,6 +73,12 @@ export class ProductCardComponent implements OnInit {
         this.orderArrivalDateFormated = 'tomorrow';
       }
 
+    }
+
+    // Order arrival date: check if it is active
+    // CUIDADO: no puedo usar la columna active porque no tengo un sistema en el que ese valor cambie a 1 cuando el paquete ha sido entregado
+    if ( new Date(this.orderArrivalDate) > new Date() ) {
+      this.orderIsActive = true;
     }
 
   }

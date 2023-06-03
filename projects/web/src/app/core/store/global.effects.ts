@@ -355,7 +355,7 @@ export class GlobalEffects {
                                     lastNamePayload: logInHttpRequestResponseData.lastName,
                                     emailPayload: logInStartActionData.emailPayload,
                                     tokenPayload: logInStartActionData.tokenPayload,
-                                    dataForActiveOrdersPayload: logInHttpRequestResponseData.orders,
+                                    dataForActiveOrdersPayload: logInHttpRequestResponseData.orders.filter((order:any) => new Date(order.deliveryFullDate) > new Date()), // Filtrar todas las Orders y devolver solo las activas. CUIDADO: no puedo usar la columna active porque no tengo un sistema en el que ese valor cambie a 1 cuando el paquete ha sido entregado
                                 }), // loggedIn a true y crear cookies "authToken" y "authExpirationDate"
     
                             );

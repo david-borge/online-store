@@ -46,7 +46,7 @@
             <div class="product-or-order-card-price">{{ ( (orderTotal != 0) ? orderTotal : product.price ) | currency:'EUR':'symbol':'1.2-2' }}</div>
 
             <!-- Order Arrival Date -->
-            <div class="order-arrival-date" *ngIf="(productCardTypeClass == 'product-card-order')">Arriving {{ ( (orderArrivalDateFormated != '') ? orderArrivalDateFormated :  ( orderArrivalDate | date:'d MMM' ) ) }}</div>
+            <div class="order-arrival-date" [ngClass]="{'order-active': orderIsActive}" *ngIf="(productCardTypeClass == 'product-card-order')">{{ ( orderIsActive ? 'Arriving' : 'Arrived' ) + ' ' + ( (orderArrivalDateFormated != '') ? orderArrivalDateFormated :  ( orderArrivalDate | date:'d MMM' ) ) }}</div>
 
         </div>
 

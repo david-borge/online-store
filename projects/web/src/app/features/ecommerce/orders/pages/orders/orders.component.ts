@@ -55,7 +55,8 @@ export class OrdersComponent implements OnInit {
           order => {
 
             // Active Orders
-            if ( order.active == 1 ) {
+            // CUIDADO: no puedo usar la columna active porque no tengo un sistema en el que ese valor cambie a 1 cuando el paquete ha sido entregado
+            if ( new Date(order.deliveryFullDate) > new Date() ) {
               this.activeOrders.push(order);
             }
             
