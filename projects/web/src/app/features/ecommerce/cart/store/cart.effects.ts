@@ -317,9 +317,18 @@ export class CartEffects {
             // Si el usuario NO ha iniciado sesión, creo un authToken nuevo
             let authToken = this.cookiesService.leerUnaCookie("authToken");
             if ( authToken == '' ) {
+
+                // Creo un authToken nuevo
                 this.authService.generateAuthTokenCookie( this.authService.generateToken() ); // Token de autentificación aleatorio y guardarlo en la cookie authToken
                 this.authService.generateAuthExpirationDateCookie(); // Generar cookie authExpirationDate
+                
+                // Leo el nuevo tooken
+                authToken = this.cookiesService.leerUnaCookie("authToken");
+
             }
+
+            // Comprobacion
+            // console.log('addProductToCartStartSideEffect > authToken: ' + authToken);
 
         
             // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
