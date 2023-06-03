@@ -28,9 +28,9 @@ export class CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard 
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
+    // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/home'
     if ( !this.authService.checkIfUserIsLoggedIn() ) {
-      this.router.navigate(['/checkout/signup-login']);
+      this.router.navigate(['/home']);
     }
     
     return true;
