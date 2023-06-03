@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
@@ -32,6 +32,7 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
   addNewAddressResult: string = '';
   @ViewChild('addressLocalReference', {static: true}) addressLocalReferenceViewChild: ElementRef = {} as ElementRef;
   addNewAddressStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+  @Output() isAddNewAddressFormValidEventEmitter = new EventEmitter<FormControlStatus>();
 
   
   constructor(
@@ -87,6 +88,11 @@ export class AddNewAddressFormComponent implements OnInit,OnDestroy {
         // console.log('statusChanges (VALID | INVALID | PENDING): ' + statusChanges);
         // console.log('newAddressCountryNamePayload: ' + this.countries.find(country => country.id === +this.addNewAddressForm.get('countryId')?.value)?.name ); // CUIDADO: hay que añadir el + delante de this.addNewAddressForm para convertir el string a número si uso el operador ===
 
+        
+        // Enviar el estado del formulario a BottomOverlayComponent para poder desactivar el botón "Add card" apropiadamente
+        this.isAddNewAddressFormValidEventEmitter.emit( statusChanges );
+
+        // Si el formulario es válido, guardar los valores de los campos en la Addreses Store
         if ( statusChanges === 'VALID') {
           
           // Comprobación

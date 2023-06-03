@@ -129,7 +129,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
   }
 
-  checkIsAddNewCardFormValid(eventData: FormControlStatus) {
+  checkIsAddNewAddressOrCardFormValid(eventData: FormControlStatus) {
 
     // Comprobacion
     // console.log('eventData: ' + eventData);
