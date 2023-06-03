@@ -22,12 +22,6 @@ export const GetPaymentMethodsStart = createAction(
   // Tipo de la Action
   '[PaymentMethods] Get PaymentMethods Start',
 
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    userEmailPayload: string,
-  }>(),
-
 );
 
 /** |-> Get PaymentMethods End Success Action **/

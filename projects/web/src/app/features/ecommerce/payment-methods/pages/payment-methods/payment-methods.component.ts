@@ -50,9 +50,7 @@ export class PaymentMethodsComponent {
     );
 
     // Recuperar los datos de la Order de la Base de Datos y guardarlos en la Store
-    this.store.dispatch( PaymentMethodsActions.GetPaymentMethodsStart({
-      userEmailPayload: userEmail,
-    }) );
+    this.store.dispatch( PaymentMethodsActions.GetPaymentMethodsStart() );
 
     // Leer los datos de la Order de la Store para mostrarlos en la Template
     this.paymentMethodsReducerObservableSubscription = this.store.select('paymentMethodsReducerObservable').subscribe(

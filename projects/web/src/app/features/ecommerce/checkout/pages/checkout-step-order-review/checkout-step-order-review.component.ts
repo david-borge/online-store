@@ -6,6 +6,9 @@ import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 import * as OrderActions from '../../../order/store/order.actions';
+import * as CartActions from '../../../cart/store/cart.actions';
+import * as AddressesActions from '../../../addresses/store/addresses.actions';
+import * as PaymentMethodsActions from '../../../payment-methods/store/payment-methods.actions';
 
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
@@ -97,6 +100,21 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
       }
       
     });
+
+    // Cargar cartData desde la Base de Datos si no están en la Cart Store (ocurre si el usuario recarga la página desde esta página)
+    if ( this.orderProducts.length == 0 ) {
+      this.store.dispatch( CartActions.GetCartDataStart() );
+    }
+
+    // Cargar la address desde la Base de Datos si no están en la Address Store (ocurre si el usuario recarga la página desde esta página)
+    if ( Object.keys( this.orderAddress ).length === 0 ) { // Comprobar si el objeto está vacío
+      this.store.dispatch( AddressesActions.GetAddressesStart() );
+    }
+
+    // Cargar el payment method desde la Base de Datos si no están en la Payment Methods Store (ocurre si el usuario recarga la página desde esta página)
+    if ( Object.keys( this.orderPaymentMethod ).length === 0 ) { // Comprobar si el objeto está vacío
+      this.store.dispatch( PaymentMethodsActions.GetPaymentMethodsStart() );
+    }
 
   }
 

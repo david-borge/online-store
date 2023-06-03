@@ -23,12 +23,6 @@ export const GetAddressesStart = createAction(
   // Tipo de la Action
   '[Addresses] Get Addresses Start',
 
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    userEmailPayload: string,
-  }>(),
-
 );
 
 /** |-> Get Addresses End Success Action **/
