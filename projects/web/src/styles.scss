@@ -730,6 +730,16 @@ $body-color: var(--N800);
     background-color: white;
 }
 
+// Inputs - Invalid
+.invalid-input-or-select {
+    border-color: var(--R500);
+}
+
+// Form - Error message
+.error-message {
+    color: var(--R500);
+}
+
 
 
 
@@ -1035,4 +1045,11 @@ svg-icon {
 // .btn-show-change-when-disabled
 .btn-show-change-when-disabled:disabled {
     opacity: .6;
+}
+
+
+
+// Texto
+.text-justify {
+    text-align: justify;
 }

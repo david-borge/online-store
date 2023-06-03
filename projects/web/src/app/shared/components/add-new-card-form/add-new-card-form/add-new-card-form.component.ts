@@ -62,11 +62,11 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
           - Clases ng-valid y ng-invalid en el control
           - Objeto JS del form: addNewCardForm.controls.name_o_ruta_del_control.errors. En addNewCardForm.errors no aparece.
       */
-      'cardPersonFullName'  : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-      'cardNumber'          : new FormControl(null, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-      'cardExpirationMonth' : new FormControl(1, [Validators.required]),  // Por defecto, selecciono el primer mes (enero)
-      'cardExpirationYear'  : new FormControl(this.currentYear, [Validators.required]),  // null si quiero que el campo esté vacío inicialmente
-    });
+      cardPersonFullName: new FormControl(null, Validators.required), // null si quiero que el campo esté vacío inicialmente
+      cardNumber: new FormControl(null, Validators.required), // null si quiero que el campo esté vacío inicialmente
+      cardExpirationMonth: new FormControl(1, Validators.required),  // Por defecto, selecciono el primer mes (enero)
+      cardExpirationYear: new FormControl(this.currentYear, Validators.required),
+    }, { validators: this.cardExpirationDateValidator() });
 
     // - Status Observable: guardar los valores de los campos en la Addreses Store (si se ha rellenado el formulario completo y correctamente)
     this.addNewCardForm.statusChanges.subscribe(
@@ -115,6 +115,40 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.paymentMethodsReducerObservableSubscription.unsubscribe();
+  }
+
+  // Card Expiration Date Validator: the introduced date is greater or equal than the current one
+  // OpenAI Generated Code
+  cardExpirationDateValidator(): any {
+    return (formGroup: FormGroup): { [key: string]: any } | null => {
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth() + 1; // Adding 1 since months are zero-based
+      const currentYear = currentDate.getFullYear();
+  
+      const expirationMonthControl = formGroup.get('cardExpirationMonth');
+      const expirationYearControl = formGroup.get('cardExpirationYear');
+  
+      if (!expirationMonthControl || !expirationYearControl) {
+        return null; // Skip validation if the controls are not present
+      }
+  
+      const expirationMonth = +expirationMonthControl.value + 1; // Convert to number. Sumar 1 porque en cardExpirationMonth cuento los meses desde 1, no desde 0
+      const expirationYear = +expirationYearControl.value; // Convert to number
+  
+      // Convert the selected month and year to a JavaScript Date object
+      const selectedDate = new Date(expirationYear, expirationMonth - 1);
+  
+      // Check if the selected date is greater than or equal to the current date
+      if (selectedDate < currentDate) {
+        expirationMonthControl.setErrors({ futureDate: true });
+        expirationYearControl.setErrors({ futureDate: true });
+        return { futureDate: true };
+      }
+  
+      expirationMonthControl.setErrors(null);
+      expirationYearControl.setErrors(null);
+      return null;
+    };
   }
 
 }
