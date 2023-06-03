@@ -22,6 +22,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
   paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
   // Variables para la Template
+  currentMonth: number = new Date().getMonth() + 1;
   currentYear: number = new Date().getFullYear();
 
   // Variables del formulario
@@ -64,8 +65,8 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
       */
       cardPersonFullName: new FormControl(null, Validators.required), // null si quiero que el campo esté vacío inicialmente
       cardNumber: new FormControl(null, Validators.required), // null si quiero que el campo esté vacío inicialmente
-      cardExpirationMonth: new FormControl(1, Validators.required),  // Por defecto, selecciono el primer mes (enero)
-      cardExpirationYear: new FormControl(this.currentYear, Validators.required),
+      cardExpirationMonth: new FormControl(this.currentMonth, Validators.required),  // Por defecto, selecciono el mes actual
+      cardExpirationYear: new FormControl(this.currentYear, Validators.required),  // Por defecto, selecciono el año actual
     }, { validators: this.cardExpirationDateValidator() });
 
     // - Status Observable: guardar los valores de los campos en la Addreses Store (si se ha rellenado el formulario completo y correctamente)
