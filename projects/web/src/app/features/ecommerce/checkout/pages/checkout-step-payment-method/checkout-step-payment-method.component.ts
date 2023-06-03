@@ -27,6 +27,7 @@ export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
   // Template variables
   paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'] = [];
   showBottomOverlay: boolean = false;
+  reviewYourOrderButtonIsEnabled: boolean = false;
 
 
   constructor(
@@ -64,6 +65,15 @@ export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
         // Comprobacion
         // console.log('paymentMethods:');
         // console.log(this.paymentMethods);
+
+        // Establecer si el usuario puede pasar al siguiente paso: si ha seleccionado un método de pago
+        this.reviewYourOrderButtonIsEnabled = false;
+        for (var i = 0; i < this.paymentMethods.length; i++) {
+          if ( this.paymentMethods[i].isDefault == 1 ) {
+            this.reviewYourOrderButtonIsEnabled = true;
+            break;
+          }
+        }
 
       }
     );

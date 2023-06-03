@@ -27,6 +27,7 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
   // Template variables
   addresses: GetAddressesPHPInterface["addresses"] = [];
   showBottomOverlay: boolean = false;
+  paymentButtonIsEnabled: boolean = false;
 
 
   constructor(
@@ -68,6 +69,15 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
         // Comprobacion
         // console.log('addresses:');
         // console.log(this.addresses);
+
+        // Establecer si el usuario puede pasar al siguiente paso: si ha seleccionado una dirección
+        this.paymentButtonIsEnabled = false;
+        for (var i = 0; i < this.addresses.length; i++) {
+          if ( this.addresses[i].isDefault == 1 ) {
+            this.paymentButtonIsEnabled = true;
+            break;
+          }
+        }
 
       }
     );
