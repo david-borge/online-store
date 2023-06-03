@@ -178,8 +178,8 @@ export const addressesReducer = createReducer(
         return {
           ...state,
           addresses: [
+            action.addNewAddresSuccessPayload, // Pongo esto primero para que sea el primer elemento del array y se muestre arriba del todo
             ...updatedAddresses,
-            action.addNewAddresSuccessPayload,
           ],
           addNewAddressStatus: 'NOT_STARTED', // Reseteo el valor
         };
