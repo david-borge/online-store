@@ -1031,3 +1031,8 @@ svg-icon {
 .btn {
     --bs-btn-disabled-opacity: 1;
 }
+
+// .btn-show-change-when-disabled
+.btn-show-change-when-disabled:disabled {
+    opacity: .6;
+}

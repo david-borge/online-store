@@ -2,7 +2,7 @@
     class="btn-with-loading-spinner {{btnWithLoadingSpinnerClasses}}"
     [ngClass]="{'btn-with-loading-spinner--process-started': (btnWithLoadingSpinnerProcessStatus == 'STARTED')}"
     (click)="onClickBtnWithLoadingSpinner();"
-    [disabled]="(btnWithLoadingSpinnerProcessStatus == 'STARTED') || ( (currentURL.includes('/product/')) && (btnWithLoadingSpinnerProcessStatus == 'ENDED_SUCCESSFULLY') )"
+    [disabled]="!formIsValid || (btnWithLoadingSpinnerProcessStatus == 'STARTED') || ( (currentURL.includes('/product/')) && (btnWithLoadingSpinnerProcessStatus == 'ENDED_SUCCESSFULLY') )"
 >
 <!-- Nota: desactivo el botón también si, en la página de producto, en el botón pone "Added!" (ocurre durante 1500 ms) -->
 

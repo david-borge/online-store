@@ -1,4 +1,4 @@
-<form id="signUpForm" class="form-disabled-input-do-not-change" [formGroup]="signUpForm" (ngSubmit)="onSubmit();">
+<form id="signUpLogInForm" class="form-disabled-input-do-not-change" [formGroup]="signUpLogInForm" (ngSubmit)="onSubmit();">
 
     <div class="row" *ngIf="showFirstAndLastNameFields">
         <div class="col-6">
@@ -42,13 +42,13 @@
     </div>
 
     <!-- "Sign Up / Log In" button -->
-    <!-- <button type="submit" class="btn btn-primary w-100">{{signUpLogInButtonText}}</button> -->
     <app-btn-with-loading-spinner
         [btnWithLoadingSpinnerText] = "signUpLogInButtonText"
-        [btnWithLoadingSpinnerClasses] = "'btn btn-primary w-100'"
+        [btnWithLoadingSpinnerClasses] = "'btn btn-primary w-100 btn-show-change-when-disabled'"
         [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
         [btnWithLoadingSpinnerProcessStatus] = "signUpLogInStatus"
         (onClickBtnWithLoadingSpinnerEventEmitter)="onSubmit();"
+        [formIsValid]="signUpLogInForm.valid"
     ></app-btn-with-loading-spinner>
 
     <!-- "I want to Sign Up / Log In" button -->

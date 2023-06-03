@@ -28,7 +28,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   authMode: 'SIGNUP' | 'LOGIN' = 'SIGNUP';
 
   // Variables del formulario
-  signUpForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
+  signUpLogInForm: FormGroup = new FormGroup({});  // Objecto JS que contiene el formulario creado programáticamente
   showFirstAndLastNameFields: boolean = ( (this.authMode == 'SIGNUP') );
   signUpLogInButtonText: string = '';
   signUpLogInResult: string = '';
@@ -74,7 +74,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
 
       // Disable the form inputs if the signing up or logging in process is being done
       if ( this.signUpLogInStatus == 'STARTED' ) {
-        this.signUpForm.disable();
+        this.signUpLogInForm.disable();
       }
       
 
@@ -84,12 +84,12 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
 
 
     // - Sign Up Form
-    this.signUpForm = new FormGroup({
+    this.signUpLogInForm = new FormGroup({
       // Controles: 'name_del_control': new FormControl(valor_inicial, validadores_normales, validadores_asincronos)
       // Validadores de Angular (Reactive approach): usar estos métodos en el TS: https://angular.io/api/forms/Validators
       /* Comprobación de validadores:
           - Clases ng-valid y ng-invalid en el control
-          - Objeto JS del form: signUpForm.controls.name_o_ruta_del_control.errors. En signUpForm.errors no aparece.
+          - Objeto JS del form: signUpLogInForm.controls.name_o_ruta_del_control.errors. En signUpLogInForm.errors no aparece.
       */
       'firstName': new FormControl(null, [Validators.required/* , this.forbiddenNamesValidator.bind(this) */]),  // null si quiero que el campo esté vacío inicialmente
       'lastName' : new FormControl(null, [Validators.required/* , this.forbiddenNamesValidator.bind(this) */]),  // null si quiero que el campo esté vacío inicialmente
@@ -102,11 +102,11 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   onSubmit() {
     
     // Comprobación
-    // console.log('Form submitted! - authMode: ' + this.authMode);
+    // console.log('onSubmit() - authMode: ' + this.authMode + ' - Is form valid?: ' + this.signUpLogInForm.valid);
 
     // Comprobación
-    // console.log('signUpForm:');
-    // console.log(this.signUpForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+    // console.log('signUpLogInForm:');
+    // console.log(this.signUpLogInForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
 
     // Sign Up
     if ( this.authMode == 'SIGNUP' ) {
@@ -118,10 +118,10 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
       }
       
       this.authService.signUp(
-        this.signUpForm.get('firstName')?.value, // ? por si es NULL (aunque no lo será)
-        this.signUpForm.get('lastName')?.value, // ? por si es NULL (aunque no lo será)
-        this.signUpForm.get('email')?.value, // ? por si es NULL (aunque no lo será)
-        this.signUpForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpLogInForm.get('firstName')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpLogInForm.get('lastName')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpLogInForm.get('email')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpLogInForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
         new Date().toString(), // signUpFullDate (ahora)
         new Date().toString(), // lastLoginFullDate (ahora)
         authToken, // Token de autentificación
@@ -133,8 +133,8 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     else {
       
       this.authService.logIn(
-        this.signUpForm.get('email')?.value, // ? por si es NULL (aunque no lo será)
-        this.signUpForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpLogInForm.get('email')?.value, // ? por si es NULL (aunque no lo será)
+        this.signUpLogInForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
         new Date().toString(), // lastLoginFullDate (ahora)
         this.authService.generateToken(),
       );
@@ -143,7 +143,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
 
     // Reestablecer el form
     // CUIDADO: esta línea hace que los valores no salgan bien la comprobación anterior
-    // this.signUpForm.reset();
+    // this.signUpLogInForm.reset();
 
   }
 
@@ -152,33 +152,33 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     // - Change Auth Mode ('SIGNUP' | 'LOGIN')
     this.store.dispatch( GlobalActions.ChangeAuthMode() );
 
-    // - Añadir o quitar los campos firstName y lastName del objeto JS signUpForm
+    // - Añadir o quitar los campos firstName y lastName del objeto JS signUpLogInForm
     
-    // Si estoy en Sign Up, añadir los campos firstName y lastName del objeto JS signUpForm
+    // Si estoy en Sign Up, añadir los campos firstName y lastName del objeto JS signUpLogInForm
     if ( this.authMode == 'SIGNUP' ) {
 
       // Comprobación
-      // console.log('Añadir los campos firstName y lastName del objeto JS signUpForm');
+      // console.log('Añadir los campos firstName y lastName del objeto JS signUpLogInForm');
 
-      this.signUpForm.addControl('firstName', new FormControl(null, Validators.required));
-      this.signUpForm.addControl('lastName', new FormControl(null, Validators.required));
+      this.signUpLogInForm.addControl('firstName', new FormControl(null, Validators.required));
+      this.signUpLogInForm.addControl('lastName', new FormControl(null, Validators.required));
 
     }
     
-    // Si estoy en Log In, quitar los campos firstName y lastName del objeto JS signUpForm
+    // Si estoy en Log In, quitar los campos firstName y lastName del objeto JS signUpLogInForm
     else {
 
       // Comprobación
-      // console.log('Quitar los campos firstName y lastName del objeto JS signUpForm');
+      // console.log('Quitar los campos firstName y lastName del objeto JS signUpLogInForm');
 
-      this.signUpForm.removeControl('firstName');
-      this.signUpForm.removeControl('lastName');
+      this.signUpLogInForm.removeControl('firstName');
+      this.signUpLogInForm.removeControl('lastName');
 
     }
 
     // Comprobación
-    // console.log('signUpForm:');
-    // console.log(this.signUpForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+    // console.log('signUpLogInForm:');
+    // console.log(this.signUpLogInForm);  // Esto no hace falta con la extensión Angular DevTools de Chrome (SOLO a partir de Angular v12) (https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
 
     // - Borrar el mensaje de error
     this.store.dispatch( GlobalActions.EmptySignUpLogInResult() );
