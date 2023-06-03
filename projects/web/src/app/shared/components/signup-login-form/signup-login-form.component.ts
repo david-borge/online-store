@@ -10,6 +10,8 @@ import * as fromApp from '../../../core/store/app.reducer';  // el fromNombreCom
 import * as GlobalActions from '../../../core/store/global.actions';
 
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { CookiesService } from '../../../core/services/cookies/cookies.service';
+
 import { ProcessStatusInterface } from '../../../core/models/processStatus.interface';
 
 @Component({
@@ -35,6 +37,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<fromApp.AppState>,
     private authService: AuthService,
+    private cookiesService: CookiesService,
   ) {}
 
   ngOnInit(): void {
@@ -107,6 +110,12 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
 
     // Sign Up
     if ( this.authMode == 'SIGNUP' ) {
+
+      // Generar un token de autentificación aleatorio SI es que no existe uno (que puede pasar si el usuario ha añadido productos al carrito sin iniciar sesión o registrarse)
+      let authToken = this.cookiesService.leerUnaCookie('authToken');
+      if ( authToken == '' ) {
+        authToken = this.authService.generateToken();
+      }
       
       this.authService.signUp(
         this.signUpForm.get('firstName')?.value, // ? por si es NULL (aunque no lo será)
@@ -115,7 +124,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
         this.signUpForm.get('password')?.value, // ? por si es NULL (aunque no lo será)
         new Date().toString(), // signUpFullDate (ahora)
         new Date().toString(), // lastLoginFullDate (ahora)
-        this.authService.generateToken(), // Token de autentificación aleatorio
+        authToken, // Token de autentificación
       );
 
     }
