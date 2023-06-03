@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
@@ -30,7 +30,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
   addNewCardResult: string = '';
   @ViewChild('cardPersonFullNameLocalReference', {static: true}) cardPersonFullNameLocalReferenceViewChild: ElementRef = {} as ElementRef;
   addNewCardStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
-
+  @Output() isAddNewCardFormValidEventEmitter = new EventEmitter<FormControlStatus>();
   
   constructor(
     private store: Store<fromApp.AppState>,
@@ -75,6 +75,10 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
         // Comprobación
         // console.log('statusChanges (VALID | INVALID | PENDING): ' + statusChanges);
 
+        // Enviar el estado del formulario a BottomOverlayComponent para poder desactivar el botón "Add card" apropiadamente
+        this.isAddNewCardFormValidEventEmitter.emit( statusChanges );
+
+        // Si el formulario es válido, guardar los valores de los campos en la Addreses Store
         if ( statusChanges === 'VALID') {
           
           // Comprobación

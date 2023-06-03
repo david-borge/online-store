@@ -26,7 +26,9 @@
                 <app-add-new-address-form *ngIf="(bottomOverlayBodyContent == 'ADD_NEW_ADDRESS')"></app-add-new-address-form>
 
                 <!-- Add New Card Form -->
-                <app-add-new-card-form *ngIf="(bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD')"></app-add-new-card-form>
+                <app-add-new-card-form *ngIf="(bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD')"
+                    (isAddNewCardFormValidEventEmitter)="checkIsAddNewCardFormValid($event);"
+                ></app-add-new-card-form>
 
             </div>
 
@@ -44,10 +46,11 @@
                     
                     <app-btn-with-loading-spinner
                         [btnWithLoadingSpinnerText] = "bottomOverlayAddButtonText"
-                        [btnWithLoadingSpinnerClasses] = "'btn btn-primary btn-lg'"
+                        [btnWithLoadingSpinnerClasses] = "'btn btn-primary btn-lg btn-show-change-when-disabled'"
                         [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
                         [btnWithLoadingSpinnerProcessStatus] = "processStatus"
                         (onClickBtnWithLoadingSpinnerEventEmitter)="onClickAddButton();"
+                        [formIsValid]="isAddNewCardFormValid"
                     ></app-btn-with-loading-spinner>
 
                 </div>

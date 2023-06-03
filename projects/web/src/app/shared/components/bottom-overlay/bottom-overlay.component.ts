@@ -11,6 +11,7 @@ import { AccountService } from '../../../core/services/account/account.service';
 
 import { AddressInterface } from '../../../core/models/address.interface';
 import { ProcessStatusInterface } from '../../../core/models/processStatus.interface';
+import { FormControlStatus } from '@angular/forms';
 
 
 @Component({
@@ -32,6 +33,9 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
   // Propiedades - Bottom Overlay - ADD_NEW_ADDRESS
   newAddress: AddressInterface = {} as AddressInterface;
+  
+  // Propiedades - Bottom Overlay - ADD_NEW_PAYMENT_METHOD
+  isAddNewCardFormValid: boolean = false;
 
 
   constructor(
@@ -122,6 +126,19 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
     // Navegación
     // this.router.navigate([ this.navigationButtonRightURL ]);
+
+  }
+
+  checkIsAddNewCardFormValid(eventData: FormControlStatus) {
+
+    // Comprobacion
+    console.log('eventData: ' + eventData);
+
+    if ( eventData == 'VALID' ) {
+      this.isAddNewCardFormValid = true;
+    } else {
+      this.isAddNewCardFormValid = false;
+    }
 
   }
 
