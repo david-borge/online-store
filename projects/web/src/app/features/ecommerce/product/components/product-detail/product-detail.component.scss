@@ -14,10 +14,7 @@
 }
 
 .product-image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
     z-index: 1;
     // padding-bottom: 45px; // Activar con .three-sixty-indicator-container
     height: calc(419px - 82.5px - 45px); // Restar la altura de <header> y del padding-bottom
@@ -25,7 +22,8 @@
 
 .product-image-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    // height: auto;
     object-fit: contain;
 }
 
