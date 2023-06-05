@@ -1053,3 +1053,12 @@ svg-icon {
 .text-justify {
     text-align: justify;
 }
+
+// Ellipsis
+@mixin ellipsis-in-second-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // Ellipsis en la segunda línea
+    -webkit-box-orient: vertical;
+}

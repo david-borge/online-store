@@ -24,12 +24,11 @@ header {
     padding-bottom: 14.1px;
 }
 
-.overlay-header-title {
-    padding-bottom: 12px;
-}
-
 // Overlay Header - Title
 .overlay-header-title {
+    padding-top: 12px;
+    padding-bottom: 12px;
+
     flex: 1;
 
     text-align: center;
@@ -131,6 +130,8 @@ header {
 
 .overlay-header-subpage .overlay-header-title * {
     @include heading-4;
+    
+    @include ellipsis-in-second-line;
 }
 
 

@@ -39,6 +39,9 @@
 // Cart and Checkout Product Card - Information - Product Name
 .cart-and-checkout-product-card--product-name-container * {
     @include heading-5;
+
+    @include ellipsis-in-second-line;
+    -webkit-line-clamp: 3;
 }
 
 // Cart and Checkout Product Card - Information - Price

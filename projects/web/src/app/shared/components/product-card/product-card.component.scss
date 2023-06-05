@@ -63,6 +63,8 @@
 
 .product-card-featured .product-card-name * {
     @include heading-4;
+
+    @include ellipsis-in-second-line;
 }
 
 .product-card-featured .product-rating {
@@ -90,6 +92,8 @@
 
 .product-card-small .product-card-name * {
     @include heading-5;
+    
+    @include ellipsis-in-second-line;
 }
 
 .product-card-small .product-card-manufacturer {
