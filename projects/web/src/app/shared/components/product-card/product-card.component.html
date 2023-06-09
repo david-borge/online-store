@@ -32,8 +32,9 @@
                 <div class="product-card-manufacturer">{{product.manufacturer}}</div>
 
                 <!-- Product Rating -->
+                <!-- Show only if product.ratingNumber exists (is not NULL) -->
                 <app-product-rating
-                    *ngIf="(productCardTypeClass == 'product-card-small')"
+                    *ngIf="(productCardTypeClass == 'product-card-small') && (product.ratingNumber)"
                     [productCardRatingNumber] = "product.ratingNumber"
                 ></app-product-rating>
 

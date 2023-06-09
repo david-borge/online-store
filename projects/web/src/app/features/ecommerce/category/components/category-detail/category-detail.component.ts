@@ -42,8 +42,6 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
     // Guardar el categorySlug de la categoría actual en la Store para poder leerlo en CategoryComponent y mostrar el título y el color de fondo apropiados en el header
     this.store.dispatch( CategoriesActions.SaveCurrentCategorySlug({ currentCategorySlugPayload: this.categorySlug }) );
 
-    // TODO: Mandar la categoría actual a CategoryComponent para mostrarlo en la header
-
     // TODO: mover a su sitio apropiado: All Products - Filtrar para mostrar los de la categoría actual
     this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
       .subscribe(
@@ -66,6 +64,10 @@ export class CategoryDetailComponent implements OnInit, OnDestroy {
             }
 
           );
+
+          // Comprobacion
+          // console.log('productsOfCurrentCategory:');
+          // console.log(this.productsOfCurrentCategory);
 
         },
 

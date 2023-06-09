@@ -63,11 +63,11 @@ export class HomeEffects {
                         debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                         Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                        switchMap(resData => {
+                        switchMap(getAllProductsData => {
 
                             // Comprobación
-                            // console.log('getAllProductsSideEffect - resData:');
-                            // console.log(resData);
+                            console.log('getAllProductsSideEffect - getAllProductsData:');
+                            console.log(getAllProductsData);
 
                             // Procesamiento de datos si es necesario...
 
@@ -77,7 +77,7 @@ export class HomeEffects {
 
                                 // Nueva Action que NgRx dispachtea automáticamente (NombreActionEnd), con su payload correspondiente
                                 HomeActions.GetAllProductsEndSuccess({
-                                    allProductsPayload: resData,
+                                    allProductsPayload: getAllProductsData,
                                 }),
 
                             );
