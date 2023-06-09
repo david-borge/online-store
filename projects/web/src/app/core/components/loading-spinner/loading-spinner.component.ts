@@ -11,4 +11,7 @@ export class LoadingSpinnerComponent {
   @Input() thisPagePreviouslyVisited     : boolean = true;
   @Input() currentlyInThePageIEnteredFrom: boolean = true;
 
+  @Input() showLoadingSpinnerExplanation: boolean = true;
+  @Input() loadingSpinnerExplanation    : string = 'Loading...';
+
 }
