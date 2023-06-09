@@ -87,11 +87,12 @@
     <div *ngIf="featuredProducts.length != 0" class="section">
 
         <!-- Section Header -->
+        <!-- FIXME: show carousel icons after adding the functionality -->
         <app-section-header
             [sectionHeaderTitleTag]      = "'h2'"
             [sectionHeaderTitleClasses]  = "'heading-3'"
             [sectionHeaderTitleText]     = "'Featured'"
-            [sectionHeaderCarouselIcons] = "true"
+            [sectionHeaderCarouselIcons] = "false"
             [sectionHeaderLink]          = "false"
             [sectionHeaderLinkURL]       = "''"
             [sectionHeaderLinkText]      = "''"
