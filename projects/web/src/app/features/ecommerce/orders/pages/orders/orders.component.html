@@ -27,7 +27,7 @@
             <div>
                 
                 <!-- Active orders -->
-                <div *ngIf="(activeOrders.length > 0)" class="section" [ngClass]="{ 'section-with-bottom-separator': (previousOrders.length > 0) }">
+                <div class="section" [ngClass]="{ 'section-with-bottom-separator': (previousOrders.length > 0) }">
 
                     <!-- Section Header -->
                     <app-section-header
@@ -39,7 +39,7 @@
                     <div class="container">
                             
                         <!-- Active Orders List -->
-                        <div class="orders-list">
+                        <div *ngIf="(activeOrders.length > 0)" class="orders-list">
 
                             <!-- Product Card -->
                             <app-product-card
@@ -55,12 +55,15 @@
 
                         </div>
 
+                        <!-- No Active orders -->
+                        <div *ngIf="(activeOrders.length == 0)">You have no active orders.</div>
+
                     </div>
 
                 </div>
 
                 <!-- Previous orders -->
-                <div *ngIf="(previousOrders.length > 0)" class="section">
+                <div class="section">
 
                     <!-- Section Header -->
                     <app-section-header
@@ -72,7 +75,7 @@
                     <div class="container">
                             
                         <!-- Previous Orders List -->
-                        <div class="orders-list">
+                        <div *ngIf="(previousOrders.length > 0)" class="orders-list">
 
                             <!-- Product Card -->
                             <app-product-card
@@ -87,6 +90,9 @@
                             ></app-product-card>
 
                         </div>
+
+                        <!-- No Previous orders -->
+                        <div *ngIf="(previousOrders.length == 0)">You have no previous orders.</div>
 
                     </div>
 

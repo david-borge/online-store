@@ -5,7 +5,7 @@
 
 // Cart and Checkout Product Card
 .cart-and-checkout-product-card {
-    padding: 8px 16px;
+    padding: 8px calc(var(--bs-gutter-x) * 0.5);
 
     max-height: 96px;
 
