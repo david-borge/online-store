@@ -1,5 +1,4 @@
-// Checkout step - ''/checkout/signup-login''
-// If user is logged in, redirect from '/checkout/signup-login' to '/checkout/address'
+// Checkout step: '/checkout/address'
 
 
 import { Injectable } from '@angular/core';
@@ -17,8 +16,8 @@ import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class CheckoutStepSignupLoginGuard implements CanActivate {
-  
+export class CheckoutStepOrderConfirmationGuard implements CanActivate {
+
   cartData: GetCartDataPHPInterface["cartData"] = [];
 
   constructor(
@@ -26,7 +25,7 @@ export class CheckoutStepSignupLoginGuard implements CanActivate {
     private authService: AuthService,
     private store: Store<fromApp.AppState>,
   ) {
-    
+
     // Cart Store
     this.store.select( 'cartReducerObservable' ).subscribe(
       cartReducerData => {
@@ -43,37 +42,16 @@ export class CheckoutStepSignupLoginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    /* // Comprobacion
-    console.log('userIsLoggedIn: ' + this.authService.checkIfUserIsLoggedIn());
     
-    // If the user is NOT logged in, redirect from '/checkout/signup-login' to '/home'
-    if ( !this.authService.checkIfUserIsLoggedIn() ) {
+    /* // If the user is NOT logged in or there are no products in the cart, redirect from '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/home'
+    if ( !this.authService.checkIfUserIsLoggedIn() || (this.cartData.length == 0) ) {
       this.router.navigate(['/home']);
-    }
-
-    // If user is logged in...
-    else {
-
-      // Comprobacion
-      console.log('this.cartData.length: ' + this.cartData.length);
-
-      // ...and there are NO products in the Cart, redirect from '/checkout/signup-login' to '/home'
-      if ( this.cartData.length == 0 ) {
-        this.router.navigate(['/home']);
-      }
-
-      // ...and there are products in the Cart, redirect from '/checkout/signup-login' to '/checkout/address'
-      else {
-        this.router.navigate(['/checkout/address']);
-      }
-
     } */
 
     return true;
     
   }
-  
+
 
 
   /* Función canActivateChild(): lo mismo, pero también protege las rutas hijas de la ruta actual. */
@@ -84,5 +62,5 @@ export class CheckoutStepSignupLoginGuard implements CanActivate {
   }
 
 
-  
+
 }

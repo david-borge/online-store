@@ -66,8 +66,8 @@ export class HomeEffects {
                         switchMap(getAllProductsData => {
 
                             // Comprobación
-                            console.log('getAllProductsSideEffect - getAllProductsData:');
-                            console.log(getAllProductsData);
+                            // console.log('getAllProductsSideEffect - getAllProductsData:');
+                            // console.log(getAllProductsData);
 
                             // Procesamiento de datos si es necesario...
 

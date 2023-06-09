@@ -14,7 +14,10 @@ import { CheckoutStepOrderReviewComponent } from "./pages/checkout-step-order-re
 import { CheckoutStepOrderConfirmationComponent } from "./pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component";
 
 import { CheckoutStepSignupLoginGuard } from "../../../core/guards/checkout-step-signup-login/checkout-step-signup-login.guard";
-import { CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard } from "../../../core/guards/checkout-steps-address-payment-method-order-review-order-confirmation/checkout-steps-address-payment-method-order-review-order-confirmation.guard";
+import { CheckoutStepAddressGuard } from "../../../core/guards/checkout-step-address/checkout-step-address.guard";
+import { CheckoutStepPaymentMethodGuard } from "../../../core/guards/checkout-step-payment-method/checkout-step-payment-method.guard";
+import { CheckoutStepOrderReviewGuard } from "../../../core/guards/checkout-step-order-review/checkout-step-order-review.guard";
+import { CheckoutStepOrderConfirmationGuard } from "../../../core/guards/checkout-step-order-confirmation/checkout-step-order-confirmation.guard";
 
 
 const checkoutRoutes: Routes = [
@@ -37,28 +40,28 @@ const checkoutRoutes: Routes = [
     // Checkout Step Page: Address (/checkout/address)
     {
         path: 'address',
-        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
+        canActivate: [ CheckoutStepAddressGuard ], // If user is NOT logged in, redirect from '/checkout/address' to '/checkout/signup-login'
         component: CheckoutStepAddressComponent,
     },
    
     // Checkout Step Page: Payment Method (/checkout/payment-method)
     {
         path: 'payment-method',
-        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
+        canActivate: [ CheckoutStepPaymentMethodGuard ], // If user is NOT logged in, redirect from '/checkout/payment-method' to '/checkout/signup-login'
         component: CheckoutStepPaymentMethodComponent,
     },
    
     // Checkout Step Page: Order Review (/checkout/order-review)
     {
         path: 'order-review',
-        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
+        canActivate: [ CheckoutStepOrderReviewGuard ], // If user is NOT logged in, redirect from '/checkout/order-review' to '/checkout/signup-login'
         component: CheckoutStepOrderReviewComponent,
     },
    
     // Checkout Step Page: Order Confirmation (/checkout/order-confirmation)
     {
         path: 'order-confirmation',
-        canActivate: [ CheckoutStepsAddressPaymentMethodOrderReviewOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/signup-login' or '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/checkout/signup-login'
+        canActivate: [ CheckoutStepOrderConfirmationGuard ], // If user is NOT logged in, redirect from '/checkout/order-confirmation' to '/checkout/signup-login'
         component: CheckoutStepOrderConfirmationComponent,
     },
    

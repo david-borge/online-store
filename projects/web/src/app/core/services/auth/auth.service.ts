@@ -57,8 +57,9 @@ export class AuthService {
         // console.log('authTokenCookieValue: ' + globalReducerData.authTokenCookieValue);
         // console.log('authExpirationDateCookieValue: ' + globalReducerData.authExpirationDateCookieValue);
 
-        // Si authEmailCookieValue, authExpirationDateCookieValue y authTokenCookieValue no son ""
-        if ( globalReducerData.authEmailCookieValue != null && globalReducerData.authEmailCookieValue != '' && globalReducerData.authExpirationDateCookieValue != null && globalReducerData.authExpirationDateCookieValue != '' && globalReducerData.authTokenCookieValue != null && globalReducerData.authTokenCookieValue != '' ) {
+        // Si authExpirationDateCookieValue y authTokenCookieValue no son ""
+        // Cuidado: no hay que añadir authEmail a este if porque los usuarios temporales no tienen cookie authEmail, pero sí authExpirationDate y authToken
+        if ( globalReducerData.authExpirationDateCookieValue != null && globalReducerData.authExpirationDateCookieValue != '' && globalReducerData.authTokenCookieValue != null && globalReducerData.authTokenCookieValue != '' ) {
           
           // Si la fecha no está caducada (ahora es menor que la fecha de la cookie)
           if ( new Date() < new Date(globalReducerData.authExpirationDateCookieValue) ) {
