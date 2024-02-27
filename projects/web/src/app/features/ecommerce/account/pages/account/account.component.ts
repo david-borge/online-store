@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { Title } from '@angular/platform-browser';
+
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
@@ -44,6 +46,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<fromApp.AppState>,
     private authService: AuthService,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
@@ -83,10 +86,15 @@ export class AccountComponent implements OnInit, OnDestroy {
       } else {
 
         this.logOutButtonText = 'Log out';
-        
+
       }
 
     });
+
+
+
+    // Cambiar el título de la página
+    this.titleService.setTitle('Account - Online Store');
 
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { Title } from '@angular/platform-browser';
+
 import { Subscription } from 'rxjs';
 
 import { Store } from '@ngrx/store';
@@ -31,6 +33,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<fromApp.AppState>,
+    private titleService: Title
   ) {}
 
   ngOnInit() {
@@ -50,9 +53,14 @@ export class CartComponent implements OnInit, OnDestroy {
         this.cartData.map( product => {
           this.cartTotal += (product.price * product.productQuantity);
         } );
-        
+
       }
     );
+
+
+
+    // - Cambiar el título de la página
+    this.titleService.setTitle('Cart - Online Store');
 
   }
 

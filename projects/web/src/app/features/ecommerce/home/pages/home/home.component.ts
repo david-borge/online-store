@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
+import { Title } from '@angular/platform-browser';
+
 import { Store } from '@ngrx/store';
 
 import { Subscription, take } from 'rxjs';
@@ -24,9 +26,9 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
   },
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  
+
   /*
-  
+
     Proceso de carga de una página:
 
     Paso 1. Mostrar el Loading Spinner mientras cargo los datos desde la Base de Datos y las imágenes.
@@ -41,7 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       Paso 3.3. Cuando se vayan cargando las imágenes de la página actual (ellas solas con <img>), ir apuntándolo en la Store (propiedad numberOfImagesInThisPageLoaded) (usando el ImageLoadDirective > @HostListener('load')).
       Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
     CUIDADO: si en Chrome DevTools > Network tengo marcado "Disable cache", las imágenes se cargarán cada vez que vaya a una ruta, porque no cogerá de caché las que haya cargado antes.
-    
+
     Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
 
     Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load):
@@ -75,15 +77,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     private store: Store<fromApp.AppState>,
     private router: Router,
     private preloadImagesService: PreloadImagesService,
+    private titleService: Title
   ) {}
 
 
-  
-  
+
+
   ngOnInit(): void {
 
     // IMPORTANTE: al llegar aquí, los productos ya están cargados en la Store porque los he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlos solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
-    
+
 
 
     // - Home Reducer
@@ -111,7 +114,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             }
 
           );
-          
+
           // - Filtro los productos - Deal Products
           this.dealProducts = homeReducerData.allProducts.filter(
 
@@ -166,13 +169,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         // El segundo parámetro de susbscribe() es para recoger los errores del servidor
         (errorResponse) => {
-          
+
           // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
           console.log('errorResponse:');
           console.log(errorResponse);
 
         }
-        
+
       );
 
 
@@ -192,7 +195,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
           this.categoriesPageImagesLoaded = categoriesResponseData.categoriesPageImagesLoaded;
           if ( !this.categoriesPageImagesLoaded ) {
-            
+
             // · Miniaturas de las categorías
             if ( categoriesResponseData.allCategories.length != 0 ) {
 
@@ -202,7 +205,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               this.imagesOfOtherPagesToPreload = categoriesResponseData.allCategories.map( category => {
                 // Con map extraigo un array con los valores de todos los imageThumbnail (y le añado la extensión, comprobando si el navegador soporta webp o no)
                 return category.imageThumbnail + ( this.preloadImagesService.support_format_webp() ? '.webp' : '.png' );
-              } ); 
+              } );
 
             }
 
@@ -212,28 +215,33 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         // El segundo parámetro de susbscribe() es para recoger los errores del servidor
         (errorResponse) => {
-          
+
           // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
           console.log('errorResponse:');
           console.log(errorResponse);
 
         }
-        
+
       );
 
 
 
     // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
     this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => {
-      
+
       this.currentlyInThePageIEnteredFrom = ( globalReducerData.firstVisitedPage == this.router.url );
-      
+
       // Comprobación
       // console.log('Slug de la página de entrada: ' + globalReducerData.firstVisitedPage);
       // console.log('Slug actual: ' + this.router.url);
       // console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
 
     });
+
+
+
+    // Cambiar el título de la página
+    this.titleService.setTitle('Home - Online Store');
 
   }
 
