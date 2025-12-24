@@ -9,21 +9,8 @@ import { OrderComponent } from './pages/order/order.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { DateWithTitleComponent } from './components/date-with-title/date-with-title.component';
 
-
-
 @NgModule({
-  declarations: [
-    OrderComponent,
-    OrderDetailComponent,
-    DateWithTitleComponent
-  ],
-  imports: [
-    CommonModule,
-
-    OrderRoutingModule,
-    
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [OrderComponent, OrderDetailComponent, DateWithTitleComponent],
+    imports: [CommonModule, OrderRoutingModule, CoreModule, SharedModule],
 })
-export class OrderModule { }
+export class OrderModule {}

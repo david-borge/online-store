@@ -1,37 +1,35 @@
 <!-- Checkout steps: Address Page -->
 
-
-
 <!-- Header Tag -->
 <app-header
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'First, sign up or log in'"
-    [overlayHeaderSubpageWithSteps] = "true"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitle]="'First, sign up or log in'"
+    [overlayHeaderSubpageWithSteps]="true"
 ></app-header>
-    
-<!-- Main -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: var(--espacio-vertical);">
 
+<!-- Main -->
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: var(--espacio-vertical);
+    "
+>
     <!-- Authentication (Sign Up / Log In) -->
     <div class="section">
-            
         <!-- Section Header -->
         <!-- "Sign Up" o "Log In" -->
         <app-section-header
-            [sectionHeaderTitleTag]     = "'h2'"
-            [sectionHeaderTitleClasses] = "'heading-4 text-center'"
-            [sectionHeaderTitleText]    = "sectionHeaderTitleText"
+            [sectionHeaderTitleTag]="'h2'"
+            [sectionHeaderTitleClasses]="'heading-4 text-center'"
+            [sectionHeaderTitleText]="sectionHeaderTitleText"
         ></app-section-header>
 
-        <div class="container" style="margin-top: 12px;">
+        <div class="container" style="margin-top: 12px">
             <div class="container">
-
                 <!-- Sign Up / Log In Form -->
                 <app-signup-login-form></app-signup-login-form>
-                
             </div>
         </div>
-
     </div>
-
 </main>

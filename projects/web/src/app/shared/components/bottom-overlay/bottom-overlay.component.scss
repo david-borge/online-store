@@ -1,8 +1,5 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 .bottom-overlay {
     position: absolute;
     top: 0;
@@ -10,7 +7,7 @@
 
     width: 100%;
     max-width: var(--ancho-contenedor-solo-movil);
-    
+
     z-index: 3;
 
     display: flex;
@@ -42,7 +39,7 @@
 
 .bottom-overlay--content {
     border-radius: var(--card-border-radius);
-    
+
     width: 100%;
     max-width: var(--ancho-contenedor-solo-movil);
 
@@ -73,7 +70,7 @@
 
     border-radius: 50%;
     background: var(--N200);
-    
+
     display: flex;
 }
 

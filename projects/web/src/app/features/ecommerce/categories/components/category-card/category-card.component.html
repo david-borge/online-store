@@ -1,15 +1,24 @@
 <!-- Category Card -->
-<div class="category-card {{category.categoryCardType}}" [ngStyle]="{'background-color': category.cardBackgroundColor}">
-    <a routerLink="/category/{{category.slug}}">
-
+<div
+    class="category-card {{ category.categoryCardType }}"
+    [ngStyle]="{ 'background-color': category.cardBackgroundColor }"
+>
+    <a routerLink="/category/{{ category.slug }}">
         <div class="category-card--title-container">
-            <h2>{{category.name}}</h2>
+            <h2>{{ category.name }}</h2>
         </div>
 
         <div class="category-card--image-container">
             <picture>
-                <source srcset="{{category.imageThumbnail}}.webp" type="image/webp">
-                <img ngSrc="{{category.imageThumbnail}}.png" alt="{{category.name}}" width="{{category.imageWidth}}" height="{{category.imageHeight}}" priority imageLoadDirective>
+                <source srcset="{{category.imageThumbnail}}.webp" type="image/webp" />
+                <img
+                    ngSrc="{{ category.imageThumbnail }}.png"
+                    alt="{{ category.name }}"
+                    width="{{ category.imageWidth }}"
+                    height="{{ category.imageHeight }}"
+                    priority
+                    imageLoadDirective
+                />
             </picture>
         </div>
     </a>

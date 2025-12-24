@@ -8,20 +8,8 @@ import { ProductComponent } from './pages/product/product.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
-
-
 @NgModule({
-  declarations: [
-    ProductComponent,
-    ProductDetailComponent
-  ],
-  imports: [
-    CommonModule,
-
-    ProductRoutingModule,
-
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [ProductComponent, ProductDetailComponent],
+    imports: [CommonModule, ProductRoutingModule, CoreModule, SharedModule],
 })
-export class ProductModule { }
+export class ProductModule {}

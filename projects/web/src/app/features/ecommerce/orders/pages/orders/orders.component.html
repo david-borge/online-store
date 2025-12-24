@@ -1,110 +1,105 @@
 <!-- Orders Page -->
 
-
-
 <!-- Header Tag -->
 <app-header
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'Orders'"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitle]="'Orders'"
 ></app-header>
-    
+
 <!-- Main -->
 <!-- <main role="main" style="padding-bottom: var(--espacio-vertical);"> -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: calc(
+            var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical)
+        );
+    "
+>
     <div class="illustration-and-content-container">
-
-        <div class="illustration-container" *ngIf="(activeOrders.length == 0) && (previousOrders.length == 0)">
-
+        <div
+            class="illustration-container"
+            *ngIf="activeOrders.length == 0 && previousOrders.length == 0"
+        >
             <!-- No Orders Informative Card -->
             <app-informative-card></app-informative-card>
-
         </div>
 
         <!-- Active & Previous Orders -->
-        <div *ngIf="(activeOrders.length > 0) || (previousOrders.length > 0)" [ngClass]="{ 'content-container': ((activeOrders.length == 0) && (previousOrders.length == 0)) }">
-
+        <div
+            *ngIf="activeOrders.length > 0 || previousOrders.length > 0"
+            [ngClass]="{
+                'content-container': activeOrders.length == 0 && previousOrders.length == 0,
+            }"
+        >
             <div>
-                
                 <!-- Active orders -->
-                <div class="section" [ngClass]="{ 'section-with-bottom-separator': (previousOrders.length > 0) }">
-
+                <div
+                    class="section"
+                    [ngClass]="{ 'section-with-bottom-separator': previousOrders.length > 0 }"
+                >
                     <!-- Section Header -->
                     <app-section-header
-                        [sectionHeaderTitleTag]     = "'h2'"
-                        [sectionHeaderTitleClasses] = "'heading-4'"
-                        [sectionHeaderTitleText]    = "'Active orders'"
+                        [sectionHeaderTitleTag]="'h2'"
+                        [sectionHeaderTitleClasses]="'heading-4'"
+                        [sectionHeaderTitleText]="'Active orders'"
                     ></app-section-header>
 
                     <div class="container">
-                            
                         <!-- Active Orders List -->
-                        <div *ngIf="(activeOrders.length > 0)" class="orders-list">
-
+                        <div *ngIf="activeOrders.length > 0" class="orders-list">
                             <!-- Product Card -->
                             <app-product-card
                                 *ngFor="let activeOrder of activeOrders"
-                                [productCardTypeClass] = "'product-card-order'"
-                                [orderId]              = "activeOrder.id"
-                                [orderImageThumbnail]  = "activeOrder.imageThumbnail"
-                                [orderImageWidth]      = "activeOrder.imageWidth"
-                                [orderImageHeight]     = "activeOrder.imageHeight"
-                                [orderTotal]           = "activeOrder.orderTotal"
-                                [orderArrivalDate]     = "activeOrder.deliveryFullDate"
+                                [productCardTypeClass]="'product-card-order'"
+                                [orderId]="activeOrder.id"
+                                [orderImageThumbnail]="activeOrder.imageThumbnail"
+                                [orderImageWidth]="activeOrder.imageWidth"
+                                [orderImageHeight]="activeOrder.imageHeight"
+                                [orderTotal]="activeOrder.orderTotal"
+                                [orderArrivalDate]="activeOrder.deliveryFullDate"
                             ></app-product-card>
-
                         </div>
 
                         <!-- No Active orders -->
-                        <div *ngIf="(activeOrders.length == 0)">You have no active orders.</div>
-
+                        <div *ngIf="activeOrders.length == 0">You have no active orders.</div>
                     </div>
-
                 </div>
 
                 <!-- Previous orders -->
                 <div class="section">
-
                     <!-- Section Header -->
                     <app-section-header
-                        [sectionHeaderTitleTag]     = "'h2'"
-                        [sectionHeaderTitleClasses] = "'heading-4'"
-                        [sectionHeaderTitleText]    = "'Previous orders'"
+                        [sectionHeaderTitleTag]="'h2'"
+                        [sectionHeaderTitleClasses]="'heading-4'"
+                        [sectionHeaderTitleText]="'Previous orders'"
                     ></app-section-header>
 
                     <div class="container">
-                            
                         <!-- Previous Orders List -->
-                        <div *ngIf="(previousOrders.length > 0)" class="orders-list">
-
+                        <div *ngIf="previousOrders.length > 0" class="orders-list">
                             <!-- Product Card -->
                             <app-product-card
                                 *ngFor="let previousOrder of previousOrders"
-                                [productCardTypeClass] = "'product-card-order'"
-                                [orderId]              = "previousOrder.id"
-                                [orderImageThumbnail]  = "previousOrder.imageThumbnail"
-                                [orderImageWidth]      = "previousOrder.imageWidth"
-                                [orderImageHeight]     = "previousOrder.imageHeight"
-                                [orderTotal]           = "previousOrder.orderTotal"
-                                [orderArrivalDate]     = "previousOrder.deliveryFullDate"
+                                [productCardTypeClass]="'product-card-order'"
+                                [orderId]="previousOrder.id"
+                                [orderImageThumbnail]="previousOrder.imageThumbnail"
+                                [orderImageWidth]="previousOrder.imageWidth"
+                                [orderImageHeight]="previousOrder.imageHeight"
+                                [orderTotal]="previousOrder.orderTotal"
+                                [orderArrivalDate]="previousOrder.deliveryFullDate"
                             ></app-product-card>
-
                         </div>
 
                         <!-- No Previous orders -->
-                        <div *ngIf="(previousOrders.length == 0)">You have no previous orders.</div>
-
+                        <div *ngIf="previousOrders.length == 0">You have no previous orders.</div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </main>
-  
+
 <!-- Footer Tag -->
 <app-footer></app-footer>

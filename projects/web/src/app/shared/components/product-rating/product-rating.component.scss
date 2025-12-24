@@ -1,8 +1,5 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Product Rating
 .product-rating {
     display: flex;
@@ -31,7 +28,7 @@
 
     @include label-12px-medium;
     line-height: 100%;
-    
+
     color: var(--N700);
 
     display: flex;

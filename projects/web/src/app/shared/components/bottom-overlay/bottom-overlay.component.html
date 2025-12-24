@@ -1,66 +1,69 @@
 <!-- Bottom Overlay -->
 <div class="bottom-overlay">
-
-    <div class="bottom-overlay--overlay" (click)="hideBottomOverlay();"></div>
+    <div class="bottom-overlay--overlay" (click)="hideBottomOverlay()"></div>
 
     <div class="bottom-overlay--dialog">
-        
         <div class="bottom-overlay--content">
-
             <div class="bottom-overlay--header">
-                
                 <div class="bottom-overlay---title">
-                    <h2>{{bottomOverlayTitle}}</h2>
+                    <h2>{{ bottomOverlayTitle }}</h2>
                 </div>
 
-                <button type="button" class="btn-close" aria-label="Close" (click)="hideBottomOverlay();">
+                <button
+                    type="button"
+                    class="btn-close"
+                    aria-label="Close"
+                    (click)="hideBottomOverlay()"
+                >
                     <!-- Icon: x -->
+                    <!-- prettier-ignore -->
                     <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.5L5 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5L15 15.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-
             </div>
 
             <div class="bottom-overlay--body">
-
                 <!-- Add New Address Form -->
-                <app-add-new-address-form *ngIf="(bottomOverlayBodyContent == 'ADD_NEW_ADDRESS')"
-                    (isAddNewAddressFormValidEventEmitter)="checkIsAddNewAddressOrCardFormValid($event);"
+                <app-add-new-address-form
+                    *ngIf="bottomOverlayBodyContent == 'ADD_NEW_ADDRESS'"
+                    (isAddNewAddressFormValidEventEmitter)="
+                        checkIsAddNewAddressOrCardFormValid($event)
+                    "
                 ></app-add-new-address-form>
 
                 <!-- Add New Card Form -->
-                <app-add-new-card-form *ngIf="(bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD')"
-                    (isAddNewCardFormValidEventEmitter)="checkIsAddNewAddressOrCardFormValid($event);"
+                <app-add-new-card-form
+                    *ngIf="bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD'"
+                    (isAddNewCardFormValidEventEmitter)="
+                        checkIsAddNewAddressOrCardFormValid($event)
+                    "
                 ></app-add-new-card-form>
-
             </div>
 
             <div class="bottom-overlay--footer">
-
                 <div class="cancel-btn-container">
-                    <button type="button"
+                    <button
+                        type="button"
                         class="btn btn-light btn-lg"
-                        (click)="hideBottomOverlay();"
-                        [disabled]="(processStatus == 'STARTED')"
-                    >Cancel</button>
+                        (click)="hideBottomOverlay()"
+                        [disabled]="processStatus == 'STARTED'"
+                    >
+                        Cancel
+                    </button>
                 </div>
 
                 <div class="add-btn-container">
-                    
                     <app-btn-with-loading-spinner
-                        [btnWithLoadingSpinnerText] = "bottomOverlayAddButtonText"
-                        [btnWithLoadingSpinnerClasses] = "'btn btn-primary btn-lg btn-show-change-when-disabled'"
-                        [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
-                        [btnWithLoadingSpinnerProcessStatus] = "processStatus"
-                        (onClickBtnWithLoadingSpinnerEventEmitter)="onClickAddButton();"
+                        [btnWithLoadingSpinnerText]="bottomOverlayAddButtonText"
+                        [btnWithLoadingSpinnerClasses]="
+                            'btn btn-primary btn-lg btn-show-change-when-disabled'
+                        "
+                        [btnWithLoadingSpinnerSpinnerWidthAndHeight]="38"
+                        [btnWithLoadingSpinnerProcessStatus]="processStatus"
+                        (onClickBtnWithLoadingSpinnerEventEmitter)="onClickAddButton()"
                         [formIsValid]="isAddNewCardFormValid"
                     ></app-btn-with-loading-spinner>
-
                 </div>
-
             </div>
-            
         </div>
-
     </div>
-
 </div>

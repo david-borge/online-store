@@ -1,40 +1,34 @@
 // /*** categoriesReducer ***/
 
+import { createReducer, on } from '@ngrx/store';
 
+import * as CategoriesActions from './categories.actions'; // Importar todo y guardarlo en el alias CategoriesActions
 
-import { createReducer, on } from "@ngrx/store";
-
-import * as CategoriesActions from "./categories.actions";  // Importar todo y guardarlo en el alias CategoriesActions
-
-import { CategoryInterface } from "projects/web/src/app/core/models/category.interface";
-
-
+import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CategoriesReducerStateInterface {
-  // loadStatus: ProcessStatusInterface['processStatus'];
-  allCategories: CategoryInterface[];
-  currentCategorySlug: string;
-  numberOfImagesInThisPage: number;
-  numberOfImagesInThisPageLoaded: number;
-  categoriesPageImagesLoaded: boolean;
-  categoriesPagePreviouslyVisited: boolean;
+    // loadStatus: ProcessStatusInterface['processStatus'];
+    allCategories: CategoryInterface[];
+    currentCategorySlug: string;
+    numberOfImagesInThisPage: number;
+    numberOfImagesInThisPageLoaded: number;
+    categoriesPageImagesLoaded: boolean;
+    categoriesPagePreviouslyVisited: boolean;
 }
 
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
 const initialState: CategoriesReducerStateInterface = {
-  // loadStatus: 'NOT_STARTED',
-  // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-  allCategories: [],
-  currentCategorySlug: '',
-  numberOfImagesInThisPage: 0,
-  numberOfImagesInThisPageLoaded: 0,
-  categoriesPageImagesLoaded: false,
-  categoriesPagePreviouslyVisited: false,
-}
-
-
+    // loadStatus: 'NOT_STARTED',
+    // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
+    allCategories: [],
+    currentCategorySlug: '',
+    numberOfImagesInThisPage: 0,
+    numberOfImagesInThisPageLoaded: 0,
+    categoriesPageImagesLoaded: false,
+    categoriesPagePreviouslyVisited: false,
+};
 
 export const categoriesReducer = createReducer(
     initialState,
@@ -42,25 +36,18 @@ export const categoriesReducer = createReducer(
     // Alteramos el App State (inicial) usando la Action que sea.
     // MUCHO CUIDADO: nunca editar el state original. Siempre hacer una copia y devolver la copia.
 
-
-
     /** Get All Categories Start Action **/
     // Side Effects asociados: getAllCategoriesSideEffect (toma todos las Categories desde la base de datos mediante un HTTP Request)
-    on(CategoriesActions.GetAllCategoriesStart,
-      (state, action) => ({
-
+    on(CategoriesActions.GetAllCategoriesStart, (state, action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
-          
-      })),
+    })),
 
     /** |-> Get All Categories End Success Action **/
-    on(CategoriesActions.GetAllCategoriesEndSuccess,
-      (state, action) => ({
-
+    on(CategoriesActions.GetAllCategoriesEndSuccess, (state, action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -70,30 +57,21 @@ export const categoriesReducer = createReducer(
         allCategories: [
             // Cuidado: NO hay que copiar las Categories en este caso porque los estoy cargando todos desde la base de datos
 
-
             // Añadir un valor a un array - Si lo que devuelve esta Action SÍ es un array
             ...action.allCategoriesPayload,
         ],
-          
-      })),
+    })),
 
     /** |-> Get All Categories End Failure Action **/
-    on(CategoriesActions.GetAllCategoriesEndFailure,
-      (state, action) => ({
-
+    on(CategoriesActions.GetAllCategoriesEndFailure, (state, action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
-          
-      })),
-
-
+    })),
 
     /** Save Current Category Slug Action **/
-    on(CategoriesActions.SaveCurrentCategorySlug,
-      (state, action) => ({
-
+    on(CategoriesActions.SaveCurrentCategorySlug, (state, action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -101,15 +79,10 @@ export const categoriesReducer = createReducer(
         ...state,
 
         currentCategorySlug: action.currentCategorySlugPayload,
-          
-      })),
-
-
+    })),
 
     /** Increment In One The Number Of Images In This Page Action **/
-    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPage,
-      (state, action) => ({
-
+    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPage, (state, action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -117,15 +90,10 @@ export const categoriesReducer = createReducer(
         ...state,
 
         numberOfImagesInThisPage: state.numberOfImagesInThisPage + 1,
-          
-      })),
-
-
+    })),
 
     /** Increment In One The Number Of Images In This Page Loaded Action **/
-    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPageLoaded,
-      (state, action) => ({
-
+    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -133,15 +101,10 @@ export const categoriesReducer = createReducer(
         ...state,
 
         numberOfImagesInThisPageLoaded: state.numberOfImagesInThisPageLoaded + 1,
-          
-      })),
-
-
+    })),
 
     /** Set Categories Page Has Been Previously Visited To True Action **/
-    on(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue,
-      (state, action) => ({
-
+    on(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue, (state, action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -149,15 +112,10 @@ export const categoriesReducer = createReducer(
         ...state,
 
         categoriesPagePreviouslyVisited: true,
-          
-      })),
-
-
+    })),
 
     /** Set Categories Page Images Loaded To True Action **/
-    on(CategoriesActions.SetCategoriesPageImagesLoadedToTrue,
-      (state, action) => ({
-
+    on(CategoriesActions.SetCategoriesPageImagesLoadedToTrue, (state, action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -165,7 +123,5 @@ export const categoriesReducer = createReducer(
         ...state,
 
         categoriesPageImagesLoaded: true,
-          
-      })),
-
+    })),
 );

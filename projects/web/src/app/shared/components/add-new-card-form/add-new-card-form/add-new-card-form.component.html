@@ -1,13 +1,22 @@
 <form id="addNewCardForm" [formGroup]="addNewCardForm" class="form-disabled-input-do-not-change">
-<!-- <form id="addNewCardForm" [formGroup]="addNewCardForm" (ngSubmit)="onSubmit();"> -->
+    <!-- <form id="addNewCardForm" [formGroup]="addNewCardForm" (ngSubmit)="onSubmit();"> -->
 
     <div class="input-group mb-4">
         <span class="input-group-text input-group-text-floating">
             <!-- Icon: user.svg -->
+            <!-- prettier-ignore -->
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.99984 9.16667C11.8408 9.16667 13.3332 7.67428 13.3332 5.83333C13.3332 3.99238 11.8408 2.5 9.99984 2.5C8.15889 2.5 6.6665 3.99238 6.6665 5.83333C6.6665 7.67428 8.15889 9.16667 9.99984 9.16667Z" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
         <div class="form-floating">
-            <input id="cardPersonFullName" name="cardPersonFullName" type="text" class="form-control" placeholder="Full Name on Card" formControlName="cardPersonFullName" #cardPersonFullNameLocalReference>
+            <input
+                id="cardPersonFullName"
+                name="cardPersonFullName"
+                type="text"
+                class="form-control"
+                placeholder="Full Name on Card"
+                formControlName="cardPersonFullName"
+                #cardPersonFullNameLocalReference
+            />
             <label for="cardPersonFullName">Full Name on Card</label>
         </div>
     </div>
@@ -15,22 +24,37 @@
     <div class="input-group mb-4">
         <span class="input-group-text input-group-text-floating">
             <!-- Icon: credit-card.svg -->
+            <!-- prettier-ignore -->
             <svg width="20" height="20" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_47575_10970)"><path d="M35.5001 6.6665H5.50008C3.65913 6.6665 2.16675 8.15889 2.16675 9.99984V29.9998C2.16675 31.8408 3.65913 33.3332 5.50008 33.3332H35.5001C37.341 33.3332 38.8334 31.8408 38.8334 29.9998V9.99984C38.8334 8.15889 37.341 6.6665 35.5001 6.6665Z" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.16675 16.6665H38.8334" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_47575_10970"><rect width="40" height="40" fill="white" transform="translate(0.5)"/></clipPath></defs></svg>
         </span>
         <div class="form-floating">
             <!-- FIXME: validación: dejar establecidos los espacios yo mismo para que no haya errores. También la longiud. -->
-            <input id="cardNumber" name="cardNumber" type="text" class="form-control" placeholder="Card Number" formControlName="cardNumber">
+            <input
+                id="cardNumber"
+                name="cardNumber"
+                type="text"
+                class="form-control"
+                placeholder="Card Number"
+                formControlName="cardNumber"
+            />
             <label for="cardNumber">Card Number</label>
         </div>
     </div>
 
     <div class="row">
         <div class="col-6">
-            
             <div class="form-floating">
-                <select id="cardExpirationMonth" name="cardExpirationMonth" class="form-select"
-                    [ngClass]="{'invalid-input-or-select': addNewCardForm.controls['cardExpirationMonth'].invalid}"
-                    aria-label="Expiration Month" formControlName="cardExpirationMonth">
+                <select
+                    id="cardExpirationMonth"
+                    name="cardExpirationMonth"
+                    class="form-select"
+                    [ngClass]="{
+                        'invalid-input-or-select':
+                            addNewCardForm.controls['cardExpirationMonth'].invalid,
+                    }"
+                    aria-label="Expiration Month"
+                    formControlName="cardExpirationMonth"
+                >
                     <option value="1">January</option>
                     <option value="2">February</option>
                     <option value="3">March</option>
@@ -46,32 +70,42 @@
                 </select>
                 <label for="cardExpirationMonth">Expiration Month</label>
             </div>
-
         </div>
         <div class="col-6">
-
             <div class="form-floating">
-                <input id="cardExpirationYear" name="cardExpirationYear" type="number" class="form-control"
-                [ngClass]="{'invalid-input-or-select': addNewCardForm.controls['cardExpirationYear'].invalid}"
-                [placeholder]="currentYear" step="1" [min]="currentYear" formControlName="cardExpirationYear">
+                <input
+                    id="cardExpirationYear"
+                    name="cardExpirationYear"
+                    type="number"
+                    class="form-control"
+                    [ngClass]="{
+                        'invalid-input-or-select':
+                            addNewCardForm.controls['cardExpirationYear'].invalid,
+                    }"
+                    [placeholder]="currentYear"
+                    step="1"
+                    [min]="currentYear"
+                    formControlName="cardExpirationYear"
+                />
                 <label for="cardExpirationYear">Expiration Year</label>
             </div>
-
         </div>
     </div>
 
-    <div class="mt-2 error-message text-justify" *ngIf="addNewCardForm.controls['cardExpirationYear'].invalid">
+    <div
+        class="mt-2 error-message text-justify"
+        *ngIf="addNewCardForm.controls['cardExpirationYear'].invalid"
+    >
         The card expiration date must be greater than the current date.
     </div>
 
     <!-- Comprobación -->
     <!-- <button type="submit" class="mt-4 btn btn-primary w-100">Submit</button> -->
 
-    <div class="card text-bg-danger mt-5 mb-3" *ngIf="(addNewCardResult != '')">
+    <div class="card text-bg-danger mt-5 mb-3" *ngIf="addNewCardResult != ''">
         <div class="card-body">
             <h5 class="card-title">Error</h5>
-            <p class="card-text">{{addNewCardResult}}</p>
+            <p class="card-text">{{ addNewCardResult }}</p>
         </div>
     </div>
-
 </form>

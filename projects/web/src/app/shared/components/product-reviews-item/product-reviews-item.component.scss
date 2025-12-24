@@ -1,8 +1,5 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Product Reviews Item
 .product-reviews-item--title-ratings-container {
     margin-bottom: 8px;
@@ -44,7 +41,7 @@
 
 .empty-stars:before,
 .full-stars:before {
-    content: "\2605\2605\2605\2605\2605";
+    content: '\2605\2605\2605\2605\2605';
     font-size: 14pt;
     letter-spacing: 3px; /* Espacio entre las estrellas */
     line-height: 14pt;
@@ -61,8 +58,8 @@
 /* Webkit-text-stroke is not supported on firefox or IE */
 /* Firefox */
 @-moz-document url-prefix() {
-    .full-stars{
-        color: #ECBE24;
+    .full-stars {
+        color: #ecbe24;
     }
 }
 
@@ -80,7 +77,7 @@
     margin-bottom: 8px;
 
     @include body-14px-regular;
-    
+
     color: var(--N600);
 }
 
@@ -97,7 +94,7 @@
 // Product Reviews Item - Review Item - Profile Name
 .product-reviews-item--profile-name {
     @include body-12px-medium;
-    
+
     color: var(--N600);
 
     display: flex;
@@ -107,5 +104,4 @@
 
 // Product Reviews Item - Review Item - Profile Picture
 .product-reviews-item--profile-picture {
-
 }

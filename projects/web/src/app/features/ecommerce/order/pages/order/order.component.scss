@@ -1,16 +1,11 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Order Dates
 .date-with-title-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
-
-
 
 // Order Total - Title
 .order-total-title * {
@@ -24,8 +19,6 @@
 .order-total-price * {
     @include label-20px-semi-bold;
 }
-
-
 
 // Order Products List
 .order-products-list {

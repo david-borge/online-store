@@ -1,17 +1,14 @@
 /**** Archivo de configuración de producción ****/
 // Angular usa environment.ts para desarrollo y environment.prod.ts para producción automáticamente.
 
-
-
-
 export const environment = {
     production: true,
-  
+
     // Configuración de producción
-    
+
     // API URL
     apiBaseUrl: 'https://davidborge.com/pruebas/online-store-backend',
-    
+
     // (Antiguo) Firestore Database
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     /* firebaseConfig: {

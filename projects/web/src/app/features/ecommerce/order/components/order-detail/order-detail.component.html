@@ -1,96 +1,80 @@
 <!-- Order Dates -->
 <div class="section section-with-bottom-separator">
-
     <div class="container">
-
         <div class="date-with-title-list">
-
             <!-- Date with Title -->
             <app-date-with-title
-                [dateWithTitleTitle] = "'Order date'"
-                [dateWithTitleDate]  = "orderData.orderFullDate"
+                [dateWithTitleTitle]="'Order date'"
+                [dateWithTitleDate]="orderData.orderFullDate"
             ></app-date-with-title>
             <!-- Ejemplo: '15 nov. 2022, 14:22' -->
 
             <!-- Date with Title -->
             <app-date-with-title
-                [dateWithTitleTitle] = "'Arrival date'"
-                [dateWithTitleDate]  = "orderData.deliveryFullDate"
+                [dateWithTitleTitle]="'Arrival date'"
+                [dateWithTitleDate]="orderData.deliveryFullDate"
             ></app-date-with-title>
             <!-- Ejemplo: '16 nov. 2022, 16:34' -->
-
         </div>
-
     </div>
-    
 </div>
 
 <!-- Order Total -->
 <div class="section section-with-bottom-separator">
-
     <div class="container">
-
-        <div class="order-total-title" style="margin-bottom: 4px;">
+        <div class="order-total-title" style="margin-bottom: 4px">
             <h2>Order total</h2>
         </div>
 
         <div class="order-total-price">
-            <div>{{ orderData.orderTotal | currency:'EUR':'symbol':'1.2-2' }}</div>
+            <div>{{ orderData.orderTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}</div>
             <!-- Ejemplo: 123.45 € -->
         </div>
-
     </div>
-    
 </div>
 
 <!-- Order Products -->
 <div class="section section-with-bottom-separator">
-
     <!-- Section Header -->
     <app-section-header
-        [sectionHeaderTitleTag]      = "'h2'"
-        [sectionHeaderTitleClasses]  = "'heading-4'"
-        [sectionHeaderTitleText]     = "'Products'"
+        [sectionHeaderTitleTag]="'h2'"
+        [sectionHeaderTitleClasses]="'heading-4'"
+        [sectionHeaderTitleText]="'Products'"
     ></app-section-header>
 
     <!-- Order Products List -->
     <div class="order-products-list">
-            
         <!-- Cart and Checkout Product Card -->
         <app-cart-checkout-product-card
             *ngFor="let product of orderProducts"
-            [cartCheckoutProductCardShowButtons] = "false"
-            [productImageThumbnail]              = "product.imageThumbnail"
-            [productName]                        = "product.name"
-            [productPrice]                       = "product.price"
-            [productQuantity]                    = "product.productQuantity"
+            [cartCheckoutProductCardShowButtons]="false"
+            [productImageThumbnail]="product.imageThumbnail"
+            [productName]="product.name"
+            [productPrice]="product.price"
+            [productQuantity]="product.productQuantity"
         ></app-cart-checkout-product-card>
-    
     </div>
-    
 </div>
 
 <!-- Order Address -->
 <div class="section section-with-bottom-separator">
-
     <!-- Section Header -->
     <app-section-header
-        [sectionHeaderTitleTag]      = "'h2'"
-        [sectionHeaderTitleClasses]  = "'heading-4'"
-        [sectionHeaderTitleText]     = "'Address'"
+        [sectionHeaderTitleTag]="'h2'"
+        [sectionHeaderTitleClasses]="'heading-4'"
+        [sectionHeaderTitleText]="'Address'"
     ></app-section-header>
 
     <div class="container">
-        
         <!-- Address Card -->
         <app-address-card
-            [addressCardIsDefault]  = "1"
-            [addressCardFullName]   = "orderAddress.fullName"
-            [addressCardAddress]    = "orderAddress.address"
-            [addressCardPostalCode] = "orderAddress.postalCode"
-            [addressCardCity]       = "orderAddress.city"
-            [addressCardCountry]    = "orderAddress.country"
-            [addressCardShowButton] = "false"
+            [addressCardIsDefault]="1"
+            [addressCardFullName]="orderAddress.fullName"
+            [addressCardAddress]="orderAddress.address"
+            [addressCardPostalCode]="orderAddress.postalCode"
+            [addressCardCity]="orderAddress.city"
+            [addressCardCountry]="orderAddress.country"
+            [addressCardShowButton]="false"
         ></app-address-card>
         <!-- Ejemplo:
             [addressCardIsDefault]  = "1"
@@ -100,32 +84,28 @@
             [addressCardCity]       = "'Santa Ana, Illinois '"
             [addressCardCountry]    = "'United States of America'"
         -->
-        
     </div>
-    
 </div>
 
 <!-- Order Payment Method -->
 <div class="section">
-
     <!-- Section Header -->
     <app-section-header
-        [sectionHeaderTitleTag]      = "'h2'"
-        [sectionHeaderTitleClasses]  = "'heading-4'"
-        [sectionHeaderTitleText]     = "'Payment Method'"
+        [sectionHeaderTitleTag]="'h2'"
+        [sectionHeaderTitleClasses]="'heading-4'"
+        [sectionHeaderTitleText]="'Payment Method'"
     ></app-section-header>
 
     <div class="container">
-
         <!-- Payment Method -->
         <app-credit-card
-            [cardIsDefault]       = "1"
-            [cardType]            = "orderPaymentMethod.cardType"
-            [cardBankName]        = "orderPaymentMethod.cardBankName"
-            [cardPersonFullName]  = "orderPaymentMethod.cardPersonFullName"
-            [cardLastFourNumbers] = "orderPaymentMethod.cardLastFourNumbers"
-            [cardExpirationMonth] = "orderPaymentMethod.cardExpirationMonth"
-            [cardExpirationYear]  = "orderPaymentMethod.cardExpirationYear"
+            [cardIsDefault]="1"
+            [cardType]="orderPaymentMethod.cardType"
+            [cardBankName]="orderPaymentMethod.cardBankName"
+            [cardPersonFullName]="orderPaymentMethod.cardPersonFullName"
+            [cardLastFourNumbers]="orderPaymentMethod.cardLastFourNumbers"
+            [cardExpirationMonth]="orderPaymentMethod.cardExpirationMonth"
+            [cardExpirationYear]="orderPaymentMethod.cardExpirationYear"
         ></app-credit-card>
         <!-- Ejemplo:
             [cardIsDefault]       = "1"
@@ -136,7 +116,5 @@
             [cardExpirationMonth] = "'12'"
             [cardExpirationYear]  = "'25'"
         -->
-
     </div>
-    
 </div>

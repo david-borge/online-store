@@ -1,174 +1,154 @@
 <!-- Account Page -->
 
-
-
 <!-- Header Tag -->
 <!-- Pongo el ngIf porque el main sale antes que app-header y esto provocaba CLS. -->
 <app-header
     *ngIf="loggedIn || !loggedIn"
-    [headerTagType] = "'overlay-header-main-page'"
-    [overlayHeaderPageTitle] = "'My Account'"
+    [headerTagType]="'overlay-header-main-page'"
+    [overlayHeaderPageTitle]="'My Account'"
 ></app-header>
-    
+
 <!-- Main -->
 <!-- <main role="main" style="padding-bottom: var(--espacio-vertical);"> -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-main-page); padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-main-page);
+        padding-bottom: calc(
+            var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical)
+        );
+    "
+>
     <!-- Loading Spinner -->
     <!-- Proceso de carga de una página: Paso 1. Mostrar el Loading Spinner mientras cargo los datos desde la Base de Datos y las imágenes. -->
     <!-- [imagesInThisPageLoaded]="(!loggedIn && user != null) || (loggedIn && (user.firstName != ''))" -->
     <app-loading-spinner
-        [imagesInThisPageLoaded]="(signUpLogInResult != '')"
+        [imagesInThisPageLoaded]="signUpLogInResult != ''"
         [thisPagePreviouslyVisited]="accountPagePreviouslyVisited"
         [currentlyInThePageIEnteredFrom]="currentlyInThePageIEnteredFrom"
     >
-
         <!-- Page content -->
 
         <!-- Logged In -->
         <div *ngIf="loggedIn">
-
             <!-- Profile Information Container -->
             <div class="section section-with-bottom-separator">
                 <div class="profile-information-container container">
-                    
                     <!-- Profile Information Container - Name and Email -->
                     <div class="profile-information-container--name-and-email-container">
-                        
                         <!-- Profile Information Container - Name -->
                         <div class="profile-information-container--name-container">
-                            <h2>{{user.firstName}} {{user.lastName}}</h2>
+                            <h2>{{ user.firstName }} {{ user.lastName }}</h2>
                             <!-- Ejemplo: Leslie Flores -->
                         </div>
-                        
+
                         <!-- Profile Information Container - Email -->
                         <div class="profile-information-container--email-container">
                             <!-- FIXME: límite de caracteres (con elipsis de CSS?) -->
-                            <div class="profile-information-container--email">{{user.email}}</div>
+                            <div class="profile-information-container--email">{{ user.email }}</div>
                             <!-- Ejemplo: leslieflores@gmail.com -->
                         </div>
-                        
                     </div>
-                    
+
                     <!-- Profile Information Container - Button -->
                     <div class="profile-information-container--button-container">
-
                         <!-- "Log Out" Button -->
                         <app-btn-with-loading-spinner
-                            [btnWithLoadingSpinnerText] = "logOutButtonText"
-                            [btnWithLoadingSpinnerTextClasses] = "'text-nowrap'"
-                            [btnWithLoadingSpinnerClasses] = "'btn btn-outline-secondary btn-lg'"
-                            [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
-                            [btnWithLoadingSpinnerProcessStatus] = "logOutGlobalStatus"
-                            (onClickBtnWithLoadingSpinnerEventEmitter)="onClickLogOutButton();"
+                            [btnWithLoadingSpinnerText]="logOutButtonText"
+                            [btnWithLoadingSpinnerTextClasses]="'text-nowrap'"
+                            [btnWithLoadingSpinnerClasses]="'btn btn-outline-secondary btn-lg'"
+                            [btnWithLoadingSpinnerSpinnerWidthAndHeight]="38"
+                            [btnWithLoadingSpinnerProcessStatus]="logOutGlobalStatus"
+                            (onClickBtnWithLoadingSpinnerEventEmitter)="onClickLogOutButton()"
                         ></app-btn-with-loading-spinner>
-
                     </div>
-
                 </div>
             </div>
 
             <!-- Account -->
             <div class="section section-with-bottom-separator">
-
                 <!-- Section Header -->
                 <app-section-header
-                    [sectionHeaderTitleTag]     = "'h2'"
-                    [sectionHeaderTitleClasses] = "'heading-4'"
-                    [sectionHeaderTitleText]    = "'Account'"
+                    [sectionHeaderTitleTag]="'h2'"
+                    [sectionHeaderTitleClasses]="'heading-4'"
+                    [sectionHeaderTitleText]="'Account'"
                 ></app-section-header>
 
                 <!-- Account Card List -->
                 <div class="account-card-list container">
-
                     <!-- Account Card -->
                     <app-account-card
-                        [accountCardTitle] = "'Orders'"
-                        [accountCardURL]   = "'/orders'"
+                        [accountCardTitle]="'Orders'"
+                        [accountCardURL]="'/orders'"
                     ></app-account-card>
 
                     <!-- Account Card -->
                     <app-account-card
-                        [accountCardTitle] = "'Addresses'"
-                        [accountCardURL]   = "'/addresses'"
+                        [accountCardTitle]="'Addresses'"
+                        [accountCardURL]="'/addresses'"
                     ></app-account-card>
 
                     <!-- Account Card -->
                     <app-account-card
-                        [accountCardTitle] = "'Payment Methods'"
-                        [accountCardURL]   = "'/payment-methods'"
+                        [accountCardTitle]="'Payment Methods'"
+                        [accountCardURL]="'/payment-methods'"
                     ></app-account-card>
-
                 </div>
-
             </div>
 
             <!-- Active Orders -->
             <div class="section">
-
                 <!-- Section Header -->
                 <app-section-header
-                    [sectionHeaderTitleTag]     = "'h2'"
-                    [sectionHeaderTitleClasses] = "'heading-4'"
-                    [sectionHeaderTitleText]    = "'Active Orders'"
-                    [sectionHeaderLink]         = "true"
-                    [sectionHeaderLinkURL]      = "'/orders'"
-                    [sectionHeaderLinkText]     = "'View all orders'"
+                    [sectionHeaderTitleTag]="'h2'"
+                    [sectionHeaderTitleClasses]="'heading-4'"
+                    [sectionHeaderTitleText]="'Active Orders'"
+                    [sectionHeaderLink]="true"
+                    [sectionHeaderLinkURL]="'/orders'"
+                    [sectionHeaderLinkText]="'View all orders'"
                 ></app-section-header>
 
                 <div class="container">
-                    
                     <!-- Active Orders List -->
-                    <div class="orders-list" *ngIf="(activeOrders.length > 0)">
-
+                    <div class="orders-list" *ngIf="activeOrders.length > 0">
                         <!-- Product Card -->
                         <app-product-card
                             *ngFor="let activeOrder of activeOrders"
-                            [productCardTypeClass] = "'product-card-order'"
-                            [orderId]              = "activeOrder.id"
-                            [orderImageThumbnail]  = "activeOrder.imageThumbnail"
-                            [orderImageWidth]      = "activeOrder.imageWidth"
-                            [orderImageHeight]     = "activeOrder.imageHeight"
-                            [orderTotal]           = "activeOrder.orderTotal"
-                            [orderArrivalDate]     = "activeOrder.deliveryFullDate"
+                            [productCardTypeClass]="'product-card-order'"
+                            [orderId]="activeOrder.id"
+                            [orderImageThumbnail]="activeOrder.imageThumbnail"
+                            [orderImageWidth]="activeOrder.imageWidth"
+                            [orderImageHeight]="activeOrder.imageHeight"
+                            [orderTotal]="activeOrder.orderTotal"
+                            [orderArrivalDate]="activeOrder.deliveryFullDate"
                         ></app-product-card>
-
                     </div>
 
                     <!-- No Orders Informative Card -->
-                    <app-informative-card *ngIf="(activeOrders.length == 0)"></app-informative-card>
-
+                    <app-informative-card *ngIf="activeOrders.length == 0"></app-informative-card>
                 </div>
-
             </div>
-
         </div>
 
         <!-- Authentication (Sign Up / Log In) -->
         <div *ngIf="!loggedIn" class="section h-100 d-flex flex-column justify-content-center">
-            
             <!-- Section Header -->
             <!-- "Sign Up" o "Log In" -->
             <app-section-header
-                [sectionHeaderTitleTag]     = "'h2'"
-                [sectionHeaderTitleClasses] = "'heading-4 text-center'"
-                [sectionHeaderTitleText]    = "sectionHeaderTitleText"
+                [sectionHeaderTitleTag]="'h2'"
+                [sectionHeaderTitleClasses]="'heading-4 text-center'"
+                [sectionHeaderTitleText]="sectionHeaderTitleText"
             ></app-section-header>
 
-            <div class="container" style="margin-top: 12px;">
+            <div class="container" style="margin-top: 12px">
                 <div class="container">
-
                     <!-- Sign Up / Log In Form -->
                     <app-signup-login-form></app-signup-login-form>
-                    
                 </div>
             </div>
-
         </div>
-
     </app-loading-spinner>
-
 </main>
-  
+
 <!-- Footer Tag -->
 <app-footer></app-footer>

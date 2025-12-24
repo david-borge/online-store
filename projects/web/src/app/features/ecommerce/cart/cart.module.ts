@@ -7,19 +7,8 @@ import { SharedModule } from '../../../shared/shared.module';
 
 import { CartComponent } from './pages/cart/cart.component';
 
-
-
 @NgModule({
-  declarations: [
-    CartComponent
-  ],
-  imports: [
-    CommonModule,
-
-    CartRoutingModule,
-
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [CartComponent],
+    imports: [CommonModule, CartRoutingModule, CoreModule, SharedModule],
 })
-export class CartModule { }
+export class CartModule {}

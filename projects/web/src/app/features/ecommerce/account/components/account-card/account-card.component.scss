@@ -1,13 +1,10 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Account Card
 .account-card {
     border-radius: var(--card-border-radius);
     background-color: var(--N100);
-    
+
     height: 100%;
 }
 
@@ -29,7 +26,6 @@
 
 // Account Card - Icon
 .account-card--icon-container {
-
 }
 
 // Account Card - Label

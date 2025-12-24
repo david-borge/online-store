@@ -26,11 +26,8 @@
     filter: blur(37.5px);
 }
 
-
-
 // Loading Screen - Imágenes - Animaciones
 @keyframes animacion-slide-in-from-top {
-
     0% {
         /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
         opacity: 0;
@@ -42,7 +39,6 @@
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 .slide-in-from-top {
@@ -53,7 +49,6 @@
 }
 
 @keyframes animacion-slide-in-from-bottom {
-
     0% {
         /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
         opacity: 0;
@@ -65,7 +60,6 @@
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 .slide-in-from-bottom {
@@ -84,8 +78,6 @@
     animation-delay: 700ms;
 }
 
-
-
 // Loading Screen - "Let's begin" button
 .lets-begin-button:disabled {
     background-color: var(--Y300);
@@ -95,7 +87,6 @@
 
 // Loading Screen - "Let's begin" button - Animation
 @keyframes animacion-lets-begin-button {
-
     0% {
         /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
         opacity: 0;
@@ -105,7 +96,6 @@
         /* Propiedades CSS del estado (keyframe) final (normales o transforms) */
         opacity: 1;
     }
-
 }
 
 .lets-begin-button-animation {
@@ -115,8 +105,6 @@
     animation-fill-mode: both;
     // animation-delay: 2100ms;
 }
-
-
 
 // Loading Screen - Spinner
 // .spinner {

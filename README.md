@@ -1,4 +1,25 @@
-# OnlineStore
+# Online Store
+
+<!--
+  TODO: add Prettier and Lint
+  TODO: check layout of header.component.html > "Step x of x"
+  TODO: update packages (specially Angular version)
+  TODO: add sans-serif fallback font
+  TODO: add Lint to backend (does it work with PHP?)
+  TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
+  TODO: delete Firebase Functions config (_prerender-static-routes--firebase.json)
+  TODO: deactivate pre-rendering
+  TODO: delete Github config in the repo (if any)
+  TODO: configure modern SSR
+  TODO: upload to Firebase App Hosting (supports SSR)
+  TODO: check new firebase.json config after uploading
+  TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
+  TODO: delete from Ionos hosting
+  TODO: delete from Heroku
+  TODO: delete Heroku config file
+  TODO: delte unnecessary scripts in package.json
+  TODO: in the future, change backend to Node.js
+-->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 

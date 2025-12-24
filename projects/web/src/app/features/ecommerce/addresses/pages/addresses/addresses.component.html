@@ -1,47 +1,47 @@
 <!-- Addresses Page -->
 
-
-
 <!-- Header Tag -->
 <app-header
     *ngIf="!showBottomOverlay"
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'Delivery addresses'"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitle]="'Delivery addresses'"
 ></app-header>
-    
+
 <!-- Main -->
 <!-- <main role="main" style="padding-bottom: var(--espacio-vertical);"> -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc(var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical));"
-    *ngIf="!showBottomOverlay">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: calc(
+            var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical)
+        );
+    "
+    *ngIf="!showBottomOverlay"
+>
     <div class="illustration-and-content-container">
-
         <div class="illustration-container">
             <!-- [Illustration] -->
         </div>
 
         <div class="content-container">
-
             <!-- Addresses List -->
-            <div class="cart-checkout-product-card-container" *ngIf="(addresses.length > 0)">
-                
+            <div class="cart-checkout-product-card-container" *ngIf="addresses.length > 0">
                 <div class="section">
                     <div class="container">
-            
                         <!-- Address Card List -->
                         <div class="address-card-list">
-            
                             <!-- Address Card -->
                             <!-- FIXME: mostrar primero las últimas addresses añadidas -->
                             <app-address-card
                                 *ngFor="let address of addresses"
-                                [addressCardIsDefault]  = "1"
-                                [addressCardFullName]   = "address.fullName"
-                                [addressCardAddress]    = "address.address"
-                                [addressCardPostalCode] = "address.postalCode"
-                                [addressCardCity]       = "address.city"
-                                [addressCardCountry]    = "address.country"
-                                [addressCardShowButton] = "false"
+                                [addressCardIsDefault]="1"
+                                [addressCardFullName]="address.fullName"
+                                [addressCardAddress]="address.address"
+                                [addressCardPostalCode]="address.postalCode"
+                                [addressCardCity]="address.city"
+                                [addressCardCountry]="address.country"
+                                [addressCardShowButton]="false"
                             ></app-address-card>
                             <!-- TODO: Añadir la opción de cambiar la Address por defecto -->
                             <!-- Ejemplo:
@@ -51,39 +51,33 @@
                                 [addressCardCity]       = "'Santa Ana, Illinois '"
                                 [addressCardCountry]    = "'United States of America'"
                             -->
-            
                         </div>
-            
                     </div>
                 </div>
-                
             </div>
 
-            <div class="empty-text container" *ngIf="(addresses.length == 0)">There is no delivery address yet.</div>
-            
+            <div class="empty-text container" *ngIf="addresses.length == 0">
+                There is no delivery address yet.
+            </div>
         </div>
-
     </div>
-
 </main>
-  
+
 <!-- Footer Tag -->
 <app-footer
     *ngIf="!showBottomOverlay"
-    [navigationShowCtasAndCopy]              = "true"
-    [navigationShowCopy]                     = "false"
-    [navigationButtonRightText]              = "'Add new address'"
-    [navigationButtonRightClasses]           = "'btn btn-outline-secondary btn-sm'"
-    [navigationShowButtonRightRightIcon]     = "true"
-    [navigationShowButtonRightRightIconType] = "'plus'"
+    [navigationShowCtasAndCopy]="true"
+    [navigationShowCopy]="false"
+    [navigationButtonRightText]="'Add new address'"
+    [navigationButtonRightClasses]="'btn btn-outline-secondary btn-sm'"
+    [navigationShowButtonRightRightIcon]="true"
+    [navigationShowButtonRightRightIconType]="'plus'"
 ></app-footer>
-
-
 
 <!-- Bottom Overlay -->
 <app-bottom-overlay
     *ngIf="showBottomOverlay"
-    [bottomOverlayTitle]         = "'Add new delivery address'"
-    [bottomOverlayAddButtonText] = "'Add address'"
-    [bottomOverlayBodyContent]   = "'ADD_NEW_ADDRESS'"
+    [bottomOverlayTitle]="'Add new delivery address'"
+    [bottomOverlayAddButtonText]="'Add address'"
+    [bottomOverlayBodyContent]="'ADD_NEW_ADDRESS'"
 ></app-bottom-overlay>

@@ -1,25 +1,17 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Categories Page
-
-
 
 // Variables
 #categories-lists {
     --espaciado-categories-cards: 16px;
 }
 
-
-
 // Categories Lists
 #categories-lists {
     display: flex;
     gap: var(--espaciado-categories-cards);
 }
-
 
 // Categories List
 .categories-list {

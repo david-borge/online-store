@@ -1,8 +1,5 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Product Card
 .product-card {
     border-radius: var(--card-border-radius);
@@ -42,10 +39,8 @@
 }
 
 .product-card-manufacturer {
-    @include body-12px-regular;   
+    @include body-12px-regular;
 }
-
-
 
 // Product Card - Featured
 .product-card-featured {
@@ -75,8 +70,6 @@
     margin-top: 16px;
 }
 
-
-
 // Product Card - Small
 .product-card-small {
     background-color: var(--N100);
@@ -92,7 +85,7 @@
 
 .product-card-small .product-card-name * {
     @include heading-5;
-    
+
     @include ellipsis-in-second-line;
 }
 
@@ -104,8 +97,6 @@
     margin-top: 8px;
     font-size: 14px;
 }
-
-
 
 // Product Card - Order
 .product-card-order {
@@ -133,7 +124,7 @@
 // Product Card - Order - Product or Order Copy Container
 .product-or-order-card-copy-container {
     flex: 1;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -161,7 +152,6 @@
 
     @include label-14px-medium;
 }
-
 
 // Product Card - Order - Order Arrival Date
 .order-arrival-date {

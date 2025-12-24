@@ -3,21 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CheckoutStepPaymentMethodComponent } from './checkout-step-payment-method.component';
 
 describe('CheckoutStepPaymentMethodComponent', () => {
-  let component: CheckoutStepPaymentMethodComponent;
-  let fixture: ComponentFixture<CheckoutStepPaymentMethodComponent>;
+    let component: CheckoutStepPaymentMethodComponent;
+    let fixture: ComponentFixture<CheckoutStepPaymentMethodComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CheckoutStepPaymentMethodComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [CheckoutStepPaymentMethodComponent],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(CheckoutStepPaymentMethodComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(CheckoutStepPaymentMethodComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

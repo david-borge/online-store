@@ -1,11 +1,9 @@
 <div class="container h-100 d-flex align-items-center">
-
     <!-- Products Grid (of the current Category) -->
     <!-- Solo mostrar el grid de productos cuando se hayan cargado, para evitar flashazos de información incompleta. -->
     <app-products-grid
         *ngIf="productsOfCurrentCategory"
-        [productsList] = "productsOfCurrentCategory"
-        [productCardProductNameTitleHeadingTag] = "'h2'"
+        [productsList]="productsOfCurrentCategory"
+        [productCardProductNameTitleHeadingTag]="'h2'"
     ></app-products-grid>
-
 </div>

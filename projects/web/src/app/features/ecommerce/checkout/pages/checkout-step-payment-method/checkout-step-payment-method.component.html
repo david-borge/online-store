@@ -1,48 +1,50 @@
 <!-- Checkout steps: Payment Method Page -->
 
-
-
 <!-- Header Tag -->
 <app-header
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitleSupTitle] = "'Got it!'"
-    [overlayHeaderPageTitle] = "'How do you want to pay?'"
-    [overlayHeaderSubpageWithSteps] = "true"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitleSupTitle]="'Got it!'"
+    [overlayHeaderPageTitle]="'How do you want to pay?'"
+    [overlayHeaderSubpageWithSteps]="true"
 ></app-header>
-    
+
 <!-- Main -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc( var(--altura-next-step-add-button-container) + var(--altura-next-step-button-container) + var(--espacio-vertical) );">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: calc(
+            var(--altura-next-step-add-button-container) +
+                var(--altura-next-step-button-container) + var(--espacio-vertical)
+        );
+    "
+>
     <div class="illustration-and-content-container">
-
         <div class="illustration-container">
             <!-- [Illustration] -->
         </div>
 
         <div class="content-container">
-
             <!-- Payment Method List -->
-            <div class="section" *ngIf="(paymentMethods.length > 0)">
+            <div class="section" *ngIf="paymentMethods.length > 0">
                 <div class="container">
-
                     <div class="select-the-address-or-card">Select the card:</div>
-        
+
                     <!-- Payment Method Card List -->
                     <div class="payment-method-card-list">
-        
                         <!-- Payment Method -->
                         <app-credit-card
                             *ngFor="let paymentMethod of paymentMethods; let i = index"
-                            [cardId]               = "paymentMethod.id"
-                            [cardType]             = "paymentMethod.cardType"
-                            [cardBankName]         = "paymentMethod.cardBankName"
-                            [cardPersonFullName]   = "paymentMethod.cardPersonFullName"
-                            [cardLastFourNumbers]  = "paymentMethod.cardLastFourNumbers"
-                            [cardExpirationMonth]  = "paymentMethod.cardExpirationMonth"
-                            [cardExpirationYear]   = "paymentMethod.cardExpirationYear"
-                            [creditCardShowButton] = "true"
-                            [cardIsDefault]        = "paymentMethod.isDefault"
-                            [cardArrayId]          = "i"
+                            [cardId]="paymentMethod.id"
+                            [cardType]="paymentMethod.cardType"
+                            [cardBankName]="paymentMethod.cardBankName"
+                            [cardPersonFullName]="paymentMethod.cardPersonFullName"
+                            [cardLastFourNumbers]="paymentMethod.cardLastFourNumbers"
+                            [cardExpirationMonth]="paymentMethod.cardExpirationMonth"
+                            [cardExpirationYear]="paymentMethod.cardExpirationYear"
+                            [creditCardShowButton]="true"
+                            [cardIsDefault]="paymentMethod.isDefault"
+                            [cardArrayId]="i"
                         ></app-credit-card>
                         <!-- Ejemplo:
                             [cardType]             = "'mastercard'"
@@ -54,53 +56,52 @@
                             [creditCardShowButton] = "true"
                             [cardIsDefault]         = "1"
                         -->
-        
                     </div>
-        
                 </div>
             </div>
 
-            <div class="empty-text container" *ngIf="(paymentMethods.length == 0)">There is no payment method yet.</div>
-            
+            <div class="empty-text container" *ngIf="paymentMethods.length == 0">
+                There is no payment method yet.
+            </div>
         </div>
-
     </div>
-
 </main>
-
-
 
 <!-- Next Step Add Button Container -->
 <div class="next-step-add-button-container">
-    <button type="button" class="btn btn-outline-secondary btn-sm w-100 btn-with-icon" (click)="onClickAddNewCardButton();">
+    <button
+        type="button"
+        class="btn btn-outline-secondary btn-sm w-100 btn-with-icon"
+        (click)="onClickAddNewCardButton()"
+    >
         Add new card
 
         <!-- Icon: chevron-right -->
+        <!-- prettier-ignore -->
         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
     </button>
 </div>
 
 <!-- Next Step Button Container -->
 <div class="next-step-button-container">
-    <button type="button" class="btn btn-primary btn-lg w-100 btn-with-icon"
-        (click)="onClickPaymentButton();"
+    <button
+        type="button"
+        class="btn btn-primary btn-lg w-100 btn-with-icon"
+        (click)="onClickPaymentButton()"
         [disabled]="!reviewYourOrderButtonIsEnabled"
     >
         Review your order
 
         <!-- Icon: chevron-right -->
+        <!-- prettier-ignore -->
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
     </button>
 </div>
-
-
 
 <!-- Bottom Overlay -->
 <app-bottom-overlay
     *ngIf="showBottomOverlay"
-    [bottomOverlayTitle]         = "'Add new credit or debit card'"
-    [bottomOverlayAddButtonText] = "'Add card'"
-    [bottomOverlayBodyContent]   = "'ADD_NEW_PAYMENT_METHOD'"
+    [bottomOverlayTitle]="'Add new credit or debit card'"
+    [bottomOverlayAddButtonText]="'Add card'"
+    [bottomOverlayBodyContent]="'ADD_NEW_PAYMENT_METHOD'"
 ></app-bottom-overlay>

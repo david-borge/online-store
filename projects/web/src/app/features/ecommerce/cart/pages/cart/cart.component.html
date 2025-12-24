@@ -2,52 +2,52 @@
 
 <!-- Header Tag -->
 <app-header
-    [headerTagType] = "'overlay-header-main-page'"
-    [overlayHeaderPageTitle] = "'Cart'"
+    [headerTagType]="'overlay-header-main-page'"
+    [overlayHeaderPageTitle]="'Cart'"
 ></app-header>
-    
+
 <!-- Main -->
 <!-- <main role="main" style="padding-bottom: var(--espacio-vertical);"> -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-main-page); padding-bottom: calc(var(--footer-altura-con-navigation-ctas-and-copy-btn-lg) + var(--espacio-vertical));">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-main-page);
+        padding-bottom: calc(
+            var(--footer-altura-con-navigation-ctas-and-copy-btn-lg) + var(--espacio-vertical)
+        );
+    "
+>
     <div class="illustration-and-content-container">
-
         <div class="illustration-container">
             <!-- [Illustration] -->
         </div>
 
         <div class="content-container">
-
             <!-- Product List -->
-            <div class="cart-checkout-product-card-container" *ngIf="(cartData.length > 0)">
-                
+            <div class="cart-checkout-product-card-container" *ngIf="cartData.length > 0">
                 <!-- Cart and Checkout Product Card -->
                 <app-cart-checkout-product-card
                     *ngFor="let product of cartData; let i = index"
-                    [cartDataArrayId]        = "i"
-                    [productId]             = "product.productId"
-                    [productImageThumbnail] = "product.imageThumbnail"
-                    [productName]           = "product.name"
-                    [productPrice]          = "product.price"
-                    [productQuantity]       = "product.productQuantity"
-                    [productImageWidth]     = "product.productQuantity.toString()"
-                    [productImageHeight]    = "product.productQuantity.toString()"
+                    [cartDataArrayId]="i"
+                    [productId]="product.productId"
+                    [productImageThumbnail]="product.imageThumbnail"
+                    [productName]="product.name"
+                    [productPrice]="product.price"
+                    [productQuantity]="product.productQuantity"
+                    [productImageWidth]="product.productQuantity.toString()"
+                    [productImageHeight]="product.productQuantity.toString()"
                 ></app-cart-checkout-product-card>
-                
             </div>
 
-            <div class="empty-text container" *ngIf="(cartData.length == 0)">Your cart is empty.</div>
-            
+            <div class="empty-text container" *ngIf="cartData.length == 0">Your cart is empty.</div>
         </div>
-
     </div>
-
 </main>
-  
+
 <!-- Footer Tag -->
 <app-footer
-    [navigationShowCtasAndCopy] = "true"
-    [navigationCopyLabel]       = "'Cart total'"
-    [navigationCopyPrice]       = "cartTotal"
-    [navigationButtonRightText] = "'Checkout'"
+    [navigationShowCtasAndCopy]="true"
+    [navigationCopyLabel]="'Cart total'"
+    [navigationCopyPrice]="cartTotal"
+    [navigationButtonRightText]="'Checkout'"
 ></app-footer>

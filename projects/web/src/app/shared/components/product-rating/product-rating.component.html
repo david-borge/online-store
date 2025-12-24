@@ -1,16 +1,24 @@
 <!-- Product Rating -->
 <div class="product-rating">
-
     <div class="product-rating-icon">
-
         <!-- Icon: star -->
+        <!-- prettier-ignore -->
         <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_47517_8134)"><path d="M6.28754 3.94183L5.00004 1.3335L3.71254 3.94183L0.833374 4.36266L2.91671 6.39183L2.42504 9.2585L5.00004 7.90433L7.57504 9.2585L7.08337 6.39183L9.16671 4.36266L6.28754 3.94183Z" fill="#363939" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_47517_8134"><rect width="10" height="10" fill="white" transform="translate(0 0.5)"/></clipPath></defs></svg>
-
     </div>
 
-    <div class="product-rating-number" *ngIf="(productCardRatingNumber > 0)">{{productCardRatingNumber | number:'1.2-2'}}</div>
+    <div class="product-rating-number" *ngIf="productCardRatingNumber > 0">
+        {{ productCardRatingNumber | number: '1.2-2' }}
+    </div>
 
-    <div class="product-rating-number-of-reviews" *ngIf="productCardRatingShowNumberOfReviews">{{ ((productCardRatingNumberOfReviews > 0) ? '('+productCardRatingNumberOfReviews : 'No' ) + ' ' + ((productCardRatingNumberOfReviews == 0 || productCardRatingNumberOfReviews > 1) ? 'reviews' : 'review' ) + ( (productCardRatingNumberOfReviews > 0) ? ')' : '' ) }}</div>
+    <div class="product-rating-number-of-reviews" *ngIf="productCardRatingShowNumberOfReviews">
+        {{
+            (productCardRatingNumberOfReviews > 0 ? '(' + productCardRatingNumberOfReviews : 'No') +
+                ' ' +
+                (productCardRatingNumberOfReviews == 0 || productCardRatingNumberOfReviews > 1
+                    ? 'reviews'
+                    : 'review') +
+                (productCardRatingNumberOfReviews > 0 ? ')' : '')
+        }}
+    </div>
     <!-- Ejemplos: "(3 reviews)", "(1 review)", "No reviews" -->
-
 </div>

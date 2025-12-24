@@ -5,140 +5,110 @@
     La notación del identificador de tipo (action.type) es en mayúsculas y con barra baja. Ejemplo: ADD_INGREDIENT
 · Y, opcionalmente, un payload. Por ejemplo, si quiero añadir una nueva receta, los datos de la nueva receta. */
 
+import { createAction, props } from '@ngrx/store';
 
-
-import { createAction, props } from "@ngrx/store";
-
-import { GetOrderDataPHPInterface } from "projects/web/src/app/core/models/getOrderDataPHP.interface";
-import { OrderInterface } from "projects/web/src/app/core/models/order.interface";
-import { OrderProductInterface } from "projects/web/src/app/core/models/orderProduct.interface";
-import { UserInterface } from "projects/web/src/app/core/models/user.interface";
-
-
+import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
+import { OrderInterface } from 'projects/web/src/app/core/models/order.interface';
+import { OrderProductInterface } from 'projects/web/src/app/core/models/orderProduct.interface';
+import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
 
 /** Save Current Order Slug Action **/
 export const SaveCurrentOrderSlug = createAction(
+    // Tipo de la Action
+    '[Order] Save Current Order Slug',
 
-  // Tipo de la Action
-  '[Order] Save Current Order Slug',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    currentOrderSlugPayload: number,
-  }>(),
-
+    // Payload de la Action, si es que esta Action lo necesita
+    props<{
+        // Si el método de la action requiere un solo parámetro, payload es un solo valor
+        currentOrderSlugPayload: number;
+    }>(),
 );
-
-
 
 /** Get Order Data Start Action **/
 // Side Effects asociados: getOrderDataSideEffect (toma los datos de la Order desde la base de datos mediante un HTTP Request)
 export const GetOrderDataStart = createAction(
+    // Tipo de la Action
+    '[Order] Get Order Data Start',
 
-  // Tipo de la Action
-  '[Order] Get Order Data Start',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    orderNumberPayload: number,
-  }>(),
-
+    // Payload de la Action, si es que esta Action lo necesita
+    props<{
+        // Si el método de la action requiere un solo parámetro, payload es un solo valor
+        orderNumberPayload: number;
+    }>(),
 );
 
 /** |-> Get Order Data End Success Action **/
 export const GetOrderDataEndSuccess = createAction(
+    // Tipo de la Action
+    '[Order] Get Order Data End Success',
 
-  // Tipo de la Action
-  '[Order] Get Order Data End Success',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    orderDataProductsAddressAndPaymentMethodPayload: GetOrderDataPHPInterface,
-  }>(),
-
+    // Payload de la Action, si es que esta Action lo necesita
+    props<{
+        // Si el método de la action requiere un solo parámetro, payload es un solo valor
+        orderDataProductsAddressAndPaymentMethodPayload: GetOrderDataPHPInterface;
+    }>(),
 );
 
 /** |-> Get Order Data End Failure Action **/
 export const GetOrderDataEndFailure = createAction(
+    // Tipo de la Action
+    '[Order] Get Order Data End Failure',
 
-  // Tipo de la Action
-  '[Order] Get Order Data End Failure',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    getOrderDataErrorMessagePayload: string,
-  }>(),
-
+    // Payload de la Action, si es que esta Action lo necesita
+    props<{
+        // Si el método de la action requiere un solo parámetro, payload es un solo valor
+        getOrderDataErrorMessagePayload: string;
+    }>(),
 );
-
-
 
 /** Save Order Start Action **/
 // Side Effects asociados: saveOrderStartSideEffect (guardar la nueva Order en la base de datos mediante un HTTP Request)
 export const SaveOrderStart = createAction(
+    // Tipo de la Action
+    '[Order] Save Order Start',
 
-  // Tipo de la Action
-  '[Order] Save Order Start',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    orderFullDatePayload     : OrderInterface['orderFullDate'],
-    deliveryFullDatePayload  : OrderInterface['deliveryFullDate'],
-    addressIdPayload         : OrderInterface['addressId'],
-    paymentMethodIdPayload   : OrderInterface['paymentMethodId'],
-    orderProductsDataPayload : {
-      productId      : OrderProductInterface['productId'],
-      productQuantity: OrderProductInterface['productQuantity'],
-    }[],
-  }>(),
-
+    // Payload de la Action, si es que esta Action lo necesita
+    props<{
+        // Si el método de la action requiere un solo parámetro, payload es un solo valor
+        orderFullDatePayload: OrderInterface['orderFullDate'];
+        deliveryFullDatePayload: OrderInterface['deliveryFullDate'];
+        addressIdPayload: OrderInterface['addressId'];
+        paymentMethodIdPayload: OrderInterface['paymentMethodId'];
+        orderProductsDataPayload: {
+            productId: OrderProductInterface['productId'];
+            productQuantity: OrderProductInterface['productQuantity'];
+        }[];
+    }>(),
 );
 
 /** |-> Save Order End Success Action **/
 // Side Effects asociados: saveOrderEndSuccessSideEffect (redireccionar a /checkout/order-confirmation)
 export const SaveOrderEndSuccess = createAction(
-
-  // Tipo de la Action
-  '[Order] Save Order End Success',
-
+    // Tipo de la Action
+    '[Order] Save Order End Success',
 );
 
 /** |-> Save Order End Failure Action **/
 export const SaveOrderEndFailure = createAction(
+    // Tipo de la Action
+    '[Order] Save Order End Failure',
 
-  // Tipo de la Action
-  '[Order] Save Order End Failure',
-
-  // Payload de la Action, si es que esta Action lo necesita
-  props<{
-    // Si el método de la action requiere un solo parámetro, payload es un solo valor
-    saveOrderDataErrorMessagePayload: string,
-  }>(),
-
+    // Payload de la Action, si es que esta Action lo necesita
+    props<{
+        // Si el método de la action requiere un solo parámetro, payload es un solo valor
+        saveOrderDataErrorMessagePayload: string;
+    }>(),
 );
-
-
 
 /** Log Out Action **/
 // Log Out: Borrar datos de la Order Store (currentOrderNumber; orderData; orderProducts; orderAddress; orderPaymentMethod)
 export const LogOut = createAction(
-
-  // Tipo de la Action
-  '[Order] Log Out',
-  
+    // Tipo de la Action
+    '[Order] Log Out',
 );
-
-
 
 /** Dummy Action **/
 export const DummyAction = createAction(
-
-  // Tipo de la Action
-  '[Order] Dummy Action',
-
+    // Tipo de la Action
+    '[Order] Dummy Action',
 );

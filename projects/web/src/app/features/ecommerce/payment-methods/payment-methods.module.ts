@@ -7,19 +7,8 @@ import { SharedModule } from '../../../shared/shared.module';
 
 import { PaymentMethodsComponent } from './pages/payment-methods/payment-methods.component';
 
-
-
 @NgModule({
-  declarations: [
-    PaymentMethodsComponent
-  ],
-  imports: [
-    CommonModule,
-
-    PaymentMethodsRoutingModule,
-
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [PaymentMethodsComponent],
+    imports: [CommonModule, PaymentMethodsRoutingModule, CoreModule, SharedModule],
 })
-export class PaymentMethodsModule { }
+export class PaymentMethodsModule {}

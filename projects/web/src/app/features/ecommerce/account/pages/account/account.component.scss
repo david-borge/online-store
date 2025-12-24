@@ -1,9 +1,5 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
-
 // Profile Information Container
 .profile-information-container {
     display: flex;
@@ -24,7 +20,7 @@
     margin-bottom: 0;
 
     @include heading-4;
-    
+
     @include ellipsis-in-second-line;
     overflow-wrap: anywhere; // Para que el texto del correo pase a la siguiente línea si es demasiado largo
 }
@@ -43,8 +39,6 @@
     flex-direction: column;
     justify-content: center;
 }
-
-
 
 // Account Card List
 .account-card-list {

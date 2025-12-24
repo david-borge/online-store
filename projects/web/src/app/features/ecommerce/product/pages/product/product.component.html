@@ -4,14 +4,22 @@
 <!-- Mostrar solo si el objeto currentProduct no está vacío -->
 <app-header
     *ngIf="imagesInThisPageLoaded"
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "currentProduct.name"
-    [overlayHeaderSubpageBackgroundColor] = "currentProduct.cardAndHeaderBackgroundColor"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitle]="currentProduct.name"
+    [overlayHeaderSubpageBackgroundColor]="currentProduct.cardAndHeaderBackgroundColor"
 ></app-header>
-    
+
 <!-- Main -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc(var(--footer-altura-con-navigation-ctas-and-copy-btn-lg) + var(--espacio-vertical));">
-<!-- <main role="main" style="padding-bottom: calc(148px + var(--espacio-vertical));"> -->
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: calc(
+            var(--footer-altura-con-navigation-ctas-and-copy-btn-lg) + var(--espacio-vertical)
+        );
+    "
+>
+    <!-- <main role="main" style="padding-bottom: calc(148px + var(--espacio-vertical));"> -->
 
     <!-- Loading Spinner -->
     <app-loading-spinner
@@ -19,20 +27,17 @@
         [thisPagePreviouslyVisited]="productPagePreviouslyVisited"
         [currentlyInThePageIEnteredFrom]="currentlyInThePageIEnteredFrom"
     >
-
         <!-- Page content -->
 
         <!-- ProductDetailComponent -->
         <router-outlet></router-outlet>
-
     </app-loading-spinner>
-
 </main>
-  
+
 <!-- Footer Tag -->
 <app-footer
-    [navigationShowCtasAndCopy] = "true"
-    [navigationCopyLabel]       = "''"
-    [navigationCopyPrice]       = "( currentProduct ? currentProduct.price : 0 )"
-    [navigationButtonRightText] = "footerNavigationButtonRightText"
+    [navigationShowCtasAndCopy]="true"
+    [navigationCopyLabel]="''"
+    [navigationCopyPrice]="currentProduct ? currentProduct.price : 0"
+    [navigationButtonRightText]="footerNavigationButtonRightText"
 ></app-footer>

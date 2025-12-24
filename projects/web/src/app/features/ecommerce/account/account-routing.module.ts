@@ -4,32 +4,28 @@
     - component: el componente que se carga cuando se llegue a la ruta definida en path. El componente viene a ser la nueva página
 */
 
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AccountComponent } from "./pages/account/account.component";
+import { AccountComponent } from './pages/account/account.component';
 
 const accountRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
-   
+
     // Account Page
     {
         path: '',
         component: AccountComponent,
     },
-
 ];
 
 @NgModule({
     imports: [
         // En los módulos que no sean AppModule, hay que usar forChild, no forRoot.
-        RouterModule.forChild(accountRoutes)
+        RouterModule.forChild(accountRoutes),
     ],
 
     // Exportar RouterModule para poder importarlo en AppModule
-    exports: [
-        RouterModule
-    ]
+    exports: [RouterModule],
 })
-
-export class AccountRoutingModule { }
+export class AccountRoutingModule {}

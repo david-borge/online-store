@@ -1,17 +1,36 @@
 <!-- Product Card -->
-<div class="product-card {{productCardTypeClass}}" [ngStyle]="{ 'background-color': ((productCardTypeClass == 'product-card-featured') ? product.cardAndHeaderBackgroundColor : '') }">
-
-    <a [routerLink]="[( (orderId != 0) ? ('/order/' + orderId) : ('/product/' + product.slug) )]">
-    <!-- Ejemplo: <a [routerLink]="['/product/the-metamorphosis']"> -->
+<div
+    class="product-card {{ productCardTypeClass }}"
+    [ngStyle]="{
+        'background-color':
+            productCardTypeClass == 'product-card-featured'
+                ? product.cardAndHeaderBackgroundColor
+                : '',
+    }"
+>
+    <a [routerLink]="[orderId != 0 ? '/order/' + orderId : '/product/' + product.slug]">
+        <!-- Ejemplo: <a [routerLink]="['/product/the-metamorphosis']"> -->
 
         <!-- Product Image -->
         <div class="product-card-image-container">
             <picture>
-                <source srcset="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.webp" type="image/webp">
+                <source
+                    srcset="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.webp"
+                    type="image/webp"
+                />
                 <!-- <img ngSrc="{{product.imageThumbnail}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority> -->
                 <!-- <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority imageLoadDirective> -->
                 <!-- <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{( (product.imageWidth != '') ? product.imageWidth : orderImageWidth )}}" height="{{( (product.imageHeight != '') ? product.imageHeight : orderImageHeight )}}" priority imageLoadDirective> -->
-                <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{( product.imageWidth ? product.imageWidth : orderImageWidth )}}" height="{{( product.imageHeight ? product.imageHeight : orderImageHeight )}}" priority imageLoadDirective>
+                <img
+                    ngSrc="{{
+                        orderImageThumbnail != '' ? orderImageThumbnail : product.imageThumbnail
+                    }}.png"
+                    alt="{{ product.name }}"
+                    width="{{ product.imageWidth ? product.imageWidth : orderImageWidth }}"
+                    height="{{ product.imageHeight ? product.imageHeight : orderImageHeight }}"
+                    priority
+                    imageLoadDirective
+                />
                 <!-- Ejemplo: -->
                 <!-- <source srcset="/assets/img/products/dualsense-wireless-controller-thumbnail.webp" type="image/webp"> -->
                 <!-- <img ngSrc="/assets/img/products/dualsense-wireless-controller-thumbnail.png" alt="DualSense Wireless Controller" width="508" height="475"> -->
@@ -20,47 +39,62 @@
 
         <!-- Product or Order Copy Container -->
         <div class="product-or-order-card-copy-container">
-
-            <div class="product-or-order-card-copy-name-manufacturer-rating-container" *ngIf="(productCardTypeClass != 'product-card-order')">
-
+            <div
+                class="product-or-order-card-copy-name-manufacturer-rating-container"
+                *ngIf="productCardTypeClass != 'product-card-order'"
+            >
                 <!-- Product Name -->
                 <div class="product-card-name" [innerHTML]="productCardTitleHeadingTagInnerHTML">
                     <!-- Ejemplo: <h2>Chuck 70 Hi Sneakers</h2> -->
                 </div>
 
                 <!-- Product Manufacturer -->
-                <div class="product-card-manufacturer">{{product.manufacturer}}</div>
+                <div class="product-card-manufacturer">{{ product.manufacturer }}</div>
 
                 <!-- Product Rating -->
                 <!-- Show only if product.ratingNumber exists (is not NULL) -->
                 <app-product-rating
-                    *ngIf="(productCardTypeClass == 'product-card-small') && (product.ratingNumber)"
-                    [productCardRatingNumber] = "product.ratingNumber"
+                    *ngIf="productCardTypeClass == 'product-card-small' && product.ratingNumber"
+                    [productCardRatingNumber]="product.ratingNumber"
                 ></app-product-rating>
-
             </div>
 
             <!-- Order Total -->
-            <div class="order-total" *ngIf="(productCardTypeClass == 'product-card-order')">Order total</div>
+            <div class="order-total" *ngIf="productCardTypeClass == 'product-card-order'">
+                Order total
+            </div>
 
             <!-- Product or Order Price -->
-            <div class="product-or-order-card-price">{{ ( (orderTotal != 0) ? orderTotal : product.price ) | currency:'EUR':'symbol':'1.2-2' }}</div>
+            <div class="product-or-order-card-price">
+                {{
+                    (orderTotal != 0 ? orderTotal : product.price)
+                        | currency: 'EUR' : 'symbol' : '1.2-2'
+                }}
+            </div>
 
             <!-- Order Arrival Date -->
-            <div class="order-arrival-date" [ngClass]="{'order-active': orderIsActive}" *ngIf="(productCardTypeClass == 'product-card-order')">{{ ( orderIsActive ? 'Arriving' : 'Arrived' ) + ' ' + ( (orderArrivalDateFormated != '') ? orderArrivalDateFormated :  ( orderArrivalDate | date:'d MMM' ) ) }}</div>
-
-        </div>
-
-        <!-- Order Button -->
-        <div class="order-button" *ngIf="(productCardTypeClass == 'product-card-order')">
-            <div class="order-button--icon-container">
-                
-                <!-- Icon: chevron-right -->
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
+            <div
+                class="order-arrival-date"
+                [ngClass]="{ 'order-active': orderIsActive }"
+                *ngIf="productCardTypeClass == 'product-card-order'"
+            >
+                {{
+                    (orderIsActive ? 'Arriving' : 'Arrived') +
+                        ' ' +
+                        (orderArrivalDateFormated != ''
+                            ? orderArrivalDateFormated
+                            : (orderArrivalDate | date: 'd MMM'))
+                }}
             </div>
         </div>
 
+        <!-- Order Button -->
+        <div class="order-button" *ngIf="productCardTypeClass == 'product-card-order'">
+            <div class="order-button--icon-container">
+                <!-- Icon: chevron-right -->
+                <!-- prettier-ignore -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
     </a>
-
 </div>

@@ -5,12 +5,7 @@
     La notación del identificador de tipo (action.type) es en mayúsculas y con barra baja. Ejemplo: ADD_INGREDIENT
 · Y, opcionalmente, un payload. Por ejemplo, si quiero añadir una nueva receta, los datos de la nueva receta. */
 
-
-
-import { createAction, props } from "@ngrx/store";
-
-
-
+import { createAction, props } from '@ngrx/store';
 
 // /** Set Home Page Has Been Previously Visited To True Action **/
 // export const SetHomePageHasBeenPrevouslyVisitedToTrue = createAction(
@@ -20,12 +15,8 @@ import { createAction, props } from "@ngrx/store";
 
 // );
 
-
-
 /** Dummy Action **/
 export const DummyAction = createAction(
-
-  // Tipo de la Action
-  '[Home] Dummy Action',
-
+    // Tipo de la Action
+    '[Home] Dummy Action',
 );

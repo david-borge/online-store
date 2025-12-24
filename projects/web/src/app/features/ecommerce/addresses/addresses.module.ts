@@ -7,19 +7,8 @@ import { SharedModule } from '../../../shared/shared.module';
 
 import { AddressesComponent } from './pages/addresses/addresses.component';
 
-
-
 @NgModule({
-  declarations: [
-    AddressesComponent
-  ],
-  imports: [
-    CommonModule,
-
-    AddressesRoutingModule,
-
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [AddressesComponent],
+    imports: [CommonModule, AddressesRoutingModule, CoreModule, SharedModule],
 })
-export class AddressesModule { }
+export class AddressesModule {}

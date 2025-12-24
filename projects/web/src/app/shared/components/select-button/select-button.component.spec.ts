@@ -3,21 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SelectButtonComponent } from './select-button.component';
 
 describe('SelectButtonComponent', () => {
-  let component: SelectButtonComponent;
-  let fixture: ComponentFixture<SelectButtonComponent>;
+    let component: SelectButtonComponent;
+    let fixture: ComponentFixture<SelectButtonComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SelectButtonComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [SelectButtonComponent],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(SelectButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(SelectButtonComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-
 /***** Fuentes: Inter y Lora *****/
 /* cyrillic-ext */
 @font-face {
@@ -9,7 +7,8 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2)
+        format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 /* cyrillic */
@@ -18,7 +17,8 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2)
+        format('woff2');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 /* greek-ext */
@@ -27,7 +27,8 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2)
+        format('woff2');
     unicode-range: U+1F00-1FFF;
 }
 /* greek */
@@ -36,7 +37,8 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2)
+        format('woff2');
     unicode-range: U+0370-03FF;
 }
 /* vietnamese */
@@ -45,8 +47,11 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2) format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2)
+        format('woff2');
+    unicode-range:
+        U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
+        U+20AB;
 }
 /* latin-ext */
 @font-face {
@@ -54,8 +59,11 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2)
+        format('woff2');
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+        U+A720-A7FF;
 }
 /* latin */
 @font-face {
@@ -63,8 +71,11 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
+        format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+        U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* cyrillic-ext */
 @font-face {
@@ -72,7 +83,8 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2)
+        format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 /* cyrillic */
@@ -81,7 +93,8 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2)
+        format('woff2');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 /* greek-ext */
@@ -90,7 +103,8 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2)
+        format('woff2');
     unicode-range: U+1F00-1FFF;
 }
 /* greek */
@@ -99,7 +113,8 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2)
+        format('woff2');
     unicode-range: U+0370-03FF;
 }
 /* vietnamese */
@@ -108,8 +123,11 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2) format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2)
+        format('woff2');
+    unicode-range:
+        U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
+        U+20AB;
 }
 /* latin-ext */
 @font-face {
@@ -117,8 +135,11 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2)
+        format('woff2');
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+        U+A720-A7FF;
 }
 /* latin */
 @font-face {
@@ -126,8 +147,11 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
+        format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+        U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* cyrillic-ext */
 @font-face {
@@ -135,7 +159,8 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJMkq1umA.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJMkq1umA.woff2)
+        format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 /* cyrillic */
@@ -144,7 +169,8 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJFkq1umA.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJFkq1umA.woff2)
+        format('woff2');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 /* vietnamese */
@@ -153,8 +179,11 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJOkq1umA.woff2) format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJOkq1umA.woff2)
+        format('woff2');
+    unicode-range:
+        U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
+        U+20AB;
 }
 /* latin-ext */
 @font-face {
@@ -162,8 +191,11 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJPkq1umA.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJPkq1umA.woff2)
+        format('woff2');
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+        U+A720-A7FF;
 }
 /* latin */
 @font-face {
@@ -171,31 +203,21 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJBkq0.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: url(https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJBkq0.woff2)
+        format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+        U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
-
-
-
-
-
-
-
-
 
 /***** Variables SASS de Bootstrap personalizadas *****/
 // Documentación: https://getbootstrap.com/docs/5.2/customize/sass/
-
-
 
 // Fuente
 // TODO: ¿aplicar corrección a gat?
 :root {
     --bs-body-font-family: 'Inter', sans-serif;
 }
-
-
 
 // Typography - Headings - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 @mixin heading-1 {
@@ -210,7 +232,6 @@
     @include heading-1;
 }
 
-
 @mixin heading-2 {
     font-family: 'Lora';
     font-style: normal;
@@ -223,7 +244,6 @@
     @include heading-2;
 }
 
-
 @mixin heading-3 {
     font-family: 'Lora';
     font-style: normal;
@@ -235,7 +255,6 @@
 .heading-3 {
     @include heading-3;
 }
-
 
 @mixin heading-4 {
     font-family: 'Lora';
@@ -250,7 +269,6 @@
     @include heading-4;
 }
 
-
 @mixin heading-5 {
     font-family: 'Lora';
     font-style: normal;
@@ -262,8 +280,6 @@
 .heading-5 {
     @include heading-5;
 }
-
-
 
 // Typography - Body - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 @mixin body-16px-regular {
@@ -278,7 +294,6 @@
     @include body-16px-regular;
 }
 
-
 @mixin body-16px-medium {
     font-family: 'Inter';
     font-style: normal;
@@ -290,7 +305,6 @@
 .body-16px-medium {
     @include body-16px-medium;
 }
-
 
 @mixin body-14px-regular {
     font-family: 'Inter';
@@ -304,7 +318,6 @@
     @include body-14px-regular;
 }
 
-
 @mixin body-14px-medium {
     font-family: 'Inter';
     font-style: normal;
@@ -316,7 +329,6 @@
 .body-14px-medium {
     @include body-14px-medium;
 }
-
 
 @mixin body-12px-regular {
     font-family: 'Inter';
@@ -330,7 +342,6 @@
     @include body-12px-regular;
 }
 
-
 @mixin body-12px-medium {
     font-family: 'Inter';
     font-style: normal;
@@ -342,8 +353,6 @@
 .body-12px-medium {
     @include body-12px-medium;
 }
-
-
 
 // Typography - Labels - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 @mixin label-20px-regular {
@@ -358,7 +367,6 @@
     @include label-20px-regular;
 }
 
-
 @mixin label-20px-semi-bold {
     font-family: 'Inter';
     font-style: normal;
@@ -370,7 +378,6 @@
 .label-20px-semi-bold {
     @include label-20px-semi-bold;
 }
-
 
 @mixin label-16px-medium {
     font-family: 'Inter';
@@ -384,7 +391,6 @@
     @include label-16px-medium;
 }
 
-
 @mixin label-16px-semi-bold {
     font-family: 'Inter';
     font-style: normal;
@@ -396,7 +402,6 @@
 .label-16px-semi-bold {
     @include label-16px-semi-bold;
 }
-
 
 @mixin label-14px-medium {
     font-family: 'Inter';
@@ -410,7 +415,6 @@
     @include label-14px-medium;
 }
 
-
 @mixin label-14px-semi-bold {
     font-family: 'Inter';
     font-style: normal;
@@ -422,7 +426,6 @@
 .label-14px-semi-bold {
     @include label-14px-semi-bold;
 }
-
 
 @mixin label-12px-medium {
     font-family: 'Inter';
@@ -436,7 +439,6 @@
     @include label-12px-medium;
 }
 
-
 @mixin label-12px-semi-bold {
     font-family: 'Inter';
     font-style: normal;
@@ -449,53 +451,47 @@
     @include label-12px-semi-bold;
 }
 
-
-
 // Colores - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 :root {
-
     // Colores - Figma - Primary
-    --Y500: #F9D262;
-    --Y300: #FFE8B2;
-    --Y100: #FFF8EF;
+    --Y500: #f9d262;
+    --Y300: #ffe8b2;
+    --Y100: #fff8ef;
 
     // Colores - Figma - Neutral
-    --N900: #1F2223;
+    --N900: #1f2223;
     --N800: #363939;
-    --N700: #57595A;
-    --N600: #797A7B;
-    --N500: #8E9090;
-    --N400: #B1B2B2;
-    --N300: #D2D3D3;
-    --N200: #EAEAEA;
-    --N100: #F6F6F6;
+    --N700: #57595a;
+    --N600: #797a7b;
+    --N500: #8e9090;
+    --N400: #b1b2b2;
+    --N300: #d2d3d3;
+    --N200: #eaeaea;
+    --N100: #f6f6f6;
 
     // Colores - Figma - Green
-    --G500: #B4D479;
-    --G300: #D8E4C2;
-    --G100: #EEF2E5;
-    
-    // Colores - Figma - Red
-    --R500: #EA8389;
-    --R300: #E2BDBF;
-    --R100: #F3E6E7;
-    
-    
-    // Colores - Figma - Blue
-    --B500: #81B5E9;
-    --B300: #C1D3E5;
-    --B100: #E6EEF5;
-    
-    
-    // Colores - Figma - Purple
-    --P500: #DEAAEF;
-    --P300: #E7D1EE;
-    --P100: #F6EFF8;
-    
-    // Colores - Figma - Orange
-    --O500: #C84C0E;
-    // --O500: #D68F26; // (Antiguo) No tiene suficiente contraste sobre fondo blanco
+    --G500: #b4d479;
+    --G300: #d8e4c2;
+    --G100: #eef2e5;
 
+    // Colores - Figma - Red
+    --R500: #ea8389;
+    --R300: #e2bdbf;
+    --R100: #f3e6e7;
+
+    // Colores - Figma - Blue
+    --B500: #81b5e9;
+    --B300: #c1d3e5;
+    --B100: #e6eef5;
+
+    // Colores - Figma - Purple
+    --P500: #deaaef;
+    --P300: #e7d1ee;
+    --P100: #f6eff8;
+
+    // Colores - Figma - Orange
+    --O500: #c84c0e;
+    // --O500: #D68F26; // (Antiguo) No tiene suficiente contraste sobre fondo blanco
 }
 
 .color-N900 {
@@ -534,8 +530,6 @@
     color: var(--N100);
 }
 
-
-
 // Colores - Body
 $body-color-rgb: 54 57 57;
 $body-color: var(--N800);
@@ -545,32 +539,33 @@ $body-color: var(--N800);
     color: $body-color;
 }
 
-
-
 // Espaciado - Espaciado lateral
 :root,
-.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
     --bs-gutter-x: 40px;
 }
-
-
 
 // Espaciado - Espaciado vertical
 :root {
     --espacio-vertical: 32px;
 }
 
-
 // Secciones
 .section {
-    padding-top: var(--espacio-vertical); 
+    padding-top: var(--espacio-vertical);
 }
 
 // Secciones - Separador inferior
 .section-with-bottom-separator {
     position: relative;
-    
-    padding-bottom: var(--espacio-vertical); 
+
+    padding-bottom: var(--espacio-vertical);
 }
 
 .section-with-bottom-separator::after {
@@ -585,8 +580,6 @@ $body-color: var(--N800);
     height: 1px;
     background-color: var(--N300);
 }
-
-
 
 // Botones
 .btn:hover {
@@ -641,8 +634,6 @@ $body-color: var(--N800);
     color: var(--N800) !important;
 }
 
-
-
 // Botones - Large
 .btn-lg,
 .btn-group-lg > .btn {
@@ -658,20 +649,13 @@ $body-color: var(--N800);
     gap: 8px;
 }
 
-
-
 // Cards
 :root {
     --card-border-radius: 10px;
     --space-between-cards: 16px;
 }
 
-
-
-
 /***** SCSS de toda la aplicación *****/
-
-
 
 // Inputs - Floating Labels
 // Fuente: https://getbootstrap.com/docs/5.2/forms/floating-labels/
@@ -722,8 +706,6 @@ $body-color: var(--N800);
     box-shadow: none;
 }
 
-
-
 // Inputs - Disabled - No cambiar su aspecto
 .form-disabled-input-do-not-change input:disabled,
 .form-disabled-input-do-not-change select:disabled {
@@ -740,15 +722,10 @@ $body-color: var(--N800);
     color: var(--R500);
 }
 
-
-
-
 // Font Weight (que no están en Bootstrap)
 .font-weight-500 {
     font-weight: 500;
 }
-
-
 
 // Sticky Footer
 // TODO: aplicar esta corrección a gulp-amp-template
@@ -772,8 +749,6 @@ main {
     padding-bottom: var(--espacio-vertical);
 }
 
-
-
 // Disable Text Selection
 body {
     -webkit-user-select: none; /* Safari */
@@ -781,14 +756,10 @@ body {
     user-select: none; /* Standard syntax */
 }
 
-
-
 // Prevent scroll
 .prevent-scroll {
     overflow: hidden;
 }
-
-
 
 // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
 // Nota: no puedo usar ngIf para esto porque necesito leer los elementos img del DOM para averiguar cuando se ha terminado de cargar las imágenes, y con ngif en false, esos elementos img no están en el DOM.
@@ -804,7 +775,6 @@ body {
 }
 
 @keyframes load-animation {
-
     from {
         /* Propiedades CSS del estado (keyframe) inicial (normales o transforms) */
         opacity: 0;
@@ -816,7 +786,6 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 .mostrar-sin-animacion {
@@ -843,15 +812,10 @@ body {
 
 // }
 
-
-
-
 // App Loading Screen Tag - Clases for <router-outlet>
 .app-loading-screen--class-for-router-outlet {
     flex: 1;
 }
-
-
 
 // Varias Pages - Clases for <router-outlet>
 .app-home--class-for-router-outlet,
@@ -877,13 +841,11 @@ body {
     height: 100%;
 }
 
-
-
 // HeaderComponent & FooterComponent - Sticky position
 app-header,
 app-footer {
     position: fixed; // MUCHO CUIDADO: no usar sticky aquí porque hace que el footer no funcione bien en móviles porque compensa la altura de la barra de navegación del navegador
-    
+
     left: 50%;
     transform: translateX(-50%);
 
@@ -916,8 +878,6 @@ app-footer {
     --altura-next-step-button-container: 73px;
 }
 
-
-
 // SVG Icons
 svg-icon {
     display: flex;
@@ -925,8 +885,6 @@ svg-icon {
     justify-content: center;
     align-items: center;
 }
-
-
 
 // Illustrations
 .illustration-and-content-container {
@@ -956,8 +914,6 @@ svg-icon {
     text-align: center;
 }
 
-
-
 // TODO: ¿mover a su propio componente en SharedModule?
 // Orders List
 .orders-list {
@@ -966,16 +922,12 @@ svg-icon {
     gap: var(--space-between-cards);
 }
 
-
-
 // Address Card List
 .address-card-list {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
-
-
 
 // Payment Method Card List
 .payment-method-card-list {
@@ -984,16 +936,12 @@ svg-icon {
     gap: 24px;
 }
 
-
-
 // Checkout Steps - Select the address / card
 .select-the-address-or-card {
     margin-bottom: 24px;
 
     @include heading-4;
 }
-
-
 
 // Checkout Steps - Add address / card button
 .next-step-add-button-container {
@@ -1004,11 +952,9 @@ svg-icon {
     z-index: 2;
 
     padding: 12px calc(var(--bs-gutter-x) * 0.5);
-    
+
     background-color: white;
 }
-
-
 
 // Checkout Steps - Button Container
 .next-step-button-container {
@@ -1017,7 +963,7 @@ svg-icon {
     width: 100%;
     max-width: var(--ancho-contenedor-solo-movil);
     z-index: 2;
-    
+
     border-top: 1px solid var(--N200);
     padding: 12px calc(var(--bs-gutter-x) * 0.5);
 
@@ -1028,14 +974,10 @@ svg-icon {
     min-height: 48px;
 }
 
-
-
 // Bottom Overlay - Position
 .show-bottom-overlay {
     overflow-y: hidden;
 }
-
-
 
 // Buttons - Disabled
 .btn {
@@ -1044,10 +986,8 @@ svg-icon {
 
 // .btn-show-change-when-disabled
 .btn-show-change-when-disabled:disabled {
-    opacity: .6;
+    opacity: 0.6;
 }
-
-
 
 // Texto
 .text-justify {

@@ -4,17 +4,17 @@
     - component: el componente que se carga cuando se llegue a la ruta definida en path. El componente viene a ser la nueva página
 */
 
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductComponent } from "./pages/product/product.component";
-import { ProductDetailComponent } from "./components/product-detail/product-detail.component";
+import { ProductComponent } from './pages/product/product.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
-import { ProductGuard } from "../../../core/guards/product/product.guard";
+import { ProductGuard } from '../../../core/guards/product/product.guard';
 
 const productRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
-   
+
     /* // Product Page
     {
         path: '',
@@ -29,29 +29,24 @@ const productRoutes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'dualsense-wireless-controller',  // Si se entra a /product, le llevo al producto por defecto, que es dualsense-wireless-controller (/product/dualsense-wireless-controller)
-                pathMatch: 'full'
+                redirectTo: 'dualsense-wireless-controller', // Si se entra a /product, le llevo al producto por defecto, que es dualsense-wireless-controller (/product/dualsense-wireless-controller)
+                pathMatch: 'full',
             },
             {
-                path: ':product-slug',  // Route parameter
+                path: ':product-slug', // Route parameter
                 component: ProductDetailComponent,
-            }
-
-        ]
-    }
-
+            },
+        ],
+    },
 ];
 
 @NgModule({
     imports: [
         // En los módulos que no sean AppModule, hay que usar forChild, no forRoot.
-        RouterModule.forChild(productRoutes)
+        RouterModule.forChild(productRoutes),
     ],
 
     // Exportar RouterModule para poder importarlo en AppModule
-    exports: [
-        RouterModule
-    ]
+    exports: [RouterModule],
 })
-
-export class ProductRoutingModule { }
+export class ProductRoutingModule {}

@@ -1,15 +1,22 @@
 <!-- Header Tag -->
 <!-- *ngIf="currentCategory" -->
 <app-header
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "(currentCategory ? currentCategory.name : '')"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitle]="currentCategory ? currentCategory.name : ''"
 ></app-header>
 <!-- TODO: recoger el nombre de la categoría actual -->
 
 <!-- Main -->
 <!-- <main role="main" style="padding-top: var(--espacio-vertical); padding-bottom: var(--espacio-vertical);"> -->
-<main role="main" style="padding-top: calc(var(--header-altura-overlay-header-subpage) + var(--espacio-vertical)); padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
-
+<main
+    role="main"
+    style="
+        padding-top: calc(var(--header-altura-overlay-header-subpage) + var(--espacio-vertical));
+        padding-bottom: calc(
+            var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical)
+        );
+    "
+>
     <!-- Loading Spinner -->
     <!-- Proceso de carga de una página: Paso 1. Mostrar el Loading Spinner mientras cargo los datos desde la Base de Datos y las imágenes. -->
     <!-- [imagesInThisPageLoaded]="imagesInThisPageLoaded" -->
@@ -17,16 +24,13 @@
         [imagesInThisPageLoaded]="true"
         [thisPagePreviouslyVisited]="categoriesPagePreviouslyVisited"
         [currentlyInThePageIEnteredFrom]="currentlyInThePageIEnteredFrom"
-        >
-
+    >
         <!-- Page content -->
 
         <!-- CategoryDetailComponent -->
         <router-outlet></router-outlet>
-
     </app-loading-spinner>
-
 </main>
-  
+
 <!-- Footer Tag -->
 <app-footer></app-footer>

@@ -7,19 +7,8 @@ import { SharedModule } from '../../../shared/shared.module';
 
 import { OrdersComponent } from './pages/orders/orders.component';
 
-
-
 @NgModule({
-  declarations: [
-    OrdersComponent
-  ],
-  imports: [
-    CommonModule,
-
-    OrdersRoutingModule,
-
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [OrdersComponent],
+    imports: [CommonModule, OrdersRoutingModule, CoreModule, SharedModule],
 })
-export class OrdersModule { }
+export class OrdersModule {}

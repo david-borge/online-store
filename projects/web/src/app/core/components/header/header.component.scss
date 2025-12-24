@@ -1,13 +1,9 @@
 @import 'projects/web/src/styles.scss';
 
-
-
 // Header Tag
 header {
     background-color: white;
 }
-
-
 
 // Overlay Header
 .overlay-header > div {
@@ -52,7 +48,7 @@ header {
 
 .overlay-header-subpage .overlay-header-title .overlay-header-page-title-sup-title {
     margin-bottom: 3px;
-    
+
     @include body-14px-regular;
 }
 
@@ -79,7 +75,6 @@ header {
 .overlay-header-main-page .overlay-header-title * {
     @include heading-3;
 }
-
 
 // Overlay Header - Subpage
 .overlay-header.overlay-header-subpage > div {
@@ -125,20 +120,18 @@ header {
 }
 
 .overlay-header-subpage .overlay-header-title {
-    padding-right: var(--bs-gutter-x);  /* Para compensar el icono izquierdo */
+    padding-right: var(--bs-gutter-x); /* Para compensar el icono izquierdo */
 }
 
 .overlay-header-subpage .overlay-header-title * {
     @include heading-4;
-    
+
     @include ellipsis-in-second-line;
 }
 
-
-
 // Overlay Header - With Steps
 .overlay-header-with-steps .overlay-header-title {
-    padding-right: calc( var(--bs-gutter-x) / 2 );
+    padding-right: calc(var(--bs-gutter-x) / 2);
     text-align: left;
 }
 

@@ -2,18 +2,24 @@
 
 <!-- Header Tag -->
 <app-header
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "('Order #' + currentOrderNumber)"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitle]="'Order #' + currentOrderNumber"
 ></app-header>
 
 <!-- Main -->
 <!-- <main role="main" style="padding-bottom: var(--espacio-vertical);"> -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc(var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical));">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: calc(
+            var(--footer-altura-sin-navigation-ctas-and-copy) + var(--espacio-vertical)
+        );
+    "
+>
     <!-- OrderDetailComponent -->
     <router-outlet></router-outlet>
-
 </main>
-  
+
 <!-- Footer Tag -->
 <app-footer></app-footer>

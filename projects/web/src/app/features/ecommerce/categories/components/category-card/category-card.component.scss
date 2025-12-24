@@ -1,20 +1,17 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Category Card
 .category-card {
     border-radius: var(--card-border-radius);
 }
-
 
 // Category Card - Link
 .category-card a {
     --category-card-padding-top-and-side: 16px;
     --category-card-padding-bottom: 22px;
     border-radius: var(--card-border-radius);
-    padding: var(--category-card-padding-top-and-side) var(--category-card-padding-top-and-side) var(--category-card-padding-bottom);
+    padding: var(--category-card-padding-top-and-side) var(--category-card-padding-top-and-side)
+        var(--category-card-padding-bottom);
     height: 100%;
 
     color: var(--N800);
@@ -25,7 +22,6 @@
     gap: var(--espaciado-categories-cards);
 }
 
-
 // Category Card - Title
 .category-card--title-container * {
     margin-bottom: 0;
@@ -33,10 +29,11 @@
     @include heading-4;
 }
 
-
 // Category Card - Image
 .category-card--image-container {
-    height: calc(100% - 22px - var(--espaciado-categories-cards) );  // Compensar la altura de .category-card--title-container > * y el espacio entre ello y el contenedor de la imagen
+    height: calc(
+        100% - 22px - var(--espaciado-categories-cards)
+    ); // Compensar la altura de .category-card--title-container > * y el espacio entre ello y el contenedor de la imagen
 
     display: flex;
     flex-direction: column;
@@ -48,9 +45,10 @@
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: calc(100% - 22px - var(--espaciado-categories-cards) );  // Compensar la altura de .category-card--title-container > * y el espacio entre ello y el contenedor de la imagen
+    max-height: calc(
+        100% - 22px - var(--espaciado-categories-cards)
+    ); // Compensar la altura de .category-card--title-container > * y el espacio entre ello y el contenedor de la imagen
 }
-
 
 // Category Card - Small
 .category-card--small {
@@ -59,9 +57,13 @@
 }
 
 .category-card--small img {
-    max-height: calc(var(--category-card--small-height) - var(--category-card-padding-top-and-side) - var(--category-card-padding-top-and-side) - 22px - var(--espaciado-categories-cards));
+    max-height: calc(
+        var(--category-card--small-height) - var(--category-card-padding-top-and-side) - var(
+                --category-card-padding-top-and-side
+            ) -
+            22px - var(--espaciado-categories-cards)
+    );
 }
-
 
 // Category Card - Large
 .category-card--large {
@@ -70,5 +72,10 @@
 }
 
 .category-card--large img {
-    max-height: calc(var(--category-card--large-height) - var(--category-card-padding-top-and-side) - var(--category-card-padding-top-and-side) - 22.5px - var(--espaciado-categories-cards));
+    max-height: calc(
+        var(--category-card--large-height) - var(--category-card-padding-top-and-side) - var(
+                --category-card-padding-top-and-side
+            ) -
+            22.5px - var(--espaciado-categories-cards)
+    );
 }

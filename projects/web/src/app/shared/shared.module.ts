@@ -23,61 +23,50 @@ import { AddNewAddressFormComponent } from './components/add-new-address-form/ad
 import { AddNewCardFormComponent } from './components/add-new-card-form/add-new-card-form/add-new-card-form.component';
 import { BtnWithLoadingSpinnerComponent } from './components/btn-with-loading-spinner/btn-with-loading-spinner.component';
 
-
-
-
 @NgModule({
-  declarations: [
-    SectionHeaderComponent,
-    ProductCardComponent,
-    FeaturedProductsCarrouselComponent,
-    ProductRatingComponent,
-    ProductReviewsItemComponent,
-    ProductsGridComponent,
-    CartCheckoutProductCardComponent,
-    InformativeCardComponent,
-    CreditCardComponent,
-    AddressCardComponent,
-    SelectButtonComponent,
-    BottomOverlayComponent,
-    SignupLoginFormComponent,
+    declarations: [
+        SectionHeaderComponent,
+        ProductCardComponent,
+        FeaturedProductsCarrouselComponent,
+        ProductRatingComponent,
+        ProductReviewsItemComponent,
+        ProductsGridComponent,
+        CartCheckoutProductCardComponent,
+        InformativeCardComponent,
+        CreditCardComponent,
+        AddressCardComponent,
+        SelectButtonComponent,
+        BottomOverlayComponent,
+        SignupLoginFormComponent,
 
-    // Mis directivas personalizadas
-    PrefetchDirective,
-    ImageLoadDirective,
-    AddNewAddressFormComponent,
-    AddNewCardFormComponent,
-    BtnWithLoadingSpinnerComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    
-    ReactiveFormsModule,
+        // Mis directivas personalizadas
+        PrefetchDirective,
+        ImageLoadDirective,
+        AddNewAddressFormComponent,
+        AddNewCardFormComponent,
+        BtnWithLoadingSpinnerComponent,
+    ],
+    imports: [CommonModule, RouterModule, ReactiveFormsModule, NgOptimizedImage],
 
-    NgOptimizedImage,
-  ],
-
-  // Añadir a exports todo lo que haya puesto en declarations e imports, para que esté disponible en los otros módulos que van a usar las cosas de SharedModule.
-  exports: [
-    NgOptimizedImage,
-    SectionHeaderComponent,
-    ProductCardComponent,
-    FeaturedProductsCarrouselComponent,
-    ProductRatingComponent,
-    ProductReviewsItemComponent,
-    ProductsGridComponent,
-    CartCheckoutProductCardComponent,
-    InformativeCardComponent,
-    CreditCardComponent,
-    AddressCardComponent,
-    SelectButtonComponent,
-    BottomOverlayComponent,
-    SignupLoginFormComponent,
-    BtnWithLoadingSpinnerComponent,
-    PrefetchDirective,
-    ImageLoadDirective,
-  ],
-
+    // Añadir a exports todo lo que haya puesto en declarations e imports, para que esté disponible en los otros módulos que van a usar las cosas de SharedModule.
+    exports: [
+        NgOptimizedImage,
+        SectionHeaderComponent,
+        ProductCardComponent,
+        FeaturedProductsCarrouselComponent,
+        ProductRatingComponent,
+        ProductReviewsItemComponent,
+        ProductsGridComponent,
+        CartCheckoutProductCardComponent,
+        InformativeCardComponent,
+        CreditCardComponent,
+        AddressCardComponent,
+        SelectButtonComponent,
+        BottomOverlayComponent,
+        SignupLoginFormComponent,
+        BtnWithLoadingSpinnerComponent,
+        PrefetchDirective,
+        ImageLoadDirective,
+    ],
 })
-export class SharedModule { }
+export class SharedModule {}

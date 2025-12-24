@@ -1,8 +1,5 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Cart and Checkout Product Card
 .cart-and-checkout-product-card {
     padding: 8px calc(var(--bs-gutter-x) * 0.5);
@@ -114,8 +111,9 @@
     border-radius: var(--cart-and-checkout-product-card-border-radius);
 }
 
-.cart-and-checkout-product-card--item-count--quantity-container.no-buttons .cart-and-checkout-product-card--item-count--quantity::before {
-    content: "x";
+.cart-and-checkout-product-card--item-count--quantity-container.no-buttons
+    .cart-and-checkout-product-card--item-count--quantity::before {
+    content: 'x';
     margin-right: 3px;
 }
 
@@ -135,11 +133,9 @@
 }
 
 .cart-and-checkout-product-card--item-count--minus {
-
 }
 
 .cart-and-checkout-product-card--item-count--plus {
-    
 }
 
 .cart-and-checkout-product-card--item-count--minus-and-delete button {

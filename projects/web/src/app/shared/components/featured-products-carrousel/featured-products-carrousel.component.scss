@@ -4,8 +4,8 @@
     gap: var(--space-between-cards);
 
     overflow-x: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .featured-products-carrousel > .container::-webkit-scrollbar {

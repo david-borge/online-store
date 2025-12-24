@@ -1,25 +1,24 @@
 <!-- Account Card -->
 <div class="account-card">
-    <a routerLink="{{accountCardURL}}">
-    
+    <a routerLink="{{ accountCardURL }}">
         <!-- Account Card - Icon -->
         <div class="account-card--icon-container">
-
             <!-- Icon: shopping-bag -->
+            <!-- prettier-ignore -->
             <svg *ngIf="(accountCardTitle == 'Orders')" width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 10.0002L10.5 3.3335H30.5L35.5 10.0002V33.3335C35.5 34.2176 35.1488 35.0654 34.5237 35.6905C33.8986 36.3156 33.0507 36.6668 32.1667 36.6668H8.83333C7.94928 36.6668 7.10143 36.3156 6.47631 35.6905C5.85119 35.0654 5.5 34.2176 5.5 33.3335V10.0002Z" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10H35.5" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M27.1667 16.6665C27.1667 18.4346 26.4643 20.1303 25.2141 21.3806C23.9638 22.6308 22.2682 23.3332 20.5 23.3332C18.7319 23.3332 17.0362 22.6308 15.786 21.3806C14.5358 20.1303 13.8334 18.4346 13.8334 16.6665" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            
+
             <!-- Icon: map-pin -->
+            <!-- prettier-ignore -->
             <svg *ngIf="(accountCardTitle == 'Addresses')" width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_47575_1314)"><path d="M20.5 38.3332C20.5 38.3332 35.5 28.3332 35.5 16.6665C35.5 12.6883 33.9196 8.87295 31.1066 6.0599C28.2936 3.24686 24.4782 1.6665 20.5 1.6665C16.5218 1.6665 12.7064 3.24686 9.8934 6.0599C7.08035 8.87295 5.5 12.6883 5.5 16.6665C5.5 28.3332 20.5 38.3332 20.5 38.3332Z" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.5 21.6665C23.2614 21.6665 25.5 19.4279 25.5 16.6665C25.5 13.9051 23.2614 11.6665 20.5 11.6665C17.7386 11.6665 15.5 13.9051 15.5 16.6665C15.5 19.4279 17.7386 21.6665 20.5 21.6665Z" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_47575_1314"><rect width="40" height="40" fill="white" transform="translate(0.5)"/></clipPath></defs></svg>
 
             <!-- Icon: credit-card -->
+            <!-- prettier-ignore -->
             <svg *ngIf="(accountCardTitle == 'Payment Methods')" width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_47575_10970)"><path d="M35.5001 6.6665H5.50008C3.65913 6.6665 2.16675 8.15889 2.16675 9.99984V29.9998C2.16675 31.8408 3.65913 33.3332 5.50008 33.3332H35.5001C37.341 33.3332 38.8334 31.8408 38.8334 29.9998V9.99984C38.8334 8.15889 37.341 6.6665 35.5001 6.6665Z" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.16675 16.6665H38.8334" stroke="#D2D3D3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_47575_10970"><rect width="40" height="40" fill="white" transform="translate(0.5)"/></clipPath></defs></svg>
-
         </div>
 
         <!-- Account Card - Label -->
         <div class="account-card--label-container">
-            <h3>{{accountCardTitle}}</h3>
+            <h3>{{ accountCardTitle }}</h3>
         </div>
-        
     </a>
 </div>

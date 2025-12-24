@@ -4,35 +4,31 @@
     - component: el componente que se carga cuando se llegue a la ruta definida en path. El componente viene a ser la nueva página
 */
 
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AddressesComponent } from "./pages/addresses/addresses.component";
+import { AddressesComponent } from './pages/addresses/addresses.component';
 
-import { AccountInnerPagesGuard } from "../../../core/guards/account-inner-pages/account-inner-pages.guard";
+import { AccountInnerPagesGuard } from '../../../core/guards/account-inner-pages/account-inner-pages.guard';
 
 const addressesRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
-   
+
     // Addresses Page ('/addresses')
     {
         path: '',
-        canActivate: [ AccountInnerPagesGuard ], // If user is NOT logged in, redirect from '/addresses' to '/account'
+        canActivate: [AccountInnerPagesGuard], // If user is NOT logged in, redirect from '/addresses' to '/account'
         component: AddressesComponent,
     },
-
 ];
 
 @NgModule({
     imports: [
         // En los módulos que no sean AppModule, hay que usar forChild, no forRoot.
-        RouterModule.forChild(addressesRoutes)
+        RouterModule.forChild(addressesRoutes),
     ],
 
     // Exportar RouterModule para poder importarlo en AppModule
-    exports: [
-        RouterModule
-    ]
+    exports: [RouterModule],
 })
-
-export class AddressesRoutingModule { }
+export class AddressesRoutingModule {}

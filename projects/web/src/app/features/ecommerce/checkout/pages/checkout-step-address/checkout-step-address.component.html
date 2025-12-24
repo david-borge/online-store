@@ -1,48 +1,49 @@
 <!-- Checkout steps: Address Page -->
 
-
-
 <!-- Header Tag -->
 <app-header
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitle] = "'Where Do You Want <br/>Your Delivery?'"
-    [overlayHeaderSubpageWithSteps] = "true"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitle]="'Where Do You Want <br/>Your Delivery?'"
+    [overlayHeaderSubpageWithSteps]="true"
 ></app-header>
-    
+
 <!-- Main -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc( var(--altura-next-step-add-button-container) + var(--altura-next-step-button-container) + var(--espacio-vertical) );">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: calc(
+            var(--altura-next-step-add-button-container) +
+                var(--altura-next-step-button-container) + var(--espacio-vertical)
+        );
+    "
+>
     <div class="illustration-and-content-container">
-
         <div class="illustration-container">
             <!-- [Illustration] -->
         </div>
 
         <div class="content-container">
-
             <!-- Addresses List -->
-            <div class="cart-checkout-product-card-container" *ngIf="(addresses.length > 0)">
-                
+            <div class="cart-checkout-product-card-container" *ngIf="addresses.length > 0">
                 <div class="section">
                     <div class="container">
-
                         <div class="select-the-address-or-card">Select the address:</div>
-            
+
                         <!-- Address Card List -->
                         <div class="address-card-list">
-            
                             <!-- Address Card -->
                             <app-address-card
                                 *ngFor="let address of addresses; let i = index"
-                                [addressCardId]         = "address.id"
-                                [addressCardIsDefault]  = "address.isDefault"
-                                [addressCardFullName]   = "address.fullName"
-                                [addressCardAddress]    = "address.address"
-                                [addressCardPostalCode] = "address.postalCode"
-                                [addressCardCity]       = "address.city"
-                                [addressCardCountry]    = "address.country"
-                                [addressCardShowButton] = "true"
-                                [addressArrayId]        = "i"
+                                [addressCardId]="address.id"
+                                [addressCardIsDefault]="address.isDefault"
+                                [addressCardFullName]="address.fullName"
+                                [addressCardAddress]="address.address"
+                                [addressCardPostalCode]="address.postalCode"
+                                [addressCardCity]="address.city"
+                                [addressCardCountry]="address.country"
+                                [addressCardShowButton]="true"
+                                [addressArrayId]="i"
                             ></app-address-card>
                             <!-- Ejemplo:
                                 [addressCardFullName] = "'Leslie Flores'"
@@ -51,55 +52,53 @@
                                 [addressCardCity]       = "'Santa Ana, Illinois '"
                                 [addressCardCountry]    = "'United States of America'"
                             -->
-
                         </div>
-        
                     </div>
                 </div>
-                
             </div>
 
-            <div class="empty-text container" *ngIf="(addresses.length == 0)">There is no delivery address yet.</div>
-            
+            <div class="empty-text container" *ngIf="addresses.length == 0">
+                There is no delivery address yet.
+            </div>
         </div>
-
     </div>
-
 </main>
-
-
 
 <!-- Next Step Add Button Container -->
 <div class="next-step-add-button-container">
-    <button type="button" class="btn btn-outline-secondary btn-sm w-100 btn-with-icon next-step-add-button" (click)="onClickAddNewAddressButton();">
+    <button
+        type="button"
+        class="btn btn-outline-secondary btn-sm w-100 btn-with-icon next-step-add-button"
+        (click)="onClickAddNewAddressButton()"
+    >
         Add new address
 
         <!-- Icon: chevron-right -->
+        <!-- prettier-ignore -->
         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
     </button>
 </div>
 
 <!-- Next Step Button Container -->
 <div class="next-step-button-container">
-    <button type="button" class="btn btn-primary btn-lg w-100 btn-with-icon btn-show-change-when-disabled"
-        (click)="onClickPaymentButton();"
+    <button
+        type="button"
+        class="btn btn-primary btn-lg w-100 btn-with-icon btn-show-change-when-disabled"
+        (click)="onClickPaymentButton()"
         [disabled]="!paymentButtonIsEnabled"
     >
         Payment
 
-        <!-- Icon: chevron-right -->
+        <!-- Icon: ¿? -->
+        <!-- prettier-ignore -->
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
     </button>
 </div>
-
-
 
 <!-- Bottom Overlay -->
 <app-bottom-overlay
     *ngIf="showBottomOverlay"
-    [bottomOverlayTitle]         = "'Add new delivery address'"
-    [bottomOverlayAddButtonText] = "'Add address'"
-    [bottomOverlayBodyContent]   = "'ADD_NEW_ADDRESS'"
+    [bottomOverlayTitle]="'Add new delivery address'"
+    [bottomOverlayAddButtonText]="'Add address'"
+    [bottomOverlayBodyContent]="'ADD_NEW_ADDRESS'"
 ></app-bottom-overlay>

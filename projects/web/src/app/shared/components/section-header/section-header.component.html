@@ -1,51 +1,47 @@
 <!-- Section Header -->
 <div class="section-header">
     <div class="container">
-
         <!-- Section Header - Title -->
         <div class="section-header-title" [innerHTML]="sectionHeaderTitleInnerHTML">
             <!-- Ejemplo: <h2 class="heading-3">Featured</h2> -->
             <!-- Ejemplo: <h2 class="heading-4">Deals</h2> -->
         </div>
-        
+
         <!-- Section Header - Right Side -->
         <div class="section-header-right-side-container">
-            
             <!-- Section Header - Carousel Icons -->
             <div class="section-header-carousel-icons" *ngIf="sectionHeaderCarouselIcons">
-
                 <div class="section-header-carousel-chevron-left-icon">
-                    
                     <!-- Icon: chevron-left -->
+                    <!-- prettier-ignore -->
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 15L7.5 10L12.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    
                 </div>
 
                 <div class="section-header-carousel-chevron-right-icon">
-                    
                     <!-- Icon: chevron-right -->
+                    <!-- prettier-ignore -->
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
                 </div>
-
             </div>
 
             <!-- Section Header - Link -->
             <div class="section-header-link-container" *ngIf="sectionHeaderLink">
                 <!-- <a [routerLink]="['/slug']">{{sectionHeaderLinkText}}</a> -->
-                <a routerLink="{{sectionHeaderLinkURL}}">{{sectionHeaderLinkText}}</a> <!-- Ejemplo: View All -->
+                <a routerLink="{{ sectionHeaderLinkURL }}">{{ sectionHeaderLinkText }}</a>
+                <!-- Ejemplo: View All -->
             </div>
 
             <!-- Section Header - Button -->
             <div class="section-header-button-container" *ngIf="sectionHeaderButton">
-                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onClickSectionHeaderButton();">
-
-                    <span class="navigation-button-left--text">{{sectionHeaderButtonText}}</span> <!-- Ejemplo: Edit -->
-
+                <button
+                    type="button"
+                    class="btn btn-outline-secondary btn-sm"
+                    (click)="onClickSectionHeaderButton()"
+                >
+                    <span class="navigation-button-left--text">{{ sectionHeaderButtonText }}</span>
+                    <!-- Ejemplo: Edit -->
                 </button>
             </div>
-
         </div>
-
     </div>
 </div>

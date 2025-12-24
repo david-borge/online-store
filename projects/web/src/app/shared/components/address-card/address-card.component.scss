@@ -1,8 +1,5 @@
 @import 'projects/web/src/styles.scss';
 
-
-
-
 // Address Card
 .address-card {
     border-radius: var(--card-border-radius);
@@ -11,8 +8,6 @@
 .address-card:not(.address-card-selected) {
     background-color: var(--N100);
 }
-
-
 
 // Address Card - Button
 .address-card > button {
@@ -32,8 +27,6 @@
     align-items: stretch;
     gap: 16px;
 }
-
-
 
 // Address Card - Copy
 .card--copy-container {
@@ -55,16 +48,12 @@
     text-align: left;
 }
 
-
-
 // Address Card - Interior Button
 .address-card--interior-button-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-
-
 
 // Address Card - Selected
 .address-card.address-card-selected {

@@ -8,20 +8,8 @@ import { CoreModule } from '../../../core/core.module';
 import { SharedModule } from '../../../shared/shared.module';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 
-
-
 @NgModule({
-  declarations: [
-    CategoriesComponent,
-    CategoryCardComponent,
-  ],
-  imports: [
-    CommonModule,
-
-    CategoriesRoutingModule,
-
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [CategoriesComponent, CategoryCardComponent],
+    imports: [CommonModule, CategoriesRoutingModule, CoreModule, SharedModule],
 })
-export class CategoriesModule { }
+export class CategoriesModule {}

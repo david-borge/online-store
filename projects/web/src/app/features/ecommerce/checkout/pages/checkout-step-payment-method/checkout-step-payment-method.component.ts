@@ -5,103 +5,90 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../../../../core/store/global.actions';
 import * as PaymentMethodsActions from '../../../payment-methods/store/payment-methods.actions';
 
 import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 
 @Component({
-  selector: 'app-checkout-step-payment-method',
-  templateUrl: './checkout-step-payment-method.component.html',
-  styleUrls: ['./checkout-step-payment-method.component.scss'],
-  host: {
-    class:'app-checkout-step-payment-method--class-for-router-outlet',
-  },
+    selector: 'app-checkout-step-payment-method',
+    templateUrl: './checkout-step-payment-method.component.html',
+    styleUrls: ['./checkout-step-payment-method.component.scss'],
+    host: {
+        class: 'app-checkout-step-payment-method--class-for-router-outlet',
+    },
 })
 export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
+    // Suscripciones a la Store
+    paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
-  // Suscripciones a la Store
-  paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
+    // Template variables
+    paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'] = [];
+    showBottomOverlay: boolean = false;
+    reviewYourOrderButtonIsEnabled: boolean = false;
 
-  // Template variables
-  paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'] = [];
-  showBottomOverlay: boolean = false;
-  reviewYourOrderButtonIsEnabled: boolean = false;
+    constructor(
+        private store: Store<fromApp.AppState>,
+        private router: Router,
+    ) {}
 
+    ngOnInit(): void {
+        // Leer datos de la Global Store
+        let userEmail = '';
+        this.store.select('globalReducerObservable').subscribe((globalReducerData) => {
+            // Recuperar el email del usuario desde la Global Store
+            userEmail = globalReducerData.user.email;
 
-  constructor(
-    private store: Store<fromApp.AppState>,
-    private router: Router,
-  ) { }
+            // Leer las propiedades de BottomOverlay de la Global Store
+            this.showBottomOverlay = globalReducerData.showBottomOverlay;
+        });
 
-  ngOnInit(): void {
+        // Recuperar los datos de la Order de la Base de Datos y guardarlos en la Store
+        this.store.dispatch(PaymentMethodsActions.GetPaymentMethodsStart());
 
-    // Leer datos de la Global Store
-    let userEmail = '';
-    this.store.select("globalReducerObservable").subscribe(
-      globalReducerData => {
+        // Leer los datos de la Order de la Store para mostrarlos en la Template
+        this.paymentMethodsReducerObservableSubscription = this.store
+            .select('paymentMethodsReducerObservable')
+            .subscribe((paymentMethodsReducerData) => {
+                this.paymentMethods = paymentMethodsReducerData.paymentMethods;
 
-        // Recuperar el email del usuario desde la Global Store
-        userEmail = globalReducerData.user.email;
+                // Comprobacion
+                // console.log('paymentMethods:');
+                // console.log(this.paymentMethods);
 
-        // Leer las propiedades de BottomOverlay de la Global Store
-        this.showBottomOverlay = globalReducerData.showBottomOverlay;
+                // Establecer si el usuario puede pasar al siguiente paso: si ha seleccionado un método de pago
+                this.reviewYourOrderButtonIsEnabled = false;
+                for (var i = 0; i < this.paymentMethods.length; i++) {
+                    if (this.paymentMethods[i].isDefault == 1) {
+                        this.reviewYourOrderButtonIsEnabled = true;
+                        break;
+                    }
+                }
+            });
+    }
 
-      }
-    );
+    onClickAddNewCardButton() {
+        // Mostrar el "Add new address" overlay
+        this.store.dispatch(
+            GlobalActions.ShowOrHideBottomOverlay({
+                showBottomOverlayValue: true,
+            }),
+        );
+    }
 
-    // Recuperar los datos de la Order de la Base de Datos y guardarlos en la Store
-    this.store.dispatch( PaymentMethodsActions.GetPaymentMethodsStart() );
+    onClickPaymentButton() {
+        this.store.dispatch(
+            GlobalActions.ChangeCurrentStepValue({
+                amount: 1,
+            }),
+        );
 
-    // Leer los datos de la Order de la Store para mostrarlos en la Template
-    this.paymentMethodsReducerObservableSubscription = this.store.select('paymentMethodsReducerObservable').subscribe(
-      paymentMethodsReducerData => {
+        this.router.navigate(['/checkout/order-review']);
+    }
 
-        this.paymentMethods = paymentMethodsReducerData.paymentMethods;
-
-        // Comprobacion
-        // console.log('paymentMethods:');
-        // console.log(this.paymentMethods);
-
-        // Establecer si el usuario puede pasar al siguiente paso: si ha seleccionado un método de pago
-        this.reviewYourOrderButtonIsEnabled = false;
-        for (var i = 0; i < this.paymentMethods.length; i++) {
-          if ( this.paymentMethods[i].isDefault == 1 ) {
-            this.reviewYourOrderButtonIsEnabled = true;
-            break;
-          }
-        }
-
-      }
-    );
-
-  }
-
-  onClickAddNewCardButton() {
-
-    // Mostrar el "Add new address" overlay
-    this.store.dispatch( GlobalActions.ShowOrHideBottomOverlay({
-      showBottomOverlayValue: true,
-    }) );
-    
-  }
-
-  onClickPaymentButton() {
-    
-    this.store.dispatch( GlobalActions.ChangeCurrentStepValue({
-      amount: 1,
-    }) );
-
-    this.router.navigate(['/checkout/order-review']);
-
-  }
-
-  ngOnDestroy(): void {
-
-    // Cancelar suscripciones
-    this.paymentMethodsReducerObservableSubscription.unsubscribe();
-
-  }
-
+    ngOnDestroy(): void {
+        // Cancelar suscripciones
+        this.paymentMethodsReducerObservableSubscription.unsubscribe();
+    }
 }

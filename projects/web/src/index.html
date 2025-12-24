@@ -1,94 +1,83 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <!-- Google Tag Manager -->
+        <!-- prettier-ignore -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5N8P9QS');</script>
+        <!-- End Google Tag Manager -->
 
-<head>
+        <!-- Angular: base URL -->
+        <base href="/" />
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5N8P9QS');</script>
-  <!-- End Google Tag Manager -->
+        <!-- TODO: quitar en producción -->
+        <!-- NO indexer la web en los motores de búsqueda (como Google) -->
+        <meta name="robots" content="noindex,nofollow" />
 
+        <!-- Content type y charset -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no"
+        />
+        <!-- user-scalable=no para que el usuario no pueda hacer pinch-to-zoom -->
 
+        <!-- Author -->
+        <!-- TODO: cambiar si es necesario. -->
+        <meta name="author" content="David Borge Olmedo" />
 
+        <!-- Preloads - Imágenes -->
+        <!-- Cambiado por: NgOptimizedImage, así que hay que quitar esto, creo -->
+        <!-- TODO: esto tendría sentido cargarlo en cada ruta? Entiendo que no, porque es para la carga inicial. -->
+        <!-- <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/macbook-pro.webp" as="image" type="image/webp">
+            <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/gafas-sol.webp" as="image" type="image/webp">
+            <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/good-kid-maad-city.webp" as="image" type="image/webp">
+            <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/the-metamorphosis.webp" as="image" type="image/webp">
+            <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/blindness.webp" as="image" type="image/webp">
+            <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/bose-headphones.webp" as="image" type="image/webp"> -->
 
-  <!-- Angular: base URL -->
-  <base href="/">
+        <!-- Page Title, Description & URL canónica -->
+        <!-- TODO: cambiar en todas las páginas -->
+        <title>Online Store: Free Shipping & One Day Delivery</title>
+        <meta name="description" content="Welcome to the world's largest Online Store." />
+        <link rel="canonical" href="https://online-store.davidborge.com/" />
 
+        <!-- Open Graph Protocol (compartir en Redes y WhatsApp) - Parte 1 de 3: General: Page Title, Description, URL & Imagen (JPG or PNG with a size less than 300KB and minimum dimensions of 1200 x 630 for Facebook (https://developers.facebook.com/docs/sharing/webmasters/images/#precaching)) -->
+        <!-- Comprobación: https://chrome.google.com/webstore/detail/detailed-seo-extension/pfjdepjjfjjahkjfpkcgfmfhmnakjfba -->
+        <meta property="og:site_name" content="Online Store" />
+        <meta property="og:locale" content="en" />
 
+        <!-- Open Graph Protocol (compartir en Redes y WhatsApp) - Parte 2 de 3: En cada página: Page Title, Description, URL & Imagen (JPG or PNG with a size less than 300KB and minimum dimensions of 1200 x 630 for Facebook (https://developers.facebook.com/docs/sharing/webmasters/images/#precaching)) -->
+        <!-- TODO: cambiar en todas las páginas -->
+        <meta property="og:title" content="Online Store: Free Shipping & One Day Delivery" />
+        <meta property="og:description" content="Welcome to the world's largest Online Store." />
+        <meta property="og:url" content="https://online-store.davidborge.com/" />
+        <meta
+            property="og:image"
+            content="https://online-store.davidborge.com/assets/img/logo/online-store-compartir-en.jpg"
+        />
 
+        <!-- Open Graph Protocol (compartir en Redes y WhatsApp) - Parte 3 de 3: Twitter -->
+        <!-- TODO: cambiar en todas las páginas -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="https://online-store.davidborge.com/" />
+        <meta property="twitter:title" content="Online Store: Free Shipping & One Day Delivery" />
+        <meta property="twitter:url" content="https://online-store.davidborge.com/" />
+        <meta
+            property="twitter:description"
+            content="Welcome to the world's largest Online Store."
+        />
+        <meta
+            property="twitter:image"
+            content="https://online-store.davidborge.com/assets/img/logo/online-store-compartir-en.jpg"
+        />
+        <meta property="twitter:site" content="@onlinestore" />
 
+        <!-- Datos estructurados (schema.org) -->
+        <!-- Referencia: https://developers.google.com/search/docs/data-types/article -->
+        <!-- TODO: poner en todas las páginas en las que sea necesario. -->
 
-
-  <!-- TODO: quitar en producción -->
-  <!-- NO indexer la web en los motores de búsqueda (como Google) -->
-  <meta name="robots" content="noindex,nofollow" />
-
-
-
-
-
-
-  <!-- Content type y charset -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
-  <!-- user-scalable=no para que el usuario no pueda hacer pinch-to-zoom -->
-
-  <!-- Author -->
-  <!-- TODO: cambiar si es necesario. -->
-  <meta name="author" content="David Borge Olmedo" />
-
-
-
-  <!-- Preloads - Imágenes -->
-  <!-- Cambiado por: NgOptimizedImage, así que hay que quitar esto, creo -->
-  <!-- TODO: esto tendría sentido cargarlo en cada ruta? Entiendo que no, porque es para la carga inicial. -->
-  <!-- <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/macbook-pro.webp" as="image" type="image/webp">
-  <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/gafas-sol.webp" as="image" type="image/webp">
-  <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/good-kid-maad-city.webp" as="image" type="image/webp">
-  <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/the-metamorphosis.webp" as="image" type="image/webp">
-  <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/blindness.webp" as="image" type="image/webp">
-  <link rel="preload" href="assets/img/pages/pantalla-inicial-de-carga/bose-headphones.webp" as="image" type="image/webp"> -->
-
-
-
-
-  <!-- Page Title, Description & URL canónica -->
-  <!-- TODO: cambiar en todas las páginas -->
-  <title>Online Store: Free Shipping & One Day Delivery</title>
-  <meta name="description" content="Welcome to the world's largest Online Store.">
-  <link rel="canonical" href="https://online-store.davidborge.com/">
-
-
-
-  <!-- Open Graph Protocol (compartir en Redes y WhatsApp) - Parte 1 de 3: General: Page Title, Description, URL & Imagen (JPG or PNG with a size less than 300KB and minimum dimensions of 1200 x 630 for Facebook (https://developers.facebook.com/docs/sharing/webmasters/images/#precaching)) -->
-  <!-- Comprobación: https://chrome.google.com/webstore/detail/detailed-seo-extension/pfjdepjjfjjahkjfpkcgfmfhmnakjfba -->
-  <meta property="og:site_name" content="Online Store" />
-  <meta property="og:locale" content="en" />
-
-  <!-- Open Graph Protocol (compartir en Redes y WhatsApp) - Parte 2 de 3: En cada página: Page Title, Description, URL & Imagen (JPG or PNG with a size less than 300KB and minimum dimensions of 1200 x 630 for Facebook (https://developers.facebook.com/docs/sharing/webmasters/images/#precaching)) -->
-  <!-- TODO: cambiar en todas las páginas -->
-  <meta property="og:title" content="Online Store: Free Shipping & One Day Delivery" />
-  <meta property="og:description" content="Welcome to the world's largest Online Store.">
-  <meta property="og:url" content="https://online-store.davidborge.com/" />
-  <meta property="og:image" content="https://online-store.davidborge.com/assets/img/logo/online-store-compartir-en.jpg">
-
-  <!-- Open Graph Protocol (compartir en Redes y WhatsApp) - Parte 3 de 3: Twitter -->
-  <!-- TODO: cambiar en todas las páginas -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:domain" content="https://online-store.davidborge.com/">
-  <meta property="twitter:title" content="Online Store: Free Shipping & One Day Delivery">
-  <meta property="twitter:url" content="https://online-store.davidborge.com/">
-  <meta property="twitter:description" content="Welcome to the world's largest Online Store.">
-  <meta property="twitter:image" content="https://online-store.davidborge.com/assets/img/logo/online-store-compartir-en.jpg">
-  <meta property="twitter:site" content="@onlinestore">
-
-
-
-  <!-- Datos estructurados (schema.org) -->
-  <!-- Referencia: https://developers.google.com/search/docs/data-types/article -->
-  <!-- TODO: poner en todas las páginas en las que sea necesario. -->
-
-  <!-- Empresa -->
-  <!-- <script type="application/ld+json">
+        <!-- Empresa -->
+        <!-- <script type="application/ld+json">
       {
           "@context":"https://schema.org",
           "@type":"Organization",
@@ -113,8 +102,8 @@
         }
   </script> -->
 
-  <!-- Producto o servicio -->
-  <!-- <script type="application/ld+json">
+        <!-- Producto o servicio -->
+        <!-- <script type="application/ld+json">
       {
           "@context":"https://schema.org/",
           "@type":"Product",
@@ -140,73 +129,114 @@
         }
   </script> -->
 
+        <!-- Fuentes: Inter y Lora -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:wght@600&display=swap" rel="stylesheet"> -->
 
+        <!-- Fuentes: Inter y Lora - Preloads -->
+        <link
+            rel="preload"
+            href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJBkq0.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
 
-  <!-- Fuentes: Inter y Lora -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com" crossorigin>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:wght@600&display=swap" rel="stylesheet"> -->
+        <!-- Iconos -->
+        <!-- Figma: https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1 -->
+        <!-- Usarlos en SVg para mejorar el WPO. -->
+        <!-- TODO: añadir última línea a gat. -->
 
-  <!-- Fuentes: Inter y Lora - Preloads -->
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787zAvBJBkq0.woff2" as="font" type="font/woff2" crossorigin>
+        <!-- Favicon -->
+        <!-- Favicon Generator: https://www.favicon-generator.org/ -->
+        <!-- Generar favicon maskable: https://maskable.app/editor -->
+        <!-- Safari 15 Theming (color de la barra de Safari al ver la web en iOS 15). Fuente: https://useyourloaf.com/blog/safari-15-theme-color/ -->
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="assets/img/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="assets/img/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="assets/img/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="assets/img/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="assets/img/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="assets/img/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="assets/img/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="assets/img/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="assets/img/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="assets/img/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#FFE8B2" />
+        <meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png" />
+        <meta name="theme-color" content="#FFE8B2" />
 
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
 
+        <!-- Google Tag Manager head script -->
+        <!-- TODO: -->
+    </head>
 
-  <!-- Iconos -->
-  <!-- Figma: https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1 -->
-  <!-- Usarlos en SVg para mejorar el WPO. -->
-  <!-- TODO: añadir última línea a gat. -->
+    <body class="product-page">
+        <!-- <body class="product-page prevent-scroll"> -->
 
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-5N8P9QS"
+                height="0"
+                width="0"
+                style="display: none; visibility: hidden"
+            ></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
 
-
-  <!-- Favicon -->
-  <!-- Favicon Generator: https://www.favicon-generator.org/ -->
-  <!-- Generar favicon maskable: https://maskable.app/editor -->
-  <!-- Safari 15 Theming (color de la barra de Safari al ver la web en iOS 15). Fuente: https://useyourloaf.com/blog/safari-15-theme-color/ -->
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicon/manifest.json">
-  <meta name="msapplication-TileColor" content="#FFE8B2">
-  <meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png">
-  <meta name="theme-color" content="#FFE8B2">
-
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico">
-
-
-
-  <!-- Google Tag Manager head script -->
-  <!-- TODO: -->
-
-</head>
-
-<body class="product-page">
-<!-- <body class="product-page prevent-scroll"> -->
-
-
-
-
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N8P9QS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-
-
-  <app-root></app-root>
-
-
-
-</body>
-
+        <app-root></app-root>
+    </body>
 </html>

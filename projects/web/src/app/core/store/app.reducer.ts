@@ -5,8 +5,6 @@
     · La Action que queremos ejecutar.
     Los Reducers solo pueden ejecutar código síncrono, por lo que no se puede hacer una HTTP Request desde un Reducer, eso se hace en las Action. */
 
-
-
 import { ActionReducerMap } from '@ngrx/store';
 
 import * as fromGlobal from './global.reducer';
@@ -18,8 +16,6 @@ import * as fromOrders from '../../features/ecommerce/orders/store/orders.reduce
 import * as fromAddresses from '../../features/ecommerce/addresses/store/addresses.reducer';
 import * as fromPaymentMethods from '../../features/ecommerce/payment-methods/store/payment-methods.reducer';
 import * as fromCart from '../../features/ecommerce/cart/store/cart.reducer';
-
-
 
 // App State (inicial) - Tipos (definidos en una interfaz)
 // Cojo los tipos de las interfaces de los demás Reducers
@@ -34,7 +30,6 @@ export interface AppState {
     paymentMethodsReducerObservable: fromPaymentMethods.PaymentMethodsReducerStateInterface;
     cartReducerObservable: fromCart.CartReducerStateInterface;
 }
-
 
 // Action Reducer Map
 // Un objeto JS con la lista de Reducers de la app ({identificadorQueQuiera: MiReducerAsociadoAlIdentificador})

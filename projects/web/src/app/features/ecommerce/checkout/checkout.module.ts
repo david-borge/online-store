@@ -11,23 +11,14 @@ import { CheckoutStepSignupLoginComponent } from './pages/checkout-step-sign-up/
 import { CheckoutStepOrderReviewComponent } from './pages/checkout-step-order-review/checkout-step-order-review.component';
 import { CheckoutStepOrderConfirmationComponent } from './pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component';
 
-
-
 @NgModule({
-  declarations: [
-    CheckoutStepAddressComponent,
-    CheckoutStepPaymentMethodComponent,
-    CheckoutStepSignupLoginComponent,
-    CheckoutStepOrderReviewComponent,
-    CheckoutStepOrderConfirmationComponent
-  ],
-  imports: [
-    CommonModule,
-
-    CheckoutRoutingModule,
-
-    CoreModule,
-    SharedModule,
-  ]
+    declarations: [
+        CheckoutStepAddressComponent,
+        CheckoutStepPaymentMethodComponent,
+        CheckoutStepSignupLoginComponent,
+        CheckoutStepOrderReviewComponent,
+        CheckoutStepOrderConfirmationComponent,
+    ],
+    imports: [CommonModule, CheckoutRoutingModule, CoreModule, SharedModule],
 })
-export class CheckoutModule { }
+export class CheckoutModule {}

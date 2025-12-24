@@ -1,68 +1,60 @@
 <!-- Credit Card -->
-<div class="credit-card {{cardType}}" [ngClass]="{ 'credit-card-selected': (cardIsDefault == 1) }">
-
-    <button (click)="onClickCreditCardOrSelectButton();">
-        
+<div class="credit-card {{ cardType }}" [ngClass]="{ 'credit-card-selected': cardIsDefault == 1 }">
+    <button (click)="onClickCreditCardOrSelectButton()">
         <!-- Credit Card - Top Info -->
         <div class="credit-card--top-info">
-
             <!-- Credit Card - Bank Name -->
-            <div class="credit-card--bank-name">{{cardBankName}}</div>
+            <div class="credit-card--bank-name">{{ cardBankName }}</div>
 
             <!-- Credit Card - Person Name -->
-            <div class="credit-card--person-name">{{cardPersonFullName}}</div>
-            
+            <div class="credit-card--person-name">{{ cardPersonFullName }}</div>
         </div>
 
         <!-- Credit Card - Bottom Info -->
         <div class="credit-card--bottom-info">
-            
             <!-- Credit Card -Last Four Numbers -->
             <div class="credit-card--last-four-numbers">
-                <span class="credit-card--last-four-numbers--asterics">**** **** **** </span>
-                <span class="credit-card--last-four-numbers--numbers">{{cardLastFourNumbers}}</span>
+                <span class="credit-card--last-four-numbers--asterics">**** **** ****</span>
+                <span class="credit-card--last-four-numbers--numbers">
+                    {{ cardLastFourNumbers }}
+                </span>
             </div>
 
             <!-- Credit Card - Expiration Date -->
             <div class="credit-card--expiration-date-container">
                 <div class="credit-card--expiration-date--title">Expiration Date</div>
-                <div class="credit-card--expiration-date--date">{{cardExpirationMonth | number:'2.0-0'}}/{{cardExpirationYear}}</div>
+                <div class="credit-card--expiration-date--date">
+                    {{ cardExpirationMonth | number: '2.0-0' }}/{{ cardExpirationYear }}
+                </div>
             </div>
-            
         </div>
 
         <!-- Credit Card - Icon Type (Master Card, Visa) -->
         <div class="credit-card--icon-type-container">
-
             <!-- Icon: mastercard -->
+            <!-- prettier-ignore -->
             <svg *ngIf="(cardType == 'mastercard')" width="35" version="1.1" x="0px" y="0px" viewBox="0 0 999.2 618" style="enable-background:new 0 0 999.2 618"><style type="text/css">.st0{fill:#ff5a00}.st1{fill:#eb001b}.st2{fill:#f79e1b}</style><g><rect id="rect19" x="364" y="66.1" class="st0" width="270.4" height="485.8"/><path id="XMLID_330_" inkscape:connector-curvature="0" class="st1" d="M382,309c0-98.7,46.4-186.3,117.6-242.9 C447.2,24.9,381.1,0,309,0C138.2,0,0,138.2,0,309s138.2,309,309,309c72.1,0,138.2-24.9,190.6-66.1C428.3,496.1,382,407.7,382,309z"/><path id="path22" inkscape:connector-curvature="0" class="st2" d="M999.2,309c0,170.8-138.2,309-309,309 c-72.1,0-138.2-24.9-190.6-66.1c72.1-56.7,117.6-144.2,117.6-242.9S570.8,122.7,499.6,66.1C551.9,24.9,618,0,690.1,0 C861,0,999.2,139.1,999.2,309z"/></g></svg>
-            
+
             <!-- Icon: visa-gris -->
+            <!-- prettier-ignore -->
             <svg *ngIf="(cardType == 'visa') && !cardIsDefault" width="44" height="14" viewBox="0 0 44 14" fill="none"><g clip-path="url(#clip0_47287_8608)"><path d="M18.8201 13.798H15.3159L17.5077 0.245605H21.0117L18.8201 13.798Z" fill="#B1B2B2"/><path d="M31.5234 0.576978C30.8322 0.302765 29.736 0 28.3804 0C24.9199 0 22.483 1.84533 22.4681 4.4836C22.4393 6.43011 24.2128 7.51125 25.5392 8.16028C26.8949 8.82349 27.3558 9.25637 27.3558 9.84753C27.342 10.7554 26.2603 11.1739 25.2514 11.1739C23.8523 11.1739 23.1027 10.9582 21.9635 10.4531L21.5021 10.2365L21.0117 13.2787C21.8336 13.6532 23.3478 13.9854 24.9199 14C28.5968 14 30.9905 12.1832 31.0189 9.37173C31.0329 7.82897 30.0964 6.64684 28.0775 5.68087C26.8518 5.06077 26.1012 4.64265 26.1012 4.00819C26.1156 3.4314 26.7361 2.84063 28.1196 2.84063C29.2588 2.81169 30.0958 3.08552 30.7299 3.35954L31.0469 3.50345L31.5234 0.576978Z" fill="#B1B2B2"/><path d="M36.1809 8.99685C36.4695 8.21829 37.5799 5.20501 37.5799 5.20501C37.5653 5.23394 37.8679 4.41207 38.041 3.90753L38.2859 5.07528C38.2859 5.07528 38.9494 8.31927 39.0935 8.99685C38.5459 8.99685 36.873 8.99685 36.1809 8.99685ZM40.5064 0.245605H37.7959C36.96 0.245605 36.325 0.4905 35.9643 1.37005L30.7593 13.7978H34.4361C34.4361 13.7978 35.0415 12.1251 35.1716 11.7649C35.575 11.7649 39.1518 11.7649 39.6707 11.7649C39.7713 12.2407 40.0888 13.7978 40.0888 13.7978H43.3334L40.5064 0.245605Z" fill="#B1B2B2"/><path d="M12.3894 0.245605L8.95761 9.48703L8.58261 7.61276C7.94814 5.4501 5.95832 3.10041 3.73779 1.93208L6.88118 13.7836H10.5868L16.0948 0.245605H12.3894Z" fill="#B1B2B2"/><path d="M5.77082 0.245605H0.132874L0.0751953 0.519435C4.47314 1.64407 7.38582 4.35497 8.58251 7.61333L7.35688 1.38481C7.1551 0.519244 6.53501 0.274157 5.77082 0.245605Z" fill="#FAA61A"/></g><defs><clipPath id="clip0_47287_8608"><rect width="43.2582" height="14" fill="white" transform="translate(0.0751953)"/></clipPath></defs></svg>
-            
+
             <!-- Icon: visa-blanco -->
+            <!-- prettier-ignore -->
             <svg *ngIf="(cardType == 'visa') && cardIsDefault" width="44" height="14" viewBox="0 0 44 14" fill="none"><g clip-path="url(#clip0_47287_8615)"><path d="M18.8201 13.798H15.3159L17.5077 0.245605H21.0117L18.8201 13.798Z" fill="white"/><path d="M31.5234 0.576978C30.8322 0.302765 29.736 0 28.3804 0C24.9199 0 22.483 1.84533 22.4681 4.4836C22.4393 6.43011 24.2128 7.51125 25.5392 8.16028C26.8949 8.82349 27.3558 9.25637 27.3558 9.84753C27.342 10.7554 26.2603 11.1739 25.2514 11.1739C23.8523 11.1739 23.1027 10.9582 21.9635 10.4531L21.5021 10.2365L21.0117 13.2787C21.8336 13.6532 23.3478 13.9854 24.9199 14C28.5968 14 30.9905 12.1832 31.0189 9.37173C31.0329 7.82897 30.0964 6.64684 28.0775 5.68087C26.8518 5.06077 26.1012 4.64265 26.1012 4.00819C26.1156 3.4314 26.7361 2.84063 28.1196 2.84063C29.2588 2.81169 30.0958 3.08552 30.7299 3.35954L31.0469 3.50345L31.5234 0.576978Z" fill="white"/><path d="M36.1809 8.99685C36.4695 8.21829 37.5799 5.20501 37.5799 5.20501C37.5653 5.23394 37.8679 4.41207 38.041 3.90753L38.2859 5.07528C38.2859 5.07528 38.9494 8.31927 39.0935 8.99685C38.5459 8.99685 36.873 8.99685 36.1809 8.99685ZM40.5064 0.245605H37.7959C36.96 0.245605 36.325 0.4905 35.9643 1.37005L30.7593 13.7978H34.4361C34.4361 13.7978 35.0415 12.1251 35.1716 11.7649C35.575 11.7649 39.1518 11.7649 39.6707 11.7649C39.7713 12.2407 40.0888 13.7978 40.0888 13.7978H43.3334L40.5064 0.245605Z" fill="white"/><path d="M12.3894 0.245605L8.95761 9.48703L8.58261 7.61276C7.94814 5.4501 5.95832 3.10041 3.73779 1.93208L6.88118 13.7836H10.5868L16.0948 0.245605H12.3894Z" fill="white"/><path d="M5.77082 0.245605H0.132874L0.0751953 0.519435C4.47314 1.64407 7.38582 4.35497 8.58251 7.61333L7.35688 1.38481C7.1551 0.519244 6.53501 0.274157 5.77082 0.245605Z" fill="#FAA61A"/></g><defs><clipPath id="clip0_47287_8615"><rect width="43.2582" height="14" fill="white" transform="translate(0.0751953)"/></clipPath></defs></svg>
-            
         </div>
 
         <!-- Credit Card - Button -->
         <div class="credit-card--interior-button-container" *ngIf="creditCardShowButton">
-            
             <!-- Select Button -->
-            <app-select-button
-                [selectButtonSelected] = "cardIsDefault"
-            ></app-select-button>
-            
+            <app-select-button [selectButtonSelected]="cardIsDefault"></app-select-button>
         </div>
 
         <!-- Credit Card - Background Image -->
         <div class="credit-card--background-image">
-
             <!-- Icon: bank-background-image -->
+            <!-- prettier-ignore -->
             <svg width="240" height="121" viewBox="0 0 240 121" fill="none"><path d="M84.4884 6.90675C103.685 12.8333 122.422 20.157 140.549 28.8191C134.229 30.9899 128.114 33.1577 121.994 35.5272C103.384 26.6175 84.1125 19.1606 64.3524 13.2233C70.8677 11.0496 77.5787 8.87884 84.4884 6.90675Z" fill="black" fill-opacity="0.05"/><path d="M112.91 0C132.453 5.32908 151.602 12.0401 169.961 20.1331C163.642 21.7137 157.126 23.6858 150.813 25.6608C132.649 16.9748 113.702 9.86933 94.3577 4.14287C100.476 2.5652 106.594 1.18325 112.91 0Z" fill="black" fill-opacity="0.05"/><path d="M88.2368 101.659C127.515 73.8242 170.943 51.5204 217.333 35.9246C224.852 39.8674 232.226 44.0802 239.441 48.5548C195.473 67.0112 154.231 91.3848 116.857 121C107.581 114.093 98.1062 107.777 88.2368 101.659Z" fill="black" fill-opacity="0.05"/><path d="M51.1261 81.324C91.9883 54.0855 137.189 33.5551 185.355 20.9219C193.842 24.2786 201.937 28.2254 210.027 32.1693L210.029 32.1702C162.657 46.384 118.242 68.0977 78.1689 95.7336C69.2871 90.6032 60.2066 85.8643 51.1261 81.324Z" fill="black" fill-opacity="0.05"/><path d="M113.702 38.8842C106.792 35.5301 99.6867 32.5676 92.5812 29.8037C70.4731 38.294 49.1538 48.5578 28.6264 60.3992C35.7318 63.5605 42.8372 67.1102 49.747 70.6659C70.1865 58.3888 91.5726 47.7612 113.702 38.8842Z" fill="black" fill-opacity="0.05"/><path d="M0 48.7535C21.1088 37.2915 43.2492 27.8412 66.1286 20.5275C72.2495 22.3038 78.1687 24.4746 84.0909 26.6484C61.7838 34.5444 40.298 44.5926 19.9373 56.6507C13.4918 53.9164 6.85465 51.3766 0.215481 48.836L0 48.7535Z" fill="black" fill-opacity="0.05"/></svg>
-
         </div>
-
     </button>
-
 </div>

@@ -1,12 +1,10 @@
 <!-- Products Grid -->
 <div class="products-grid">
-
     <!-- Product Card -->
     <app-product-card
         *ngFor="let productItem of productsList"
-        [productCardTypeClass] = "'product-card-small'"
-        [product] = "productItem"
-        [productCardProductNameTitleHeadingTag] = "productCardProductNameTitleHeadingTag"
+        [productCardTypeClass]="'product-card-small'"
+        [product]="productItem"
+        [productCardProductNameTitleHeadingTag]="productCardProductNameTitleHeadingTag"
     ></app-product-card>
-
 </div>

@@ -2,66 +2,68 @@
 
 <!-- Header Tag -->
 <app-header
-    [headerTagType] = "'overlay-header-subpage'"
-    [overlayHeaderPageTitleSupTitle] = "'Great!'"
-    [overlayHeaderPageTitle] = "'This is your order'"
-    [overlayHeaderSubpageWithSteps] = "true"
+    [headerTagType]="'overlay-header-subpage'"
+    [overlayHeaderPageTitleSupTitle]="'Great!'"
+    [overlayHeaderPageTitle]="'This is your order'"
+    [overlayHeaderSubpageWithSteps]="true"
 ></app-header>
 
 <!-- Main -->
-<main role="main" style="padding-top: var(--header-altura-overlay-header-subpage); padding-bottom: calc( var(--altura-next-step-add-button-container) + var(--altura-next-step-button-container) + var(--espacio-vertical) );">
-
+<main
+    role="main"
+    style="
+        padding-top: var(--header-altura-overlay-header-subpage);
+        padding-bottom: calc(
+            var(--altura-next-step-add-button-container) +
+                var(--altura-next-step-button-container) + var(--espacio-vertical)
+        );
+    "
+>
     <!-- Order Products -->
     <div class="section section-with-bottom-separator">
-
         <!-- Section Header -->
         <app-section-header
-            [sectionHeaderTitleTag]      = "'h2'"
-            [sectionHeaderTitleClasses]  = "'heading-4'"
-            [sectionHeaderTitleText]     = "'Products'"
+            [sectionHeaderTitleTag]="'h2'"
+            [sectionHeaderTitleClasses]="'heading-4'"
+            [sectionHeaderTitleText]="'Products'"
         ></app-section-header>
 
         <!-- Order Products List -->
         <div class="order-products-list">
-                
             <!-- Cart and Checkout Product Card -->
             <app-cart-checkout-product-card
                 *ngFor="let product of orderProducts"
-                [cartCheckoutProductCardShowButtons] = "false"
-                [productImageThumbnail]              = "product.imageThumbnail"
-                [productName]                        = "product.name"
-                [productPrice]                       = "product.price"
-                [productQuantity]                    = "product.productQuantity"
+                [cartCheckoutProductCardShowButtons]="false"
+                [productImageThumbnail]="product.imageThumbnail"
+                [productName]="product.name"
+                [productPrice]="product.price"
+                [productQuantity]="product.productQuantity"
             ></app-cart-checkout-product-card>
-        
         </div>
-        
     </div>
 
     <!-- Order Address -->
     <div class="section section-with-bottom-separator">
-
         <!-- Section Header -->
         <app-section-header
-            [sectionHeaderTitleTag]     = "'h2'"
-            [sectionHeaderTitleClasses] = "'heading-4'"
-            [sectionHeaderTitleText]    = "'Address'"
-            [sectionHeaderButton]       = "true"
-            [sectionHeaderButtonURL]    = "'/checkout/address'"
-            [sectionHeaderButtonText]   = "'Edit'"
+            [sectionHeaderTitleTag]="'h2'"
+            [sectionHeaderTitleClasses]="'heading-4'"
+            [sectionHeaderTitleText]="'Address'"
+            [sectionHeaderButton]="true"
+            [sectionHeaderButtonURL]="'/checkout/address'"
+            [sectionHeaderButtonText]="'Edit'"
         ></app-section-header>
 
         <div class="container">
-            
             <!-- Address Card -->
             <app-address-card
-                [addressCardFullName]   = "orderAddress.fullName"
-                [addressCardAddress]    = "orderAddress.address"
-                [addressCardPostalCode] = "orderAddress.postalCode"
-                [addressCardCity]       = "orderAddress.city"
-                [addressCardCountry]    = "orderAddress.country"
-                [addressCardShowButton] = "false"
-                [addressCardIsDefault]  = "1"
+                [addressCardFullName]="orderAddress.fullName"
+                [addressCardAddress]="orderAddress.address"
+                [addressCardPostalCode]="orderAddress.postalCode"
+                [addressCardCity]="orderAddress.city"
+                [addressCardCountry]="orderAddress.country"
+                [addressCardShowButton]="false"
+                [addressCardIsDefault]="1"
             ></app-address-card>
             <!-- Ejemplo:
                 [addressCardFullName] = "'Leslie Flores'"
@@ -70,35 +72,31 @@
                 [addressCardCity]       = "'Santa Ana, Illinois '"
                 [addressCardCountry]    = "'United States of America'"
             -->
-            
         </div>
-        
     </div>
 
     <!-- Order Payment Method -->
     <div class="section">
-
         <!-- Section Header -->
         <app-section-header
-            [sectionHeaderTitleTag]     = "'h2'"
-            [sectionHeaderTitleClasses] = "'heading-4'"
-            [sectionHeaderTitleText]    = "'Payment Method'"
-            [sectionHeaderButton]       = "true"
-            [sectionHeaderButtonURL]    = "'/checkout/payment-method'"
-            [sectionHeaderButtonText]   = "'Edit'"
+            [sectionHeaderTitleTag]="'h2'"
+            [sectionHeaderTitleClasses]="'heading-4'"
+            [sectionHeaderTitleText]="'Payment Method'"
+            [sectionHeaderButton]="true"
+            [sectionHeaderButtonURL]="'/checkout/payment-method'"
+            [sectionHeaderButtonText]="'Edit'"
         ></app-section-header>
 
         <div class="container">
-
             <!-- Payment Method -->
             <app-credit-card
-                [cardType]            = "orderPaymentMethod.cardType"
-                [cardBankName]        = "orderPaymentMethod.cardBankName"
-                [cardPersonFullName]  = "orderPaymentMethod.cardPersonFullName"
-                [cardLastFourNumbers] = "orderPaymentMethod.cardLastFourNumbers"
-                [cardExpirationMonth] = "orderPaymentMethod.cardExpirationMonth"
-                [cardExpirationYear]  = "orderPaymentMethod.cardExpirationYear"
-                [cardIsDefault]       = "1"
+                [cardType]="orderPaymentMethod.cardType"
+                [cardBankName]="orderPaymentMethod.cardBankName"
+                [cardPersonFullName]="orderPaymentMethod.cardPersonFullName"
+                [cardLastFourNumbers]="orderPaymentMethod.cardLastFourNumbers"
+                [cardExpirationMonth]="orderPaymentMethod.cardExpirationMonth"
+                [cardExpirationYear]="orderPaymentMethod.cardExpirationYear"
+                [cardIsDefault]="1"
             ></app-credit-card>
             <!-- Ejemplo:
                 [cardType]            = "'mastercard'"
@@ -108,32 +106,27 @@
                 [cardExpirationMonth] = "'12'"
                 [cardExpirationYear]  = "'25'"
             -->
-
         </div>
-        
     </div>
-
 </main>
-  
-<!-- Pay Now Button Container -->
-<div class="pay-now-container" *ngIf="(orderTotal != 0)">
 
+<!-- Pay Now Button Container -->
+<div class="pay-now-container" *ngIf="orderTotal != 0">
     <div class="pay-now-copy">
         <div class="pay-now-copy-label">Order total</div>
-        <div class="pay-now-copy-price">{{orderTotal | currency:'EUR':'symbol':'1.2-2'}}</div>
+        <div class="pay-now-copy-price">
+            {{ orderTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}
+        </div>
     </div>
 
     <div class="pay-now-button-container">
-
         <app-btn-with-loading-spinner
-            [btnWithLoadingSpinnerText] = "payNowButtonText"
-            [btnWithLoadingSpinnerTextClasses] = "'text-nowrap'"
-            [btnWithLoadingSpinnerClasses] = "'btn btn-tertiary btn-lg w-100 btn-with-icon'"
-            [btnWithLoadingSpinnerSpinnerWidthAndHeight] = "38"
-            [btnWithLoadingSpinnerProcessStatus] = "saveOrderStatus"
-            (onClickBtnWithLoadingSpinnerEventEmitter)="onClickPayNowButton();"
+            [btnWithLoadingSpinnerText]="payNowButtonText"
+            [btnWithLoadingSpinnerTextClasses]="'text-nowrap'"
+            [btnWithLoadingSpinnerClasses]="'btn btn-tertiary btn-lg w-100 btn-with-icon'"
+            [btnWithLoadingSpinnerSpinnerWidthAndHeight]="38"
+            [btnWithLoadingSpinnerProcessStatus]="saveOrderStatus"
+            (onClickBtnWithLoadingSpinnerEventEmitter)="onClickPayNowButton()"
         ></app-btn-with-loading-spinner>
-
     </div>
-
 </div>

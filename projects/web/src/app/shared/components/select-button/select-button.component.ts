@@ -3,13 +3,11 @@ import { Component, Input } from '@angular/core';
 import { AddressInterface } from '../../../core/models/address.interface';
 
 @Component({
-  selector: 'app-select-button',
-  templateUrl: './select-button.component.html',
-  styleUrls: ['./select-button.component.scss']
+    selector: 'app-select-button',
+    templateUrl: './select-button.component.html',
+    styleUrls: ['./select-button.component.scss'],
 })
 export class SelectButtonComponent {
-
-  // Propiedades - Credit Card
-  @Input() selectButtonSelected :AddressInterface["isDefault"] = 0;
-
+    // Propiedades - Credit Card
+    @Input() selectButtonSelected: AddressInterface['isDefault'] = 0;
 }

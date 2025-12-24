@@ -10,24 +10,21 @@ import { Subscription, take } from 'rxjs';
 
 import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
-import * as fromApp from '../../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CategoriesActions from '../../store/categories.actions';
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
-
-
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss'],
-  host: {
-    class:'app-categories--class-for-router-outlet',
-  },
+    selector: 'app-categories',
+    templateUrl: './categories.component.html',
+    styleUrls: ['./categories.component.scss'],
+    host: {
+        class: 'app-categories--class-for-router-outlet',
+    },
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
-
-  /*
+    /*
 
     Proceso de carga de una página:
 
@@ -53,176 +50,152 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   */
 
+    // Suscripciones a la Store
+    homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
+    categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
-  // Suscripciones a la Store
-  homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
-  categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
+    // Variables para la Template
+    allCategories: CategoryInterface[] = [];
 
-  // Variables para la Template
-  allCategories : CategoryInterface[] = [];
+    // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
+    imagesInThisPageLoaded: boolean = false;
+    imagesOfOtherPagesToPreload: string[] = [];
+    homePageImagesLoaded: boolean = false; // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
 
-  // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
-  imagesInThisPageLoaded      : boolean = false;
-  imagesOfOtherPagesToPreload : string[] = [];
-  homePageImagesLoaded  : boolean = false; // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
+    // Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
+    // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+    categoriesPagePreviouslyVisited: boolean = false;
+    currentlyInThePageIEnteredFrom: boolean = false;
 
-  // Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
-  // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
-  categoriesPagePreviouslyVisited: boolean = false;
-  currentlyInThePageIEnteredFrom: boolean = false;
+    constructor(
+        private store: Store<fromApp.AppState>,
+        private router: Router,
+        private preloadImagesService: PreloadImagesService,
+        private titleService: Title,
+    ) {}
 
+    ngOnInit(): void {
+        // IMPORTANTE: al llegar aquí, las categorias ya están cargadas en la Store porque las he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlas solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
 
-  constructor(
-    private store: Store<fromApp.AppState>,
-    private router: Router,
-    private preloadImagesService: PreloadImagesService,
-    private titleService: Title
-  ) {}
+        // - All Categories
+        // Leer datos desde la Store y mostrarlos
+        this.categoriesReducerObservableSubscription = this.store
+            .select('categoriesReducerObservable')
+            .subscribe(
+                // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
+                (categoriesReducerData) => {
+                    // console.log('categoriesReducerData:');
+                    // console.log(categoriesReducerData);
 
+                    // - All Categories
+                    this.allCategories = categoriesReducerData.allCategories;
 
-  ngOnInit(): void {
+                    // Comprobación
+                    // console.log('allCategories:');
+                    // console.log(this.allCategories);
 
-    // IMPORTANTE: al llegar aquí, las categorias ya están cargadas en la Store porque las he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlas solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
+                    // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
+                    if (categoriesReducerData.categoriesPageImagesLoaded) {
+                        // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
+                        this.imagesInThisPageLoaded =
+                            categoriesReducerData.categoriesPageImagesLoaded;
 
+                        // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
+                        // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
+                        if (!this.homePageImagesLoaded) {
+                            // Comprobación
+                            // console.log('categories: imagesOfOtherPagesToPreload:');
+                            // console.log(this.imagesOfOtherPagesToPreload);
 
+                            this.preloadImagesService.preloadImagesOfOtherPages(
+                                this.imagesOfOtherPagesToPreload,
+                            );
+                        }
+                    }
 
-    // - All Categories
-    // Leer datos desde la Store y mostrarlos
-    this.categoriesReducerObservableSubscription = this.store.select('categoriesReducerObservable')
-      .subscribe(
+                    // Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
+                    // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+                    this.categoriesPagePreviouslyVisited =
+                        categoriesReducerData.categoriesPagePreviouslyVisited;
 
-        // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
-        (categoriesReducerData)  => {
+                    // Comprobación
+                    // console.log('categoriesPagePreviouslyVisited: ' + this.homePagePreviouslyVisited);
+                },
 
-          // console.log('categoriesReducerData:');
-          // console.log(categoriesReducerData);
+                // El segundo parámetro de susbscribe() es para recoger los errores del servidor
+                (errorResponse) => {
+                    // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
+                    console.log('errorResponse:');
+                    console.log(errorResponse);
+                },
+            );
 
-          // - All Categories
-          this.allCategories = categoriesReducerData.allCategories;
-
-          // Comprobación
-          // console.log('allCategories:');
-          // console.log(this.allCategories);
-
-
-
-          // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
-          if ( categoriesReducerData.categoriesPageImagesLoaded ) {
-
-            // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
-            this.imagesInThisPageLoaded = categoriesReducerData.categoriesPageImagesLoaded;
-
-            // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
-            // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
-            if ( !this.homePageImagesLoaded ) {
-
-              // Comprobación
-              // console.log('categories: imagesOfOtherPagesToPreload:');
-              // console.log(this.imagesOfOtherPagesToPreload);
-
-              this.preloadImagesService.preloadImagesOfOtherPages( this.imagesOfOtherPagesToPreload );
-            }
-
-          }
-
-
-
-          // Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
-          // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
-          this.categoriesPagePreviouslyVisited = categoriesReducerData.categoriesPagePreviouslyVisited;
-
-          // Comprobación
-          // console.log('categoriesPagePreviouslyVisited: ' + this.homePagePreviouslyVisited);
-
-        },
-
-        // El segundo parámetro de susbscribe() es para recoger los errores del servidor
-        (errorResponse) => {
-
-          // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
-          console.log('errorResponse:');
-          console.log(errorResponse);
-
-        }
-
-      );
-
-
-
-    /* - Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
+        /* - Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
           · Miniaturas de los productos de la home
     */
-    this.homeReducerObservableSubscription = this.store.select('homeReducerObservable')
-      .subscribe(
+        this.homeReducerObservableSubscription = this.store
+            .select('homeReducerObservable')
+            .subscribe(
+                // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
+                (homeResponseData) => {
+                    // console.log('homeResponseData:');
+                    // console.log(homeResponseData);
 
-        // El primer parámetro de susbscribe() es para recoger los datos que devuelve la llamada
-        (homeResponseData)  => {
+                    // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
+                    this.homePageImagesLoaded = homeResponseData.homePageImagesLoaded;
+                    if (!this.homePageImagesLoaded) {
+                        // · Miniaturas de los productos de la home
+                        if (homeResponseData.allProducts.length != 0) {
+                            // Comprobación
+                            // console.log('· Miniaturas de las categorías');
 
-          // console.log('homeResponseData:');
-          // console.log(homeResponseData);
+                            this.imagesOfOtherPagesToPreload = homeResponseData.allProducts.map(
+                                (category) => {
+                                    // Con map extraigo un array con los valores de todos los imageThumbnail (y le añado la extensión, comprobando si el navegador soporta webp o no)
+                                    return (
+                                        category.imageThumbnail +
+                                        (this.preloadImagesService.support_format_webp()
+                                            ? '.webp'
+                                            : '.png')
+                                    );
+                                },
+                            );
+                        }
+                    }
+                },
 
-          // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
-          this.homePageImagesLoaded = homeResponseData.homePageImagesLoaded;
-          if ( !this.homePageImagesLoaded ) {
+                // El segundo parámetro de susbscribe() es para recoger los errores del servidor
+                (errorResponse) => {
+                    // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
+                    console.log('errorResponse:');
+                    console.log(errorResponse);
+                },
+            );
 
-            // · Miniaturas de los productos de la home
-            if ( homeResponseData.allProducts.length != 0 ) {
+        // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
+        this.store
+            .select('globalReducerObservable')
+            .pipe(take(1))
+            .subscribe((globalReducerData) => {
+                this.currentlyInThePageIEnteredFrom =
+                    globalReducerData.firstVisitedPage == this.router.url;
 
-              // Comprobación
-              // console.log('· Miniaturas de las categorías');
+                // Comprobación
+                // console.log('Slug de la página de entrada: ' + globalReducerData.firstVisitedPage);
+                // console.log('Slug actual: ' + this.router.url);
+                // console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
+            });
 
-              this.imagesOfOtherPagesToPreload = homeResponseData.allProducts.map( category => {
-                // Con map extraigo un array con los valores de todos los imageThumbnail (y le añado la extensión, comprobando si el navegador soporta webp o no)
-                return category.imageThumbnail + ( this.preloadImagesService.support_format_webp() ? '.webp' : '.png' );
-              } );
+        // Cambiar el título de la página
+        this.titleService.setTitle('Categories - Online Store');
+    }
 
-            }
+    ngOnDestroy(): void {
+        // Cancelar suscripciones
+        this.homeReducerObservableSubscription.unsubscribe();
+        this.categoriesReducerObservableSubscription.unsubscribe();
 
-          }
-
-        },
-
-        // El segundo parámetro de susbscribe() es para recoger los errores del servidor
-        (errorResponse) => {
-
-          // CUIADADO: es importante ver este objeto, porque el contenido de errorResponse.error varía dependiendo del servidor que estemos usando.
-          console.log('errorResponse:');
-          console.log(errorResponse);
-
-        }
-
-      );
-
-
-
-    // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
-    this.store.select('globalReducerObservable').pipe(take(1)).subscribe( (globalReducerData) => {
-
-      this.currentlyInThePageIEnteredFrom = ( globalReducerData.firstVisitedPage == this.router.url );
-
-      // Comprobación
-      // console.log('Slug de la página de entrada: ' + globalReducerData.firstVisitedPage);
-      // console.log('Slug actual: ' + this.router.url);
-      // console.log('currentlyInThePageIEnteredFrom: ' + this.currentlyInThePageIEnteredFrom);
-
-    });
-
-
-
-    // Cambiar el título de la página
-    this.titleService.setTitle('Categories - Online Store');
-
-  }
-
-  ngOnDestroy(): void {
-
-    // Cancelar suscripciones
-    this.homeReducerObservableSubscription.unsubscribe();
-    this.categoriesReducerObservableSubscription.unsubscribe();
-
-    // Guardar en la Store que ya he visitado esta página, así solo ejecuto la animación de carga una vez
-    this.store.dispatch( CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue() );
-
-  }
-
+        // Guardar en la Store que ya he visitado esta página, así solo ejecuto la animación de carga una vez
+        this.store.dispatch(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue());
+    }
 }
