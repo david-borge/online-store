@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 
 import { Router } from '@angular/router';
 
-import { ProcessStatusInterface } from '../../../core/models/processStatus.interface';
+import { ProcessStatus } from '../../../core/models/processStatus.enum';
 
 @Component({
     selector: 'app-btn-with-loading-spinner',
@@ -15,8 +15,7 @@ export class BtnWithLoadingSpinnerComponent {
     @Input() btnWithLoadingSpinnerTextClasses: string = '';
     @Input() btnWithLoadingSpinnerClasses: string = '';
     @Input() btnWithLoadingSpinnerSpinnerWidthAndHeight: number = 0;
-    @Input() btnWithLoadingSpinnerProcessStatus: ProcessStatusInterface['processStatus'] =
-        'NOT_STARTED';
+    @Input() btnWithLoadingSpinnerProcessStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
     @Input() navigationShowButtonRightRightIcon: boolean = false;
     @Input() navigationShowButtonRightRightIconType: string = 'check';
     @Input() formIsValid: boolean = true;
@@ -29,6 +28,8 @@ export class BtnWithLoadingSpinnerComponent {
     @HostBinding('style.width') width = '100%';
 
     currentURL: string = '';
+
+    ProcessStatus = ProcessStatus;
 
     constructor(private router: Router) {}
 

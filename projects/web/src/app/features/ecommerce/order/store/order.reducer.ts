@@ -5,32 +5,32 @@ import { createReducer, on } from '@ngrx/store';
 import * as OrderActions from './order.actions'; // Importar todo y guardarlo en el alias OrderActions
 
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface OrderReducerStateInterface {
-    // loadStatus: ProcessStatusInterface['processStatus'];
+    // loadStatus: ProcessStatus;
     currentOrderNumber: number;
     orderData: GetOrderDataPHPInterface['orderData'];
     orderProducts: GetOrderDataPHPInterface['orderProducts'];
     orderAddress: GetOrderDataPHPInterface['orderAddress'];
     orderPaymentMethod: GetOrderDataPHPInterface['orderPaymentMethod'];
     // orderTotal         : number;
-    saveOrderStatus: ProcessStatusInterface['processStatus'];
+    saveOrderStatus: ProcessStatus;
 }
 
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
 const initialState: OrderReducerStateInterface = {
     // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-    // loadStatus: 'NOT_STARTED',
+    // loadStatus: ProcessStatus.NOT_STARTED,
     currentOrderNumber: 0,
     orderData: {} as GetOrderDataPHPInterface['orderData'],
     orderProducts: {} as GetOrderDataPHPInterface['orderProducts'],
     orderAddress: {} as GetOrderDataPHPInterface['orderAddress'],
     orderPaymentMethod: {} as GetOrderDataPHPInterface['orderPaymentMethod'],
     // orderTotal         : 0,
-    saveOrderStatus: 'NOT_STARTED',
+    saveOrderStatus: ProcessStatus.NOT_STARTED,
 };
 
 export const orderReducer = createReducer(
@@ -92,7 +92,7 @@ export const orderReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        saveOrderStatus: 'STARTED',
+        saveOrderStatus: ProcessStatus.STARTED,
     })),
 
     /** |-> Save Order End Success Action **/
@@ -102,7 +102,7 @@ export const orderReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        saveOrderStatus: 'NOT_STARTED', // Reseteo el valor
+        saveOrderStatus: ProcessStatus.NOT_STARTED, // Reseteo el valor
     })),
 
     /** |-> Save Order End Failure Action **/
@@ -112,7 +112,7 @@ export const orderReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        saveOrderStatus: 'NOT_STARTED', // Reseteo el valor
+        saveOrderStatus: ProcessStatus.NOT_STARTED, // Reseteo el valor
     })),
 
     /** Log Out Action **/

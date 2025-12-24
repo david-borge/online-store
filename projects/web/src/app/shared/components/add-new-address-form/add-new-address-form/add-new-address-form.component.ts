@@ -18,7 +18,7 @@ import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreC
 import * as AddressesActions from '../../../../features/ecommerce/addresses/store/addresses.actions';
 
 import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
     selector: 'app-add-new-address-form',
@@ -38,7 +38,7 @@ export class AddNewAddressFormComponent implements OnInit, OnDestroy {
     addNewAddressResult: string = '';
     @ViewChild('addressLocalReference', { static: true })
     addressLocalReferenceViewChild: ElementRef = {} as ElementRef;
-    addNewAddressStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+    addNewAddressStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
     @Output() isAddNewAddressFormValidEventEmitter = new EventEmitter<FormControlStatus>();
 
     constructor(private store: Store<fromApp.AppState>) {}
@@ -58,7 +58,7 @@ export class AddNewAddressFormComponent implements OnInit, OnDestroy {
                 this.addNewAddressStatus = addressesReducerData.addNewAddressStatus;
 
                 // Disable the form inputs if the add new address process is being done
-                if (this.addNewAddressStatus == 'STARTED') {
+                if (this.addNewAddressStatus == ProcessStatus.STARTED) {
                     this.addNewAddressForm.disable();
                 }
             });

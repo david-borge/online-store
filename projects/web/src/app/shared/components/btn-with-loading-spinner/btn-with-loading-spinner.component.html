@@ -3,14 +3,14 @@
     class="btn-with-loading-spinner {{ btnWithLoadingSpinnerClasses }}"
     [ngClass]="{
         'btn-with-loading-spinner--process-started':
-            btnWithLoadingSpinnerProcessStatus == 'STARTED',
+            btnWithLoadingSpinnerProcessStatus == ProcessStatus.STARTED,
     }"
     (click)="onClickBtnWithLoadingSpinner()"
     [disabled]="
         !formIsValid ||
-        btnWithLoadingSpinnerProcessStatus == 'STARTED' ||
+        btnWithLoadingSpinnerProcessStatus == ProcessStatus.STARTED ||
         (currentURL.includes('/product/') &&
-            btnWithLoadingSpinnerProcessStatus == 'ENDED_SUCCESSFULLY')
+            btnWithLoadingSpinnerProcessStatus == ProcessStatus.ENDED_SUCCESSFULLY)
     "
 >
     <!-- Nota: desactivo el botón también si, en la página de producto, en el botón pone "Added!" (ocurre durante 1500 ms) -->
@@ -21,7 +21,7 @@
     <!-- Button Loading Spinner -->
     <span
         class="btn-with-loading-spinner--loading-spinner"
-        *ngIf="btnWithLoadingSpinnerProcessStatus == 'STARTED'"
+        *ngIf="btnWithLoadingSpinnerProcessStatus == ProcessStatus.STARTED"
     >
         <img
             ngSrc="assets/img/icons/spinner-animated.svg"
@@ -38,12 +38,12 @@
     >
         <!-- Icon: plus -->
         <!-- prettier-ignore -->
-        <svg *ngIf="(navigationShowButtonRightRightIconType == 'plus') && (btnWithLoadingSpinnerProcessStatus != 'ENDED_SUCCESSFULLY')" class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg *ngIf="(navigationShowButtonRightRightIconType == 'plus') && (btnWithLoadingSpinnerProcessStatus != ProcessStatus.ENDED_SUCCESSFULLY)" class="icon-plus" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 3.33301V12.6663" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.83331 8H13.1666" stroke="#1F2223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </span>
 
     <span
         class="navigation-button-icon navigation-button-icon-right"
-        *ngIf="btnWithLoadingSpinnerProcessStatus == 'ENDED_SUCCESSFULLY'"
+        *ngIf="btnWithLoadingSpinnerProcessStatus == ProcessStatus.ENDED_SUCCESSFULLY"
     >
         <!-- Icon: check -->
         <!-- prettier-ignore -->

@@ -6,11 +6,12 @@ import * as GlobalActions from './global.actions'; // Importar todo y guardarlo 
 
 import { UserInterface } from '../models/user.interface';
 import { ActiveOrderInterface } from '../models/activeOrder.interface';
-import { ProcessStatusInterface } from '../models/processStatus.interface';
+import { ProcessStatus } from '../models/processStatus.enum';
+import { AuthMode } from '../models/authMode.enum';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface GlobalReducerStateInterface {
-    // loadStatus: ProcessStatusInterface['processStatus'];
+    // loadStatus: ProcessStatus;
     firstVisitedPage: string;
     activeNavigationItem: string | null;
     lastActiveMainPage: string | null;
@@ -18,8 +19,8 @@ export interface GlobalReducerStateInterface {
     authEmailCookieValue: string | null;
     authTokenCookieValue: string | null; // El authToken cambia cada vez que se inicia y se cierra la sesión. Es único para cada usuario.
     authExpirationDateCookieValue: string | null;
-    authMode: 'SIGNUP' | 'LOGIN';
-    signUpLogInStatus: ProcessStatusInterface['processStatus'];
+    authMode: AuthMode;
+    signUpLogInStatus: ProcessStatus;
     signUpLogInResult: string;
     user: UserInterface;
     activeOrders: ActiveOrderInterface[]; // Cada elemento es un objeto con: order.id, product.imageThumbnail, product.price, product.productQuantity
@@ -28,14 +29,14 @@ export interface GlobalReducerStateInterface {
         currentStep: number;
         totalNumberOfSteps: number;
     };
-    logOutGlobalStatus: ProcessStatusInterface['processStatus'];
+    logOutGlobalStatus: ProcessStatus;
 }
 
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
 const initialState: GlobalReducerStateInterface = {
     // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-    // loadStatus: 'NOT_STARTED',
+    // loadStatus: ProcessStatus.NOT_STARTED,
     firstVisitedPage: '',
     activeNavigationItem: '',
     lastActiveMainPage: '',
@@ -43,8 +44,8 @@ const initialState: GlobalReducerStateInterface = {
     authEmailCookieValue: null,
     authTokenCookieValue: null,
     authExpirationDateCookieValue: null,
-    authMode: 'SIGNUP',
-    signUpLogInStatus: 'NOT_STARTED',
+    authMode: AuthMode.SIGNUP,
+    signUpLogInStatus: ProcessStatus.NOT_STARTED,
     signUpLogInResult: '',
     user: {} as UserInterface,
     activeOrders: [],
@@ -53,7 +54,7 @@ const initialState: GlobalReducerStateInterface = {
         currentStep: 1,
         totalNumberOfSteps: 3,
     },
-    logOutGlobalStatus: 'NOT_STARTED',
+    logOutGlobalStatus: ProcessStatus.NOT_STARTED,
 };
 
 export const globalReducer = createReducer(
@@ -147,7 +148,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        logOutGlobalStatus: 'STARTED',
+        logOutGlobalStatus: ProcessStatus.STARTED,
     })),
 
     /** |-> Log Out End Success Action **/
@@ -161,7 +162,7 @@ export const globalReducer = createReducer(
         user: {} as UserInterface,
         activeOrders: [],
 
-        logOutGlobalStatus: 'NOT_STARTED', // Reseteo el valor
+        logOutGlobalStatus: ProcessStatus.NOT_STARTED, // Reseteo el valor
     })),
 
     /** |-> Log Out End Failure Action **/
@@ -171,7 +172,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        logOutGlobalStatus: 'ENDED_FAILED',
+        logOutGlobalStatus: ProcessStatus.ENDED_FAILED,
     })),
 
     /** Set Logged In To True Action **/
@@ -194,7 +195,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        authMode: state.authMode == 'SIGNUP' ? 'LOGIN' : 'SIGNUP',
+        authMode: state.authMode == AuthMode.SIGNUP ? AuthMode.LOGIN : AuthMode.SIGNUP,
     })),
 
     /** Sign Up Action Start Action **/
@@ -205,7 +206,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        signUpLogInStatus: 'STARTED',
+        signUpLogInStatus: ProcessStatus.STARTED,
     })),
 
     /** Sign Up Action End Failure Action **/
@@ -215,7 +216,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        signUpLogInStatus: 'ENDED_FAILED',
+        signUpLogInStatus: ProcessStatus.ENDED_FAILED,
 
         signUpLogInResult: action.signUpResultFailurePayload,
     })),
@@ -228,7 +229,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        signUpLogInStatus: 'STARTED',
+        signUpLogInStatus: ProcessStatus.STARTED,
     })),
 
     /** Sign Up Sign Up Log In Action End Success Action **/
@@ -240,7 +241,7 @@ export const globalReducer = createReducer(
         ...state,
 
         loggedIn: true,
-        signUpLogInStatus: 'NOT_STARTED', // Reseteo el valor
+        signUpLogInStatus: ProcessStatus.NOT_STARTED, // Reseteo el valor
         signUpLogInResult: 'true',
         user: {
             firstName: action.firstNamePayload,
@@ -257,7 +258,7 @@ export const globalReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        signUpLogInStatus: 'ENDED_FAILED',
+        signUpLogInStatus: ProcessStatus.ENDED_FAILED,
         signUpLogInResult: action.logInResultFailurePayload,
     })),
 

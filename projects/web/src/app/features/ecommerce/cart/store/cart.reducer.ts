@@ -7,11 +7,11 @@ import * as CartActions from './cart.actions'; // Importar todo y guardarlo en e
 import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 import { CartInterface } from 'projects/web/src/app/core/models/cart.interface';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CartReducerStateInterface {
-    // loadStatus: ProcessStatusInterface['processStatus'];
+    // loadStatus: ProcessStatus;
     numberOfImagesInThisPage: number;
     numberOfImagesInThisPageLoaded: number;
     cartPageImagesLoaded: boolean;
@@ -21,14 +21,14 @@ export interface CartReducerStateInterface {
     updateProductQuantityErrorMessage: string;
     newProductSlug: ProductInterface['id'];
     newProductQuantity: CartInterface['productQuantity'];
-    addProductToCartStatus: ProcessStatusInterface['processStatus'];
+    addProductToCartStatus: ProcessStatus;
 }
 
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
 const initialState: CartReducerStateInterface = {
     // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-    // loadStatus: 'NOT_STARTED',
+    // loadStatus: ProcessStatus.NOT_STARTED,
     numberOfImagesInThisPage: 0,
     numberOfImagesInThisPageLoaded: 0,
     cartPageImagesLoaded: false,
@@ -59,7 +59,7 @@ const initialState: CartReducerStateInterface = {
     updateProductQuantityErrorMessage: '',
     newProductSlug: 0,
     newProductQuantity: 0,
-    addProductToCartStatus: 'NOT_STARTED',
+    addProductToCartStatus: ProcessStatus.NOT_STARTED,
 };
 
 export const cartReducer = createReducer(
@@ -235,7 +235,7 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addProductToCartStatus: 'STARTED',
+        addProductToCartStatus: ProcessStatus.STARTED,
     })),
 
     /** |-> Add Product To Cart End Success Action **/
@@ -245,7 +245,7 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addProductToCartStatus: 'ENDED_SUCCESSFULLY',
+        addProductToCartStatus: ProcessStatus.ENDED_SUCCESSFULLY,
     })),
 
     /** |-> Add Product To Cart End Failure Action **/
@@ -255,7 +255,7 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addProductToCartStatus: 'ENDED_FAILED',
+        addProductToCartStatus: ProcessStatus.ENDED_FAILED,
 
         // Mensaje de error
         addProductToCartErrorMessagePayload: action.addProductToCartErrorMessagePayload,
@@ -268,7 +268,7 @@ export const cartReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addProductToCartStatus: 'NOT_STARTED', // Resetear la propiedad por si el usuario vuelve a pulsar "Add to cart" una segunda vez (en el mismo producto o en otro)
+        addProductToCartStatus: ProcessStatus.NOT_STARTED, // Resetear la propiedad por si el usuario vuelve a pulsar "Add to cart" una segunda vez (en el mismo producto o en otro)
     })),
 
     /** Log Out Action **/

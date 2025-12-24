@@ -13,7 +13,7 @@ import * as CartActions from '../../../features/ecommerce/cart/store/cart.action
 import { PreFetchService } from '../../services/prefetch/prefetch.service';
 import { RoutingService } from '../../services/routing/routing.service';
 import { ProductInterface } from '../../models/product.interface';
-import { ProcessStatusInterface } from '../../models/processStatus.interface';
+import { ProcessStatus } from '../../models/processStatus.enum';
 
 @Component({
     selector: 'app-footer',
@@ -42,7 +42,7 @@ export class FooterComponent implements OnInit, OnChanges {
     activeNavigationItem: string | null = '';
     lastActiveMainPage: string | null = '';
 
-    processStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+    processStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
     constructor(
         private router: Router,

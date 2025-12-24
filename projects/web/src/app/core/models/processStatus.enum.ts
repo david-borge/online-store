@@ -1,0 +1,6 @@
+export enum ProcessStatus {
+    NOT_STARTED = 'NOT_STARTED',
+    STARTED = 'STARTED',
+    ENDED_SUCCESSFULLY = 'ENDED_SUCCESSFULLY',
+    ENDED_FAILED = 'ENDED_FAILED',
+}

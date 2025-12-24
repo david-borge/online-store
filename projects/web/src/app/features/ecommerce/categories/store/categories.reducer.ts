@@ -8,7 +8,7 @@ import { CategoryInterface } from 'projects/web/src/app/core/models/category.int
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CategoriesReducerStateInterface {
-    // loadStatus: ProcessStatusInterface['processStatus'];
+    // loadStatus: ProcessStatus;
     allCategories: CategoryInterface[];
     currentCategorySlug: string;
     numberOfImagesInThisPage: number;
@@ -20,7 +20,7 @@ export interface CategoriesReducerStateInterface {
 // Reducer State (inicial) - Valores iniciales
 // Normalmente es un objeto JS
 const initialState: CategoriesReducerStateInterface = {
-    // loadStatus: 'NOT_STARTED',
+    // loadStatus: ProcessStatus.NOT_STARTED,
     // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
     allCategories: [],
     currentCategorySlug: '',

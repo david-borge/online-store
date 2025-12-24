@@ -12,7 +12,8 @@ import { AuthService } from 'projects/web/src/app/core/services/auth/auth.servic
 
 import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
 import { ActiveOrderInterface } from 'projects/web/src/app/core/models/activeOrder.interface';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
 
 @Component({
     selector: 'app-account',
@@ -28,7 +29,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
     // Variables para la Template
     loggedIn: boolean = true;
-    authMode: 'SIGNUP' | 'LOGIN' = 'SIGNUP';
+    authMode: AuthMode = AuthMode.SIGNUP;
     sectionHeaderTitleText: string = 'Sign Up';
     imagesInThisPageLoaded: boolean = true; // TODO:
     accountPagePreviouslyVisited: boolean = false; // TODO:
@@ -38,7 +39,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     activeOrders: ActiveOrderInterface[] = [];
     ordersTotals: number[] = [];
     logOutButtonText: 'Log out' | 'Logging out...' = 'Log out';
-    logOutGlobalStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+    logOutGlobalStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
     constructor(
         private store: Store<fromApp.AppState>,
@@ -73,7 +74,7 @@ export class AccountComponent implements OnInit, OnDestroy {
                 this.logOutGlobalStatus = globalReducerData.logOutGlobalStatus;
 
                 // - logOutButtonText
-                if (this.logOutGlobalStatus == 'STARTED') {
+                if (this.logOutGlobalStatus == ProcessStatus.STARTED) {
                     // Comprobacion
                     // console.log('Logging out...');
 

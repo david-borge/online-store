@@ -9,6 +9,7 @@ import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNomb
 import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
 import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
+import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
 
 @Component({
     selector: 'app-checkout-step-signup-login',
@@ -20,7 +21,7 @@ export class CheckoutStepSignupLoginComponent implements OnInit, OnDestroy {
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
-    authMode: 'SIGNUP' | 'LOGIN' = 'SIGNUP';
+    authMode: AuthMode = AuthMode.SIGNUP;
     sectionHeaderTitleText: string = 'Sign Up';
     showBottomOverlay: boolean = false;
     signUpLogInResult: string = '';

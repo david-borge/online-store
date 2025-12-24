@@ -10,7 +10,7 @@ import * as CartActions from '../../../cart/store/cart.actions';
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
     selector: 'app-product',
@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     currentProductSlug: string = '';
     currentProduct = {} as ProductInterface;
     footerNavigationButtonRightText: string = 'Add to cart';
-    addProductToCartStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+    addProductToCartStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
     // Pre-load images of other pages
     imagesInThisPageLoaded: boolean = false;
@@ -127,7 +127,7 @@ export class ProductComponent implements OnInit, OnDestroy {
             .subscribe((cartReducerObservable) => {
                 // If product is done being added to cart, change the .navigation-button-right-container button text
                 this.addProductToCartStatus = cartReducerObservable.addProductToCartStatus;
-                if (this.addProductToCartStatus == 'ENDED_SUCCESSFULLY') {
+                if (this.addProductToCartStatus == ProcessStatus.ENDED_SUCCESSFULLY) {
                     this.footerNavigationButtonRightText = 'Added!';
 
                     // Al cabo de 1500 milisegundos
@@ -138,7 +138,7 @@ export class ProductComponent implements OnInit, OnDestroy {
                         // Resetear la propiedad por si el usuario vuelve a pulsar "Add to cart" una segunda vez (en el mismo producto o en otro)
                         this.store.dispatch(CartActions.ResetAddProductToCartStatusProperty());
                     }, 1500);
-                } else if (this.addProductToCartStatus == 'STARTED') {
+                } else if (this.addProductToCartStatus == ProcessStatus.STARTED) {
                     this.footerNavigationButtonRightText = 'Adding...';
                 }
             });

@@ -7,11 +7,11 @@ import * as AddressesActions from './addresses.actions'; // Importar todo y guar
 import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
 import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
 import { AddressInterface } from 'projects/web/src/app/core/models/address.interface';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface AddressesReducerStateInterface {
-    // loadStatus: ProcessStatusInterface['processStatus'];
+    // loadStatus: ProcessStatus;
     addresses: GetAddressesPHPInterface['addresses'];
     countries: CountryInterface[];
     getAllCountriesErrorMessage: string;
@@ -23,7 +23,7 @@ export interface AddressesReducerStateInterface {
         countryId: AddressInterface['countryId'];
     };
     newAddressCountryName: GetAddressesPHPInterface['addresses'][0]['country'] | undefined;
-    addNewAddressStatus: ProcessStatusInterface['processStatus'];
+    addNewAddressStatus: ProcessStatus;
     addNewAddressErrorMessage: string;
 }
 
@@ -31,13 +31,13 @@ export interface AddressesReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: AddressesReducerStateInterface = {
     // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-    // loadStatus: 'NOT_STARTED',
+    // loadStatus: ProcessStatus.NOT_STARTED,
     addresses: [],
     countries: [],
     getAllCountriesErrorMessage: '',
     newAddress: {} as AddressInterface,
     newAddressCountryName: '',
-    addNewAddressStatus: 'NOT_STARTED',
+    addNewAddressStatus: ProcessStatus.NOT_STARTED,
     addNewAddressErrorMessage: '',
 };
 
@@ -117,7 +117,7 @@ export const addressesReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addNewAddressStatus: 'STARTED',
+        addNewAddressStatus: ProcessStatus.STARTED,
     })),
 
     /** |-> Add New Address End Success Action **/
@@ -144,7 +144,7 @@ export const addressesReducer = createReducer(
                 action.addNewAddresSuccessPayload, // Pongo esto primero para que sea el primer elemento del array y se muestre arriba del todo
                 ...updatedAddresses,
             ],
-            addNewAddressStatus: 'NOT_STARTED', // Reseteo el valor
+            addNewAddressStatus: ProcessStatus.NOT_STARTED, // Reseteo el valor
         };
     }),
 
@@ -155,7 +155,7 @@ export const addressesReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addNewAddressStatus: 'ENDED_FAILED',
+        addNewAddressStatus: ProcessStatus.ENDED_FAILED,
 
         // Mensaje de error
         addNewAddressErrorMessage: action.addNewAddressErrorMessagePayload,

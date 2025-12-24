@@ -6,11 +6,11 @@ import * as PaymentMethodsActions from './payment-methods.actions'; // Importar 
 
 import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 import { PaymentMethodInterface } from 'projects/web/src/app/core/models/paymentMethod.interface';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface PaymentMethodsReducerStateInterface {
-    // loadStatus: ProcessStatusInterface['processStatus'];
+    // loadStatus: ProcessStatus;
     paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'];
     newCard: {
         type: PaymentMethodInterface['type'];
@@ -21,7 +21,7 @@ export interface PaymentMethodsReducerStateInterface {
         cardExpirationYear: PaymentMethodInterface['cardExpirationYear'];
         cardType: PaymentMethodInterface['cardType'];
     };
-    addNewCardStatus: ProcessStatusInterface['processStatus'];
+    addNewCardStatus: ProcessStatus;
     addNewCardErrorMessage: string;
 }
 
@@ -29,7 +29,7 @@ export interface PaymentMethodsReducerStateInterface {
 // Normalmente es un objeto JS
 const initialState: PaymentMethodsReducerStateInterface = {
     // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
-    // loadStatus: 'NOT_STARTED',
+    // loadStatus: ProcessStatus.NOT_STARTED,
     paymentMethods: [],
     newCard: {
         type: 'card',
@@ -40,7 +40,7 @@ const initialState: PaymentMethodsReducerStateInterface = {
         cardExpirationYear: '',
         cardType: 'visa',
     },
-    addNewCardStatus: 'NOT_STARTED',
+    addNewCardStatus: ProcessStatus.NOT_STARTED,
     addNewCardErrorMessage: '',
 };
 
@@ -88,7 +88,7 @@ export const paymentMethodsReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addNewCardStatus: 'STARTED',
+        addNewCardStatus: ProcessStatus.STARTED,
     })),
 
     /** |-> Add New Card End Success Action **/
@@ -129,7 +129,7 @@ export const paymentMethodsReducer = createReducer(
                 },
                 ...updatedPaymentMethods,
             ],
-            addNewCardStatus: 'NOT_STARTED', // Reseteo el valor
+            addNewCardStatus: ProcessStatus.NOT_STARTED, // Reseteo el valor
         };
     }),
 
@@ -140,7 +140,7 @@ export const paymentMethodsReducer = createReducer(
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
 
-        addNewCardStatus: 'ENDED_FAILED',
+        addNewCardStatus: ProcessStatus.ENDED_FAILED,
 
         // Mensaje de error
         addNewCardErrorMessage: action.addNewCardErrorMessagePayload,

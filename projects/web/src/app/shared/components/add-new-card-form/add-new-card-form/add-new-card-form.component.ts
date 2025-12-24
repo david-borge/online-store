@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-methods/store/payment-methods.actions';
-import { ProcessStatusInterface } from 'projects/web/src/app/core/models/processStatus.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
     selector: 'app-add-new-card-form',
@@ -37,7 +37,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
     addNewCardResult: string = '';
     @ViewChild('cardPersonFullNameLocalReference', { static: true })
     cardPersonFullNameLocalReferenceViewChild: ElementRef = {} as ElementRef;
-    addNewCardStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+    addNewCardStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
     @Output() isAddNewCardFormValidEventEmitter = new EventEmitter<FormControlStatus>();
 
     constructor(private store: Store<fromApp.AppState>) {}
@@ -54,7 +54,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
                 this.addNewCardStatus = paymentMethodsReducerData.addNewCardStatus;
 
                 // Disable the form inputs if the add new card process is being done
-                if (this.addNewCardStatus == 'STARTED') {
+                if (this.addNewCardStatus == ProcessStatus.STARTED) {
                     this.addNewCardForm.disable();
                 }
             });

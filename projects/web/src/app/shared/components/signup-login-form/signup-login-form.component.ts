@@ -12,7 +12,8 @@ import * as GlobalActions from '../../../core/store/global.actions';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { CookiesService } from '../../../core/services/cookies/cookies.service';
 
-import { ProcessStatusInterface } from '../../../core/models/processStatus.interface';
+import { ProcessStatus } from '../../../core/models/processStatus.enum';
+import { AuthMode } from '../../../core/models/authMode.enum';
 
 @Component({
     selector: 'app-signup-login-form',
@@ -24,14 +25,16 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Variables para la Template
-    authMode: 'SIGNUP' | 'LOGIN' = 'SIGNUP';
+    authMode: AuthMode = AuthMode.SIGNUP;
 
     // Variables del formulario
     signUpLogInForm: FormGroup = new FormGroup({}); // Objecto JS que contiene el formulario creado programáticamente
     showFirstAndLastNameFields: boolean = this.authMode == 'SIGNUP';
     signUpLogInButtonText: string = '';
     signUpLogInResult: string = '';
-    signUpLogInStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+    signUpLogInStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
+
+    ProcessStatus = ProcessStatus;
 
     constructor(
         private store: Store<fromApp.AppState>,
@@ -53,7 +56,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
                 this.signUpLogInStatus = globalReducerData.signUpLogInStatus;
 
                 // signUpLogInButtonText
-                if (this.signUpLogInStatus != 'STARTED') {
+                if (this.signUpLogInStatus != ProcessStatus.STARTED) {
                     if (this.authMode == 'SIGNUP') {
                         this.signUpLogInButtonText = 'Sign Up';
                     } else {
@@ -68,7 +71,7 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
                 }
 
                 // Disable the form inputs if the signing up or logging in process is being done
-                if (this.signUpLogInStatus == 'STARTED') {
+                if (this.signUpLogInStatus == ProcessStatus.STARTED) {
                     this.signUpLogInForm.disable();
                 }
 

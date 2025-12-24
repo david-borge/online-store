@@ -10,7 +10,7 @@ import * as GlobalActions from '../../../core/store/global.actions';
 import { AccountService } from '../../../core/services/account/account.service';
 
 import { AddressInterface } from '../../../core/models/address.interface';
-import { ProcessStatusInterface } from '../../../core/models/processStatus.interface';
+import { ProcessStatus } from '../../../core/models/processStatus.enum';
 import { FormControlStatus } from '@angular/forms';
 
 @Component({
@@ -27,7 +27,8 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
     @Input() bottomOverlayTitle: string = '';
     @Input() bottomOverlayAddButtonText: string = '';
     @Input() bottomOverlayBodyContent: '' | 'ADD_NEW_ADDRESS' | 'ADD_NEW_PAYMENT_METHOD' = '';
-    processStatus: ProcessStatusInterface['processStatus'] = 'NOT_STARTED';
+    processStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
+    ProcessStatus = ProcessStatus;
 
     // Propiedades - Bottom Overlay - ADD_NEW_ADDRESS
     newAddress: AddressInterface = {} as AddressInterface;
@@ -50,7 +51,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
                     this.processStatus = addressReducerData.addNewAddressStatus;
 
                     // bottomOverlayAddButtonText
-                    if (this.processStatus == 'STARTED') {
+                    if (this.processStatus == ProcessStatus.STARTED) {
                         this.bottomOverlayAddButtonText = 'Adding...';
                     }
                 });
@@ -65,7 +66,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
                     this.processStatus = paymentMethodsReducerData.addNewCardStatus;
 
                     // bottomOverlayAddButtonText
-                    if (this.processStatus == 'STARTED') {
+                    if (this.processStatus == ProcessStatus.STARTED) {
                         this.bottomOverlayAddButtonText = 'Adding...';
                     }
                 });
@@ -74,7 +75,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
     hideBottomOverlay() {
         // Solo permitir cerrar el overlay si no estoy en medio de un proceso (añadir una address o credit card)
-        if (this.processStatus != 'STARTED') {
+        if (this.processStatus != ProcessStatus.STARTED) {
             this.store.dispatch(
                 GlobalActions.ShowOrHideBottomOverlay({
                     showBottomOverlayValue: false,
