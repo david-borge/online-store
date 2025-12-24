@@ -1,9 +1,9 @@
 # Online Store
 
 <!--
-  TODO: add Prettier and Lint
-  TODO: check layout of header.component.html > "Step x of x"
   TODO: update packages (specially Angular version)
+  TODO: Lint
+  TODO: check layout of header.component.html > "Step x of x"
   TODO: add sans-serif fallback font
   TODO: add Lint to backend (does it work with PHP?)
   TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
