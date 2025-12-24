@@ -15,11 +15,12 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-devkit/build-angular:application",
                     "options": {
-                        "outputPath": "dist/web/browser",
+                        "outputPath": {
+                            "base": "dist/web"
+                        },
                         "index": "projects/web/src/index.html",
-                        "main": "projects/web/src/main.ts",
                         "polyfills": ["zone.js"],
                         "tsConfig": "projects/web/tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
@@ -33,7 +34,13 @@
                             "node_modules/bootstrap/scss/bootstrap.scss",
                             "projects/web/src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "browser": "projects/web/src/main.ts",
+                        "server": "projects/web/src/main.server.ts",
+                        "prerender": true,
+                        "ssr": {
+                            "entry": "projects/web/server.ts"
+                        }
                     },
                     "configurations": {
                         "production": {
@@ -52,9 +59,7 @@
                             "outputHashing": "all"
                         },
                         "development": {
-                            "buildOptimizer": false,
                             "optimization": false,
-                            "vendorChunk": true,
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true
@@ -102,59 +107,6 @@
                         "serverTarget": "web:server:production",
                         "prerenderTarget": "web:prerender:production"
                     }
-                },
-                "server": {
-                    "builder": "@angular-devkit/build-angular:server",
-                    "options": {
-                        "outputPath": "dist/web/server",
-                        "main": "projects/web/server.ts",
-                        "tsConfig": "projects/web/tsconfig.server.json",
-                        "inlineStyleLanguage": "scss"
-                    },
-                    "configurations": {
-                        "production": {
-                            "outputHashing": "media"
-                        },
-                        "development": {
-                            "optimization": false,
-                            "sourceMap": true,
-                            "extractLicenses": false,
-                            "vendorChunk": true,
-                            "buildOptimizer": false
-                        }
-                    },
-                    "defaultConfiguration": "production"
-                },
-                "serve-ssr": {
-                    "builder": "@angular-devkit/build-angular:ssr-dev-server",
-                    "configurations": {
-                        "development": {
-                            "browserTarget": "web:build:development",
-                            "serverTarget": "web:server:development"
-                        },
-                        "production": {
-                            "browserTarget": "web:build:production",
-                            "serverTarget": "web:server:production"
-                        }
-                    },
-                    "defaultConfiguration": "development"
-                },
-                "prerender": {
-                    "builder": "@angular-devkit/build-angular:prerender",
-                    "options": {
-                        "routes": ["/"]
-                    },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "web:build:production",
-                            "serverTarget": "web:server:production"
-                        },
-                        "development": {
-                            "browserTarget": "web:build:development",
-                            "serverTarget": "web:server:development"
-                        }
-                    },
-                    "defaultConfiguration": "production"
                 }
             }
         }
