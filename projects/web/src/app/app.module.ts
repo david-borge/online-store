@@ -69,7 +69,7 @@ import { CartEffects } from './features/ecommerce/cart/store/cart.effects';
             PaymentMethodEffects,
             CartEffects,
         ]), // Array de Side Effects
-        StoreDevtoolsModule.instrument({ logOnly: environment.production }), // Instrument recibe un objeto con la configuración de Store Devtools. Con logOnly: environment.production, hacemos que solo se generen los log messages en producción.
+        StoreDevtoolsModule.instrument({ logOnly: environment.production, connectInZone: true }), // Instrument recibe un objeto con la configuración de Store Devtools. Con logOnly: environment.production, hacemos que solo se generen los log messages en producción.
         StoreRouterConnectingModule.forRoot(), // The Router Store
 
         AppRoutingModule,
