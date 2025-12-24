@@ -2,13 +2,7 @@
 // If user is logged in, redirect from '/checkout/signup-login' to '/checkout/address'
 
 import { Injectable } from '@angular/core';
-import {
-    ActivatedRouteSnapshot,
-    CanActivate,
-    Router,
-    RouterStateSnapshot,
-    UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
@@ -22,7 +16,7 @@ import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
 @Injectable({
     providedIn: 'root',
 })
-export class CheckoutStepSignupLoginGuard implements CanActivate {
+export class CheckoutStepSignupLoginGuard {
     cartData: GetCartDataPHPInterface['cartData'] = [];
 
     constructor(

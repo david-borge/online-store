@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-    ActivatedRouteSnapshot,
-    CanDeactivate,
-    RouterStateSnapshot,
-    UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
@@ -15,7 +10,7 @@ import * as CartActions from '../../../features/ecommerce/cart/store/cart.action
 @Injectable({
     providedIn: 'root',
 })
-export class ProductGuard implements CanDeactivate<unknown> {
+export class ProductGuard {
     constructor(private store: Store<fromApp.AppState>) {}
 
     canDeactivate(

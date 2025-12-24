@@ -1,13 +1,7 @@
 // Checkout step: '/checkout/address'
 
 import { Injectable } from '@angular/core';
-import {
-    ActivatedRouteSnapshot,
-    CanActivate,
-    Router,
-    RouterStateSnapshot,
-    UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
@@ -21,7 +15,7 @@ import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
 @Injectable({
     providedIn: 'root',
 })
-export class CheckoutStepOrderReviewGuard implements CanActivate {
+export class CheckoutStepOrderReviewGuard {
     cartData: GetCartDataPHPInterface['cartData'] = [];
 
     constructor(

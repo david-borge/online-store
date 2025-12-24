@@ -6,13 +6,7 @@
 // If user is logged in, redirect from '/checkout/signup-login' to '/checkout/address'
 
 import { Injectable } from '@angular/core';
-import {
-    ActivatedRouteSnapshot,
-    CanActivate,
-    Router,
-    RouterStateSnapshot,
-    UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../../services/auth/auth.service';
@@ -20,7 +14,7 @@ import { AuthService } from '../../services/auth/auth.service';
 @Injectable({
     providedIn: 'root',
 })
-export class AccountInnerPagesGuard implements CanActivate {
+export class AccountInnerPagesGuard {
     constructor(
         private router: Router,
         private authService: AuthService,
