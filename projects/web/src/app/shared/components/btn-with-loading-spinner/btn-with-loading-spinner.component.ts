@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ProcessStatus } from '../../../core/models/processStatus.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-btn-with-loading-spinner',
     templateUrl: './btn-with-loading-spinner.component.html',
     styleUrls: ['./btn-with-loading-spinner.component.scss'],

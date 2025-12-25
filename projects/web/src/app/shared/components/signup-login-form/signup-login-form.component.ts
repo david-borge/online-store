@@ -16,6 +16,7 @@ import { ProcessStatus } from '../../../core/models/processStatus.enum';
 import { AuthMode } from '../../../core/models/authMode.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-signup-login-form',
     templateUrl: './signup-login-form.component.html',
     styleUrls: ['./signup-login-form.component.scss'],

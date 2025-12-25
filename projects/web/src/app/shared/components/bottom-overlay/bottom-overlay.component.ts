@@ -14,6 +14,7 @@ import { ProcessStatus } from '../../../core/models/processStatus.enum';
 import { FormControlStatus } from '@angular/forms';
 
 @Component({
+    standalone: false,
     selector: 'app-bottom-overlay',
     templateUrl: './bottom-overlay.component.html',
     styleUrls: ['./bottom-overlay.component.scss'],

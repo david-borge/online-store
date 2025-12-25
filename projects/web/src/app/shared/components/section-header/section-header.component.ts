@@ -7,6 +7,7 @@ import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComp
 import * as GlobalActions from '../../../core/store/global.actions';
 
 @Component({
+    standalone: false,
     selector: 'app-section-header',
     templateUrl: './section-header.component.html',
     styleUrls: ['./section-header.component.scss'],

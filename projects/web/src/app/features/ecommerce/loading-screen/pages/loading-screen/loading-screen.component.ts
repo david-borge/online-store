@@ -15,6 +15,7 @@ import { PreFetchService } from '../../../../../core/services/prefetch/prefetch.
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 @Component({
+    standalone: false,
     selector: 'app-loading-screen',
     templateUrl: './loading-screen.component.html',
     styleUrls: ['./loading-screen.component.scss'],

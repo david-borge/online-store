@@ -12,6 +12,7 @@ import * as CartActions from '../../store/cart.actions';
 import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.scss'],

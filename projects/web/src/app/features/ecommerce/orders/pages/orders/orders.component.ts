@@ -10,6 +10,7 @@ import * as OrdersActions from '../../store/orders.actions';
 import { GetOrdersPHPInterface } from 'projects/web/src/app/core/models/getOrdersPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-orders',
     templateUrl: './orders.component.html',
     styleUrls: ['./orders.component.scss'],

@@ -10,6 +10,7 @@ import * as AddressesActions from '../../store/addresses.actions';
 import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-addresses',
     templateUrl: './addresses.component.html',
     styleUrls: ['./addresses.component.scss'],

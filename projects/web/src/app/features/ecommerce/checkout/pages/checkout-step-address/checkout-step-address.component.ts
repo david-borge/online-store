@@ -12,6 +12,7 @@ import * as AddressesActions from '../../../addresses/store/addresses.actions';
 import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-checkout-step-address',
     templateUrl: './checkout-step-address.component.html',
     styleUrls: ['./checkout-step-address.component.scss'],

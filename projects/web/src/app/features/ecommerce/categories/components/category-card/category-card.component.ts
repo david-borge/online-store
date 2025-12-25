@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-category-card',
     templateUrl: './category-card.component.html',
     styleUrls: ['./category-card.component.scss'],

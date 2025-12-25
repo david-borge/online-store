@@ -9,6 +9,7 @@ import { GetPaymentMethodsPHPInterface } from '../../../core/models/getPaymentMe
 import { PaymentMethodInterface } from '../../../core/models/paymentMethod.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-credit-card',
     templateUrl: './credit-card.component.html',
     styleUrls: ['./credit-card.component.scss'],

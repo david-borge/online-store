@@ -50,7 +50,8 @@ import { CartEffects } from './features/ecommerce/cart/store/cart.effects';
     // Como todos los componentes nuevos van dentro de AppComponent, no hay que declararlos en bootstrap
     bootstrap: [AppComponent],
     imports: [
-        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        // FIXME: this belongs to the old way of ssr (expressengine)
+        // BrowserModule.withServerTransition({ appId: 'serverApp' }),
         StoreModule.forRoot(fromApp.appReducer), // Action Reducer Map: un objeto JS con la lista de Reducers de la app ({identificadorQueQuiera: MiReducerAsociadoAlIdentificador})
         EffectsModule.forRoot([
             GlobalEffects,

@@ -16,6 +16,7 @@ import * as CategoriesActions from '../../store/categories.actions';
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 @Component({
+    standalone: false,
     selector: 'app-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],

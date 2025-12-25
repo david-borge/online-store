@@ -12,6 +12,7 @@ import * as PaymentMethodsActions from '../../../payment-methods/store/payment-m
 import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-checkout-step-payment-method',
     templateUrl: './checkout-step-payment-method.component.html',
     styleUrls: ['./checkout-step-payment-method.component.scss'],

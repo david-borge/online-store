@@ -19,6 +19,7 @@ import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-m
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-add-new-card-form',
     templateUrl: './add-new-card-form.component.html',
     styleUrls: ['./add-new-card-form.component.scss'],

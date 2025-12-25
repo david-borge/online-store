@@ -13,6 +13,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-product',
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.scss'],

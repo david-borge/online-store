@@ -10,6 +10,7 @@ import * as PaymentMethodsActions from '../../store/payment-methods.actions';
 import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-payment-methods',
     templateUrl: './payment-methods.component.html',
     styleUrls: ['./payment-methods.component.scss'],

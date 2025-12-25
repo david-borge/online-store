@@ -9,6 +9,7 @@ import * as fromApp from './core/store/app.reducer'; // el fromNombreComponente 
 import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
 @Component({
+    standalone: false,
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],

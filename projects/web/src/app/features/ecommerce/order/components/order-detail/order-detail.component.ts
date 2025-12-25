@@ -12,6 +12,7 @@ import * as OrderActions from '../../store/order.actions';
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-order-detail',
     templateUrl: './order-detail.component.html',
     styleUrls: ['./order-detail.component.scss'],

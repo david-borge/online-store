@@ -16,6 +16,7 @@ import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.en
 import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.scss'],

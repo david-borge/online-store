@@ -7,6 +7,7 @@ import { ProductInterface } from '../../../core/models/product.interface';
 import { PreFetchService } from '../../../core/services/prefetch/prefetch.service';
 
 @Component({
+    standalone: false,
     selector: 'app-product-card',
     templateUrl: './product-card.component.html',
     styleUrls: ['./product-card.component.scss'],

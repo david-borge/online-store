@@ -9,6 +9,7 @@ import { ProductInterface } from '../../../core/models/product.interface';
 import { CartInterface } from '../../../core/models/cart.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-cart-checkout-product-card',
     templateUrl: './cart-checkout-product-card.component.html',
     styleUrls: ['./cart-checkout-product-card.component.scss'],

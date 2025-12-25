@@ -13,6 +13,7 @@ import { CategoryInterface } from 'projects/web/src/app/core/models/category.int
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 @Component({
+    standalone: false,
     selector: 'app-category',
     templateUrl: './category.component.html',
     styleUrls: ['./category.component.scss'],

@@ -21,6 +21,7 @@ import { CountryInterface } from 'projects/web/src/app/core/models/country.inter
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-add-new-address-form',
     templateUrl: './add-new-address-form.component.html',
     styleUrls: ['./add-new-address-form.component.scss'],

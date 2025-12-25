@@ -17,9 +17,7 @@ import {
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-@Directive({
-    selector: '[prefetch]',
-})
+@Directive({ standalone: false, selector: '[prefetch]' })
 export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
     @Input() prefetchMode: ('LOAD' | 'HOVER' | 'VISIBLE')[] = ['VISIBLE'];
     @Output() prefetch = new EventEmitter<void>();

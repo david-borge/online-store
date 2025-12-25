@@ -14,6 +14,7 @@ import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/
 import { ReviewInterface } from 'projects/web/src/app/core/models/review.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-product-detail',
     templateUrl: './product-detail.component.html',
     styleUrls: ['./product-detail.component.scss'],

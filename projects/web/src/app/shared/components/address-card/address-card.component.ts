@@ -9,6 +9,7 @@ import { AddressInterface } from '../../../core/models/address.interface';
 import { GetAddressesPHPInterface } from '../../../core/models/getAddressesPHP.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-address-card',
     templateUrl: './address-card.component.html',
     styleUrls: ['./address-card.component.scss'],

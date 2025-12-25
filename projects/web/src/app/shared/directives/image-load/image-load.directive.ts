@@ -13,9 +13,7 @@ import * as HomeActions from '../../../features/ecommerce/home/store/home.action
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
 import * as ProductActions from '../../../features/ecommerce/product/store/product.actions';
 
-@Directive({
-    selector: '[imageLoadDirective]',
-})
+@Directive({ standalone: false, selector: '[imageLoadDirective]' })
 export class ImageLoadDirective {
     currentURL: string = '';
     numberOfImagesInThisPage: number = 0;

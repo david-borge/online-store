@@ -15,6 +15,7 @@ import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCar
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-checkout-step-order-review',
     templateUrl: './checkout-step-order-review.component.html',
     styleUrls: ['./checkout-step-order-review.component.scss'],

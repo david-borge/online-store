@@ -16,6 +16,7 @@ import { ProductInterface } from '../../models/product.interface';
 import { ProcessStatus } from '../../models/processStatus.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss'],

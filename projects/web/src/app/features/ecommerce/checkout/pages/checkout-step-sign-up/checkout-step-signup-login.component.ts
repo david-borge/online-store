@@ -12,6 +12,7 @@ import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
 import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
 
 @Component({
+    standalone: false,
     selector: 'app-checkout-step-signup-login',
     templateUrl: './checkout-step-signup-login.component.html',
     styleUrls: ['./checkout-step-signup-login.component.scss'],

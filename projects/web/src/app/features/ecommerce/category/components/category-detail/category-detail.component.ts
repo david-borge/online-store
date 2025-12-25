@@ -11,6 +11,7 @@ import * as CategoriesActions from '../../../categories/store/categories.actions
 import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 @Component({
+    standalone: false,
     selector: 'app-category-detail',
     templateUrl: './category-detail.component.html',
     styleUrls: ['./category-detail.component.scss'],

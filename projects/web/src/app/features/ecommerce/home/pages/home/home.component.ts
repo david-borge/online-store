@@ -16,6 +16,7 @@ import * as HomeActions from '../../store/home.actions';
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 @Component({
+    standalone: false,
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
