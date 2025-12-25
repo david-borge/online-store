@@ -3,6 +3,7 @@
 <!--
   TODO: update packages (specially Angular version)
     TODO: update @angular/fire separatelly
+    TODO: update bootstrap and the rest of the packages
   TODO: Lint
   TODO: check layout of header.component.html > "Step x of x"
   TODO: add sans-serif fallback font
