@@ -1,4 +1,4 @@
-@import 'projects/web/src/styles.scss';
+@use 'projects/web/src/styles.scss' as *;
 
 // Product Reviews Item
 .product-reviews-item--title-ratings-container {
@@ -43,7 +43,8 @@
 .full-stars:before {
     content: '\2605\2605\2605\2605\2605';
     font-size: 14pt;
-    letter-spacing: 3px; /* Espacio entre las estrellas */
+    letter-spacing: 3px;
+    /* Espacio entre las estrellas */
     line-height: 14pt;
 }
 

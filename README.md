@@ -2,7 +2,6 @@
 
 <!--
   TODO: update packages (specially Angular version)
-    TODO: update bootstrap and the rest of the packages
     TODO: fix bootstrap warnings
     TODO: make sure the server files and SSR match the lastest version and don't have legacy code from previous Angular versions
     TODO: change Modules to Standalone components (remove standalone: false and change basic files)

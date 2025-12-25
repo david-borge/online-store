@@ -1,4 +1,4 @@
-@import 'projects/web/src/styles.scss';
+@use 'projects/web/src/styles.scss' as *;
 
 // Product Page - Image
 .product-image-and-three-sixty-indicator-container {
@@ -58,6 +58,7 @@
 .product-description-content ul {
     padding-left: 18px;
 }
+
 .product-description-content li {
     margin-bottom: 10px;
 }

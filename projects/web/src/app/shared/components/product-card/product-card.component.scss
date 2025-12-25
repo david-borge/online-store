@@ -1,4 +1,4 @@
-@import 'projects/web/src/styles.scss';
+@use 'projects/web/src/styles.scss' as *;
 
 // Product Card
 .product-card {

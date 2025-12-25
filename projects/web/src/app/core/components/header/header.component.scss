@@ -1,4 +1,4 @@
-@import 'projects/web/src/styles.scss';
+@use 'projects/web/src/styles.scss' as *;
 
 // Header Tag
 header {
@@ -120,7 +120,8 @@ header {
 }
 
 .overlay-header-subpage .overlay-header-title {
-    padding-right: var(--bs-gutter-x); /* Para compensar el icono izquierdo */
+    padding-right: var(--bs-gutter-x);
+    /* Para compensar el icono izquierdo */
 }
 
 .overlay-header-subpage .overlay-header-title * {
