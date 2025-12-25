@@ -7,7 +7,6 @@
     TODO: fix bootstrap warnings
     TODO: make sure the server files and SSR match the lastest version and don't have legacy code from previous Angular versions
     TODO: update or delete firebase package
-    TODO: change to the new build system: ng update @angular/cli --name use-application-builder
     TODO: change Modules to Standalone components (remove standalone: false and change basic files)
   TODO: Lint
   TODO: check layout of header.component.html > "Step x of x"
