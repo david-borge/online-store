@@ -20,8 +20,8 @@
         "hook:commit-msg": "commitlint --edit"
     },
     "simple-git-hooks": {
-        "pre-commit": "npm run hook:pre-commit",
-        "commit-msg": "npm run hook:commit-msg -- $1"
+        "pre-commit": "npm.cmd run hook:pre-commit",
+        "commit-msg": "npm.cmd run hook:commit-msg -- $1"
     },
     "private": true,
     "lint-staged": {
