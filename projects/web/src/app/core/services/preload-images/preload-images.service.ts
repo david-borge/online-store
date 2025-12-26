@@ -1,12 +1,13 @@
-import { Injectable, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
-import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
-import * as ProductActions from '../../../features/ecommerce/product/store/product.actions';
+import * as fromApp from 'projects/web/src/app/core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as CategoriesActions from 'projects/web/src/app/features/ecommerce/categories/store/categories.actions';
+import * as HomeActions from 'projects/web/src/app/features/ecommerce/home/store/home.actions';
+import * as ProductActions from 'projects/web/src/app/features/ecommerce/product/store/product.actions';
 
 @Injectable({
     providedIn: 'root',
@@ -14,6 +15,8 @@ import * as ProductActions from '../../../features/ecommerce/product/store/produ
 export class PreloadImagesService {
     private router = inject(Router);
     private store = inject<Store<fromApp.AppState>>(Store);
+
+    private platformId = inject(PLATFORM_ID);
 
     numberOfimagesOfOtherPagesToPreloadLoaded = 0;
     currentURL = '';
@@ -27,7 +30,7 @@ export class PreloadImagesService {
 
             // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).
             // Recorrer el listado de imágenes
-            for (let i = 0; i < imagesOfOtherPagesToPreload.length; i++) {
+            for (const imageUrl of imagesOfOtherPagesToPreload) {
                 // Crear un elemento de imagen
                 const img = new Image();
 
@@ -83,13 +86,17 @@ export class PreloadImagesService {
                     }
                 };
 
-                img.src = imagesOfOtherPagesToPreload[i];
+                img.src = imageUrl;
             }
         }
     }
 
     // Comprobar si el navegador soporta imágenes en webp
     support_format_webp(): boolean {
+        if (!isPlatformBrowser(this.platformId)) {
+            return true;
+        }
+
         const elem = document.createElement('canvas');
 
         if (elem.getContext && elem.getContext('2d')) {

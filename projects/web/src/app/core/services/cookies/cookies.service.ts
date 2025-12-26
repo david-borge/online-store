@@ -1,14 +1,20 @@
 /* Cookies Service */
 // Fuente: https://github.com/david-borge/javascript (Ejercicios 157 a 166)
 
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CookiesService {
+    private platformId = inject(PLATFORM_ID);
+
     // Crear Cookie
     ponerCookie(nombre: string, valor: string, dias: number) {
+        if (!isPlatformBrowser(this.platformId)) {
+            return;
+        }
         //funci�n sacada de w3schools.com
         let micookie = '';
 
@@ -30,25 +36,28 @@ export class CookiesService {
 
     // Leer valor de una Cookie
     leerUnaCookie(nombre: string) {
+        if (!isPlatformBrowser(this.platformId)) {
+            return '';
+        }
         //Si buscamos una cookie que no existe, no saca nada en el alert. Funci�n sacada de w3schools.com
         let resultado = '';
         const buscada = nombre + '='; //para evitar errores por los nombres, le pongo el igual
 
         const listaCookies = document.cookie.split(';');
 
-        for (let i = 0; i < listaCookies.length; i++) {
-            let c = listaCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y car�cter =
-            //c valdr� los pares atributo=valor, como calle=mirabel, etc.
+        for (let cookie of listaCookies) {
+            //Cada elemento del array de cookies: nombre de la cookie y carácter =
+            //c valdrá los pares atributo=valor, como calle=mirabel, etc.
 
             //Se quitan los espacios en blanco que hay despu�s del punto y coma
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
+            while (cookie.charAt(0) == ' ') {
+                cookie = cookie.substring(1);
             }
 
             //Se compara los que buscamos con el elemento del array. Si devuelve como �ndice 0 se ha encontrado
             //si c=�coche=opel�, tengo que sacar desde donde he buscado (coche=) hasta el final
-            if (c.indexOf(buscada) == 0) {
-                resultado = c.substring(buscada.length, c.length);
+            if (cookie.indexOf(buscada) == 0) {
+                resultado = cookie.substring(buscada.length, cookie.length);
             }
         }
         return resultado;
@@ -56,6 +65,9 @@ export class CookiesService {
 
     // Borrar Cookie
     eliminarUnaCookie(nombre: string) {
+        if (!isPlatformBrowser(this.platformId)) {
+            return;
+        }
         document.cookie = nombre + '=; max-age=0';
     }
 }
