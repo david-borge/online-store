@@ -21,6 +21,7 @@
         format('woff2');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
+
 /* greek-ext */
 @font-face {
     font-family: 'Inter';
@@ -31,6 +32,7 @@
         format('woff2');
     unicode-range: U+1F00-1FFF;
 }
+
 /* greek */
 @font-face {
     font-family: 'Inter';
@@ -41,6 +43,7 @@
         format('woff2');
     unicode-range: U+0370-03FF;
 }
+
 /* vietnamese */
 @font-face {
     font-family: 'Inter';
@@ -53,6 +56,7 @@
         U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
         U+20AB;
 }
+
 /* latin-ext */
 @font-face {
     font-family: 'Inter';
@@ -65,6 +69,7 @@
         U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
         U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
     font-family: 'Inter';
@@ -77,6 +82,7 @@
         U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
         U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 /* cyrillic-ext */
 @font-face {
     font-family: 'Inter';
@@ -87,6 +93,7 @@
         format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
+
 /* cyrillic */
 @font-face {
     font-family: 'Inter';
@@ -97,6 +104,7 @@
         format('woff2');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
+
 /* greek-ext */
 @font-face {
     font-family: 'Inter';
@@ -107,6 +115,7 @@
         format('woff2');
     unicode-range: U+1F00-1FFF;
 }
+
 /* greek */
 @font-face {
     font-family: 'Inter';
@@ -117,6 +126,7 @@
         format('woff2');
     unicode-range: U+0370-03FF;
 }
+
 /* vietnamese */
 @font-face {
     font-family: 'Inter';
@@ -129,6 +139,7 @@
         U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
         U+20AB;
 }
+
 /* latin-ext */
 @font-face {
     font-family: 'Inter';
@@ -141,6 +152,7 @@
         U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
         U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
     font-family: 'Inter';
@@ -153,6 +165,7 @@
         U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
         U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 /* cyrillic-ext */
 @font-face {
     font-family: 'Lora';
@@ -163,6 +176,7 @@
         format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
+
 /* cyrillic */
 @font-face {
     font-family: 'Lora';
@@ -173,6 +187,7 @@
         format('woff2');
     unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
+
 /* vietnamese */
 @font-face {
     font-family: 'Lora';
@@ -185,6 +200,7 @@
         U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9,
         U+20AB;
 }
+
 /* latin-ext */
 @font-face {
     font-family: 'Lora';
@@ -197,6 +213,7 @@
         U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
         U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
     font-family: 'Lora';
@@ -221,7 +238,7 @@
 
 // Typography - Headings - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 @mixin heading-1 {
-    font-family: 'Lora';
+    font-family: 'Lora', serif;
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
@@ -233,7 +250,7 @@
 }
 
 @mixin heading-2 {
-    font-family: 'Lora';
+    font-family: 'Lora', serif;
     font-style: normal;
     font-weight: 600;
     font-size: 32px;
@@ -245,7 +262,7 @@
 }
 
 @mixin heading-3 {
-    font-family: 'Lora';
+    font-family: 'Lora', serif;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -257,7 +274,7 @@
 }
 
 @mixin heading-4 {
-    font-family: 'Lora';
+    font-family: 'Lora', serif;
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -270,7 +287,7 @@
 }
 
 @mixin heading-5 {
-    font-family: 'Lora';
+    font-family: 'Lora', serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -283,7 +300,7 @@
 
 // Typography - Body - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 @mixin body-16px-regular {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -295,7 +312,7 @@
 }
 
 @mixin body-16px-medium {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -307,7 +324,7 @@
 }
 
 @mixin body-14px-regular {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -319,7 +336,7 @@
 }
 
 @mixin body-14px-medium {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -331,7 +348,7 @@
 }
 
 @mixin body-12px-regular {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -343,7 +360,7 @@
 }
 
 @mixin body-12px-medium {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -356,7 +373,7 @@
 
 // Typography - Labels - Figma (https://www.figma.com/file/nfPBt33VefgiNGebDKgrhf/Online-Store-(V2.1)?node-id=26580%3A3219&t=TV10VERMzpcsCB7c-1)
 @mixin label-20px-regular {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -368,7 +385,7 @@
 }
 
 @mixin label-20px-semi-bold {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -380,7 +397,7 @@
 }
 
 @mixin label-16px-medium {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -392,7 +409,7 @@
 }
 
 @mixin label-16px-semi-bold {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -404,7 +421,7 @@
 }
 
 @mixin label-14px-medium {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -416,7 +433,7 @@
 }
 
 @mixin label-14px-semi-bold {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -428,7 +445,7 @@
 }
 
 @mixin label-12px-medium {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -440,7 +457,7 @@
 }
 
 @mixin label-12px-semi-bold {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -533,6 +550,7 @@
 // Colores - Body
 $body-color-rgb: 54 57 57;
 $body-color: var(--N800);
+
 :root {
     --bs-body-color-rgb: $body-color-rgb;
     --bs-body-color: $body-color;
@@ -751,9 +769,12 @@ main {
 
 // Disable Text Selection
 body {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    /* Safari */
+    -webkit-user-select: none;
+    /* IE 10 and IE 11 */
+    -ms-user-select: none;
+    /* Standard syntax */
+    user-select: none;
 }
 
 // Prevent scroll
