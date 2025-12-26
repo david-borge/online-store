@@ -4,9 +4,10 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
+
 import * as fromApp from './core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
-import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
 @Component({
     standalone: false,
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
-    showBottomOverlay: boolean = false;
+    showBottomOverlay = false;
 
     constructor(
         private authService: AuthService,

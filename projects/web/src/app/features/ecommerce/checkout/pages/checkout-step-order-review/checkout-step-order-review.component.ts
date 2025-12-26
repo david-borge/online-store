@@ -1,18 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Subscription } from 'rxjs';
-
 import { Store } from '@ngrx/store';
 
+import { Subscription } from 'rxjs';
+
+
+import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
+import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as OrderActions from '../../../order/store/order.actions';
-import * as CartActions from '../../../cart/store/cart.actions';
 import * as AddressesActions from '../../../addresses/store/addresses.actions';
+import * as CartActions from '../../../cart/store/cart.actions';
+import * as OrderActions from '../../../order/store/order.actions';
 import * as PaymentMethodsActions from '../../../payment-methods/store/payment-methods.actions';
 
-import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
-import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
     standalone: false,
@@ -28,16 +30,16 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
-    currentOrderNumber: number = 0;
-    orderNumber: number = 0;
+    currentOrderNumber = 0;
+    orderNumber = 0;
     orderData: GetOrderDataPHPInterface['orderData'] = {} as GetOrderDataPHPInterface['orderData'];
     orderProducts: GetCartDataPHPInterface['cartData'] = [];
     orderAddress: GetOrderDataPHPInterface['orderAddress'] =
         {} as GetOrderDataPHPInterface['orderAddress'];
     orderPaymentMethod: GetOrderDataPHPInterface['orderPaymentMethod'] =
         {} as GetOrderDataPHPInterface['orderPaymentMethod'];
-    orderTotal: number = 0;
-    payNowButtonText: string = 'Pay now';
+    orderTotal = 0;
+    payNowButtonText = 'Pay now';
     saveOrderStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
     constructor(private store: Store<fromApp.AppState>) {}

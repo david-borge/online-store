@@ -2,9 +2,10 @@
 
 import { createReducer, on } from '@ngrx/store';
 
+import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
+
 import * as CategoriesActions from './categories.actions'; // Importar todo y guardarlo en el alias CategoriesActions
 
-import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CategoriesReducerStateInterface {

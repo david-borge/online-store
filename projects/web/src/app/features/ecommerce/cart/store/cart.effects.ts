@@ -2,18 +2,21 @@
 
 import { Injectable } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 
 import { catchError, switchMap, withLatestFrom } from 'rxjs/operators';
+
 import { of } from 'rxjs';
 
+import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
+import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
+import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
+
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+
 import * as CartActions from './cart.actions';
 
-import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
-import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
-import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
 // import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 

@@ -7,10 +7,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductComponent } from './pages/product/product.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-
 import { ProductGuard } from '../../../core/guards/product/product.guard';
+
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductComponent } from './pages/product/product.component';
+
 
 const productRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo

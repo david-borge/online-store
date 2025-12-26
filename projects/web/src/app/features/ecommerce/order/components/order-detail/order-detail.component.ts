@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as OrderActions from '../../store/order.actions';
 
-import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 
 @Component({
     standalone: false,
@@ -17,12 +17,12 @@ import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOr
     templateUrl: './order-detail.component.html',
     styleUrls: ['./order-detail.component.scss'],
 })
-export class OrderDetailComponent implements OnInit {
+export class OrderDetailComponent implements OnInit, OnDestroy {
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
-    orderNumber: number = 0;
+    orderNumber = 0;
     orderData: GetOrderDataPHPInterface['orderData'] = {} as GetOrderDataPHPInterface['orderData'];
     orderProducts: GetOrderDataPHPInterface['orderProducts'] = [];
     orderAddress: GetOrderDataPHPInterface['orderAddress'] =

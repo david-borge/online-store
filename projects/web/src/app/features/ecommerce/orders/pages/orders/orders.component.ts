@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { GetOrdersPHPInterface } from 'projects/web/src/app/core/models/getOrdersPHP.interface';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as OrdersActions from '../../store/orders.actions';
 
-import { GetOrdersPHPInterface } from 'projects/web/src/app/core/models/getOrdersPHP.interface';
 
 @Component({
     standalone: false,
@@ -18,7 +19,7 @@ import { GetOrdersPHPInterface } from 'projects/web/src/app/core/models/getOrder
         class: 'app-orders--class-for-router-outlet',
     },
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
     // Suscripciones a la Store
     ordersReducerObservableSubscription: Subscription = Subscription.EMPTY;
 

@@ -7,18 +7,18 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-
 import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../../features/ecommerce/addresses/store/addresses.actions';
 
-import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
     standalone: false,
@@ -36,7 +36,7 @@ export class AddNewAddressFormComponent implements OnInit, OnDestroy {
     // Variables del formulario
     addNewAddressForm: FormGroup = new FormGroup({}); // Objecto JS que contiene el formulario creado programáticamente
     @ViewChild('addNewAddressFormRef') addNewAddressFormViewChild: NgForm = {} as NgForm;
-    addNewAddressResult: string = '';
+    addNewAddressResult = '';
     @ViewChild('addressLocalReference', { static: true })
     addressLocalReferenceViewChild: ElementRef = {} as ElementRef;
     addNewAddressStatus: ProcessStatus = ProcessStatus.NOT_STARTED;

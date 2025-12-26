@@ -1,8 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
-
-import { Subscription, take } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
+
+import { Subscription } from 'rxjs';
+
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
@@ -12,12 +13,12 @@ import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNomb
     templateUrl: './order.component.html',
     styleUrls: ['./order.component.scss'],
 })
-export class OrderComponent implements OnDestroy {
+export class OrderComponent implements OnDestroy, OnInit {
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
-    currentOrderNumber: number = 0;
+    currentOrderNumber = 0;
 
     constructor(private store: Store<fromApp.AppState>) {}
 

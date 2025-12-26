@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { take } from 'rxjs';
 
 import * as GlobalActions from '../../../core/store/global.actions';
-import { take } from 'rxjs';
+import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+
 
 @Injectable({
     providedIn: 'root',

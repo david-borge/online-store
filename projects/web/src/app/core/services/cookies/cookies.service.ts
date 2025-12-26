@@ -10,13 +10,13 @@ export class CookiesService {
     // Crear Cookie
     ponerCookie(nombre: string, valor: string, dias: number) {
         //funci�n sacada de w3schools.com
-        var micookie = '';
+        let micookie = '';
 
         if (dias > 0) {
-            var d = new Date(); //fecha actual
+            const d = new Date(); //fecha actual
             d.setTime(d.getTime() + dias * 24 * 60 * 60 * 1000); //le a�ado los d�as indicados como par�metro pasados a milisegundos
 
-            var caduca = 'expires=' + d.toUTCString(); //lo pasamos a UTC para que lo entienda document.cookie
+            const caduca = 'expires=' + d.toUTCString(); //lo pasamos a UTC para que lo entienda document.cookie
             //Si no pusi�semos tiempo de expiraci�n, la cookie se borrar�a al cerrar el navegador
 
             micookie = nombre + '=' + valor + ';' + caduca;
@@ -31,13 +31,13 @@ export class CookiesService {
     // Leer valor de una Cookie
     leerUnaCookie(nombre: string) {
         //Si buscamos una cookie que no existe, no saca nada en el alert. Funci�n sacada de w3schools.com
-        var resultado = '';
-        var buscada = nombre + '='; //para evitar errores por los nombres, le pongo el igual
+        let resultado = '';
+        const buscada = nombre + '='; //para evitar errores por los nombres, le pongo el igual
 
-        var listaCookies = document.cookie.split(';');
+        const listaCookies = document.cookie.split(';');
 
-        for (var i = 0; i < listaCookies.length; i++) {
-            var c = listaCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y car�cter =
+        for (let i = 0; i < listaCookies.length; i++) {
+            let c = listaCookies[i]; //Cada elemento del array de cookies: nombre de la cookie y car�cter =
             //c valdr� los pares atributo=valor, como calle=mirabel, etc.
 
             //Se quitan los espacios en blanco que hay despu�s del punto y coma

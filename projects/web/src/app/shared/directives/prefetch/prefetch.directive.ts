@@ -1,6 +1,7 @@
 // Apartado 20.9. Pre-fetch: hacer las llamadas HTTP lo antes posible, no justo cuando vaya a necesitar los datos: https://timdeschryver.dev/blog/making-your-application-feel-faster-by-prefetching-data-with-ngrx
 // Proceso de carga de una página: Paso 2.1. Con pre-fetch, hacer una HTTP Request a la API de Backend para descargar datos desde la Base de Datos. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
 
+import { isPlatformBrowser } from '@angular/common';
 import {
     AfterViewInit,
     Directive,
@@ -13,9 +14,7 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-
 import { Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
 @Directive({ standalone: false, selector: '[prefetch]' })
 export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
@@ -23,11 +22,11 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
     @Output() prefetch = new EventEmitter<void>();
 
     observer = {} as IntersectionObserver;
-    loaded: boolean = false;
+    loaded = false;
 
     constructor(
         private elemRef: ElementRef,
-        @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
+        @Inject(PLATFORM_ID) private platformId: InjectionToken<object>,
     ) {}
 
     ngOnInit(): void {

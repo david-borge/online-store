@@ -2,12 +2,13 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import * as CartActions from './cart.actions'; // Importar todo y guardarlo en el alias CartActions
 
-import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 import { CartInterface } from 'projects/web/src/app/core/models/cart.interface';
+import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+
+import * as CartActions from './cart.actions'; // Importar todo y guardarlo en el alias CartActions
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CartReducerStateInterface {

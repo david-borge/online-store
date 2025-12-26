@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
+import { AddressInterface } from '../../../core/models/address.interface';
+import { GetAddressesPHPInterface } from '../../../core/models/getAddressesPHP.interface';
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
 
-import { AddressInterface } from '../../../core/models/address.interface';
-import { GetAddressesPHPInterface } from '../../../core/models/getAddressesPHP.interface';
 
 @Component({
     standalone: false,
@@ -22,9 +22,9 @@ export class AddressCardComponent {
     @Input() addressCardPostalCode: AddressInterface['postalCode'] = '';
     @Input() addressCardCity: AddressInterface['city'] = '';
     @Input() addressCardCountry: GetAddressesPHPInterface['addresses'][0]['country'] = '';
-    @Input() addressCardShowButton: boolean = false;
+    @Input() addressCardShowButton = false;
     @Input() addressCardIsDefault: AddressInterface['isDefault'] = 0;
-    @Input() addressArrayId: number = 0;
+    @Input() addressArrayId = 0;
 
     constructor(private store: Store<fromApp.AppState>) {}
 

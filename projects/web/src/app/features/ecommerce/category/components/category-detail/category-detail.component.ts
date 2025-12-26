@@ -5,10 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CategoriesActions from '../../../categories/store/categories.actions';
 
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
 @Component({
     standalone: false,
@@ -20,7 +21,7 @@ import { ProductInterface } from 'projects/web/src/app/core/models/product.inter
     },
 })
 export class CategoryDetailComponent implements OnInit, OnDestroy {
-    categorySlug: string = '';
+    categorySlug = '';
     productsOfCurrentCategory: ProductInterface[] = [];
 
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;

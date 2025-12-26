@@ -1,19 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../../core/store/global.actions';
-
+import { AuthMode } from '../../../core/models/authMode.enum';
+import { ProcessStatus } from '../../../core/models/processStatus.enum';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { CookiesService } from '../../../core/services/cookies/cookies.service';
-
-import { ProcessStatus } from '../../../core/models/processStatus.enum';
-import { AuthMode } from '../../../core/models/authMode.enum';
+import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '../../../core/store/global.actions';
 
 @Component({
     standalone: false,
@@ -27,12 +24,13 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
 
     // Variables para la Template
     authMode: AuthMode = AuthMode.SIGNUP;
+    AuthMode = AuthMode;
 
     // Variables del formulario
     signUpLogInForm: FormGroup = new FormGroup({}); // Objecto JS que contiene el formulario creado programáticamente
     showFirstAndLastNameFields: boolean = this.authMode == 'SIGNUP';
-    signUpLogInButtonText: string = '';
-    signUpLogInResult: string = '';
+    signUpLogInButtonText = '';
+    signUpLogInResult = '';
     signUpLogInStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
     ProcessStatus = ProcessStatus;

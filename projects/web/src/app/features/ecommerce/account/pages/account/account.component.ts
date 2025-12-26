@@ -1,19 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
 import { Title } from '@angular/platform-browser';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
+
+import { ActiveOrderInterface } from 'projects/web/src/app/core/models/activeOrder.interface';
+import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
 import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
-import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
-import { ActiveOrderInterface } from 'projects/web/src/app/core/models/activeOrder.interface';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
-import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
+import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 @Component({
     standalone: false,
@@ -29,13 +29,13 @@ export class AccountComponent implements OnInit, OnDestroy {
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Variables para la Template
-    loggedIn: boolean = true;
+    loggedIn = true;
     authMode: AuthMode = AuthMode.SIGNUP;
-    sectionHeaderTitleText: string = 'Sign Up';
-    imagesInThisPageLoaded: boolean = true; // TODO:
-    accountPagePreviouslyVisited: boolean = false; // TODO:
-    currentlyInThePageIEnteredFrom: boolean = false; // TODO:
-    signUpLogInResult: string = '';
+    sectionHeaderTitleText = 'Sign Up';
+    imagesInThisPageLoaded = true; // TODO:
+    accountPagePreviouslyVisited = false; // TODO:
+    currentlyInThePageIEnteredFrom = false; // TODO:
+    signUpLogInResult = '';
     user: UserInterface = {} as UserInterface;
     activeOrders: ActiveOrderInterface[] = [];
     ordersTotals: number[] = [];

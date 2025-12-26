@@ -2,12 +2,13 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import * as AddressesActions from './addresses.actions'; // Importar todo y guardarlo en el alias AddressesActions
 
-import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
-import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
 import { AddressInterface } from 'projects/web/src/app/core/models/address.interface';
+import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
+import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+
+import * as AddressesActions from './addresses.actions'; // Importar todo y guardarlo en el alias AddressesActions
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface AddressesReducerStateInterface {
@@ -189,7 +190,7 @@ export const addressesReducer = createReducer(
         const updatedAddresses = [...state.addresses];
 
         // Update the product quantity of the item at the specified index
-        let selectedAddressCardIsDefaultOriginalValue =
+        const selectedAddressCardIsDefaultOriginalValue =
             updatedAddresses[action.addressArrayIdPayload]['isDefault'];
         updatedAddresses[action.addressArrayIdPayload] = {
             ...updatedAddresses[action.addressArrayIdPayload],

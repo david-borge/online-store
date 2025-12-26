@@ -1,27 +1,28 @@
 # Online Store
 
 <!--
-  TODO: update packages (specially Angular version)
-    TODO: fix bootstrap warnings
+    TODO: Lint
     TODO: make sure the server files and SSR match the lastest version and don't have legacy code from previous Angular versions
     TODO: change Modules to Standalone components (remove standalone: false and change basic files)
-  TODO: Lint
-  TODO: check layout of header.component.html > "Step x of x"
-  TODO: add sans-serif fallback font
-  TODO: add Lint to backend (does it work with PHP?)
-  TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
-  TODO: delete Firebase Functions config (_prerender-static-routes--firebase.json)
-  TODO: deactivate pre-rendering
-  TODO: delete Github config in the repo (if any)
-  TODO: configure modern SSR
-  TODO: upload to Firebase App Hosting (supports SSR)
-  TODO: check new firebase.json config after uploading
-  TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
-  TODO: delete from Ionos hosting
-  TODO: delete from Heroku
-  TODO: delete Heroku config file
-  TODO: delte unnecessary scripts in package.json
-  TODO: in the future, change backend to Node.js
+    TODO: check layout of header.component.html > "Step x of x"
+    TODO: add sans-serif fallback font
+    TODO: resolve HTTP warning in terminal when running ng serve
+    TODO: add Lint to backend (does it work with PHP?)
+    TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
+    TODO: delete Firebase Functions config (_prerender-static-routes--firebase.json)
+    TODO: deactivate pre-rendering
+    TODO: delete Github config in the repo (if any)
+    TODO: configure modern SSR
+    TODO: upload to Firebase App Hosting (supports SSR)
+    TODO: check new firebase.json config after uploading
+    TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
+    TODO: delete from Ionos hosting
+    TODO: delete from Heroku
+    TODO: delete Heroku config file
+    TODO: delte unnecessary scripts in package.json
+    TODO: in the future, change backend to Node.js
+    TODO: remove vertical scrolling in initial loading screen (appears during animations)
+    TODO: take cookies service from a library i create or find one (projects\web\src\app\core\services\cookies\cookies.service.ts)
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.

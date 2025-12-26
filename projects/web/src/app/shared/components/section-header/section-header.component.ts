@@ -15,23 +15,23 @@ import * as GlobalActions from '../../../core/store/global.actions';
 })
 export class SectionHeaderComponent implements OnChanges {
     // Propiedades - Section Header - Title
-    @Input() sectionHeaderTitleTag: string = '';
-    @Input() sectionHeaderTitleClasses: string = '';
-    @Input() sectionHeaderTitleText: string = '';
-    sectionHeaderTitleInnerHTML: string = '';
+    @Input() sectionHeaderTitleTag = '';
+    @Input() sectionHeaderTitleClasses = '';
+    @Input() sectionHeaderTitleText = '';
+    sectionHeaderTitleInnerHTML = '';
 
     // Propiedades - Section Header - Right Side - Carousel Icons
-    @Input() sectionHeaderCarouselIcons: boolean = false;
+    @Input() sectionHeaderCarouselIcons = false;
 
     // Propiedades - Section Header - Link
-    @Input() sectionHeaderLink: boolean = false;
-    @Input() sectionHeaderLinkURL: string = '';
-    @Input() sectionHeaderLinkText: string = '';
+    @Input() sectionHeaderLink = false;
+    @Input() sectionHeaderLinkURL = '';
+    @Input() sectionHeaderLinkText = '';
 
     // Propiedades - Section Header - Button
-    @Input() sectionHeaderButton: boolean = false;
-    @Input() sectionHeaderButtonURL: string = '';
-    @Input() sectionHeaderButtonText: string = '';
+    @Input() sectionHeaderButton = false;
+    @Input() sectionHeaderButtonURL = '';
+    @Input() sectionHeaderButtonText = '';
 
     constructor(
         public router: Router,

@@ -1,17 +1,17 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormControlStatus } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { AddressInterface } from '../../../core/models/address.interface';
+import { ProcessStatus } from '../../../core/models/processStatus.enum';
+import { AccountService } from '../../../core/services/account/account.service';
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../../core/store/global.actions';
 
-import { AccountService } from '../../../core/services/account/account.service';
 
-import { AddressInterface } from '../../../core/models/address.interface';
-import { ProcessStatus } from '../../../core/models/processStatus.enum';
-import { FormControlStatus } from '@angular/forms';
 
 @Component({
     standalone: false,
@@ -25,8 +25,8 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Propiedades - Bottom Overlay
-    @Input() bottomOverlayTitle: string = '';
-    @Input() bottomOverlayAddButtonText: string = '';
+    @Input() bottomOverlayTitle = '';
+    @Input() bottomOverlayAddButtonText = '';
     @Input() bottomOverlayBodyContent: '' | 'ADD_NEW_ADDRESS' | 'ADD_NEW_PAYMENT_METHOD' = '';
     processStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
     ProcessStatus = ProcessStatus;
@@ -35,7 +35,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
     newAddress: AddressInterface = {} as AddressInterface;
 
     // Propiedades - Bottom Overlay - ADD_NEW_PAYMENT_METHOD
-    isAddNewCardFormValid: boolean = false;
+    isAddNewCardFormValid = false;
 
     constructor(
         private store: Store<fromApp.AppState>,

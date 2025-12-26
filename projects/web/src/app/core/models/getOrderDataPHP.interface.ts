@@ -1,9 +1,9 @@
-import { OrderInterface } from './order.interface';
-import { ProductInterface } from './product.interface';
-import { OrderProductInterface } from './orderProduct.interface';
 import { AddressInterface } from './address.interface';
 import { CountryInterface } from './country.interface';
+import { OrderInterface } from './order.interface';
+import { OrderProductInterface } from './orderProduct.interface';
 import { PaymentMethodInterface } from './paymentMethod.interface';
+import { ProductInterface } from './product.interface';
 
 export interface GetOrderDataPHPInterface {
     resultado: boolean;

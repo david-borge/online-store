@@ -2,26 +2,24 @@
 // Proceso de carga de una página: Paso 3.1. Sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
 
 import { Directive, ElementRef, HostListener } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-
-import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
+import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as ProductActions from '../../../features/ecommerce/product/store/product.actions';
 
 @Directive({ standalone: false, selector: '[imageLoadDirective]' })
 export class ImageLoadDirective {
-    currentURL: string = '';
-    numberOfImagesInThisPage: number = 0;
-    numberOfImagesInThisPageLoaded: number = 0;
+    currentURL = '';
+    numberOfImagesInThisPage = 0;
+    numberOfImagesInThisPageLoaded = 0;
 
-    homePageImagesLoaded: boolean = false;
-    categoriesPageImagesLoaded: boolean = false;
-    productPageImagesLoaded: boolean = false;
+    homePageImagesLoaded = false;
+    categoriesPageImagesLoaded = false;
+    productPageImagesLoaded = false;
 
     constructor(
         private router: Router,

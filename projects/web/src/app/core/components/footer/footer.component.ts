@@ -1,19 +1,18 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import { take } from 'rxjs';
 
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../store/global.actions';
 import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
-
+import { ProcessStatus } from '../../models/processStatus.enum';
+import { ProductInterface } from '../../models/product.interface';
 import { PreFetchService } from '../../services/prefetch/prefetch.service';
 import { RoutingService } from '../../services/routing/routing.service';
-import { ProductInterface } from '../../models/product.interface';
-import { ProcessStatus } from '../../models/processStatus.enum';
+import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '../../store/global.actions';
+
 
 @Component({
     standalone: false,
@@ -23,21 +22,21 @@ import { ProcessStatus } from '../../models/processStatus.enum';
 })
 export class FooterComponent implements OnInit, OnChanges {
     // Propiedades - Footer - Navigation CTAs & Copy
-    @Input() navigationShowCtasAndCopy: boolean = false;
-    currentURL: string = '';
+    @Input() navigationShowCtasAndCopy = false;
+    currentURL = '';
 
     // Propiedades - Footer - Navigation CTAs & Copy - Navigation Copy
-    @Input() navigationShowCopy: boolean = true;
-    @Input() navigationCopyLabel: string = '';
-    @Input() navigationCopyPrice: number = 0;
-    numberOfProductsInCart: number = 2;
+    @Input() navigationShowCopy = true;
+    @Input() navigationCopyLabel = '';
+    @Input() navigationCopyPrice = 0;
+    numberOfProductsInCart = 2;
 
     // Propiedades - Footer - Navigation CTAs & Copy - Navigation Button Right
-    @Input() navigationButtonRightText: string = '';
-    @Input() navigationButtonRightURL: string = '';
-    @Input() navigationButtonRightClasses: string = 'btn btn-primary btn-lg';
-    @Input() navigationShowButtonRightRightIcon: boolean = false;
-    @Input() navigationShowButtonRightRightIconType: string = 'check';
+    @Input() navigationButtonRightText = '';
+    @Input() navigationButtonRightURL = '';
+    @Input() navigationButtonRightClasses = 'btn btn-primary btn-lg';
+    @Input() navigationShowButtonRightRightIcon = false;
+    @Input() navigationShowButtonRightRightIconType = 'check';
 
     // Propiedades - Footer - Navigation CTAs & Copy - Navigation Item
     activeNavigationItem: string | null = '';

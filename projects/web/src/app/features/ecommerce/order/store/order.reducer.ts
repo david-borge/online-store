@@ -2,10 +2,11 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import * as OrderActions from './order.actions'; // Importar todo y guardarlo en el alias OrderActions
 
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+
+import * as OrderActions from './order.actions'; // Importar todo y guardarlo en el alias OrderActions
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface OrderReducerStateInterface {

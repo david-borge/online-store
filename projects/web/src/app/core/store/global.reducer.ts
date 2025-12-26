@@ -2,12 +2,13 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import * as GlobalActions from './global.actions'; // Importar todo y guardarlo en el alias GlobalActions
 
-import { UserInterface } from '../models/user.interface';
 import { ActiveOrderInterface } from '../models/activeOrder.interface';
-import { ProcessStatus } from '../models/processStatus.enum';
 import { AuthMode } from '../models/authMode.enum';
+import { ProcessStatus } from '../models/processStatus.enum';
+import { UserInterface } from '../models/user.interface';
+
+import * as GlobalActions from './global.actions'; // Importar todo y guardarlo en el alias GlobalActions
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface GlobalReducerStateInterface {

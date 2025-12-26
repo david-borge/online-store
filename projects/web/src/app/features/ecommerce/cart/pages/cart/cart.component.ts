@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
 import { Title } from '@angular/platform-browser';
+
+import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { Store } from '@ngrx/store';
+
+import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CartActions from '../../store/cart.actions';
 
-import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 
 @Component({
     standalone: false,
@@ -26,7 +27,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
     // Variables para la Template
     cartData: GetCartDataPHPInterface['cartData'] = [];
-    cartTotal: number = 0;
+    cartTotal = 0;
 
     constructor(
         private store: Store<fromApp.AppState>,

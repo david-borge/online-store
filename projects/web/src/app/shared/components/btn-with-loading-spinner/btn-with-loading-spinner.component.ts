@@ -1,5 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-
+import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProcessStatus } from '../../../core/models/processStatus.enum';
@@ -10,16 +9,16 @@ import { ProcessStatus } from '../../../core/models/processStatus.enum';
     templateUrl: './btn-with-loading-spinner.component.html',
     styleUrls: ['./btn-with-loading-spinner.component.scss'],
 })
-export class BtnWithLoadingSpinnerComponent {
+export class BtnWithLoadingSpinnerComponent implements OnInit {
     // Propiedades - Plantilla
-    @Input() btnWithLoadingSpinnerText: string = '';
-    @Input() btnWithLoadingSpinnerTextClasses: string = '';
-    @Input() btnWithLoadingSpinnerClasses: string = '';
-    @Input() btnWithLoadingSpinnerSpinnerWidthAndHeight: number = 0;
+    @Input() btnWithLoadingSpinnerText = '';
+    @Input() btnWithLoadingSpinnerTextClasses = '';
+    @Input() btnWithLoadingSpinnerClasses = '';
+    @Input() btnWithLoadingSpinnerSpinnerWidthAndHeight = 0;
     @Input() btnWithLoadingSpinnerProcessStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
-    @Input() navigationShowButtonRightRightIcon: boolean = false;
-    @Input() navigationShowButtonRightRightIconType: string = 'check';
-    @Input() formIsValid: boolean = true;
+    @Input() navigationShowButtonRightRightIcon = false;
+    @Input() navigationShowButtonRightRightIconType = 'check';
+    @Input() formIsValid = true;
 
     // Propiedades - Eventos
     @Output() onClickBtnWithLoadingSpinnerEventEmitter = new EventEmitter<void>(); // IMPORTANTE: si tipoDeEventDataONombreQueYoQuiera es un objeto (como {serverName: string, serverContent: string}) el nombre que de las propiedades del objeto aquí debe ser el mismo en el componente en el que recojo el evento emitido.
@@ -28,7 +27,7 @@ export class BtnWithLoadingSpinnerComponent {
     @HostBinding('style.display') display = 'block';
     @HostBinding('style.width') width = '100%';
 
-    currentURL: string = '';
+    currentURL = '';
 
     ProcessStatus = ProcessStatus;
 

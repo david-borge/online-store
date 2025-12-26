@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class DateWithTitleComponent {
     // Propiedades - Date with Title
-    @Input() dateWithTitleTitle: string = '';
-    @Input() dateWithTitleDate: string = '';
+    @Input() dateWithTitleTitle = '';
+    @Input() dateWithTitleDate = '';
 }

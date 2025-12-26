@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-
-import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
+import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as ProductActions from '../../../features/ecommerce/product/store/product.actions';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PreloadImagesService {
-    numberOfimagesOfOtherPagesToPreloadLoaded: number = 0;
-    currentURL: string = '';
+    numberOfimagesOfOtherPagesToPreloadLoaded = 0;
+    currentURL = '';
 
     constructor(
         private router: Router,
@@ -33,7 +31,7 @@ export class PreloadImagesService {
             // Recorrer el listado de imágenes
             for (let i = 0; i < imagesOfOtherPagesToPreload.length; i++) {
                 // Crear un elemento de imagen
-                let img = new Image();
+                const img = new Image();
 
                 // Cargar la imagen
                 img.onload = () => {
@@ -94,9 +92,9 @@ export class PreloadImagesService {
 
     // Comprobar si el navegador soporta imágenes en webp
     support_format_webp(): boolean {
-        var elem = document.createElement('canvas');
+        const elem = document.createElement('canvas');
 
-        if (!!(elem.getContext && elem.getContext('2d'))) {
+        if (elem.getContext && elem.getContext('2d')) {
             // was able or not to get WebP representation
             return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
         } else {

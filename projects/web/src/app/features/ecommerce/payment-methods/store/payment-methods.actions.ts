@@ -7,9 +7,9 @@
 
 import { createAction, props } from '@ngrx/store';
 
+import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 import { PaymentMethodInterface } from 'projects/web/src/app/core/models/paymentMethod.interface';
 // import { AddNewCardPHPInterface } from "projects/web/src/app/core/models/AddNewCardPHPInterface";
-import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 
 /** Get PaymentMethods Start Action **/
 // Side Effects asociados: getPaymentMethodsSideEffect (toma los datos de la Payment Method desde la base de datos mediante un HTTP Request)

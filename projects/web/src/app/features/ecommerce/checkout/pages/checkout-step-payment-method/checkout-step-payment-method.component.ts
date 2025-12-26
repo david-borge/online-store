@@ -5,11 +5,12 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../../../../core/store/global.actions';
 import * as PaymentMethodsActions from '../../../payment-methods/store/payment-methods.actions';
 
-import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 
 @Component({
     standalone: false,
@@ -26,8 +27,8 @@ export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
 
     // Template variables
     paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'] = [];
-    showBottomOverlay: boolean = false;
-    reviewYourOrderButtonIsEnabled: boolean = false;
+    showBottomOverlay = false;
+    reviewYourOrderButtonIsEnabled = false;
 
     constructor(
         private store: Store<fromApp.AppState>,
@@ -60,7 +61,7 @@ export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
 
                 // Establecer si el usuario puede pasar al siguiente paso: si ha seleccionado un método de pago
                 this.reviewYourOrderButtonIsEnabled = false;
-                for (var i = 0; i < this.paymentMethods.length; i++) {
+                for (let i = 0; i < this.paymentMethods.length; i++) {
                     if (this.paymentMethods[i].isDefault == 1) {
                         this.reviewYourOrderButtonIsEnabled = true;
                         break;

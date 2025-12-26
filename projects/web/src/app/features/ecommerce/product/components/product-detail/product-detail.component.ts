@@ -1,17 +1,18 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { ActivatedRoute } from '@angular/router';
+
+import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
+import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+import { ReviewInterface } from 'projects/web/src/app/core/models/review.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as HomeActions from '../../../home/store/home.actions';
 
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
-import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
-import { ReviewInterface } from 'projects/web/src/app/core/models/review.interface';
 
 @Component({
     standalone: false,
@@ -20,12 +21,12 @@ import { ReviewInterface } from 'projects/web/src/app/core/models/review.interfa
     styleUrls: ['./product-detail.component.scss'],
     encapsulation: ViewEncapsulation.None, // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-description-content *)
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy {
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Variables para la Template
-    productSlug: string = '';
+    productSlug = '';
     @Input() product = {} as ProductInterface;
     featuredProducts: ProductInterface[] = [];
     currentProductReviews: GetCurrentProductReviewsPHPInterface[] = [];

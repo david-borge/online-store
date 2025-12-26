@@ -42,7 +42,7 @@
             class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{ exact: true }"
-            [ngClass]="{ 'navigation-item--active': activeNavigationItem == '/home' }"
+            [ngClass]="{ 'navigation-item--active': activeNavigationItem === '/home' }"
         >
             <a routerLink="/home" (prefetch)="prefetch(['home'])" [prefetchMode]="['VISIBLE']">
                 <div class="navigation-icon-container">
@@ -60,7 +60,7 @@
             class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{ exact: true }"
-            [ngClass]="{ 'navigation-item--active': activeNavigationItem == '/categories' }"
+            [ngClass]="{ 'navigation-item--active': activeNavigationItem === '/categories' }"
         >
             <a
                 routerLink="/categories"
@@ -82,7 +82,7 @@
             class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{ exact: true }"
-            [ngClass]="{ 'navigation-item--active': activeNavigationItem == '/cart' }"
+            [ngClass]="{ 'navigation-item--active': activeNavigationItem === '/cart' }"
         >
             <a routerLink="/cart">
                 <div class="navigation-icon-container">
@@ -100,7 +100,7 @@
             class="navigation-item"
             routerLinkActive="navigation-item--active"
             [routerLinkActiveOptions]="{ exact: true }"
-            [ngClass]="{ 'navigation-item--active': activeNavigationItem == '/account' }"
+            [ngClass]="{ 'navigation-item--active': activeNavigationItem === '/account' }"
         >
             <a routerLink="/account">
                 <div class="navigation-icon-container">

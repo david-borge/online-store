@@ -7,10 +7,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OrderComponent } from './pages/order/order.component';
-import { OrderDetailComponent } from './components/order-detail/order-detail.component';
-
 import { AccountInnerPagesGuard } from '../../../core/guards/account-inner-pages/account-inner-pages.guard';
+
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { OrderComponent } from './pages/order/order.component';
+
 
 const orderRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo

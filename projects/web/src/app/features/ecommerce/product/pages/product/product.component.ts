@@ -1,16 +1,17 @@
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
+
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CartActions from '../../../cart/store/cart.actions';
 
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
 
-import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
     standalone: false,
@@ -28,22 +29,22 @@ export class ProductComponent implements OnInit, OnDestroy {
     cartReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Variables para la Template
-    currentProductSlug: string = '';
+    currentProductSlug = '';
     currentProduct = {} as ProductInterface;
-    footerNavigationButtonRightText: string = 'Add to cart';
+    footerNavigationButtonRightText = 'Add to cart';
     addProductToCartStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
     // Pre-load images of other pages
-    imagesInThisPageLoaded: boolean = false;
+    imagesInThisPageLoaded = false;
     imagesOfOtherPagesToPreload: string[] = [];
 
     // Mostrar los elementos solo cuando estén listos (llamadas HTTP terminadas e imágenes elegidas cargadas)
-    productPagePreviouslyVisited: boolean = false;
+    productPagePreviouslyVisited = false;
 
     // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
-    currentlyInThePageIEnteredFrom: boolean = false;
+    currentlyInThePageIEnteredFrom = false;
 
-    resetAddProductToCartStatusProperty: boolean = false;
+    resetAddProductToCartStatusProperty = false;
 
     constructor(
         private store: Store<fromApp.AppState>,

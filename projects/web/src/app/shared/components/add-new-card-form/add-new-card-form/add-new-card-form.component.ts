@@ -7,16 +7,16 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-
 import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-methods/store/payment-methods.actions';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 
 @Component({
     standalone: false,
@@ -35,7 +35,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
     // Variables del formulario
     addNewCardForm: FormGroup = new FormGroup({}); // Objecto JS que contiene el formulario creado programáticamente
     @ViewChild('addNewCardFormRef') addNewCardFormViewChild: NgForm = {} as NgForm;
-    addNewCardResult: string = '';
+    addNewCardResult = '';
     @ViewChild('cardPersonFullNameLocalReference', { static: true })
     cardPersonFullNameLocalReferenceViewChild: ElementRef = {} as ElementRef;
     addNewCardStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
@@ -91,7 +91,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
                 // console.log('Valores del formulario: ' + this.addNewCardForm.get('address')?.value + ' - ' + this.addNewCardForm.get('postalCode')?.value + ' - ' + this.addNewCardForm.get('city')?.value + ' - ' + this.addNewCardForm.get('countryId')?.value + ' - ' + this.addNewCardForm.get('fullName')?.value);
 
                 // Guardar los valores de los campos en la Payment Method Store
-                let bankNames: (
+                const bankNames: (
                     | 'Bank of America'
                     | 'Goldman Sachs'
                     | 'Citigroup'
@@ -143,7 +143,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
     // Card Expiration Date Validator: the introduced date is greater or equal than the current one
     // OpenAI Generated Code
     cardExpirationDateValidator(): any {
-        return (formGroup: FormGroup): { [key: string]: any } | null => {
+        return (formGroup: FormGroup): Record<string, any> | null => {
             const currentDate = new Date();
             const currentMonth = currentDate.getMonth() + 1; // Adding 1 since months are zero-based
             const currentYear = currentDate.getFullYear();

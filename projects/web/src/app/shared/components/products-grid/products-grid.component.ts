@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { ProductInterface } from '../../../core/models/product.interface';
 
 @Component({
@@ -9,5 +10,5 @@ import { ProductInterface } from '../../../core/models/product.interface';
 })
 export class ProductsGridComponent {
     @Input() productsList = {} as ProductInterface[];
-    @Input() productCardProductNameTitleHeadingTag: string = '';
+    @Input() productCardProductNameTitleHeadingTag = '';
 }

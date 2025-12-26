@@ -1,36 +1,34 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs);
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
-import { SharedModule } from './shared/shared.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-
+import localeEs from '@angular/common/locales/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from '../environments/environment';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import * as fromApp from './core/store/app.reducer';
 import { GlobalEffects } from './core/store/global.effects';
-import { LoadingScreenEffects } from './features/ecommerce/loading-screen/store/loading-screen.effects';
-import { HomeEffects } from './features/ecommerce/home/store/home.effects';
+import { AddressesEffects } from './features/ecommerce/addresses/store/addresses.effects';
+import { CartEffects } from './features/ecommerce/cart/store/cart.effects';
 import { CategoriesEffects } from './features/ecommerce/categories/store/categories.effects';
-import { ProductEffects } from './features/ecommerce/product/store/product.effects';
+import { HomeEffects } from './features/ecommerce/home/store/home.effects';
+import { LoadingScreenEffects } from './features/ecommerce/loading-screen/store/loading-screen.effects';
 import { OrderEffects } from './features/ecommerce/order/store/order.effects';
 import { OrdersEffects } from './features/ecommerce/orders/store/orders.effects';
-import { AddressesEffects } from './features/ecommerce/addresses/store/addresses.effects';
 import { PaymentMethodEffects } from './features/ecommerce/payment-methods/store/payment-methods.effects';
-import { CartEffects } from './features/ecommerce/cart/store/cart.effects';
+import { ProductEffects } from './features/ecommerce/product/store/product.effects';
+import { SharedModule } from './shared/shared.module';
 
 // (Antiguo) Firestore Database
 // import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';

@@ -1,8 +1,8 @@
 // /*** loadingScreenReducer ***/
 
-import { createReducer, on } from '@ngrx/store';
+import { createReducer /* , on */ } from '@ngrx/store';
 
-import * as LoadingScreenActions from './loading-screen.actions'; // Importar todo y guardarlo en el alias LoadingScreenActions
+// import * as LoadingScreenActions from './loading-screen.actions'; // Importar todo y guardarlo en el alias LoadingScreenActions
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface LoadingScreenReducerStateInterface {

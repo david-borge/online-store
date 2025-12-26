@@ -7,17 +7,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CheckoutStepSignupLoginComponent } from './pages/checkout-step-sign-up/checkout-step-signup-login.component';
-import { CheckoutStepAddressComponent } from './pages/checkout-step-address/checkout-step-address.component';
-import { CheckoutStepPaymentMethodComponent } from './pages/checkout-step-payment-method/checkout-step-payment-method.component';
-import { CheckoutStepOrderReviewComponent } from './pages/checkout-step-order-review/checkout-step-order-review.component';
-import { CheckoutStepOrderConfirmationComponent } from './pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component';
-
-import { CheckoutStepSignupLoginGuard } from '../../../core/guards/checkout-step-signup-login/checkout-step-signup-login.guard';
 import { CheckoutStepAddressGuard } from '../../../core/guards/checkout-step-address/checkout-step-address.guard';
-import { CheckoutStepPaymentMethodGuard } from '../../../core/guards/checkout-step-payment-method/checkout-step-payment-method.guard';
-import { CheckoutStepOrderReviewGuard } from '../../../core/guards/checkout-step-order-review/checkout-step-order-review.guard';
 import { CheckoutStepOrderConfirmationGuard } from '../../../core/guards/checkout-step-order-confirmation/checkout-step-order-confirmation.guard';
+import { CheckoutStepOrderReviewGuard } from '../../../core/guards/checkout-step-order-review/checkout-step-order-review.guard';
+import { CheckoutStepPaymentMethodGuard } from '../../../core/guards/checkout-step-payment-method/checkout-step-payment-method.guard';
+import { CheckoutStepSignupLoginGuard } from '../../../core/guards/checkout-step-signup-login/checkout-step-signup-login.guard';
+
+import { CheckoutStepAddressComponent } from './pages/checkout-step-address/checkout-step-address.component';
+import { CheckoutStepOrderConfirmationComponent } from './pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component';
+import { CheckoutStepOrderReviewComponent } from './pages/checkout-step-order-review/checkout-step-order-review.component';
+import { CheckoutStepPaymentMethodComponent } from './pages/checkout-step-payment-method/checkout-step-payment-method.component';
+import { CheckoutStepSignupLoginComponent } from './pages/checkout-step-sign-up/checkout-step-signup-login.component';
 
 const checkoutRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo

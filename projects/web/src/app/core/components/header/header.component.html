@@ -46,7 +46,7 @@
         *ngIf="headerTagType === 'overlay-header-subpage'"
         [ngStyle]="{ 'background-color': overlayHeaderSubpageBackgroundColor }"
         [ngClass]="{
-            'con-color-de-fondo': overlayHeaderSubpageBackgroundColor != 'inherit',
+            'con-color-de-fondo': overlayHeaderSubpageBackgroundColor !== 'inherit',
             'overlay-header-with-steps': overlayHeaderSubpageWithSteps,
         }"
         #overlayHeaderSubpageOverlayHeaderWithStepsLocalReference
@@ -67,7 +67,7 @@
             <!-- Overlay Header - Title -->
             <div class="overlay-header-title">
                 <div
-                    *ngIf="overlayHeaderPageTitleSupTitle != ''"
+                    *ngIf="overlayHeaderPageTitleSupTitle !== ''"
                     class="overlay-header-page-title-sup-title"
                 >
                     {{ overlayHeaderPageTitleSupTitle }}

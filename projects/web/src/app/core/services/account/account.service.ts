@@ -5,10 +5,9 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
 import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
-
 import { AddressInterface } from '../../models/address.interface';
-import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
 import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface';
+import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
 
 @Injectable({
     providedIn: 'root',

@@ -90,10 +90,10 @@
         (click)="onClickGoToLogInOrSignUp()"
         [disabled]="signUpLogInStatus == ProcessStatus.STARTED"
     >
-        I want to {{ authMode == 'SIGNUP' ? 'Log In' : 'Sign Up' }}
+        I want to {{ authMode === AuthMode.SIGNUP ? 'Log In' : 'Sign Up' }}
     </button>
 
-    <div class="card text-bg-danger mt-5 mb-3" *ngIf="signUpLogInResult != ''">
+    <div class="card text-bg-danger mt-5 mb-3" *ngIf="signUpLogInResult !== ''">
         <div class="card-body">
             <h5 class="card-title">Error</h5>
             <p class="card-text">{{ signUpLogInResult }}</p>

@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
+import { CartInterface } from '../../../core/models/cart.interface';
+import { ProductInterface } from '../../../core/models/product.interface';
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
 
-import { ProductInterface } from '../../../core/models/product.interface';
-import { CartInterface } from '../../../core/models/cart.interface';
 
 @Component({
     standalone: false,
@@ -16,7 +16,7 @@ import { CartInterface } from '../../../core/models/cart.interface';
 })
 export class CartCheckoutProductCardComponent {
     // Propiedades - Cart and Checkout Product Card - Product
-    @Input() cartDataArrayId: number = 0;
+    @Input() cartDataArrayId = 0;
     @Input() productId: ProductInterface['id'] = 0;
     @Input() productImageThumbnail: ProductInterface['imageThumbnail'] = '';
     @Input() productName: ProductInterface['name'] = '';
@@ -26,7 +26,7 @@ export class CartCheckoutProductCardComponent {
     @Input() productImageHeight: ProductInterface['imageHeight'] = '';
 
     // Propiedades - Cart and Checkout Product Card - Navigation CTAs & Copy
-    @Input() cartCheckoutProductCardShowButtons: boolean = true;
+    @Input() cartCheckoutProductCardShowButtons = true;
 
     constructor(private store: Store<fromApp.AppState>) {}
 

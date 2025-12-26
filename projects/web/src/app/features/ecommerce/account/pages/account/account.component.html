@@ -23,7 +23,7 @@
     <!-- Proceso de carga de una página: Paso 1. Mostrar el Loading Spinner mientras cargo los datos desde la Base de Datos y las imágenes. -->
     <!-- [imagesInThisPageLoaded]="(!loggedIn && user != null) || (loggedIn && (user.firstName != ''))" -->
     <app-loading-spinner
-        [imagesInThisPageLoaded]="signUpLogInResult != ''"
+        [imagesInThisPageLoaded]="signUpLogInResult !== ''"
         [thisPagePreviouslyVisited]="accountPagePreviouslyVisited"
         [currentlyInThePageIEnteredFrom]="currentlyInThePageIEnteredFrom"
     >

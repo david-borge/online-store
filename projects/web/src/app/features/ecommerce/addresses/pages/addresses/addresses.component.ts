@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../store/addresses.actions';
 
-import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
 
 @Component({
     standalone: false,
@@ -18,13 +19,13 @@ import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAd
         class: 'app-addresses--class-for-router-outlet',
     },
 })
-export class AddressesComponent implements OnInit {
+export class AddressesComponent implements OnInit, OnDestroy {
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
     addresses: GetAddressesPHPInterface['addresses'] = [];
-    showBottomOverlay: boolean = false;
+    showBottomOverlay = false;
 
     constructor(private store: Store<fromApp.AppState>) {}
 

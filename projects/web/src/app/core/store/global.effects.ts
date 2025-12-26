@@ -1,19 +1,21 @@
 /*** GlobalEffects ***/
 
+import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, InjectionToken, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { catchError, delay, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
+
 import { of } from 'rxjs';
+
+import { AuthService } from '../services/auth/auth.service';
+import { CookiesService } from '../services/cookies/cookies.service';
+import { DataStorageService } from '../services/data-storage/data-storage.service';
 
 import * as GlobalActions from './global.actions';
 
-import { CookiesService } from '../services/cookies/cookies.service';
-import { DataStorageService } from '../services/data-storage/data-storage.service';
-import { AuthService } from '../services/auth/auth.service';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class GlobalEffects {
@@ -23,7 +25,7 @@ export class GlobalEffects {
         // actionsObservable o actions$ es un Observable grande que contiene todas las dispatched Actions para que podamos reaccionar a ellas.
         // Notación: se le puede añadir un $ al final del nombre indica que es un Observable, pero no es obligatorio. Yo prefiero poner la palabra Observable.
         private actionsObservable: Actions,
-        @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
+        @Inject(PLATFORM_ID) private platformId: InjectionToken<object>,
         private cookiesService: CookiesService,
         private dataStorageService: DataStorageService,
         private authService: AuthService,
@@ -251,7 +253,7 @@ export class GlobalEffects {
 
                                 // Mensajes de error de MySQL o mis mensajes de error desde la API
                                 // Si el un mensaje de error de MySQL: parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
-                                let errorCode = signUpHttpRequestResponseData.resultado.includes(
+                                const errorCode = signUpHttpRequestResponseData.resultado.includes(
                                     ':',
                                 )
                                     ? signUpHttpRequestResponseData.resultado.substring(
@@ -373,7 +375,7 @@ export class GlobalEffects {
 
                                 // Mensajes de error de MySQL o mis mensajes de error desde la API
                                 // Si el un mensaje de error de MySQL: Parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
-                                let errorCode = logInHttpRequestResponseData.resultado.includes(':')
+                                const errorCode = logInHttpRequestResponseData.resultado.includes(':')
                                     ? logInHttpRequestResponseData.resultado.substring(
                                           0,
                                           logInHttpRequestResponseData.resultado.indexOf(':'),

@@ -1,9 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 import { ProductInterface } from '../../../core/models/product.interface';
-
 import { PreFetchService } from '../../../core/services/prefetch/prefetch.service';
 
 @Component({
@@ -16,19 +14,19 @@ import { PreFetchService } from '../../../core/services/prefetch/prefetch.servic
 export class ProductCardComponent implements OnInit {
     // Propiedades - Product or Order Card - Product
     @Input() product = {} as ProductInterface;
-    @Input() productCardTypeClass: string = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
-    @Input() productCardProductNameTitleHeadingTag: string = '';
-    productCardTitleHeadingTagInnerHTML: string = '';
+    @Input() productCardTypeClass = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
+    @Input() productCardProductNameTitleHeadingTag = '';
+    productCardTitleHeadingTagInnerHTML = '';
 
     // Propiedades - Product or Order Card - Order
-    @Input() orderId: number = 0;
+    @Input() orderId = 0;
     @Input() orderImageThumbnail: ProductInterface['imageThumbnail'] = '';
     @Input() orderImageWidth: ProductInterface['imageWidth'] = '';
     @Input() orderImageHeight: ProductInterface['imageHeight'] = '';
-    @Input() orderTotal: number = 0;
-    @Input() orderArrivalDate: string = '';
-    orderArrivalDateFormated: string = '';
-    orderIsActive: boolean = false;
+    @Input() orderTotal = 0;
+    @Input() orderArrivalDate = '';
+    orderArrivalDateFormated = '';
+    orderIsActive = false;
 
     constructor(
         private preFetchService: PreFetchService,
@@ -58,8 +56,8 @@ export class ProductCardComponent implements OnInit {
 
         // Order arrival date: formatear fecha
         if (this.orderArrivalDate != '') {
-            let nowDate = new Date();
-            let orderArrivalDateDate = new Date(this.orderArrivalDate);
+            const nowDate = new Date();
+            const orderArrivalDateDate = new Date(this.orderArrivalDate);
 
             // Comprobacion
             // console.log('nowDate: ' + nowDate);

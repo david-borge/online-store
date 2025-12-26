@@ -24,7 +24,7 @@
             <div class="bottom-overlay--body">
                 <!-- Add New Address Form -->
                 <app-add-new-address-form
-                    *ngIf="bottomOverlayBodyContent == 'ADD_NEW_ADDRESS'"
+                    *ngIf="bottomOverlayBodyContent === 'ADD_NEW_ADDRESS'"
                     (isAddNewAddressFormValidEventEmitter)="
                         checkIsAddNewAddressOrCardFormValid($event)
                     "
@@ -32,7 +32,7 @@
 
                 <!-- Add New Card Form -->
                 <app-add-new-card-form
-                    *ngIf="bottomOverlayBodyContent == 'ADD_NEW_PAYMENT_METHOD'"
+                    *ngIf="bottomOverlayBodyContent === 'ADD_NEW_PAYMENT_METHOD'"
                     (isAddNewCardFormValidEventEmitter)="
                         checkIsAddNewAddressOrCardFormValid($event)
                     "

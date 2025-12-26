@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../store/payment-methods.actions';
 
-import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 
 @Component({
     standalone: false,
@@ -18,13 +19,13 @@ import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/
         class: 'app-payment-methods--class-for-router-outlet',
     },
 })
-export class PaymentMethodsComponent {
+export class PaymentMethodsComponent implements OnInit, OnDestroy {
     // Suscripciones a la Store
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
     paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'] = [];
-    showBottomOverlay: boolean = false;
+    showBottomOverlay = false;
 
     constructor(private store: Store<fromApp.AppState>) {}
 

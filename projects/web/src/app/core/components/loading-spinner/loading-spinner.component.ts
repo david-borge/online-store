@@ -7,10 +7,10 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./loading-spinner.component.scss'],
 })
 export class LoadingSpinnerComponent {
-    @Input() imagesInThisPageLoaded: boolean = true;
-    @Input() thisPagePreviouslyVisited: boolean = true;
-    @Input() currentlyInThePageIEnteredFrom: boolean = true;
+    @Input() imagesInThisPageLoaded = true;
+    @Input() thisPagePreviouslyVisited = true;
+    @Input() currentlyInThePageIEnteredFrom = true;
 
-    @Input() showLoadingSpinnerExplanation: boolean = true;
-    @Input() loadingSpinnerExplanation: string = 'Loading...';
+    @Input() showLoadingSpinnerExplanation = true;
+    @Input() loadingSpinnerExplanation = 'Loading...';
 }

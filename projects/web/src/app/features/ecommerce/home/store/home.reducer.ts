@@ -2,10 +2,11 @@
 
 import { createReducer, on } from '@ngrx/store';
 
+import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
+import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+
 import * as HomeActions from './home.actions'; // Importar todo y guardarlo en el alias HomeActions
 
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
-import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface HomeReducerStateInterface {

@@ -4,17 +4,16 @@ import { Injectable } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
-import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
-import * as OrderActions from '../../../features/ecommerce/order/store/order.actions';
+import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
+import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 @Injectable({
     providedIn: 'root',
 })
 export class PreFetchService {
-    orderNumber: number = 0;
+    orderNumber = 0;
 
     constructor(private store: Store<fromApp.AppState>) {
         this.store.select('orderReducerObservable').subscribe((orderReducerData) => {

@@ -1,19 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
-import { Router } from '@angular/router';
-
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription, take } from 'rxjs';
 
 import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
+import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CategoriesActions from '../../store/categories.actions';
 
-import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 @Component({
     standalone: false,
@@ -59,14 +57,14 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     allCategories: CategoryInterface[] = [];
 
     // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
-    imagesInThisPageLoaded: boolean = false;
+    imagesInThisPageLoaded = false;
     imagesOfOtherPagesToPreload: string[] = [];
-    homePageImagesLoaded: boolean = false; // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
+    homePageImagesLoaded = false; // Proceso de carga de una página: Paso 5.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de otras páginas que quiero cargar (imagesOfOtherPagesToPreload).
 
     // Proceso de carga de una página: Paso 4. Una vez las imágenes de la página actual estén descargadas, ocultar el Loading Spinner y mostrar el contenido de la página.
     // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
-    categoriesPagePreviouslyVisited: boolean = false;
-    currentlyInThePageIEnteredFrom: boolean = false;
+    categoriesPagePreviouslyVisited = false;
+    currentlyInThePageIEnteredFrom = false;
 
     constructor(
         private store: Store<fromApp.AppState>,

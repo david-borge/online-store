@@ -10,7 +10,7 @@ import { ReviewInterface } from '../../../core/models/review.interface';
 })
 export class ProductRatingComponent {
     // Propiedades - Product Rading - Number of Reviews
-    @Input() productCardRatingShowNumberOfReviews: boolean = false;
+    @Input() productCardRatingShowNumberOfReviews = false;
     @Input() productCardRatingNumber: ReviewInterface['ratingNumber'] = 0;
-    @Input() productCardRatingNumberOfReviews: number = 0;
+    @Input() productCardRatingNumberOfReviews = 0;
 }

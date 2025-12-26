@@ -2,11 +2,12 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import * as PaymentMethodsActions from './payment-methods.actions'; // Importar todo y guardarlo en el alias PaymentMethodsActions
 
 import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
 import { PaymentMethodInterface } from 'projects/web/src/app/core/models/paymentMethod.interface';
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+
+import * as PaymentMethodsActions from './payment-methods.actions'; // Importar todo y guardarlo en el alias PaymentMethodsActions
 
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface PaymentMethodsReducerStateInterface {
@@ -170,7 +171,7 @@ export const paymentMethodsReducer = createReducer(
         const updatedPaymentMethods = [...state.paymentMethods];
 
         // Update the product quantity of the item at the specified index
-        let selectedCreditCardIsDefaultOriginalValue =
+        const selectedCreditCardIsDefaultOriginalValue =
             updatedPaymentMethods[action.paymentMethodArrayIdPayload]['isDefault'];
         updatedPaymentMethods[action.paymentMethodArrayIdPayload] = {
             ...updatedPaymentMethods[action.paymentMethodArrayIdPayload],

@@ -9,14 +9,13 @@ import { Store } from '@ngrx/store';
 
 import { take } from 'rxjs';
 
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../store/global.actions';
+import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
+import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
 import * as OrderActions from '../../../features/ecommerce/order/store/order.actions';
 import * as OrdersActions from '../../../features/ecommerce/orders/store/orders.actions';
-import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
 import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
-import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
-
+import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '../../store/global.actions';
 import { CookiesService } from '../cookies/cookies.service';
 
 @Injectable({
@@ -33,8 +32,8 @@ export class AuthService {
 
     // Authentication - Comprobar si el usuario está logueado (leer la cookie “auth”, guardar su valor en la Global Store y ajustar el valor de loggedIn de la Global Store acordemente)
     checkIfUserIsLoggedIn(): boolean {
-        let loggedIn: boolean = false;
-        let fechaCookieAuthCaducada: boolean = true;
+        let loggedIn = false;
+        let fechaCookieAuthCaducada = true;
         let authEmailCookieValue: string | null = '';
         let authTokenCookieValue: string | null = '';
 
@@ -216,7 +215,7 @@ export class AuthService {
 
     // Función auxiliar: sumar días a una fecha
     addDays(date: Date, days: number) {
-        var result = new Date(date);
+        const result = new Date(date);
         result.setDate(result.getDate() + days);
         return result;
     }

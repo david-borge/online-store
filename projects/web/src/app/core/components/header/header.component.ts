@@ -1,6 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 
@@ -29,27 +29,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Propiedades - Header Tag - Tipo
-    @Input() headerTagType: string = 'overlay-header-main-page';
+    @Input() headerTagType = 'overlay-header-main-page';
 
     // Propiedades - Header Tag - Título
-    @Input() overlayHeaderPageTitleSupTitle: string = '';
-    @Input() overlayHeaderPageTitle: string = 'Subpage Title';
+    @Input() overlayHeaderPageTitleSupTitle = '';
+    @Input() overlayHeaderPageTitle = 'Subpage Title';
 
     // Propiedades - Header Tag - Tipo: overlay-header-main-page
 
     // Propiedades - Header Tag - Tipo: overlay-header-subpage
     // @Input() overlayHeaderSubpageShowCloseIcon   :boolean = false; // No usado
-    @Input() overlayHeaderSubpageBackgroundColor: string = 'inherit';
-    @Input() overlayHeaderSubpageShowLeftIcon: boolean = true;
+    @Input() overlayHeaderSubpageBackgroundColor = 'inherit';
+    @Input() overlayHeaderSubpageShowLeftIcon = true;
 
     // Propiedades - Header Tag - Tipo: overlay-header-subpage with steps
-    @Input() overlayHeaderSubpageWithSteps: boolean = false;
-    currentStep: number = 1;
-    totalNumberOfSteps: number = 3;
+    @Input() overlayHeaderSubpageWithSteps = false;
+    currentStep = 1;
+    totalNumberOfSteps = 3;
     @HostBinding('style.--step-bar-percentaje') stepBarPercentaje = '0%'; // Define the CSS variable value as a component property
 
     // Propiedades auxiliares
-    loggedIn: boolean = false;
+    loggedIn = false;
 
     constructor(
         public router: Router,
@@ -86,7 +86,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // Go Back (with browser history)
     onClickGoBack(): void {
         // - Si vuelvo atrás en alguno de los pasos del Checkout que sean '/checkout/payment-method' o '/checkout/order-review', reducir el valor de currentStep en 1
-        let currentURL = this.router.url;
+        const currentURL = this.router.url;
+
         if (
             currentURL.includes('/checkout/payment-method') ||
             currentURL.includes('/checkout/order-review')

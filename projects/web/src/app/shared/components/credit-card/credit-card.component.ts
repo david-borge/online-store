@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
+import { GetPaymentMethodsPHPInterface } from '../../../core/models/getPaymentMethodsPHP.interface';
+import { PaymentMethodInterface } from '../../../core/models/paymentMethod.interface';
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
 
-import { GetPaymentMethodsPHPInterface } from '../../../core/models/getPaymentMethodsPHP.interface';
-import { PaymentMethodInterface } from '../../../core/models/paymentMethod.interface';
 
 @Component({
     standalone: false,
@@ -32,9 +32,9 @@ export class CreditCardComponent {
     @Input()
     cardExpirationYear: GetPaymentMethodsPHPInterface['paymentMethods'][0]['cardExpirationYear'] =
         '';
-    @Input() creditCardShowButton: boolean = false;
+    @Input() creditCardShowButton = false;
     @Input() cardIsDefault: GetPaymentMethodsPHPInterface['paymentMethods'][0]['isDefault'] = 0;
-    @Input() cardArrayId: number = 0;
+    @Input() cardArrayId = 0;
 
     constructor(private store: Store<fromApp.AppState>) {}
 

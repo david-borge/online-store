@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ProductRoutingModule } from './product-routing.module';
 import { CoreModule } from '../../../core/core.module';
-
-import { ProductComponent } from './pages/product/product.component';
 import { SharedModule } from '../../../shared/shared.module';
+
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductComponent } from './pages/product/product.component';
+import { ProductRoutingModule } from './product-routing.module';
 
 @NgModule({
     declarations: [ProductComponent, ProductDetailComponent],
-    imports: [CommonModule, ProductRoutingModule, CoreModule, SharedModule],
+    imports: [CommonModule, CoreModule, ProductRoutingModule, SharedModule],
 })
 export class ProductModule {}

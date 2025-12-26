@@ -1,18 +1,17 @@
-import { Component, Inject, InjectionToken, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-
-import { Router } from '@angular/router';
-
 import { trigger, style, transition, animate, state } from '@angular/animations';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, InjectionToken, OnDestroy, OnInit, PLATFORM_ID, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 
 import { PreFetchService } from '../../../../../core/services/prefetch/prefetch.service';
-import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
+import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+
 
 @Component({
     standalone: false,
@@ -36,7 +35,7 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
         ]),
     ],
 })
-export class LoadingScreenComponent implements OnInit, OnDestroy {
+export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit {
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
     categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -45,11 +44,11 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
 
     // Loading Screen - "Let's begin" button - Animation
     // Hago la animación como una Angular Animation en lugar de como una CSS Animation para poder desactivar el botón hasta que esté visible.
-    letsBeginButtonIsDisabled: boolean = true;
-    letsBeginButtonAnimation: string = 'hide';
+    letsBeginButtonIsDisabled = true;
+    letsBeginButtonAnimation = 'hide';
 
     // Pre-load images of other pages
-    imagesInThisPageLoaded: boolean = false;
+    imagesInThisPageLoaded = false;
     imagesOfHomePageToPreload: string[] = [];
     imagesOfCategoriesPageToPreload: string[] = [];
 
@@ -58,7 +57,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
         private router: Router,
         private preFetchService: PreFetchService,
         private preloadImagesService: PreloadImagesService,
-        @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
+        @Inject(PLATFORM_ID) private platformId: InjectionToken<object>,
     ) {}
 
     ngOnInit(): void {

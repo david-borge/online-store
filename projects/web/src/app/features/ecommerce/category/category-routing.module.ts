@@ -7,8 +7,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CategoryComponent } from './pages/category/category.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 const categoryRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo

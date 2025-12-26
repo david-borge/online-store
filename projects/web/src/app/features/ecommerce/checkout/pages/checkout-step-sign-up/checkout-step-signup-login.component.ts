@@ -4,12 +4,12 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
+import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
+import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
+
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
-import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
 
-import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
-import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
 
 @Component({
     standalone: false,
@@ -23,9 +23,9 @@ export class CheckoutStepSignupLoginComponent implements OnInit, OnDestroy {
 
     // Template variables
     authMode: AuthMode = AuthMode.SIGNUP;
-    sectionHeaderTitleText: string = 'Sign Up';
-    showBottomOverlay: boolean = false;
-    signUpLogInResult: string = '';
+    sectionHeaderTitleText = 'Sign Up';
+    showBottomOverlay = false;
+    signUpLogInResult = '';
     user: UserInterface = {} as UserInterface;
 
     constructor(private store: Store<fromApp.AppState>) {}
