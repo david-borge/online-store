@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -18,6 +18,8 @@ import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNomb
     styleUrls: ['./checkout-step-signup-login.component.scss'],
 })
 export class CheckoutStepSignupLoginComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -27,8 +29,6 @@ export class CheckoutStepSignupLoginComponent implements OnInit, OnDestroy {
     showBottomOverlay = false;
     signUpLogInResult = '';
     user: UserInterface = {} as UserInterface;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Leer la Global Store

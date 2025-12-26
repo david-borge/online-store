@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -20,14 +20,14 @@ import * as OrdersActions from '../../store/orders.actions';
     },
 })
 export class OrdersComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     ordersReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
     activeOrders: GetOrdersPHPInterface['orders'] = [];
     previousOrders: GetOrdersPHPInterface['orders'] = [];
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Recuperar el email del usuario desde la Global Store

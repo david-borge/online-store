@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -15,6 +15,8 @@ import * as PaymentMethodsActions from '../../../features/ecommerce/payment-meth
     styleUrls: ['./credit-card.component.scss'],
 })
 export class CreditCardComponent {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Propiedades - Credit Card
     @Input() cardId: PaymentMethodInterface['id'] = 0;
     @Input() cardType: GetPaymentMethodsPHPInterface['paymentMethods'][0]['cardType'] = 'visa';
@@ -35,8 +37,6 @@ export class CreditCardComponent {
     @Input() creditCardShowButton = false;
     @Input() cardIsDefault: GetPaymentMethodsPHPInterface['paymentMethods'][0]['isDefault'] = 0;
     @Input() cardArrayId = 0;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     onClickCreditCardOrSelectButton() {
         // Change Default Credit Card: cambiar el valor de isDefault en la Payment Methods Store: al seleccionar una, desactivar el resto

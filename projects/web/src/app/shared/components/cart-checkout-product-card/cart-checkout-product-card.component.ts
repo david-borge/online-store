@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -15,6 +15,8 @@ import * as CartActions from '../../../features/ecommerce/cart/store/cart.action
     styleUrls: ['./cart-checkout-product-card.component.scss'],
 })
 export class CartCheckoutProductCardComponent {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Propiedades - Cart and Checkout Product Card - Product
     @Input() cartDataArrayId = 0;
     @Input() productId: ProductInterface['id'] = 0;
@@ -27,8 +29,6 @@ export class CartCheckoutProductCardComponent {
 
     // Propiedades - Cart and Checkout Product Card - Navigation CTAs & Copy
     @Input() cartCheckoutProductCardShowButtons = true;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     onClickMinusOrDeleteButton() {
         this.productQuantity--;

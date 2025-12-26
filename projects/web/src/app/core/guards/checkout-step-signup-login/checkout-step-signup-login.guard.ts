@@ -1,7 +1,7 @@
 // Checkout step - ''/checkout/signup-login''
 // If user is logged in, redirect from '/checkout/signup-login' to '/checkout/address'
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -19,13 +19,13 @@ import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente e
     providedIn: 'root',
 })
 export class CheckoutStepSignupLoginGuard {
+    private router = inject(Router);
+    private authService = inject(AuthService);
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     cartData: GetCartDataPHPInterface['cartData'] = [];
 
-    constructor(
-        private router: Router,
-        private authService: AuthService,
-        private store: Store<fromApp.AppState>,
-    ) {
+    constructor() {
         // Cart Store
         this.store.select('cartReducerObservable').subscribe((cartReducerData) => {
             this.cartData = cartReducerData.cartData;

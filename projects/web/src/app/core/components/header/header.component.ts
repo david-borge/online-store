@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -25,6 +25,10 @@ import * as GlobalActions from '../../store/global.actions';
     ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+    router = inject(Router);
+    private _location = inject(Location);
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -50,12 +54,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     // Propiedades auxiliares
     loggedIn = false;
-
-    constructor(
-        public router: Router,
-        private _location: Location,
-        private store: Store<fromApp.AppState>,
-    ) {}
 
     ngOnInit() {
         // Global Store

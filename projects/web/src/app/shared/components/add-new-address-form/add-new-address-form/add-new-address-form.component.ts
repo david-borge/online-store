@@ -1,12 +1,4 @@
-import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    OnDestroy,
-    OnInit,
-    Output,
-    ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -27,6 +19,8 @@ import * as AddressesActions from '../../../../features/ecommerce/addresses/stor
     styleUrls: ['./add-new-address-form.component.scss'],
 })
 export class AddNewAddressFormComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -41,8 +35,6 @@ export class AddNewAddressFormComponent implements OnInit, OnDestroy {
     addressLocalReferenceViewChild: ElementRef = {} as ElementRef;
     addNewAddressStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
     @Output() isAddNewAddressFormValidEventEmitter = new EventEmitter<FormControlStatus>();
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Pone el foco en el campo address al carga el formulario

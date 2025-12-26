@@ -1,7 +1,7 @@
 // Fuente: https://stackoverflow.com/questions/43301624/angular-img-loading-directive
 // Proceso de carga de una página: Paso 3.1. Sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
 
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -13,6 +13,10 @@ import * as ProductActions from '../../../features/ecommerce/product/store/produ
 
 @Directive({ standalone: false, selector: '[imageLoadDirective]' })
 export class ImageLoadDirective {
+    private router = inject(Router);
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private elementRef = inject(ElementRef);
+
     currentURL = '';
     numberOfImagesInThisPage = 0;
     numberOfImagesInThisPageLoaded = 0;
@@ -21,11 +25,7 @@ export class ImageLoadDirective {
     categoriesPageImagesLoaded = false;
     productPageImagesLoaded = false;
 
-    constructor(
-        private router: Router,
-        private store: Store<fromApp.AppState>,
-        private elementRef: ElementRef, // (Opcional)
-    ) {
+    constructor() {
         // - Cuando lea una imagen con el atributo imageLoadDirective (ocurre cada vez que voy al componente)
 
         // Comprobación

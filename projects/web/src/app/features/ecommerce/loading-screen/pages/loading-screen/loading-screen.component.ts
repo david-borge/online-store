@@ -1,6 +1,6 @@
 import { trigger, style, transition, animate, state } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, InjectionToken, OnDestroy, OnInit, PLATFORM_ID, AfterViewInit } from '@angular/core';
+import { Component, InjectionToken, OnDestroy, OnInit, PLATFORM_ID, AfterViewInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -36,6 +36,12 @@ import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNomb
     ],
 })
 export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private router = inject(Router);
+    private preFetchService = inject(PreFetchService);
+    private preloadImagesService = inject(PreloadImagesService);
+    private platformId = inject<InjectionToken<object>>(PLATFORM_ID);
+
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
     categoriesReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -51,14 +57,6 @@ export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit 
     imagesInThisPageLoaded = false;
     imagesOfHomePageToPreload: string[] = [];
     imagesOfCategoriesPageToPreload: string[] = [];
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private router: Router,
-        private preFetchService: PreFetchService,
-        private preloadImagesService: PreloadImagesService,
-        @Inject(PLATFORM_ID) private platformId: InjectionToken<object>,
-    ) {}
 
     ngOnInit(): void {
         /* - Sacar la lista de imágenes de otras páginas to pre-load:

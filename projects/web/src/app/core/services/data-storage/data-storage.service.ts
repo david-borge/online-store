@@ -9,7 +9,7 @@
 
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { environment } from 'projects/web/src/environments/environment.development';
 
@@ -37,7 +37,8 @@ import { UserInterface } from '../../models/user.interface';
     providedIn: 'root', // Injectable permite inyectar un servicio en un servicio. providedIn pone el servicio a disposición de toda la app (solo para Angular 6 o mayor; para Angular 5 o menor, añadir el servicio al providers de AppModule)
 })
 export class DataStorageService {
-    constructor(private httpClient: HttpClient) {}
+    private httpClient = inject(HttpClient);
+
 
     // Get all Products
     getAllProductsHttpRequest() {

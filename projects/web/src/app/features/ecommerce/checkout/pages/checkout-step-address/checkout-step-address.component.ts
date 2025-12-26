@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -22,6 +22,9 @@ import * as AddressesActions from '../../../addresses/store/addresses.actions';
     },
 })
 export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private router = inject(Router);
+
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -29,11 +32,6 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
     addresses: GetAddressesPHPInterface['addresses'] = [];
     showBottomOverlay = false;
     paymentButtonIsEnabled = false;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private router: Router,
-    ) {}
 
     ngOnInit(): void {
         // Leer datos de la Global Store

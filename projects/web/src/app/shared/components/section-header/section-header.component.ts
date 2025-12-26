@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, ViewEncapsulation, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -14,6 +14,9 @@ import * as GlobalActions from '../../../core/store/global.actions';
     encapsulation: ViewEncapsulation.None, // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (sectionHeaderTitleInnerHTML)
 })
 export class SectionHeaderComponent implements OnChanges {
+    router = inject(Router);
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Propiedades - Section Header - Title
     @Input() sectionHeaderTitleTag = '';
     @Input() sectionHeaderTitleClasses = '';
@@ -32,11 +35,6 @@ export class SectionHeaderComponent implements OnChanges {
     @Input() sectionHeaderButton = false;
     @Input() sectionHeaderButtonURL = '';
     @Input() sectionHeaderButtonText = '';
-
-    constructor(
-        public router: Router,
-        private store: Store<fromApp.AppState>,
-    ) {}
 
     // ngOnChanges Lifecycle hook: se ejecuta al crear una instancia del Componente, y también, cuando cambie una de las propiedades con (@output) o con @Input. Es el único Lifecycle hook que recibe un parámetro
     ngOnChanges(): void {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -15,6 +15,8 @@ import * as AddressesActions from '../../../features/ecommerce/addresses/store/a
     styleUrls: ['./address-card.component.scss'],
 })
 export class AddressCardComponent {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Propiedades - Credit Card
     @Input() addressCardId: AddressInterface['id'] = 0;
     @Input() addressCardFullName: AddressInterface['fullName'] = '';
@@ -25,8 +27,6 @@ export class AddressCardComponent {
     @Input() addressCardShowButton = false;
     @Input() addressCardIsDefault: AddressInterface['isDefault'] = 0;
     @Input() addressArrayId = 0;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     onClickAddressCardOrSelectButton() {
         // Change Default Address: cambiar el valor de isDefault en la Addresses Store y en la Base de Datos: al seleccionar una, desactivar el resto

@@ -2,32 +2,19 @@
 // Proceso de carga de una página: Paso 2.1. Con pre-fetch, hacer una HTTP Request a la API de Backend para descargar datos desde la Base de Datos. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
 
 import { isPlatformBrowser } from '@angular/common';
-import {
-    AfterViewInit,
-    Directive,
-    ElementRef,
-    EventEmitter,
-    HostListener,
-    InjectionToken,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-} from '@angular/core';
-import { Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, InjectionToken, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
 
 @Directive({ standalone: false, selector: '[prefetch]' })
 export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
+    private elemRef = inject(ElementRef);
+    private platformId = inject<InjectionToken<object>>(PLATFORM_ID);
+
     @Input() prefetchMode: ('LOAD' | 'HOVER' | 'VISIBLE')[] = ['VISIBLE'];
     @Output() prefetch = new EventEmitter<void>();
 
     observer = {} as IntersectionObserver;
     loaded = false;
-
-    constructor(
-        private elemRef: ElementRef,
-        @Inject(PLATFORM_ID) private platformId: InjectionToken<object>,
-    ) {}
 
     ngOnInit(): void {
         if (this.prefetchMode.includes('LOAD')) {

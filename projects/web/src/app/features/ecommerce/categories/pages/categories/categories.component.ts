@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -23,6 +23,11 @@ import * as CategoriesActions from '../../store/categories.actions';
     },
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private router = inject(Router);
+    private preloadImagesService = inject(PreloadImagesService);
+    private titleService = inject(Title);
+
     /*
 
     Proceso de carga de una página:
@@ -65,13 +70,6 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     // Hacer que la animación de carga se ejecute solo si acabo de recargar la página. Por ejemplo, no ejecutar la animación si he entrado por /categories y luego he navegado a /home
     categoriesPagePreviouslyVisited = false;
     currentlyInThePageIEnteredFrom = false;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private router: Router,
-        private preloadImagesService: PreloadImagesService,
-        private titleService: Title,
-    ) {}
 
     ngOnInit(): void {
         // IMPORTANTE: al llegar aquí, las categorias ya están cargadas en la Store porque las he cargado (recuperadas de la Base de datos via HTTP Request) lo antes posible con pre-fetch, así que para mostrarlas solo tengo que leer la Store. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts

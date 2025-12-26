@@ -1,6 +1,6 @@
 // Proceso de carga de una página: Paso 2.1. Con pre-fetch, hacer una HTTP Request a la API de Backend para descargar datos desde la Base de Datos. Ver projects\web\src\app\shared\directives\prefetch.directive.ts, projects\web\src\app\core\components\footer\footer.component.ts, projects\web\src\app\core\components\footer\footer.component.html y projects\web\src\app\core\services\prefetch\prefetch.service.ts
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -13,9 +13,11 @@ import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente e
     providedIn: 'root',
 })
 export class PreFetchService {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     orderNumber = 0;
 
-    constructor(private store: Store<fromApp.AppState>) {
+    constructor() {
         this.store.select('orderReducerObservable').subscribe((orderReducerData) => {
             this.orderNumber = orderReducerData.currentOrderNumber;
         });

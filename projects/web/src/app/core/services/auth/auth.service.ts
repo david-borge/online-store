@@ -3,7 +3,7 @@
   Proceso de Autentificación (Sign Up / Log In): https://docs.google.com/document/d/1QQ8aXD48xA9Iu7Uhvps1r2fUzNcRCpd5X_n41F0AiPU/edit?usp=sharing
 */
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -22,13 +22,11 @@ import { CookiesService } from '../cookies/cookies.service';
     providedIn: 'root',
 })
 export class AuthService {
-    // Duración de las cookies de autentificación (authToken, authExpirationDate, authEmail)
-    logInDuration = 7; // En días (los que yo quiera)
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private cookiesService = inject(CookiesService);
 
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private cookiesService: CookiesService,
-    ) {}
+    // Duración de las cookies de autentificación (authToken, authExpirationDate, authEmail)
+    logInDuration = 7;
 
     // Authentication - Comprobar si el usuario está logueado (leer la cookie “auth”, guardar su valor en la Global Store y ajustar el valor de loggedIn de la Global Store acordemente)
     checkIfUserIsLoggedIn(): boolean {

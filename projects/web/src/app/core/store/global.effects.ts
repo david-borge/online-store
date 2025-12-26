@@ -1,7 +1,7 @@
 /*** GlobalEffects ***/
 
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, InjectionToken, PLATFORM_ID } from '@angular/core';
+import { Injectable, InjectionToken, PLATFORM_ID, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -19,18 +19,13 @@ import * as GlobalActions from './global.actions';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class GlobalEffects {
-    // La idea es ejecutar cualquier código (como HTTP Request o LocalStorage) que deba ocurrir cuando se ejecute la acción asociada al Side Effect y, después, dispatch una nueva Action
+    private actionsObservable = inject(Actions);
+    private platformId = inject<InjectionToken<object>>(PLATFORM_ID);
+    private cookiesService = inject(CookiesService);
+    private dataStorageService = inject(DataStorageService);
+    private authService = inject(AuthService);
+    private router = inject(Router);
 
-    constructor(
-        // actionsObservable o actions$ es un Observable grande que contiene todas las dispatched Actions para que podamos reaccionar a ellas.
-        // Notación: se le puede añadir un $ al final del nombre indica que es un Observable, pero no es obligatorio. Yo prefiero poner la palabra Observable.
-        private actionsObservable: Actions,
-        @Inject(PLATFORM_ID) private platformId: InjectionToken<object>,
-        private cookiesService: CookiesService,
-        private dataStorageService: DataStorageService,
-        private authService: AuthService,
-        private router: Router,
-    ) {}
 
     // Side Effect de la Set Local Storage Key Value Action de Global
     setLocalStorageKeyValueSideEffect = createEffect(() =>

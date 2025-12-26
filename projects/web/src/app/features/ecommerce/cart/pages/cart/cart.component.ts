@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { Store } from '@ngrx/store';
@@ -22,17 +22,15 @@ import * as CartActions from '../../store/cart.actions';
     },
 })
 export class CartComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private titleService = inject(Title);
+
     // Suscripciones a la Store
     cartReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Variables para la Template
     cartData: GetCartDataPHPInterface['cartData'] = [];
     cartTotal = 0;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private titleService: Title,
-    ) {}
 
     ngOnInit() {
         // - Leer los datos del carrito desde la Base de Datos y guardarlos en la Cart Storeº

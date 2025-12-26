@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProductInterface } from '../../../core/models/product.interface';
@@ -12,6 +12,9 @@ import { PreFetchService } from '../../../core/services/prefetch/prefetch.servic
     encapsulation: ViewEncapsulation.None, // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-card-name *)
 })
 export class ProductCardComponent implements OnInit {
+    private preFetchService = inject(PreFetchService);
+    private router = inject(Router);
+
     // Propiedades - Product or Order Card - Product
     @Input() product = {} as ProductInterface;
     @Input() productCardTypeClass = 'product-card-featured'; // product-card-featured, product-card-small, product-card-order
@@ -28,10 +31,7 @@ export class ProductCardComponent implements OnInit {
     orderArrivalDateFormated = '';
     orderIsActive = false;
 
-    constructor(
-        private preFetchService: PreFetchService,
-        private router: Router,
-    ) {
+    constructor() {
         /* IMPORTANTE: esto es para que funcionen los enlaces de los Featured products en la página de un producto.
        Hace que el componente se recargue al hacer click en los enlaces de los Featured products en la página de un producto.
        Si no hago esto, los datos del producto no cambian al cambiar de ruta.

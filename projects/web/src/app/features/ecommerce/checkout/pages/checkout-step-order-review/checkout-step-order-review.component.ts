@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -23,6 +23,8 @@ import * as PaymentMethodsActions from '../../../payment-methods/store/payment-m
     styleUrls: ['./checkout-step-order-review.component.scss'],
 })
 export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;
     cartReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -41,8 +43,6 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
     orderTotal = 0;
     payNowButtonText = 'Pay now';
     saveOrderStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Leer currentOrderNumber de la Order Store

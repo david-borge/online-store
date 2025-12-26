@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -18,6 +18,9 @@ import * as OrderActions from '../../store/order.actions';
     styleUrls: ['./order-detail.component.scss'],
 })
 export class OrderDetailComponent implements OnInit, OnDestroy {
+    private route = inject(ActivatedRoute);
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -29,11 +32,6 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
         {} as GetOrderDataPHPInterface['orderAddress'];
     orderPaymentMethod: GetOrderDataPHPInterface['orderPaymentMethod'] =
         {} as GetOrderDataPHPInterface['orderPaymentMethod'];
-
-    constructor(
-        private route: ActivatedRoute,
-        private store: Store<fromApp.AppState>,
-    ) {}
 
     ngOnInit(): void {
         // Order number (Route Parameter: order-number)

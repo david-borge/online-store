@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProcessStatus } from '../../../core/models/processStatus.enum';
@@ -10,6 +10,8 @@ import { ProcessStatus } from '../../../core/models/processStatus.enum';
     styleUrls: ['./btn-with-loading-spinner.component.scss'],
 })
 export class BtnWithLoadingSpinnerComponent implements OnInit {
+    private router = inject(Router);
+
     // Propiedades - Plantilla
     @Input() btnWithLoadingSpinnerText = '';
     @Input() btnWithLoadingSpinnerTextClasses = '';
@@ -30,8 +32,6 @@ export class BtnWithLoadingSpinnerComponent implements OnInit {
     currentURL = '';
 
     ProcessStatus = ProcessStatus;
-
-    constructor(private router: Router) {}
 
     ngOnInit() {
         // - Leer en qué URL estoy

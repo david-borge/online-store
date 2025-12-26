@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -13,7 +13,8 @@ import * as CartActions from '../../../features/ecommerce/cart/store/cart.action
     providedIn: 'root',
 })
 export class ProductGuard {
-    constructor(private store: Store<fromApp.AppState>) {}
+    private store = inject<Store<fromApp.AppState>>(Store);
+
 
     canDeactivate(
         component: unknown,

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -12,13 +12,11 @@ import * as ProductActions from '../../../features/ecommerce/product/store/produ
     providedIn: 'root',
 })
 export class PreloadImagesService {
+    private router = inject(Router);
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     numberOfimagesOfOtherPagesToPreloadLoaded = 0;
     currentURL = '';
-
-    constructor(
-        private router: Router,
-        private store: Store<fromApp.AppState>,
-    ) {}
 
     // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
     preloadImagesOfOtherPages(imagesOfOtherPagesToPreload: string[]): void {

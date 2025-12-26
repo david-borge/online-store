@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -20,14 +20,14 @@ import * as AddressesActions from '../../store/addresses.actions';
     },
 })
 export class AddressesComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
     addresses: GetAddressesPHPInterface['addresses'] = [];
     showBottomOverlay = false;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Leer datos de la Global Store

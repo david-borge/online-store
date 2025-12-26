@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -21,15 +21,13 @@ import * as CategoriesActions from '../../../categories/store/categories.actions
     },
 })
 export class CategoryDetailComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private route = inject(ActivatedRoute);
+
     categorySlug = '';
     productsOfCurrentCategory: ProductInterface[] = [];
 
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private route: ActivatedRoute,
-    ) {}
 
     ngOnInit(): void {
         // Get current Category (from Route Paramenter :category-slug en projects\web\src\app\features\ecommerce\category\category-routing.module.ts)

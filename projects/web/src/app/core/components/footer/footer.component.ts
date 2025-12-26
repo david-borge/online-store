@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -21,6 +21,11 @@ import * as GlobalActions from '../../store/global.actions';
     styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit, OnChanges {
+    private router = inject(Router);
+    private preFetchService = inject(PreFetchService);
+    private routingService = inject(RoutingService);
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Propiedades - Footer - Navigation CTAs & Copy
     @Input() navigationShowCtasAndCopy = false;
     currentURL = '';
@@ -44,12 +49,7 @@ export class FooterComponent implements OnInit, OnChanges {
 
     processStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
-    constructor(
-        private router: Router,
-        private preFetchService: PreFetchService,
-        private routingService: RoutingService,
-        private store: Store<fromApp.AppState>,
-    ) {
+    constructor() {
         // Al cambiar de ruta, indicarlo en la Store Global
         this.routingService.SetFirstVisitedPage();
     }

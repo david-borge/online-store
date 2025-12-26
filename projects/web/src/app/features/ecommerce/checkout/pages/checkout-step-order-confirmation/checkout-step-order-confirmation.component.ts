@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
     },
 })
 export class CheckoutStepOrderConfirmationComponent {
-    constructor(private router: Router) {}
+    private router = inject(Router);
+
 
     onClickContinueToStoreButton() {
         this.router.navigate(['/home']);

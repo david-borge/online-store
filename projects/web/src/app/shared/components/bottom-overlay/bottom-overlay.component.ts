@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormControlStatus } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -20,6 +20,9 @@ import * as GlobalActions from '../../../core/store/global.actions';
     styleUrls: ['./bottom-overlay.component.scss'],
 })
 export class BottomOverlayComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private accountService = inject(AccountService);
+
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -36,11 +39,6 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
 
     // Propiedades - Bottom Overlay - ADD_NEW_PAYMENT_METHOD
     isAddNewCardFormValid = false;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private accountService: AccountService,
-    ) {}
 
     ngOnInit() {
         // Add new address

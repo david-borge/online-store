@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -14,13 +14,13 @@ import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNomb
     styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnDestroy, OnInit {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
     currentOrderNumber = 0;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Leer currentOrderNumber de la Order Store

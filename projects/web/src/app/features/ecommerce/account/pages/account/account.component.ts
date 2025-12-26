@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { Store } from '@ngrx/store';
@@ -25,6 +25,10 @@ import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNomb
     },
 })
 export class AccountComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private authService = inject(AuthService);
+    private titleService = inject(Title);
+
     // Suscripciones a la Store
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -41,12 +45,6 @@ export class AccountComponent implements OnInit, OnDestroy {
     ordersTotals: number[] = [];
     logOutButtonText: 'Log out' | 'Logging out...' = 'Log out';
     logOutGlobalStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private authService: AuthService,
-        private titleService: Title,
-    ) {}
 
     ngOnInit(): void {
         // Leer la Global Store

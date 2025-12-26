@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -23,6 +23,9 @@ import * as CartActions from '../../../cart/store/cart.actions';
     },
 })
 export class ProductComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private preloadImagesService = inject(PreloadImagesService);
+
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
     productReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -45,11 +48,6 @@ export class ProductComponent implements OnInit, OnDestroy {
     currentlyInThePageIEnteredFrom = false;
 
     resetAddProductToCartStatusProperty = false;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private preloadImagesService: PreloadImagesService,
-    ) {}
 
     ngOnInit(): void {
         // Leer datos desde la Store y mostrarlos

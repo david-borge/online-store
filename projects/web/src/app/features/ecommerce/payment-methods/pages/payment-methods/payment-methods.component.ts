@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -19,14 +19,14 @@ import * as PaymentMethodsActions from '../../store/payment-methods.actions';
     },
 })
 export class PaymentMethodsComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
     // Template variables
     paymentMethods: GetPaymentMethodsPHPInterface['paymentMethods'] = [];
     showBottomOverlay = false;
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Leer datos de la Global Store

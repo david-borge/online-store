@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -19,6 +19,10 @@ import * as GlobalActions from '../../../core/store/global.actions';
     styleUrls: ['./signup-login-form.component.scss'],
 })
 export class SignupLoginFormComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private authService = inject(AuthService);
+    private cookiesService = inject(CookiesService);
+
     // Suscripciones a la Store
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -34,12 +38,6 @@ export class SignupLoginFormComponent implements OnInit, OnDestroy {
     signUpLogInStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
 
     ProcessStatus = ProcessStatus;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private authService: AuthService,
-        private cookiesService: CookiesService,
-    ) {}
 
     ngOnInit(): void {
         // - Leer la Global Store

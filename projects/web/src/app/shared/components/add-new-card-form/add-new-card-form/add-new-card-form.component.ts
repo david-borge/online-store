@@ -1,12 +1,4 @@
-import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    OnDestroy,
-    OnInit,
-    Output,
-    ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -25,6 +17,8 @@ import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-m
     styleUrls: ['./add-new-card-form.component.scss'],
 })
 export class AddNewCardFormComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     // Suscripciones a la Store
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -40,8 +34,6 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
     cardPersonFullNameLocalReferenceViewChild: ElementRef = {} as ElementRef;
     addNewCardStatus: ProcessStatus = ProcessStatus.NOT_STARTED;
     @Output() isAddNewCardFormValidEventEmitter = new EventEmitter<FormControlStatus>();
-
-    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
         // Pone el foco en el campo cardPersonFullName al carga el formulario

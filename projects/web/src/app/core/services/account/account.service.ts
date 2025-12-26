@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -13,6 +13,8 @@ import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
     providedIn: 'root',
 })
 export class AccountService {
+    private store = inject<Store<fromApp.AppState>>(Store);
+
     newAddress: {
         fullName: AddressInterface['fullName'];
         address: AddressInterface['address'];
@@ -47,7 +49,7 @@ export class AccountService {
         cardType: 'visa',
     };
 
-    constructor(private store: Store<fromApp.AppState>) {
+    constructor() {
         // Leer datos de la Addresses Store
         this.store.select('addressesReducerObservable').subscribe((addressesReducerData) => {
             this.newAddress = addressesReducerData.newAddress;

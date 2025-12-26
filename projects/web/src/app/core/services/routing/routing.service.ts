@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -13,10 +13,9 @@ import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente e
     providedIn: 'root',
 })
 export class RoutingService {
-    constructor(
-        private router: Router,
-        private store: Store<fromApp.AppState>,
-    ) {}
+    private router = inject(Router);
+    private store = inject<Store<fromApp.AppState>>(Store);
+
 
     // Al cambiar de ruta, indicarlo en la Store Global
     SetFirstVisitedPage() {

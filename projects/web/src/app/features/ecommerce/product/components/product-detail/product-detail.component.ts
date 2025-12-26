@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -22,6 +22,9 @@ import * as HomeActions from '../../../home/store/home.actions';
     encapsulation: ViewEncapsulation.None, // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-description-content *)
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
+    private store = inject<Store<fromApp.AppState>>(Store);
+    private route = inject(ActivatedRoute);
+
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
 
@@ -31,11 +34,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     featuredProducts: ProductInterface[] = [];
     currentProductReviews: GetCurrentProductReviewsPHPInterface[] = [];
     currentProductRatingNumber: ReviewInterface['ratingNumber'] = 0;
-
-    constructor(
-        private store: Store<fromApp.AppState>,
-        private route: ActivatedRoute,
-    ) {}
 
     ngOnInit(): void {
         // Get current Product (from Route Paramenter :product-slug en projects\web\src\app\features\ecommerce\product\product-routing.module.ts)
