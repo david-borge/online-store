@@ -15,13 +15,11 @@
         "lint": "eslint . --ext .js,.ts",
         "lint:fix": "eslint . --ext .js,.ts --fix",
         "format-and-lint": "prettier --write . && eslint . --ext .js,.ts --fix",
-        "prepare": "simple-git-hooks",
-        "hook:pre-commit": "lint-staged",
-        "hook:commit-msg": "commitlint --edit"
+        "prepare": "simple-git-hooks"
     },
     "simple-git-hooks": {
-        "pre-commit": "npm run hook:pre-commit",
-        "commit-msg": "npm run hook:commit-msg -- $1"
+        "pre-commit": "npx lint-staged",
+        "commit-msg": "npx --no -- commitlint --edit $1"
     },
     "private": true,
     "lint-staged": {
