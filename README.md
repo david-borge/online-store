@@ -6,7 +6,6 @@
     TODO: make sure the server files and SSR match the lastest version and don't have legacy code from previous Angular versions
     TODO: change Modules to Standalone components (remove standalone: false and change basic files)
     TODO: check layout of header.component.html > "Step x of x"
-    TODO: add sans-serif fallback font
     TODO: resolve HTTP warning in terminal when running ng serve
     TODO: add Lint to backend (does it work with PHP?)
     TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
