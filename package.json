@@ -13,7 +13,8 @@
         "serve:ssr:web": "node dist/web/server/server.mjs",
         "format": "prettier --write .",
         "lint": "eslint . --ext .js,.ts",
-        "lint:fix": "eslint . --ext .js,.ts --fix"
+        "lint:fix": "eslint . --ext .js,.ts --fix",
+        "format-and-lint": "prettier --write . && eslint . --ext .js,.ts --fix"
     },
     "private": true,
     "dependencies": {
