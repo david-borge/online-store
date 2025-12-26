@@ -1,7 +1,7 @@
 # Online Store
 
 <!--
-    This is a change to test something 4.
+    This is a change to test something 5.
     TODO: resolve HTTP warning in terminal when running ng serve
     TODO: make sure the server files and SSR match the lastest version and don't have legacy code from previous Angular versions
     TODO: change Modules to Standalone components (remove standalone: false and change basic files)
