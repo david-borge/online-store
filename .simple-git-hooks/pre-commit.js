@@ -1,0 +1,7 @@
+import { execSync } from 'child_process';
+
+try {
+    execSync('npx lint-staged', { stdio: 'inherit' });
+} catch (error) {
+    process.exit(1);
+}

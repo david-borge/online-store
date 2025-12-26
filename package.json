@@ -14,9 +14,26 @@
         "format": "prettier --write .",
         "lint": "eslint . --ext .js,.ts",
         "lint:fix": "eslint . --ext .js,.ts --fix",
-        "format-and-lint": "prettier --write . && eslint . --ext .js,.ts --fix"
+        "format-and-lint": "prettier --write . && eslint . --ext .js,.ts --fix",
+        "prepare": "simple-git-hooks"
+    },
+    "simple-git-hooks": {
+        "pre-commit": "npx lint-staged",
+        "commit-msg": "npx --no -- commitlint --edit $1"
     },
     "private": true,
+    "lint-staged": {
+        "*.html": [
+            "prettier --write"
+        ],
+        "*.{js,ts}": [
+            "prettier --write",
+            "eslint --fix"
+        ],
+        "*.{json,md,yml,yaml}": [
+            "prettier --write"
+        ]
+    },
     "dependencies": {
         "@angular/animations": "^21.0.6",
         "@angular/common": "^21.0.6",
@@ -43,6 +60,8 @@
         "@angular/cli": "~21.0.4",
         "@angular/compiler-cli": "^21.0.6",
         "@angular/localize": "^21.0.6",
+        "@commitlint/cli": "^20.2.0",
+        "@commitlint/config-conventional": "^20.2.0",
         "@ngrx/store-devtools": "^21.0.1",
         "@types/express": "^5.0.6",
         "@types/jasmine": "~5.1.13",
@@ -54,13 +73,16 @@
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-unused-imports": "^4.3.0",
+        "husky": "^9.1.7",
         "jasmine-core": "~5.13.0",
         "karma": "~6.4.0",
         "karma-chrome-launcher": "~3.2.0",
         "karma-coverage": "~2.2.0",
         "karma-jasmine": "~5.1.0",
         "karma-jasmine-html-reporter": "~2.1.0",
+        "lint-staged": "^16.2.7",
         "prettier": "^3.7.4",
+        "simple-git-hooks": "^2.13.1",
         "typescript": "~5.9.3",
         "typescript-eslint": "^8.50.1",
         "xml-sitemap-url-scraper": "^1.1.0"
