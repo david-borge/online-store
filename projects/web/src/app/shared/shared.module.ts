@@ -13,10 +13,10 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
 import { FeaturedProductsCarrouselComponent } from './components/featured-products-carrousel/featured-products-carrousel.component';
 import { InformativeCardComponent } from './components/informative-card/informative-card.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-import { SectionHeaderComponent } from './components/section-header/section-header.component';
 import { ProductRatingComponent } from './components/product-rating/product-rating.component';
 import { ProductReviewsItemComponent } from './components/product-reviews-item/product-reviews-item.component';
 import { ProductsGridComponent } from './components/products-grid/products-grid.component';
+import { SectionHeaderComponent } from './components/section-header/section-header.component';
 import { SelectButtonComponent } from './components/select-button/select-button.component';
 import { SignupLoginFormComponent } from './components/signup-login-form/signup-login-form.component';
 import { ImageLoadDirective } from './directives/image-load/image-load.directive';

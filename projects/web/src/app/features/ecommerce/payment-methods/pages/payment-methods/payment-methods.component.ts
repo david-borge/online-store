@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -8,7 +8,6 @@ import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../store/payment-methods.actions';
-
 
 @Component({
     standalone: false,
