@@ -19,7 +19,6 @@ export class AccountInnerPagesGuard {
     private router = inject(Router);
     private authService = inject(AuthService);
 
-
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,

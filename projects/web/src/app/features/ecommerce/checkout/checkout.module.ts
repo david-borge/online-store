@@ -13,7 +13,11 @@ import { CheckoutStepSignupLoginComponent } from './pages/checkout-step-sign-up/
 
 @NgModule({
     declarations: [
-        CheckoutStepAddressComponent, CheckoutStepOrderConfirmationComponent, CheckoutStepOrderReviewComponent, CheckoutStepPaymentMethodComponent, CheckoutStepSignupLoginComponent,
+        CheckoutStepAddressComponent,
+        CheckoutStepOrderConfirmationComponent,
+        CheckoutStepOrderReviewComponent,
+        CheckoutStepPaymentMethodComponent,
+        CheckoutStepSignupLoginComponent,
     ],
     imports: [CheckoutRoutingModule, CommonModule, CoreModule, SharedModule],
 })

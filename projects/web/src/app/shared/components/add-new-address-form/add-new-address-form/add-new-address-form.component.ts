@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    OnDestroy,
+    OnInit,
+    Output,
+    ViewChild,
+    inject,
+} from '@angular/core';
 import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -10,7 +19,6 @@ import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.en
 
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../../features/ecommerce/addresses/store/addresses.actions';
-
 
 @Component({
     standalone: false,

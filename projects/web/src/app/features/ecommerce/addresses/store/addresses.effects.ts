@@ -19,14 +19,12 @@ import * as GlobalActions from '../../../../core/store/global.actions';
 
 import * as AddressesActions from './addresses.actions';
 
-
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class AddressesEffects {
     private actionsObservable = inject(Actions);
     private dataStorageService = inject(DataStorageService);
     private store = inject<Store<fromApp.AppState>>(Store);
     private cookiesService = inject(CookiesService);
-
 
     // Side Effect de la Get Addresses Start Action de Addresses
     getAddressesSideEffect = createEffect(() =>

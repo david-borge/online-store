@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    OnDestroy,
+    OnInit,
+    Output,
+    ViewChild,
+    inject,
+} from '@angular/core';
 import { FormControl, FormControlStatus, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';

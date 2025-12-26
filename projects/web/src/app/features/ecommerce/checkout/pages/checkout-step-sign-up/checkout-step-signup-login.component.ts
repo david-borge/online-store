@@ -9,8 +9,6 @@ import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
-
-
 @Component({
     standalone: false,
     selector: 'app-checkout-step-signup-login',

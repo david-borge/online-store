@@ -8,14 +8,12 @@ import { take } from 'rxjs';
 import * as GlobalActions from '../../../core/store/global.actions';
 import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
-
 @Injectable({
     providedIn: 'root',
 })
 export class RoutingService {
     private router = inject(Router);
     private store = inject<Store<fromApp.AppState>>(Store);
-
 
     // Al cambiar de ruta, indicarlo en la Store Global
     SetFirstVisitedPage() {

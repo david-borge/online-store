@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
 
@@ -14,7 +13,6 @@ import * as CartActions from '../../../features/ecommerce/cart/store/cart.action
 })
 export class ProductGuard {
     private store = inject<Store<fromApp.AppState>>(Store);
-
 
     canDeactivate(
         component: unknown,

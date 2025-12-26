@@ -18,7 +18,6 @@ import * as CartActions from '../../cart/store/cart.actions';
 
 import * as OrderActions from './order.actions';
 
-
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class OrderEffects {
     private actionsObservable = inject(Actions);
@@ -26,7 +25,6 @@ export class OrderEffects {
     private store = inject<Store<fromApp.AppState>>(Store);
     private cookiesService = inject(CookiesService);
     private router = inject(Router);
-
 
     // Side Effect de la Get Order Data Start Action de Order
     getOrderDataSideEffect = createEffect(() =>

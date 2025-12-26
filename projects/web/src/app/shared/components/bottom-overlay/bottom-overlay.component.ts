@@ -11,8 +11,6 @@ import { AccountService } from '../../../core/services/account/account.service';
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../../core/store/global.actions';
 
-
-
 @Component({
     standalone: false,
     selector: 'app-bottom-overlay',

@@ -13,7 +13,6 @@ import { RoutingService } from '../../services/routing/routing.service';
 import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../store/global.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-footer',

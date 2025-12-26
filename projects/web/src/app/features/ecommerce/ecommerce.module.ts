@@ -10,9 +10,7 @@ import { LoadingScreenComponent } from './loading-screen/pages/loading-screen/lo
     declarations: [
         // EcommerceComponent
     ],
-    imports: [
-        CommonModule, HomeModule, LoadingScreenModule,
-    ],
+    imports: [CommonModule, HomeModule, LoadingScreenModule],
 
     // Exports: permite incluir un módulo dentro de otro. Exports se pone en el módulo que quiero insertar, no en el que lo voy a insertar.
     // Incluye los componentes del módulo que quiero insertar que deben estar disponibles en el módulo donde los voy a insertar.

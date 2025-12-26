@@ -12,7 +12,6 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CategoriesActions from '../../store/categories.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-categories',

@@ -7,7 +7,6 @@ import { ProductInterface } from '../../../core/models/product.interface';
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-cart-checkout-product-card',

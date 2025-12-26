@@ -16,14 +16,12 @@ import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreC
 
 import * as OrdersActions from './orders.actions';
 
-
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class OrdersEffects {
     private actionsObservable = inject(Actions);
     private dataStorageService = inject(DataStorageService);
     private store = inject<Store<fromApp.AppState>>(Store);
     private cookiesService = inject(CookiesService);
-
 
     // Side Effect de la Get Orders Start Action de Order
     getOrdersSideEffect = createEffect(() =>

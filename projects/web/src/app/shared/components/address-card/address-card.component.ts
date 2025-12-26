@@ -7,7 +7,6 @@ import { GetAddressesPHPInterface } from '../../../core/models/getAddressesPHP.i
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-address-card',

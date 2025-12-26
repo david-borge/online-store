@@ -2,7 +2,6 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-
 import { CartInterface } from 'projects/web/src/app/core/models/cart.interface';
 import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';

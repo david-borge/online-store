@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-
 import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
 import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
 

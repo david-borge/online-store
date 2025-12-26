@@ -2,7 +2,6 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-
 import { AddressInterface } from 'projects/web/src/app/core/models/address.interface';
 import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
 import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';

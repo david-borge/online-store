@@ -7,7 +7,6 @@
 
 */
 
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
@@ -38,7 +37,6 @@ import { UserInterface } from '../../models/user.interface';
 })
 export class DataStorageService {
     private httpClient = inject(HttpClient);
-
 
     // Get all Products
     getAllProductsHttpRequest() {

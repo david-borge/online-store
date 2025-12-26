@@ -2,7 +2,6 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-
 import { ActiveOrderInterface } from '../models/activeOrder.interface';
 import { AuthMode } from '../models/authMode.enum';
 import { ProcessStatus } from '../models/processStatus.enum';

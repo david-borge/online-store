@@ -2,7 +2,6 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-
 import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
 

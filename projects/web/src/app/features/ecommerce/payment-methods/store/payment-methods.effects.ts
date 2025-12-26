@@ -17,14 +17,12 @@ import * as GlobalActions from '../../../../core/store/global.actions';
 
 import * as PaymentMethodsActions from './payment-methods.actions';
 
-
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class PaymentMethodEffects {
     private actionsObservable = inject(Actions);
     private dataStorageService = inject(DataStorageService);
     private store = inject<Store<fromApp.AppState>>(Store);
     private cookiesService = inject(CookiesService);
-
 
     // Side Effect de la Get PaymentMethod Start Action de PaymentMethods
     getPaymentMethodsSideEffect = createEffect(() =>

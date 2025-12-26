@@ -5,8 +5,6 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-
-
 import { ActiveOrderInterface } from 'projects/web/src/app/core/models/activeOrder.interface';
 import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
 import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';

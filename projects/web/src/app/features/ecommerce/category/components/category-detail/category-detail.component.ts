@@ -10,7 +10,6 @@ import { ProductInterface } from 'projects/web/src/app/core/models/product.inter
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as CategoriesActions from '../../../categories/store/categories.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-category-detail',

@@ -17,7 +17,6 @@ import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreC
 
 import * as CartActions from './cart.actions';
 
-
 // import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
@@ -27,7 +26,6 @@ export class CartEffects {
     private dataStorageService = inject(DataStorageService);
     private cookiesService = inject(CookiesService);
     private authService = inject(AuthService);
-
 
     // Side Effect de la Get All Countries Start Action de Cart
     getCartDataSideEffect = createEffect(() =>

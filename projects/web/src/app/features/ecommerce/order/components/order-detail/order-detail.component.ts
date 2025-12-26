@@ -10,7 +10,6 @@ import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOr
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as OrderActions from '../../store/order.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-order-detail',

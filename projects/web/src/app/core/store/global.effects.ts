@@ -16,7 +16,6 @@ import { DataStorageService } from '../services/data-storage/data-storage.servic
 
 import * as GlobalActions from './global.actions';
 
-
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class GlobalEffects {
     private actionsObservable = inject(Actions);
@@ -25,7 +24,6 @@ export class GlobalEffects {
     private dataStorageService = inject(DataStorageService);
     private authService = inject(AuthService);
     private router = inject(Router);
-
 
     // Side Effect de la Set Local Storage Key Value Action de Global
     setLocalStorageKeyValueSideEffect = createEffect(() =>
@@ -370,7 +368,9 @@ export class GlobalEffects {
 
                                 // Mensajes de error de MySQL o mis mensajes de error desde la API
                                 // Si el un mensaje de error de MySQL: Parto de "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'hewemim@mailinator.com' for key 'users.email'" y me quedo solo con el código de error "SQLSTATE[23000]"
-                                const errorCode = logInHttpRequestResponseData.resultado.includes(':')
+                                const errorCode = logInHttpRequestResponseData.resultado.includes(
+                                    ':',
+                                )
                                     ? logInHttpRequestResponseData.resultado.substring(
                                           0,
                                           logInHttpRequestResponseData.resultado.indexOf(':'),

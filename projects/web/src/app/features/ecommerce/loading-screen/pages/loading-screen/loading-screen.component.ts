@@ -1,6 +1,14 @@
 import { trigger, style, transition, animate, state } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, InjectionToken, OnDestroy, OnInit, PLATFORM_ID, AfterViewInit, inject } from '@angular/core';
+import {
+    Component,
+    InjectionToken,
+    OnDestroy,
+    OnInit,
+    PLATFORM_ID,
+    AfterViewInit,
+    inject,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -11,7 +19,6 @@ import { PreloadImagesService } from 'projects/web/src/app/core/services/preload
 
 import { PreFetchService } from '../../../../../core/services/prefetch/prefetch.service';
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-
 
 @Component({
     standalone: false,

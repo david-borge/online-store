@@ -21,7 +21,6 @@ export class CategoriesEffects {
     private dataStorageService = inject(DataStorageService);
     private store = inject<Store<fromApp.AppState>>(Store);
 
-
     // Side Effect de la Nombre Action Action de Categories
     getAllCategoriesSideEffect = createEffect(() =>
         this.actionsObservable.pipe(

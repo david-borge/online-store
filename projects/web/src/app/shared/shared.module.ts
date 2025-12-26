@@ -24,13 +24,46 @@ import { PrefetchDirective } from './directives/prefetch/prefetch.directive';
 
 @NgModule({
     declarations: [
-        AddNewAddressFormComponent, AddNewCardFormComponent, AddressCardComponent, BottomOverlayComponent, BtnWithLoadingSpinnerComponent, CartCheckoutProductCardComponent, CreditCardComponent, FeaturedProductsCarrouselComponent, ImageLoadDirective, InformativeCardComponent, PrefetchDirective, ProductCardComponent, ProductRatingComponent, ProductReviewsItemComponent, ProductsGridComponent, SectionHeaderComponent, SelectButtonComponent, SignupLoginFormComponent,
+        AddNewAddressFormComponent,
+        AddNewCardFormComponent,
+        AddressCardComponent,
+        BottomOverlayComponent,
+        BtnWithLoadingSpinnerComponent,
+        CartCheckoutProductCardComponent,
+        CreditCardComponent,
+        FeaturedProductsCarrouselComponent,
+        ImageLoadDirective,
+        InformativeCardComponent,
+        PrefetchDirective,
+        ProductCardComponent,
+        ProductRatingComponent,
+        ProductReviewsItemComponent,
+        ProductsGridComponent,
+        SectionHeaderComponent,
+        SelectButtonComponent,
+        SignupLoginFormComponent,
     ],
     imports: [CommonModule, NgOptimizedImage, ReactiveFormsModule, RouterModule],
 
     // Añadir a exports todo lo que haya puesto en declarations e imports, para que esté disponible en los otros módulos que van a usar las cosas de SharedModule.
     exports: [
-        AddressCardComponent, BottomOverlayComponent, BtnWithLoadingSpinnerComponent, CartCheckoutProductCardComponent, CreditCardComponent, FeaturedProductsCarrouselComponent, ImageLoadDirective, InformativeCardComponent, NgOptimizedImage, PrefetchDirective, ProductCardComponent, ProductRatingComponent, ProductReviewsItemComponent, ProductsGridComponent, SectionHeaderComponent, SelectButtonComponent, SignupLoginFormComponent,
+        AddressCardComponent,
+        BottomOverlayComponent,
+        BtnWithLoadingSpinnerComponent,
+        CartCheckoutProductCardComponent,
+        CreditCardComponent,
+        FeaturedProductsCarrouselComponent,
+        ImageLoadDirective,
+        InformativeCardComponent,
+        NgOptimizedImage,
+        PrefetchDirective,
+        ProductCardComponent,
+        ProductRatingComponent,
+        ProductReviewsItemComponent,
+        ProductsGridComponent,
+        SectionHeaderComponent,
+        SelectButtonComponent,
+        SignupLoginFormComponent,
     ],
 })
 export class SharedModule {}

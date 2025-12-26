@@ -4,7 +4,6 @@ import { Injectable, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-
 import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
 import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
 import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx

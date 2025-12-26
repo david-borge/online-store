@@ -11,7 +11,6 @@ import { AccountInnerPagesGuard } from '../../../core/guards/account-inner-pages
 
 import { AddressesComponent } from './pages/addresses/addresses.component';
 
-
 const addressesRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
 

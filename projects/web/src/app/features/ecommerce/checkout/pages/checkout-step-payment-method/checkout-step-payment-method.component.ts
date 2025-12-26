@@ -11,7 +11,6 @@ import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNomb
 import * as GlobalActions from '../../../../../core/store/global.actions';
 import * as PaymentMethodsActions from '../../../payment-methods/store/payment-methods.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-checkout-step-payment-method',

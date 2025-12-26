@@ -8,7 +8,6 @@ import { AuthService } from 'projects/web/src/app/core/services/auth/auth.servic
 
 import * as fromApp from './core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
-
 @Component({
     standalone: false,
     selector: 'app-root',

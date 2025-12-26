@@ -11,7 +11,6 @@ import { AccountInnerPagesGuard } from '../../../core/guards/account-inner-pages
 
 import { PaymentMethodsComponent } from './pages/payment-methods/payment-methods.component';
 
-
 const paymentMethodsRoutes: Routes = [
     // Parte de appRoutes de src/app/app-routing.module.ts relativa al nuevo módulo
 

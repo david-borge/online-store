@@ -6,7 +6,6 @@ import { CategoryInterface } from 'projects/web/src/app/core/models/category.int
 
 import * as CategoriesActions from './categories.actions'; // Importar todo y guardarlo en el alias CategoriesActions
 
-
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface CategoriesReducerStateInterface {
     // loadStatus: ProcessStatus;

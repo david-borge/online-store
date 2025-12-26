@@ -7,7 +7,6 @@ import { PaymentMethodInterface } from '../../../core/models/paymentMethod.inter
 import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
 
-
 @Component({
     standalone: false,
     selector: 'app-credit-card',

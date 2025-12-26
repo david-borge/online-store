@@ -6,7 +6,6 @@ import { GetOrdersPHPInterface } from 'projects/web/src/app/core/models/getOrder
 
 import * as OrdersActions from './orders.actions'; // Importar todo y guardarlo en el alias OrdersActions
 
-
 // Reducer State (inicial) - Tipos (definidos en una interfaz)
 export interface OrdersReducerStateInterface {
     // loadStatus: ProcessStatus;

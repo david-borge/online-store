@@ -2,8 +2,6 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs);
 
-
-
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import localeEs from '@angular/common/locales/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
