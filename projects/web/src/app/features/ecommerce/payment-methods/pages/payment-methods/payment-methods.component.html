@@ -1,84 +1,89 @@
 <!-- Payment Methods Page -->
 
 <!-- Header Tag -->
-<app-header
-    *ngIf="!showBottomOverlay"
-    [headerTagType]="'overlay-header-subpage'"
-    [overlayHeaderPageTitle]="'Payment Methods'"
-></app-header>
+@if (!showBottomOverlay) {
+    <app-header
+        [headerTagType]="'overlay-header-subpage'"
+        [overlayHeaderPageTitle]="'Payment Methods'"
+    ></app-header>
+}
 
 <!-- Main -->
 <!-- <main role="main" style="padding-bottom: var(--espacio-vertical);"> -->
-<main
-    role="main"
-    style="
-        padding-top: var(--header-altura-overlay-header-subpage);
-        padding-bottom: calc(
-            var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical)
-        );
-    "
-    *ngIf="!showBottomOverlay"
->
-    <div class="illustration-and-content-container">
-        <div class="illustration-container">
-            <!-- [Illustration] -->
-        </div>
-
-        <div class="content-container">
-            <!-- Payment Methods List -->
-            <div class="section" *ngIf="paymentMethods.length > 0">
-                <div class="container">
-                    <!-- Payment Method Cards List -->
-                    <div class="payment-method-card-list">
-                        <!-- Payment Methods -->
-                        <!-- FIXME: mostrar primero las últimas addresses añadidas -->
-                        <app-credit-card
-                            *ngFor="let paymentMethod of paymentMethods"
-                            [cardIsDefault]="1"
-                            [cardType]="paymentMethod.cardType"
-                            [cardBankName]="paymentMethod.cardBankName"
-                            [cardPersonFullName]="paymentMethod.cardPersonFullName"
-                            [cardLastFourNumbers]="paymentMethod.cardLastFourNumbers"
-                            [cardExpirationMonth]="paymentMethod.cardExpirationMonth"
-                            [cardExpirationYear]="paymentMethod.cardExpirationYear"
-                            [creditCardShowButton]="false"
-                        ></app-credit-card>
-                        <!-- TODO: Añadir la opción de cambiar el Payment Methods por defecto -->
-                        <!-- Ejemplo:
-                            [cardType]             = "'mastercard'"
-                            [cardBankName]         = "'Bank of America'"
-                            [cardPersonFullName]   = "'Leslie Flores'"
-                            [cardLastFourNumbers]  = "'0817'"
-                            [cardExpirationMonth]  = "'12'"
-                            [cardExpirationYear]   = "'25'"
-                            [creditCardShowButton] = "true"
-                        -->
+@if (!showBottomOverlay) {
+    <main
+        role="main"
+        style="
+            padding-top: var(--header-altura-overlay-header-subpage);
+            padding-bottom: calc(
+                var(--footer-altura-con-navigation-ctas-and-copy-btn-sm) + var(--espacio-vertical)
+            );
+        "
+    >
+        <div class="illustration-and-content-container">
+            <div class="illustration-container">
+                <!-- [Illustration] -->
+            </div>
+            <div class="content-container">
+                <!-- Payment Methods List -->
+                @if (paymentMethods.length > 0) {
+                    <div class="section">
+                        <div class="container">
+                            <!-- Payment Method Cards List -->
+                            <div class="payment-method-card-list">
+                                <!-- Payment Methods -->
+                                <!-- FIXME: mostrar primero las últimas addresses añadidas -->
+                                @for (paymentMethod of paymentMethods; track paymentMethod) {
+                                    <app-credit-card
+                                        [cardIsDefault]="1"
+                                        [cardType]="paymentMethod.cardType"
+                                        [cardBankName]="paymentMethod.cardBankName"
+                                        [cardPersonFullName]="paymentMethod.cardPersonFullName"
+                                        [cardLastFourNumbers]="paymentMethod.cardLastFourNumbers"
+                                        [cardExpirationMonth]="paymentMethod.cardExpirationMonth"
+                                        [cardExpirationYear]="paymentMethod.cardExpirationYear"
+                                        [creditCardShowButton]="false"
+                                    ></app-credit-card>
+                                }
+                                <!-- TODO: Añadir la opción de cambiar el Payment Methods por defecto -->
+                                <!-- Ejemplo:
+                [cardType]             = "'mastercard'"
+                [cardBankName]         = "'Bank of America'"
+                [cardPersonFullName]   = "'Leslie Flores'"
+                [cardLastFourNumbers]  = "'0817'"
+                [cardExpirationMonth]  = "'12'"
+                [cardExpirationYear]   = "'25'"
+                [creditCardShowButton] = "true"
+                -->
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="empty-text container" *ngIf="paymentMethods.length === 0">
-                There is no payment method yet.
+                }
+                @if (paymentMethods.length === 0) {
+                    <div class="empty-text container">There is no payment method yet.</div>
+                }
             </div>
         </div>
-    </div>
-</main>
+    </main>
+}
 
 <!-- Footer Tag -->
-<app-footer
-    *ngIf="!showBottomOverlay"
-    [navigationShowCtasAndCopy]="true"
-    [navigationShowCopy]="false"
-    [navigationButtonRightText]="'Add new card'"
-    [navigationButtonRightClasses]="'btn btn-outline-secondary btn-sm'"
-    [navigationShowButtonRightRightIcon]="true"
-    [navigationShowButtonRightRightIconType]="'plus'"
-></app-footer>
+@if (!showBottomOverlay) {
+    <app-footer
+        [navigationShowCtasAndCopy]="true"
+        [navigationShowCopy]="false"
+        [navigationButtonRightText]="'Add new card'"
+        [navigationButtonRightClasses]="'btn btn-outline-secondary btn-sm'"
+        [navigationShowButtonRightRightIcon]="true"
+        [navigationShowButtonRightRightIconType]="'plus'"
+    ></app-footer>
+}
 
 <!-- Bottom Overlay -->
-<app-bottom-overlay
-    *ngIf="showBottomOverlay"
-    [bottomOverlayTitle]="'Add new credit or debit card'"
-    [bottomOverlayAddButtonText]="'Add card'"
-    [bottomOverlayBodyContent]="'ADD_NEW_PAYMENT_METHOD'"
-></app-bottom-overlay>
+@if (showBottomOverlay) {
+    <app-bottom-overlay
+        [bottomOverlayTitle]="'Add new credit or debit card'"
+        [bottomOverlayAddButtonText]="'Add card'"
+        [bottomOverlayBodyContent]="'ADD_NEW_PAYMENT_METHOD'"
+    ></app-bottom-overlay>
+}

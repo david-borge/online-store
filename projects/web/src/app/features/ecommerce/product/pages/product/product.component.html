@@ -2,12 +2,13 @@
 
 <!-- Header Tag -->
 <!-- Mostrar solo si el objeto currentProduct no está vacío -->
-<app-header
-    *ngIf="imagesInThisPageLoaded"
-    [headerTagType]="'overlay-header-subpage'"
-    [overlayHeaderPageTitle]="currentProduct.name"
-    [overlayHeaderSubpageBackgroundColor]="currentProduct.cardAndHeaderBackgroundColor"
-></app-header>
+@if (imagesInThisPageLoaded) {
+    <app-header
+        [headerTagType]="'overlay-header-subpage'"
+        [overlayHeaderPageTitle]="currentProduct.name"
+        [overlayHeaderSubpageBackgroundColor]="currentProduct.cardAndHeaderBackgroundColor"
+    ></app-header>
+}
 
 <!-- Main -->
 <main

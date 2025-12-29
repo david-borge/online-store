@@ -92,20 +92,21 @@
         </div>
     </div>
 
-    <div
-        class="mt-2 error-message text-justify"
-        *ngIf="addNewCardForm.controls['cardExpirationYear'].invalid"
-    >
-        The card expiration date must be greater than the current date.
-    </div>
+    @if (addNewCardForm.controls['cardExpirationYear'].invalid) {
+        <div class="mt-2 error-message text-justify">
+            The card expiration date must be greater than the current date.
+        </div>
+    }
 
     <!-- Comprobación -->
     <!-- <button type="submit" class="mt-4 btn btn-primary w-100">Submit</button> -->
 
-    <div class="card text-bg-danger mt-5 mb-3" *ngIf="addNewCardResult !== ''">
-        <div class="card-body">
-            <h5 class="card-title">Error</h5>
-            <p class="card-text">{{ addNewCardResult }}</p>
+    @if (addNewCardResult !== '') {
+        <div class="card text-bg-danger mt-5 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text">{{ addNewCardResult }}</p>
+            </div>
         </div>
-    </div>
+    }
 </form>

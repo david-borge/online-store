@@ -58,9 +58,11 @@
                     aria-label="Country"
                     formControlName="countryId"
                 >
-                    <option *ngFor="let country of countries" value="{{ country.id }}">
-                        {{ country.name }}
-                    </option>
+                    @for (country of countries; track country) {
+                        <option value="{{ country.id }}">
+                            {{ country.name }}
+                        </option>
+                    }
                     <!-- Ejemplo: <option value="1">Spain</option> -->
                 </select>
                 <label for="countryId">Country</label>
@@ -90,10 +92,12 @@
     <!-- Comprobación -->
     <!-- <button type="submit" class="mt-4 btn btn-primary w-100">Submit</button> -->
 
-    <div class="card text-bg-danger mt-5 mb-3" *ngIf="addNewAddressResult !== ''">
-        <div class="card-body">
-            <h5 class="card-title">Error</h5>
-            <p class="card-text">{{ addNewAddressResult }}</p>
+    @if (addNewAddressResult !== '') {
+        <div class="card text-bg-danger mt-5 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text">{{ addNewAddressResult }}</p>
+            </div>
         </div>
-    </div>
+    }
 </form>

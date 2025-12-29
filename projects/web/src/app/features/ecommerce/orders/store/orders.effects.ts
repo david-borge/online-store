@@ -34,7 +34,7 @@ export class OrdersEffects {
             withLatestFrom(this.store.select('ordersReducerObservable')),
 
             // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-            switchMap((getOrdersStartActionData) => {
+            switchMap((_getOrdersStartActionData) => {
                 // Aquí puedo usar los datos del payload de la Action: getOrdersStartActionData.nombrePayloadPayload.propiedad1
 
                 // Comprobación

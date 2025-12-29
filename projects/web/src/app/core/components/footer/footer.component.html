@@ -4,36 +4,38 @@
     <div class="navigation-curve"></div>
 
     <!-- Navigation CTAs & Copy -->
-    <div class="navigation-ctas-and-copy-container" *ngIf="navigationShowCtasAndCopy">
-        <div class="navigation-ctas-and-copy container">
-            <!-- Navigation Copy -->
-            <div class="navigation-copy" *ngIf="navigationShowCopy && numberOfProductsInCart > 0">
-                <div class="navigation-copy-label">{{ navigationCopyLabel }}</div>
-                <div class="navigation-copy-price">
-                    {{ navigationCopyPrice | currency: 'EUR' : 'symbol' : '1.2-2' }}
+    @if (navigationShowCtasAndCopy) {
+        <div class="navigation-ctas-and-copy-container">
+            <div class="navigation-ctas-and-copy container">
+                <!-- Navigation Copy -->
+                @if (navigationShowCopy && numberOfProductsInCart > 0) {
+                    <div class="navigation-copy">
+                        <div class="navigation-copy-label">{{ navigationCopyLabel }}</div>
+                        <div class="navigation-copy-price">
+                            {{ navigationCopyPrice | currency: 'EUR' : 'symbol' : '1.2-2' }}
+                        </div>
+                    </div>
+                }
+                <!-- Navigation Button Right -->
+                <div class="navigation-button-right-container">
+                    <app-btn-with-loading-spinner
+                        [btnWithLoadingSpinnerText]="navigationButtonRightText"
+                        [btnWithLoadingSpinnerTextClasses]="'text-nowrap'"
+                        [btnWithLoadingSpinnerClasses]="navigationButtonRightClasses"
+                        [btnWithLoadingSpinnerSpinnerWidthAndHeight]="38"
+                        [btnWithLoadingSpinnerProcessStatus]="processStatus"
+                        [navigationShowButtonRightRightIcon]="navigationShowButtonRightRightIcon"
+                        [navigationShowButtonRightRightIconType]="
+                            navigationShowButtonRightRightIconType
+                        "
+                        (clickBtnWithLoadingSpinnerEventEmitter)="onCLickNavigationButtonRight()"
+                    ></app-btn-with-loading-spinner>
                 </div>
             </div>
-
-            <!-- Navigation Button Right -->
-            <div class="navigation-button-right-container">
-                <app-btn-with-loading-spinner
-                    [btnWithLoadingSpinnerText]="navigationButtonRightText"
-                    [btnWithLoadingSpinnerTextClasses]="'text-nowrap'"
-                    [btnWithLoadingSpinnerClasses]="navigationButtonRightClasses"
-                    [btnWithLoadingSpinnerSpinnerWidthAndHeight]="38"
-                    [btnWithLoadingSpinnerProcessStatus]="processStatus"
-                    [navigationShowButtonRightRightIcon]="navigationShowButtonRightRightIcon"
-                    [navigationShowButtonRightRightIconType]="
-                        navigationShowButtonRightRightIconType
-                    "
-                    (clickBtnWithLoadingSpinnerEventEmitter)="onCLickNavigationButtonRight()"
-                ></app-btn-with-loading-spinner>
-            </div>
+            <!-- Navigation Separator -->
+            <div class="navigation-separator"></div>
         </div>
-
-        <!-- Navigation Separator -->
-        <div class="navigation-separator"></div>
-    </div>
+    }
 
     <!-- Navigation Items -->
     <div class="navigation-items">

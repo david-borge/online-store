@@ -13,9 +13,13 @@
             </div>
         </div>
 
-        <div class="address-card--interior-button-container" *ngIf="addressCardShowButton">
-            <!-- Select Button -->
-            <app-select-button [selectButtonSelected]="addressCardIsDefault"></app-select-button>
-        </div>
+        @if (addressCardShowButton) {
+            <div class="address-card--interior-button-container">
+                <!-- Select Button -->
+                <app-select-button
+                    [selectButtonSelected]="addressCardIsDefault"
+                ></app-select-button>
+            </div>
+        }
     </button>
 </div>

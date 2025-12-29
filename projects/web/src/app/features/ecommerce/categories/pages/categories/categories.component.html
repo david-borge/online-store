@@ -28,27 +28,25 @@
         <!-- Categories List -->
         <div class="container h-100">
             <!-- Solo mostrar las categorias cuando se hayan cargado, para evitar flashazos de información incompleta. -->
-            <div id="categories-lists" class="h-100" *ngIf="allCategories.length !== 0">
-                <!-- Categories List -->
-                <div class="categories-list">
-                    <!-- Nota: el array empieza en cero mientras que los ids en la BBDD empiezan en 1, por eso resto 1 al índice -->
-
-                    <!-- Category Card - Tech-->
-                    <app-category-card [category]="allCategories[1 - 1]"></app-category-card>
-
-                    <!-- Category Card - Music -->
-                    <app-category-card [category]="allCategories[3 - 1]"></app-category-card>
+            @if (allCategories.length !== 0) {
+                <div id="categories-lists" class="h-100">
+                    <!-- Categories List -->
+                    <div class="categories-list">
+                        <!-- Nota: el array empieza en cero mientras que los ids en la BBDD empiezan en 1, por eso resto 1 al índice -->
+                        <!-- Category Card - Tech-->
+                        <app-category-card [category]="allCategories[1 - 1]"></app-category-card>
+                        <!-- Category Card - Music -->
+                        <app-category-card [category]="allCategories[3 - 1]"></app-category-card>
+                    </div>
+                    <!-- Categories List -->
+                    <div class="categories-list">
+                        <!-- Category Card - Reading -->
+                        <app-category-card [category]="allCategories[2 - 1]"></app-category-card>
+                        <!-- Category Card - Fashion -->
+                        <app-category-card [category]="allCategories[4 - 1]"></app-category-card>
+                    </div>
                 </div>
-
-                <!-- Categories List -->
-                <div class="categories-list">
-                    <!-- Category Card - Reading -->
-                    <app-category-card [category]="allCategories[2 - 1]"></app-category-card>
-
-                    <!-- Category Card - Fashion -->
-                    <app-category-card [category]="allCategories[4 - 1]"></app-category-card>
-                </div>
-            </div>
+            }
         </div>
     </app-loading-spinner>
 </main>

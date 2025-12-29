@@ -198,7 +198,7 @@ export class PaymentMethodEffects {
                     debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                     Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                        switchMap((changeDefaultPaymentMethodHttpRequestResponse) => {
+                        switchMap((_changeDefaultPaymentMethodHttpRequestResponse) => {
                             // Comprobación
                             // console.log('changeDefaultPaymentMethodSideEffect - changeDefaultPaymentMethodHttpRequestResponse:');
                             // console.log(changeDefaultPaymentMethodHttpRequestResponse);

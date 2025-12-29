@@ -31,14 +31,15 @@
         <!-- Order Products List -->
         <div class="order-products-list">
             <!-- Cart and Checkout Product Card -->
-            <app-cart-checkout-product-card
-                *ngFor="let product of orderProducts"
-                [cartCheckoutProductCardShowButtons]="false"
-                [productImageThumbnail]="product.imageThumbnail"
-                [productName]="product.name"
-                [productPrice]="product.price"
-                [productQuantity]="product.productQuantity"
-            ></app-cart-checkout-product-card>
+            @for (product of orderProducts; track product) {
+                <app-cart-checkout-product-card
+                    [cartCheckoutProductCardShowButtons]="false"
+                    [productImageThumbnail]="product.imageThumbnail"
+                    [productName]="product.name"
+                    [productPrice]="product.price"
+                    [productQuantity]="product.productQuantity"
+                ></app-cart-checkout-product-card>
+            }
         </div>
     </div>
 
@@ -66,12 +67,12 @@
                 [addressCardIsDefault]="1"
             ></app-address-card>
             <!-- Ejemplo:
-                [addressCardFullName] = "'Leslie Flores'"
-                [addressCardAddress]    = "'2972 Westheimer Rd. '"
-                [addressCardPostalCode] = "'85486'"
-                [addressCardCity]       = "'Santa Ana, Illinois '"
-                [addressCardCountry]    = "'United States of America'"
-            -->
+      [addressCardFullName] = "'Leslie Flores'"
+      [addressCardAddress]    = "'2972 Westheimer Rd. '"
+      [addressCardPostalCode] = "'85486'"
+      [addressCardCity]       = "'Santa Ana, Illinois '"
+      [addressCardCountry]    = "'United States of America'"
+      -->
         </div>
     </div>
 
@@ -99,34 +100,35 @@
                 [cardIsDefault]="1"
             ></app-credit-card>
             <!-- Ejemplo:
-                [cardType]            = "'mastercard'"
-                [cardBankName]        = "'Bank of America'"
-                [cardPersonFullName]  = "'Leslie Flores'"
-                [cardLastFourNumbers] = "'0817'"
-                [cardExpirationMonth] = "'12'"
-                [cardExpirationYear]  = "'25'"
-            -->
+      [cardType]            = "'mastercard'"
+      [cardBankName]        = "'Bank of America'"
+      [cardPersonFullName]  = "'Leslie Flores'"
+      [cardLastFourNumbers] = "'0817'"
+      [cardExpirationMonth] = "'12'"
+      [cardExpirationYear]  = "'25'"
+      -->
         </div>
     </div>
 </main>
 
 <!-- Pay Now Button Container -->
-<div class="pay-now-container" *ngIf="orderTotal !== 0">
-    <div class="pay-now-copy">
-        <div class="pay-now-copy-label">Order total</div>
-        <div class="pay-now-copy-price">
-            {{ orderTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}
+@if (orderTotal !== 0) {
+    <div class="pay-now-container">
+        <div class="pay-now-copy">
+            <div class="pay-now-copy-label">Order total</div>
+            <div class="pay-now-copy-price">
+                {{ orderTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}
+            </div>
+        </div>
+        <div class="pay-now-button-container">
+            <app-btn-with-loading-spinner
+                [btnWithLoadingSpinnerText]="payNowButtonText"
+                [btnWithLoadingSpinnerTextClasses]="'text-nowrap'"
+                [btnWithLoadingSpinnerClasses]="'btn btn-tertiary btn-lg w-100 btn-with-icon'"
+                [btnWithLoadingSpinnerSpinnerWidthAndHeight]="38"
+                [btnWithLoadingSpinnerProcessStatus]="saveOrderStatus"
+                (clickBtnWithLoadingSpinnerEventEmitter)="onClickPayNowButton()"
+            ></app-btn-with-loading-spinner>
         </div>
     </div>
-
-    <div class="pay-now-button-container">
-        <app-btn-with-loading-spinner
-            [btnWithLoadingSpinnerText]="payNowButtonText"
-            [btnWithLoadingSpinnerTextClasses]="'text-nowrap'"
-            [btnWithLoadingSpinnerClasses]="'btn btn-tertiary btn-lg w-100 btn-with-icon'"
-            [btnWithLoadingSpinnerSpinnerWidthAndHeight]="38"
-            [btnWithLoadingSpinnerProcessStatus]="saveOrderStatus"
-            (clickBtnWithLoadingSpinnerEventEmitter)="onClickPayNowButton()"
-        ></app-btn-with-loading-spinner>
-    </div>
-</div>
+}

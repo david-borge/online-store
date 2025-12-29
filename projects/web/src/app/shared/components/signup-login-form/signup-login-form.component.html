@@ -4,34 +4,36 @@
     [formGroup]="signUpLogInForm"
     (ngSubmit)="onSubmit()"
 >
-    <div class="row" *ngIf="showFirstAndLastNameFields">
-        <div class="col-6">
-            <div class="form-floating mb-4">
-                <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    class="form-control"
-                    placeholder="First name"
-                    formControlName="firstName"
-                />
-                <label for="firstName">First name</label>
+    @if (showFirstAndLastNameFields) {
+        <div class="row">
+            <div class="col-6">
+                <div class="form-floating mb-4">
+                    <input
+                        id="firstName"
+                        name="firstName"
+                        type="text"
+                        class="form-control"
+                        placeholder="First name"
+                        formControlName="firstName"
+                    />
+                    <label for="firstName">First name</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-floating mb-4">
+                    <input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Last name"
+                        formControlName="lastName"
+                    />
+                    <label for="lastName">Last name</label>
+                </div>
             </div>
         </div>
-        <div class="col-6">
-            <div class="form-floating mb-4">
-                <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    class="form-control"
-                    placeholder="Last name"
-                    formControlName="lastName"
-                />
-                <label for="lastName">Last name</label>
-            </div>
-        </div>
-    </div>
+    }
 
     <div class="input-group mb-4">
         <span class="input-group-text input-group-text-floating">
@@ -93,10 +95,12 @@
         I want to {{ authMode === AuthMode.SIGNUP ? 'Log In' : 'Sign Up' }}
     </button>
 
-    <div class="card text-bg-danger mt-5 mb-3" *ngIf="signUpLogInResult !== ''">
-        <div class="card-body">
-            <h5 class="card-title">Error</h5>
-            <p class="card-text">{{ signUpLogInResult }}</p>
+    @if (signUpLogInResult !== '') {
+        <div class="card text-bg-danger mt-5 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text">{{ signUpLogInResult }}</p>
+            </div>
         </div>
-    </div>
+    }
 </form>

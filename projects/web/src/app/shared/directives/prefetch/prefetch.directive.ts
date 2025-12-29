@@ -23,7 +23,7 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
     private platformId = inject<InjectionToken<object>>(PLATFORM_ID);
 
     @Input() prefetchMode: ('LOAD' | 'HOVER' | 'VISIBLE')[] = ['VISIBLE'];
-    @Output() prefetch = new EventEmitter<void>();
+    @Output() appPrefetch = new EventEmitter<void>();
 
     observer = {} as IntersectionObserver;
     loaded = false;
@@ -75,7 +75,7 @@ export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
             //     return undefined;
             // }
 
-            this.prefetch.next();
+            this.appPrefetch.next();
         }
     }
 }

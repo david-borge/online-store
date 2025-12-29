@@ -26,43 +26,49 @@
 
         <div class="content-container">
             <!-- Payment Method List -->
-            <div class="section" *ngIf="paymentMethods.length > 0">
-                <div class="container">
-                    <div class="select-the-address-or-card">Select the card:</div>
-
-                    <!-- Payment Method Card List -->
-                    <div class="payment-method-card-list">
-                        <!-- Payment Method -->
-                        <app-credit-card
-                            *ngFor="let paymentMethod of paymentMethods; let i = index"
-                            [cardId]="paymentMethod.id"
-                            [cardType]="paymentMethod.cardType"
-                            [cardBankName]="paymentMethod.cardBankName"
-                            [cardPersonFullName]="paymentMethod.cardPersonFullName"
-                            [cardLastFourNumbers]="paymentMethod.cardLastFourNumbers"
-                            [cardExpirationMonth]="paymentMethod.cardExpirationMonth"
-                            [cardExpirationYear]="paymentMethod.cardExpirationYear"
-                            [creditCardShowButton]="true"
-                            [cardIsDefault]="paymentMethod.isDefault"
-                            [cardArrayId]="i"
-                        ></app-credit-card>
-                        <!-- Ejemplo:
-                            [cardType]             = "'mastercard'"
-                            [cardBankName]         = "'Bank of America'"
-                            [cardPersonFullName]   = "'Leslie Flores'"
-                            [cardLastFourNumbers]  = "'0817'"
-                            [cardExpirationMonth]  = "'12'"
-                            [cardExpirationYear]   = "'25'"
-                            [creditCardShowButton] = "true"
-                            [cardIsDefault]         = "1"
-                        -->
+            @if (paymentMethods.length > 0) {
+                <div class="section">
+                    <div class="container">
+                        <div class="select-the-address-or-card">Select the card:</div>
+                        <!-- Payment Method Card List -->
+                        <div class="payment-method-card-list">
+                            <!-- Payment Method -->
+                            @for (
+                                paymentMethod of paymentMethods;
+                                track paymentMethod;
+                                let i = $index
+                            ) {
+                                <app-credit-card
+                                    [cardId]="paymentMethod.id"
+                                    [cardType]="paymentMethod.cardType"
+                                    [cardBankName]="paymentMethod.cardBankName"
+                                    [cardPersonFullName]="paymentMethod.cardPersonFullName"
+                                    [cardLastFourNumbers]="paymentMethod.cardLastFourNumbers"
+                                    [cardExpirationMonth]="paymentMethod.cardExpirationMonth"
+                                    [cardExpirationYear]="paymentMethod.cardExpirationYear"
+                                    [creditCardShowButton]="true"
+                                    [cardIsDefault]="paymentMethod.isDefault"
+                                    [cardArrayId]="i"
+                                ></app-credit-card>
+                            }
+                            <!-- Ejemplo:
+              [cardType]             = "'mastercard'"
+              [cardBankName]         = "'Bank of America'"
+              [cardPersonFullName]   = "'Leslie Flores'"
+              [cardLastFourNumbers]  = "'0817'"
+              [cardExpirationMonth]  = "'12'"
+              [cardExpirationYear]   = "'25'"
+              [creditCardShowButton] = "true"
+              [cardIsDefault]         = "1"
+              -->
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
 
-            <div class="empty-text container" *ngIf="paymentMethods.length === 0">
-                There is no payment method yet.
-            </div>
+            @if (paymentMethods.length === 0) {
+                <div class="empty-text container">There is no payment method yet.</div>
+            }
         </div>
     </div>
 </main>
@@ -99,9 +105,10 @@
 </div>
 
 <!-- Bottom Overlay -->
-<app-bottom-overlay
-    *ngIf="showBottomOverlay"
-    [bottomOverlayTitle]="'Add new credit or debit card'"
-    [bottomOverlayAddButtonText]="'Add card'"
-    [bottomOverlayBodyContent]="'ADD_NEW_PAYMENT_METHOD'"
-></app-bottom-overlay>
+@if (showBottomOverlay) {
+    <app-bottom-overlay
+        [bottomOverlayTitle]="'Add new credit or debit card'"
+        [bottomOverlayAddButtonText]="'Add card'"
+        [bottomOverlayBodyContent]="'ADD_NEW_PAYMENT_METHOD'"
+    ></app-bottom-overlay>
+}

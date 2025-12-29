@@ -39,30 +39,31 @@
 
         <!-- Product or Order Copy Container -->
         <div class="product-or-order-card-copy-container">
-            <div
-                class="product-or-order-card-copy-name-manufacturer-rating-container"
-                *ngIf="productCardTypeClass !== 'product-card-order'"
-            >
-                <!-- Product Name -->
-                <div class="product-card-name" [innerHTML]="productCardTitleHeadingTagInnerHTML">
-                    <!-- Ejemplo: <h2>Chuck 70 Hi Sneakers</h2> -->
+            @if (productCardTypeClass !== 'product-card-order') {
+                <div class="product-or-order-card-copy-name-manufacturer-rating-container">
+                    <!-- Product Name -->
+                    <div
+                        class="product-card-name"
+                        [innerHTML]="productCardTitleHeadingTagInnerHTML"
+                    >
+                        <!-- Ejemplo: <h2>Chuck 70 Hi Sneakers</h2> -->
+                    </div>
+                    <!-- Product Manufacturer -->
+                    <div class="product-card-manufacturer">{{ product.manufacturer }}</div>
+                    <!-- Product Rating -->
+                    <!-- Show only if product.ratingNumber exists (is not NULL) -->
+                    @if (productCardTypeClass === 'product-card-small' && product.ratingNumber) {
+                        <app-product-rating
+                            [productCardRatingNumber]="product.ratingNumber"
+                        ></app-product-rating>
+                    }
                 </div>
-
-                <!-- Product Manufacturer -->
-                <div class="product-card-manufacturer">{{ product.manufacturer }}</div>
-
-                <!-- Product Rating -->
-                <!-- Show only if product.ratingNumber exists (is not NULL) -->
-                <app-product-rating
-                    *ngIf="productCardTypeClass === 'product-card-small' && product.ratingNumber"
-                    [productCardRatingNumber]="product.ratingNumber"
-                ></app-product-rating>
-            </div>
+            }
 
             <!-- Order Total -->
-            <div class="order-total" *ngIf="productCardTypeClass === 'product-card-order'">
-                Order total
-            </div>
+            @if (productCardTypeClass === 'product-card-order') {
+                <div class="order-total">Order total</div>
+            }
 
             <!-- Product or Order Price -->
             <div class="product-or-order-card-price">
@@ -73,28 +74,28 @@
             </div>
 
             <!-- Order Arrival Date -->
-            <div
-                class="order-arrival-date"
-                [ngClass]="{ 'order-active': orderIsActive }"
-                *ngIf="productCardTypeClass === 'product-card-order'"
-            >
-                {{
-                    (orderIsActive ? 'Arriving' : 'Arrived') +
-                        ' ' +
-                        (orderArrivalDateFormated !== ''
-                            ? orderArrivalDateFormated
-                            : (orderArrivalDate | date: 'd MMM'))
-                }}
-            </div>
+            @if (productCardTypeClass === 'product-card-order') {
+                <div class="order-arrival-date" [ngClass]="{ 'order-active': orderIsActive }">
+                    {{
+                        (orderIsActive ? 'Arriving' : 'Arrived') +
+                            ' ' +
+                            (orderArrivalDateFormated !== ''
+                                ? orderArrivalDateFormated
+                                : (orderArrivalDate | date: 'd MMM'))
+                    }}
+                </div>
+            }
         </div>
 
         <!-- Order Button -->
-        <div class="order-button" *ngIf="productCardTypeClass === 'product-card-order'">
-            <div class="order-button--icon-container">
-                <!-- Icon: chevron-right -->
-                <!-- prettier-ignore -->
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        @if (productCardTypeClass === 'product-card-order') {
+            <div class="order-button">
+                <div class="order-button--icon-container">
+                    <!-- Icon: chevron-right -->
+                    <!-- prettier-ignore -->
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#363939" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
             </div>
-        </div>
+        }
     </a>
 </div>
