@@ -1,9 +1,7 @@
 # Online Store
 
 <!--
-    TODO: minimise angular code in production build
-    TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
-    TODO: delete unused subdomains in Ionos (online-store-dev.davidborge.com...)
+    TODO: prevent regular commits to master (ONLY allow merges from other branches, like develp)
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
@@ -19,6 +17,7 @@
     TODO: take cookies service from a library i create or find one (projects\web\src\app\core\services\cookies\cookies.service.ts)
     TODO: add Lint to backend (does it work with PHP?)
     TODO: in the future, change backend to Node.js
+    TODO: move backend to online-store-backend.davidborge.com (hosted in Ionos)
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
