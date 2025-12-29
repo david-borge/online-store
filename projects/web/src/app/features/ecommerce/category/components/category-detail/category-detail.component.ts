@@ -5,10 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { ProductInterface } from 'src/app/core/models/product.interface';
-
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as CategoriesActions from '../../../categories/store/categories.actions';
+import { ProductInterface } from '@core/models/product.interface';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as CategoriesActions from '@features/ecommerce/categories/store/categories.actions';
 
 @Component({
     standalone: false,

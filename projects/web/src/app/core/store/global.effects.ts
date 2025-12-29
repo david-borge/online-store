@@ -10,9 +10,9 @@ import { catchError, switchMap } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 
-import { AuthService } from '../services/auth/auth.service';
-import { CookiesService } from '../services/cookies/cookies.service';
-import { DataStorageService } from '../services/data-storage/data-storage.service';
+import { AuthService } from '@core/services/auth/auth.service';
+import { CookiesService } from '@core/services/cookies/cookies.service';
+import { DataStorageService } from '@core/services/data-storage/data-storage.service';
 
 import * as GlobalActions from './global.actions';
 

@@ -7,14 +7,14 @@
 
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromAddresses from '../../features/ecommerce/addresses/store/addresses.reducer';
-import * as fromCart from '../../features/ecommerce/cart/store/cart.reducer';
-import * as fromCategories from '../../features/ecommerce/categories/store/categories.reducer';
-import * as fromHome from '../../features/ecommerce/home/store/home.reducer';
-import * as fromOrder from '../../features/ecommerce/order/store/order.reducer';
-import * as fromOrders from '../../features/ecommerce/orders/store/orders.reducer';
-import * as fromPaymentMethods from '../../features/ecommerce/payment-methods/store/payment-methods.reducer';
-import * as fromProduct from '../../features/ecommerce/product/store/product.reducer';
+import * as fromAddresses from '@features/ecommerce/addresses/store/addresses.reducer';
+import * as fromCart from '@features/ecommerce/cart/store/cart.reducer';
+import * as fromCategories from '@features/ecommerce/categories/store/categories.reducer';
+import * as fromHome from '@features/ecommerce/home/store/home.reducer';
+import * as fromOrder from '@features/ecommerce/order/store/order.reducer';
+import * as fromOrders from '@features/ecommerce/orders/store/orders.reducer';
+import * as fromPaymentMethods from '@features/ecommerce/payment-methods/store/payment-methods.reducer';
+import * as fromProduct from '@features/ecommerce/product/store/product.reducer';
 
 import * as fromGlobal from './global.reducer';
 

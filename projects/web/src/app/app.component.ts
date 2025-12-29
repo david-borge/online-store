@@ -7,8 +7,8 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { AuthService } from './core/services/auth/auth.service';
-import * as fromApp from './core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { AuthService } from '@core/services/auth/auth.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 registerLocaleData(localeEs);
 

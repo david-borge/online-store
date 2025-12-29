@@ -2,10 +2,10 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import { AddressInterface } from 'src/app/core/models/address.interface';
-import { CountryInterface } from 'src/app/core/models/country.interface';
-import { GetAddressesPHPInterface } from 'src/app/core/models/getAddressesPHP.interface';
-import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
+import { AddressInterface } from '@core/models/address.interface';
+import { CountryInterface } from '@core/models/country.interface';
+import { GetAddressesPHPInterface } from '@core/models/getAddressesPHP.interface';
+import { ProcessStatus } from '@core/models/processStatus.enum';
 
 import * as AddressesActions from './addresses.actions'; // Importar todo y guardarlo en el alias AddressesActions
 

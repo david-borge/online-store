@@ -15,10 +15,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { PreloadImagesService } from 'src/app/core/services/preload-images/preload-images.service';
-
-import { PreFetchService } from '../../../../../core/services/prefetch/prefetch.service';
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { PreFetchService } from '@core/services/prefetch/prefetch.service';
+import { PreloadImagesService } from '@core/services/preload-images/preload-images.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 @Component({
     standalone: false,

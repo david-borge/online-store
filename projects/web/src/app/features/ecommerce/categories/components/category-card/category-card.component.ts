@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { CategoryInterface } from 'src/app/core/models/category.interface';
+import { CategoryInterface } from '@core/models/category.interface';
 
 @Component({
     standalone: false,

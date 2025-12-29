@@ -9,14 +9,14 @@ import { Store } from '@ngrx/store';
 
 import { take } from 'rxjs';
 
-import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
-import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
-import * as OrderActions from '../../../features/ecommerce/order/store/order.actions';
-import * as OrdersActions from '../../../features/ecommerce/orders/store/orders.actions';
-import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../store/global.actions';
-import { CookiesService } from '../cookies/cookies.service';
+import { CookiesService } from '@core/services/cookies/cookies.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '@core/store/global.actions';
+import * as AddressesActions from '@features/ecommerce/addresses/store/addresses.actions';
+import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
+import * as OrderActions from '@features/ecommerce/order/store/order.actions';
+import * as OrdersActions from '@features/ecommerce/orders/store/orders.actions';
+import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/store/payment-methods.actions';
 
 @Injectable({
     providedIn: 'root',

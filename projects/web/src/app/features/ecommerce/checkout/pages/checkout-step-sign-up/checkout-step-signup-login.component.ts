@@ -4,10 +4,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { AuthMode } from 'src/app/core/models/authMode.enum';
-import { UserInterface } from 'src/app/core/models/user.interface';
-
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { AuthMode } from '@core/models/authMode.enum';
+import { UserInterface } from '@core/models/user.interface';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 @Component({
     standalone: false,

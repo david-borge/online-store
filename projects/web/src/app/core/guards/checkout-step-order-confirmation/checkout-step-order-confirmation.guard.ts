@@ -7,9 +7,9 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
-import { AuthService } from '../../services/auth/auth.service';
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { GetCartDataPHPInterface } from '@core/models/GetCartDataPHP.interface';
+import { AuthService } from '@core/services/auth/auth.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 @Injectable({
     providedIn: 'root',

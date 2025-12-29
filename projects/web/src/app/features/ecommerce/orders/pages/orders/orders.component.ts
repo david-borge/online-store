@@ -4,10 +4,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetOrdersPHPInterface } from 'src/app/core/models/getOrdersPHP.interface';
-
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as OrdersActions from '../../store/orders.actions';
+import { GetOrdersPHPInterface } from '@core/models/getOrdersPHP.interface';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as OrdersActions from '@features/ecommerce/orders/store/orders.actions';
 
 @Component({
     standalone: false,

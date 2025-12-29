@@ -5,10 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { CategoryInterface } from 'src/app/core/models/category.interface';
-import { PreloadImagesService } from 'src/app/core/services/preload-images/preload-images.service';
-
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { CategoryInterface } from '@core/models/category.interface';
+import { PreloadImagesService } from '@core/services/preload-images/preload-images.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 @Component({
     standalone: false,
@@ -35,7 +34,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
       Paso 2.2. Cuando termine la HTTP Request, guardar los datos en la Store correspondiente.
 
     Paso 3. Una vez los datos estén en la Store, cargar las imágenes de la página actual (pre-load):
-      Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+      Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), sacar el listado de imágenes de la página actual (usando la directiva de atributo appImageLoadDirective en las <img>).
       Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
       Paso 3.3. Cuando se vayan cargando las imágenes de la página actual (ellas solas con <img>), ir apuntándolo en la Store (propiedad numberOfImagesInThisPageLoaded) (usando el ImageLoadDirective > @HostListener('load')).
       Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).

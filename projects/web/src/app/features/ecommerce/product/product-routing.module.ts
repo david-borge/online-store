@@ -7,7 +7,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductGuard } from '../../../core/guards/product/product.guard';
+import { ProductGuard } from '@core/guards/product/product.guard';
 
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductComponent } from './pages/product/product.component';

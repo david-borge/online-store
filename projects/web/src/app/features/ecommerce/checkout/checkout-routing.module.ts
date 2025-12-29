@@ -7,11 +7,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CheckoutStepAddressGuard } from '../../../core/guards/checkout-step-address/checkout-step-address.guard';
-import { CheckoutStepOrderConfirmationGuard } from '../../../core/guards/checkout-step-order-confirmation/checkout-step-order-confirmation.guard';
-import { CheckoutStepOrderReviewGuard } from '../../../core/guards/checkout-step-order-review/checkout-step-order-review.guard';
-import { CheckoutStepPaymentMethodGuard } from '../../../core/guards/checkout-step-payment-method/checkout-step-payment-method.guard';
-import { CheckoutStepSignupLoginGuard } from '../../../core/guards/checkout-step-signup-login/checkout-step-signup-login.guard';
+import { CheckoutStepAddressGuard } from '@core/guards/checkout-step-address/checkout-step-address.guard';
+import { CheckoutStepOrderConfirmationGuard } from '@core/guards/checkout-step-order-confirmation/checkout-step-order-confirmation.guard';
+import { CheckoutStepOrderReviewGuard } from '@core/guards/checkout-step-order-review/checkout-step-order-review.guard';
+import { CheckoutStepPaymentMethodGuard } from '@core/guards/checkout-step-payment-method/checkout-step-payment-method.guard';
+import { CheckoutStepSignupLoginGuard } from '@core/guards/checkout-step-signup-login/checkout-step-signup-login.guard';
 
 import { CheckoutStepAddressComponent } from './pages/checkout-step-address/checkout-step-address.component';
 import { CheckoutStepOrderConfirmationComponent } from './pages/checkout-step-order-confirmation/checkout-step-order-confirmation.component';

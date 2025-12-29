@@ -3,6 +3,21 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "src/*": ["*"],
+            "@core/*": ["app/core/*"],
+            "@core/components/*": ["app/core/components/*"],
+            "@core/guards/*": ["app/core/guards/*"],
+            "@core/models/*": ["app/core/models/*"],
+            "@core/services/*": ["app/core/services/*"],
+            "@core/store/*": ["app/core/store/*"],
+            "@features/admin/*": ["app/features/admin/*"],
+            "@features/ecommerce/*": ["app/features/ecommerce/*"],
+            "@shared/*": ["app/shared/*"],
+            "@shared/components/*": ["app/shared/components/*"],
+            "@shared/directives/*": ["app/shared/directives/*"]
+        },
         "outDir": "./out-tsc/spec",
         "types": ["jasmine"]
     },

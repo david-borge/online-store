@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { GetCurrentProductReviewsPHPInterface } from '../../../core/models/getCurrentProductReviewsPHP.interface';
+import { GetCurrentProductReviewsPHPInterface } from '@core/models/getCurrentProductReviewsPHP.interface';
 
 @Component({
     standalone: false,

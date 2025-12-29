@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostBinding, Input, Output, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProcessStatus } from '../../../core/models/processStatus.enum';
+import { ProcessStatus } from '@core/models/processStatus.enum';
 
 @Component({
     standalone: false,
@@ -23,7 +23,7 @@ export class BtnWithLoadingSpinnerComponent implements OnInit {
     @Input() formIsValid = true;
 
     // Propiedades - Eventos
-    @Output() onClickBtnWithLoadingSpinnerEventEmitter = new EventEmitter<void>(); // IMPORTANTE: si tipoDeEventDataONombreQueYoQuiera es un objeto (como {serverName: string, serverContent: string}) el nombre que de las propiedades del objeto aquí debe ser el mismo en el componente en el que recojo el evento emitido.
+    @Output() clickBtnWithLoadingSpinnerEventEmitter = new EventEmitter<void>(); // IMPORTANTE: si tipoDeEventDataONombreQueYoQuiera es un objeto (como {serverName: string, serverContent: string}) el nombre que de las propiedades del objeto aquí debe ser el mismo en el componente en el que recojo el evento emitido.
 
     // Propiedades - Propiedades CSS de <app-btn-with-loading-spinner>
     @HostBinding('style.display') display = 'block';
@@ -39,6 +39,6 @@ export class BtnWithLoadingSpinnerComponent implements OnInit {
     }
 
     onClickBtnWithLoadingSpinner() {
-        this.onClickBtnWithLoadingSpinnerEventEmitter.emit();
+        this.clickBtnWithLoadingSpinnerEventEmitter.emit();
     }
 }

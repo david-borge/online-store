@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../shared/shared.module';
-
-import { FooterComponent } from './components/footer/footer.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { FooterComponent } from '@core/components/footer/footer.component';
+import { HeaderComponent } from '@core/components/header/header.component';
+import { LoadingSpinnerComponent } from '@core/components/loading-spinner/loading-spinner.component';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
     declarations: [FooterComponent, HeaderComponent, LoadingSpinnerComponent],

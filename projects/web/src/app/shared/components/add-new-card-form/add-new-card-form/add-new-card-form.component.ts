@@ -14,10 +14,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
-
-import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as PaymentMethodsActions from '../../../../features/ecommerce/payment-methods/store/payment-methods.actions';
+import { ProcessStatus } from '@core/models/processStatus.enum';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/store/payment-methods.actions';
 
 @Component({
     standalone: false,

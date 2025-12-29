@@ -7,7 +7,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AccountInnerPagesGuard } from '../../../core/guards/account-inner-pages/account-inner-pages.guard';
+import { AccountInnerPagesGuard } from '@core/guards/account-inner-pages/account-inner-pages.guard';
 
 import { AddressesComponent } from './pages/addresses/addresses.component';
 

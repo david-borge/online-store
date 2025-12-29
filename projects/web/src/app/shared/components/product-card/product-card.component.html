@@ -19,8 +19,8 @@
                     type="image/webp"
                 />
                 <!-- <img ngSrc="{{product.imageThumbnail}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority> -->
-                <!-- <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority imageLoadDirective> -->
-                <!-- <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{( (product.imageWidth != '') ? product.imageWidth : orderImageWidth )}}" height="{{( (product.imageHeight != '') ? product.imageHeight : orderImageHeight )}}" priority imageLoadDirective> -->
+                <!-- <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{product.imageWidth}}" height="{{product.imageHeight}}" priority appImageLoadDirective> -->
+                <!-- <img ngSrc="{{( (orderImageThumbnail != '') ? orderImageThumbnail : product.imageThumbnail )}}.png" alt="{{product.name}}" width="{{( (product.imageWidth != '') ? product.imageWidth : orderImageWidth )}}" height="{{( (product.imageHeight != '') ? product.imageHeight : orderImageHeight )}}" priority appImageLoadDirective> -->
                 <img
                     ngSrc="{{
                         orderImageThumbnail !== '' ? orderImageThumbnail : product.imageThumbnail
@@ -29,7 +29,7 @@
                     width="{{ product.imageWidth ? product.imageWidth : orderImageWidth }}"
                     height="{{ product.imageHeight ? product.imageHeight : orderImageHeight }}"
                     priority
-                    imageLoadDirective
+                    appImageLoadDirective
                 />
                 <!-- Ejemplo: -->
                 <!-- <source srcset="/assets/img/products/dualsense-wireless-controller-thumbnail.webp" type="image/webp"> -->

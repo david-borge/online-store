@@ -1,17 +1,17 @@
 // Fuente: https://stackoverflow.com/questions/43301624/angular-img-loading-directive
-// Proceso de carga de una página: Paso 3.1. Sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+// Proceso de carga de una página: Paso 3.1. Sacar el listado de imágenes de la página actual (usando la directiva de atributo appImageLoadDirective en las <img>).
 
 import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as CategoriesActions from '../../../features/ecommerce/categories/store/categories.actions';
-import * as HomeActions from '../../../features/ecommerce/home/store/home.actions';
-import * as ProductActions from '../../../features/ecommerce/product/store/product.actions';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as CategoriesActions from '@features/ecommerce/categories/store/categories.actions';
+import * as HomeActions from '@features/ecommerce/home/store/home.actions';
+import * as ProductActions from '@features/ecommerce/product/store/product.actions';
 
-@Directive({ standalone: false, selector: '[imageLoadDirective]' })
+@Directive({ standalone: false, selector: '[appImageLoadDirective]' })
 export class ImageLoadDirective {
     private router = inject(Router);
     private store = inject<Store<fromApp.AppState>>(Store);
@@ -26,7 +26,7 @@ export class ImageLoadDirective {
     productPageImagesLoaded = false;
 
     constructor() {
-        // - Cuando lea una imagen con el atributo imageLoadDirective (ocurre cada vez que voy al componente)
+        // - Cuando lea una imagen con el atributo appImageLoadDirective (ocurre cada vez que voy al componente)
 
         // Comprobación
         // console.log('ImageLoadDirective activada.');
@@ -39,7 +39,7 @@ export class ImageLoadDirective {
 
         // Home Store
         this.store.select('homeReducerObservable').subscribe((homeReducerData) => {
-            // Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+            // Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo appImageLoadDirective en las <img>).
             this.homePageImagesLoaded = homeReducerData.homePageImagesLoaded;
 
             // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
@@ -49,7 +49,7 @@ export class ImageLoadDirective {
 
         // Categories Store
         this.store.select('categoriesReducerObservable').subscribe((categoriesReducerData) => {
-            // Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+            // Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo appImageLoadDirective en las <img>).
             this.categoriesPageImagesLoaded = categoriesReducerData.categoriesPageImagesLoaded;
 
             // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
@@ -58,7 +58,7 @@ export class ImageLoadDirective {
                 categoriesReducerData.numberOfImagesInThisPageLoaded;
         });
 
-        // - Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo imageLoadDirective en las <img>).
+        // - Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo appImageLoadDirective en las <img>).
         // Leo de la Store si ya se han cargado las imágenes de la Product page
         this.store.select('productReducerObservable').subscribe((productReducerData) => {
             this.productPageImagesLoaded = productReducerData.productPageImagesLoaded;
@@ -192,7 +192,7 @@ export class ImageLoadDirective {
 
     // (Opcional) Cuando haya un error al cargar una imagen (porque src no es correcto o la imagen no existe, por ejemplo)
     @HostListener('error') onError() {
-        // Comprobación: elemento que tiene el atributo imageLoadDirective. Puedo acceder a sus propiedades (como src o class).
+        // Comprobación: elemento que tiene el atributo appImageLoadDirective. Puedo acceder a sus propiedades (como src o class).
         // console.log('elementRef:');
         // console.log(this.elementRef);
 

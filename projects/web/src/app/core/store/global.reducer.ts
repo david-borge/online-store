@@ -2,10 +2,10 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import { ActiveOrderInterface } from '../models/activeOrder.interface';
-import { AuthMode } from '../models/authMode.enum';
-import { ProcessStatus } from '../models/processStatus.enum';
-import { UserInterface } from '../models/user.interface';
+import { ActiveOrderInterface } from '@core/models//activeOrder.interface';
+import { AuthMode } from '@core/models//authMode.enum';
+import { ProcessStatus } from '@core/models//processStatus.enum';
+import { UserInterface } from '@core/models//user.interface';
 
 import * as GlobalActions from './global.actions'; // Importar todo y guardarlo en el alias GlobalActions
 

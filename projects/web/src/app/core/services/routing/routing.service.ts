@@ -5,8 +5,8 @@ import { Store } from '@ngrx/store';
 
 import { take } from 'rxjs';
 
-import * as GlobalActions from '../../../core/store/global.actions';
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '@core/store/global.actions';
 
 @Injectable({
     providedIn: 'root',

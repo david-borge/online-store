@@ -5,11 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { AddressInterface } from '../../../core/models/address.interface';
-import { ProcessStatus } from '../../../core/models/processStatus.enum';
-import { AccountService } from '../../../core/services/account/account.service';
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../../core/store/global.actions';
+import { AddressInterface } from '@core/models/address.interface';
+import { ProcessStatus } from '@core/models/processStatus.enum';
+import { AccountService } from '@core/services/account/account.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '@core/store/global.actions';
 
 @Component({
     standalone: false,

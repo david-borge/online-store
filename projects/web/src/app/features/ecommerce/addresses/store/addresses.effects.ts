@@ -9,13 +9,12 @@ import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 
-import { CountryInterface } from 'src/app/core/models/country.interface';
-import { GetAddressesPHPInterface } from 'src/app/core/models/getAddressesPHP.interface';
-import { CookiesService } from 'src/app/core/services/cookies/cookies.service';
-import { DataStorageService } from 'src/app/core/services/data-storage/data-storage.service';
-
-import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../../../core/store/global.actions';
+import { CountryInterface } from '@core/models/country.interface';
+import { GetAddressesPHPInterface } from '@core/models/getAddressesPHP.interface';
+import { CookiesService } from '@core/services/cookies/cookies.service';
+import { DataStorageService } from '@core/services/data-storage/data-storage.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '@core/store/global.actions';
 
 import * as AddressesActions from './addresses.actions';
 

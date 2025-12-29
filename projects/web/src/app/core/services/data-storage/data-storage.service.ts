@@ -10,23 +10,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
-import { environment } from 'src/environments/environment';
-
-import { AddressInterface } from '../../models/address.interface';
-import { CartInterface } from '../../models/cart.interface';
-import { CategoryInterface } from '../../models/category.interface';
-import { CountryInterface } from '../../models/country.interface';
-import { GetAddressesPHPInterface } from '../../models/getAddressesPHP.interface';
-import { GetCartDataPHPInterface } from '../../models/GetCartDataPHP.interface';
-import { GetCurrentProductReviewsPHPInterface } from '../../models/getCurrentProductReviewsPHP.interface';
-import { GetOrderDataPHPInterface } from '../../models/getOrderDataPHP.interface';
-import { GetOrdersPHPInterface } from '../../models/getOrdersPHP.interface';
-import { GetPaymentMethodsPHPInterface } from '../../models/getPaymentMethodsPHP.interface';
-import { OrderInterface } from '../../models/order.interface';
-import { OrderProductInterface } from '../../models/orderProduct.interface';
-import { PaymentMethodInterface } from '../../models/paymentMethod.interface';
-import { ProductInterface } from '../../models/product.interface';
-import { UserInterface } from '../../models/user.interface';
+import { AddressInterface } from '@core/models/address.interface';
+import { CartInterface } from '@core/models/cart.interface';
+import { CategoryInterface } from '@core/models/category.interface';
+import { CountryInterface } from '@core/models/country.interface';
+import { GetAddressesPHPInterface } from '@core/models/getAddressesPHP.interface';
+import { GetCartDataPHPInterface } from '@core/models/GetCartDataPHP.interface';
+import { GetCurrentProductReviewsPHPInterface } from '@core/models/getCurrentProductReviewsPHP.interface';
+import { GetOrderDataPHPInterface } from '@core/models/getOrderDataPHP.interface';
+import { GetOrdersPHPInterface } from '@core/models/getOrdersPHP.interface';
+import { GetPaymentMethodsPHPInterface } from '@core/models/getPaymentMethodsPHP.interface';
+import { OrderInterface } from '@core/models/order.interface';
+import { OrderProductInterface } from '@core/models/orderProduct.interface';
+import { PaymentMethodInterface } from '@core/models/paymentMethod.interface';
+import { ProductInterface } from '@core/models/product.interface';
+import { UserInterface } from '@core/models/user.interface';
+import { environment } from 'environments/environment';
 
 // (Antiguo) Firestore Database
 // import { Firestore, collectionData, docData } from '@angular/fire/firestore';

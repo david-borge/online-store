@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ReviewInterface } from '../../../core/models/review.interface';
+import { ReviewInterface } from '@core/models/review.interface';
 
 @Component({
     standalone: false,

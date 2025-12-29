@@ -2,10 +2,10 @@ import { Component, Input, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import { GetPaymentMethodsPHPInterface } from '../../../core/models/getPaymentMethodsPHP.interface';
-import { PaymentMethodInterface } from '../../../core/models/paymentMethod.interface';
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as PaymentMethodsActions from '../../../features/ecommerce/payment-methods/store/payment-methods.actions';
+import { GetPaymentMethodsPHPInterface } from '@core/models/getPaymentMethodsPHP.interface';
+import { PaymentMethodInterface } from '@core/models/paymentMethod.interface';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/store/payment-methods.actions';
 
 @Component({
     standalone: false,

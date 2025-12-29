@@ -5,13 +5,13 @@ import { Store } from '@ngrx/store';
 
 import { take } from 'rxjs';
 
-import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
-import { ProcessStatus } from '../../models/processStatus.enum';
-import { ProductInterface } from '../../models/product.interface';
-import { PreFetchService } from '../../services/prefetch/prefetch.service';
-import { RoutingService } from '../../services/routing/routing.service';
-import * as fromApp from '../../store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../store/global.actions';
+import { ProcessStatus } from '@core/models/processStatus.enum';
+import { ProductInterface } from '@core/models/product.interface';
+import { PreFetchService } from '@core/services/prefetch/prefetch.service';
+import { RoutingService } from '@core/services/routing/routing.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '@core/store/global.actions';
+import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
 
 @Component({
     standalone: false,

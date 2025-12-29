@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import * as fromApp from 'src/app/core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as CategoriesActions from 'src/app/features/ecommerce/categories/store/categories.actions';
-import * as HomeActions from 'src/app/features/ecommerce/home/store/home.actions';
-import * as ProductActions from 'src/app/features/ecommerce/product/store/product.actions';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as CategoriesActions from '@features/ecommerce/categories/store/categories.actions';
+import * as HomeActions from '@features/ecommerce/home/store/home.actions';
+import * as ProductActions from '@features/ecommerce/product/store/product.actions';
 
 @Injectable({
     providedIn: 'root',

@@ -5,11 +5,10 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetAddressesPHPInterface } from 'src/app/core/models/getAddressesPHP.interface';
-
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../../../../core/store/global.actions';
-import * as AddressesActions from '../../../addresses/store/addresses.actions';
+import { GetAddressesPHPInterface } from '@core/models/getAddressesPHP.interface';
+import * as GlobalActions from '@core/store//global.actions';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as AddressesActions from '@features/ecommerce/addresses/store/addresses.actions';
 
 @Component({
     standalone: false,

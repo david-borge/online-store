@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { AddressInterface } from '../../../core/models/address.interface';
+import { AddressInterface } from '@core/models/address.interface';
 
 @Component({
     standalone: false,

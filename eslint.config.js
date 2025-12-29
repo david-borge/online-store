@@ -309,6 +309,11 @@ export default tseslint.config(
                             position: 'before',
                         },
                         {
+                            pattern: '@ngrx/**',
+                            group: 'external',
+                            position: 'before',
+                        },
+                        {
                             pattern: 'rxjs/**',
                             group: 'external',
                             position: 'after',
@@ -319,7 +324,15 @@ export default tseslint.config(
                             position: 'after',
                         },
                         {
-                            pattern: '@project*/**',
+                            pattern: '@core*/**',
+                            group: 'internal',
+                        },
+                        {
+                            pattern: '@features*/**',
+                            group: 'internal',
+                        },
+                        {
+                            pattern: '@shared*/**',
                             group: 'internal',
                         },
                     ],

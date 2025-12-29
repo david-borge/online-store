@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ProductInterface } from '../../../core/models/product.interface';
+import { ProductInterface } from '@core/models/product.interface';
 
 @Component({
     standalone: false,

@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 // import { catchError, switchMap, withLatestFrom } from 'rxjs/operators'
 // import { of } from 'rxjs';
 
-// import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
+// import * as fromApp from '@core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class LoadingScreenEffects {

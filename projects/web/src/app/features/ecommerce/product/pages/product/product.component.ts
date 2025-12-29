@@ -4,12 +4,11 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
-import { ProductInterface } from 'src/app/core/models/product.interface';
-import { PreloadImagesService } from 'src/app/core/services/preload-images/preload-images.service';
-
-import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as CartActions from '../../../cart/store/cart.actions';
+import { ProcessStatus } from '@core/models/processStatus.enum';
+import { ProductInterface } from '@core/models/product.interface';
+import { PreloadImagesService } from '@core/services/preload-images/preload-images.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
 
 @Component({
     standalone: false,

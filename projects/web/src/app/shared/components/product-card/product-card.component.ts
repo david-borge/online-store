@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProductInterface } from '../../../core/models/product.interface';
-import { PreFetchService } from '../../../core/services/prefetch/prefetch.service';
+import { ProductInterface } from '@core/models/product.interface';
+import { PreFetchService } from '@core/services/prefetch/prefetch.service';
 
 @Component({
     standalone: false,

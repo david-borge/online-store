@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { CoreModule } from '../../../core/core.module';
-import { SharedModule } from '../../../shared/shared.module';
+import { CoreModule } from '@core/core.module';
+import { SharedModule } from '@shared/shared.module';
 
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutStepAddressComponent } from './pages/checkout-step-address/checkout-step-address.component';

@@ -5,12 +5,12 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { AuthMode } from '../../../core/models/authMode.enum';
-import { ProcessStatus } from '../../../core/models/processStatus.enum';
-import { AuthService } from '../../../core/services/auth/auth.service';
-import { CookiesService } from '../../../core/services/cookies/cookies.service';
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as GlobalActions from '../../../core/store/global.actions';
+import { AuthMode } from '@core/models/authMode.enum';
+import { ProcessStatus } from '@core/models/processStatus.enum';
+import { AuthService } from '@core/services/auth/auth.service';
+import { CookiesService } from '@core/services/cookies/cookies.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as GlobalActions from '@core/store/global.actions';
 
 @Component({
     standalone: false,

@@ -2,8 +2,8 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import { GetOrderDataPHPInterface } from 'src/app/core/models/getOrderDataPHP.interface';
-import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
+import { GetOrderDataPHPInterface } from '@core/models/getOrderDataPHP.interface';
+import { ProcessStatus } from '@core/models/processStatus.enum';
 
 import * as OrderActions from './order.actions'; // Importar todo y guardarlo en el alias OrderActions
 

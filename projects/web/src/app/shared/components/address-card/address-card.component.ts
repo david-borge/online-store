@@ -2,10 +2,10 @@ import { Component, Input, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import { AddressInterface } from '../../../core/models/address.interface';
-import { GetAddressesPHPInterface } from '../../../core/models/getAddressesPHP.interface';
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as AddressesActions from '../../../features/ecommerce/addresses/store/addresses.actions';
+import { AddressInterface } from '@core/models/address.interface';
+import { GetAddressesPHPInterface } from '@core/models/getAddressesPHP.interface';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as AddressesActions from '@features/ecommerce/addresses/store/addresses.actions';
 
 @Component({
     standalone: false,

@@ -9,10 +9,9 @@ import { catchError, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 
-import { GetCurrentProductReviewsPHPInterface } from 'src/app/core/models/getCurrentProductReviewsPHP.interface';
-import { DataStorageService } from 'src/app/core/services/data-storage/data-storage.service';
-
-import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import { GetCurrentProductReviewsPHPInterface } from '@core/models/getCurrentProductReviewsPHP.interface';
+import { DataStorageService } from '@core/services/data-storage/data-storage.service';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 import * as HomeActions from './home.actions';
 

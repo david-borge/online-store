@@ -2,7 +2,7 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import { GetOrdersPHPInterface } from 'src/app/core/models/getOrdersPHP.interface';
+import { GetOrdersPHPInterface } from '@core/models/getOrdersPHP.interface';
 
 import * as OrdersActions from './orders.actions'; // Importar todo y guardarlo en el alias OrdersActions
 

@@ -2,8 +2,8 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import { GetCurrentProductReviewsPHPInterface } from 'src/app/core/models/getCurrentProductReviewsPHP.interface';
-import { ProductInterface } from 'src/app/core/models/product.interface';
+import { GetCurrentProductReviewsPHPInterface } from '@core/models/getCurrentProductReviewsPHP.interface';
+import { ProductInterface } from '@core/models/product.interface';
 
 import * as HomeActions from './home.actions'; // Importar todo y guardarlo en el alias HomeActions
 

@@ -2,10 +2,10 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import { CartInterface } from 'src/app/core/models/cart.interface';
-import { GetCartDataPHPInterface } from 'src/app/core/models/GetCartDataPHP.interface';
-import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
-import { ProductInterface } from 'src/app/core/models/product.interface';
+import { CartInterface } from '@core/models/cart.interface';
+import { GetCartDataPHPInterface } from '@core/models/GetCartDataPHP.interface';
+import { ProcessStatus } from '@core/models/processStatus.enum';
+import { ProductInterface } from '@core/models/product.interface';
 
 import * as CartActions from './cart.actions'; // Importar todo y guardarlo en el alias CartActions
 

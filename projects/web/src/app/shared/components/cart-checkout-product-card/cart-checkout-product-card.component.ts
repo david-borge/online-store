@@ -2,10 +2,10 @@ import { Component, Input, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import { CartInterface } from '../../../core/models/cart.interface';
-import { ProductInterface } from '../../../core/models/product.interface';
-import * as fromApp from '../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
-import * as CartActions from '../../../features/ecommerce/cart/store/cart.actions';
+import { CartInterface } from '@core/models/cart.interface';
+import { ProductInterface } from '@core/models/product.interface';
+import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
+import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
 
 @Component({
     standalone: false,
