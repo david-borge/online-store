@@ -5,8 +5,9 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build && npm run postbuild",
-        "postbuild": "node esbuild-plugins/html-minifier.mjs",
+        "build": "ng build",
+        "prebuild": "node build-scripts/prebuild-scripts/backup-index.mjs && node build-scripts/prebuild-scripts/minify-index.mjs --prebuild",
+        "postbuild": "node build-scripts/postbuild-scripts/restore-index.mjs --postbuild",
         "build:original-script": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
