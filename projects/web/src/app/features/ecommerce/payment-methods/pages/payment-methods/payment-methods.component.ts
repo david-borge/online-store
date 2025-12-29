@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
+import { GetPaymentMethodsPHPInterface } from 'src/app/core/models/getPaymentMethodsPHP.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as PaymentMethodsActions from '../../store/payment-methods.actions';

@@ -7,9 +7,9 @@
 
 import { createAction, props } from '@ngrx/store';
 
-import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
-import { OrderInterface } from 'projects/web/src/app/core/models/order.interface';
-import { OrderProductInterface } from 'projects/web/src/app/core/models/orderProduct.interface';
+import { GetOrderDataPHPInterface } from 'src/app/core/models/getOrderDataPHP.interface';
+import { OrderInterface } from 'src/app/core/models/order.interface';
+import { OrderProductInterface } from 'src/app/core/models/orderProduct.interface';
 
 /** Save Current Order Slug Action **/
 export const SaveCurrentOrderSlug = createAction(

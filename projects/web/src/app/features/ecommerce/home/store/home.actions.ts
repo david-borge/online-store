@@ -7,8 +7,8 @@
 
 import { createAction, props } from '@ngrx/store';
 
-import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+import { GetCurrentProductReviewsPHPInterface } from 'src/app/core/models/getCurrentProductReviewsPHP.interface';
+import { ProductInterface } from 'src/app/core/models/product.interface';
 
 /** Get All Products Start Action **/
 // Side Effects asociados: getAllProductsSideEffect (toma todos los Products desde la base de datos mediante un HTTP Request)

@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
-import { GetOrderDataPHPInterface } from 'projects/web/src/app/core/models/getOrderDataPHP.interface';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+import { GetCartDataPHPInterface } from 'src/app/core/models/GetCartDataPHP.interface';
+import { GetOrderDataPHPInterface } from 'src/app/core/models/getOrderDataPHP.interface';
+import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../addresses/store/addresses.actions';

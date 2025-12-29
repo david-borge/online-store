@@ -7,7 +7,7 @@
 
 import { createAction, props } from '@ngrx/store';
 
-import { GetOrdersPHPInterface } from 'projects/web/src/app/core/models/getOrdersPHP.interface';
+import { GetOrdersPHPInterface } from 'src/app/core/models/getOrdersPHP.interface';
 
 /** Get Orders Start Action **/
 // Side Effects asociados: getOrdersSideEffect (toma los datos de la Order desde la base de datos mediante un HTTP Request)

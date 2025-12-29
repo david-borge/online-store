@@ -14,8 +14,8 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+import { CountryInterface } from 'src/app/core/models/country.interface';
+import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
 
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as AddressesActions from '../../../../features/ecommerce/addresses/store/addresses.actions';

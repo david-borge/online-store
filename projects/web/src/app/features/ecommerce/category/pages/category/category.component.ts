@@ -5,8 +5,8 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
-import { PreloadImagesService } from 'projects/web/src/app/core/services/preload-images/preload-images.service';
+import { CategoryInterface } from 'src/app/core/models/category.interface';
+import { PreloadImagesService } from 'src/app/core/services/preload-images/preload-images.service';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 

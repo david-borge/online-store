@@ -1,16 +1,20 @@
+import { CommonModule, registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
-
+import { AuthService } from './core/services/auth/auth.service';
 import * as fromApp from './core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
+registerLocaleData(localeEs);
+
 @Component({
-    standalone: false,
     selector: 'app-root',
+    imports: [CommonModule, RouterOutlet],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })

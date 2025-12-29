@@ -9,15 +9,15 @@ import { catchError, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 
-import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
-import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
-import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { CookiesService } from 'src/app/core/services/cookies/cookies.service';
+import { DataStorageService } from 'src/app/core/services/data-storage/data-storage.service';
 
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
 import * as CartActions from './cart.actions';
 
-// import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
+// import { GetCartDataPHPInterface } from 'src/app/core/models/GetCartDataPHP.interface';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class CartEffects {

@@ -9,8 +9,8 @@ import { catchError, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 
-import { CookiesService } from 'projects/web/src/app/core/services/cookies/cookies.service';
-import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
+import { CookiesService } from 'src/app/core/services/cookies/cookies.service';
+import { DataStorageService } from 'src/app/core/services/data-storage/data-storage.service';
 
 import * as fromApp from '../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 

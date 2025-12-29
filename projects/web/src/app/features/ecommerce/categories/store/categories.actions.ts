@@ -7,7 +7,7 @@
 
 import { createAction, props } from '@ngrx/store';
 
-import { CategoryInterface } from 'projects/web/src/app/core/models/category.interface';
+import { CategoryInterface } from 'src/app/core/models/category.interface';
 
 /** Get All Categories Start Action **/
 // Side Effects asociados: getAllCategoriesSideEffect (toma todos los categoryos desde la base de datos mediante un HTTP Request)

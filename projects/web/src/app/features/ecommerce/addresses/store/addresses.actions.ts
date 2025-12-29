@@ -7,9 +7,9 @@
 
 import { createAction, props } from '@ngrx/store';
 
-import { AddressInterface } from 'projects/web/src/app/core/models/address.interface';
-import { CountryInterface } from 'projects/web/src/app/core/models/country.interface';
-import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
+import { AddressInterface } from 'src/app/core/models/address.interface';
+import { CountryInterface } from 'src/app/core/models/country.interface';
+import { GetAddressesPHPInterface } from 'src/app/core/models/getAddressesPHP.interface';
 // import { AddNewAddressPHPInterface } from "projects/web/src/app/core/models/AddNewAddressPHPInterface";
 
 /** Get Addresses Start Action **/

@@ -1,16 +1,8 @@
-// /* Page Routing
-//   Array de todas las rutas de la aplicación (cada ruta es un objeto JS):
-//     - path: lo que aparece en la URL después del dominio (no hace falta poner el / inicial)
-//     - component: el componente que se carga cuando se llegue a la ruta definida en path. El componente viene a ser la nueva página
-// */
-
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { PreloadAllModules } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { LoadingScreenComponent } from './features/ecommerce/loading-screen/pages/loading-screen/loading-screen.component';
 
-const routes: Routes = [
+export const routes: Routes = [
     // Ruta de la página de inicio
     {
         path: '', // Página de inicio (sin nada después del dominio)
@@ -113,16 +105,3 @@ const routes: Routes = [
             ),
     },
 ];
-
-@NgModule({
-    imports: [
-        RouterModule.forRoot(routes, {
-            // Configuración de las rutas
-            // useHash: true  // FIXME: (en Ionos parece que sí ocurre) (SOLO si es imprescindible) Para solucionar el caso de que el servidor no devuelva el index.html de la App Angular en caso de error 404 (https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656364)
-            preloadingStrategy: PreloadAllModules, // Precargar todos los módulos que se carguen con Lazy Loading
-            initialNavigation: 'enabledBlocking',
-        }),
-    ],
-    exports: [RouterModule],
-})
-export class AppRoutingModule {}

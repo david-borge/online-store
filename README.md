@@ -1,24 +1,20 @@
 # Online Store
 
 <!--
-    TODO: add TS shortcuts for import paths
+    TODO: add absolute paths for SASS imports
+    TODO: fix SSR for some content (is it because there are still NgModules?)
+    TODO: add TS path aliases for import paths
     TODO: resolve HTTP warning in terminal when running ng serve
-    TODO: make sure the server files and SSR match the lastest version and don't have legacy code from previous Angular versions
-    TODO: change Modules to Standalone components (remove standalone: false and change basic files)
     TODO: check layout of header.component.html > "Step x of x"
     TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
-    TODO: delete Firebase Functions config (_prerender-static-routes--firebase.json)
-    TODO: deactivate pre-rendering
     TODO: delete Github config in the repo (if any)
     TODO: configure modern SSR
-    TODO: deactivate prerrendering (it is no longer needed and it causes ng build to fail)
     TODO: upload to Firebase App Hosting (supports SSR)
     TODO: check new firebase.json config after uploading
     TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
     TODO: delete from Ionos hosting
-    TODO: delete from Heroku
-    TODO: delete Heroku config file
-    TODO: delte unnecessary scripts in package.json
+    TODO: remove NgModules and turn all components to standalone
+        TODO: make standalone components an error again (instead of a warning) (in eslint.config.js, delete "'@angular-eslint/prefer-standalone': 'warn',")
     TODO: in the future, change backend to Node.js
     TODO: remove vertical scrolling in initial loading screen (appears during animations)
     TODO: take cookies service from a library i create or find one (projects\web\src\app\core\services\cookies\cookies.service.ts)

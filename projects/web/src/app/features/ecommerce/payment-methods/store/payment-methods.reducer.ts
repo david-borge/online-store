@@ -2,9 +2,9 @@
 
 import { createReducer, on } from '@ngrx/store';
 
-import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
-import { PaymentMethodInterface } from 'projects/web/src/app/core/models/paymentMethod.interface';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
+import { GetPaymentMethodsPHPInterface } from 'src/app/core/models/getPaymentMethodsPHP.interface';
+import { PaymentMethodInterface } from 'src/app/core/models/paymentMethod.interface';
+import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
 
 import * as PaymentMethodsActions from './payment-methods.actions'; // Importar todo y guardarlo en el alias PaymentMethodsActions
 

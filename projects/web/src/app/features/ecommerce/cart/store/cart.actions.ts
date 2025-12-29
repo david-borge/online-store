@@ -7,9 +7,9 @@
 
 import { createAction, props } from '@ngrx/store';
 
-import { CartInterface } from 'projects/web/src/app/core/models/cart.interface';
-import { GetCartDataPHPInterface } from 'projects/web/src/app/core/models/GetCartDataPHP.interface';
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
+import { CartInterface } from 'src/app/core/models/cart.interface';
+import { GetCartDataPHPInterface } from 'src/app/core/models/GetCartDataPHP.interface';
+import { ProductInterface } from 'src/app/core/models/product.interface';
 
 /** Increment In One The Number Of Images In This Page Action **/
 export const IncrementInOneTheNumberOfImagesInThisPage = createAction(

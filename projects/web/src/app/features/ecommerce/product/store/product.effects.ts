@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 
 // import * as fromApp from '../../../../core/store/app.reducer';  // el fromNombreComponente es una convención de NgRx
 // import * as ProductActions from './product.actions';
-// import { DataStorageService } from 'projects/web/src/app/core/services/data-storage/data-storage.service';
+// import { DataStorageService } from 'src/app/core/services/data-storage/data-storage.service';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class ProductEffects {

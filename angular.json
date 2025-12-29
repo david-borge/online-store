@@ -17,13 +17,9 @@
                 "build": {
                     "builder": "@angular/build:application",
                     "options": {
-                        "outputPath": {
-                            "base": "dist/web"
-                        },
-                        "index": "projects/web/src/index.html",
+                        "browser": "projects/web/main.ts",
                         "polyfills": ["zone.js"],
                         "tsConfig": "projects/web/tsconfig.app.json",
-                        "inlineStyleLanguage": "scss",
                         "assets": [
                             "projects/web/src/favicon.ico",
                             "projects/web/src/assets",
@@ -34,13 +30,12 @@
                             "node_modules/bootstrap/scss/bootstrap.scss",
                             "projects/web/src/styles.scss"
                         ],
-                        "scripts": [],
-                        "browser": "projects/web/src/main.ts",
-                        "server": "projects/web/src/main.server.ts",
-                        "prerender": true,
+                        "server": "projects/web/main.server.ts",
+                        "outputMode": "server",
                         "ssr": {
-                            "entry": "projects/web/server.ts"
-                        }
+                            "entry": "projects/web/src/server.ts"
+                        },
+                        "inlineStyleLanguage": "scss"
                     },
                     "configurations": {
                         "production": {
@@ -99,8 +94,8 @@
                 "deploy": {
                     "builder": "@angular/fire:deploy",
                     "options": {
-                        "prerender": true,
-                        "ssr": false,
+                        "prerender": false,
+                        "ssr": true,
                         "browserTarget": "web:build:production",
                         "firebaseProject": "online-store-7de9d",
                         "firebaseHostingSite": "online-store-7de9d",

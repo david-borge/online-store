@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
+import { GetPaymentMethodsPHPInterface } from 'src/app/core/models/getPaymentMethodsPHP.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../../../../core/store/global.actions';
@@ -58,8 +58,8 @@ export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
 
                 // Establecer si el usuario puede pasar al siguiente paso: si ha seleccionado un método de pago
                 this.reviewYourOrderButtonIsEnabled = false;
-                for (let i = 0; i < this.paymentMethods.length; i++) {
-                    if (this.paymentMethods[i].isDefault == 1) {
+                for (const paymentMethod of this.paymentMethods) {
+                    if (paymentMethod.isDefault == 1) {
                         this.reviewYourOrderButtonIsEnabled = true;
                         break;
                     }

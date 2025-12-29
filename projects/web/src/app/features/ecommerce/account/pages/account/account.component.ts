@@ -5,11 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { ActiveOrderInterface } from 'projects/web/src/app/core/models/activeOrder.interface';
-import { AuthMode } from 'projects/web/src/app/core/models/authMode.enum';
-import { ProcessStatus } from 'projects/web/src/app/core/models/processStatus.enum';
-import { UserInterface } from 'projects/web/src/app/core/models/user.interface';
-import { AuthService } from 'projects/web/src/app/core/services/auth/auth.service';
+import { ActiveOrderInterface } from 'src/app/core/models/activeOrder.interface';
+import { AuthMode } from 'src/app/core/models/authMode.enum';
+import { ProcessStatus } from 'src/app/core/models/processStatus.enum';
+import { UserInterface } from 'src/app/core/models/user.interface';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 

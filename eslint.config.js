@@ -43,6 +43,34 @@ import tseslint from 'typescript-eslint';
 // Local ESLint plugin with targeted rules for Angular development.
 const localAngularRules = {
     rules: {
+        'no-relative-imports': {
+            meta: {
+                type: 'problem',
+                docs: {
+                    description:
+                        'Disallow relative imports that traverse up directories (../, ../../, ../../../, etc.).',
+                    recommended: false,
+                },
+                schema: [],
+                messages: {
+                    noRelative:
+                        'Avoid using relative imports that traverse up directories. For better maintainability, use "TypeScript\'s Path Aliases" imports or absolute paths.',
+                },
+            },
+            create(context) {
+                return {
+                    ImportDeclaration(node) {
+                        const importPath = node.source.value;
+                        if (typeof importPath === 'string' && /^(\.\.\/){1,}/.test(importPath)) {
+                            context.report({
+                                node: node.source,
+                                messageId: 'noRelative',
+                            });
+                        }
+                    },
+                };
+            },
+        },
         'blank-line-before-angular-decorator': {
             meta: {
                 type: 'layout',
@@ -303,17 +331,13 @@ export default tseslint.config(
                     },
                 },
             ],
-            'no-restricted-imports': [
-                'error',
-                {
-                    patterns: ['../*', '../../*', '../../../*', '../../../../*'],
-                },
-            ],
+            'local/no-relative-imports': 'warn',
             '@typescript-eslint/no-unused-vars': 'off',
             '@typescript-eslint/no-explicit-any': 'warn',
             '@typescript-eslint/no-empty-function': 'warn',
             'no-useless-escape': 'warn',
             '@angular-eslint/prefer-inject': 'warn',
+            '@angular-eslint/prefer-standalone': 'warn',
             'unused-imports/no-unused-imports': 'error',
             'unused-imports/no-unused-vars': [
                 'warn',

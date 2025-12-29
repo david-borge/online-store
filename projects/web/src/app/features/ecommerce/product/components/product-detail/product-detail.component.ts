@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetCurrentProductReviewsPHPInterface } from 'projects/web/src/app/core/models/getCurrentProductReviewsPHP.interface';
-import { ProductInterface } from 'projects/web/src/app/core/models/product.interface';
-import { ReviewInterface } from 'projects/web/src/app/core/models/review.interface';
+import { GetCurrentProductReviewsPHPInterface } from 'src/app/core/models/getCurrentProductReviewsPHP.interface';
+import { ProductInterface } from 'src/app/core/models/product.interface';
+import { ReviewInterface } from 'src/app/core/models/review.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as HomeActions from '../../../home/store/home.actions';

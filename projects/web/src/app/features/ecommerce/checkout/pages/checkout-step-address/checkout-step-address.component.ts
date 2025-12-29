@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetAddressesPHPInterface } from 'projects/web/src/app/core/models/getAddressesPHP.interface';
+import { GetAddressesPHPInterface } from 'src/app/core/models/getAddressesPHP.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as GlobalActions from '../../../../../core/store/global.actions';
@@ -62,8 +62,8 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
 
                 // Establecer si el usuario puede pasar al siguiente paso: si ha seleccionado una dirección
                 this.paymentButtonIsEnabled = false;
-                for (let i = 0; i < this.addresses.length; i++) {
-                    if (this.addresses[i].isDefault == 1) {
+                for (const address of this.addresses) {
+                    if (address.isDefault == 1) {
                         this.paymentButtonIsEnabled = true;
                         break;
                     }

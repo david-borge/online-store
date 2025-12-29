@@ -6,7 +6,7 @@ import { CommonEngine } from '@angular/ssr/node';
 
 import express from 'express';
 
-import AppServerModule from './src/main.server';
+import AppServerModule from './main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -24,7 +24,7 @@ export function app(): express.Express {
     // server.get('/api/**', (req, res) => { });
     // Serve static files from /browser
     server.get(
-        '**',
+        '*',
         express.static(browserDistFolder, {
             maxAge: '1y',
             index: 'index.html',
@@ -32,7 +32,7 @@ export function app(): express.Express {
     );
 
     // All regular routes use the Angular engine
-    server.get('**', (req, res, next) => {
+    server.get('*', (req, res, next) => {
         const { protocol, originalUrl, baseUrl, headers } = req;
 
         commonEngine

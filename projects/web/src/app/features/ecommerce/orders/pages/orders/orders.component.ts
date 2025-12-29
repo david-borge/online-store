@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { GetOrdersPHPInterface } from 'projects/web/src/app/core/models/getOrdersPHP.interface';
+import { GetOrdersPHPInterface } from 'src/app/core/models/getOrdersPHP.interface';
 
 import * as fromApp from '../../../../../core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 import * as OrdersActions from '../../store/orders.actions';

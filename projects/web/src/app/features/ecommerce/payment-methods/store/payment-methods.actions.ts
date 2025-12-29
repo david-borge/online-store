@@ -7,8 +7,8 @@
 
 import { createAction, props } from '@ngrx/store';
 
-import { GetPaymentMethodsPHPInterface } from 'projects/web/src/app/core/models/getPaymentMethodsPHP.interface';
-import { PaymentMethodInterface } from 'projects/web/src/app/core/models/paymentMethod.interface';
+import { GetPaymentMethodsPHPInterface } from 'src/app/core/models/getPaymentMethodsPHP.interface';
+import { PaymentMethodInterface } from 'src/app/core/models/paymentMethod.interface';
 // import { AddNewCardPHPInterface } from "projects/web/src/app/core/models/AddNewCardPHPInterface";
 
 /** Get PaymentMethods Start Action **/
