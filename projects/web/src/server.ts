@@ -10,9 +10,9 @@ import {
 import chalk from 'chalk';
 import express from 'express';
 
-const browserDistFolder = join(import.meta.dirname, '../browser'); // 'dist/angular-ssr/browser'
+const browserDistFolder = join(import.meta.dirname, '../browser'); // 'dist/web/browser'
 // import.meta.dirname is a Node.js feature. It is the path to the folder of the current ES module file
-// Here, we are in in 'dist/angular-ssr/server/server.mjs' (from the build), so import.meta.dirname is 'dist/angular-ssr/server/' (from the build)
+// Here, we are in in 'dist/web/server/server.mjs' (from the build), so import.meta.dirname is 'dist/web/server/' (from the build)
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
@@ -39,16 +39,16 @@ app.use((req, _res, next) => {
 
 /**
  * Serve static files from /browser
- * Note: to be precise, from 'dist/angular-ssr/browser'
+ * Note: to be precise, from 'dist/web/browser'
  */
 // ⚠️ This will ONLY execute when the app is loaded for the first time (when the Express Server is used)
-// AND we are in SSR mode (with npm run serve:ssr:angular-ssr but not npm run start or ng serve)
+// AND we are in SSR mode (with npm run serve:ssr:web but not npm run start or ng serve)
 // ✅ Angular will ONLY serve static files when loading the app for the first time
 // When navigating between routes, Angular will, of course, serve the new pages dinamically itself (it' a SPA), not the Node Express Server,
 // so this express.static() and console.log() will NOT be executed
 app.use(
     express.static(
-        browserDistFolder, // 'dist/angular-ssr/browser'
+        browserDistFolder, // 'dist/web/browser'
         {
             maxAge: '1y',
             index: false,

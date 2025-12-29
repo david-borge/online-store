@@ -35,7 +35,10 @@
                         "ssr": {
                             "entry": "projects/web/src/server.ts"
                         },
-                        "inlineStyleLanguage": "scss"
+                        "inlineStyleLanguage": "scss",
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/web/src"]
+                        }
                     },
                     "configurations": {
                         "production": {

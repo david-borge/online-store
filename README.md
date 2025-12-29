@@ -1,10 +1,11 @@
 # Online Store
 
 <!--
-    TODO: add absolute paths for SASS imports
+    TODO: add TS path aliases for relative import paths
     TODO: fix SSR for some content (is it because there are still NgModules?)
-    TODO: add TS path aliases for import paths
     TODO: resolve HTTP warning in terminal when running ng serve
+    TODO: Use built-in control flow (@if) instead of directive ngIf
+        Try ng generate @angular/core:control-flow-codemod BUT check the results, as not all cases may be perfectly migrated and manual adjustments may still be needed.
     TODO: check layout of header.component.html > "Step x of x"
     TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
     TODO: delete Github config in the repo (if any)

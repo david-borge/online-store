@@ -1,4 +1,4 @@
-@use '../../../../styles.scss' as *;
+@use 'styles' as *; // Relative to "projects/web/src" because of angular.json > projects.web.architect.build.options.stylePreprocessorOptions.includePaths
 
 // Product Card
 .product-card {
