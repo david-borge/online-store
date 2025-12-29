@@ -7,7 +7,7 @@
         "start": "ng serve",
         "build": "ng build",
         "prebuild": "node build-scripts/prebuild-scripts/backup-index.mjs && node build-scripts/prebuild-scripts/minify-index.mjs --prebuild",
-        "postbuild": "node build-scripts/postbuild-scripts/restore-index.mjs --postbuild",
+        "postbuild": "node build-scripts/postbuild-scripts/restore-index.mjs && node build-scripts/postbuild-scripts/minify-dist-index.mjs --postbuild",
         "build:original-script": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
