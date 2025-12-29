@@ -1,7 +1,6 @@
 # Online Store
 
 <!--
-    TODO: prevent regular commits to master (ONLY allow merges from other branches, like develp)
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
