@@ -48,7 +48,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
                     this.processStatus = addressReducerData.addNewAddressStatus;
 
                     // bottomOverlayAddButtonText
-                    if (this.processStatus == ProcessStatus.STARTED) {
+                    if (this.processStatus === ProcessStatus.STARTED) {
                         this.bottomOverlayAddButtonText = 'Adding...';
                     }
                 });
@@ -63,7 +63,7 @@ export class BottomOverlayComponent implements OnInit, OnDestroy {
                     this.processStatus = paymentMethodsReducerData.addNewCardStatus;
 
                     // bottomOverlayAddButtonText
-                    if (this.processStatus == ProcessStatus.STARTED) {
+                    if (this.processStatus === ProcessStatus.STARTED) {
                         this.bottomOverlayAddButtonText = 'Adding...';
                     }
                 });

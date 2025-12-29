@@ -140,7 +140,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
                     this.homePageImagesLoaded = homeResponseData.homePageImagesLoaded;
                     if (!this.homePageImagesLoaded) {
                         // · Miniaturas de los productos de la home
-                        if (homeResponseData.allProducts.length != 0) {
+                        if (homeResponseData.allProducts.length !== 0) {
                             // Comprobación
                             // console.log('· Miniaturas de las categorías');
 

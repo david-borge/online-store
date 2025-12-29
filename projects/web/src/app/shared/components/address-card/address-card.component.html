@@ -1,5 +1,5 @@
 <!-- Address Card -->
-<div class="address-card" [ngClass]="{ 'address-card-selected': addressCardIsDefault == 1 }">
+<div class="address-card" [ngClass]="{ 'address-card-selected': addressCardIsDefault === 1 }">
     <button
         (click)="onClickAddressCardOrSelectButton()"
         [ngStyle]="{ cursor: !addressCardShowButton ? 'default' : 'pointer' }"

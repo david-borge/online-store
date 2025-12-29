@@ -80,7 +80,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit 
                     // console.log(allProductsResponseData);
 
                     // · Miniaturas de los productos
-                    if (allProductsResponseData.allProducts.length != 0) {
+                    if (allProductsResponseData.allProducts.length !== 0) {
                         // Comprobación
                         // console.log('· Miniaturas de los productos');
 
@@ -133,7 +133,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit 
                     // console.log(allCategoriesResponseData);
 
                     // · Miniaturas de las categorías
-                    if (allCategoriesResponseData.allCategories.length != 0) {
+                    if (allCategoriesResponseData.allCategories.length !== 0) {
                         // Comprobación
                         // console.log('· Miniaturas de las categorías');
 

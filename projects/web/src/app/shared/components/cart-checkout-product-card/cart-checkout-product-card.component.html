@@ -33,7 +33,7 @@
             >
                 <button
                     class="btn btn-link py-0"
-                    [ngClass]="{ 'delete-button': productQuantity == 1 }"
+                    [ngClass]="{ 'delete-button': productQuantity === 1 }"
                     (click)="onClickMinusOrDeleteButton()"
                     [attr.aria-label]="
                         productQuantity > 1
@@ -51,7 +51,7 @@
                     </div>
                     <div
                         class="cart-and-checkout-product-card--item-count--delete"
-                        *ngIf="productQuantity == 1"
+                        *ngIf="productQuantity === 1"
                     >
                         <!-- Icon: trash -->
                         <!-- prettier-ignore -->

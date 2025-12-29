@@ -50,7 +50,7 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
                 this.orderData = orderReducerData.orderData;
                 this.saveOrderStatus = orderReducerData.saveOrderStatus;
 
-                if (this.saveOrderStatus == ProcessStatus.STARTED) {
+                if (this.saveOrderStatus === ProcessStatus.STARTED) {
                     this.payNowButtonText = 'Paying...';
                 }
             });
@@ -99,7 +99,7 @@ export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
             });
 
         // Cargar cartData desde la Base de Datos si no están en la Cart Store (ocurre si el usuario recarga la página desde esta página)
-        if (this.orderProducts.length == 0) {
+        if (this.orderProducts.length === 0) {
             this.store.dispatch(CartActions.GetCartDataStart());
         }
 

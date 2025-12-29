@@ -124,7 +124,7 @@ export class ProductComponent implements OnInit, OnDestroy {
             .subscribe((cartReducerObservable) => {
                 // If product is done being added to cart, change the .navigation-button-right-container button text
                 this.addProductToCartStatus = cartReducerObservable.addProductToCartStatus;
-                if (this.addProductToCartStatus == ProcessStatus.ENDED_SUCCESSFULLY) {
+                if (this.addProductToCartStatus === ProcessStatus.ENDED_SUCCESSFULLY) {
                     this.footerNavigationButtonRightText = 'Added!';
 
                     // Al cabo de 1500 milisegundos
@@ -135,7 +135,7 @@ export class ProductComponent implements OnInit, OnDestroy {
                         // Resetear la propiedad por si el usuario vuelve a pulsar "Add to cart" una segunda vez (en el mismo producto o en otro)
                         this.store.dispatch(CartActions.ResetAddProductToCartStatusProperty());
                     }, 1500);
-                } else if (this.addProductToCartStatus == ProcessStatus.STARTED) {
+                } else if (this.addProductToCartStatus === ProcessStatus.STARTED) {
                     this.footerNavigationButtonRightText = 'Adding...';
                 }
             });

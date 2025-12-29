@@ -70,7 +70,7 @@ export class AccountComponent implements OnInit, OnDestroy {
                 this.logOutGlobalStatus = globalReducerData.logOutGlobalStatus;
 
                 // - logOutButtonText
-                if (this.logOutGlobalStatus == ProcessStatus.STARTED) {
+                if (this.logOutGlobalStatus === ProcessStatus.STARTED) {
                     // Comprobacion
                     // console.log('Logging out...');
 

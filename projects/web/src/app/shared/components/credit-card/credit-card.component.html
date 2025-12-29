@@ -1,5 +1,5 @@
 <!-- Credit Card -->
-<div class="credit-card {{ cardType }}" [ngClass]="{ 'credit-card-selected': cardIsDefault == 1 }">
+<div class="credit-card {{ cardType }}" [ngClass]="{ 'credit-card-selected': cardIsDefault === 1 }">
     <button (click)="onClickCreditCardOrSelectButton()">
         <!-- Credit Card - Top Info -->
         <div class="credit-card--top-info">

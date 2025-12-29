@@ -48,7 +48,7 @@ export class CheckoutStepSignupLoginGuard {
       console.log('this.cartData.length: ' + this.cartData.length);
 
       // ...and there are NO products in the Cart, redirect from '/checkout/signup-login' to '/home'
-      if ( this.cartData.length == 0 ) {
+      if ( this.cartData.length === 0 ) {
         this.router.navigate(['/home']);
       }
 

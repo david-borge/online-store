@@ -58,7 +58,7 @@ export class AddNewAddressFormComponent implements OnInit, OnDestroy {
                 this.addNewAddressStatus = addressesReducerData.addNewAddressStatus;
 
                 // Disable the form inputs if the add new address process is being done
-                if (this.addNewAddressStatus == ProcessStatus.STARTED) {
+                if (this.addNewAddressStatus === ProcessStatus.STARTED) {
                     this.addNewAddressForm.disable();
                 }
             });

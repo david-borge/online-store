@@ -39,7 +39,9 @@
                 ></app-cart-checkout-product-card>
             </div>
 
-            <div class="empty-text container" *ngIf="cartData.length == 0">Your cart is empty.</div>
+            <div class="empty-text container" *ngIf="cartData.length === 0">
+                Your cart is empty.
+            </div>
         </div>
     </div>
 </main>

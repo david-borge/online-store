@@ -158,7 +158,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                         categoriesResponseData.categoriesPageImagesLoaded;
                     if (!this.categoriesPageImagesLoaded) {
                         // · Miniaturas de las categorías
-                        if (categoriesResponseData.allCategories.length != 0) {
+                        if (categoriesResponseData.allCategories.length !== 0) {
                             // Comprobación
                             // console.log('· Miniaturas de las categorías');
 

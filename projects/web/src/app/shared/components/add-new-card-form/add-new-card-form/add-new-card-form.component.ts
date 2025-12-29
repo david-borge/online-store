@@ -55,7 +55,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
                 this.addNewCardStatus = paymentMethodsReducerData.addNewCardStatus;
 
                 // Disable the form inputs if the add new card process is being done
-                if (this.addNewCardStatus == ProcessStatus.STARTED) {
+                if (this.addNewCardStatus === ProcessStatus.STARTED) {
                     this.addNewCardForm.disable();
                 }
             });

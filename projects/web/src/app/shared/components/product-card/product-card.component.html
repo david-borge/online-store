@@ -8,7 +8,7 @@
                 : '',
     }"
 >
-    <a [routerLink]="[orderId != 0 ? '/order/' + orderId : '/product/' + product.slug]">
+    <a [routerLink]="[orderId !== 0 ? '/order/' + orderId : '/product/' + product.slug]">
         <!-- Ejemplo: <a [routerLink]="['/product/the-metamorphosis']"> -->
 
         <!-- Product Image -->
@@ -67,7 +67,7 @@
             <!-- Product or Order Price -->
             <div class="product-or-order-card-price">
                 {{
-                    (orderTotal != 0 ? orderTotal : product.price)
+                    (orderTotal !== 0 ? orderTotal : product.price)
                         | currency: 'EUR' : 'symbol' : '1.2-2'
                 }}
             </div>

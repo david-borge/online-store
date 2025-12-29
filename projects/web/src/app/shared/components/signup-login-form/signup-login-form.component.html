@@ -88,7 +88,7 @@
         class="d-block mx-auto btn"
         style="margin-top: 35px"
         (click)="onClickGoToLogInOrSignUp()"
-        [disabled]="signUpLogInStatus == ProcessStatus.STARTED"
+        [disabled]="signUpLogInStatus === ProcessStatus.STARTED"
     >
         I want to {{ authMode === AuthMode.SIGNUP ? 'Log In' : 'Sign Up' }}
     </button>

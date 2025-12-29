@@ -20,7 +20,7 @@
     <div class="illustration-and-content-container">
         <div
             class="illustration-container"
-            *ngIf="activeOrders.length == 0 && previousOrders.length == 0"
+            *ngIf="activeOrders.length === 0 && previousOrders.length === 0"
         >
             <!-- No Orders Informative Card -->
             <app-informative-card></app-informative-card>
@@ -30,7 +30,7 @@
         <div
             *ngIf="activeOrders.length > 0 || previousOrders.length > 0"
             [ngClass]="{
-                'content-container': activeOrders.length == 0 && previousOrders.length == 0,
+                'content-container': activeOrders.length === 0 && previousOrders.length === 0,
             }"
         >
             <div>
@@ -63,7 +63,7 @@
                         </div>
 
                         <!-- No Active orders -->
-                        <div *ngIf="activeOrders.length == 0">You have no active orders.</div>
+                        <div *ngIf="activeOrders.length === 0">You have no active orders.</div>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
                         </div>
 
                         <!-- No Previous orders -->
-                        <div *ngIf="previousOrders.length == 0">You have no previous orders.</div>
+                        <div *ngIf="previousOrders.length === 0">You have no previous orders.</div>
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@ export class CheckoutStepPaymentMethodGuard {
         _state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         /* // If the user is NOT logged in or there are no products in the cart, redirect from '/checkout/payment-method' or '/checkout/order-review' or '/checkout/order-confirmation' to '/home'
-    if ( !this.authService.checkIfUserIsLoggedIn() || (this.cartData.length == 0) ) {
+    if ( !this.authService.checkIfUserIsLoggedIn() || (this.cartData.length === 0) ) {
       this.router.navigate(['/home']);
     } */
 

@@ -45,7 +45,7 @@
                         type="button"
                         class="btn btn-light btn-lg"
                         (click)="hideBottomOverlay()"
-                        [disabled]="processStatus == ProcessStatus.STARTED"
+                        [disabled]="processStatus === ProcessStatus.STARTED"
                     >
                         Cancel
                     </button>

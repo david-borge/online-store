@@ -68,7 +68,7 @@
                     <h2>Reviews</h2>
                 </div>
 
-                <div class="product-reviews-list" *ngIf="currentProductReviews.length != 0">
+                <div class="product-reviews-list" *ngIf="currentProductReviews.length !== 0">
                     <app-product-reviews-item
                         *ngFor="let productReview of currentProductReviews"
                         [productReview]="productReview"
@@ -84,7 +84,7 @@
 
     <!-- Featured Products -->
     <!-- Solo mostrar las categorias cuando se hayan cargado desde la base de datos y se hayan cargado las imágenes, para evitar flashazos de información incompleta. -->
-    <div *ngIf="featuredProducts.length != 0" class="section">
+    <div *ngIf="featuredProducts.length !== 0" class="section">
         <!-- Section Header -->
         <!-- FIXME: show carousel icons after adding the functionality -->
         <app-section-header
