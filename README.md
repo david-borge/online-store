@@ -1,23 +1,25 @@
 # Online Store
 
 <!--
-    TODO: fix SSR for some content (is it because there are still NgModules?)
-    TODO: resolve HTTP warning in terminal when running ng serve
-    TODO: check layout of header.component.html > "Step x of x"
-    TODO: delete Github workflow config file (.github\workflows\deploy-to-ionos.yaml)
-    TODO: delete Github config in the repo (if any)
-    TODO: configure modern SSR
     TODO: upload to Firebase App Hosting (supports SSR)
-    TODO: check new firebase.json config after uploading
-    TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
-    TODO: delete from Ionos hosting
+        TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
+        TODO: delete Github Actions config in the repo (if any)
+    TODO: CI with GitHub Actions (have a separate production/hosting branch)
+    TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
+        This is a BIG refactor, since, according to GPT:
+            1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
+            2 Fetch Data in Resolvers or Services: Use Angular’s HttpClient in services or route resolvers.
+            3 Use TransferState: To avoid duplicate HTTP requests on the client, use Angular’s TransferState to transfer fetched data from server to client.
+            4 Example Flow:
+                1 On the server, fetch data in a resolver/service.
+                2 Store the result in TransferState.
+                3 On the client, check TransferState first before making an HTTP request.
     TODO: remove NgModules and turn all components to standalone
         TODO: make standalone components an error again (instead of a warning) (in eslint.config.js, delete "'@angular-eslint/prefer-standalone': 'warn',")
-    TODO: in the future, change backend to Node.js
     TODO: remove vertical scrolling in initial loading screen (appears during animations)
     TODO: take cookies service from a library i create or find one (projects\web\src\app\core\services\cookies\cookies.service.ts)
-    TODO: CI with GitHub Actions
     TODO: add Lint to backend (does it work with PHP?)
+    TODO: in the future, change backend to Node.js
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
