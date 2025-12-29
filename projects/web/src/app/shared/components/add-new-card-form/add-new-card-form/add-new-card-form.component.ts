@@ -145,6 +145,7 @@ export class AddNewCardFormComponent implements OnInit, OnDestroy {
     cardExpirationDateValidator(): any {
         return (formGroup: FormGroup): Record<string, any> | null => {
             const currentDate = new Date();
+            // TODO: unsed variables
             const currentMonth = currentDate.getMonth() + 1; // Adding 1 since months are zero-based
             const currentYear = currentDate.getFullYear();
 

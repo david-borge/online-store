@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import { PLATFORM_ID } from '@angular/core';
 
-@Directive({ standalone: false, selector: '[prefetch]' })
+@Directive({ standalone: false, selector: '[appPrefetch]' })
 export class PrefetchDirective implements OnInit, AfterViewInit, OnDestroy {
     private elemRef = inject(ElementRef);
     private platformId = inject<InjectionToken<object>>(PLATFORM_ID);

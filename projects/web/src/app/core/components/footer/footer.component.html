@@ -44,7 +44,7 @@
             [routerLinkActiveOptions]="{ exact: true }"
             [ngClass]="{ 'navigation-item--active': activeNavigationItem === '/home' }"
         >
-            <a routerLink="/home" (prefetch)="prefetch(['home'])" [prefetchMode]="['VISIBLE']">
+            <a routerLink="/home" (appPrefetch)="prefetch(['home'])" [prefetchMode]="['VISIBLE']">
                 <div class="navigation-icon-container">
                     <!-- Icon: home -->
                     <!-- prettier-ignore -->
@@ -64,7 +64,7 @@
         >
             <a
                 routerLink="/categories"
-                (prefetch)="prefetch(['categories'])"
+                (appPrefetch)="prefetch(['categories'])"
                 [prefetchMode]="['VISIBLE']"
             >
                 <div class="navigation-icon-container">

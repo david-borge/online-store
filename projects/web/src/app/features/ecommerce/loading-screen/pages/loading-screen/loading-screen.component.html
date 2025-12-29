@@ -269,7 +269,7 @@
                 style="margin-bottom: var(--espacio-vertical); opacity: 0"
                 [@animacionLetsBeginButton]="letsBeginButtonAnimation"
                 (@animacionLetsBeginButton.done)="animacionLetsBeginButtonEnded()"
-                (prefetch)="prefetch(['home', 'categories'])"
+                (appPrefetch)="prefetch(['home', 'categories'])"
                 [prefetchMode]="['VISIBLE']"
             >
                 Let's begin
