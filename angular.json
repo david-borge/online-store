@@ -54,7 +54,25 @@
                                     "maximumError": "5mb"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "outputHashing": "all",
+                            "optimization": {
+                                "scripts": true,
+                                "styles": {
+                                    "minify": true,
+                                    "inlineCritical": true,
+                                    "removeSpecialComments": true
+                                },
+                                "fonts": {
+                                    "inline": true
+                                }
+                            },
+                            "extractLicenses": true,
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "aot": true,
+                            "crossOrigin": "anonymous",
+                            "subresourceIntegrity": true,
+                            "serviceWorker": false
                         },
                         "development": {
                             "optimization": false,

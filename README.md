@@ -1,10 +1,9 @@
 # Online Store
 
 <!--
-    TODO: upload to Firebase App Hosting (supports SSR)
-        TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
-        TODO: delete Github Actions config in the repo (if any)
-    TODO: CI with GitHub Actions (have a separate production/hosting branch)
+    TODO: minimise angular code in production build
+    TODO: in Firebase App Hosting, connect the subdomain (it is liked in my CVs)
+    TODO: delete unused subdomains in Ionos (online-store-dev.davidborge.com...)
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
