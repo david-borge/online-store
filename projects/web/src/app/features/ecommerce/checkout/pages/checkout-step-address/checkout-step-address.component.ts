@@ -33,7 +33,10 @@ export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // Leer datos de la Global Store
+
+        // eslint-disable-next-line unused-imports/no-unused-vars
         let userEmail = '';
+        // eslint-disable-next-line unused-imports/no-unused-vars
         let totalNumberOfSteps = 0;
         this.store.select('globalReducerObservable').subscribe((globalReducerData) => {
             // Recuperar el email del usuario desde la Global Store

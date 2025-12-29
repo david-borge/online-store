@@ -1,6 +1,11 @@
 <!-- Bottom Overlay -->
 <div class="bottom-overlay">
-    <div class="bottom-overlay--overlay" (click)="hideBottomOverlay()"></div>
+    <div
+        class="bottom-overlay--overlay"
+        (click)="hideBottomOverlay()"
+        (keypress)="hideBottomOverlay()"
+        aria-hidden="true"
+    ></div>
 
     <div class="bottom-overlay--dialog">
         <div class="bottom-overlay--content">

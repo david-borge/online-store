@@ -16,8 +16,15 @@ header {
 }
 
 // Overlay Header - Espaciado vertical
-.overlay-header-left-icon-container a {
-    padding-bottom: 14.1px;
+.overlay-header-left-icon-container button {
+    padding: 0 0 14.1px;
+
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 
 // Overlay Header - Title
@@ -105,7 +112,7 @@ header {
     justify-content: flex-end;
 }
 
-.overlay-header-left-icon-container a {
+.overlay-header-left-icon-container button {
     padding-right: calc(var(--bs-gutter-x) / 2);
     padding-left: calc(var(--bs-gutter-x) / 2);
 
@@ -115,7 +122,7 @@ header {
     height: 100%;
 }
 
-.overlay-header-left-icon-container a:hover {
+.overlay-header-left-icon-container button:hover {
     cursor: pointer;
 }
 
