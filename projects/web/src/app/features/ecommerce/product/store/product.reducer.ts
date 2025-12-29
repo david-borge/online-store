@@ -31,7 +31,7 @@ export const productReducer = createReducer(
     // MUCHO CUIDADO: nunca editar el state original. Siempre hacer una copia y devolver la copia.
 
     /** Increment In One The Number Of Images In This Page Action **/
-    on(ProductActions.IncrementInOneTheNumberOfImagesInThisPage, (state, action) => ({
+    on(ProductActions.IncrementInOneTheNumberOfImagesInThisPage, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -42,7 +42,7 @@ export const productReducer = createReducer(
     })),
 
     /** Increment In One The Number Of Images In This Page Loaded Action **/
-    on(ProductActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, action) => ({
+    on(ProductActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -53,7 +53,7 @@ export const productReducer = createReducer(
     })),
 
     /** Set Product Page Has Been Previously Visited To True Action **/
-    on(ProductActions.SetProductPageHasBeenPrevouslyVisitedToTrue, (state, action) => ({
+    on(ProductActions.SetProductPageHasBeenPrevouslyVisitedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -64,7 +64,7 @@ export const productReducer = createReducer(
     })),
 
     /** Set Product Page Images Loaded To True Action **/
-    on(ProductActions.SetProductPageImagesLoadedToTrue, (state, action) => ({
+    on(ProductActions.SetProductPageImagesLoadedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 

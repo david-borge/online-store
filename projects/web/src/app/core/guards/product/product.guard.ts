@@ -15,10 +15,10 @@ export class ProductGuard {
     private store = inject<Store<fromApp.AppState>>(Store);
 
     canDeactivate(
-        component: unknown,
-        currentRoute: ActivatedRouteSnapshot,
-        currentState: RouterStateSnapshot,
-        nextState?: RouterStateSnapshot,
+        _component: unknown,
+        _currentRoute: ActivatedRouteSnapshot,
+        _currentState: RouterStateSnapshot,
+        _nextState?: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         // Comprobacion
         // console.log('ProductGuard canDeactivate');

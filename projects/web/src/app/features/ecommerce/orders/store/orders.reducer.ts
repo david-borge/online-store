@@ -28,7 +28,7 @@ export const ordersReducer = createReducer(
 
     /** Get Orders Data Start Action **/
     // Side Effects asociados: getOrderDataSideEffect (toma los datos de la Orders desde la base de datos mediante un HTTP Request)
-    on(OrdersActions.GetOrdersStart, (state, action) => ({
+    on(OrdersActions.GetOrdersStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -48,7 +48,7 @@ export const ordersReducer = createReducer(
     })),
 
     /** |-> Get Orders Data End Failure Action **/
-    on(OrdersActions.GetOrdersEndFailure, (state, action) => ({
+    on(OrdersActions.GetOrdersEndFailure, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -57,7 +57,7 @@ export const ordersReducer = createReducer(
 
     /** Log Out Action **/
     // Log Out: Borrar datos de la Orders Store (orders)
-    on(OrdersActions.LogOut, (state, action) => ({
+    on(OrdersActions.LogOut, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)

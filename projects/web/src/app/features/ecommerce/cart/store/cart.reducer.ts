@@ -69,7 +69,7 @@ export const cartReducer = createReducer(
     // MUCHO CUIDADO: nunca editar el state original. Siempre hacer una copia y devolver la copia.
 
     /** Increment In One The Number Of Images In This Page Action **/
-    on(CartActions.IncrementInOneTheNumberOfImagesInThisPage, (state, action) => ({
+    on(CartActions.IncrementInOneTheNumberOfImagesInThisPage, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -80,7 +80,7 @@ export const cartReducer = createReducer(
     })),
 
     /** Increment In One The Number Of Images In This Page Loaded Action **/
-    on(CartActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, action) => ({
+    on(CartActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -91,7 +91,7 @@ export const cartReducer = createReducer(
     })),
 
     /** Set Cart Page Has Been Previously Visited To True Action **/
-    on(CartActions.SetCartPageHasBeenPrevouslyVisitedToTrue, (state, action) => ({
+    on(CartActions.SetCartPageHasBeenPrevouslyVisitedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -102,7 +102,7 @@ export const cartReducer = createReducer(
     })),
 
     /** Set Cart Page Images Loaded To True Action **/
-    on(CartActions.SetCartPageImagesLoadedToTrue, (state, action) => ({
+    on(CartActions.SetCartPageImagesLoadedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -114,7 +114,7 @@ export const cartReducer = createReducer(
 
     /** Get Cart Data Start Action **/
     // Side Effects asociados: getCartDataSideEffect (coger el Cart data del usuario actual desde la base de datos mediante un HTTP Request)
-    on(CartActions.GetCartDataStart, (state, action) => ({
+    on(CartActions.GetCartDataStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -146,7 +146,7 @@ export const cartReducer = createReducer(
 
     /** Update Product Quantity Start Action **/
     // Side Effects asociados: updateProductQuantitySideEffect (actualizar productQuantity del productId y userId correspondiente en la base de datos mediante un HTTP Request)
-    on(CartActions.UpdateProductQuantityStart, (state, action) => ({
+    on(CartActions.UpdateProductQuantityStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -209,7 +209,7 @@ export const cartReducer = createReducer(
     }),
 
     /** |-> Delete Product From Cart End Success Action **/
-    on(CartActions.DeleteProductFromCartEndSuccess, (state, action) => ({
+    on(CartActions.DeleteProductFromCartEndSuccess, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -229,7 +229,7 @@ export const cartReducer = createReducer(
 
     /** Add Product To Cart Start Action **/
     // Side Effects asociados: addProductToCartStartSideEffect (borrar la fila de la tabla cart con el productId y userId correspondiente de la base de datos mediante un HTTP Request)
-    on(CartActions.AddProductToCartStart, (state, action) => ({
+    on(CartActions.AddProductToCartStart, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -239,7 +239,7 @@ export const cartReducer = createReducer(
     })),
 
     /** |-> Add Product To Cart End Success Action **/
-    on(CartActions.AddProductToCartEndSuccess, (state, action) => ({
+    on(CartActions.AddProductToCartEndSuccess, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -262,7 +262,7 @@ export const cartReducer = createReducer(
     })),
 
     /** |-> Reset Add Product To Cart Status Property Action **/
-    on(CartActions.ResetAddProductToCartStatusProperty, (state, action) => ({
+    on(CartActions.ResetAddProductToCartStatusProperty, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -273,7 +273,7 @@ export const cartReducer = createReducer(
 
     /** Log Out Action **/
     // Log Out: Borrar datos de la Cart Store (cartData, getCartDataErrorMessage, updateProductQuantityErrorMessage, newProductSlug, newProductQuantity)
-    on(CartActions.LogOut, (state, action) => ({
+    on(CartActions.LogOut, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -287,7 +287,7 @@ export const cartReducer = createReducer(
     })),
 
     /** Delete Cart Data Action **/
-    on(CartActions.DeleteCartData, (state, action) => ({
+    on(CartActions.DeleteCartData, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)

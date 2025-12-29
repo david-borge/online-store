@@ -104,7 +104,7 @@ export class GlobalEffects {
             ofType(GlobalActions.SetCookieKeyValue),
 
             // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-            switchMap((setCookieKeyValueActionData) => {
+            switchMap((_setCookieKeyValueActionData) => {
                 // Aquí puedo usar los datos del payload de la Action: setCookieKeyValueActionData.nombrePayloadPayload.propiedad1
 
                 // Comprobación
@@ -133,7 +133,7 @@ export class GlobalEffects {
             ofType(GlobalActions.GetAuthTokenAndAuthExpirationDateCookiesValuesStart),
 
             // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-            switchMap((getAuthCookieValueActionData) => {
+            switchMap((_getAuthCookieValueActionData) => {
                 if (isPlatformBrowser(this.platformId)) {
                     // Si estoy en el navegador (protección para SSR)
 
@@ -459,7 +459,7 @@ export class GlobalEffects {
             ofType(GlobalActions.LogOutStart),
 
             // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-            switchMap((logOutActionData) => {
+            switchMap((_logOutActionData) => {
                 // Aquí puedo usar los datos del payload de la Action: logOutActionData.nombrePayloadPayload.propiedad1
 
                 // Comprobación

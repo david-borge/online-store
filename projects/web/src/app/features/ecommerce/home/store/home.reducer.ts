@@ -58,7 +58,7 @@ export const homeReducer = createReducer(
 
     /** Get All Products Start Action **/
     // Side Effects asociados: getAllProductsSideEffect (toma todos los Products desde la base de datos mediante un HTTP Request)
-    on(HomeActions.GetAllProductsStart, (state, action) => ({
+    on(HomeActions.GetAllProductsStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -83,7 +83,7 @@ export const homeReducer = createReducer(
     })),
 
     /** |-> Get All Products End Failure Action **/
-    on(HomeActions.GetAllProductsEndFailure, (state, action) => ({
+    on(HomeActions.GetAllProductsEndFailure, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -102,7 +102,7 @@ export const homeReducer = createReducer(
     })),
 
     /** Increment In One The Number Of Images In This Page Action **/
-    on(HomeActions.IncrementInOneTheNumberOfImagesInThisPage, (state, action) => ({
+    on(HomeActions.IncrementInOneTheNumberOfImagesInThisPage, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -113,7 +113,7 @@ export const homeReducer = createReducer(
     })),
 
     /** Increment In One The Number Of Images In This Page Loaded Action **/
-    on(HomeActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, action) => ({
+    on(HomeActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -124,7 +124,7 @@ export const homeReducer = createReducer(
     })),
 
     /** Set Home Page Has Been Previously Visited To True Action **/
-    on(HomeActions.SetHomePageHasBeenPrevouslyVisitedToTrue, (state, action) => ({
+    on(HomeActions.SetHomePageHasBeenPrevouslyVisitedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -135,7 +135,7 @@ export const homeReducer = createReducer(
     })),
 
     /** Set Home Page Images Loaded To True Action **/
-    on(HomeActions.SetHomePageImagesLoadedToTrue, (state, action) => ({
+    on(HomeActions.SetHomePageImagesLoadedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -147,7 +147,7 @@ export const homeReducer = createReducer(
 
     /** Get Current Product Reviews Start Action **/
     // Side Effects asociados: getCurrentProductReviewsSideEffect (toma todos las Reviews de un Product desde la base de datos mediante un HTTP Request)
-    on(HomeActions.GetCurrentProductReviewsStart, (state, action) => ({
+    on(HomeActions.GetCurrentProductReviewsStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -166,7 +166,7 @@ export const homeReducer = createReducer(
     })),
 
     /** |-> Get Current Product Reviews End Failure Action **/
-    on(HomeActions.GetCurrentProductReviewsEndFailure, (state, action) => ({
+    on(HomeActions.GetCurrentProductReviewsEndFailure, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)

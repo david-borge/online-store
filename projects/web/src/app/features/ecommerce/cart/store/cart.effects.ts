@@ -38,7 +38,7 @@ export class CartEffects {
             withLatestFrom(this.store.select('cartReducerObservable')),
 
             // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-            switchMap((getCartDataStartActionData) => {
+            switchMap((_getCartDataStartActionData) => {
                 // Aquí puedo usar los datos del payload de la Action: getCartDataStartActionData.nombrePayloadPayload.propiedad1
 
                 // Comprobación
@@ -307,7 +307,7 @@ export class CartEffects {
                     debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                     Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                        switchMap((addProductToCartHttpRequestResponse: boolean) => {
+                        switchMap((_addProductToCartHttpRequestResponse: boolean) => {
                             // Comprobación
                             // console.log('addProductToCartSideEffect - addProductToCartHttpRequestResponse:');
                             // console.log(addProductToCartHttpRequestResponse);

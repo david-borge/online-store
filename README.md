@@ -1,8 +1,6 @@
 # Online Store
 
 <!--
-    TODO: add TS path aliases for relative import paths
-        TODO: group imports appropiately in Lint
     TODO: fix SSR for some content (is it because there are still NgModules?)
     TODO: resolve HTTP warning in terminal when running ng serve
     TODO: Use built-in control flow (@if) instead of directive ngIf

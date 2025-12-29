@@ -20,8 +20,8 @@ export class AccountInnerPagesGuard {
     private authService = inject(AuthService);
 
     canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot,
+        _route: ActivatedRouteSnapshot,
+        _state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         // If user is NOT logged in, redirect from '/orders' or '/order/:order-number' or '/addresses' or '/payment-methods' to '/account'
         if (!this.authService.checkIfUserIsLoggedIn()) {

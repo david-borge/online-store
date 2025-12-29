@@ -30,8 +30,8 @@ export class CheckoutStepSignupLoginGuard {
     }
 
     canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot,
+        _route: ActivatedRouteSnapshot,
+        _state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         /* // Comprobacion
     console.log('userIsLoggedIn: ' + this.authService.checkIfUserIsLoggedIn());

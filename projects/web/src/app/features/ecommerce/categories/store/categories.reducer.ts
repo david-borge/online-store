@@ -38,7 +38,7 @@ export const categoriesReducer = createReducer(
 
     /** Get All Categories Start Action **/
     // Side Effects asociados: getAllCategoriesSideEffect (toma todos las Categories desde la base de datos mediante un HTTP Request)
-    on(CategoriesActions.GetAllCategoriesStart, (state, action) => ({
+    on(CategoriesActions.GetAllCategoriesStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -63,7 +63,7 @@ export const categoriesReducer = createReducer(
     })),
 
     /** |-> Get All Categories End Failure Action **/
-    on(CategoriesActions.GetAllCategoriesEndFailure, (state, action) => ({
+    on(CategoriesActions.GetAllCategoriesEndFailure, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -82,7 +82,7 @@ export const categoriesReducer = createReducer(
     })),
 
     /** Increment In One The Number Of Images In This Page Action **/
-    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPage, (state, action) => ({
+    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPage, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -93,7 +93,7 @@ export const categoriesReducer = createReducer(
     })),
 
     /** Increment In One The Number Of Images In This Page Loaded Action **/
-    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, action) => ({
+    on(CategoriesActions.IncrementInOneTheNumberOfImagesInThisPageLoaded, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -104,7 +104,7 @@ export const categoriesReducer = createReducer(
     })),
 
     /** Set Categories Page Has Been Previously Visited To True Action **/
-    on(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue, (state, action) => ({
+    on(CategoriesActions.SetCategoriesPageHasBeenPrevouslyVisitedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -115,7 +115,7 @@ export const categoriesReducer = createReducer(
     })),
 
     /** Set Categories Page Images Loaded To True Action **/
-    on(CategoriesActions.SetCategoriesPageImagesLoadedToTrue, (state, action) => ({
+    on(CategoriesActions.SetCategoriesPageImagesLoadedToTrue, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 

@@ -52,7 +52,7 @@ export const paymentMethodsReducer = createReducer(
 
     /** Get PaymentMethods Start Action **/
     // Side Effects asociados: getPaymentMethodsSideEffect (toma los datos de la PaymentMethods desde la base de datos mediante un HTTP Request)
-    on(PaymentMethodsActions.GetPaymentMethodsStart, (state, action) => ({
+    on(PaymentMethodsActions.GetPaymentMethodsStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -72,7 +72,7 @@ export const paymentMethodsReducer = createReducer(
     })),
 
     /** |-> Get PaymentMethods End Failure Action **/
-    on(PaymentMethodsActions.GetPaymentMethodsEndFailure, (state, action) => ({
+    on(PaymentMethodsActions.GetPaymentMethodsEndFailure, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -81,7 +81,7 @@ export const paymentMethodsReducer = createReducer(
 
     /** Add New Card Start Action **/
     // Side Effects asociados: addNewCardSideEffect (toma los datos de la Cardes desde la base de datos mediante un HTTP Request)
-    on(PaymentMethodsActions.AddNewCardStart, (state, action) => ({
+    on(PaymentMethodsActions.AddNewCardStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -202,7 +202,7 @@ export const paymentMethodsReducer = createReducer(
 
     /** Log Out Action **/
     // Log Out: Borrar datos de la PaymentMethods Store (paymentMethods, newCard, addNewCardErrorMessage)
-    on(PaymentMethodsActions.LogOut, (state, action) => ({
+    on(PaymentMethodsActions.LogOut, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)

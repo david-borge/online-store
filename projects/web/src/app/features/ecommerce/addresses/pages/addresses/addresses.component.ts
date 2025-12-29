@@ -29,6 +29,7 @@ export class AddressesComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // Leer datos de la Global Store
+        // eslint-disable-next-line unused-imports/no-unused-vars
         let userEmail = '';
         this.store.select('globalReducerObservable').subscribe((globalReducerData) => {
             // Recuperar el email del usuario desde la Global Store

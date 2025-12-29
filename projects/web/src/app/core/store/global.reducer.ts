@@ -118,7 +118,7 @@ export const globalReducer = createReducer(
 
     /** Set Cookie Key Value Action **/
     // Side Effects asociados: setCookieKeyValueSideEffect
-    on(GlobalActions.SetCookieKeyValue, (state, action) => ({
+    on(GlobalActions.SetCookieKeyValue, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -142,7 +142,7 @@ export const globalReducer = createReducer(
     /** Log Out Start Action **/
     // Log Out Start: borrar cookies "authToken", "authExpirationDate" y "authEmail" y borrar datos de la Global Store (loggedIn = false; user; activeOrders)
     // Side Effects asociados: logOutSideEffect
-    on(GlobalActions.LogOutStart, (state, action) => ({
+    on(GlobalActions.LogOutStart, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -152,7 +152,7 @@ export const globalReducer = createReducer(
     })),
 
     /** |-> Log Out End Success Action **/
-    on(GlobalActions.LogOutEndSuccess, (state, action) => ({
+    on(GlobalActions.LogOutEndSuccess, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -166,7 +166,7 @@ export const globalReducer = createReducer(
     })),
 
     /** |-> Log Out End Failure Action **/
-    on(GlobalActions.LogOutEndFailure, (state, action) => ({
+    on(GlobalActions.LogOutEndFailure, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -189,7 +189,7 @@ export const globalReducer = createReducer(
       })), */
 
     /** Change Auth Mode Action **/
-    on(GlobalActions.ChangeAuthMode, (state, action) => ({
+    on(GlobalActions.ChangeAuthMode, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -200,7 +200,7 @@ export const globalReducer = createReducer(
 
     /** Sign Up Action Start Action **/
     // Side Effects asociados: signUpStartSideEffect
-    on(GlobalActions.SignUpStart, (state, action) => ({
+    on(GlobalActions.SignUpStart, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -223,7 +223,7 @@ export const globalReducer = createReducer(
 
     /** Log In Action Start Action **/
     // Side Effects asociados: logInStartSideEffect
-    on(GlobalActions.LogInStart, (state, action) => ({
+    on(GlobalActions.LogInStart, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -263,7 +263,7 @@ export const globalReducer = createReducer(
     })),
 
     /** Empty Sign Up Log In Result Action **/
-    on(GlobalActions.EmptySignUpLogInResult, (state, action) => ({
+    on(GlobalActions.EmptySignUpLogInResult, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -298,7 +298,7 @@ export const globalReducer = createReducer(
     })),
 
     /** Reset Current Step Value Action **/
-    on(GlobalActions.ResetCurrentStepValue, (state, action) => ({
+    on(GlobalActions.ResetCurrentStepValue, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)

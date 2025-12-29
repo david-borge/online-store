@@ -49,7 +49,7 @@ export const addressesReducer = createReducer(
 
     /** Get Addresses Start Action **/
     // Side Effects asociados: getAddressesSideEffect (toma los datos de la Addresses desde la base de datos mediante un HTTP Request)
-    on(AddressesActions.GetAddressesStart, (state, action) => ({
+    on(AddressesActions.GetAddressesStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -69,7 +69,7 @@ export const addressesReducer = createReducer(
     })),
 
     /** |-> Get Addresses End Failure Action **/
-    on(AddressesActions.GetAddressesEndFailure, (state, action) => ({
+    on(AddressesActions.GetAddressesEndFailure, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
@@ -78,7 +78,7 @@ export const addressesReducer = createReducer(
 
     /** Get All Countries Start Action **/
     // Side Effects asociados: getAllCountriesSideEffect (toma los datos de la Addresses desde la base de datos mediante un HTTP Request)
-    on(AddressesActions.GetAllCountriesStart, (state, action) => ({
+    on(AddressesActions.GetAllCountriesStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -110,7 +110,7 @@ export const addressesReducer = createReducer(
 
     /** Add New Address Start Action **/
     // Side Effects asociados: addNewAddressSideEffect (toma los datos de la Addresses desde la base de datos mediante un HTTP Request)
-    on(AddressesActions.AddNewAddressStart, (state, action) => ({
+    on(AddressesActions.AddNewAddressStart, (state, _action) => ({
         /* Añadir un valor */
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
@@ -220,7 +220,7 @@ export const addressesReducer = createReducer(
 
     /** Log Out Action **/
     // Log Out: Borrar datos de la Addresses Store (addresses; countries; getAllCountriesErrorMessage; newAddress; newAddressCountryName; addNewAddressErrorMessage)
-    on(AddressesActions.LogOut, (state, action) => ({
+    on(AddressesActions.LogOut, (state, _action) => ({
         // El Reducer devuelve la App State ya alterada por la Action (aka Reduced State).
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)

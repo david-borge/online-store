@@ -37,7 +37,7 @@ export class AddressesEffects {
             withLatestFrom(this.store.select('addressesReducerObservable')),
 
             // switchMap() nos permite crear un nuevo Observable tomando los datos de otro Observable
-            switchMap((getAddressesStartActionData) => {
+            switchMap((_getAddressesStartActionData) => {
                 // Aquí puedo usar los datos del payload de la Action: getAddressesStartActionData.nombrePayloadPayload.propiedad1
 
                 // Comprobación
@@ -291,7 +291,7 @@ export class AddressesEffects {
                     debo devolver una nueva Action (NombreActionEnd) para que el Observable stream iniciado en la acción pueda terminar.
                     Aunque lo que hay que devolver, en realidad, es un Observable, que NgRx tratará como una Action automáticamente (recuerda que los Actions son Observables). */
 
-                        switchMap((changeDefaultAddressHttpRequestResponse) => {
+                        switchMap((_changeDefaultAddressHttpRequestResponse) => {
                             // Comprobación
                             // console.log('changeDefaultAddressSideEffect - changeDefaultAddressHttpRequestResponse:');
                             // console.log(changeDefaultAddressHttpRequestResponse);

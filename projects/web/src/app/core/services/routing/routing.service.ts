@@ -17,7 +17,7 @@ export class RoutingService {
 
     // Al cambiar de ruta, indicarlo en la Store Global
     SetFirstVisitedPage() {
-        this.router.events.pipe(take(1)).subscribe((val) => {
+        this.router.events.pipe(take(1)).subscribe((_val) => {
             // Comprobación
             // console.log('URL actual: ' + this.router.url);
 
