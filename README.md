@@ -47,5 +47,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Automatic Deployment to Firebase App Hosting
 
-**Firebase Service Account - Private Key (json file) (for Github Actions)**: https://drive.google.com/drive/folders/1Xh8AhzXIHqSnbWmyACyvcbvpI90kSp0g
-Loggin with: david.borge.olmedo.3@gmail.com
+It its deployed automatically when committing to master by Firebase App Hosting itself (it is integrated automatically with GitHub, so there is NO need for GitHub Actions).
