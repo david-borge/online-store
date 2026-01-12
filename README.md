@@ -1,7 +1,6 @@
 # Online Store
 
 <!--
-    TODO: set up automatic deployments with GitHub Actions
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
@@ -45,3 +44,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Automatic Deployment to Firebase App Hosting
+
+**Firebase Service Account - Private Key (json file) (for Github Actions)**: https://drive.google.com/drive/folders/1Xh8AhzXIHqSnbWmyACyvcbvpI90kSp0g
+Loggin with: david.borge.olmedo.3@gmail.com
