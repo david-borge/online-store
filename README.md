@@ -1,6 +1,7 @@
 # Online Store
 
 <!--
+    TODO: 2 dependabot alerts
     TODO: update this file for docs (serve, start)
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
@@ -26,6 +27,7 @@
 
     TODO: UX Issues
         TODO: when pressing enter, the loggin form is not sent
+        TODO: sometimes, the add to cart btn does not work
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
