@@ -1,8 +1,11 @@
 # Online Store
 
 <!--
+    TODO: deployment failed
     TODO: 2 dependabot alerts
-    TODO: update this file for docs (serve, start)
+    TODO: update this file for docs (serve, start, firebase automatico o manual si no ocurre "Crea lanzamientos")
+            ✅ Note: the app is deployed AUTOMATICALLY when committing to master by Firebase App Hosting itself
+            (it is integrated automatically with GitHub, so there is NO need for GitHub Actions).
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
