@@ -14,6 +14,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { LANG_CONFIG } from '@config/lang';
 import * as fromApp from '@core/store/app.reducer';
 import { GlobalEffects } from '@core/store/global.effects';
 import { AddressesEffects } from '@features/ecommerce/addresses/store/addresses.effects';
@@ -36,7 +37,10 @@ export const appConfig: ApplicationConfig = {
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes),
         provideClientHydration(withEventReplay()),
-        [{ provide: LOCALE_ID, useValue: 'es-ES' }, provideHttpClient(withInterceptorsFromDi())],
+        [
+            { provide: LOCALE_ID, useValue: LANG_CONFIG.defaultLang },
+            provideHttpClient(withInterceptorsFromDi()),
+        ],
         importProvidersFrom(
             StoreModule.forRoot(fromApp.appReducer),
             EffectsModule.forRoot([

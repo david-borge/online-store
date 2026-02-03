@@ -324,6 +324,10 @@ export default tseslint.config(
                             position: 'after',
                         },
                         {
+                            pattern: '@config*/**',
+                            group: 'internal',
+                        },
+                        {
                             pattern: '@core*/**',
                             group: 'internal',
                         },

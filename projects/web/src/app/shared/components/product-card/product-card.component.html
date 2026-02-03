@@ -67,10 +67,7 @@
 
             <!-- Product or Order Price -->
             <div class="product-or-order-card-price">
-                {{
-                    (orderTotal !== 0 ? orderTotal : product.price)
-                        | currency: 'EUR' : 'symbol' : '1.2-2'
-                }}
+                {{ (orderTotal !== 0 ? orderTotal : product.price) | currencyFormat }}
             </div>
 
             <!-- Order Arrival Date -->

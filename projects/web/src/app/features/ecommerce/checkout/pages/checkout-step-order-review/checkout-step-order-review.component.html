@@ -117,7 +117,7 @@
         <div class="pay-now-copy">
             <div class="pay-now-copy-label">Order total</div>
             <div class="pay-now-copy-price">
-                {{ orderTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}
+                {{ orderTotal | currencyFormat }}
             </div>
         </div>
         <div class="pay-now-button-container">

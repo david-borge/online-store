@@ -6,10 +6,12 @@
         "baseUrl": "./src",
         "paths": {
             "src/*": ["*"],
+            "@config/*": ["config/*"],
             "@core/*": ["app/core/*"],
             "@core/components/*": ["app/core/components/*"],
             "@core/guards/*": ["app/core/guards/*"],
             "@core/models/*": ["app/core/models/*"],
+            "@core/pipes/*": ["app/core/pipes/*"],
             "@core/services/*": ["app/core/services/*"],
             "@core/store/*": ["app/core/store/*"],
             "@features/admin/*": ["app/features/admin/*"],

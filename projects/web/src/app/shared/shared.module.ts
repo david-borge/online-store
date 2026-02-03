@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { CurrencyFormatPipe } from '@core/pipes/currency-format.pipe';
 import { AddNewAddressFormComponent } from '@shared/components/add-new-address-form/add-new-address-form/add-new-address-form.component';
 import { AddNewCardFormComponent } from '@shared/components/add-new-card-form/add-new-card-form/add-new-card-form.component';
 import { AddressCardComponent } from '@shared/components/address-card/address-card.component';
@@ -43,7 +44,13 @@ import { PrefetchDirective } from '@shared/directives/prefetch/prefetch.directiv
         SelectButtonComponent,
         SignupLoginFormComponent,
     ],
-    imports: [CommonModule, NgOptimizedImage, ReactiveFormsModule, RouterModule],
+    imports: [
+        CommonModule,
+        CurrencyFormatPipe,
+        NgOptimizedImage,
+        ReactiveFormsModule,
+        RouterModule,
+    ],
 
     // Añadir a exports todo lo que haya puesto en declarations e imports, para que esté disponible en los otros módulos que van a usar las cosas de SharedModule.
     exports: [
@@ -52,6 +59,7 @@ import { PrefetchDirective } from '@shared/directives/prefetch/prefetch.directiv
         BtnWithLoadingSpinnerComponent,
         CartCheckoutProductCardComponent,
         CreditCardComponent,
+        CurrencyFormatPipe,
         FeaturedProductsCarrouselComponent,
         ImageLoadDirective,
         InformativeCardComponent,

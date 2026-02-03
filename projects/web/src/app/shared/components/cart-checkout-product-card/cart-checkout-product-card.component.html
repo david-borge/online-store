@@ -20,7 +20,7 @@
             <h2>{{ productName }}</h2>
         </div>
         <div class="cart-and-checkout-product-card--price">
-            {{ productPrice | currency: 'EUR' : 'symbol' : '1.2-2' }}
+            {{ productPrice | currencyFormat }}
         </div>
     </div>
 

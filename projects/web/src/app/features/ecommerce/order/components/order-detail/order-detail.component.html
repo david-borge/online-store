@@ -27,7 +27,7 @@
         </div>
 
         <div class="order-total-price">
-            <div>{{ orderData.orderTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}</div>
+            <div>{{ orderData.orderTotal | currencyFormat }}</div>
             <!-- Ejemplo: 123.45 € -->
         </div>
     </div>
