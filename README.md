@@ -1,7 +1,9 @@
 # Online Store
 
 <!--
+    TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: Dependabot alerts: https://github.com/david-borge/online-store/security/dependabot
+    TODO: move currency config to separate file. Search files for: 'EUR' : 'symbol' : '1.2-2'
     TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
     TODO: app-credit-card has click pointer even in list form (account > Payment Methods)
     TODO: ng serve warnings
