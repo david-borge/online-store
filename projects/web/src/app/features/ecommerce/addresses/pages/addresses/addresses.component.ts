@@ -18,7 +18,7 @@ import * as AddressesActions from '@features/ecommerce/addresses/store/addresses
     },
 })
 export class AddressesComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;

@@ -14,7 +14,7 @@ import * as AddressesActions from '@features/ecommerce/addresses/store/addresses
     styleUrls: ['./address-card.component.scss'],
 })
 export class AddressCardComponent {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Propiedades - Credit Card
     @Input() addressCardId: AddressInterface['id'] = 0;

@@ -14,7 +14,7 @@ import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
     styleUrls: ['./cart-checkout-product-card.component.scss'],
 })
 export class CartCheckoutProductCardComponent {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Propiedades - Cart and Checkout Product Card - Product
     @Input() cartDataArrayId = 0;

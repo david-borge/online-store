@@ -12,7 +12,7 @@ import * as HomeActions from '@features/ecommerce/home/store/home.actions';
     providedIn: 'root',
 })
 export class PreFetchService {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     orderNumber = 0;
 

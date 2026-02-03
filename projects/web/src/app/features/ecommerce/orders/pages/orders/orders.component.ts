@@ -18,7 +18,7 @@ import * as OrdersActions from '@features/ecommerce/orders/store/orders.actions'
     },
 })
 export class OrdersComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     ordersReducerObservableSubscription: Subscription = Subscription.EMPTY;

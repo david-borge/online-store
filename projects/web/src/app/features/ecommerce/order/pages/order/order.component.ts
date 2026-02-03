@@ -13,7 +13,7 @@ import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente e
     styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnDestroy, OnInit {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;

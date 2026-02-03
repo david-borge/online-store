@@ -12,7 +12,7 @@ import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
     providedIn: 'root',
 })
 export class ProductGuard {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     canDeactivate(
         _component: unknown,

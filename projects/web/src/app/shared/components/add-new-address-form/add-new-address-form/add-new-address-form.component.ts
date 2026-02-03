@@ -26,7 +26,7 @@ import * as AddressesActions from '@features/ecommerce/addresses/store/addresses
     styleUrls: ['./add-new-address-form.component.scss'],
 })
 export class AddNewAddressFormComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;

@@ -20,7 +20,7 @@ import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/stor
     styleUrls: ['./checkout-step-order-review.component.scss'],
 })
 export class CheckoutStepOrderReviewComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;

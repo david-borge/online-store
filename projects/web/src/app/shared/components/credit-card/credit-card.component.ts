@@ -14,7 +14,7 @@ import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/stor
     styleUrls: ['./credit-card.component.scss'],
 })
 export class CreditCardComponent {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Propiedades - Credit Card
     @Input() cardId: PaymentMethodInterface['id'] = 0;

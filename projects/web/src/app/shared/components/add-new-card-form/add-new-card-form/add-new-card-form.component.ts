@@ -25,7 +25,7 @@ import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/stor
     styleUrls: ['./add-new-card-form.component.scss'],
 })
 export class AddNewCardFormComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;

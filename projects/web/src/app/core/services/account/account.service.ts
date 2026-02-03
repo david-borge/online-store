@@ -13,7 +13,7 @@ import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/stor
     providedIn: 'root',
 })
 export class AccountService {
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     newAddress: {
         fullName: AddressInterface['fullName'];
