@@ -1,6 +1,7 @@
 # Online Store
 
 <!--
+    TODO: update this file for docs (serve, start)
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
@@ -22,6 +23,9 @@
     TODO: add Lint to backend (does it work with PHP?)
     TODO: in the future, change backend to Node.js
     TODO: move backend to online-store-backend.davidborge.com (hosted in Ionos)
+
+    TODO: UX Issues
+        TODO: when pressing enter, the loggin form is not sent
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
