@@ -1,7 +1,6 @@
 # Online Store
 
 <!--
-    TODO: move currency config to separate file. Search files for: 'EUR' : 'symbol' : '1.2-2'
     TODO: footer layout big problem in last step of checkout
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
