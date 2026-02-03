@@ -10,8 +10,10 @@
 // Pay Now Container
 .pay-now-container {
     position: fixed;
-    width: 100%;
     bottom: 0;
+    width: 100%;
+    max-width: var(--ancho-contenedor-solo-movil);
+    z-index: 2;
 
     border-top: 1px solid var(--N200);
     box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.05);
