@@ -2,11 +2,13 @@
 
 <!--
     TODO: move currency config to separate file. Search files for: 'EUR' : 'symbol' : '1.2-2'
+    TODO: footer layout big problem in last step of checkout
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
     TODO: app-credit-card has click pointer even in list form (account > Payment Methods)
     TODO: ng serve warnings
+    TODO: private readonly a las propiedade con = inject(
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
@@ -16,6 +18,7 @@
                 1 On the server, fetch data in a resolver/service.
                 2 Store the result in TransferState.
                 3 On the client, check TransferState first before making an HTTP request.
+        - TODO: check that the locale and currency formats are correct in the server side rendered content
     TODO: remove NgModules and turn all components to standalone
         TODO: make standalone components an error again (instead of a warning) (in eslint.config.js, delete "'@angular-eslint/prefer-standalone': 'warn',")
     TODO: remove vertical scrolling in initial loading screen (appears during animations)
