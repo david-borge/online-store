@@ -46,4 +46,8 @@ export class CreditCardComponent {
             }),
         );
     }
+
+    getCardCursorType(): string {
+        return this.creditCardShowButton ? 'pointer' : 'default';
+    }
 }
