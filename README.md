@@ -1,7 +1,6 @@
 # Online Store
 
 <!--
-    TODO: footer layout big problem in last step of checkout
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
