@@ -14,8 +14,8 @@ import * as GlobalActions from '@core/store/global.actions';
     encapsulation: ViewEncapsulation.None, // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (sectionHeaderTitleInnerHTML)
 })
 export class SectionHeaderComponent implements OnChanges {
-    router = inject(Router);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Propiedades - Section Header - Title
     @Input() sectionHeaderTitleTag = '';

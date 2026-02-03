@@ -13,9 +13,9 @@ import * as ProductActions from '@features/ecommerce/product/store/product.actio
 
 @Directive({ standalone: false, selector: '[appImageLoadDirective]' })
 export class ImageLoadDirective {
-    private router = inject(Router);
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private elementRef = inject(ElementRef);
+    private readonly router = inject(Router);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly elementRef = inject(ElementRef);
 
     currentURL = '';
     numberOfImagesInThisPage = 0;

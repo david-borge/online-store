@@ -20,8 +20,8 @@ import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
     },
 })
 export class ProductComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private preloadImagesService = inject(PreloadImagesService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly preloadImagesService = inject(PreloadImagesService);
 
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;

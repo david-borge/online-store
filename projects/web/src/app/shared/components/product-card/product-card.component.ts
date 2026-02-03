@@ -12,8 +12,8 @@ import { PreFetchService } from '@core/services/prefetch/prefetch.service';
     encapsulation: ViewEncapsulation.None, // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-card-name *)
 })
 export class ProductCardComponent implements OnInit {
-    private preFetchService = inject(PreFetchService);
-    private router = inject(Router);
+    private readonly preFetchService = inject(PreFetchService);
+    private readonly router = inject(Router);
 
     // Propiedades - Product or Order Card - Product
     @Input() product = {} as ProductInterface;

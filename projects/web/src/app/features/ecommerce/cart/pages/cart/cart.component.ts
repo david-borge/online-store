@@ -19,8 +19,8 @@ import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
     },
 })
 export class CartComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private titleService = inject(Title);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly titleService = inject(Title);
 
     // Suscripciones a la Store
     cartReducerObservableSubscription: Subscription = Subscription.EMPTY;

@@ -8,7 +8,7 @@ import { Injectable, PLATFORM_ID, inject } from '@angular/core';
     providedIn: 'root',
 })
 export class CookiesService {
-    private platformId = inject(PLATFORM_ID);
+    private readonly platformId = inject(PLATFORM_ID);
 
     // Crear Cookie
     ponerCookie(nombre: string, valor: string, dias: number) {

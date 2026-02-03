@@ -16,8 +16,8 @@ import { AuthService } from '@core/services/auth/auth.service';
     providedIn: 'root',
 })
 export class AccountInnerPagesGuard {
-    private router = inject(Router);
-    private authService = inject(AuthService);
+    private readonly router = inject(Router);
+    private readonly authService = inject(AuthService);
 
     canActivate(
         _route: ActivatedRouteSnapshot,

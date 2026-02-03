@@ -13,8 +13,8 @@ import * as ProductActions from '@features/ecommerce/product/store/product.actio
     providedIn: 'root',
 })
 export class PreloadImagesService {
-    private router = inject(Router);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     private platformId = inject(PLATFORM_ID);
 

@@ -19,8 +19,8 @@ registerLocaleData(localeEs);
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-    private authService = inject(AuthService);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly authService = inject(AuthService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     title = 'web';
 

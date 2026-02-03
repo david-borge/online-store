@@ -19,9 +19,9 @@ import * as GlobalActions from '@core/store/global.actions';
     styleUrls: ['./signup-login-form.component.scss'],
 })
 export class SignupLoginFormComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private authService = inject(AuthService);
-    private cookiesService = inject(CookiesService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly authService = inject(AuthService);
+    private readonly cookiesService = inject(CookiesService);
 
     // Suscripciones a la Store
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;

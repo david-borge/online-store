@@ -16,9 +16,9 @@ import * as CategoriesActions from './categories.actions';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class CategoriesEffects {
-    private actionsObservable = inject(Actions);
-    private dataStorageService = inject(DataStorageService);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly actionsObservable = inject(Actions);
+    private readonly dataStorageService = inject(DataStorageService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Side Effect de la Nombre Action Action de Categories
     getAllCategoriesSideEffect = createEffect(() =>

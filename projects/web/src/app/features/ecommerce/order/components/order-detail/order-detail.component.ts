@@ -16,8 +16,8 @@ import * as OrderActions from '@features/ecommerce/order/store/order.actions';
     styleUrls: ['./order-detail.component.scss'],
 })
 export class OrderDetailComponent implements OnInit, OnDestroy {
-    private route = inject(ActivatedRoute);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly route = inject(ActivatedRoute);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     orderReducerObservableSubscription: Subscription = Subscription.EMPTY;

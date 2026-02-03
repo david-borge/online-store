@@ -18,12 +18,12 @@ import * as GlobalActions from './global.actions';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class GlobalEffects {
-    private actionsObservable = inject(Actions);
-    private platformId = inject<InjectionToken<object>>(PLATFORM_ID);
-    private cookiesService = inject(CookiesService);
-    private dataStorageService = inject(DataStorageService);
-    private authService = inject(AuthService);
-    private router = inject(Router);
+    private readonly actionsObservable = inject(Actions);
+    private readonly platformId = inject<InjectionToken<object>>(PLATFORM_ID);
+    private readonly cookiesService = inject(CookiesService);
+    private readonly dataStorageService = inject(DataStorageService);
+    private readonly authService = inject(AuthService);
+    private readonly router = inject(Router);
 
     // Side Effect de la Set Local Storage Key Value Action de Global
     setLocalStorageKeyValueSideEffect = createEffect(() =>

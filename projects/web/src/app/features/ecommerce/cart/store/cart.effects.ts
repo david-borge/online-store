@@ -20,11 +20,11 @@ import * as CartActions from './cart.actions';
 
 @Injectable() // Para que podamos inyectar cosas en esta class, como actionsObservable y httpClient en el constructor. Nota: aquí NO añadir el providedIn nunca.
 export class CartEffects {
-    private actionsObservable = inject(Actions);
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private dataStorageService = inject(DataStorageService);
-    private cookiesService = inject(CookiesService);
-    private authService = inject(AuthService);
+    private readonly actionsObservable = inject(Actions);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly dataStorageService = inject(DataStorageService);
+    private readonly cookiesService = inject(CookiesService);
+    private readonly authService = inject(AuthService);
 
     // Side Effect de la Get All Countries Start Action de Cart
     getCartDataSideEffect = createEffect(() =>

@@ -21,10 +21,10 @@ import * as CategoriesActions from '@features/ecommerce/categories/store/categor
     },
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private router = inject(Router);
-    private preloadImagesService = inject(PreloadImagesService);
-    private titleService = inject(Title);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly preloadImagesService = inject(PreloadImagesService);
+    private readonly titleService = inject(Title);
 
     /*
 

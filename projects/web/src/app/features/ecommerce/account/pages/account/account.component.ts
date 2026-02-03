@@ -22,9 +22,9 @@ import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente e
     },
 })
 export class AccountComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private authService = inject(AuthService);
-    private titleService = inject(Title);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly authService = inject(AuthService);
+    private readonly titleService = inject(Title);
 
     // Suscripciones a la Store
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;

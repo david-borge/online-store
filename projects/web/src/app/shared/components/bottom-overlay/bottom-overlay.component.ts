@@ -18,8 +18,8 @@ import * as GlobalActions from '@core/store/global.actions';
     styleUrls: ['./bottom-overlay.component.scss'],
 })
 export class BottomOverlayComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private accountService = inject(AccountService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly accountService = inject(AccountService);
 
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;

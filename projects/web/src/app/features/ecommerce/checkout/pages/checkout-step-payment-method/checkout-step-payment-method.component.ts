@@ -20,8 +20,8 @@ import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/stor
     },
 })
 export class CheckoutStepPaymentMethodComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private router = inject(Router);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
 
     // Suscripciones a la Store
     paymentMethodsReducerObservableSubscription: Subscription = Subscription.EMPTY;

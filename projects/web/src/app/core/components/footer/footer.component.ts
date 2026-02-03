@@ -20,10 +20,10 @@ import * as CartActions from '@features/ecommerce/cart/store/cart.actions';
     styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit, OnChanges {
-    private router = inject(Router);
-    private preFetchService = inject(PreFetchService);
-    private routingService = inject(RoutingService);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly preFetchService = inject(PreFetchService);
+    private readonly routingService = inject(RoutingService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Propiedades - Footer - Navigation CTAs & Copy
     @Input() navigationShowCtasAndCopy = false;

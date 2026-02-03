@@ -19,9 +19,9 @@ import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente e
     },
 })
 export class CategoryComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private router = inject(Router);
-    private preloadImagesService = inject(PreloadImagesService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly preloadImagesService = inject(PreloadImagesService);
 
     /*
   

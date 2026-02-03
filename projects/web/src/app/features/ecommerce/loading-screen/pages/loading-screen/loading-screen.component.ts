@@ -42,11 +42,11 @@ import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente e
     ],
 })
 export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private router = inject(Router);
-    private preFetchService = inject(PreFetchService);
-    private preloadImagesService = inject(PreloadImagesService);
-    private platformId = inject<InjectionToken<object>>(PLATFORM_ID);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly preFetchService = inject(PreFetchService);
+    private readonly preloadImagesService = inject(PreloadImagesService);
+    private readonly platformId = inject<InjectionToken<object>>(PLATFORM_ID);
 
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;

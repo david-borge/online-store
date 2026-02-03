@@ -10,7 +10,7 @@ import { ProcessStatus } from '@core/models/processStatus.enum';
     styleUrls: ['./btn-with-loading-spinner.component.scss'],
 })
 export class BtnWithLoadingSpinnerComponent implements OnInit {
-    private router = inject(Router);
+    private readonly router = inject(Router);
 
     // Propiedades - Plantilla
     @Input() btnWithLoadingSpinnerText = '';

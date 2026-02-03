@@ -22,8 +22,8 @@ import * as PaymentMethodsActions from '@features/ecommerce/payment-methods/stor
     providedIn: 'root',
 })
 export class AuthService {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private cookiesService = inject(CookiesService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly cookiesService = inject(CookiesService);
 
     // Duración de las cookies de autentificación (authToken, authExpirationDate, authEmail)
     logInDuration = 7;

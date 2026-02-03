@@ -15,9 +15,9 @@ import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente e
     providedIn: 'root',
 })
 export class CheckoutStepAddressGuard {
-    private router = inject(Router);
-    private authService = inject(AuthService);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly authService = inject(AuthService);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     cartData: GetCartDataPHPInterface['cartData'] = [];
 

@@ -7,7 +7,6 @@
     TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
     TODO: app-credit-card has click pointer even in list form (account > Payment Methods)
     TODO: ng serve warnings
-    TODO: private readonly a las propiedade con = inject(
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).

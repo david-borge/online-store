@@ -12,8 +12,8 @@ import * as GlobalActions from '@core/store/global.actions';
     providedIn: 'root',
 })
 export class RoutingService {
-    private router = inject(Router);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Al cambiar de ruta, indicarlo en la Store Global
     SetFirstVisitedPage() {

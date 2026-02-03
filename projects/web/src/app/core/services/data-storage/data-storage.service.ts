@@ -35,7 +35,7 @@ import { environment } from 'environments/environment';
     providedIn: 'root', // Injectable permite inyectar un servicio en un servicio. providedIn pone el servicio a disposición de toda la app (solo para Angular 6 o mayor; para Angular 5 o menor, añadir el servicio al providers de AppModule)
 })
 export class DataStorageService {
-    private httpClient = inject(HttpClient);
+    private readonly httpClient = inject(HttpClient);
 
     // Get all Products
     getAllProductsHttpRequest() {

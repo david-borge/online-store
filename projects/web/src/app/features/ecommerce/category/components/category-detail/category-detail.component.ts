@@ -19,8 +19,8 @@ import * as CategoriesActions from '@features/ecommerce/categories/store/categor
     },
 })
 export class CategoryDetailComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private route = inject(ActivatedRoute);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly route = inject(ActivatedRoute);
 
     categorySlug = '';
     productsOfCurrentCategory: ProductInterface[] = [];

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     },
 })
 export class CheckoutStepOrderConfirmationComponent {
-    private router = inject(Router);
+    private readonly router = inject(Router);
 
     onClickContinueToStoreButton() {
         this.router.navigate(['/home']);

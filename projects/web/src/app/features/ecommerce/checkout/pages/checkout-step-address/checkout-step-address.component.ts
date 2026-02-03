@@ -20,8 +20,8 @@ import * as AddressesActions from '@features/ecommerce/addresses/store/addresses
     },
 })
 export class CheckoutStepAddressComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private router = inject(Router);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
 
     // Suscripciones a la Store
     addressesReducerObservableSubscription: Subscription = Subscription.EMPTY;

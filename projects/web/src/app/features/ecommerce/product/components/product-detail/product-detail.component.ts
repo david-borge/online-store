@@ -19,8 +19,8 @@ import * as HomeActions from '@features/ecommerce/home/store/home.actions';
     encapsulation: ViewEncapsulation.None, // Para que el CSS se aplique correctamente a los elementos del DOM que son generados dinámicamente (.product-description-content *)
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
-    private store = inject<Store<fromApp.AppState>>(Store);
-    private route = inject(ActivatedRoute);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly route = inject(ActivatedRoute);
 
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;

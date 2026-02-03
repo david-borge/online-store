@@ -25,9 +25,9 @@ import * as GlobalActions from '@core/store/global.actions';
     ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-    router = inject(Router);
-    private _location = inject(Location);
-    private store = inject<Store<fromApp.AppState>>(Store);
+    private readonly router = inject(Router);
+    private readonly _location = inject(Location);
+    private readonly store = inject<Store<fromApp.AppState>>(Store);
 
     // Suscripciones a la Store
     globalReducerObservableSubscription: Subscription = Subscription.EMPTY;
