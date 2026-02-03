@@ -1,7 +1,6 @@
 # Online Store
 
 <!--
-    TODO: Dependabot alerts: https://github.com/david-borge/online-store/security/dependabot
     TODO: move currency config to separate file. Search files for: 'EUR' : 'symbol' : '1.2-2'
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
