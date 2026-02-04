@@ -1,11 +1,6 @@
 # Online Store
 
 <!--
-    TODO: deployment failed
-    TODO: 2 dependabot alerts
-    TODO: update this file for docs (serve, start, firebase automatico o manual si no ocurre "Crea lanzamientos")
-            ✅ Note: the app is deployed AUTOMATICALLY when committing to master by Firebase App Hosting itself
-            (it is integrated automatically with GitHub, so there is NO need for GitHub Actions).
     TODO: fix ng test errors
     TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
@@ -31,21 +26,40 @@
     TODO: UX Issues
         TODO: when pressing enter, the loggin form is not sent
         TODO: sometimes, the add to cart btn does not work
+        TODO: review active and past orders order
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
+## Installation
+
+`npm clean-install`
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to [http://localhost:4200/](http://localhost:4200/).
+
+The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component.
+
+You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+> Note: the `prebuild` and `postbuild` scripts will be executed automatically when executing `ng build` (thanks to NPM lifecycle).
+
+## Running the Build (with SSR)
+
+First, run `ng build`, then:
+
+```
+npm run serve:ssr:web
+```
 
 ## Running unit tests
 
@@ -55,10 +69,20 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Pre-commit Hooks for Prettier, Lint and commit messages
+
+The app is set up to run **Prettier** and **Lint** automatically when comitting.
+
+If there are any **warnings** or **errors**, you will be notified and the commit will be **prevented**.
+
+Also, the **title** and **description** of the **commit** must adhere to the rules set in `commitlint.config.js`.
+
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 ## Automatic Deployment to Firebase App Hosting
 
-It its deployed automatically when committing to master by Firebase App Hosting itself (it is integrated automatically with GitHub, so there is NO need for GitHub Actions).
+The app its deployed **automatically** when committing to `master` by Firebase App Hosting itself (it is integrated automatically with GitHub, so there is NO need for GitHub Actions).
+
+> ⚠️ Note: it can take 10 minutes until the new deployment shows up in the Firebase Console.
