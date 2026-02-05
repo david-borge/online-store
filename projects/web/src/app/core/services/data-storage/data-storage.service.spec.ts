@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { DataStorageService } from './data-storage.service';
@@ -6,7 +7,9 @@ describe('DataStorageService', () => {
     let service: DataStorageService;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({});
+        TestBed.configureTestingModule({
+            providers: [provideHttpClient()],
+        });
         service = TestBed.inject(DataStorageService);
     });
 

@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideStore } from '@ngrx/store';
+
+import * as fromApp from '@core/store/app.reducer';
+
 import { BottomOverlayComponent } from './bottom-overlay.component';
 
 describe('BottomOverlayComponent', () => {
@@ -9,6 +13,7 @@ describe('BottomOverlayComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [BottomOverlayComponent],
+            providers: [provideStore(fromApp.appReducer)],
         }).compileComponents();
 
         fixture = TestBed.createComponent(BottomOverlayComponent);

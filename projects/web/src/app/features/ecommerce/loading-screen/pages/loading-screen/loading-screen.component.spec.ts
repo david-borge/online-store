@@ -1,4 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+
+import { provideStore } from '@ngrx/store';
+
+import * as fromApp from '@core/store/app.reducer';
 
 import { LoadingScreenComponent } from './loading-screen.component';
 
@@ -9,6 +14,7 @@ describe('LoadingScreenComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [LoadingScreenComponent],
+            providers: [provideRouter([]), provideStore(fromApp.appReducer)],
         }).compileComponents();
 
         fixture = TestBed.createComponent(LoadingScreenComponent);

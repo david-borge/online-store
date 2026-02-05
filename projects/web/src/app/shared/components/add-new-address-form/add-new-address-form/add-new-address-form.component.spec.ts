@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideStore } from '@ngrx/store';
+
+import * as fromApp from '@core/store/app.reducer';
+
 import { AddNewAddressFormComponent } from './add-new-address-form.component';
 
 describe('AddNewAddressFormComponent', () => {
@@ -9,6 +13,7 @@ describe('AddNewAddressFormComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [AddNewAddressFormComponent],
+            providers: [provideStore(fromApp.appReducer)],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AddNewAddressFormComponent);
