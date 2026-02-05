@@ -1,4 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
@@ -18,6 +19,7 @@ describe('CartCheckoutProductCardComponent', () => {
             declarations: [CartCheckoutProductCardComponent],
             imports: [CurrencyFormatPipe],
             providers: [provideRouter([]), provideStore(fromApp.appReducer), CurrencyPipe],
+            schemas: [NO_ERRORS_SCHEMA],
         }).compileComponents();
 
         fixture = TestBed.createComponent(CartCheckoutProductCardComponent);
