@@ -108,8 +108,14 @@
                         "tsConfig": "projects/web/tsconfig.spec.json",
                         "inlineStyleLanguage": "scss",
                         "assets": ["projects/web/src/favicon.ico", "projects/web/src/assets"],
-                        "styles": ["projects/web/src/styles.scss"],
-                        "scripts": []
+                        "styles": [
+                            "node_modules/bootstrap/scss/bootstrap.scss",
+                            "projects/web/src/styles.scss"
+                        ],
+                        "scripts": [],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["projects/web/src"]
+                        }
                     }
                 },
                 "deploy": {

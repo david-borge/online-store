@@ -1,10 +1,10 @@
 # Online Store
 
 <!--
-    TODO: ng serve warnings
-    TODO: fix ng test errors
-    TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
-    TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
+    TODO: unit tests
+        TODO: correct existing failing tests
+        TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
+        TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
@@ -17,8 +17,8 @@
         - TODO: check that the locale and currency formats are correct in the server side rendered content
     TODO: remove NgModules and turn all components to standalone
         TODO: make standalone components an error again (instead of a warning) (in eslint.config.js, delete "'@angular-eslint/prefer-standalone': 'warn',")
-    TODO: remove vertical scrolling in initial loading screen (appears during animations)
     TODO: take cookies service from a library i create or find one (projects\web\src\app\core\services\cookies\cookies.service.ts)
+    TODO: ng serve warning about http not using fetch (if if comes up again)
     TODO: add Lint to backend (does it work with PHP?)
     TODO: in the future, change backend to Node.js
     TODO: move backend to online-store-backend.davidborge.com (hosted in Ionos)
@@ -27,6 +27,7 @@
         TODO: when pressing enter, the loggin form is not sent
         TODO: sometimes, the add to cart btn does not work
         TODO: review active and past orders order
+        TODO: remove vertical scrolling in initial loading screen (appears during animations)
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
