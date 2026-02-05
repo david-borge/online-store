@@ -1,8 +1,8 @@
 # Online Store
 
 <!--
+    TODO: hide Bootstrap warning in terminal when ng serve
     TODO: unit tests
-        TODO: correct existing failing tests
         TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
         TODO: try migrating the testing environment to Vitest + Jest (and delete Jasmine+Karma packages)
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)

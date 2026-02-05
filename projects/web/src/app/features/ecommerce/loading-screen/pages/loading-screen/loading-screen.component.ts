@@ -1,12 +1,13 @@
 import { trigger, style, transition, animate, state } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
 import {
+    AfterViewInit,
+    ChangeDetectorRef,
     Component,
     InjectionToken,
     OnDestroy,
     OnInit,
     PLATFORM_ID,
-    AfterViewInit,
     inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -47,6 +48,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit 
     private readonly preFetchService = inject(PreFetchService);
     private readonly preloadImagesService = inject(PreloadImagesService);
     private readonly platformId = inject<InjectionToken<object>>(PLATFORM_ID);
+    private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
     // Suscripciones a la Store
     homeReducerObservableSubscription: Subscription = Subscription.EMPTY;
@@ -179,7 +181,10 @@ export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit 
     ngAfterViewInit() {
         // Comprobar si estoy en el navegador (el código de dentro del if NO se ejecuta en el servidor para evitar errores en SSR o pre-render)
         if (isPlatformBrowser(this.platformId)) {
-            this.letsBeginButtonAnimation = 'show';
+            queueMicrotask(() => {
+                this.letsBeginButtonAnimation = 'show';
+                this.changeDetectorRef.markForCheck();
+            });
         }
     }
 
