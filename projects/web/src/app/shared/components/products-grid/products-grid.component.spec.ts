@@ -13,6 +13,7 @@ describe('ProductsGridComponent', () => {
 
         fixture = TestBed.createComponent(ProductsGridComponent);
         component = fixture.componentInstance;
+        component.productsList = [];
         fixture.detectChanges();
     });
 

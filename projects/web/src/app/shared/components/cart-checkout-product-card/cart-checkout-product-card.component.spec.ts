@@ -1,8 +1,10 @@
+import { CurrencyPipe } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
 import { provideStore } from '@ngrx/store';
 
+import { CurrencyFormatPipe } from '@core/pipes/currency-format.pipe';
 import * as fromApp from '@core/store/app.reducer';
 
 import { CartCheckoutProductCardComponent } from './cart-checkout-product-card.component';
@@ -14,7 +16,8 @@ describe('CartCheckoutProductCardComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [CartCheckoutProductCardComponent],
-            providers: [provideRouter([]), provideStore(fromApp.appReducer)],
+            imports: [CurrencyFormatPipe],
+            providers: [provideRouter([]), provideStore(fromApp.appReducer), CurrencyPipe],
         }).compileComponents();
 
         fixture = TestBed.createComponent(CartCheckoutProductCardComponent);

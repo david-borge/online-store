@@ -1,4 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
@@ -16,6 +17,7 @@ describe('SignupLoginFormComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [SignupLoginFormComponent],
             providers: [provideHttpClient(), provideRouter([]), provideStore(fromApp.appReducer)],
+            schemas: [NO_ERRORS_SCHEMA],
         }).compileComponents();
 
         fixture = TestBed.createComponent(SignupLoginFormComponent);

@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { provideStore } from '@ngrx/store';
@@ -14,6 +15,7 @@ describe('BottomOverlayComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [BottomOverlayComponent],
             providers: [provideStore(fromApp.appReducer)],
+            schemas: [NO_ERRORS_SCHEMA],
         }).compileComponents();
 
         fixture = TestBed.createComponent(BottomOverlayComponent);

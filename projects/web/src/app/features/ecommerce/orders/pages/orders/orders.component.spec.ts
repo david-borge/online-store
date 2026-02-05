@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
@@ -15,6 +16,7 @@ describe('OrdersComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [OrdersComponent],
             providers: [provideRouter([]), provideStore(fromApp.appReducer)],
+            schemas: [NO_ERRORS_SCHEMA],
         }).compileComponents();
 
         fixture = TestBed.createComponent(OrdersComponent);
