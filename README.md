@@ -1,7 +1,6 @@
 # Online Store
 
 <!--
-    TODO: hide Bootstrap warning in terminal when ng serve
     TODO: unit tests
         TODO: fix connection to karma in the tests extension
         TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
@@ -29,6 +28,16 @@
         TODO: sometimes, the add to cart btn does not work
         TODO: review active and past orders order
         TODO: remove vertical scrolling in initial loading screen (appears during animations)
+-->
+<!--
+    TODO: The bootstrap package has a bunch of warning regarding deprecated SASS things, up until bootstrap@5.3.8.
+    We do not know when the bootstrap team will solve this.
+    So, for now, we have hidden those warnings when running ng serve.
+
+    When the problem is solved, these warnings should be visible again.
+    To do this, remove this option in angular.json: projects.web.architect.build.options.stylePreprocessorOptions.sass.silenceDeprecations
+
+    Docs: https://sass-lang.com/documentation/js-api/interfaces/deprecations/
 -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.

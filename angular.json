@@ -37,7 +37,15 @@
                         },
                         "inlineStyleLanguage": "scss",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/web/src"]
+                            "includePaths": ["projects/web/src"],
+                            "sass": {
+                                "silenceDeprecations": [
+                                    "import",
+                                    "global-builtin",
+                                    "color-functions",
+                                    "if-function"
+                                ]
+                            }
                         }
                     },
                     "configurations": {
@@ -114,7 +122,15 @@
                         ],
                         "scripts": [],
                         "stylePreprocessorOptions": {
-                            "includePaths": ["projects/web/src"]
+                            "includePaths": ["projects/web/src"],
+                            "sass": {
+                                "silenceDeprecations": [
+                                    "import",
+                                    "global-builtin",
+                                    "color-functions",
+                                    "if-function"
+                                ]
+                            }
                         }
                     }
                 },
