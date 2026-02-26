@@ -114,6 +114,7 @@
                     "options": {
                         "polyfills": ["zone.js", "zone.js/testing"],
                         "tsConfig": "projects/web/tsconfig.spec.json",
+                        "karmaConfig": "projects/web/karma.conf.js",
                         "inlineStyleLanguage": "scss",
                         "assets": ["projects/web/src/favicon.ico", "projects/web/src/assets"],
                         "styles": [
