@@ -1,10 +1,32 @@
-// FIXME: Da un error porque cambié de nombre a la directiva. Antes se llamaba ImageLoadedDirective
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
-// import { ImageLoadDirective } from './image-load.directive';
+import { provideStore } from '@ngrx/store';
 
-// describe('ImageLoadDirective', () => {
-//   it('should create an instance', () => {
-//     const directive = new ImageLoadDirective();
-//     expect(directive).toBeTruthy();
-//   });
-// });
+import * as fromApp from '@core/store/app.reducer';
+import { SharedModule } from '@shared/shared.module';
+
+@Component({
+    standalone: true,
+    imports: [SharedModule],
+    template: `
+        <img appImageLoadDirective src="" alt="" />
+    `,
+})
+class TestHostComponent {}
+
+describe('ImageLoadDirective', () => {
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [TestHostComponent],
+            providers: [provideRouter([]), provideStore(fromApp.appReducer)],
+        }).compileComponents();
+    });
+
+    it('should create an instance', () => {
+        const fixture = TestBed.createComponent(TestHostComponent);
+        fixture.detectChanges();
+        expect(fixture.nativeElement.querySelector('img')).toBeTruthy();
+    });
+});
