@@ -1,11 +1,6 @@
 # Online Store
 
 <!--
-    TODO: add pre-commit hooks para unit tests
-    TODO: angular repo for performance -> App Shell Pattern in Angular (https://angular.dev/ecosystem/service-workers/app-shell)
-
-    TODO: unit tests
-        TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
     TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
         This is a BIG refactor, since, according to GPT:
             1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
@@ -16,7 +11,9 @@
                 2 Store the result in TransferState.
                 3 On the client, check TransferState first before making an HTTP request.
         - TODO: check that the locale and currency formats are correct in the server side rendered content
-    TODO: refactor: move route slugs to enum
+    TODO: angular repo for performance -> App Shell Pattern in Angular (https://angular.dev/ecosystem/service-workers/app-shell)
+    TODO: unit tests
+        TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
     TODO: try to integrate Phrase
     TODO: remove NgModules and turn all components to standalone
         TODO: make standalone components an error again (instead of a warning) (in eslint.config.js, delete "'@angular-eslint/prefer-standalone': 'warn',")
