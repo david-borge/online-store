@@ -1,15 +1,7 @@
 # Online Store
 
 <!--
-    TODO: fix SSR for dinamic content (loaded by HTTP Request, like a Product info)
-        This is a BIG refactor, since, according to GPT:
-            1 Use Angular Universal: Your project already has SSR setup (main.server.ts, server.ts).
-            2 Fetch Data in Resolvers or Services: Use Angular’s HttpClient in services or route resolvers.
-            3 Use TransferState: To avoid duplicate HTTP requests on the client, use Angular’s TransferState to transfer fetched data from server to client.
-            4 Example Flow:
-                1 On the server, fetch data in a resolver/service.
-                2 Store the result in TransferState.
-                3 On the client, check TransferState first before making an HTTP request.
+    TODO: implement Server-side data fetching for SEO relevant content
         - TODO: check that the locale and currency formats are correct in the server side rendered content
     TODO: angular repo for performance -> App Shell Pattern in Angular (https://angular.dev/ecosystem/service-workers/app-shell)
     TODO: unit tests
