@@ -11,13 +11,14 @@
         "build:original-script": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
+        "test:ci": "ng test --watch=false",
         "serve:ssr:web": "node dist/web/server/server.mjs",
         "format": "prettier --write .",
         "lint": "eslint . --ext .js,.ts",
         "lint:fix": "eslint . --ext .js,.ts --fix",
         "format-and-lint": "prettier --write . && eslint . --ext .js,.ts --fix",
         "prepare": "simple-git-hooks",
-        "hook:pre-commit": "lint-staged",
+        "hook:pre-commit": "lint-staged && npm.cmd run test:ci",
         "hook:commit-msg": "commitlint --edit"
     },
     "simple-git-hooks": {
