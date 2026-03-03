@@ -1,8 +1,19 @@
 # Online Store
 
 <!--
+    TODO: move url slugs to enum
+    TODO: NG02801: Angular detected that `HttpClient` is not configured to use `fetch` APIs. It's strongly recommended to enable `fetch` for applications that use Server-Side Rendering for better performance and compatibility. To enable `fetch`, add the `withFetch()` to the `provideHttpClient()` call at the root of the application.
     TODO: implement Server-side data fetching for SEO relevant content
+        - TODO: remove PreFetchService for HTTP Requests? Does it make sense to use it with SSR?
+        - TODO: remove Loading Spinner? Does it make sense to use it with SSR? Change it for an error message?
+        - TODO: implement in /home
+        - TODO: fix slide up animation happening twice in /home
+        - TODO: create a list of routes that need this
+        - TODO: check no "Loading..." in view-source
         - TODO: check that the locale and currency formats are correct in the server side rendered content
+        - TODO: check in production locally
+        - TODO: check in production server (firebase)
+    TODO: add horizontal scroll with the mouse in the product carrousel
     TODO: angular repo for performance -> App Shell Pattern in Angular (https://angular.dev/ecosystem/service-workers/app-shell)
     TODO: unit tests
         TODO: add tests to everything and refactor components and services when needed for Good Quality PRs
@@ -14,7 +25,6 @@
     TODO: add Lint to backend (does it work with PHP?)
     TODO: in the future, change backend to Node.js
     TODO: move backend to online-store-backend.davidborge.com (hosted in Ionos)
-
     TODO: UX Issues
         TODO: when pressing enter, the loggin form is not sent
         TODO: sometimes, the add to cart btn does not work

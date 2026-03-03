@@ -11,6 +11,8 @@ import * as HomeActions from './home.actions'; // Importar todo y guardarlo en e
 export interface HomeReducerStateInterface {
     // loadStatus: ProcessStatus;
     allProducts: ProductInterface[];
+    loadingAllProducts: boolean;
+    getAllProductsErrorMessage: string;
     currentProductSlug: ProductInterface['slug'];
     numberOfImagesInThisPage: number;
     numberOfImagesInThisPageLoaded: number;
@@ -25,6 +27,8 @@ const initialState: HomeReducerStateInterface = {
     // Recordatorio: el Application State son los datos que son importantes para la aplicación y que influencian lo que se ve en la pantalla.
     // loadStatus: ProcessStatus.NOT_STARTED,
     allProducts: [],
+    loadingAllProducts: false,
+    getAllProductsErrorMessage: '',
     currentProductSlug: '',
     numberOfImagesInThisPage: 0,
     numberOfImagesInThisPageLoaded: 0,
@@ -64,6 +68,9 @@ export const homeReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
+
+        loadingAllProducts: true,
+        getAllProductsErrorMessage: '',
     })),
 
     /** |-> Get All Products End Success Action **/
@@ -72,6 +79,9 @@ export const homeReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
+
+        loadingAllProducts: false,
+        getAllProductsErrorMessage: '',
 
         // Cargar todos los datos desde la base de datos
         allProducts: [
@@ -88,6 +98,9 @@ export const homeReducer = createReducer(
 
         // Copiamos el App State (inicial) (en todas las propiedades de state)
         ...state,
+
+        loadingAllProducts: false,
+        getAllProductsErrorMessage: _action.getAllProductsErrorMessagePayload,
     })),
 
     /** Save Current Product Slug Action **/

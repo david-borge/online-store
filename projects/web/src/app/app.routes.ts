@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { HOME_DATA_KEY, homeResolver } from '@core/resolvers/home/home.resolver';
+
 import { LoadingScreenComponent } from './features/ecommerce/loading-screen/pages/loading-screen/loading-screen.component';
 
 export const routes: Routes = [
@@ -17,6 +19,9 @@ export const routes: Routes = [
             import('./features/ecommerce/ecommerce.module').then(
                 (modulo) => modulo.EcommerceModule,
             ),
+        resolve: {
+            [HOME_DATA_KEY]: homeResolver,
+        },
     },
 
     // Product Page

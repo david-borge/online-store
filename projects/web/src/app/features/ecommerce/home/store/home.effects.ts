@@ -1,6 +1,8 @@
 /*** HomeEffects ***/
 
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
+import { makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -10,6 +12,7 @@ import { catchError, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { GetCurrentProductReviewsPHPInterface } from '@core/models/getCurrentProductReviewsPHP.interface';
+import { ProductInterface } from '@core/models/product.interface';
 import { DataStorageService } from '@core/services/data-storage/data-storage.service';
 import * as fromApp from '@core/store/app.reducer'; // el fromNombreComponente es una convención de NgRx
 
@@ -20,6 +23,11 @@ export class HomeEffects {
     private readonly actionsObservable = inject(Actions);
     private readonly dataStorageService = inject(DataStorageService);
     private readonly store = inject<Store<fromApp.AppState>>(Store);
+    private readonly transferState = inject(TransferState);
+    private readonly platformId = inject(PLATFORM_ID);
+
+    private readonly allProductsTransferStateKey =
+        makeStateKey<ProductInterface[]>('home-all-products');
 
     // Side Effect de la Get All Products Start Action de Home
     getAllProductsSideEffect = createEffect(() =>
@@ -43,6 +51,24 @@ export class HomeEffects {
 
                 // MUCHO CUIDADO: SÓLO hacer la llamada HTTP si aún no hay ningún producto en la Store, así nos evitamos hacer una llamada HTTP cada ver que se vuelva a la Home desde otra ruta
                 if (getAllProductsStartActionData[1].allProducts.length === 0) {
+                    if (
+                        isPlatformBrowser(this.platformId) &&
+                        this.transferState.hasKey(this.allProductsTransferStateKey)
+                    ) {
+                        const transferProductsData = this.transferState.get(
+                            this.allProductsTransferStateKey,
+                            [],
+                        );
+
+                        this.transferState.remove(this.allProductsTransferStateKey);
+
+                        return of(
+                            HomeActions.GetAllProductsEndSuccess({
+                                allProductsPayload: transferProductsData,
+                            }),
+                        );
+                    }
+
                     // CUIDADO: poner el tipo de llamada (get, post...) y el tipo de dato que devuelve apropiadamente.
                     return this.dataStorageService.getAllProductsHttpRequest().pipe(
                         /* Si, después de hacer el Side Effect, quiero modificar el App State (que es lo normal),
@@ -55,6 +81,13 @@ export class HomeEffects {
                             // console.log(getAllProductsData);
 
                             // Procesamiento de datos si es necesario...
+
+                            if (isPlatformServer(this.platformId)) {
+                                this.transferState.set(
+                                    this.allProductsTransferStateKey,
+                                    getAllProductsData,
+                                );
+                            }
 
                             return of(
                                 // Procesar datos si es necesario...

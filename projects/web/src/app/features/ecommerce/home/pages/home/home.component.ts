@@ -108,10 +108,37 @@ export class HomeComponent implements OnInit, OnDestroy {
                     // console.log('dealProducts:');
                     // console.log(this.dealProducts);
 
+                    const allTrackedImagesLoaded =
+                        homeReducerData.numberOfImagesInThisPage ===
+                            homeReducerData.numberOfImagesInThisPageLoaded &&
+                        homeReducerData.numberOfImagesInThisPage !== 0;
+
+                    const noTrackableImagesInHomePage =
+                        homeReducerData.allProducts.length !== 0 &&
+                        homeReducerData.numberOfImagesInThisPage === 0;
+
+                    // SSR-first UX: en Home, si ya hay productos cargados, mostrar contenido sin bloquear por imágenes.
+                    if (homeReducerData.allProducts.length !== 0) {
+                        this.imagesInThisPageLoaded = true;
+                    }
+
+                    // Fallback robusto: si por cualquier motivo no se dispara la action de "images loaded",
+                    // usar los contadores para desbloquear la vista.
+                    if (
+                        (allTrackedImagesLoaded || noTrackableImagesInHomePage) &&
+                        !homeReducerData.homePageImagesLoaded
+                    ) {
+                        this.store.dispatch(HomeActions.SetHomePageImagesLoadedToTrue());
+                    }
+
                     // - Si se han cargado todas las imágenes de esta página, mostrar el contenido de esta página y comenzar a cargar las imágenes de otras páginas
-                    if (homeReducerData.homePageImagesLoaded) {
+                    if (
+                        homeReducerData.homePageImagesLoaded ||
+                        allTrackedImagesLoaded ||
+                        noTrackableImagesInHomePage
+                    ) {
                         // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
-                        this.imagesInThisPageLoaded = homeReducerData.homePageImagesLoaded;
+                        this.imagesInThisPageLoaded = true;
 
                         // Proceso de carga de una página: Paso 5. Una vez se haya mostrado el contenido de la página, ir cargando las imágenes de otras páginas (pre-load)
                         // Proceso de carga de una página: Paso 5.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), comenzar la carga de las imágenes de otras páginas (imagesOfOtherPagesToPreload) (usando el PreloadImagesService).

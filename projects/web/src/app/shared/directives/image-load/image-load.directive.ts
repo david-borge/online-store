@@ -24,6 +24,15 @@ export class ImageLoadDirective {
     homePageImagesLoaded = false;
     categoriesPageImagesLoaded = false;
     productPageImagesLoaded = false;
+    private imageLoadAlreadyHandled = false;
+
+    private normalizeUrlForImageTracking(url: string): string {
+        if (url.includes('/product/')) {
+            return '/product';
+        }
+
+        return url;
+    }
 
     constructor() {
         // - Cuando lea una imagen con el atributo appImageLoadDirective (ocurre cada vez que voy al componente)
@@ -32,7 +41,7 @@ export class ImageLoadDirective {
         // console.log('ImageLoadDirective activada.');
 
         // - Leer en qué página estoy
-        this.currentURL = this.router.url;
+        this.currentURL = this.normalizeUrlForImageTracking(this.router.url);
 
         // Comprobación
         // console.log('currentURL: ' + this.currentURL);
@@ -43,8 +52,11 @@ export class ImageLoadDirective {
             this.homePageImagesLoaded = homeReducerData.homePageImagesLoaded;
 
             // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
-            this.numberOfImagesInThisPage = homeReducerData.numberOfImagesInThisPage;
-            this.numberOfImagesInThisPageLoaded = homeReducerData.numberOfImagesInThisPageLoaded;
+            if (this.currentURL === '/home') {
+                this.numberOfImagesInThisPage = homeReducerData.numberOfImagesInThisPage;
+                this.numberOfImagesInThisPageLoaded =
+                    homeReducerData.numberOfImagesInThisPageLoaded;
+            }
         });
 
         // Categories Store
@@ -53,9 +65,11 @@ export class ImageLoadDirective {
             this.categoriesPageImagesLoaded = categoriesReducerData.categoriesPageImagesLoaded;
 
             // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
-            this.numberOfImagesInThisPage = categoriesReducerData.numberOfImagesInThisPage;
-            this.numberOfImagesInThisPageLoaded =
-                categoriesReducerData.numberOfImagesInThisPageLoaded;
+            if (this.currentURL === '/categories') {
+                this.numberOfImagesInThisPage = categoriesReducerData.numberOfImagesInThisPage;
+                this.numberOfImagesInThisPageLoaded =
+                    categoriesReducerData.numberOfImagesInThisPageLoaded;
+            }
         });
 
         // - Proceso de carga de una página: Paso 3.1. Si no se han cargado ya (propiedad xxxPageImagesLoaded=true), sacar el listado de imágenes de la página actual (usando la directiva de atributo appImageLoadDirective en las <img>).
@@ -66,10 +80,6 @@ export class ImageLoadDirective {
 
         // - Proceso de carga de una página: Paso 3.2. Si no se han cargado ya (propiedad xxxPageImagesLoaded=false), guardar el dato en la Store correspondiente (propiedad numberOfImagesInThisPage).
         // Efectuo una acción u otra dependiendo de en qué página esté
-        if (this.currentURL.includes('/product/')) {
-            this.currentURL = '/product';
-        }
-
         switch (this.currentURL) {
             case '/home':
                 // Comprobación
@@ -115,18 +125,27 @@ export class ImageLoadDirective {
             default:
                 break;
         }
+
+        // En SSR + hidratación, algunas imágenes ya están cargadas cuando Angular registra los listeners.
+        // Si no contamos estos casos, el spinner puede quedarse visible indefinidamente.
+        const imageElement = this.elementRef.nativeElement as HTMLImageElement;
+        if (imageElement?.complete) {
+            setTimeout(() => this.onLoad(), 0);
+        }
     }
 
     // Cuando una imagen se haya cargado
     @HostListener('load') onLoad(): void {
+        if (this.imageLoadAlreadyHandled) {
+            return;
+        }
+
+        this.imageLoadAlreadyHandled = true;
+
         // Comprobación
         // console.log('ImageLoadDirective > Imagen cargada.');
 
         // - Efectuo una acción u otra dependiendo de en qué página esté
-
-        if (this.currentURL.includes('/product/')) {
-            this.currentURL = '/product';
-        }
 
         switch (this.currentURL) {
             case '/home':
@@ -143,9 +162,9 @@ export class ImageLoadDirective {
 
                 // Proceso de carga de una página: Paso 3.4. Cuando termine la carga de las imágenes de la página actual (en la Store: numberOfImagesInThisPage == numberOfImagesInThisPageLoaded), guardarlo en la Store correspondiente (propiedad xxxPageImagesLoaded=true) (y cambiar el valor en el componente).
                 if (
-                    this.numberOfImagesInThisPage == this.numberOfImagesInThisPageLoaded &&
+                    this.numberOfImagesInThisPage == this.numberOfImagesInThisPageLoaded + 1 &&
                     this.numberOfImagesInThisPage != 0 &&
-                    this.numberOfImagesInThisPageLoaded != 0
+                    this.numberOfImagesInThisPageLoaded + 1 != 0
                 ) {
                     this.store.dispatch(HomeActions.SetHomePageImagesLoadedToTrue());
                 }
@@ -165,9 +184,9 @@ export class ImageLoadDirective {
                 }
 
                 if (
-                    this.numberOfImagesInThisPage == this.numberOfImagesInThisPageLoaded &&
+                    this.numberOfImagesInThisPage == this.numberOfImagesInThisPageLoaded + 1 &&
                     this.numberOfImagesInThisPage != 0 &&
-                    this.numberOfImagesInThisPageLoaded != 0
+                    this.numberOfImagesInThisPageLoaded + 1 != 0
                 ) {
                     this.store.dispatch(CategoriesActions.SetCategoriesPageImagesLoadedToTrue());
                 }
@@ -192,6 +211,8 @@ export class ImageLoadDirective {
 
     // (Opcional) Cuando haya un error al cargar una imagen (porque src no es correcto o la imagen no existe, por ejemplo)
     @HostListener('error') onError() {
+        this.onLoad();
+
         // Comprobación: elemento que tiene el atributo appImageLoadDirective. Puedo acceder a sus propiedades (como src o class).
         // console.log('elementRef:');
         // console.log(this.elementRef);
